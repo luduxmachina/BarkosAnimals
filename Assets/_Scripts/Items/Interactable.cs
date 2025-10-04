@@ -3,15 +3,18 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    public UnityEvent<int> OnInteract;
+
+    public UnityEvent<ItemInteraction> OnInteract;
 
 
 
-    public virtual void Interact(int code)
-    {
+
+
+    public virtual void Interact(ItemInteraction code)
+    {     
       OnInteract?.Invoke(code);
     }
-   
+
 
 
 }

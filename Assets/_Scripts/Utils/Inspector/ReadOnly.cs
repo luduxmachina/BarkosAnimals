@@ -5,7 +5,9 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-public class ReadOnlyAttribute : PropertyAttribute { }
+public class ReadOnlyAttribute : PropertyAttribute {
+    public ReadOnlyAttribute() : base(applyToCollection: true) { }
+}
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
 internal class ReadOnlyDrawer : PropertyDrawer
@@ -15,6 +17,10 @@ internal class ReadOnlyDrawer : PropertyDrawer
         GUI.enabled = false; // Desactiva la edición
         EditorGUI.PropertyField(position, property, label, true);
         GUI.enabled = true; // Vuelve a activar para otros campos
+    }
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        return EditorGUI.GetPropertyHeight(property, label, true);
     }
 }
 #endif

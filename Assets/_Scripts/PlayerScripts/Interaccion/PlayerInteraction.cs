@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Animations;
+
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -7,6 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] Transform posCogerObj;
 
     [SerializeField, ReadOnly] bool hasObjInHand = false;
+    [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
     Grabable objInHand;
     public void Interact()
     {

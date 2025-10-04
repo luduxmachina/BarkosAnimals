@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class Selectable : MonoBehaviour
 {
-
     public UnityEvent OnSelected;
     public UnityEvent OnDeselected;
 

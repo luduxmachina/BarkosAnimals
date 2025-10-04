@@ -11,12 +11,12 @@ public class CustomLabelAttribute : PropertyAttribute
     /// <summary>
     /// Si pones label vacío y hideLabel = true, no se dibuja etiqueta.
     /// </summary>
-    public CustomLabelAttribute(string label = "")
+    public CustomLabelAttribute(string label = "", bool applyToElementsInstead= false): base(applyToCollection: !applyToElementsInstead)
     {
         this.label = label;
         this.hideLabel = false;
     }
-    public CustomLabelAttribute()
+    public CustomLabelAttribute(): base(applyToCollection: true)
     {
         hideLabel = true;
     }
