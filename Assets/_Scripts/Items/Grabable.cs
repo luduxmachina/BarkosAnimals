@@ -4,9 +4,12 @@ using UnityEngine.Events;
 [RequireComponent(typeof(ParentConstraint))]
 public class Grabable : MonoBehaviour
 {
+
+    public ItemInteraction itemInteraction;
     ParentConstraint parentConstraint;
     public UnityEvent OnGrab;
     public UnityEvent OnDrop;
+    public bool canBeGrabbed = true;
     private void Awake()
     {
         parentConstraint = GetComponent<ParentConstraint>();
@@ -15,7 +18,7 @@ public class Grabable : MonoBehaviour
     public virtual bool Grab(Transform grabbingTransform)
     {
         //Si alguien quiere hacer comprobaciones y tal pues que lo haga heredando y eso
-
+        if(!canBeGrabbed) return false; 
 
         Debug.Log("Grabable.Grab()");
 
