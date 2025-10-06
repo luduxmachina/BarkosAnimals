@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 16510492}
   - component: {fileID: 16510491}
   - component: {fileID: 16510496}
+  - component: {fileID: 16510497}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Item
@@ -152,12 +153,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5624e4658e6736d4a88c7c649f535b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemInteraction: 0
   OnGrab:
     m_PersistentCalls:
       m_Calls: []
   OnDrop:
     m_PersistentCalls:
       m_Calls: []
+  canBeGrabbed: 1
 --- !u!65 &16510492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -242,7 +245,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.65, y: -1.29, z: 0.81}
-  m_LocalScale: {x: 1.34, y: 0.75, z: 0.39}
+  m_LocalScale: {x: 0.27809533, y: 0.475995, z: 0.24751739}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -270,6 +273,23 @@ ParentConstraint:
   m_Active: 0
   m_IsLocked: 0
   m_Sources: []
+--- !u!114 &16510497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16510490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInteractable: 1
+  OnPlayerInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  DropObjOnPlayerInteract: 1
 --- !u!1 &218966622
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,12 +458,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5624e4658e6736d4a88c7c649f535b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemInteraction: 0
   OnGrab:
     m_PersistentCalls:
       m_Calls: []
   OnDrop:
     m_PersistentCalls:
       m_Calls: []
+  canBeGrabbed: 1
 --- !u!65 &236587961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -799,7 +821,6 @@ GameObject:
   - component: {fileID: 409375024}
   - component: {fileID: 409375028}
   - component: {fileID: 409375029}
-  - component: {fileID: 409375030}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Item
@@ -908,12 +929,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5624e4658e6736d4a88c7c649f535b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemInteraction: 0
   OnGrab:
     m_PersistentCalls:
       m_Calls: []
   OnDrop:
     m_PersistentCalls:
       m_Calls: []
+  canBeGrabbed: 1
 --- !u!1773428102 &409375029
 ParentConstraint:
   m_ObjectHideFlags: 0
@@ -937,28 +960,6 @@ ParentConstraint:
   m_Active: 0
   m_IsLocked: 0
   m_Sources: []
---- !u!114 &409375030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409375023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  code: 0
-  useOtherCodes: 0
-  extraCodes: 
-  useSimpleEvents: 1
-  OnInteractSimple:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1138867756
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,8 +974,8 @@ GameObject:
   - component: {fileID: 1138867761}
   - component: {fileID: 1138867759}
   - component: {fileID: 1138867758}
-  - component: {fileID: 1138867762}
   - component: {fileID: 1138867763}
+  - component: {fileID: 1138867767}
   m_Layer: 0
   m_Name: PlayerCapsule
   m_TagString: Untagged
@@ -1065,39 +1066,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d8c177d49e1a44298336c707db5b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInput: {x: 0, y: 0}
   canMove: 1
+  moveInput: {x: 0, y: 0}
   moveSpeed: 5
   rotationSpeed: 720
+  heightFromGround: 1.1
+  jumpForce: 5
   dashForce: 5
   dashCooldown: 0.2
---- !u!54 &1138867762
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138867756}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.1
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!136 &1138867763
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1136,6 +1112,7 @@ MonoBehaviour:
   detector: {fileID: 218966624}
   posCogerObj: {fileID: 1936623097}
   hasObjInHand: 0
+  objInHand: {fileID: 0}
 --- !u!114 &1138867765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,6 +1128,33 @@ MonoBehaviour:
   inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   movement: {fileID: 1138867761}
   interaction: {fileID: 1138867764}
+--- !u!54 &1138867767
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138867756}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &1231698806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1301,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811611238}
-  - component: {fileID: 1811611237}
   - component: {fileID: 1811611239}
   m_Layer: 0
   m_Name: GameObject
@@ -1306,28 +1309,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1811611237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811611236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  code: 0
-  useOtherCodes: 0
-  extraCodes: 00000000
-  useSimpleEvents: 0
-  OnInteractSimple:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1811611238
 Transform:
   m_ObjectHideFlags: 0

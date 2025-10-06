@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class InteractsWithPlayer : IPlayerInteractionReciever
+public class InteractsWithPlayer : MonoBehaviour, IPlayerInteractionReciever
 {
     [SerializeField]
     public bool isPlayerInteractable = true;

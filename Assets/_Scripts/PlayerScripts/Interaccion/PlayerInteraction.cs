@@ -10,6 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     Grabable objInHand;
     public void Interact()
     {
+        Debug.Log("Interacting");
         bool interacted = false;
         if (!hasObjInHand )
         {
@@ -20,6 +21,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         else
         {
+            Debug.Log("Interacting with obj in hand");
             interacted = InteractWith(objInHand.gameObject);
 
         }
@@ -35,13 +37,15 @@ public class PlayerInteraction : MonoBehaviour
         {
             bool dropObj;
             bool interacted = interactable.OnPlayerInteraction(out dropObj);
-            if (dropObj) { DropObj(); }
+            if (dropObj) { 
+                Debug.Log("Dropping obj because interaction said so");
+                DropObj(); }
 
             return interacted;
         }
         return false;
     }
-    public void GrabAction()
+    public void Grab()
     {
         if(hasObjInHand) { 
             DropObj();
