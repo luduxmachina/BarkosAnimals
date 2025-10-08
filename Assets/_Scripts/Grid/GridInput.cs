@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class GridInput : MonoBehaviour
 {
+    public event Action OnClick, onExit;
+    
     [SerializeField]
     private LayerMask groundLayerMask;
     [SerializeField]
@@ -13,6 +16,23 @@ public class GridInput : MonoBehaviour
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        //////////////////// TESTEO ////////////////////
+        if(Input.GetMouseButtonDown(0))
+            OnClick?.Invoke();
+        
+        if(Input.GetKeyDown(KeyCode.Escape))
+            onExit?.Invoke();
+        
+        if(Input.GetKeyDown(KeyCode.Q))
+            GetComponent<GridPlacementManager>().StartPlacement(0);
+        if(Input.GetKeyDown(KeyCode.W))
+            GetComponent<GridPlacementManager>().StartPlacement(1);
+        if(Input.GetKeyDown(KeyCode.E))
+            GetComponent<GridPlacementManager>().StartPlacement(2);
     }
 
     public Vector3 GetSelectedMapPosition()
@@ -31,7 +51,7 @@ public class GridInput : MonoBehaviour
         return lastMousePos;
     }
     
-    // test
+    //////////////////// TESTEO ////////////////////
     public bool GetPlacementInput()
         => Input.GetMouseButtonDown(0);
 }
