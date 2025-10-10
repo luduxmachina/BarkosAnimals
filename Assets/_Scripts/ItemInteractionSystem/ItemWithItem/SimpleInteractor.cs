@@ -27,22 +27,22 @@ public class SimpleInteractor : MonoBehaviour
 
     public void InteractWithTarget()
     {
-       if(!detector.HasTarget()) return;
-
-        var target = detector.GetTarget().GetComponent<IInteractable>();
-        if (target != null)
+        GameObject targetGO = detector.GetTarget();
+        if (targetGO == null ) { return; }
+        var target = targetGO.GetComponent<IInteractable>();
+        if (target == null) { return; }
+        
+        bool success= target.Interact(interactionType, this);
+        playerReceiver.interactionSuccessful = success;
+        if (success)
         {
-            bool success= target.Interact(interactionType, this);
-            playerReceiver.interactionSuccessful = success;
-            if (success)
-            {
-                OnInteraction?.Invoke();
-            }
-            else
-            {
-                OnFailedInteraction?.Invoke();
-            }
+            OnInteraction?.Invoke();
         }
+        else
+        {
+            OnFailedInteraction?.Invoke();
+        }
+        
 
     }
 

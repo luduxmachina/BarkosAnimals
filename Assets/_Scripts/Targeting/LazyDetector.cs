@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LazyDetector : MonoBehaviour, ITargeter
 {
+    [SerializeField, ReadOnly] GameObject lastTargetFetched = null;
     private enum DetectionShape
     {
         Sphere,
@@ -15,34 +16,41 @@ public class LazyDetector : MonoBehaviour, ITargeter
     [SerializeField] DetectionShape shape = DetectionShape.Sphere;
 
     [Header("Settings")]
+    [SerializeField] bool ignoreSelf = true;
+    [SerializeField] bool ignoreChildren = true;
+    [SerializeField] bool ignoreParents = true;
+    [SerializeField] bool ignoreSpecificGameObjects = false;
+    [SerializeField, HideIf("ignoreSpecificGameObjects", false)]
+    GameObject[] specificGameObjectsToIgnore = new GameObject[0];
+    [Space]
     [SerializeField] bool filterByTag = false;
     [SerializeField, HideIf("filterByTag", false)] string targetTag = "";
     [SerializeField] bool useOtherTags = false;
     [SerializeField, HideIf("useOtherTags", false)] string[] otherTags = new string[0];
-    [SerializeField] bool filterByLayer = false;
-    [SerializeField, HideIf("filterByLayer", false)] LayerMask targetLayerMask = ~0;
+    [SerializeField] bool filterByLayer = true;
+    [SerializeField, HideIf("filterByLayer", false)] LayerMask targetLayerMask = 1;
 
 
-    public GameObject[] GetAllTargets()
+
+    public virtual GameObject[] GetAllTargets()
     {
 
         GameObject[] targets = GetPhysicsTargets();
-        
-        if(filterByTag)
+        targets= ApplyIgnores(targets);
+        if (filterByTag)
         {
             targets = ApplyTagFilters(targets);
         }
         if(filterByLayer)
         {
-            targets = ApplyLayerFilters(targets);
+            targets = ApplyLayerFilters(targets,targetLayerMask);
         }
-
         return targets;
     }
 
     public GameObject GetTarget()
     {
-        return GetClosestItem(GetAllTargets());
+        return lastTargetFetched= GetClosestItem(GetAllTargets());
     }
     /// <summary>
     /// En LazyDetector, no usais HasTarget y luego GetTarget porque va a hacer dos detecciones fisicas. Usad solo GetTarget y manejad el posible null
@@ -57,16 +65,46 @@ public class LazyDetector : MonoBehaviour, ITargeter
         Collider[] hits = new Collider[0];
         if (shape == DetectionShape.Sphere)
         {
-            hits = Physics.OverlapSphere(transform.position, detectionRange, layerMask);
+            hits = Physics.OverlapSphere(transform.position, detectionRange, targetLayerMask);
         }
         else if (shape == DetectionShape.Box)
         {
-            hits = Physics.OverlapBox(transform.position, Vector3.one * detectionRange * 0.5f, Quaternion.identity, layerMask);
+            hits = Physics.OverlapBox(transform.position, Vector3.one * detectionRange * 0.5f, Quaternion.identity, targetLayerMask);
         }
         GameObject[] gameObjects = hits.Select(c => c.gameObject).ToArray();
 
 
         return gameObjects;
+    }
+    private GameObject[] ApplyIgnores(GameObject[] targets)
+    {
+        List<GameObject> ignoreTargets = new List<GameObject>();
+        if (ignoreSpecificGameObjects)
+        {
+            ignoreTargets.AddRange(specificGameObjectsToIgnore);
+        }
+        if (ignoreSelf)
+        {
+            ignoreTargets.Add(this.gameObject);
+        }
+        if (ignoreChildren)
+        {
+            foreach (Transform child in transform)
+            {
+                ignoreTargets.Add(child.gameObject);
+            }
+        }
+        if (ignoreParents)
+        {
+            Transform currentParent = transform.parent;
+            while (currentParent != null)
+            {
+                ignoreTargets.Add(currentParent.gameObject);
+                currentParent = currentParent.parent;
+            }
+        }
+        targets = targets.Where(t => !ignoreTargets.Contains(t)).ToArray();
+        return targets;
     }
     private GameObject[] ApplyTagFilters(GameObject[] targets)
     {
@@ -92,7 +130,7 @@ public class LazyDetector : MonoBehaviour, ITargeter
         }
         return filtered.ToArray();
     }
-    private GameObject[] ApplyLayerFilters(GameObject[] targets)
+    private GameObject[] ApplyLayerFilters(GameObject[] targets, LayerMask targetLayerMask)
     {
      
 
@@ -106,6 +144,7 @@ public class LazyDetector : MonoBehaviour, ITargeter
         }
         return filtered.ToArray();
     }
+
     private GameObject GetClosestItem(GameObject[] targets)
     {
         GameObject closestItem = targets[0];
