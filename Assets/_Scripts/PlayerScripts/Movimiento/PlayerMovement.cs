@@ -14,9 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [Header("Dash")]
     [SerializeField] private float dashForce = 5f;
-    [SerializeField] private float dashCooldown = 0.2f;
+    [SerializeField] private float dashCooldown = 0.3f;
+    [SerializeField] private float dashNoGravityDuration = 0.15f;
     private bool canDash = true;
     private float dashCooldownTimer=0.0f;
+    private float dashNoGravityTimer=0.0f;
 
     private void Awake()
     {
@@ -30,6 +32,13 @@ public class PlayerMovement : MonoBehaviour
             if (dashCooldownTimer < 0.0f)
             {
                 canDash = true;
+            }
+
+            dashNoGravityTimer -= Time.fixedDeltaTime;
+            if (dashNoGravityTimer < 0.0f)
+            {
+                rb.useGravity = true;
+                dashNoGravityTimer = 100.0f; //para que no vuelva a entrar aqui
             }
         }
     }
@@ -59,6 +68,9 @@ public class PlayerMovement : MonoBehaviour
 
         canDash = false;
         dashCooldownTimer = dashCooldown;
+
+        dashNoGravityTimer = dashNoGravityDuration;
+        rb.useGravity = false;
         rb.AddForce(transform.forward*dashForce, ForceMode.Impulse);
         Debug.Log("Dash");
     }
