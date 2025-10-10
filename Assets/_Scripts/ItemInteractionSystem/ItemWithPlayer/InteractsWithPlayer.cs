@@ -7,19 +7,19 @@ public class InteractsWithPlayer : MonoBehaviour, IPlayerInteractionReciever
     [SerializeField]
     public bool isPlayerInteractable = true;
     [SerializeField, HideIf("isPlayerInteractable", false), Tooltip("Eventos cuando el player interactua con el obj.")]
-    private UnityEvent OnPlayerInteract;
+    public UnityEvent OnPlayerInteract;
+    public bool interactionSuccessful = true;
 
-    [SerializeField, HideIf("isPlayerInteractable", false)]
-    protected bool DropObjOnPlayerInteract = false;
-
-    public bool OnPlayerInteraction(out bool shouldDropObj)
+    public bool OnPlayerInteraction()
     {
-        shouldDropObj = false;
+      
         if (!isPlayerInteractable) return false;
 
-        //se va a interactuar
-        shouldDropObj = DropObjOnPlayerInteract;
+
+        //se va a interactuar      
         OnPlayerInteract?.Invoke();
-        return true;
+
+
+        return interactionSuccessful;
     }
 }

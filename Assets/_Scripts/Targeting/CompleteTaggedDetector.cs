@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-public class TaggedDetector : MonoBehaviour
+public class TaggedDetector : MonoBehaviour, ITargeter
 {
     public UnityEvent<GameObject> onTargetChanged;
     [Header ("Camera settings")]

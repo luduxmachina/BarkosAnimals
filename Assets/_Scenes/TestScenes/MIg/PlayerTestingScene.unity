@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5624e4658e6736d4a88c7c649f535b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemInteraction: 0
   OnGrab:
     m_PersistentCalls:
       m_Calls: []
@@ -162,6 +161,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canBeGrabbed: 1
+  canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 0
 --- !u!65 &16510492
 BoxCollider:
@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 236587960}
   - component: {fileID: 236587965}
   - component: {fileID: 236587966}
+  - component: {fileID: 236587967}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Item
@@ -488,7 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5624e4658e6736d4a88c7c649f535b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemInteraction: 0
   OnGrab:
     m_PersistentCalls:
       m_Calls: []
@@ -496,6 +496,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canBeGrabbed: 1
+  canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 1
 --- !u!65 &236587961
 BoxCollider:
@@ -636,6 +637,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &236587967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236587959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3284e1a506e2a49aa572c27189d71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionType: 1
 --- !u!1 &288884505
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +1002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5624e4658e6736d4a88c7c649f535b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemInteraction: 0
   OnGrab:
     m_PersistentCalls:
       m_Calls: []
@@ -996,6 +1009,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canBeGrabbed: 1
+  canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 1
 --- !u!1773428102 &409375029
 ParentConstraint:
@@ -1203,7 +1217,6 @@ MonoBehaviour:
   detector: {fileID: 218966624}
   posCogerObj: {fileID: 1936623097}
   hasObjInHand: 0
-  objInHand: {fileID: 0}
 --- !u!114 &1138867765
 MonoBehaviour:
   m_ObjectHideFlags: 0
