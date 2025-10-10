@@ -750,6 +750,7 @@ GameObject:
   - component: {fileID: 1971174127}
   - component: {fileID: 1971174126}
   - component: {fileID: 1971174132}
+  - component: {fileID: 1971174133}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -770,8 +771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseIndicator: {fileID: 304985191}
-  cellIndicator: {fileID: 1620073478}
-  prefabToPlace: {fileID: 7786918308410370273, guid: 8524856dc0999be43ae8075bc6cbddce, type: 3}
   dataBase: {fileID: 11400000, guid: fc1d8eefb75d2a94f815df2d81c38845, type: 2}
   gridVisualization: {fileID: 1448095906}
 --- !u!156049354 &1971174127
@@ -894,6 +893,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   mainCamera: {fileID: 0}
+--- !u!114 &1971174133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971174125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eaf4c6161942bd438767ee8b11c9387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previewYOffset: 0.05
+  cellIndicator: {fileID: 1620073478}
+  previewMaterialPrefab: {fileID: 2100000, guid: fa51ebb6f1ea7c2418816898232aea8b, type: 2}
+  CanBePlacedColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+  CanNotBePlacedColor: {r: 1, g: 0, b: 0, a: 0.39215687}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

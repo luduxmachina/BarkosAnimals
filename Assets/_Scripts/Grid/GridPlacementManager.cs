@@ -5,23 +5,18 @@ using UnityEngine;
 
 public class GridPlacementManager : MonoBehaviour
 {
-    public GameObject mouseIndicator, cellIndicator, prefabToPlace;
+    public GameObject mouseIndicator;
 
 
     [SerializeField] private PlaceableObjectsSO dataBase;
     private int selectedObjectIndex = -1;
 
     [SerializeField] private GameObject gridVisualization;
-    
-    [SerializeField]
-    private Color CanBePlacedColor = Color.white;
-    [SerializeField]
-    private Color CanNotBePlacedColor = Color.red;
 
     private Grid grid;
     private GridInput gridInput;
     private GridData gridObjectsData;
-    private Renderer previewRenderer;
+    private GridPreview gridPreview;
 
     private HashSet<GameObject> placedObjects = new HashSet<GameObject>();
 
@@ -29,6 +24,7 @@ public class GridPlacementManager : MonoBehaviour
     {
         grid = GetComponent<Grid>();
         gridInput = GetComponent<GridInput>();
+        gridPreview = GetComponent<GridPreview>();
     }
 
     private void Start()
@@ -36,7 +32,6 @@ public class GridPlacementManager : MonoBehaviour
         StopPlacement();
 
         gridObjectsData = new GridData();
-        previewRenderer = cellIndicator.GetComponentInChildren<Renderer>();
     }
 
     private void Update()
@@ -54,24 +49,14 @@ public class GridPlacementManager : MonoBehaviour
         mouseIndicator.transform.position = selectedPos;
 
         Vector3Int cellPos = grid.WorldToCell(selectedPos);
+        cellPos.y = 0;
         Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
-        worldCellPos = new Vector3(
-            worldCellPos.x - grid.cellSize.x * 0.5f,
-            cellIndicator.transform.position.y,
-            worldCellPos.z - grid.cellSize.z * 0.5f
-        );
-        cellIndicator.transform.position = worldCellPos;
-        // cellIndicator.transform.position = new Vector3
-        // (
-        //     cellPos.x,
-        //     cellIndicator.transform.position.y,
-        //     cellPos.z
-        // );
         
         // Check if can be placed
         Vector2Int realCellPos = new Vector2Int(cellPos.x, cellPos.z);
         bool validPlace = CheckPlacementValidity(realCellPos, selectedObjectIndex);
-        previewRenderer.material.color = validPlace ? CanBePlacedColor : CanNotBePlacedColor;
+        
+        gridPreview.UpdatePosition(worldCellPos, validPlace, grid.cellSize.x);
     }
 
     private void StopPlacement()
@@ -79,10 +64,11 @@ public class GridPlacementManager : MonoBehaviour
         selectedObjectIndex = -1;
 
         gridVisualization.SetActive(false);
-        cellIndicator.SetActive(false);
         mouseIndicator.SetActive(false);
         gridInput.OnClick -= PlaceStructure;
         gridInput.onExit -= StopPlacement;
+
+        gridPreview.StopPreview();
     }
 
     public void StartPlacement(int ID)
@@ -97,13 +83,11 @@ public class GridPlacementManager : MonoBehaviour
         }
 
         gridVisualization.SetActive(true);
-        cellIndicator.SetActive(true);
         mouseIndicator.SetActive(true);
         gridInput.OnClick += PlaceStructure;
         gridInput.onExit += StopPlacement;
 
-        Vector2 objSize = dataBase.objectData[selectedObjectIndex].Size;
-        cellIndicator.transform.localScale = new Vector3(objSize.x, 1, objSize.y);
+        gridPreview.StartPreview(dataBase.objectData[selectedObjectIndex].Prefab, dataBase.objectData[selectedObjectIndex].Size);
     }
 
     private void PlaceStructure()
@@ -125,7 +109,7 @@ public class GridPlacementManager : MonoBehaviour
         newObj.transform.position = new Vector3
         (
             worldCellPos.x,
-            0, //cellIndicator.transform.position.y,
+            worldCellPos.y, // 0,
             worldCellPos.z
         );
         
