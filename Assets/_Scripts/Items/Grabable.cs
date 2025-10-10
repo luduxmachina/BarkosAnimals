@@ -11,6 +11,8 @@ public class Grabable : MonoBehaviour
     public UnityEvent OnGrab;
     public UnityEvent OnDrop;
     public bool canBeGrabbed = true;
+    [Header("PlayerFlags")]
+    public bool allowExtramoveSetWhenGrabbed = true;
     private Rigidbody rb;
     private int originalLayer;
     private void Awake()

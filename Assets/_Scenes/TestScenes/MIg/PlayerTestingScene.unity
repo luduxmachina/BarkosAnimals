@@ -162,6 +162,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canBeGrabbed: 1
+  allowExtramoveSetWhenGrabbed: 0
 --- !u!65 &16510492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -495,6 +496,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canBeGrabbed: 1
+  allowExtramoveSetWhenGrabbed: 1
 --- !u!65 &236587961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -994,6 +996,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canBeGrabbed: 1
+  allowExtramoveSetWhenGrabbed: 1
 --- !u!1773428102 &409375029
 ParentConstraint:
   m_ObjectHideFlags: 0
@@ -1225,8 +1228,8 @@ Rigidbody:
   m_GameObject: {fileID: 1138867756}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[RequireComponent(typeof(PlayerMovement))]
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] TaggedDetector detector;
@@ -8,6 +8,11 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField, ReadOnly] bool hasObjInHand = false;
     [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
     Grabable objInHand;
+    private PlayerMovement playerMovement;
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
     public void Interact()
     {
         Debug.Log("Interacting");
@@ -68,6 +73,10 @@ public class PlayerInteraction : MonoBehaviour
 
         if (grabable.Grab(posCogerObj))
         {
+            if (!grabable.allowExtramoveSetWhenGrabbed)
+            {
+                playerMovement.ImpedeExtraMoveset();
+            }
             objInHand = grabable;
             hasObjInHand = true;
             return; //se ha cogido el objeto
@@ -75,7 +84,8 @@ public class PlayerInteraction : MonoBehaviour
     }
     public void DropObj() //lo dejo public porque algo puede hacerme soltar el objeto
     {
-        if (!hasObjInHand) { return; } 
+        if (!hasObjInHand) { return; }
+        playerMovement.AllowExtraMoveSet();
         //soltar objeto
         objInHand.Drop();
 
