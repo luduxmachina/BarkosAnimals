@@ -49,6 +49,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(hasObjInHand) { 
             DropObj();
+            return;
         }
 
         if (!detector.HasTarget()) { return; } //no ocurre nada
