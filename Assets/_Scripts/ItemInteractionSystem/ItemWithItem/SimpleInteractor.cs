@@ -27,13 +27,12 @@ public class SimpleInteractor : MonoBehaviour
 
     public void InteractWithTarget()
     {
-        GameObject targetGO = detector.GetTarget();
-        if (targetGO == null ) { return; }
-        var target = targetGO.GetComponent<IInteractable>();
+        var target = GetTarget();
         if (target == null) { return; }
-        
+
         bool success= target.Interact(interactionType, this);
         playerReceiver.interactionSuccessful = success;
+
         if (success)
         {
             OnInteraction?.Invoke();
@@ -45,7 +44,13 @@ public class SimpleInteractor : MonoBehaviour
         
 
     }
-
+    protected IInteractable GetTarget()
+    {
+        GameObject targetGO = detector.GetTarget();
+        if (targetGO == null) { return null; }
+        var target = targetGO.GetComponent<IInteractable>();
+        return target;
+    }
     private void OnEnable()
     {
         if (playerReceiver != null)

@@ -147,7 +147,7 @@ public class LazyDetector : MonoBehaviour, ITargeter
 
     private GameObject GetClosestItem(GameObject[] targets)
     {
-        GameObject closestItem = targets[0];
+        GameObject closestItem = null;
         float closestDistance = Mathf.Infinity;
 
  

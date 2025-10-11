@@ -16,15 +16,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashCooldown = 0.3f;
     [SerializeField] private float dashNoGravityDuration = 0.15f;
     private bool onDashCooldown = false;
-    private float dashCooldownTimer=0.0f;
-    private float dashNoGravityTimer=0.0f;
+    private float dashCooldownTimer = 0.0f;
+    private float dashNoGravityTimer = 0.0f;
 
     [Header("Negative effects")]
     [SerializeField] private float slowMoveSpeed = 2f;
     [SerializeField, ReadOnly] private float stunTime = 0.0f;
     public bool canMove = true;
     [SerializeField] private bool impedeExtraMoveset = false;
-    private bool isSlowed = false;
+    private bool isSlowed { get { return slowStack > 0; } }
+    private int slowStack = 0;
     private bool isStunned = false;
     public void ImpedeExtraMoveset()
     {
@@ -36,11 +37,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ApplySlow()
     {
-        isSlowed = true;
+        slowStack++;
     }
     public void RemoveSlow()
     {
-        isSlowed = false;
+        slowStack--;
     }
     public void ApplyStun(float duration)
     {

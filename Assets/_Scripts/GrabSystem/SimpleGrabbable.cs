@@ -5,7 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class SimpleGrabbable : MonoBehaviour, IGrabbable
 {
-    private IGrabber currentGrabber = null;
+    public IGrabber currentGrabber = null;
 
     public UnityEvent OnGrab;
     public UnityEvent OnDrop;

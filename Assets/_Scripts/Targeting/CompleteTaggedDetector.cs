@@ -11,9 +11,9 @@ public class TaggedDetector : MonoBehaviour, ITargeter
     [Header ("Camera settings")]
     [SerializeField, Tooltip("If active, the collider detector will move from the center of the camera forwards")]
     private bool moveWithCamera = true;
-    [SerializeField, Tooltip("Optinal. Default is Camera.main")]
+    [SerializeField, HideIf("moveWithCamera", false), Tooltip("Optinal. Default is Camera.main")]
     private GameObject cameraGO;
-    [SerializeField, Tooltip("Max distance from the camera the detector will reach,\nthis does not take into account the detector's size"), Range(0, 50)]
+    [SerializeField, HideIf("moveWithCamera", false), Tooltip("Max distance from the camera the detector will reach,\nthis does not take into account the detector's size"), Range(0, 50)]
     private float range;
    [Space]
     [Header("Tags")]  
