@@ -59,15 +59,18 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
     {
         if (!canBeDropped) return false;
         if(!isBeingGrabbed) return false; //no se puede soltar si no se esta cogido
+
+        OnDrop?.Invoke(); //para que el grabber siga teniendo la referencia sin null
+
         currentGrabber.StopGrabbing();
         currentGrabber = null;
 
-        Debug.Log("Grabable.Drop()");
+  
         parentConstraint.RemoveSource(0);
         parentConstraint.constraintActive = false;
         rb.excludeLayers = 0;
         gameObject.layer = originalLayer;
-        OnDrop?.Invoke();
+ 
 
         return true; //el objeto se ha soltado
     }
