@@ -54,7 +54,7 @@ public class GridPlacementState : IGridBuildingState
         
         GridData selectedGrid = GetSlelectedGrid(selectedObjectIndex); 
         selectedGrid.AddObject(realCellPos, dataBase.objectData[selectedObjectIndex].Size, selectedObjectIndex, gameObjectIndex);
-        gridPreview.UpdatePosition(worldCellPos, false, grid.cellSize.x);
+        gridPreview.UpdatePosition(worldCellPos, false, grid.cellSize.x, false);
     }
 
     public void UpdateState(Vector3Int cellPos)
@@ -65,7 +65,7 @@ public class GridPlacementState : IGridBuildingState
         Vector2Int realCellPos = new Vector2Int(cellPos.x, cellPos.z);
         bool validPlace = CheckPlacementValidity(realCellPos, selectedObjectIndex);
         
-        gridPreview.UpdatePosition(worldCellPos, validPlace, grid.cellSize.x);
+        gridPreview.UpdatePosition(worldCellPos, validPlace, grid.cellSize.x, false);
     }
     
     private bool CheckPlacementValidity(Vector2Int cellPos, int ObjectID)

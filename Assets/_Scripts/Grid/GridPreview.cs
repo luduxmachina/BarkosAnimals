@@ -39,7 +39,6 @@ public class GridPreview : MonoBehaviour
     {
         cellIndicator.SetActive(true);
         PrepareCursor(Vector2Int.one);
-        ApplyFeedbackToCursor(false);
     }
 
     public void StopPreview()
@@ -49,18 +48,18 @@ public class GridPreview : MonoBehaviour
             Destroy(previewObject);
     }
 
-    public void UpdatePosition(Vector3 position, bool validity, float gridSize)
+    public void UpdatePosition(Vector3 position, bool validity, float gridSize, bool removing)
     {
         // Preview
         if (previewObject != null)
         {
             MovePreview(position);
-            ApplyFeedbackToPreview(validity);
+            ApplyFeedbackToPreview(validity, removing);
         }
         
         // Cursor
         MoveCursor(position, gridSize);
-        ApplyFeedbackToCursor(validity);
+        ApplyFeedbackToCursor(validity, removing);
     }
 
     private void MovePreview(Vector3 position)
@@ -77,17 +76,21 @@ public class GridPreview : MonoBehaviour
         );
     }
 
-    private void ApplyFeedbackToPreview(bool validity)
+    private void ApplyFeedbackToPreview(bool validity, bool removing)
     {
         Color c = validity ? CanBePlacedColor : CanNotBePlacedColor;
+        if (removing)
+            c = RemoveColor;
         c.a = 0.5f;
 
         previewMaterialInstance.color = c;
     }
     
-    private void ApplyFeedbackToCursor(bool validity)
+    private void ApplyFeedbackToCursor(bool validity, bool removing)
     {
         Color c = validity ? CanBePlacedColor : CanNotBePlacedColor;
+        if (removing)
+            c = RemoveColor;
         c.a = 0.5f;
         
         cellIndicator.GetComponentInChildren<Renderer>().material.color = c;
@@ -120,6 +123,5 @@ public class GridPreview : MonoBehaviour
             return;
         
         cellIndicator.transform.localScale = new Vector3(size.x, 1, size.y);
-        // cellIndicator.GetComponentInChildren<Renderer>().material.mainTextureScale = size;
     }
 }

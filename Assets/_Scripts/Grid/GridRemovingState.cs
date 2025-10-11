@@ -57,7 +57,7 @@ public class GridRemovingState : IGridBuildingState
             objectPlacer.RemoveObject(gameObjectIndex);
         }
         
-        gridPreview.UpdatePosition(worldCellPos,  ChechIfSelectionIsValid(cellPos), grid.cellSize.x);
+        gridPreview.UpdatePosition(worldCellPos,  ChechIfSelectionIsValid(cellPos), grid.cellSize.x, true);
     }
 
     public void UpdateState(Vector3Int cellPos)
@@ -66,7 +66,7 @@ public class GridRemovingState : IGridBuildingState
         Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
         
         bool validity = ChechIfSelectionIsValid(cellPos);
-        gridPreview.UpdatePosition(worldCellPos,  validity, grid.cellSize.x);
+        gridPreview.UpdatePosition(worldCellPos,  validity, grid.cellSize.x, true);
     }
     
     private bool ChechIfSelectionIsValid(Vector3Int cellPos)
