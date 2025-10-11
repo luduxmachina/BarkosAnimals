@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class GridData
 {
-    HashSet<Vector2> ocupiedPositions = new HashSet<Vector2>();
+    Dictionary<Vector2Int, PlacementData> placedObjects = new Dictionary<Vector2Int, PlacementData>();
 
-    public void AddObject(Vector2Int gridPos, Vector2Int objSize)
+    public void AddObject(Vector2Int gridPos, Vector2Int objSize, int id, int placedObjectIndex)
     {
         List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, objSize);
+        PlacementData data = new PlacementData(positionsToOccupy, id, placedObjectIndex);
+        
         foreach (var position in positionsToOccupy)
         {
-            if(ocupiedPositions.Contains(position))
+            if(placedObjects.ContainsKey(position))
                 throw new Exception($"HashSet already contains position {position}");
             
-            ocupiedPositions.Add(position);
+            placedObjects.Add(position, data);
         }
     }
 
@@ -37,10 +39,40 @@ public class GridData
         List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, objSize);
         foreach (var position in positionsToOccupy)
         {
-            if(ocupiedPositions.Contains(position))
+            if(placedObjects.ContainsKey(position))
                 return false;
         }
             
         return true;
+    }
+
+    public int GetRepresentationIndex(Vector2Int cellPos)
+    {
+        if (!placedObjects.TryGetValue(cellPos, out var placementData))
+            return -1;
+        
+        return placementData.placementIndex;
+    }
+
+    public void RemoveObjectAt(Vector2Int cellPos)
+    {
+        foreach(var pos in placedObjects[cellPos].occupiedPositions)
+        {
+            placedObjects.Remove(pos);
+        }
+    }
+}
+
+internal class PlacementData
+{
+    public List<Vector2Int> occupiedPositions;
+    public int id { get; private set; }
+    public int placementIndex { get; private set; }
+
+    public PlacementData(List<Vector2Int> occupiedPositions, int id, int placementIndex)
+    {
+        this.occupiedPositions = occupiedPositions;
+        this.id = id;
+        this.placementIndex = placementIndex;
     }
 }

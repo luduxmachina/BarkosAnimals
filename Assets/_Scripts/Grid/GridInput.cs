@@ -33,6 +33,9 @@ public class GridInput : MonoBehaviour
             GetComponent<GridPlacementManager>().StartPlacement(1);
         if(Input.GetKeyDown(KeyCode.E))
             GetComponent<GridPlacementManager>().StartPlacement(2);
+        
+        if(Input.GetKeyDown(KeyCode.R))
+            GetComponent<GridPlacementManager>().StartRemoving();
     }
 
     public Vector3 GetSelectedMapPosition()

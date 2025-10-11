@@ -50,10 +50,10 @@ public class GridPlacementState : IGridBuildingState
             return;
 
         // Place Object
-        objectPlacer.PlaceObject(dataBase.objectData[selectedObjectIndex].Prefab, worldCellPos);
+        int gameObjectIndex = objectPlacer.PlaceObject(dataBase.objectData[selectedObjectIndex].Prefab, worldCellPos);
         
         GridData selectedGrid = GetSlelectedGrid(selectedObjectIndex); 
-        selectedGrid.AddObject(realCellPos, dataBase.objectData[selectedObjectIndex].Size);
+        selectedGrid.AddObject(realCellPos, dataBase.objectData[selectedObjectIndex].Size, selectedObjectIndex, gameObjectIndex);
         gridPreview.UpdatePosition(worldCellPos, false, grid.cellSize.x);
     }
 

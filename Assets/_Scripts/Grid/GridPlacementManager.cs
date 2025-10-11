@@ -73,13 +73,25 @@ public class GridPlacementManager : MonoBehaviour
         buildingState = null;
     }
 
-    public void StartPlacement(int ID)
+    public void StartPlacement(int id)
     {
         StopPlacement();
         
         gridVisualization.SetActive(true);
         
-        buildingState = new GridPlacementState(ID, grid, gridPreview, dataBase, gridObjectsData, objectPlacer);
+        buildingState = new GridPlacementState(id, grid, gridPreview, dataBase, gridObjectsData, objectPlacer);
+        
+        gridInput.OnClick += PlaceStructure;
+        gridInput.onExit += StopPlacement;
+    }
+
+    public void StartRemoving()
+    {
+        StopPlacement();
+        
+        gridVisualization.SetActive(true);
+        
+        buildingState = new GridRemovingState(grid, gridPreview, gridObjectsData, objectPlacer);
         
         gridInput.OnClick += PlaceStructure;
         gridInput.onExit += StopPlacement;

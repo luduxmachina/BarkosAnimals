@@ -17,7 +17,9 @@ public class GridPreview : MonoBehaviour
     [SerializeField]
     private Color CanBePlacedColor = Color.white;
     [SerializeField]
-    private Color CanNotBePlacedColor = Color.red;
+    private Color CanNotBePlacedColor = Color.yellow;
+    [SerializeField]
+    private Color RemoveColor = Color.red;
 
     private void Start()
     {
@@ -32,18 +34,33 @@ public class GridPreview : MonoBehaviour
         PrepareCursor(size);
         PreparePreview();
     }
+    
+    public void StartRemovePreview()
+    {
+        cellIndicator.SetActive(true);
+        PrepareCursor(Vector2Int.one);
+        ApplyFeedbackToCursor(false);
+    }
 
     public void StopPreview()
     {
         cellIndicator.SetActive(false);
-        Destroy(previewObject);
+        if (previewObject != null)
+            Destroy(previewObject);
     }
 
     public void UpdatePosition(Vector3 position, bool validity, float gridSize)
     {
-        MovePreview(position);
+        // Preview
+        if (previewObject != null)
+        {
+            MovePreview(position);
+            ApplyFeedbackToPreview(validity);
+        }
+        
+        // Cursor
         MoveCursor(position, gridSize);
-        ApplyFeedback(validity);
+        ApplyFeedbackToCursor(validity);
     }
 
     private void MovePreview(Vector3 position)
@@ -60,10 +77,20 @@ public class GridPreview : MonoBehaviour
         );
     }
 
-    private void ApplyFeedback(bool validity)
+    private void ApplyFeedbackToPreview(bool validity)
     {
-        previewMaterialInstance.color = validity ? CanBePlacedColor : CanNotBePlacedColor;
-        cellIndicator.GetComponentInChildren<Renderer>().material.color = validity ? CanBePlacedColor : CanNotBePlacedColor;
+        Color c = validity ? CanBePlacedColor : CanNotBePlacedColor;
+        c.a = 0.5f;
+
+        previewMaterialInstance.color = c;
+    }
+    
+    private void ApplyFeedbackToCursor(bool validity)
+    {
+        Color c = validity ? CanBePlacedColor : CanNotBePlacedColor;
+        c.a = 0.5f;
+        
+        cellIndicator.GetComponentInChildren<Renderer>().material.color = c;
     }
 
     private void PreparePreview()
