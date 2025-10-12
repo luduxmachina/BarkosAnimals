@@ -19,21 +19,7 @@ public class GridData
             placedObjects.Add(position, data);
         }
     }
-
-    private List<Vector2Int> CalculatePositions(Vector2Int gridPos, Vector2Int objSize)
-    {
-        List<Vector2Int> returnValues = new List<Vector2Int>();
-        for (int x = 0; x < objSize.x; x++)
-        {
-            for (int y = 0; y < objSize.y; y++)
-            {
-                returnValues.Add(gridPos +  new Vector2Int(x, y));
-            }
-        }
-        
-        return returnValues;
-    }
-
+   
     public bool CanPlaceObjectAt(Vector2Int gridPos, Vector2Int objSize)
     {
         List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, objSize);
@@ -54,12 +40,34 @@ public class GridData
         return placementData.placementIndex;
     }
 
+    public List<Vector2Int> GetObjectOccupiedPositions(Vector2Int cellPos)
+    {
+        if (!placedObjects.TryGetValue(cellPos, out var placementData))
+            return null;
+
+        return placementData.occupiedPositions;
+    }
+
     public void RemoveObjectAt(Vector2Int cellPos)
     {
         foreach(var pos in placedObjects[cellPos].occupiedPositions)
         {
             placedObjects.Remove(pos);
         }
+    }
+    
+    private List<Vector2Int> CalculatePositions(Vector2Int gridPos, Vector2Int objSize)
+    {
+        List<Vector2Int> returnValues = new List<Vector2Int>();
+        for (int x = 0; x < objSize.x; x++)
+        {
+            for (int y = 0; y < objSize.y; y++)
+            {
+                returnValues.Add(gridPos +  new Vector2Int(x, y));
+            }
+        }
+        
+        return returnValues;
     }
 }
 

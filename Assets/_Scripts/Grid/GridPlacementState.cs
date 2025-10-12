@@ -44,8 +44,8 @@ public class GridPlacementState : IGridBuildingState
         Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
 
         // Check if can be placed
-        Vector2Int realCellPos = new Vector2Int(cellPos.x, cellPos.z);
-        bool validPlace = CheckPlacementValidity(realCellPos, selectedObjectIndex);
+        Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
+        bool validPlace = CheckPlacementValidity(relativeCellPos, selectedObjectIndex);
         if (!validPlace)
             return;
 
@@ -53,8 +53,8 @@ public class GridPlacementState : IGridBuildingState
         int gameObjectIndex = objectPlacer.PlaceObject(dataBase.objectData[selectedObjectIndex].Prefab, worldCellPos);
         
         GridData selectedGrid = GetSlelectedGrid(selectedObjectIndex); 
-        selectedGrid.AddObject(realCellPos, dataBase.objectData[selectedObjectIndex].Size, selectedObjectIndex, gameObjectIndex);
-        gridPreview.UpdatePosition(worldCellPos, false, grid.cellSize.x, false);
+        selectedGrid.AddObject(relativeCellPos, dataBase.objectData[selectedObjectIndex].Size, selectedObjectIndex, gameObjectIndex);
+        gridPreview.UpdatePosition(worldCellPos,false, grid.cellSize.x, false);
     }
 
     public void UpdateState(Vector3Int cellPos)
@@ -62,17 +62,16 @@ public class GridPlacementState : IGridBuildingState
         Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
         
         // Check if can be placed
-        Vector2Int realCellPos = new Vector2Int(cellPos.x, cellPos.z);
-        bool validPlace = CheckPlacementValidity(realCellPos, selectedObjectIndex);
+        Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
+        bool validPlace = CheckPlacementValidity(relativeCellPos, selectedObjectIndex);
         
         gridPreview.UpdatePosition(worldCellPos, validPlace, grid.cellSize.x, false);
     }
     
-    private bool CheckPlacementValidity(Vector2Int cellPos, int ObjectID)
+    private bool CheckPlacementValidity(Vector2Int relativeCellPos, int objectID)
     {
-        GridData selectedGrid = GetSlelectedGrid(ObjectID); 
-
-        return selectedGrid.CanPlaceObjectAt(cellPos, dataBase.objectData[selectedObjectIndex].Size);
+        GridData selectedGrid = GetSlelectedGrid(objectID); 
+        return selectedGrid.CanPlaceObjectAt(relativeCellPos, dataBase.objectData[selectedObjectIndex].Size);
     }
     
     private GridData GetSlelectedGrid(int objectID)

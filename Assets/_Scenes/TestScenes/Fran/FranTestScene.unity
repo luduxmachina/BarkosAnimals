@@ -800,8 +800,10 @@ MonoBehaviour:
   previewYOffset: 0.05
   cellIndicator: {fileID: 1620073478}
   previewMaterialPrefab: {fileID: 2100000, guid: fa51ebb6f1ea7c2418816898232aea8b, type: 2}
-  CanBePlacedColor: {r: 1, g: 1, b: 1, a: 0.39215687}
-  CanNotBePlacedColor: {r: 1, g: 0, b: 0, a: 0.39215687}
+  canBePlacedColor: {r: 1, g: 1, b: 1, a: 1}
+  canNotBePlacedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  removeColor: {r: 1, g: 0, b: 0, a: 1}
+  removingGameObject: {fileID: 6148711653524993092, guid: e9a3efaba704a1b4f8885055e532cd37, type: 3}
 --- !u!114 &1971174134
 MonoBehaviour:
   m_ObjectHideFlags: 0

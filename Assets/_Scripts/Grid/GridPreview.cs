@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridPreview : MonoBehaviour
@@ -15,16 +16,27 @@ public class GridPreview : MonoBehaviour
     private Material previewMaterialInstance;
     
     [SerializeField]
-    private Color CanBePlacedColor = Color.white;
+    private Color canBePlacedColor = Color.white;
     [SerializeField]
-    private Color CanNotBePlacedColor = Color.yellow;
+    private Color canNotBePlacedColor = Color.yellow;
     [SerializeField]
-    private Color RemoveColor = Color.red;
-
+    private Color removeColor = Color.red;
+    [SerializeField]
+    private GameObject removingGameObject;
+    private GameObject removingGameObjectInstance;
+    private List<GameObject> removingMarkers = new List<GameObject>();
+    
     private void Start()
     {
         previewMaterialInstance = new Material(previewMaterialPrefab);
         cellIndicator.SetActive(false);
+
+        removingGameObjectInstance = Instantiate(removingGameObject);
+        Color c = removeColor;
+        c.a = 0.5f;
+        removingGameObjectInstance.GetComponentInChildren<Renderer>().material = previewMaterialInstance;
+        removingGameObjectInstance.GetComponentInChildren<Renderer>().material.color = c;
+        removingGameObjectInstance.SetActive(false);
     }
 
     public void StartPreview(GameObject prefab, Vector2Int size)
@@ -62,6 +74,28 @@ public class GridPreview : MonoBehaviour
         ApplyFeedbackToCursor(validity, removing);
     }
 
+    public void UpdateRemovePreview(List<Vector3> occupiedWorldPositions)
+    {
+        foreach (Vector3 position in occupiedWorldPositions)
+        {
+            GameObject go = Instantiate(removingGameObjectInstance,  position, Quaternion.identity);
+            removingMarkers.Add(go);
+            go.SetActive(true);
+        }
+    }
+    
+    public void ErraseRemovePreview()
+    {
+        if (removingMarkers.Count <= 0)
+            return;
+        
+        for (int i = 0; i < removingMarkers.Count; i++)
+        {
+            Destroy(removingMarkers[i]);
+        }
+        removingMarkers.Clear();
+    }
+
     private void MovePreview(Vector3 position)
     {
         previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
@@ -78,9 +112,9 @@ public class GridPreview : MonoBehaviour
 
     private void ApplyFeedbackToPreview(bool validity, bool removing)
     {
-        Color c = validity ? CanBePlacedColor : CanNotBePlacedColor;
+        Color c = validity ? canBePlacedColor : canNotBePlacedColor;
         if (removing)
-            c = RemoveColor;
+            c = removeColor;
         c.a = 0.5f;
 
         previewMaterialInstance.color = c;
@@ -88,9 +122,9 @@ public class GridPreview : MonoBehaviour
     
     private void ApplyFeedbackToCursor(bool validity, bool removing)
     {
-        Color c = validity ? CanBePlacedColor : CanNotBePlacedColor;
+        Color c = validity ? canBePlacedColor : canNotBePlacedColor;
         if (removing)
-            c = RemoveColor;
+            c = removeColor;
         c.a = 0.5f;
         
         cellIndicator.GetComponentInChildren<Renderer>().material.color = c;
@@ -124,4 +158,6 @@ public class GridPreview : MonoBehaviour
         
         cellIndicator.transform.localScale = new Vector3(size.x, 1, size.y);
     }
+
+    
 }
