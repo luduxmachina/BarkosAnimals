@@ -34,17 +34,8 @@ public class GridRemovingState : IGridBuildingState
         Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
         
         Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
-        
-        GridData selectedData = null;
-        // if we cant place something here, there is something to be removed
-        if (!gridObjectsData.CanPlaceObjectAt(relativeCellPos, Vector2Int.one))
-        {
-            selectedData = gridObjectsData;
-        }
-        else
-        {
-            // If we do more than one grid, make here the logic of selecting for removal
-        }
+
+        GridData selectedData = GetSlelectedGrid();
 
         if (selectedData == null)
         {
@@ -96,7 +87,7 @@ public class GridRemovingState : IGridBuildingState
             }  
         }
         
-        pastValidity =  validity;
+        pastValidity = validity;
     }
     
     private bool ChechIfSelectionIsValid(Vector2Int relativeCellPos)
