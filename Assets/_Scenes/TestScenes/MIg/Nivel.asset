@@ -13,16 +13,19 @@ MonoBehaviour:
   m_Name: Nivel
   m_EditorClassIdentifier: 
   nombreNivel: 
+  useDefaultIslands: 0
   useDefaultBoatPhaseScene: 1
   useDefaultOrganizationPhaseScene: 0
-  useDefaultIslands: 0
+  useDefaultQuotaScene: 1
   islands:
   - {fileID: 102900000, guid: f6909bcb6066bf94e9f22c9fe3f15792, type: 3}
   OrganizationPhaseScene: {fileID: 102900000, guid: fe2ff0f031874f048976d32be4035090, type: 3}
   BoatPhaseScene: {fileID: 0}
+  QuotaScene: {fileID: 0}
   islandIndexes: 02000000
   organizationPhaseSceneIndex: 1
   boatPhaseSceneIndex: 4
+  quotaSceneIndex: 4
   numberOfIslands: 1
   quotaInfo:
     totalQuota: 0
