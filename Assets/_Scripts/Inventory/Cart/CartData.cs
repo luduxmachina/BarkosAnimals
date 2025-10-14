@@ -25,7 +25,7 @@ public class CartData : MonoBehaviour
     /// </summary>
     /// <param name="itemName">The type of item wanted to add to the cart</param>
     /// <param name="amount">The amount fo items of that type wanted to add to the cart</param>
-    /// <returns>The amount of items we could not fit in the cart </returns>
+    /// <returns>The amount of items we could not fit in the cart</returns>
     public int TryStackItem(ItemNames itemName, int amount)
     {
         // If there are no items to stack, we dont do shit
@@ -39,6 +39,18 @@ public class CartData : MonoBehaviour
 
         // We try to stack the remaining items in empty slots
         return AddInEmptyCartSlots(itemName, amount);
+    }
+
+    /// <summary>
+    /// Tries to add 1 of the specified item to the cart.
+    /// First will try to stack the item with existing slots of items of the same type
+    /// If there are still items to add left, will try to add them in empty cart slots
+    /// </summary>
+    /// <param name="itemName">The type of item wanted to add to the cart</param>
+    /// <returns>True if it could add the item to the cart inventory and False if not</returns>
+    public bool TryAddItem(ItemNames itemName)
+    {
+        return TryStackItem(itemName, 1) == 0;
     }
 
     private int AddInExistingCarSlots(ItemNames itemName, int amount)
