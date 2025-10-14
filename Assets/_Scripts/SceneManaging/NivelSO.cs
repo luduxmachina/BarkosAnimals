@@ -13,7 +13,7 @@ using System;
 public struct QuotaInfo
 {
     [SerializeField]
-    public int totalQuota; 
+    public int totalQuota;
 
 }
 [CreateAssetMenu(fileName = "Nivel", menuName = "ScriptableObjects/NivelSO", order = 1)]
@@ -21,13 +21,17 @@ public class NivelSO : ScriptableObject
 {
     public string nombreNivel;
     [Space]
+    public bool useDefaultSelectionPhaseScene = true;
     public bool useDefaultIslands = false;
     public bool useDefaultBoatPhaseScene = true;
     public bool useDefaultOrganizationPhaseScene = true;
     public bool useDefaultQuotaScene = true;
+
+    [SerializeField, CustomLabel("", true), HideIf("useDefaultIslands")]
+    public List<Archipelago> archipelagos;
 #if UNITY_EDITOR
-    [SerializeField, HideIf("useDefaultIslands")]
-    private List<SceneAsset> islands;
+[SerializeField, HideIf("useDefaultSelectionPhaseScene")]
+    private SceneAsset SelectionPhaseScene; //por si son diferentes en cada uno
     [SerializeField, HideIf("useDefaultOrganizationPhaseScene")]
     private SceneAsset OrganizationPhaseScene; //por si son diferentes en cada uno
     [SerializeField, HideIf("useDefaultBoatPhaseScene")]
@@ -36,67 +40,66 @@ public class NivelSO : ScriptableObject
     private SceneAsset QuotaScene;
 #endif
     [HideInInspector]
-    public int[] islandIndexes;
+    public int selectionPhaseSceneIndex;
     [HideInInspector]
     public int organizationPhaseSceneIndex;
     [HideInInspector]
     public int boatPhaseSceneIndex;
     [HideInInspector]
     public int quotaSceneIndex;
-    public int numberOfIslands = 0;
+    public int numberOfArchipelagos = 0;
     [Space]
     public QuotaInfo quotaInfo;
 
 #if UNITY_EDITOR
-    private void SyncLists()
+    private void SyncData()
     {
-        List<int> temp = new List<int>();
-        foreach (var scene in islands) //pasar las cosas de la lista del editor a la de verdad
+        foreach (var archipelago in archipelagos) //pasar las cosas de la lista del editor a la de verdad
         {
 
-            if(scene == null) continue;
-            string scenePath = AssetDatabase.GetAssetPath(scene);
-            int buildIndex = ForceGetIndexOf(scenePath);
-            
-            temp.Add(buildIndex);
+            if(archipelago == null) continue;
+            archipelago.SyncData();
+
             EditorUtility.SetDirty(this);
 
 
         }
-        
+        selectionPhaseSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(SelectionPhaseScene));
         organizationPhaseSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(OrganizationPhaseScene));
         boatPhaseSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(BoatPhaseScene));
         quotaSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(QuotaScene));
-        islandIndexes = temp.ToArray();
-        if(!useDefaultIslands){ //si no usa las por defecto, la lista son las que tiene
+        if(!useDefaultIslands){
 
-            numberOfIslands = temp.Count;
+            numberOfArchipelagos = archipelagos.Count;
             
         }
+     
         
 
       
 
     }
-    public int ForceGetIndexOf(string scenePath){
-            int buildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
-            if (buildIndex < 0)  //si la escena no esta en la lista se añade
-            {
-            
-                var newScene = new EditorBuildSettingsScene(scenePath, true);
-                EditorBuildSettingsScene[] existingScenes = EditorBuildSettings.scenes;
+   
+      public int ForceGetIndexOf(string scenePath)
+    {
+        int buildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
+        if (buildIndex < 0)  //si la escena no esta en la lista se añade
+        {
 
-                var updatedScenes = new EditorBuildSettingsScene[existingScenes.Length + 1];
-                existingScenes.CopyTo(updatedScenes, 0);
-                updatedScenes[existingScenes.Length] = newScene;
-                EditorBuildSettings.scenes = updatedScenes;
-                buildIndex = existingScenes.Length; // El nuevo índice será el último
-            }
-            return buildIndex;
+            var newScene = new EditorBuildSettingsScene(scenePath, true);
+            EditorBuildSettingsScene[] existingScenes = EditorBuildSettings.scenes;
+
+            var updatedScenes = new EditorBuildSettingsScene[existingScenes.Length + 1];
+            existingScenes.CopyTo(updatedScenes, 0);
+            updatedScenes[existingScenes.Length] = newScene;
+            EditorBuildSettings.scenes = updatedScenes;
+            buildIndex = existingScenes.Length; // El nuevo índice será el último
+        }
+        return buildIndex;
     }
     public void OnValidate()
     {
-        SyncLists();
+        SyncData();
     }
 #endif
 }

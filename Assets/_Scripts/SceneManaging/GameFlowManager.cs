@@ -2,10 +2,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum LevelPhases
 {
+    SelectionPhase,
     IslandPhase,
     OrganizationPhase,
     BoatPhase,
-    EndPhase
+    QuotaPhase
+}
+public enum GameModes
+{
+    SIOBQ,
+    IOSBQ
 }
 public class GameFlowManager : MonoBehaviour
 {
@@ -19,6 +25,7 @@ public class GameFlowManager : MonoBehaviour
 
     [Header("Settings")]
     public bool infiniteMode = false;
+    public GameModes gameMode = GameModes.IOSBQ;
 
     [Header("--------")]
     public NivelSO currentLevel;
@@ -27,7 +34,8 @@ public class GameFlowManager : MonoBehaviour
     [Header("CurrentLvl Info")]
     public QuotaInfo currentQuotaInfo;
     public LevelPhases currentPhase;
-    public int currentIslandIndex = 0;
+    public int currentArchipelago = 0;
+    public int lastSelectedIsland = 0;
 
     private NivelSO[] levelsPlaying;
 
@@ -55,11 +63,13 @@ public class GameFlowManager : MonoBehaviour
         currentLevelIndex = levelIndex;
         StartGame();
     }
+    public void ChooseIsland(int island)
+    {
+        lastSelectedIsland = island;
+    }
 
     private void StartGame()
     {
-
-        currentPhase = LevelPhases.IslandPhase;
 
         StartLevel(levelsPlaying, currentLevelIndex);
     }
@@ -80,15 +90,20 @@ public class GameFlowManager : MonoBehaviour
                 return;
             }
         }
-
         currentLevel = levelsPlaying[index];
-        currentPhase = LevelPhases.IslandPhase;
-        currentIslandIndex = 0;
-        LoadPlayingScene(currentLevel, currentIslandIndex, currentPhase);
+
+        if (gameMode == GameModes.SIOBQ)
+            currentPhase = LevelPhases.SelectionPhase;
+        else
+            currentPhase = LevelPhases.IslandPhase;
+
+        currentQuotaInfo = currentLevel.quotaInfo;
+        currentArchipelago = 0;
+        LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, 0);
     }
-    private void LoadPlayingScene(NivelSO level, int islandIndex, LevelPhases phase)
+    private void LoadPlayingScene(NivelSO level, int archipelagoIndex, LevelPhases phase, int chosenIsland)
     {
-        if (islandIndex >= level.numberOfIslands)
+        if (archipelagoIndex >= level.numberOfArchipelagos)
         {
             Debug.Log("Ugggh???");
             return;
@@ -96,15 +111,30 @@ public class GameFlowManager : MonoBehaviour
         int sceneToLoad = -1;
         switch (phase)
         {
+            case LevelPhases.SelectionPhase:
+                if (level.archipelagos[currentArchipelago].islands.Length == 1)
+                {
+                    NextPhase(); //nada que elegir, avancen
+                    return;
+                }
+                if(level.useDefaultSelectionPhaseScene)
+                {
+                    sceneToLoad = defaultLevel.selectionPhaseSceneIndex;
+                }
+                else
+                {
+                    sceneToLoad = level.selectionPhaseSceneIndex;
+                }
+                break;
             case LevelPhases.IslandPhase:
                 if (level.useDefaultIslands)
                 {
 
-                    sceneToLoad = defaultLevel.islandIndexes[0];
+                    sceneToLoad = defaultLevel.archipelagos[0].islands[0].islandSceneIndex;
                 }
                 else
                 {
-                    sceneToLoad = level.islandIndexes[islandIndex];
+                    sceneToLoad = level.archipelagos[archipelagoIndex].islands[chosenIsland].islandSceneIndex;
 
                 }
                 break;
@@ -128,8 +158,16 @@ public class GameFlowManager : MonoBehaviour
                     sceneToLoad = level.boatPhaseSceneIndex;
                 }
                 break;
-            case LevelPhases.EndPhase:
-                Debug.Log("Ugh???");
+            case LevelPhases.QuotaPhase:
+                if(level.useDefaultQuotaScene)
+                {
+                    sceneToLoad = defaultLevel.quotaSceneIndex;
+   
+                }
+                else
+                {
+                    sceneToLoad = level.quotaSceneIndex;
+                }
                 break;
         }
         if (sceneToLoad == -1)
@@ -141,24 +179,31 @@ public class GameFlowManager : MonoBehaviour
     }
     public void NextPhase()
     {
-        if(currentPhase == LevelPhases.EndPhase) //fin de una isla 
-        {
-            if (!CheckQuotaFlag()) //Se ha perdido
-            {
-                Perder();
-                return;
-            }
+        if (gameMode == GameModes.IOSBQ){
+            OtherNextPhase();
+            return;
+        }
 
-            currentIslandIndex++;
-            if (currentIslandIndex >= currentLevel.numberOfIslands) //fin de un nivel
+
+        if (currentPhase == LevelPhases.QuotaPhase) //fin de una isla 
+        {
+            currentArchipelago++;
+            if (currentArchipelago >= currentLevel.numberOfArchipelagos) //fin de un nivel
             {
+
+                if (!CheckQuotaFlag()) //Se ha perdido
+                {
+                    Perder();
+                    return;
+                }
+
                 currentLevelIndex++;
                 StartLevel(levelsPlaying, currentLevelIndex);
                 return;
             }
             else
             {
-                currentPhase = LevelPhases.IslandPhase;
+                currentPhase = LevelPhases.SelectionPhase;
   
             }
         }
@@ -166,9 +211,42 @@ public class GameFlowManager : MonoBehaviour
         {
             currentPhase++;
         }
-        LoadPlayingScene(currentLevel, currentIslandIndex, currentPhase);
+        LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, lastSelectedIsland);
 
 
+
+
+    }
+    private void OtherNextPhase()
+    {
+        //TODO: hacer lo mismo pero ocn otro orden de fases
+        if (currentPhase == LevelPhases.QuotaPhase) //fin de una isla 
+        {
+            currentArchipelago++;
+            if (currentArchipelago >= currentLevel.numberOfArchipelagos) //fin de un nivel
+            {
+
+                if (!CheckQuotaFlag()) //Se ha perdido
+                {
+                    Perder();
+                    return;
+                }
+
+                currentLevelIndex++;
+                StartLevel(levelsPlaying, currentLevelIndex);
+                return;
+            }
+            else
+            {
+                currentPhase = LevelPhases.SelectionPhase;
+
+            }
+        }
+        else
+        {
+            currentPhase++;
+        }
+        LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, lastSelectedIsland);
 
 
     }

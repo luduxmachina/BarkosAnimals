@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1220ab56c477883489acc1dd8f981cc3, type: 3}
-  m_Name: Nivel
+  m_Name: Nivel 1
   m_EditorClassIdentifier: 
   nombreNivel: 
   useDefaultSelectionPhaseScene: 1
@@ -20,23 +20,21 @@ MonoBehaviour:
   useDefaultQuotaScene: 1
   archipelagos:
   - islands:
-    - {fileID: 11400000, guid: 221bcfa3cf668544c86f4015eab517ba, type: 2}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
   - islands:
-    - {fileID: 11400000, guid: 221bcfa3cf668544c86f4015eab517ba, type: 2}
     - {fileID: 0}
     - {fileID: 0}
-  - islands: []
-  - islands: []
+    - {fileID: 0}
   SelectionPhaseScene: {fileID: 0}
-  OrganizationPhaseScene: {fileID: 102900000, guid: fe2ff0f031874f048976d32be4035090, type: 3}
+  OrganizationPhaseScene: {fileID: 0}
   BoatPhaseScene: {fileID: 0}
   QuotaScene: {fileID: 0}
   selectionPhaseSceneIndex: 4
-  organizationPhaseSceneIndex: 1
+  organizationPhaseSceneIndex: 4
   boatPhaseSceneIndex: 4
   quotaSceneIndex: 4
-  numberOfArchipelagos: 4
+  numberOfArchipelagos: 2
   quotaInfo:
     totalQuota: 0

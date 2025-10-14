@@ -55,7 +55,7 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
             getInCartHandler.GetInCart();
         }
 
-    
+        
 
         Debug.Log("Item added to cart: " + interactorType.ToString() + " obj: " + getInCartHandler.name);
     }
