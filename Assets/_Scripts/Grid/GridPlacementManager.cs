@@ -62,14 +62,14 @@ public class GridPlacementManager : MonoBehaviour
 
     private void StopPlacement()
     {
-        if(buildingState == null)
-            return;
-        
         gridVisualization.SetActive(false);
         gridInput.OnClick -= PlaceStructure;
         gridInput.onExit -= StopPlacement;
         
         lastPos = Vector3Int.zero;
+        
+        if(buildingState == null)
+            return;
         
         buildingState.EndState();
         buildingState = null;
