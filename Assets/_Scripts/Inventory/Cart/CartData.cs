@@ -11,6 +11,7 @@ public class CartData : MonoBehaviour
     public const int MAX_ITEMS = 3;
 
     /// <summary>
+    /// Calculates if all the invemtory slots are taken
     /// </summary>
     /// <returns>True if the cart inventory has all the slots taken, False in every other case</returns>
     public bool InventoryIsFull()
@@ -51,6 +52,46 @@ public class CartData : MonoBehaviour
     public bool TryAddItem(ItemNames itemName)
     {
         return TryStackItem(itemName, 1) == 0;
+    }
+
+    /// <summary>
+    /// Gets the CartDataObjects at the indicated position of the cart inventory
+    /// </summary>
+    /// <param name="id">The position of the vector wanted to get the CartDataObjects</param>
+    /// <returns>
+    /// A CartDataObjects if there's an object at the selected position of the vector inventory. 
+    /// null if no object found at the estimated position
+    /// </returns>
+    public CartDataObjects GetCartObjectByIndex(int id)
+    {
+        if (id > cartInventory.Count)
+            return null;
+
+        return cartInventory[id];
+    }
+
+    /// <summary>
+    /// Gets the CartDataObjects at the indicated position of the cart inventory and then it's eliminated from the cart's inventory
+    /// </summary>
+    /// <param name="id">The position of the vector wanted to get the CartDataObjects</param>
+    /// <returns>
+    /// A CartDataObjects if there's an object at the selected position of the vector inventory. 
+    /// null if no object found at the estimated position
+    /// </returns>
+    public CartDataObjects ExtractCartObjectByIndex(int id)
+    {
+        if (id > cartInventory.Count)
+            return null;
+
+        CartDataObjects objectToExtract = GetCartObjectByIndex(id);
+        cartInventory.RemoveAt(id);
+        return objectToExtract;
+    }
+
+    public void EmptyCartInventory()
+    {
+        Debug.Log("Cart inventory cleard");
+        cartInventory.Clear();
     }
 
     private int AddInExistingCarSlots(ItemNames itemName, int amount)
