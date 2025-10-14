@@ -32,9 +32,25 @@ public class GridData
         return true;
     }
 
-    public int GetRepresentationIndex(Vector2Int cellPos)
+    public bool HasThisPositionThisPlacementIndex(Vector2Int gridPos, int placementIDToCheck)
     {
-        if (!placedObjects.TryGetValue(cellPos, out var placementData))
+        if (!placedObjects.TryGetValue(gridPos, out var placementData))
+            return false;
+        
+        return placementData.placementIndex == placementIDToCheck;
+    }
+    
+    public bool HasThisPositionThisObjectIndex(Vector2Int gridPos, int objectIDToCheck)
+    {
+        if (!placedObjects.TryGetValue(gridPos, out var placementData))
+            return false;
+        
+        return placementData.id == objectIDToCheck;
+    }
+
+    public int GetRepresentationIndex(Vector2Int gridPos)
+    {
+        if (!placedObjects.TryGetValue(gridPos, out var placementData))
             return -1;
         
         return placementData.placementIndex;

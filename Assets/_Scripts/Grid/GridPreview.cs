@@ -84,7 +84,7 @@ public class GridPreview : MonoBehaviour
         }
     }
     
-    public void ErraseRemovePreview()
+    public void EraseRemovePreview()
     {
         if (removingMarkers.Count <= 0)
             return;

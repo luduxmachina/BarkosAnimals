@@ -10,7 +10,7 @@ public class GridRemovingState : IGridBuildingState
     private GridData gridObjectsData;
     private ObjectPlacer objectPlacer;
     
-    private bool pastValidity = false;
+    private int pastPlacementID = -1;
 
     public GridRemovingState(Grid grid, GridPreview gridPreview, GridData gridObjectsData, ObjectPlacer objectPlacer)
     {
@@ -52,7 +52,7 @@ public class GridRemovingState : IGridBuildingState
         }
         
         gridPreview.UpdatePosition(worldCellPos, ChechIfSelectionIsValid(relativeCellPos), grid.cellSize.x, true);
-        gridPreview.ErraseRemovePreview();
+        gridPreview.EraseRemovePreview();
     }
 
     public void UpdateState(Vector3Int cellPos)
@@ -62,10 +62,15 @@ public class GridRemovingState : IGridBuildingState
         Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
         
         bool validity = ChechIfSelectionIsValid(relativeCellPos);
+        int placementID = GetPlacementID(relativeCellPos);
         gridPreview.UpdatePosition(worldCellPos, validity, grid.cellSize.x, true);
-
-        if (pastValidity != validity)
+        
+        if (placementID != pastPlacementID)
         {
+            // We erase the remove preview if we select another object
+            gridPreview.EraseRemovePreview();
+
+            // We show the actual remove preview
             if (validity)
             {
                 GridData selectedGrid = GetSlelectedGrid();
@@ -81,19 +86,21 @@ public class GridRemovingState : IGridBuildingState
 
                 gridPreview.UpdateRemovePreview(occupiedWorldPositions);
             }
-            else
-            {
-                gridPreview.ErraseRemovePreview();
-            }  
         }
         
-        pastValidity = validity;
+        pastPlacementID = placementID;
     }
     
     private bool ChechIfSelectionIsValid(Vector2Int relativeCellPos)
     {
         GridData selectedGrid = GetSlelectedGrid(); 
         return !(selectedGrid.CanPlaceObjectAt(relativeCellPos, Vector2Int.one));
+    }
+
+    private int GetPlacementID(Vector2Int relativeCellPos)
+    {
+        GridData selectedGrid = GetSlelectedGrid();
+        return selectedGrid.GetRepresentationIndex(relativeCellPos);
     }
     
     private GridData GetSlelectedGrid()
