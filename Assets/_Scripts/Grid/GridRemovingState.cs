@@ -52,7 +52,7 @@ public class GridRemovingState : IGridBuildingState
         }
         
         gridPreview.UpdatePosition(worldCellPos, orientation, ChechIfSelectionIsValid(relativeCellPos), grid.cellSize.x, true);
-        gridPreview.ErraseRemovePreview();
+        gridPreview.EraseRemovePreview();
     }
 
     public void UpdateState(Vector3Int cellPos, float orientation)
