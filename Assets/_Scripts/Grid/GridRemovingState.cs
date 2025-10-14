@@ -27,7 +27,7 @@ public class GridRemovingState : IGridBuildingState
         gridPreview.StopPreview();
     }
 
-    public void OnAction(Vector3 position)
+    public void OnAction(Vector3 position, float orientation)
     {
         Vector3Int cellPos = grid.WorldToCell(position);
         cellPos.y = 0;
@@ -51,18 +51,18 @@ public class GridRemovingState : IGridBuildingState
             objectPlacer.RemoveObject(gameObjectIndex);
         }
         
-        gridPreview.UpdatePosition(worldCellPos, ChechIfSelectionIsValid(relativeCellPos), grid.cellSize.x, true);
+        gridPreview.UpdatePosition(worldCellPos, orientation,ChechIfSelectionIsValid(relativeCellPos), grid.cellSize.x, true);
         gridPreview.ErraseRemovePreview();
     }
 
-    public void UpdateState(Vector3Int cellPos)
+    public void UpdateState(Vector3Int cellPos, float orientation)
     {
         cellPos.y = 0;
         Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
         Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
         
         bool validity = ChechIfSelectionIsValid(relativeCellPos);
-        gridPreview.UpdatePosition(worldCellPos, validity, grid.cellSize.x, true);
+        gridPreview.UpdatePosition(worldCellPos, orientation, validity, grid.cellSize.x, true);
 
         if (pastValidity != validity)
         {

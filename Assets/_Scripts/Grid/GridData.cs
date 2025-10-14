@@ -6,9 +6,9 @@ public class GridData
 {
     Dictionary<Vector2Int, PlacementData> placedObjects = new Dictionary<Vector2Int, PlacementData>();
 
-    public void AddObject(Vector2Int gridPos, Vector2Int objSize, int id, int placedObjectIndex)
+    public void AddObject(Vector2Int gridPos, float rotation, Vector2Int objSize, int id, int placedObjectIndex)
     {
-        List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, objSize);
+        List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, rotation, objSize);
         PlacementData data = new PlacementData(positionsToOccupy, id, placedObjectIndex);
         
         foreach (var position in positionsToOccupy)
@@ -22,7 +22,7 @@ public class GridData
    
     public bool CanPlaceObjectAt(Vector2Int gridPos, Vector2Int objSize)
     {
-        List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, objSize);
+        List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, 0f, objSize);
         foreach (var position in positionsToOccupy)
         {
             if(placedObjects.ContainsKey(position))
@@ -56,14 +56,42 @@ public class GridData
         }
     }
     
-    private List<Vector2Int> CalculatePositions(Vector2Int gridPos, Vector2Int objSize)
+    private List<Vector2Int> CalculatePositions(Vector2Int gridPos, float rotation, Vector2Int objSize)
     {
         List<Vector2Int> returnValues = new List<Vector2Int>();
         for (int x = 0; x < objSize.x; x++)
         {
             for (int y = 0; y < objSize.y; y++)
             {
-                returnValues.Add(gridPos +  new Vector2Int(x, y));
+                // returnValues.Add(gridPos +  new Vector2Int(x, y));
+                Vector2Int rotatedOffset = new Vector2Int(x, y);
+
+                switch (rotation)
+                {
+                    case 0:
+                        rotatedOffset = new Vector2Int(x, y);
+                        break;
+
+                    case -90:
+                        // rotar 90° en sentido horario alrededor del (0,0)
+                        rotatedOffset = new Vector2Int(y - 1, objSize.x - 1 - x);
+                        break;
+
+                    case 180:
+                        rotatedOffset = new Vector2Int(objSize.x - 1 - x, objSize.y - 1 - y);
+                        break;
+
+                    case 90:
+                        // rotar 270° horario (o 90° antihorario)
+                        rotatedOffset = new Vector2Int(objSize.y - 1 - y, x);
+                        break;
+
+                    default:
+                        Debug.LogWarning($"Rotación {rotation} no soportada. Solo 0, 90, 180, -90.");
+                        break;
+                }
+
+                returnValues.Add(gridPos + rotatedOffset);
             }
         }
         

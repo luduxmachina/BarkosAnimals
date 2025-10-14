@@ -6,13 +6,11 @@ public class ObjectPlacer : MonoBehaviour
     private List<GameObject> placedObjects = new List<GameObject>();
 
 
-    public int PlaceObject(GameObject prefab, Vector3 worldCellPos)
+    public int PlaceObject(GameObject prefab, Vector3 worldCellPos, float orientation)
     {
-        GameObject newObj = Instantiate(prefab);
-        newObj.transform.position = worldCellPos;
+        GameObject newObj = Instantiate(prefab, worldCellPos, Quaternion.Euler(0f, orientation, 0f));
         placedObjects.Add(newObj);
         
-        // return gameObjectIndex
         return placedObjects.Count - 1;
     }
 

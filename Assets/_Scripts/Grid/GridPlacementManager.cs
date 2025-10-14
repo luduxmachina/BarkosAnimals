@@ -22,6 +22,8 @@ public class GridPlacementManager : MonoBehaviour
     private Vector3Int lastPos = Vector3Int.zero;
     
     private IGridBuildingState buildingState;
+    
+    private float rotation = 0f;
 
     private void Awake()
     {
@@ -52,7 +54,7 @@ public class GridPlacementManager : MonoBehaviour
         // check if we didnt move positions
         if (lastPos != cellPos)
         {
-            buildingState.UpdateState(cellPos);
+            buildingState.UpdateState(cellPos, rotation);
             
             lastPos = cellPos;
         }
@@ -96,11 +98,26 @@ public class GridPlacementManager : MonoBehaviour
         gridInput.OnClick += PlaceStructure;
         gridInput.onExit += StopPlacement;
     }
+    
+    public void SetRotation(int id, float rotation)
+    {
+        this.rotation = rotation;
+        
+        // Visuals
+        // if (id > 0)
+        // {
+        //     gridPreview.StartPreview(dataBase.objectData[id].Prefab, dataBase.objectData[id].Size, rotation);
+        // }
+        // else
+        // {
+        //     gridPreview.StartPreview(null, Vector2Int.one, rotation);
+        // }
+    }
 
     private void PlaceStructure()
     {
         Vector3 selectedPos = gridInput.GetSelectedMapPosition();
 
-        buildingState.OnAction(selectedPos);
+        buildingState.OnAction(selectedPos, rotation);
     }
 }

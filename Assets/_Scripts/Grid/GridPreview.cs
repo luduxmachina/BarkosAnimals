@@ -39,18 +39,22 @@ public class GridPreview : MonoBehaviour
         removingGameObjectInstance.SetActive(false);
     }
 
-    public void StartPreview(GameObject prefab, Vector2Int size)
+    public void StartPreview(GameObject prefab, Vector2Int size, float orientation)
     {
+        if (prefab != null)
+        {
+            previewObject = Instantiate(prefab);
+            PreparePreview();
+        }
+        
         cellIndicator.SetActive(true);
-        previewObject = Instantiate(prefab);
-        PrepareCursor(size);
-        PreparePreview();
+        PrepareCursor(size, orientation);
     }
     
     public void StartRemovePreview()
     {
         cellIndicator.SetActive(true);
-        PrepareCursor(Vector2Int.one);
+        PrepareCursor(Vector2Int.one, 0f);
     }
 
     public void StopPreview()
@@ -60,17 +64,17 @@ public class GridPreview : MonoBehaviour
             Destroy(previewObject);
     }
 
-    public void UpdatePosition(Vector3 position, bool validity, float gridSize, bool removing)
+    public void UpdatePosition(Vector3 position, float orientation, bool validity, float gridSize, bool removing)
     {
         // Preview
         if (previewObject != null)
         {
-            MovePreview(position);
+            MovePreview(position, orientation);
             ApplyFeedbackToPreview(validity, removing);
         }
         
         // Cursor
-        MoveCursor(position, gridSize);
+        MoveCursor(position, orientation, gridSize);
         ApplyFeedbackToCursor(validity, removing);
     }
 
@@ -96,18 +100,21 @@ public class GridPreview : MonoBehaviour
         removingMarkers.Clear();
     }
 
-    private void MovePreview(Vector3 position)
+    private void MovePreview(Vector3 position, float orientation)
     {
         previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
+        previewObject.transform.rotation = Quaternion.Euler(0,  orientation, 0);
     }
 
-    private void MoveCursor(Vector3 position, float gridSize)
+    private void MoveCursor(Vector3 position, float orientation, float gridSize)
     {
         cellIndicator.transform.position = new Vector3(
             position.x - gridSize * 0.5f, 
             cellIndicator.transform.position.y, 
             position.z - gridSize * 0.5f
         );
+        
+        cellIndicator.transform.rotation = Quaternion.Euler(0,  orientation, 0);
     }
 
     private void ApplyFeedbackToPreview(bool validity, bool removing)
@@ -151,12 +158,13 @@ public class GridPreview : MonoBehaviour
         }
     }
 
-    private void PrepareCursor(Vector2Int size)
+    private void PrepareCursor(Vector2Int size, float orientation)
     {
         if (size.x <= 0 || size.y <= 0)
             return;
         
         cellIndicator.transform.localScale = new Vector3(size.x, 1, size.y);
+        cellIndicator.transform.localRotation = Quaternion.Euler(0, orientation, 0);
     }
 
     

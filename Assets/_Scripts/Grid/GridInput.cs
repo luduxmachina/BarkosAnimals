@@ -12,6 +12,9 @@ public class GridInput : MonoBehaviour
     
     private Vector3 lastMousePos;
 
+    private int lastPlacedObjectId = -1;
+    private float rotation = 0f;
+
     private void Awake()
     {
         if (mainCamera == null)
@@ -26,16 +29,35 @@ public class GridInput : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Escape))
             onExit?.Invoke();
-        
-        if(Input.GetKeyDown(KeyCode.Q))
-            GetComponent<GridPlacementManager>().StartPlacement(0);
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            lastPlacedObjectId = 0;
+            GetComponent<GridPlacementManager>().StartPlacement(lastPlacedObjectId);
+        }
         if(Input.GetKeyDown(KeyCode.W))
-            GetComponent<GridPlacementManager>().StartPlacement(1);
+        {
+            lastPlacedObjectId = 1;
+            GetComponent<GridPlacementManager>().StartPlacement(lastPlacedObjectId);
+        }
         if(Input.GetKeyDown(KeyCode.E))
-            GetComponent<GridPlacementManager>().StartPlacement(2);
-        
-        if(Input.GetKeyDown(KeyCode.R))
+        {
+            lastPlacedObjectId = 2;
+            GetComponent<GridPlacementManager>().StartPlacement(lastPlacedObjectId);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+            GetComponent<GridPlacementManager>().SetRotation(lastPlacedObjectId, AddToRotation(-90f));
+        if (Input.GetKeyDown(KeyCode.D))
+            GetComponent<GridPlacementManager>().SetRotation(lastPlacedObjectId, AddToRotation(90f));
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            lastPlacedObjectId = -1;
             GetComponent<GridPlacementManager>().StartRemoving();
+        }
+            
+            
     }
 
     public Vector3 GetSelectedMapPosition()
@@ -53,9 +75,20 @@ public class GridInput : MonoBehaviour
         
         return lastMousePos;
     }
-    
-    //////////////////// TESTEO ////////////////////
-    public bool GetPlacementInput()
-        => Input.GetMouseButtonDown(0);
+
+    private float AddToRotation(float angle)
+    {
+        float newRotation = rotation +  angle;
+
+        if (newRotation > 180)
+            newRotation -= 360;
+        
+        if(newRotation <= -180)
+            newRotation += 360;
+        
+        Debug.Log($"Rotation: {newRotation}");
+        rotation =  newRotation;
+        return newRotation;
+    }
 }
 
