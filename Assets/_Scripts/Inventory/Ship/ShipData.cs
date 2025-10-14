@@ -1,25 +1,13 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CartData : MonoBehaviour, IInventoryData
+public class ShipData : MonoBehaviour, IInventoryData
 {
     [SerializeField]
     private AllObjectTypesSO allItemsDataBase;
-    [SerializeField]
-    private const int MAX_ITEMS = 3;
     
-    private List<InventoryItemDataObjects> cartInventory = new();
-    
-    /// <summary>
-    /// Calculates if all the inventory slots are taken
-    /// </summary>
-    /// <returns>True if the inventory has all the slots taken, False in every other case</returns>
-    public bool InventoryIsFull()
-    {
-        return cartInventory.Count >= MAX_ITEMS;
-    }
-    
+    private List<InventoryItemDataObjects> shipInventory = new();
+
     public int TryStackItem(ItemNames itemName, int amount)
     {
         // If there are no items to stack, we don't do shit
@@ -32,42 +20,48 @@ public class CartData : MonoBehaviour, IInventoryData
             return 0;
 
         // We try to stack the remaining items in empty slots
-        return AddInEmptySlots(itemName, amount);
+        AddInEmptySlots(itemName, amount);
+
+        // There are infinite slots in the ship's inventory
+        return 0;
     }
-    
+
     public bool TryAddItem(ItemNames itemName)
     {
-        return TryStackItem(itemName, 1) == 0;
+        TryStackItem(itemName, 1);
+        
+        // There are infinite slots in the ship's inventory
+        return true;
     }
-    
+
     public InventoryItemDataObjects GetInventoryObjectByIndex(int id)
     {
-        if (id > cartInventory.Count)
+        if (id > shipInventory.Count)
             return null;
 
-        return cartInventory[id];
+        return shipInventory[id];
     }
-    
+
     public InventoryItemDataObjects ExtractInventoryObjectByIndex(int id)
     {
-        if (id > cartInventory.Count)
+        if (id > shipInventory.Count)
             return null;
 
         InventoryItemDataObjects objectToExtract = GetInventoryObjectByIndex(id);
-        cartInventory.RemoveAt(id);
+        shipInventory.RemoveAt(id);
         return objectToExtract;
     }
 
     public void EmptyInventory()
     {
-        Debug.Log("Cart inventory cleared");
-        cartInventory.Clear();
+        Debug.Log("Ship inventory cleared");
+        shipInventory.Clear();
     }
 
     private int AddInExistingSlots(ItemNames itemName, int amount)
     {
-        // We check for matching items in the cart inventory
-        foreach (var item in cartInventory)
+        // We check for matching items in the ship inventory
+        foreach (var item in shipInventory)
         {
             if (item.Name == itemName)
             {
@@ -93,8 +87,8 @@ public class CartData : MonoBehaviour, IInventoryData
 
         return amount;
     }
-
-    private int AddInEmptySlots(ItemNames itemName, int amount)
+    
+    private void AddInEmptySlots(ItemNames itemName, int amount)
     {
         // We check if the amount is bigger than the max stack size
         int maxStack = allItemsDataBase.FindItem(itemName).MaxStackSize;
@@ -105,11 +99,11 @@ public class CartData : MonoBehaviour, IInventoryData
             amount = maxStack;
         }
 
-        // We try to add the items to the cart if there are empty slots
-        while (cartInventory.Count < MAX_ITEMS)
+        // We add the items to the ship in empty slots
+        while (amount > 0)
         {
             InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount, allItemsDataBase);
-            cartInventory.Add(newObj);
+            shipInventory.Add(newObj);
             Debug.Log($"Added a stack of {itemName} with {amount} items");
 
             amount = overflow;
@@ -120,8 +114,5 @@ public class CartData : MonoBehaviour, IInventoryData
                 amount = maxStack;
             }
         }
-
-        // We return the amount of items we could not add to the cart
-        return amount;
-    }    
+    }
 }
