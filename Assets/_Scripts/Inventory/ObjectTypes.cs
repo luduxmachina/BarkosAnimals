@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.Internal;
 
@@ -39,6 +40,11 @@ public class ObjectTypes
         IsAnimal = isAnimal;
         IsCarnivore = isCarnivore;
         IsFood = isFood;
+    }
+
+    public override string ToString()
+    {
+        return Name.ToString();
     }
 }
 
