@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractionTestingScript : MonoBehaviour, IInteractable
 {
     public bool returnValueFromInteraction=true;
-    public bool Interact(ItemInteraction interactorType, MonoBehaviour interactor)
+    public bool Interact(ItemInteraction interactorType, GameObject interactor)
     {
         Debug.Log( interactor.name + " interacted with me " + gameObject.name + " using " + interactorType.ToString());
         return true;

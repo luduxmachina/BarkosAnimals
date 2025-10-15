@@ -30,7 +30,7 @@ public class SimpleInteractor : MonoBehaviour
         var target = GetTarget();
         if (target == null) { return; }
 
-        bool success= target.Interact(interactionType, this);
+        bool success= target.Interact(interactionType, this.gameObject);
         playerReceiver.interactionSuccessful = success;
 
         if (success)

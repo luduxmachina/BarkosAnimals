@@ -2,7 +2,8 @@ using UnityEngine;
 [RequireComponent(typeof(SimpleGrabbable))]
 public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionReciever
 {
-   
+    [SerializeField]
+    CartData cartData;
     void Awake()
     {
         SimpleGrabbable grabbable = GetComponent<SimpleGrabbable>();
@@ -19,15 +20,19 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
 
         });
     }
-    public bool Interact(ItemInteraction interactorType, MonoBehaviour interactor)
+    public bool Interact(ItemInteraction interactorType, GameObject interactor)
     {
 
-
-        AddItemToCartInventory(interactorType, interactor);
+        ItemInScene itemInScene = interactor.GetComponent<ItemInScene>();
+        if(itemInScene == null)
+        {
+            return false;
+        }
+        int leftOver= AddItemToCartInventory(itemInScene);
 
  
 
-        return true;
+        return leftOver==0;
     }
     public bool OnPlayerInteraction()
     {
@@ -39,25 +44,23 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
     {
         //El input debe cambiar y tal, hacerlo en otra clase desd aqui la llamo
     }
-    public void AddItemToCartInventory(ItemInteraction interactorType, MonoBehaviour interactor)
+    public int AddItemToCartInventory(ItemInScene interactor)
     {
+        int amount = interactor.amountInStack;
+        ItemNames name= interactor.itemName;
 
-        ////
-
-        GetInCartHandler getInCartHandler = interactor.GetComponent<GetInCartHandler>();
-        if (getInCartHandler == null)
-        {
-            Debug.LogWarning("Alguien ha intentado meterse en el carro sin el handler para ello:" + interactor.gameObject.name);
-            return;
-        }
-        else
-        {
-            getInCartHandler.GetInCart();
-        }
-
+        int leftover = cartData.TryStackItem(name, amount);
         
 
-        Debug.Log("Item added to cart: " + interactorType.ToString() + " obj: " + getInCartHandler.name);
+        interactor.GetInCart(leftover); 
+
+
+
+
+
+        Debug.Log("Item added to cart: " + interactor.ToString() + " obj: " + interactor.name);
+
+        return leftover;
     }
 
 
