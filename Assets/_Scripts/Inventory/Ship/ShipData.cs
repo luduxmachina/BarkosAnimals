@@ -60,26 +60,28 @@ public class ShipData : MonoBehaviour, IInventoryData
 
     private int AddInExistingSlots(ItemNames itemName, int amount)
     {
+        int maxStackSize = allItemsDataBase.GetObjectMaxStackSize(itemName);
+
         // We check for matching items in the ship inventory
         foreach (var item in shipInventory)
         {
             if (item.Name == itemName)
             {
                 // If this stack is full, we don't try to add them to the inventory
-                if (item.Count >= item.MaxSize)
+                if (item.Count >= maxStackSize)
                     continue;
 
                 // We try to add the full stack
-                if (item.TryAdd(amount))
+                if (TryAddFullAmountToStack(item, amount))
                 {
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {item.MaxSize}");
+                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
                     return 0;
                 }
 
                 // We try to add as much as we can to the stack
-                int amountWeCanStack = item.MaxSize - (item.Count + amount);
-                if (item.TryAdd(amountWeCanStack))
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {item.MaxSize}");
+                int amountWeCanStack = maxStackSize - (item.Count + amount);
+                if (TryAddFullAmountToStack(item, amountWeCanStack))
+                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
 
                 amount = amount - amountWeCanStack;
             }
@@ -87,7 +89,19 @@ public class ShipData : MonoBehaviour, IInventoryData
 
         return amount;
     }
-    
+
+    private bool TryAddFullAmountToStack(InventoryItemDataObjects item, int amount)
+    {
+        int maxStackSize = allItemsDataBase.GetObjectMaxStackSize(item.Name);
+
+        bool canFit = amount + item.Count <= maxStackSize;
+
+        if (canFit)
+            item.Add(amount);
+
+        return canFit;
+    }
+
     private void AddInEmptySlots(ItemNames itemName, int amount)
     {
         // We check if the amount is bigger than the max stack size
@@ -102,7 +116,7 @@ public class ShipData : MonoBehaviour, IInventoryData
         // We add the items to the ship in empty slots
         while (amount > 0)
         {
-            InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount, allItemsDataBase);
+            InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount);
             shipInventory.Add(newObj);
             Debug.Log($"Added a stack of {itemName} with {amount} items");
 

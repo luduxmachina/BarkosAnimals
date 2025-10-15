@@ -66,26 +66,28 @@ public class CartData : MonoBehaviour, IInventoryData
 
     private int AddInExistingSlots(ItemNames itemName, int amount)
     {
+        int maxStackSize = allItemsDataBase.GetObjectMaxStackSize(itemName);
+
         // We check for matching items in the cart inventory
         foreach (var item in cartInventory)
         {
             if (item.Name == itemName)
             {
                 // If this stack is full, we don't try to add them to the inventory
-                if (item.Count >= item.MaxSize)
+                if (item.Count >= maxStackSize)
                     continue;
 
                 // We try to add the full stack
-                if (item.TryAdd(amount))
+                if (TryAddFullAmountToStack(item, amount))
                 {
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {item.MaxSize}");
+                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
                     return 0;
                 }
 
                 // We try to add as much as we can to the stack
-                int amountWeCanStack = item.MaxSize - (item.Count + amount);
-                if (item.TryAdd(amountWeCanStack))
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {item.MaxSize}");
+                int amountWeCanStack = (item.Count + amount) - maxStackSize;
+                if (TryAddFullAmountToStack(item, amountWeCanStack))
+                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
 
                 amount = amount - amountWeCanStack;
             }
@@ -94,31 +96,38 @@ public class CartData : MonoBehaviour, IInventoryData
         return amount;
     }
 
+    private bool TryAddFullAmountToStack(InventoryItemDataObjects item, int amount)
+    {
+        int maxStackSize = allItemsDataBase.GetObjectMaxStackSize(item.Name);
+
+        bool canFit = amount + item.Count <= maxStackSize;
+
+        if (canFit)
+            item.Add(amount);
+
+        return canFit;
+    }
+
     private int AddInEmptySlots(ItemNames itemName, int amount)
     {
         // We check if the amount is bigger than the max stack size
-        int maxStack = allItemsDataBase.FindItem(itemName).MaxStackSize;
-        int overflow = 0;
-        if (amount > maxStack)
-        {
-            overflow = amount - maxStack;
-            amount = maxStack;
-        }
+        int maxStack = allItemsDataBase.GetObjectMaxStackSize(itemName);
 
         // We try to add the items to the cart if there are empty slots
-        while (cartInventory.Count < MAX_ITEMS)
+        while (cartInventory.Count < MAX_ITEMS && amount > 0)
         {
-            InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount, allItemsDataBase);
-            cartInventory.Add(newObj);
-            Debug.Log($"Added a stack of {itemName} with {amount} items");
-
-            amount = overflow;
-            overflow = 0;
+            int overflow = 0;
             if (amount > maxStack)
             {
                 overflow = amount - maxStack;
                 amount = maxStack;
             }
+
+            InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount);
+            cartInventory.Add(newObj);
+            Debug.Log($"Added a stack of {itemName} with {amount} items");
+
+            amount = overflow;
         }
 
         // We return the amount of items we could not add to the cart
