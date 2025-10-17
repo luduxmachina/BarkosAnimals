@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Events;
-[RequireComponent(typeof(ParentConstraint))]
+
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(ParentConstraint))]
 public class SimpleGrabbable : MonoBehaviour, IGrabbable
 {
     public IGrabber currentGrabber = null;
@@ -17,20 +18,40 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
     public bool isBeingGrabbed { get { return currentGrabber != null; } }
     private Rigidbody rb;
     private int originalLayer;
+    [SerializeField]
     ParentConstraint parentConstraint;
+    [SerializeField]
+    ParentConstraint thisConstraint;
     private void Awake()
     {
-        parentConstraint = GetComponent<ParentConstraint>();
+        if (parentConstraint == null)
+        {
+            parentConstraint = GetComponentInParent<ParentConstraint>();
+        }
+        if (parentConstraint == null)
+        {
+            parentConstraint = gameObject.transform.parent.gameObject.AddComponent<ParentConstraint>();
+        }
+        thisConstraint = GetComponent<ParentConstraint>();
         parentConstraint.constraintActive = false;
         rb = GetComponent<Rigidbody>();
         originalLayer = gameObject.layer;
     }
+    private void Start()
+    {
+        //Asegurarse de que el constraint esta desactivado
+
+        thisConstraint.AddSource(new ConstraintSource() { sourceTransform = parentConstraint.transform, weight = 1 });
+        thisConstraint.constraintActive = true;
+
+
+    }
     public virtual bool Grab(Transform grabbingTransform, IGrabber grabber)
     {
         //Si alguien quiere hacer comprobaciones y tal pues que lo haga heredando y eso
-        if(!canBeGrabbed) return false; 
+        if (!canBeGrabbed) return false;
 
- 
+
 
         currentGrabber = grabber;
 
@@ -48,7 +69,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
 
         //Pegarse a punto de cogida
         transform.position = grabbingTransform.position;
-        parentConstraint.AddSource( new ConstraintSource() { sourceTransform = grabbingTransform, weight = 1 });
+        parentConstraint.AddSource(new ConstraintSource() { sourceTransform = grabbingTransform, weight = 1 });
         parentConstraint.constraintActive = true;
 
 
@@ -58,19 +79,19 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
     public virtual bool Drop()
     {
         if (!canBeDropped) return false;
-        if(!isBeingGrabbed) return false; //no se puede soltar si no se esta cogido
+        if (!isBeingGrabbed) return false; //no se puede soltar si no se esta cogido
 
         OnDrop?.Invoke(); //para que el grabber siga teniendo la referencia sin null
 
         currentGrabber.StopGrabbing();
         currentGrabber = null;
 
-  
+
         parentConstraint.RemoveSource(0);
         parentConstraint.constraintActive = false;
         rb.excludeLayers = 0;
         gameObject.layer = originalLayer;
- 
+
 
         return true; //el objeto se ha soltado
     }
