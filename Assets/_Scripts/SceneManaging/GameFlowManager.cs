@@ -15,6 +15,7 @@ public enum GameModes //esto es criminal y está hecho con spaghetti, todo lo que
 }
 public class GameFlowManager : MonoBehaviour
 {
+    public static GameFlowManager instance;
     [Header("Levels to play")]
     [SerializeField]
     private NivelSO defaultLevel;
@@ -286,6 +287,11 @@ public class GameFlowManager : MonoBehaviour
 
     private void Awake()
     {
+        if(instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         DontDestroyOnLoad(this.gameObject);
 
     }
