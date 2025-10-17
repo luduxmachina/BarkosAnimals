@@ -16,13 +16,13 @@ public class ShipData : MonoBehaviour, IInventoryData
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-            TryStackItem(ItemNames.Bread, 10);
-        if (Input.GetKeyDown(KeyCode.P))
-            TryAddItem(ItemNames.Duck);
-        
-        if (Input.GetKeyDown(KeyCode.R))
-            EmptyInventory();
+        // if (Input.GetKeyDown(KeyCode.O))
+        //     TryStackItem(ItemNames.Bread, 10);
+        // if (Input.GetKeyDown(KeyCode.P))
+        //     TryAddItem(ItemNames.Duck);
+        // 
+        // if (Input.GetKeyDown(KeyCode.R))
+        //     EmptyInventory();
     }
 
     public int TryStackItem(ItemNames itemName, int amount)
