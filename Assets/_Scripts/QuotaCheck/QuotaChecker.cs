@@ -14,10 +14,16 @@ public class QuotaChecker
         {AnimalType.Duck, 50 },
         {AnimalType.Pangolin, 100},
         {AnimalType.Snake, 200},
-    };
+    };    
+
 
     bool isQuotaPass = false;
 
+    /// <summary>
+    /// Create a new value for quota.
+    /// </summary>
+    /// <param name="level"></param>
+    /// <returns></returns>
     public Quota GenerateCuote(int level)
     {
         quota = new Quota(level);
@@ -25,7 +31,12 @@ public class QuotaChecker
         return quota;
     }
 
-    public void CheckCuote(AnimalType animal, int number)
+    /// <summary>
+    /// This function updates the state of the quote with the data provided. Is espected to receve a type of animal and the number of that animal obtained.
+    /// </summary>
+    /// <param name="animal"></param>
+    /// <param name="number"></param>
+    public void UpdateCuote(AnimalType animal, int number)
     {
         quotaPassed.AddPoints(animalValues[animal]);
         
@@ -55,6 +66,12 @@ public class QuotaChecker
         this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);        
     }
 
+    /// <summary>
+    /// This function returns if the quota is completed.
+    /// </summary>
+    /// <returns> 
+    /// It returns a boolean that indicate if the quota is completed
+    /// </returns>
     public bool IsQuotaPass()
     {
         return isQuotaPass;

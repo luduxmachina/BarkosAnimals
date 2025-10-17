@@ -13,6 +13,7 @@ public enum Restriction
 public class Quota
 {
     int quotaValue = 0;
+
     Dictionary<Restriction, int> restrictions;
 
     public Quota()
