@@ -2,120 +2,92 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CartData : MonoBehaviour
+public class CartData : MonoBehaviour, IInventoryData
 {
     [SerializeField]
     private AllObjectTypesSO allItemsDataBase;
+    [SerializeField]
+    private const int MAX_ITEMS = 3;
     
-    private List<CartDataObjects> cartInventory = new();
-    public const int MAX_ITEMS = 3;
-
+    private List<InventoryItemDataObjects> cartInventory = new();
+    
     /// <summary>
-    /// Calculates if all the invemtory slots are taken
+    /// Calculates if all the inventory slots are taken
     /// </summary>
-    /// <returns>True if the cart inventory has all the slots taken, False in every other case</returns>
+    /// <returns>True if the inventory has all the slots taken, False in every other case</returns>
     public bool InventoryIsFull()
     {
         return cartInventory.Count >= MAX_ITEMS;
     }
-
-    /// <summary>
-    /// Tries to add X amount of items to the cart. 
-    /// First will try to stack the item with existing slots of items of the same type
-    /// If there are still items to add left, will try to add them in empty cart slots
-    /// </summary>
-    /// <param name="itemName">The type of item wanted to add to the cart</param>
-    /// <param name="amount">The amount fo items of that type wanted to add to the cart</param>
-    /// <returns>The amount of items we could not fit in the cart</returns>
+    
     public int TryStackItem(ItemNames itemName, int amount)
     {
-        // If there are no items to stack, we dont do shit
+        // If there are no items to stack, we don't do shit
         if (amount <= 0)
             return 0;
 
         // We try to stack in existing slots
-        amount = AddInExistingCarSlots(itemName, amount);
+        amount = AddInExistingSlots(itemName, amount);
         if (amount <= 0)
             return 0;
 
         // We try to stack the remaining items in empty slots
-        return AddInEmptyCartSlots(itemName, amount);
+        return AddInEmptySlots(itemName, amount);
     }
-
-    /// <summary>
-    /// Tries to add 1 of the specified item to the cart.
-    /// First will try to stack the item with existing slots of items of the same type
-    /// If there are still items to add left, will try to add them in empty cart slots
-    /// </summary>
-    /// <param name="itemName">The type of item wanted to add to the cart</param>
-    /// <returns>True if it could add the item to the cart inventory and False if not</returns>
+    
     public bool TryAddItem(ItemNames itemName)
     {
         return TryStackItem(itemName, 1) == 0;
     }
-
-    /// <summary>
-    /// Gets the CartDataObjects at the indicated position of the cart inventory
-    /// </summary>
-    /// <param name="id">The position of the vector wanted to get the CartDataObjects</param>
-    /// <returns>
-    /// A CartDataObjects if there's an object at the selected position of the vector inventory. 
-    /// null if no object found at the estimated position
-    /// </returns>
-    public CartDataObjects GetCartObjectByIndex(int id)
+    
+    public InventoryItemDataObjects GetInventoryObjectByIndex(int id)
     {
         if (id > cartInventory.Count)
             return null;
 
         return cartInventory[id];
     }
-
-    /// <summary>
-    /// Gets the CartDataObjects at the indicated position of the cart inventory and then it's eliminated from the cart's inventory
-    /// </summary>
-    /// <param name="id">The position of the vector wanted to get the CartDataObjects</param>
-    /// <returns>
-    /// A CartDataObjects if there's an object at the selected position of the vector inventory. 
-    /// null if no object found at the estimated position
-    /// </returns>
-    public CartDataObjects ExtractCartObjectByIndex(int id)
+    
+    public InventoryItemDataObjects ExtractInventoryObjectByIndex(int id)
     {
         if (id > cartInventory.Count)
             return null;
 
-        CartDataObjects objectToExtract = GetCartObjectByIndex(id);
+        InventoryItemDataObjects objectToExtract = GetInventoryObjectByIndex(id);
         cartInventory.RemoveAt(id);
         return objectToExtract;
     }
 
-    public void EmptyCartInventory()
+    public void EmptyInventory()
     {
-        Debug.Log("Cart inventory cleard");
+        Debug.Log("Cart inventory cleared");
         cartInventory.Clear();
     }
 
-    private int AddInExistingCarSlots(ItemNames itemName, int amount)
+    private int AddInExistingSlots(ItemNames itemName, int amount)
     {
-        // We check for maching items in the cart inventory
+        int maxStackSize = allItemsDataBase.GetObjectMaxStackSize(itemName);
+
+        // We check for matching items in the cart inventory
         foreach (var item in cartInventory)
         {
             if (item.Name == itemName)
             {
-                // If this stack is full, we dont try to add them to the inventory
-                if (item.Count >= item.MaxSize)
+                // If this stack is full, we don't try to add them to the inventory
+                if (item.Count >= maxStackSize)
                     continue;
 
                 // We try to add the full stack
-                if (item.TryAdd(amount))
+                if (TryAddFullAmountToStack(item, amount))
                 {
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {item.MaxSize}");
+                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
                     return 0;
                 }
 
                 // We try to add as much as we can to the stack
-                int amountWeCanStack = item.MaxSize - (item.Count + amount);
-                if (item.TryAdd(amountWeCanStack))
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {item.MaxSize}");
+                int amountWeCanStack = (item.Count + amount) - maxStackSize;
+                if (TryAddFullAmountToStack(item, amountWeCanStack))
+                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
 
                 amount = amount - amountWeCanStack;
             }
@@ -124,31 +96,38 @@ public class CartData : MonoBehaviour
         return amount;
     }
 
-    private int AddInEmptyCartSlots(ItemNames itemName, int amount)
+    private bool TryAddFullAmountToStack(InventoryItemDataObjects item, int amount)
+    {
+        int maxStackSize = allItemsDataBase.GetObjectMaxStackSize(item.Name);
+
+        bool canFit = amount + item.Count <= maxStackSize;
+
+        if (canFit)
+            item.Add(amount);
+
+        return canFit;
+    }
+
+    private int AddInEmptySlots(ItemNames itemName, int amount)
     {
         // We check if the amount is bigger than the max stack size
-        int maxStack = allItemsDataBase.FindItem(itemName).MaxStackSize;
-        int overflow = 0;
-        if (amount > maxStack)
-        {
-            overflow = amount - maxStack;
-            amount = maxStack;
-        }
+        int maxStack = allItemsDataBase.GetObjectMaxStackSize(itemName);
 
         // We try to add the items to the cart if there are empty slots
-        while (cartInventory.Count < MAX_ITEMS)
+        while (cartInventory.Count < MAX_ITEMS && amount > 0)
         {
-            CartDataObjects newObj = new CartDataObjects(itemName, amount, allItemsDataBase);
-            cartInventory.Add(newObj);
-            Debug.Log($"Added a stack of {itemName} with {amount} items");
-
-            amount = overflow;
-            overflow = 0;
+            int overflow = 0;
             if (amount > maxStack)
             {
                 overflow = amount - maxStack;
                 amount = maxStack;
             }
+
+            InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount);
+            cartInventory.Add(newObj);
+            Debug.Log($"Added a stack of {itemName} with {amount} items");
+
+            amount = overflow;
         }
 
         // We return the amount of items we could not add to the cart
