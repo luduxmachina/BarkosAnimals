@@ -79,6 +79,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
             objInHand = grabable;
             hasObjInHand = true;
             animator.SetTrigger("Take");
+            animator.SetBool("TakeSomething", true);
             return; //se ha cogido el objeto
         }
     }
