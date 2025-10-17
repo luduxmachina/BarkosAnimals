@@ -163,6 +163,8 @@ MonoBehaviour:
   canBeGrabbed: 1
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 0
+  parentConstraint: {fileID: 0}
+  thisConstraint: {fileID: 0}
 --- !u!65 &16510492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -319,6 +321,78 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &104323114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 104323116}
+  - component: {fileID: 104323115}
+  - component: {fileID: 104323117}
+  m_Layer: 0
+  m_Name: Carro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1773428102 &104323115
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104323114}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0.44, y: -1.06, z: 0.76}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets: []
+  m_RotationOffsets: []
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 0
+  m_IsLocked: 0
+  m_Sources: []
+--- !u!4 &104323116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104323114}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.44, y: -1.06, z: 0.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 330158178}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &104323117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104323114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671c4425d48cd4b46957aff357eddc15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHandles: 1
+  hideParentHandle: 1
+  sphereSize: 0.5
 --- !u!1 &218966622
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +422,7 @@ Transform:
   m_GameObject: {fileID: 218966622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.133, y: 0, z: 1.077}
+  m_LocalPosition: {x: -0.133, y: 0, z: 1.592}
   m_LocalScale: {x: 1.8937278, y: 1.8937278, z: 1.8937278}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,6 +574,8 @@ MonoBehaviour:
   canBeGrabbed: 1
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 1
+  parentConstraint: {fileID: 0}
+  thisConstraint: {fileID: 0}
 --- !u!65 &236587961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -653,6 +729,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detector: {fileID: 1900956751}
+  interactingObject: {fileID: 0}
+  useSpecificInteractionType: 0
   interactionType: 1
   OnInteraction:
     m_PersistentCalls:
@@ -689,6 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amountInStack: 1
+  itemName: 1
+  itemType: 0
+  useParentGrabbable: 1
+  simpleGrabbable: {fileID: 0}
 --- !u!1 &288884505
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296733609}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.40821707, y: -0.23457041, z: 0.109381735, w: 0.8754263}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -930,10 +1013,11 @@ GameObject:
   - component: {fileID: 330158177}
   - component: {fileID: 330158176}
   - component: {fileID: 330158175}
-  - component: {fileID: 330158174}
   - component: {fileID: 330158173}
   - component: {fileID: 330158172}
   - component: {fileID: 330158171}
+  - component: {fileID: 330158179}
+  - component: {fileID: 330158180}
   m_Layer: 0
   m_Name: CarroInScene
   m_TagString: Item
@@ -953,6 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d3e8775883cb25499649fda3b0d6288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cartData: {fileID: 330158179}
 --- !u!114 &330158172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +1059,8 @@ MonoBehaviour:
   canBeGrabbed: 1
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 0
+  parentConstraint: {fileID: 104323115}
+  thisConstraint: {fileID: 0}
 --- !u!54 &330158173
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1001,29 +1088,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1773428102 &330158174
-ParentConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330158170}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Weight: 1
-  m_TranslationAtRest: {x: -0.387, y: -1.06, z: 1.341}
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_TranslationOffsets: []
-  m_RotationOffsets: []
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_Active: 0
-  m_IsLocked: 0
-  m_Sources: []
 --- !u!65 &330158175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1106,13 +1170,53 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330158170}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: -1.06, z: 0.76}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02000001, y: 0, z: 1.8300002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 104323116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &330158179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330158170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b73094adf42a464fad2a8d39fb65b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allItemsDataBase: {fileID: 11400000, guid: ac343572966cfa248988fcbc42391523, type: 2}
+--- !u!1773428102 &330158180
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330158170}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: -0.02000001, y: 0, z: 1.8300002}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: -0.02000001, y: 0, z: 1.8300002}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 104323116}
+    weight: 1
 --- !u!1 &409375023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,6 +1350,8 @@ MonoBehaviour:
   canBeGrabbed: 1
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 1
+  parentConstraint: {fileID: 0}
+  thisConstraint: {fileID: 0}
 --- !u!1773428102 &409375029
 ParentConstraint:
   m_ObjectHideFlags: 0
@@ -1843,7 +1949,7 @@ Transform:
   m_GameObject: {fileID: 1936623096}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0, z: 0.6240001}
+  m_LocalPosition: {x: -0.08, y: 0, z: 1.139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1969,4 +2075,4 @@ SceneRoots:
   - {fileID: 236587964}
   - {fileID: 16510495}
   - {fileID: 1811611238}
-  - {fileID: 330158178}
+  - {fileID: 104323116}

@@ -4,9 +4,12 @@ using UnityEngine.Events;
 public class SimpleInteractor : MonoBehaviour
 {
     [SerializeField] LazyDetector detector; //vaya puta mierda que no se puedan poner interfaces en el inspector
-
+    [SerializeField, Tooltip("Por si el objeto que dices que interactua no es este")] GameObject interactingObject;
     [Header("Interaction")]
-    public ItemInteraction interactionType = ItemInteraction.testing1;
+    [SerializeField]
+    private bool useSpecificInteractionType = false;
+    [SerializeField, HideIf("useSpecificInteractionType", false)]
+    public ItemNames interactionType = ItemNames.None;
     public UnityEvent OnInteraction;
     public UnityEvent OnFailedInteraction;
 
@@ -29,8 +32,25 @@ public class SimpleInteractor : MonoBehaviour
     {
         var target = GetTarget();
         if (target == null) { return; }
+        ItemNames sentInteraction= ItemNames.None;
 
-        bool success= target.Interact(interactionType, this);
+        if (useSpecificInteractionType)
+        {
+            sentInteraction = interactionType;
+        }
+        else
+        {
+            var itemInScene = interactingObject != null ? interactingObject.GetComponent<ItemInScene>() : this.GetComponent<ItemInScene>();
+            if (itemInScene != null)
+            {
+                sentInteraction = itemInScene.itemName;
+            }
+        }
+
+        GameObject interactor= (interactingObject != null) ? interactingObject : this.gameObject;
+
+
+        bool success= target.Interact(sentInteraction, interactor);
         playerReceiver.interactionSuccessful = success;
 
         if (success)
