@@ -13,12 +13,16 @@ public class Archipelago
 {
     [CustomLabel("")]
     public IslandSO[] islands= new IslandSO[3];
+    [HideInInspector]
+    public int numberOfIslands = 0;
 #if UNITY_EDITOR
     public void SyncData()
     {
+        numberOfIslands = 0;
         foreach (var island in islands)
         {
-            if(island == null) continue;
+            if(island == null) return; //si hay una nulo, los siguietnes serán nulos, y si no se ignora por inutiles
+            numberOfIslands++;
             island.SyncData();
         }
     }

@@ -20,21 +20,23 @@ MonoBehaviour:
   useDefaultQuotaScene: 1
   archipelagos:
   - islands:
+    - {fileID: 11400000, guid: 221bcfa3cf668544c86f4015eab517ba, type: 2}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
+    numberOfIslands: 1
   - islands:
+    - {fileID: 11400000, guid: 04ffc859f26710e4a8e4b5db56e58d94, type: 2}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
+    numberOfIslands: 1
   SelectionPhaseScene: {fileID: 0}
   OrganizationPhaseScene: {fileID: 0}
   BoatPhaseScene: {fileID: 0}
   QuotaScene: {fileID: 0}
-  selectionPhaseSceneIndex: 4
-  organizationPhaseSceneIndex: 4
-  boatPhaseSceneIndex: 4
-  quotaSceneIndex: 4
+  selectionPhaseSceneIndex: 14
+  organizationPhaseSceneIndex: 14
+  boatPhaseSceneIndex: 14
+  quotaSceneIndex: 14
   numberOfArchipelagos: 2
   quotaInfo:
     totalQuota: 0

@@ -8,7 +8,7 @@ public enum LevelPhases
     BoatPhase,
     QuotaPhase
 }
-public enum GameModes
+public enum GameModes //esto es criminal y está hecho con spaghetti, todo lo que esté relacionado con esto 
 {
     SIOBQ,
     IOSBQ
@@ -25,7 +25,7 @@ public class GameFlowManager : MonoBehaviour
 
     [Header("Settings")]
     public bool infiniteMode = false;
-    public GameModes gameMode = GameModes.IOSBQ;
+    public GameModes gameMode = GameModes.SIOBQ;
 
     [Header("--------")]
     public NivelSO currentLevel;
@@ -39,11 +39,13 @@ public class GameFlowManager : MonoBehaviour
 
     private NivelSO[] levelsPlaying;
 
-
-    private void Awake()
+    public void Lose() //no se quien quiera hacer perder al player
     {
-        DontDestroyOnLoad(this.gameObject);
-
+        //ir al menu principal
+    }
+    public void Win()
+    {
+        // ir a algo de victoria
     }
     public void StartTutorialGame()
     {
@@ -67,6 +69,18 @@ public class GameFlowManager : MonoBehaviour
     {
         lastSelectedIsland = island;
     }
+    public void NextPhase()
+    {
+        if(gameMode == GameModes.SIOBQ)
+        {
+            SIOBQNextPhase();
+
+        }
+        else
+        {
+            IOSBQNextPhase();
+        }
+    }
 
     private void StartGame()
     {
@@ -87,6 +101,7 @@ public class GameFlowManager : MonoBehaviour
             else //no deberia llegar aqui la vd
             {
                 Debug.Log("No more levels to play GG");
+                Win();
                 return;
             }
         }
@@ -112,8 +127,11 @@ public class GameFlowManager : MonoBehaviour
         switch (phase)
         {
             case LevelPhases.SelectionPhase:
-                if (level.archipelagos[currentArchipelago].islands.Length == 1)
+                Debug.Log("Selection Phase: ");
+                Debug.Log(level.archipelagos[archipelagoIndex].numberOfIslands + " islas entre las que elegir");
+                if (level.archipelagos[archipelagoIndex].numberOfIslands == 1)
                 {
+                    Debug.Log("Nada que elegir, siguiente ffase");
                     NextPhase(); //nada que elegir, avancen
                     return;
                 }
@@ -177,12 +195,9 @@ public class GameFlowManager : MonoBehaviour
         }
         SceneManager.LoadScene(sceneToLoad);
     }
-    public void NextPhase()
+    private void IOSBQNextPhase()
     {
-        if (gameMode == GameModes.IOSBQ){
-            OtherNextPhase();
-            return;
-        }
+     
 
 
         if (currentPhase == LevelPhases.QuotaPhase) //fin de una isla 
@@ -193,7 +208,7 @@ public class GameFlowManager : MonoBehaviour
 
                 if (!CheckQuotaFlag()) //Se ha perdido
                 {
-                    Perder();
+                    Lose();
                     return;
                 }
 
@@ -203,13 +218,27 @@ public class GameFlowManager : MonoBehaviour
             }
             else
             {
-                currentPhase = LevelPhases.SelectionPhase;
+                currentPhase = LevelPhases.IslandPhase; //en esta version tras la quota viene isla directamente
   
             }
         }
         else
         {
-            currentPhase++;
+            switch (currentPhase)
+            {
+                case LevelPhases.IslandPhase:
+                    currentPhase = LevelPhases.OrganizationPhase;
+                    break;
+                case LevelPhases.OrganizationPhase:
+                    currentPhase = LevelPhases.SelectionPhase;
+                    break;
+                case LevelPhases.SelectionPhase:
+                    currentPhase = LevelPhases.BoatPhase;
+                    break;
+                case LevelPhases.BoatPhase:
+                    currentPhase = LevelPhases.QuotaPhase;
+                    break;
+            }
         }
         LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, lastSelectedIsland);
 
@@ -217,9 +246,8 @@ public class GameFlowManager : MonoBehaviour
 
 
     }
-    private void OtherNextPhase()
+    private void SIOBQNextPhase()
     {
-        //TODO: hacer lo mismo pero ocn otro orden de fases
         if (currentPhase == LevelPhases.QuotaPhase) //fin de una isla 
         {
             currentArchipelago++;
@@ -228,7 +256,7 @@ public class GameFlowManager : MonoBehaviour
 
                 if (!CheckQuotaFlag()) //Se ha perdido
                 {
-                    Perder();
+                    Lose();
                     return;
                 }
 
@@ -255,8 +283,10 @@ public class GameFlowManager : MonoBehaviour
         return true; //pasa la quota al siguiente nivel
     }
 
-    public void Perder() //no se quien quiera hacer perder al player
+
+    private void Awake()
     {
-        //ir al menu principal
+        DontDestroyOnLoad(this.gameObject);
+
     }
 }
