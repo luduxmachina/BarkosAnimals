@@ -26,7 +26,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
     {
         if (parentConstraint == null)
         {
-            parentConstraint = GetComponentInParent<ParentConstraint>();
+            parentConstraint = transform.parent.GetComponentInParent<ParentConstraint>();
         }
         if (parentConstraint == null)
         {
