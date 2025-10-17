@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public bool canMove = true;
     [SerializeField, ReadOnly] public Vector2 moveInput;
     private Rigidbody rb;
     [Header("Movement")]
@@ -14,9 +13,41 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [Header("Dash")]
     [SerializeField] private float dashForce = 5f;
-    [SerializeField] private float dashCooldown = 0.2f;
-    private bool canDash = true;
-    private float dashCooldownTimer=0.0f;
+    [SerializeField] private float dashCooldown = 0.3f;
+    [SerializeField] private float dashNoGravityDuration = 0.15f;
+    private bool onDashCooldown = false;
+    private float dashCooldownTimer = 0.0f;
+    private float dashNoGravityTimer = 0.0f;
+
+    [Header("Negative effects")]
+    [SerializeField] private float slowMoveSpeed = 2f;
+    [SerializeField, ReadOnly] private float stunTime = 0.0f;
+    public bool canMove = true;
+    [SerializeField] private bool impedeExtraMoveset = false;
+    private bool isSlowed { get { return slowStack > 0; } }
+    private int slowStack = 0;
+    private bool isStunned = false;
+    public void ImpedeExtraMoveset()
+    {
+        impedeExtraMoveset = true;
+    }
+    public void AllowExtraMoveSet()
+    {
+        impedeExtraMoveset = false;
+    }
+    public void ApplySlow()
+    {
+        slowStack++;
+    }
+    public void RemoveSlow()
+    {
+        slowStack--;
+    }
+    public void ApplyStun(float duration)
+    {
+        isStunned = true;
+        stunTime += duration;
+    }
 
     private void Awake()
     {
@@ -24,12 +55,28 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (!canDash)
+        if(isStunned)
+        {
+            stunTime -= Time.deltaTime;
+            if(stunTime < 0.0f)
+            {
+                isStunned = false;      
+            }
+        }
+
+        if (onDashCooldown)
         {
             dashCooldownTimer -= Time.fixedDeltaTime;
             if (dashCooldownTimer < 0.0f)
             {
-                canDash = true;
+                onDashCooldown = false;
+            }
+
+            dashNoGravityTimer -= Time.fixedDeltaTime;
+            if (dashNoGravityTimer < 0.0f)
+            {
+                rb.useGravity = true;
+                dashNoGravityTimer = 100.0f; //para que no vuelva a entrar aqui
             }
         }
     }
@@ -37,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         if (!canMove) return;
+        if (isStunned) return;
         if (moveInput.sqrMagnitude > 0.1f)
         {
             MoveAndRotate();
@@ -44,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MoveAndRotate()
     {
-        
+        float moveSpeed = isSlowed ? slowMoveSpeed : this.moveSpeed;
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y) * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
         
@@ -56,16 +104,24 @@ public class PlayerMovement : MonoBehaviour
     public void Dash()
     {
         if (!canMove) return;
+        if (impedeExtraMoveset) return;
+        if (onDashCooldown) return;
 
-        canDash = false;
+        onDashCooldown = true;
         dashCooldownTimer = dashCooldown;
+
+
+
+        dashNoGravityTimer = dashNoGravityDuration;
+        rb.useGravity = false;
         rb.AddForce(transform.forward*dashForce, ForceMode.Impulse);
         Debug.Log("Dash");
     }
     public void Jump()
     {
         if (!canMove) return;
-        if(!IsGrounded()) return;
+        if (impedeExtraMoveset) return;
+        if (!IsGrounded()) return;
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
