@@ -20,7 +20,7 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
 
         });
     }
-    public bool Interact(ItemInteraction interactorType, GameObject interactor)
+    public bool Interact(ItemNames interactorType, GameObject interactor)
     {
 
         ItemInScene itemInScene = interactor.GetComponent<ItemInScene>();

@@ -8,13 +8,39 @@ public class ItemInScene : MonoBehaviour
     [SerializeField, ReadOnly]
     ItemType itemType; //preguntar a fran por esto
 
+    [Header("Other scripts")]
+    [SerializeField]
+    private bool useParentGrabbable = true;
+    [SerializeField, HideIf("useParentGrabbable", true)]
+    private SimpleGrabbable simpleGrabbable;
     public void GetInCart(int leftOver)
     {
         amountInStack = leftOver;
         //avisar a UI???
+        CheckStatus();
+
+    }
+    public void ReduceByMany(int amountToReduce)
+    {
+        amountInStack -= amountToReduce;
+        CheckStatus();
+    }
+    public void ReduceByOne()
+    {
+        amountInStack--;
+        CheckStatus();
+    }
+    private void CheckStatus()
+    {
         if (amountInStack > 0) return;
-        Debug.Log("Item "+ gameObject.name+ " getting in cart");
-        GetComponent<SimpleGrabbable>()?.Drop();
+        Debug.Log("Item " + gameObject.name + " getting in cart");
+        GetGrabbable()?.Drop();
+
         Destroy(gameObject);
+    }
+    private IGrabbable GetGrabbable()
+    {
+        if (!useParentGrabbable) return simpleGrabbable;
+        return GetComponentInParent<IGrabbable>();
     }
 }
