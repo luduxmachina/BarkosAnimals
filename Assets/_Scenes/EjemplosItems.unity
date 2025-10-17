@@ -782,6 +782,7 @@ GameObject:
   - component: {fileID: 642116046}
   - component: {fileID: 642116045}
   - component: {fileID: 642116044}
+  - component: {fileID: 642116051}
   m_Layer: 0
   m_Name: ItemGenericoHijo
   m_TagString: Item
@@ -945,6 +946,21 @@ Transform:
   - {fileID: 365286187}
   m_Father: {fileID: 1527186720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &642116051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642116043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cee5c2088a9b74408a4f2052b282580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 1
+  parentColor: {r: 1, g: 0, b: 0, a: 1}
+  sphereSize: 0.25
 --- !u!1 &729703219
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +974,7 @@ GameObject:
   - component: {fileID: 729703224}
   - component: {fileID: 729703223}
   - component: {fileID: 729703222}
+  - component: {fileID: 729703227}
   m_Layer: 0
   m_Name: ItemAlimentableHijo
   m_TagString: Item
@@ -1081,6 +1098,21 @@ Transform:
   - {fileID: 1442930876}
   m_Father: {fileID: 901222320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &729703227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729703219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cee5c2088a9b74408a4f2052b282580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 1
+  parentColor: {r: 1, g: 0, b: 0, a: 1}
+  sphereSize: 0.25
 --- !u!1 &794632485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,6 +2405,7 @@ GameObject:
   - component: {fileID: 1713022266}
   - component: {fileID: 1713022265}
   - component: {fileID: 1713022264}
+  - component: {fileID: 1713022269}
   m_Layer: 0
   m_Name: ItemSoloCogibleHijo
   m_TagString: Item
@@ -2496,6 +2529,21 @@ Transform:
   - {fileID: 532019935}
   m_Father: {fileID: 1763110504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1713022269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713022263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cee5c2088a9b74408a4f2052b282580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 1
+  parentColor: {r: 1, g: 0, b: 0, a: 1}
+  sphereSize: 0.25
 --- !u!1 &1731759573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,7 +2999,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6500814595849576980, guid: 838eb5f6469048146b53cc801a92542d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1168623760}
+    - targetCorrespondingSourceObject: {fileID: 4589637489475958362, guid: 838eb5f6469048146b53cc801a92542d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1310478787929219225}
   m_SourcePrefab: {fileID: 100100000, guid: 838eb5f6469048146b53cc801a92542d, type: 3}
+--- !u!1 &1310478787929219224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589637489475958362, guid: 838eb5f6469048146b53cc801a92542d, type: 3}
+  m_PrefabInstance: {fileID: 1310478787929219223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1310478787929219225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310478787929219224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cee5c2088a9b74408a4f2052b282580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 1
+  parentColor: {r: 1, g: 0, b: 0, a: 1}
+  sphereSize: 0.25
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
