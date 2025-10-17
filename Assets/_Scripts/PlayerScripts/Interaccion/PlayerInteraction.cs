@@ -6,6 +6,9 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
     [SerializeField] Transform posCogerObj;
 
     [SerializeField, ReadOnly] bool hasObjInHand = false;
+
+    [SerializeField] private Animator animator;
+
     [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
     IGrabbable objInHand;
     private PlayerMovement playerMovement;
@@ -62,6 +65,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
         if (grabable != null)
         {
             GrabObj(grabable);
+
             return; //se ha cogido el objeto
         }
         return; //no se ha cogido el objeto
@@ -74,6 +78,8 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
             objInHand = grabable;
             hasObjInHand = true;
+            animator.SetTrigger("Take");
+            animator.SetBool("TakeSomething", true);
             return; //se ha cogido el objeto
         }
     }

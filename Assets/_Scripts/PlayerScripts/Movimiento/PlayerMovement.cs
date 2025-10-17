@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashForce = 5f;
     [SerializeField] private float dashCooldown = 0.3f;
     [SerializeField] private float dashNoGravityDuration = 0.15f;
+    [SerializeField] private Animator animator;
     private bool onDashCooldown = false;
     private float dashCooldownTimer = 0.0f;
     private float dashNoGravityTimer = 0.0f;
@@ -89,6 +90,10 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveAndRotate();
         }
+        else
+        {
+            animator.SetTrigger("Idle");
+        }
     }
     private void MoveAndRotate()
     {
@@ -98,8 +103,8 @@ public class PlayerMovement : MonoBehaviour
         
         Quaternion targetRotation = Quaternion.LookRotation(move);
         rb.rotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        animator.SetTrigger("Walk");
         
-
     }
     public void Dash()
     {
@@ -114,7 +119,9 @@ public class PlayerMovement : MonoBehaviour
 
         dashNoGravityTimer = dashNoGravityDuration;
         rb.useGravity = false;
+        animator.SetTrigger("Dash");
         rb.AddForce(transform.forward*dashForce, ForceMode.Impulse);
+        
         Debug.Log("Dash");
     }
     public void Jump()
@@ -122,8 +129,11 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove) return;
         if (impedeExtraMoveset) return;
         if (!IsGrounded()) return;
-
+        
+        animator.SetTrigger("Jump");
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+        
     }
     private bool IsGrounded()
     {
