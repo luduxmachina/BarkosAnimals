@@ -34,6 +34,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
         }
         thisConstraint = GetComponent<ParentConstraint>();
         parentConstraint.constraintActive = false;
+        thisConstraint.constraintActive = false;
         rb = GetComponent<Rigidbody>();
         originalLayer = gameObject.layer;
     }
