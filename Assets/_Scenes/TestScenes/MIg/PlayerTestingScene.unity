@@ -1018,6 +1018,7 @@ GameObject:
   - component: {fileID: 330158171}
   - component: {fileID: 330158179}
   - component: {fileID: 330158180}
+  - component: {fileID: 330158181}
   m_Layer: 0
   m_Name: CarroInScene
   m_TagString: Item
@@ -1217,6 +1218,21 @@ ParentConstraint:
   m_Sources:
   - sourceTransform: {fileID: 104323116}
     weight: 1
+--- !u!114 &330158181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330158170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cee5c2088a9b74408a4f2052b282580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 1
+  parentColor: {r: 1, g: 0, b: 0, a: 1}
+  sphereSize: 0.5
 --- !u!1 &409375023
 GameObject:
   m_ObjectHideFlags: 0
