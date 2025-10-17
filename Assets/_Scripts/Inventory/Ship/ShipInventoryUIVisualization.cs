@@ -17,12 +17,12 @@ public class ShipInventoryUIVisualization : MonoBehaviour, IInventoryUIVisualiza
         itemSlot.GetComponent<InventorySlotManager>()?.SetInventoryData(shipData);
         
         itemSlot.GetComponent<InventorySlotManager>()?.SetThisSlotAs(id, item);
-        ItemSlots[id] = itemSlot;
+        ItemSlots.Add(itemSlot);
     }
 
     public void UpdateItemSlot(int id, InventoryItemDataObjects item)
     {
-        if (ItemSlots[id] == null)
+        if (ItemSlots.Count <= id)
         {
             AddNewItemSlot(id, item);
         }
@@ -34,6 +34,9 @@ public class ShipInventoryUIVisualization : MonoBehaviour, IInventoryUIVisualiza
     
     public void RemoveItemSlot(int id, InventoryItemDataObjects item)
     {
+        if(ItemSlots.Count > id && ItemSlots[id] != null)
+            Destroy(ItemSlots[id]);
+        
         ItemSlots.RemoveAt(id);
     }
 

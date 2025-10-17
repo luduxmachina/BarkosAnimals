@@ -73,7 +73,7 @@ public class ShipData : MonoBehaviour, IInventoryData
 
     public void EmptyInventory()
     {
-        for (int i = 0; i < shipInventory.Count; i++)
+        for (int i = shipInventory.Count - 1; i >= 0; i--)
         {
             onInventoryRemove?.Invoke(i, shipInventory[i]);
         }
@@ -104,26 +104,22 @@ public class ShipData : MonoBehaviour, IInventoryData
         {
             var item = shipInventory[i];
             
-            if (item.Name == itemName)
+            if (item.Name == itemName && item.Count < maxStackSize)
             {
-                // If this stack is full, we don't try to add them to the inventory
-                if (item.Count >= maxStackSize)
-                    continue;
-
                 // We try to add the full stack
                 if (TryAddFullAmountToStack(item, amount))
                 {
                     onInventoryAdd?.Invoke(i, item);
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
+                    Debug.Log($"Stack all the remaining items of {itemName} with id {i} into a {item.Count} stack with a maximum of {maxStackSize}");
                     return 0;
                 }
 
                 // We try to add as much as we can to the stack
-                int amountWeCanStack = maxStackSize - (item.Count + amount);
+                int amountWeCanStack = maxStackSize - item.Count;
                 if (TryAddFullAmountToStack(item, amountWeCanStack))
                 {
                     onInventoryAdd?.Invoke(i, item);
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
+                    Debug.Log($"Stack of {itemName} with id {i} is now {item.Count} with a maximum of {maxStackSize}");
                 }
 
                 amount = amount - amountWeCanStack;
@@ -163,7 +159,7 @@ public class ShipData : MonoBehaviour, IInventoryData
             shipInventory.Add(newObj);
             
             onInventoryAdd?.Invoke(shipInventory.Count - 1, newObj);
-            Debug.Log($"Added a stack of {itemName} with {amount} items");
+            Debug.Log($"Added a stack of {itemName} with id {shipInventory.Count - 1}, with {amount} items");
 
             amount = overflow;
             overflow = 0;
