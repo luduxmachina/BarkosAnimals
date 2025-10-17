@@ -26,7 +26,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
     {
         if (parentConstraint == null)
         {
-            parentConstraint = GetComponentInParent<ParentConstraint>();
+            parentConstraint = transform.parent.GetComponentInParent<ParentConstraint>();
         }
         if (parentConstraint == null)
         {
@@ -34,6 +34,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
         }
         thisConstraint = GetComponent<ParentConstraint>();
         parentConstraint.constraintActive = false;
+        thisConstraint.constraintActive = false;
         rb = GetComponent<Rigidbody>();
         originalLayer = gameObject.layer;
     }
