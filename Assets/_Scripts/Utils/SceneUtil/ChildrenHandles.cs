@@ -10,6 +10,7 @@ public class ChildrenHandles : MonoBehaviour
 {
 #if UNITY_EDITOR
     public bool showHandles = true; // Puedes activarlo/desactivarlo desde el Inspector
+    public bool hideParentHandle = true;
     [SerializeField, Range(0, 3)]
     float sphereSize = 0.5f;
     private void OnDrawGizmosSelected()
@@ -36,6 +37,14 @@ public class ChildrenHandlesEditor : Editor
 
         Transform parent = script.transform;
         if (parent.childCount == 0) return; // Si no tiene hijos, no hace nada
+        Tool previousTool = Tools.current;
+        if (script.hideParentHandle)
+        {
+            // --- Hide the main (parent) handle ---
+            // Store the original Tools state
+            //Tool previousTool = Tools.current;
+            Tools.current = Tool.None; // Disable Unity’s default handle for the parent
+        }
 
         for (int i = 0; i < parent.childCount; i++)
         {

@@ -37,15 +37,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
         rb = GetComponent<Rigidbody>();
         originalLayer = gameObject.layer;
     }
-    private void Start()
-    {
-        //Asegurarse de que el constraint esta desactivado
 
-        thisConstraint.AddSource(new ConstraintSource() { sourceTransform = parentConstraint.transform, weight = 1 });
-        thisConstraint.constraintActive = true;
-
-
-    }
     public virtual bool Grab(Transform grabbingTransform, IGrabber grabber)
     {
         //Si alguien quiere hacer comprobaciones y tal pues que lo haga heredando y eso
@@ -71,6 +63,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
         transform.position = grabbingTransform.position;
         parentConstraint.AddSource(new ConstraintSource() { sourceTransform = grabbingTransform, weight = 1 });
         parentConstraint.constraintActive = true;
+        thisConstraint.constraintActive = true;
 
 
         OnGrab?.Invoke();
@@ -89,6 +82,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
 
         parentConstraint.RemoveSource(0);
         parentConstraint.constraintActive = false;
+        thisConstraint.constraintActive = false;
         rb.excludeLayers = 0;
         gameObject.layer = originalLayer;
 
