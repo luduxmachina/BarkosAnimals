@@ -1,46 +1,62 @@
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Quota
-{
-    int quotaValue;
-    Dictionary<AnimalType, int> animals = new Dictionary<AnimalType, int>();
-
-    public Quota(int level)
-    {
-
-    }
-
-}
-
 public class QuotaChecker
 {
-    public QuotaChecker()
-    {
+    Quota quota;
 
-    }
+    Quota quotaPassed = new Quota();
 
-    Dictionary <string, int> animalValues = new Dictionary<string, int>()
+    Dictionary<AnimalType, int> animalValues = new Dictionary<AnimalType, int>()
     {
-        {"Duck", 50},
-        {"Snake", 100},
-        {"Pangolin", 80},
+        {AnimalType.Duck, 50 },
+        {AnimalType.Pangolin, 100},
+        {AnimalType.Snake, 200},
     };
 
-    public void GenerateCuote(int level)
-    {
+    bool isQuotaPass = false;
 
+    public Quota GenerateCuote(int level)
+    {
+        quota = new Quota(level);
+
+        return quota;
     }
 
-    public void NewCuote()
+    public void CheckCuote(AnimalType animal, int number)
     {
+        quotaPassed.AddPoints(animalValues[animal]);
+        
+        switch (animal)
+        {
+            case AnimalType.Duck:
+                quotaPassed.AddRestictionPassed(Restriction.Duck, number);
+                quotaPassed.AddRestictionPassed(Restriction.Herbivore, number);
 
+                break;
+
+            case AnimalType.Pangolin:
+                quotaPassed.AddRestictionPassed(Restriction.Herbivore, number);
+
+                break;
+
+
+            case AnimalType.Snake:
+                quotaPassed.AddRestictionPassed(Restriction.Carnivore, number);
+                break;
+
+            default:
+                break;
+        }
+
+
+        this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);        
     }
 
-    public void CheckCuote()
+    public bool IsQuotaPass()
     {
-
+        return isQuotaPass;
     }
 }
