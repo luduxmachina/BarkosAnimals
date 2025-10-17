@@ -12,6 +12,8 @@ public class ObjectTypes
     
     [field: SerializeField] public GameObject Prefab { get; private set; }
     
+    [field: SerializeField] public Sprite ItemImage { get; private set; }
+    
     [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; }
      
     [field: SerializeField] public bool IsAnimal { get; private set; }

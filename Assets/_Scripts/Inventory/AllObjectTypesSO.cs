@@ -23,10 +23,10 @@ public class AllObjectTypesSO : ScriptableObject
             string duplicateNames = string.Join(", ", duplicates);
             Debug.LogWarning($"[AllObjectTypesSO] Hay objetos duplicados: {duplicateNames}", this);
 
-            // Opcional: eliminar duplicados automáticamente
+            // Opcional: eliminar duplicados automï¿½ticamente
             // itemsData = itemsData.GroupBy(i => i.Name).Select(g => g.First()).ToList();
 
-            // También puedes marcar el asset como "dirty" si haces cambios:
+            // Tambiï¿½n puedes marcar el asset como "dirty" si haces cambios:
             // EditorUtility.SetDirty(this);
         }
     }
@@ -45,6 +45,7 @@ public class AllObjectTypesSO : ScriptableObject
 
     public ItemType GetItemType(ItemNames itemName) => FindItem(itemName).Type;
     public GameObject GetObjectPrefab(ItemNames itemName) => FindItem(itemName).Prefab;
+    public Sprite GetSprite(ItemNames itemName) => FindItem(itemName).ItemImage;
     public int GetObjectMaxStackSize(ItemNames itemName) => FindItem(itemName).MaxStackSize;
     public bool GetIsAnimal(ItemNames itemName) => FindItem(itemName).IsAnimal;
     public bool GetIsCarnivore(ItemNames itemName) => FindItem(itemName).IsCarnivore;
