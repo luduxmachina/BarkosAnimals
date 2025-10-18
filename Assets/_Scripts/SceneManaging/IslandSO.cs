@@ -33,6 +33,7 @@ public class Archipelago
 public struct PreviewInfo
 {
     public Sprite previewImage;
+    public Sprite[] animalesDeLaIsla;
 }
 [CreateAssetMenu(fileName = "Island", menuName = "ScriptableObjects/IslandSO", order = 1)]
 public class IslandSO : ScriptableObject
@@ -50,29 +51,12 @@ public class IslandSO : ScriptableObject
 
     public void SyncData()
     {
-        islandSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(IslandScene));
+        islandSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(IslandScene));
             EditorUtility.SetDirty(this);
 
 
     }
 
-    public int ForceGetIndexOf(string scenePath)
-    {
-        int buildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
-        if (buildIndex < 0)  //si la escena no esta en la lista se añade
-        {
-
-            var newScene = new EditorBuildSettingsScene(scenePath, true);
-            EditorBuildSettingsScene[] existingScenes = EditorBuildSettings.scenes;
-
-            var updatedScenes = new EditorBuildSettingsScene[existingScenes.Length + 1];
-            existingScenes.CopyTo(updatedScenes, 0);
-            updatedScenes[existingScenes.Length] = newScene;
-            EditorBuildSettings.scenes = updatedScenes;
-            buildIndex = existingScenes.Length; // El nuevo índice será el último
-        }
-        return buildIndex;
-    }
 
 #endif
 

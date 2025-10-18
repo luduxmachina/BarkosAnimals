@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1220ab56c477883489acc1dd8f981cc3, type: 3}
   m_Name: Nivel
   m_EditorClassIdentifier: 
-  nombreNivel: 
+  nombreNivel: NivelPruebaDefault
   useDefaultSelectionPhaseScene: 0
   useDefaultIslands: 0
   useDefaultBoatPhaseScene: 0
@@ -21,9 +21,7 @@ MonoBehaviour:
   archipelagos:
   - islands:
     - {fileID: 11400000, guid: 221bcfa3cf668544c86f4015eab517ba, type: 2}
-    - {fileID: 11400000, guid: 04ffc859f26710e4a8e4b5db56e58d94, type: 2}
-    - {fileID: 0}
-    numberOfIslands: 2
+    numberOfIslands: 1
   - islands:
     - {fileID: 11400000, guid: 04ffc859f26710e4a8e4b5db56e58d94, type: 2}
     - {fileID: 0}
@@ -38,5 +36,4 @@ MonoBehaviour:
   boatPhaseSceneIndex: 2
   quotaSceneIndex: 13
   numberOfArchipelagos: 2
-  quotaInfo:
-    totalQuota: 0
+  useAutomaticQuota: 1

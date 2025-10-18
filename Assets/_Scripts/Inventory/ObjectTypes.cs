@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.Internal;
 
@@ -10,6 +11,8 @@ public class ObjectTypes
     [field: SerializeField] public ItemType Type { get; private set; }
     
     [field: SerializeField] public GameObject Prefab { get; private set; }
+    
+    [field: SerializeField] public Sprite ItemImage { get; private set; }
     
     [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; }
      
@@ -39,6 +42,11 @@ public class ObjectTypes
         IsAnimal = isAnimal;
         IsCarnivore = isCarnivore;
         IsFood = isFood;
+    }
+
+    public override string ToString()
+    {
+        return Name.ToString();
     }
 }
 

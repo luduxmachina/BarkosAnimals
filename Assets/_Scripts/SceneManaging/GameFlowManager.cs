@@ -1,5 +1,9 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public enum LevelPhases
 {
     SelectionPhase,
@@ -15,6 +19,15 @@ public enum GameModes //esto es criminal y está hecho con spaghetti, todo lo que
 }
 public class GameFlowManager : MonoBehaviour
 {
+    public static GameFlowManager instance;
+    public QuotaChecker quotaChecker;
+
+#if UNITY_EDITOR
+    public SceneAsset mainMenuScene;
+#endif
+    [SerializeField, HideInInspector]
+    private int mainMenuSceneIndex = 0;
+
     [Header("Levels to play")]
     [SerializeField]
     private NivelSO defaultLevel;
@@ -32,20 +45,24 @@ public class GameFlowManager : MonoBehaviour
     public int currentLevelIndex = 0;
 
     [Header("CurrentLvl Info")]
-    public QuotaInfo currentQuotaInfo;
     public LevelPhases currentPhase;
     public int currentArchipelago = 0;
     public int lastSelectedIsland = 0;
 
     private NivelSO[] levelsPlaying;
 
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuSceneIndex);
+    }
+
     public void Lose() //no se quien quiera hacer perder al player
     {
-        //ir al menu principal
+        GoToMainMenu();
     }
     public void Win()
     {
-        // ir a algo de victoria
+        GoToMainMenu();
     }
     public void StartTutorialGame()
     {
@@ -106,13 +123,15 @@ public class GameFlowManager : MonoBehaviour
             }
         }
         currentLevel = levelsPlaying[index];
+        SetNewQuota();
+
+
 
         if (gameMode == GameModes.SIOBQ)
             currentPhase = LevelPhases.SelectionPhase;
         else
             currentPhase = LevelPhases.IslandPhase;
 
-        currentQuotaInfo = currentLevel.quotaInfo;
         currentArchipelago = 0;
         LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, 0);
     }
@@ -280,13 +299,40 @@ public class GameFlowManager : MonoBehaviour
     }
     private bool CheckQuotaFlag()
     {
-        return true; //pasa la quota al siguiente nivel
+        return quotaChecker.IsQuotaPass();
     }
+    private void SetNewQuota()
+    {
+        //avisar aqui al quotachecker 
+        if (currentLevel.useAutomaticQuota)
+        {
+            quotaChecker.GenerateCuote(currentLevelIndex);
+        }
+        else
+        {
+            quotaChecker.GenerateCuote(currentLevel.quotaInfo);
+        }
 
-
+    }
     private void Awake()
     {
+        instance = this;
+        quotaChecker = new QuotaChecker();
         DontDestroyOnLoad(this.gameObject);
 
+    }
+    private void OnValidate()
+    {
+#if UNITY_EDITOR
+        if (mainMenuScene != null)
+        {
+            int tempMainMenuSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(mainMenuScene));
+            if (tempMainMenuSceneIndex != mainMenuSceneIndex)
+            {
+                mainMenuSceneIndex = tempMainMenuSceneIndex;
+                EditorUtility.SetDirty(this);
+            }
+        }
+#endif
     }
 }

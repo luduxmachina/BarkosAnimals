@@ -9,13 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-[Serializable]
-public struct QuotaInfo
-{
-    [SerializeField]
-    public int totalQuota;
 
-}
 [CreateAssetMenu(fileName = "Nivel", menuName = "ScriptableObjects/NivelSO", order = 1)]
 public class NivelSO : ScriptableObject
 {
@@ -49,7 +43,9 @@ public class NivelSO : ScriptableObject
     public int quotaSceneIndex;
     public int numberOfArchipelagos = 0;
     [Space]
-    public QuotaInfo quotaInfo;
+    public bool useAutomaticQuota = true;
+    [HideIf("useAutomaticQuota")]
+    public Quota quotaInfo;
 
 #if UNITY_EDITOR
     private void SyncData()
@@ -64,10 +60,10 @@ public class NivelSO : ScriptableObject
 
 
         }
-        selectionPhaseSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(SelectionPhaseScene));
-        organizationPhaseSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(OrganizationPhaseScene));
-        boatPhaseSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(BoatPhaseScene));
-        quotaSceneIndex = ForceGetIndexOf(AssetDatabase.GetAssetPath(QuotaScene));
+        selectionPhaseSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(SelectionPhaseScene));
+        organizationPhaseSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(OrganizationPhaseScene));
+        boatPhaseSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(BoatPhaseScene));
+        quotaSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(QuotaScene));
         if(!useDefaultIslands){
 
             numberOfArchipelagos = archipelagos.Count;
@@ -80,23 +76,7 @@ public class NivelSO : ScriptableObject
 
     }
    
-      public int ForceGetIndexOf(string scenePath)
-    {
-        int buildIndex = SceneUtility.GetBuildIndexByScenePath(scenePath);
-        if (buildIndex < 0)  //si la escena no esta en la lista se añade
-        {
-
-            var newScene = new EditorBuildSettingsScene(scenePath, true);
-            EditorBuildSettingsScene[] existingScenes = EditorBuildSettings.scenes;
-
-            var updatedScenes = new EditorBuildSettingsScene[existingScenes.Length + 1];
-            existingScenes.CopyTo(updatedScenes, 0);
-            updatedScenes[existingScenes.Length] = newScene;
-            EditorBuildSettings.scenes = updatedScenes;
-            buildIndex = existingScenes.Length; // El nuevo índice será el último
-        }
-        return buildIndex;
-    }
+  
     public void OnValidate()
     {
         SyncData();
