@@ -11,4 +11,9 @@ public class StartGame : MonoBehaviour
     {
         GameFlowManager.instance.StartNormalGame();
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

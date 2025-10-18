@@ -300,11 +300,6 @@ public class GameFlowManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
         instance = this;
         quotaChecker = new QuotaChecker();
         DontDestroyOnLoad(this.gameObject);

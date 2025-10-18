@@ -240,6 +240,158 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &73896668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5970770400358555910, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+  m_PrefabInstance: {fileID: 6991722789844276481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ee636852a672647a3179a2e7530af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &552625237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 552625240}
+  - component: {fileID: 552625239}
+  - component: {fileID: 552625238}
+  m_Layer: 0
+  m_Name: GameFlowManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &552625238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552625237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204f4a13a8fa3bd44a337a45a4320a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  on0Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 552625239}
+        m_TargetAssemblyTypeName: GameFlowManager, Assembly-CSharp
+        m_MethodName: NextPhase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  on1Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 552625239}
+        m_TargetAssemblyTypeName: GameFlowManager, Assembly-CSharp
+        m_MethodName: Lose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  on2Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 552625239}
+        m_TargetAssemblyTypeName: GameFlowManager, Assembly-CSharp
+        m_MethodName: ChooseIsland
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  on3Pressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 552625239}
+        m_TargetAssemblyTypeName: GameFlowManager, Assembly-CSharp
+        m_MethodName: ChooseIsland
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  on4Pressed:
+    m_PersistentCalls:
+      m_Calls: []
+  on5Pressed:
+    m_PersistentCalls:
+      m_Calls: []
+  on6Pressed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &552625239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552625237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e1635c1e4fe7a47952d423c5b57735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultLevel: {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
+  tutorialLevels:
+  - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
+  - {fileID: 11400000, guid: 39534f8181360744385a7f039be00e6a, type: 2}
+  otherLevels: []
+  infiniteMode: 0
+  gameMode: 0
+  currentLevel: {fileID: 0}
+  currentLevelIndex: 0
+  currentPhase: 0
+  currentArchipelago: 0
+  lastSelectedIsland: 0
+--- !u!4 &552625240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552625237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789292904
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +1109,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2720028108108032546, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720028108108032546, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720028108108032546, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 73896668}
+    - target: {fileID: 2720028108108032546, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720028108108032546, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720028108108032546, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StartGame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720028108108032546, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9128577585127105638, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
       propertyPath: m_Name
       value: MainMenu
@@ -978,3 +1158,4 @@ SceneRoots:
   - {fileID: 947281788}
   - {fileID: 3435390524881161179}
   - {fileID: 6991722789844276481}
+  - {fileID: 552625240}

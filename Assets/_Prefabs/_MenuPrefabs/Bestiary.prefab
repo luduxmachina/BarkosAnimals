@@ -798,13 +798,14 @@ GameObject:
   - component: {fileID: 4434798190536257257}
   - component: {fileID: 6050872019500538479}
   - component: {fileID: 2930144833066452588}
+  - component: {fileID: 2006794531631368566}
   m_Layer: 5
   m_Name: Bestiary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5792023346734023142
 RectTransform:
   m_ObjectHideFlags: 0
@@ -940,6 +941,19 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!114 &2006794531631368566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3479027514129306488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c0a8f60d6d7ef45a41a21fa8f64a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &4186870069434730207
 GameObject:
   m_ObjectHideFlags: 0

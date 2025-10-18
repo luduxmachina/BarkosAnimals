@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8413748558227513132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3754145915371535291}
+        m_TargetAssemblyTypeName: MenuPause, Assembly-CSharp
+        m_MethodName: ExitToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2527331750228716519
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +534,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6473853262047507267}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3754145915371535291}
+        m_TargetAssemblyTypeName: MenuPause, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7386151259092592674
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +833,7 @@ GameObject:
   - component: {fileID: 6155619072818046084}
   - component: {fileID: 6253448327621760045}
   - component: {fileID: 107861451996732130}
+  - component: {fileID: 1232622382015480319}
   m_Layer: 5
   m_Name: PauseUI
   m_TagString: Untagged
@@ -948,6 +973,19 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!114 &1232622382015480319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7894681897370460706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c0a8f60d6d7ef45a41a21fa8f64a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &8051016393554527271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2336509758508425979}
+  - component: {fileID: 3754145915371535291}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1263,6 +1302,22 @@ Transform:
   - {fileID: 6359794571383039265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3754145915371535291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209050532430464108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72ae9b57b3919a4eb678bac67aec864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  PausaMenuUI: {fileID: 7894681897370460706}
+  Bestiary: {fileID: 7371110250875130576}
+  Options: {fileID: 2750225818179795718}
 --- !u!1001 &6200485471317639592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,10 +1333,6 @@ PrefabInstance:
     - target: {fileID: 3479027514129306488, guid: 817f6ad1fb8045040a1e327e0124271f, type: 3}
       propertyPath: m_Name
       value: Bestiary
-      objectReference: {fileID: 0}
-    - target: {fileID: 3479027514129306488, guid: 817f6ad1fb8045040a1e327e0124271f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5792023346734023142, guid: 817f6ad1fb8045040a1e327e0124271f, type: 3}
       propertyPath: m_Pivot.x
@@ -1390,14 +1441,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7894681897370460706}
-    - target: {fileID: 1908229270002085924, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1908229270002085924, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2773391533039968849, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1481,42 +1524,6 @@ PrefabInstance:
     - target: {fileID: 6347072017969511542, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
       propertyPath: m_Name
       value: Options
-      objectReference: {fileID: 0}
-    - target: {fileID: 6347072017969511542, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6678312687878176351, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6678312687878176351, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6678312687878176351, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6755744443943653258, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.49995
-      objectReference: {fileID: 0}
-    - target: {fileID: 6755744443943653258, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8151676357001124433, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.49995
-      objectReference: {fileID: 0}
-    - target: {fileID: 8151676357001124433, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8151676357001124433, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.49995
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
