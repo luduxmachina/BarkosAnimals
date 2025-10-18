@@ -4,6 +4,8 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
 {
     [SerializeField]
     CartData cartData;
+    [SerializeField]
+    GameObject cartUI;
     void Awake()
     {
         SimpleGrabbable grabbable = GetComponent<SimpleGrabbable>();
@@ -19,6 +21,10 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
             grabbable.currentGrabber.gameObject.GetComponent<PlayerMovement>()?.RemoveSlow();
 
         });
+    }
+    void Start()
+    {
+        cartUI.SetActive(false); //por si acaso
     }
     public bool Interact(ItemNames interactorType, GameObject interactor)
     {
@@ -42,7 +48,8 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
 
     public void OpenCartUI()
     {
-        //El input debe cambiar y tal, hacerlo en otra clase desd aqui la llamo
+        cartUI.SetActive(true);
+
     }
     public int AddItemToCartInventory(ItemInScene interactor)
     {
