@@ -1,5 +1,9 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public enum LevelPhases
 {
     SelectionPhase,
@@ -17,6 +21,13 @@ public class GameFlowManager : MonoBehaviour
 {
     public static GameFlowManager instance;
     public QuotaChecker quotaChecker;
+
+#if UNITY_EDITOR
+    public SceneAsset mainMenuScene;
+#endif
+    [SerializeField, HideInInspector]
+    private int mainMenuSceneIndex = 0;
+
     [Header("Levels to play")]
     [SerializeField]
     private NivelSO defaultLevel;
@@ -40,13 +51,18 @@ public class GameFlowManager : MonoBehaviour
 
     private NivelSO[] levelsPlaying;
 
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuSceneIndex);
+    }
+
     public void Lose() //no se quien quiera hacer perder al player
     {
-        //ir al menu principal
+        GoToMainMenu();
     }
     public void Win()
     {
-        // ir a algo de victoria? 
+        GoToMainMenu();
     }
     public void StartTutorialGame()
     {
@@ -304,5 +320,19 @@ public class GameFlowManager : MonoBehaviour
         quotaChecker = new QuotaChecker();
         DontDestroyOnLoad(this.gameObject);
 
+    }
+    private void OnValidate()
+    {
+#if UNITY_EDITOR
+        if (mainMenuScene != null)
+        {
+            int tempMainMenuSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(mainMenuScene));
+            if (tempMainMenuSceneIndex != mainMenuSceneIndex)
+            {
+                mainMenuSceneIndex = tempMainMenuSceneIndex;
+                EditorUtility.SetDirty(this);
+            }
+        }
+#endif
     }
 }
