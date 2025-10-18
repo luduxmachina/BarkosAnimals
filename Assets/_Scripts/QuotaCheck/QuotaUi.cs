@@ -11,6 +11,8 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface
 
     TextMeshProUGUI textoQuota;
 
+    TextMeshProUGUI[] texts;
+
     string cuotaPassText = "___";
     string cuotaText = "___";
 
@@ -24,7 +26,17 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface
 
     private void Start()
     {
-        textoQuota = GetComponent<TextMeshProUGUI>();
+        texts = GetComponentsInChildren<TextMeshProUGUI>();
+
+        foreach (TextMeshProUGUI text in texts)
+        {
+            if (text.text == "")
+            {
+                textoQuota = text;
+                break;
+            }
+        }
+
         SetQuota();
         GameFlowManager.instance.quotaChecker.AddNewUI(this);
     }
@@ -35,7 +47,7 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface
         int numImage = 0;
         if (quota.Restrictions[Restriction.Herbivore] > 0)
         {
-            imageHerbivore.GetComponent<GameObject>().SetActive(true);
+            imageHerbivore.gameObject.SetActive(true);
             imageHerbivore.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
             numImage++;
         }
