@@ -7,6 +7,8 @@ public class ShipData : MonoBehaviour, IInventoryData
 {
     [SerializeField]
     private AllObjectTypesSO allItemsDataBase;
+    [SerializeField]
+    private ShipInventorySO shipInventoryDataBase;
     
     private List<InventoryItemDataObjects> shipInventory = new();
     
@@ -23,6 +25,11 @@ public class ShipData : MonoBehaviour, IInventoryData
         // 
         // if (Input.GetKeyDown(KeyCode.R))
         //     EmptyInventory();
+    }
+
+    private void Start()
+    {
+        shipInventory = shipInventoryDataBase.GetAllStacks();
     }
 
     public int TryStackItem(ItemNames itemName, int amount)
@@ -65,6 +72,7 @@ public class ShipData : MonoBehaviour, IInventoryData
             return null;
 
         InventoryItemDataObjects objectToExtract = GetInventoryObjectByIndex(id);
+        RemoveItemFromDB(objectToExtract);
         onInventoryRemove.Invoke(id, objectToExtract);
         shipInventory.RemoveAt(id);
         
@@ -75,9 +83,11 @@ public class ShipData : MonoBehaviour, IInventoryData
     {
         for (int i = shipInventory.Count - 1; i >= 0; i--)
         {
+            
             onInventoryRemove?.Invoke(i, shipInventory[i]);
         }
-        
+
+        EmptyDB();
         Debug.Log("Ship inventory cleared");
         shipInventory.Clear();
     }
@@ -109,6 +119,7 @@ public class ShipData : MonoBehaviour, IInventoryData
                 // We try to add the full stack
                 if (TryAddFullAmountToStack(item, amount))
                 {
+                    AddItemsToDB(itemName, amount);
                     onInventoryAdd?.Invoke(i, item);
                     Debug.Log($"Stack all the remaining items of {itemName} with id {i} into a {item.Count} stack with a maximum of {maxStackSize}");
                     return 0;
@@ -118,6 +129,7 @@ public class ShipData : MonoBehaviour, IInventoryData
                 int amountWeCanStack = maxStackSize - item.Count;
                 if (TryAddFullAmountToStack(item, amountWeCanStack))
                 {
+                    AddItemsToDB(itemName, amountWeCanStack);
                     onInventoryAdd?.Invoke(i, item);
                     Debug.Log($"Stack of {itemName} with id {i} is now {item.Count} with a maximum of {maxStackSize}");
                 }
@@ -157,6 +169,7 @@ public class ShipData : MonoBehaviour, IInventoryData
         {
             InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount);
             shipInventory.Add(newObj);
+            AddItemsToDB(newObj);
             
             onInventoryAdd?.Invoke(shipInventory.Count - 1, newObj);
             Debug.Log($"Added a stack of {itemName} with id {shipInventory.Count - 1}, with {amount} items");
@@ -170,4 +183,9 @@ public class ShipData : MonoBehaviour, IInventoryData
             }
         }
     }
+
+    private void AddItemsToDB(ItemNames itemName, int amount) => shipInventoryDataBase.AddToInventory(itemName, amount);
+    private void AddItemsToDB(InventoryItemDataObjects itemToAdd) => shipInventoryDataBase.AddToInventory(itemToAdd);
+    private void RemoveItemFromDB(InventoryItemDataObjects objectToExtract) => shipInventoryDataBase.ExtractAStackOf(objectToExtract);
+    private void EmptyDB() => shipInventoryDataBase.EmptyInventory();
 }
