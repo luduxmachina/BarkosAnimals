@@ -19,6 +19,12 @@ public class QuotaChecker
 
     bool isQuotaPass = false;
 
+    private List<QuotaUiInterface> quotaUIs = new List<QuotaUiInterface>();
+    public void AddNewUI (QuotaUiInterface quotaUi)
+    {
+        quotaUIs.Add(quotaUi);
+    }
+
 
     /// <summary>
     /// This function set a new value for Quota
@@ -42,6 +48,12 @@ public class QuotaChecker
         quota = new Quota(level);
         return quota;
     }
+
+    /// <summary>
+    /// Returns the value of the actual quota.
+    /// </summary>
+    /// <returns></returns>
+    public Quota GetQuota() { return quota; }
 
     /// <summary>
     /// This function updates the state of the quote with the data provided. Is espected to receve a type of animal and the number of that animal obtained.
@@ -74,8 +86,12 @@ public class QuotaChecker
                 break;
         }
 
+        this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);
 
-        this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);        
+        foreach (var item in quotaUIs)
+        {
+            item.UpdateQuotaPassed(quotaPassed, isQuotaPass);
+        }
     }
 
     /// <summary>

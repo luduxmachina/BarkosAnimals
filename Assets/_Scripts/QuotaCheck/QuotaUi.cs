@@ -5,13 +5,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuotaUi : MonoBehaviour
+public class QuotaUi : MonoBehaviour, QuotaUiInterface
 {
     GameFlowManager gameFlowManager;
 
     TextMeshProUGUI textoQuota;
 
-    string texto = "___0/___0";
+    string cuotaPassText = "___";
+    string cuotaText = "___";
 
     Quota quota;
 
@@ -25,11 +26,12 @@ public class QuotaUi : MonoBehaviour
     {
         textoQuota = GetComponent<TextMeshProUGUI>();
         SetQuota();
+        GameFlowManager.instance.quotaChecker.AddNewUI(this);
     }
 
     void SetQuota()
     {
-        //quota = GameFlowManager.instance;
+        quota = GameFlowManager.instance.quotaChecker.GetQuota();
         int numImage = 0;
         if (quota.Restrictions[Restriction.Herbivore] > 0)
         {
@@ -38,9 +40,22 @@ public class QuotaUi : MonoBehaviour
             numImage++;
         }
 
-        texto = $"___0/{quota.QuotaValue}";
+        cuotaText = quota.QuotaValue.ToString();
 
+        textoQuota.text = $"{cuotaPassText}/{cuotaText}";
     }
 
-
+    public void UpdateQuotaPassed(Quota quotaPassed, bool isQuotaPassed)
+    {
+        this.cuotaPassText = quota.QuotaValue.ToString();
+        textoQuota.text = $"{cuotaPassText}/{cuotaText}";
+        if (isQuotaPassed)
+        {
+            textoQuota.color = Color.green;
+        }
+        else
+        {
+            textoQuota.color = Color.black;
+        }
+    }
 }
