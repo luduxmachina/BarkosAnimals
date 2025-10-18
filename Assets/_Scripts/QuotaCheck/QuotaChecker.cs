@@ -24,10 +24,18 @@ public class QuotaChecker
     /// </summary>
     /// <param name="level"></param>
     /// <returns></returns>
+    /// 
+
+    public Quota GenerateCuote(Quota quota)
+    {
+        this.quota = quota;
+        return quota;
+    }
+
+
     public Quota GenerateCuote(int level)
     {
         quota = new Quota(level);
-
         return quota;
     }
 

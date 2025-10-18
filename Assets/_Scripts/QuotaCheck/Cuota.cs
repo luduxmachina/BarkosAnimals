@@ -16,6 +16,9 @@ public class Quota
 
     Dictionary<Restriction, int> restrictions;
 
+    public int QuotaValue { get; set; } = 0;
+    public Dictionary<Restriction, int> Restrictions { get; set; }
+
     public Quota()
     {
         restrictions = new Dictionary<Restriction, int>();
