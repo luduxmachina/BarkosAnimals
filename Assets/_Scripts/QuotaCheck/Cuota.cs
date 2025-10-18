@@ -4,9 +4,7 @@ using UnityEngine;
 
 public enum Restriction
 {
-    Herbivore,
-    Carnivore,
-    Duck
+    Herbivore
 }
 
 

@@ -19,20 +19,24 @@ public class QuotaChecker
 
     bool isQuotaPass = false;
 
-    /// <summary>
-    /// Create a new value for quota.
-    /// </summary>
-    /// <param name="level"></param>
-    /// <returns></returns>
-    /// 
 
+    /// <summary>
+    /// This function set a new value for Quota
+    /// </summary>
+    /// <param name="quota"></param>
+    /// <returns></returns>
     public Quota GenerateCuote(Quota quota)
     {
         this.quota = quota;
         return quota;
     }
 
-
+    /// <summary>
+    /// Create a new value for quota.
+    /// </summary>
+    /// <param name="level"></param>
+    /// <returns></returns>
+    /// 
     public Quota GenerateCuote(int level)
     {
         quota = new Quota(level);
@@ -51,7 +55,7 @@ public class QuotaChecker
         switch (animal)
         {
             case AnimalType.Duck:
-                quotaPassed.AddRestictionPassed(Restriction.Duck, number);
+                //quotaPassed.AddRestictionPassed(Restriction.Duck, number);
                 quotaPassed.AddRestictionPassed(Restriction.Herbivore, number);
 
                 break;
@@ -63,7 +67,7 @@ public class QuotaChecker
 
 
             case AnimalType.Snake:
-                quotaPassed.AddRestictionPassed(Restriction.Carnivore, number);
+                //quotaPassed.AddRestictionPassed(Restriction.Carnivore, number);
                 break;
 
             default:

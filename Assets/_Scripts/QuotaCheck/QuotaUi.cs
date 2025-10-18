@@ -11,33 +11,36 @@ public class QuotaUi : MonoBehaviour
 
     TextMeshProUGUI textoQuota;
 
+    string texto = "___0/___0";
+
     Quota quota;
 
     public int height = 30;
 
     [SerializeField]
-    List<Image> imageList = new List<Image>();
+    //List<Image> imageList = new List<Image>();
+    Image imageHerbivore;
 
     private void Start()
     {
         textoQuota = GetComponent<TextMeshProUGUI>();
         SetQuota();
-        quota = new Quota(1);
     }
 
     void SetQuota()
     {
-        //quota = gameFlowManager.currentQuotaInfo;
+        //quota = GameFlowManager.instance;
         int numImage = 0;
-        foreach (Restriction restriction in Enum.GetValues(typeof(Restriction)))
+        if (quota.Restrictions[Restriction.Herbivore] > 0)
         {
-            if (quota.Restrictions[restriction] > 0)
-            {
-                //images[restriction].GetComponent<GameObject>().SetActive(true);
-                //images[restriction].GetComponent<RectTransform>().anchoredPosition -= new Vector2 (0, numImage * height);
-                //numImage++;
-            }
-        }        
+            imageHerbivore.GetComponent<GameObject>().SetActive(true);
+            imageHerbivore.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
+            numImage++;
+        }
+
+        texto = $"___0/{quota.QuotaValue}";
 
     }
+
+
 }
