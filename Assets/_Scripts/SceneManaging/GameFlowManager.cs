@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public enum LevelPhases
 {
     SelectionPhase,
@@ -40,13 +41,18 @@ public class GameFlowManager : MonoBehaviour
 
     private NivelSO[] levelsPlaying;
 
+    public void GoToMainMenu()
+    {
+
+    }
+
     public void Lose() //no se quien quiera hacer perder al player
     {
-        //ir al menu principal
+        GoToMainMenu();
     }
     public void Win()
     {
-        // ir a algo de victoria? 
+        GoToMainMenu();
     }
     public void StartTutorialGame()
     {
@@ -300,11 +306,6 @@ public class GameFlowManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
         instance = this;
         quotaChecker = new QuotaChecker();
         DontDestroyOnLoad(this.gameObject);
