@@ -9,13 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-[Serializable]
-public struct QuotaInfo
-{
-    [SerializeField]
-    public int totalQuota;
 
-}
 [CreateAssetMenu(fileName = "Nivel", menuName = "ScriptableObjects/NivelSO", order = 1)]
 public class NivelSO : ScriptableObject
 {
@@ -49,7 +43,9 @@ public class NivelSO : ScriptableObject
     public int quotaSceneIndex;
     public int numberOfArchipelagos = 0;
     [Space]
-    public QuotaInfo quotaInfo;
+    public bool useAutomaticQuota = true;
+    [HideIf("useAutomaticQuota")]
+    public Quota quotaInfo;
 
 #if UNITY_EDITOR
     private void SyncData()

@@ -16,6 +16,7 @@ public enum GameModes //esto es criminal y está hecho con spaghetti, todo lo que
 public class GameFlowManager : MonoBehaviour
 {
     public static GameFlowManager instance;
+    public QuotaChecker quotaChecker;
     [Header("Levels to play")]
     [SerializeField]
     private NivelSO defaultLevel;
@@ -33,7 +34,6 @@ public class GameFlowManager : MonoBehaviour
     public int currentLevelIndex = 0;
 
     [Header("CurrentLvl Info")]
-    public QuotaInfo currentQuotaInfo;
     public LevelPhases currentPhase;
     public int currentArchipelago = 0;
     public int lastSelectedIsland = 0;
@@ -107,13 +107,15 @@ public class GameFlowManager : MonoBehaviour
             }
         }
         currentLevel = levelsPlaying[index];
+        SetNewQuota();
+
+
 
         if (gameMode == GameModes.SIOBQ)
             currentPhase = LevelPhases.SelectionPhase;
         else
             currentPhase = LevelPhases.IslandPhase;
 
-        currentQuotaInfo = currentLevel.quotaInfo;
         currentArchipelago = 0;
         LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, 0);
     }
@@ -281,10 +283,21 @@ public class GameFlowManager : MonoBehaviour
     }
     private bool CheckQuotaFlag()
     {
-        return true; //pasa la quota al siguiente nivel
+        return quotaChecker.IsQuotaPass();
     }
+    private void SetNewQuota()
+    {
+        //avisar aqui al quotachecker 
+        if (currentLevel.useAutomaticQuota)
+        {
+            quotaChecker.GenerateCuote(currentLevelIndex);
+        }
+        else
+        {
+            quotaChecker.GenerateCuote(currentLevel.quotaInfo);
+        }
 
-
+    }
     private void Awake()
     {
         if(instance != null && instance != this)
@@ -292,6 +305,8 @@ public class GameFlowManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+        instance = this;
+        quotaChecker = new QuotaChecker();
         DontDestroyOnLoad(this.gameObject);
 
     }
