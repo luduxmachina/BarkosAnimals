@@ -44,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
         if (interactable != null)
         {
     
-            bool interacted = interactable.OnPlayerInteraction();
+            bool interacted = interactable.OnPlayerInteraction(gameObject);
 
 
             return interacted;
@@ -64,14 +64,15 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
         IGrabbable grabable = target.GetComponent<IGrabbable>();
         if (grabable != null)
         {
-            GrabObj(grabable);
+            GrabObject(grabable);
 
             return; //se ha cogido el objeto
         }
         return; //no se ha cogido el objeto
     }
-    private void GrabObj(IGrabbable grabable)
+    public void GrabObject(IGrabbable grabable)
     {
+        if (hasObjInHand) { DropObj(); return; } //si ya tengo algo en la mano, lo suelto primero
 
         if (grabable.Grab(posCogerObj, this))
         {

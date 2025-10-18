@@ -5,10 +5,14 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
     [SerializeField]
     CartData cartData;
     [SerializeField]
+    AllObjectTypesSO allObjectTypes;
+    [SerializeField]
     GameObject cartUI;
+    SimpleGrabbable grabbable;
+    GameObject lastInteractor;
     void Awake()
     {
-        SimpleGrabbable grabbable = GetComponent<SimpleGrabbable>();
+         grabbable = GetComponent<SimpleGrabbable>();
         if (grabbable == null)
         {
             Debug.LogError("Da fuck?");
@@ -40,13 +44,19 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
 
         return leftOver==0;
     }
-    public bool OnPlayerInteraction()
+    public bool OnPlayerInteraction(GameObject playerReference)
     {
-        OpenCartUI();
+
+        if (playerReference.CompareTag("Player"))
+        { 
+            OpenCartUI();
+            
+        }
+        lastInteractor = playerReference;
         return true;
     }
 
-    public void OpenCartUI()
+    private void OpenCartUI()
     {
         cartUI.SetActive(true);
 
@@ -68,6 +78,28 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
         Debug.Log("Item added to cart: " + interactor.ToString() + " obj: " + interactor.name);
 
         return leftover;
+    }
+    public void GiveItemToInteractor(ItemNames name, int amount)
+    {
+        //basicamente spawnear el item en la escena y hacer que lo coja el grabber
+        if(lastInteractor == null) { return; }
+        if(amount <= 0) { return; }
+
+        IGrabber grabber = lastInteractor.GetComponent<IGrabber>();
+        if (grabber == null) { return; }
+        GameObject prefabToSpawn = allObjectTypes.GetObjectPrefab(name);
+
+        GameObject spawnedItem = Instantiate(prefabToSpawn, transform.position + Vector3.up, Quaternion.identity);
+        ItemInScene itemInScene = spawnedItem.GetComponentInChildren<ItemInScene>();
+        if (itemInScene != null) { 
+            itemInScene.amountInStack = amount;
+
+        }
+        grabber.StopGrabbing();
+        grabber.GrabObject(spawnedItem.GetComponent<IGrabbable>());
+
+
+
     }
 
 
