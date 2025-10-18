@@ -288,8 +288,16 @@ public class GameFlowManager : MonoBehaviour
     private void SetNewQuota()
     {
         //avisar aqui al quotachecker 
-    }
+        if (currentLevel.useAutomaticQuota)
+        {
+            quotaChecker.GenerateCuote(currentLevelIndex);
+        }
+        else
+        {
+            quotaChecker.GenerateCuote(currentLevel.quotaInfo);
+        }
 
+    }
     private void Awake()
     {
         if(instance != null && instance != this)
