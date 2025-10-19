@@ -1,13 +1,21 @@
 using UnityEngine;
-
-public class PlayerInteraction : MonoBehaviour
+[RequireComponent(typeof(PlayerMovement))]
+public class PlayerInteraction : MonoBehaviour, IGrabber
 {
     [SerializeField] TaggedDetector detector;
     [SerializeField] Transform posCogerObj;
 
     [SerializeField, ReadOnly] bool hasObjInHand = false;
+
+    [SerializeField] private Animator animator;
+
     [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
-    Grabable objInHand;
+    IGrabbable objInHand;
+    private PlayerMovement playerMovement;
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
     public void Interact()
     {
         Debug.Log("Interacting");
@@ -35,11 +43,9 @@ public class PlayerInteraction : MonoBehaviour
         IPlayerInteractionReciever interactable = target.GetComponent<IPlayerInteractionReciever>();
         if (interactable != null)
         {
-            bool dropObj;
-            bool interacted = interactable.OnPlayerInteraction(out dropObj);
-            if (dropObj) { 
-                Debug.Log("Dropping obj because interaction said so");
-                DropObj(); }
+    
+            bool interacted = interactable.OnPlayerInteraction(gameObject);
+
 
             return interacted;
         }
@@ -55,33 +61,43 @@ public class PlayerInteraction : MonoBehaviour
         if (!detector.HasTarget()) { return; } //no ocurre nada
 
         GameObject target = detector.GetTarget();
-        Grabable grabable = target.GetComponent<Grabable>();
+        IGrabbable grabable = target.GetComponent<IGrabbable>();
         if (grabable != null)
         {
-            GrabObj(grabable);
+            GrabObject(grabable);
+
             return; //se ha cogido el objeto
         }
         return; //no se ha cogido el objeto
     }
-    private void GrabObj(Grabable grabable)
+    public void GrabObject(IGrabbable grabable)
     {
+        if (hasObjInHand) { DropObj(); return; } //si ya tengo algo en la mano, lo suelto primero
 
-        if (grabable.Grab(posCogerObj))
+        if (grabable.Grab(posCogerObj, this))
         {
+
             objInHand = grabable;
             hasObjInHand = true;
+            animator.SetTrigger("Take");
+            animator.SetBool("TakeSomething", true);
             return; //se ha cogido el objeto
         }
     }
     public void DropObj() //lo dejo public porque algo puede hacerme soltar el objeto
     {
-        if (!hasObjInHand) { return; } 
-        //soltar objeto
-        objInHand.Drop();
+        if (!hasObjInHand) { return; }
 
-        hasObjInHand = false;
-        objInHand = null;
+        //soltar objeto
+        objInHand.Drop(); //esto, si puedo soltarlo, me llamaran a StopGrabbing
+ 
         return;
     }
-  
+
+    public void StopGrabbing()
+    {
+        playerMovement.AllowExtraMoveSet(); 
+        hasObjInHand = false;
+        objInHand = null;
+    }
 }
