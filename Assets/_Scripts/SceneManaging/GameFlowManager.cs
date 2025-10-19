@@ -2,6 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public enum LevelPhases
@@ -48,6 +49,22 @@ public class GameFlowManager : MonoBehaviour
     public LevelPhases currentPhase;
     public int currentArchipelago = 0;
     public int lastSelectedIsland = 0;
+
+    [HideInInspector]
+    public UnityEvent onStartSelectionPhase= new();
+
+    [HideInInspector]
+    public UnityEvent onStartIslandPhase = new();
+
+    [HideInInspector]
+    public UnityEvent onStartOrganizationPhase = new();
+
+    [HideInInspector]
+    public UnityEvent onStartBoatPhase = new();
+
+    [HideInInspector]
+    public UnityEvent onStartQuotaPhase = new();
+
 
     private NivelSO[] levelsPlaying;
 
@@ -97,6 +114,7 @@ public class GameFlowManager : MonoBehaviour
         {
             IOSBQNextPhase();
         }
+        CallPhaseEvent();
     }
 
     private void StartGame()
@@ -186,6 +204,7 @@ public class GameFlowManager : MonoBehaviour
                 }
                 break;
             case LevelPhases.BoatPhase:
+                /* //Se ve que ahora boat phase es la misma
                 if (level.useDefaultBoatPhaseScene)
                 {
                     sceneToLoad = defaultLevel.boatPhaseSceneIndex;
@@ -193,7 +212,8 @@ public class GameFlowManager : MonoBehaviour
                 else
                 {
                     sceneToLoad = level.boatPhaseSceneIndex;
-                }
+                }*/
+
                 break;
             case LevelPhases.QuotaPhase:
                 if(level.useDefaultQuotaScene)
@@ -296,6 +316,28 @@ public class GameFlowManager : MonoBehaviour
         LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, lastSelectedIsland);
 
 
+
+    }
+    void CallPhaseEvent()
+    {
+        switch (currentPhase)
+        {
+            case LevelPhases.SelectionPhase:
+                onStartSelectionPhase.Invoke();
+                break;
+            case LevelPhases.IslandPhase:
+                onStartIslandPhase.Invoke();
+                break;
+            case LevelPhases.OrganizationPhase:
+                onStartOrganizationPhase.Invoke();
+                break;
+            case LevelPhases.BoatPhase:
+                onStartBoatPhase.Invoke();
+                break;
+            case LevelPhases.QuotaPhase:
+                onStartQuotaPhase.Invoke();
+                break;
+        }
     }
     private bool CheckQuotaFlag()
     {
