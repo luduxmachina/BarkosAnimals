@@ -99,8 +99,8 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
             itemInScene.amountInStack = amount;
 
         }
-        grabber.StopGrabbing();
-        grabber.GrabObject(spawnedItem.GetComponent<IGrabbable>());
+        grabber.DropObj();
+        grabber.GrabObject(spawnedItem.GetComponentInChildren<IGrabbable>());
 
 
 
