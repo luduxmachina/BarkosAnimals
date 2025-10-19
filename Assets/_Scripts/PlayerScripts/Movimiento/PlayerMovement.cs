@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Negative effects")]
     [SerializeField] private float slowMoveSpeed = 2f;
+    [SerializeField] private float slowRotationSpeed = 270f;
     [SerializeField, ReadOnly] private float stunTime = 0.0f;
     public bool canMove = true;
     [SerializeField] private bool impedeExtraMoveset = false;
@@ -100,7 +101,8 @@ public class PlayerMovement : MonoBehaviour
         float moveSpeed = isSlowed ? slowMoveSpeed : this.moveSpeed;
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y) * moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
-        
+
+        float rotationSpeed = isSlowed ? slowRotationSpeed : this.rotationSpeed;
         Quaternion targetRotation = Quaternion.LookRotation(move);
         rb.rotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         animator.SetTrigger("Walk");

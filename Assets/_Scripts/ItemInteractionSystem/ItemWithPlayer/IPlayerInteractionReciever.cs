@@ -1,6 +1,8 @@
 
 
+using UnityEngine;
+
 public interface IPlayerInteractionReciever 
 {
-    bool OnPlayerInteraction();
+    bool OnPlayerInteraction(GameObject playerReference);
 }

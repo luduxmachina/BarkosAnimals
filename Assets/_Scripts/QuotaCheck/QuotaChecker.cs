@@ -19,17 +19,41 @@ public class QuotaChecker
 
     bool isQuotaPass = false;
 
+    private List<QuotaUiInterface> quotaUIs = new List<QuotaUiInterface>();
+    public void AddNewUI (QuotaUiInterface quotaUi)
+    {
+        quotaUIs.Add(quotaUi);
+    }
+
+
+    /// <summary>
+    /// This function set a new value for Quota
+    /// </summary>
+    /// <param name="quota"></param>
+    /// <returns></returns>
+    public Quota GenerateCuote(Quota quota)
+    {
+        this.quota = quota;
+        return quota;
+    }
+
     /// <summary>
     /// Create a new value for quota.
     /// </summary>
     /// <param name="level"></param>
     /// <returns></returns>
+    /// 
     public Quota GenerateCuote(int level)
     {
         quota = new Quota(level);
-
         return quota;
     }
+
+    /// <summary>
+    /// Returns the value of the actual quota.
+    /// </summary>
+    /// <returns></returns>
+    public Quota GetQuota() { return quota; }
 
     /// <summary>
     /// This function updates the state of the quote with the data provided. Is espected to receve a type of animal and the number of that animal obtained.
@@ -43,7 +67,7 @@ public class QuotaChecker
         switch (animal)
         {
             case AnimalType.Duck:
-                quotaPassed.AddRestictionPassed(Restriction.Duck, number);
+                //quotaPassed.AddRestictionPassed(Restriction.Duck, number);
                 quotaPassed.AddRestictionPassed(Restriction.Herbivore, number);
 
                 break;
@@ -55,15 +79,19 @@ public class QuotaChecker
 
 
             case AnimalType.Snake:
-                quotaPassed.AddRestictionPassed(Restriction.Carnivore, number);
+                //quotaPassed.AddRestictionPassed(Restriction.Carnivore, number);
                 break;
 
             default:
                 break;
         }
 
+        this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);
 
-        this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);        
+        foreach (var item in quotaUIs)
+        {
+            item.UpdateQuotaPassed(quotaPassed, isQuotaPass);
+        }
     }
 
     /// <summary>

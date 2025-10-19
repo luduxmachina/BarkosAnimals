@@ -10,7 +10,7 @@ public class InteractsWithPlayer : MonoBehaviour, IPlayerInteractionReciever
     public UnityEvent OnPlayerInteract;
     public bool interactionSuccessful = true;
 
-    public bool OnPlayerInteraction()
+    public bool OnPlayerInteraction(GameObject playerReference)
     {
       
         if (!isPlayerInteractable) return false;
