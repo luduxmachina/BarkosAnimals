@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CartData : MonoBehaviour, IInventoryData
 {
@@ -9,7 +10,21 @@ public class CartData : MonoBehaviour, IInventoryData
     [SerializeField]
     private const int MAX_ITEMS = 3;
     
+    public UnityEvent<int, InventoryItemDataObjects> onInventoryAdd = new(); 
+    public UnityEvent<int, InventoryItemDataObjects> onInventoryRemove = new();
+    
     private List<InventoryItemDataObjects> cartInventory = new();
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            TryStackItem(ItemNames.Bread, 10);
+        if (Input.GetKeyDown(KeyCode.L))
+            TryAddItem(ItemNames.Duck);
+        
+        if (Input.GetKeyDown(KeyCode.R))
+            EmptyInventory();
+    }
     
     /// <summary>
     /// Calculates if all the inventory slots are taken
@@ -54,12 +69,19 @@ public class CartData : MonoBehaviour, IInventoryData
             return null;
 
         InventoryItemDataObjects objectToExtract = GetInventoryObjectByIndex(id);
+        onInventoryRemove?.Invoke(id, objectToExtract);
         cartInventory.RemoveAt(id);
         return objectToExtract;
     }
 
     public void EmptyInventory()
     {
+        for (int i = cartInventory.Count - 1; i >= 0; i--)
+        {
+            onInventoryRemove?.Invoke(i, cartInventory[i]);
+        }
+        
+        Debug.Log("Ship inventory cleared");
         Debug.Log("Cart inventory cleared");
         cartInventory.Clear();
     }
@@ -68,26 +90,28 @@ public class CartData : MonoBehaviour, IInventoryData
     {
         int maxStackSize = allItemsDataBase.GetObjectMaxStackSize(itemName);
 
-        // We check for matching items in the cart inventory
-        foreach (var item in cartInventory)
+        // We check for matching items in the ship inventory
+        for (int i = 0; i < cartInventory.Count; i++)
         {
-            if (item.Name == itemName)
+            var item = cartInventory[i];
+            
+            if (item.Name == itemName && item.Count < maxStackSize)
             {
-                // If this stack is full, we don't try to add them to the inventory
-                if (item.Count >= maxStackSize)
-                    continue;
-
                 // We try to add the full stack
                 if (TryAddFullAmountToStack(item, amount))
                 {
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
+                    onInventoryAdd?.Invoke(i, item);
+                    Debug.Log($"Stack all the remaining items of {itemName} with id {i} into a {item.Count} stack with a maximum of {maxStackSize}");
                     return 0;
                 }
 
                 // We try to add as much as we can to the stack
-                int amountWeCanStack = (item.Count + amount) - maxStackSize;
+                int amountWeCanStack = maxStackSize - item.Count;
                 if (TryAddFullAmountToStack(item, amountWeCanStack))
-                    Debug.Log($"Stack of {itemName} is now {item.Count} with a maximum of {maxStackSize}");
+                {
+                    onInventoryAdd?.Invoke(i, item);
+                    Debug.Log($"Stack of {itemName} with id {i} is now {item.Count} with a maximum of {maxStackSize}");
+                }
 
                 amount = amount - amountWeCanStack;
             }
@@ -125,7 +149,8 @@ public class CartData : MonoBehaviour, IInventoryData
 
             InventoryItemDataObjects newObj = new InventoryItemDataObjects(itemName, amount);
             cartInventory.Add(newObj);
-            Debug.Log($"Added a stack of {itemName} with {amount} items");
+            onInventoryAdd?.Invoke(cartInventory.Count - 1, newObj);
+            Debug.Log($"Added a stack of {itemName} with id {cartInventory.Count - 1}, with {amount} items");
 
             amount = overflow;
         }
