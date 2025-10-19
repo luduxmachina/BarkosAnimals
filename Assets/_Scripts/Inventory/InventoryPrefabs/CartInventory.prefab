@@ -89,9 +89,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6752352309593970624}
   - component: {fileID: 439097280802309507}
-  - component: {fileID: 8082582234366025066}
   m_Layer: 0
-  m_Name: Visual Inventory
+  m_Name: Grid Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,19 +139,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &8082582234366025066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5468732986210161620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06fd77875d11fa740a90c32bd85ccc9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemSlotPrefab: {fileID: 7773079543035153865, guid: 27cbfd81f410be04194df14a9b2ae0e5, type: 3}
 --- !u!1 &6914875892679058663
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +169,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6173971440479301567}
   - {fileID: 5687525225546532610}
   - {fileID: 7537333682636063544}
   m_Father: {fileID: 0}
@@ -203,7 +190,7 @@ MonoBehaviour:
   onInventoryAdd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8082582234366025066}
+      - m_Target: {fileID: 1343998118318485696}
         m_TargetAssemblyTypeName: InventoryUIVisualization, Assembly-CSharp
         m_MethodName: UpdateItemSlot
         m_Mode: 0
@@ -218,7 +205,7 @@ MonoBehaviour:
   onInventoryRemove:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8082582234366025066}
+      - m_Target: {fileID: 1343998118318485696}
         m_TargetAssemblyTypeName: InventoryUIVisualization, Assembly-CSharp
         m_MethodName: RemoveItemSlot
         m_Mode: 0
@@ -230,6 +217,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &7456098026986346121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6173971440479301567}
+  - component: {fileID: 1343998118318485696}
+  m_Layer: 0
+  m_Name: Visual Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6173971440479301567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456098026986346121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3973278429742280789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1343998118318485696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456098026986346121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fd77875d11fa740a90c32bd85ccc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlotPrefab: {fileID: 7773079543035153865, guid: 27cbfd81f410be04194df14a9b2ae0e5, type: 3}
+  itemSlotParent: {fileID: 6752352309593970624}
 --- !u!1 &8463785221359558963
 GameObject:
   m_ObjectHideFlags: 0
