@@ -191,6 +191,8 @@ public class ShipData : MonoBehaviour, IInventoryData
     
     private void GetInventoryFormDataBase()
     {
+        EmptyInventory();
+        
         var db = shipInventoryDataBase?.GetAllStacks();
         if(db == null)
             return;
