@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5750659359589934027}
   - component: {fileID: 613518823362481880}
   - component: {fileID: 3885113769053348718}
+  - component: {fileID: 462741126323122565}
   m_Layer: 0
   m_Name: BoatInScene
   m_TagString: Item
@@ -108,6 +109,18 @@ MonoBehaviour:
   allObjectTypes: {fileID: 11400000, guid: ac343572966cfa248988fcbc42391523, type: 2}
   inventoryUI: {fileID: 6371369959180425795}
   shipData: {fileID: 5453373539788189388}
+--- !u!114 &462741126323122565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579847896328755274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0246406a80dcbf4ebf77fe92749c0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4698080193656657105
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,12 +216,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 2152944873426768721}
     m_Modifications:
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.size
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 462741126323122565}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -219,11 +248,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6371369959180425795}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 462741126323122565}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateCuota
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
@@ -235,6 +276,14 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: UpdateCuota
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: QuotaHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: BoatInScene, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -243,11 +292,23 @@ PrefabInstance:
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: QuotaHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
+      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6694159472043234705, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}

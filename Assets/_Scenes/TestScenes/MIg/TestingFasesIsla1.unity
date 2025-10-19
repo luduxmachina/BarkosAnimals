@@ -1681,12 +1681,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1247500849}
+    - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1696,6 +1708,10 @@ PrefabInstance:
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1247500848}
+    - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateItemSlot
+      objectReference: {fileID: 0}
     - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -1713,12 +1729,20 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: InventoryUIVisualization, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: CartInScene, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6739818312733268289, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1766,6 +1790,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8463785221359558963, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
   m_PrefabInstance: {fileID: 1247500845}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1247500849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1343998118318485696, guid: 48fcd100736dea349ba1e29e2970c408, type: 3}
+  m_PrefabInstance: {fileID: 1247500845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fd77875d11fa740a90c32bd85ccc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1437830125
 PrefabInstance:
   m_ObjectHideFlags: 0
