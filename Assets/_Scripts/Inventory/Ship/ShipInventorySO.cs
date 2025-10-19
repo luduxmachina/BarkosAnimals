@@ -39,6 +39,8 @@ public class ShipInventorySO : ScriptableObject
             {
                 InventoryItemDataObjects stack = new InventoryItemDataObjects(itemName, numOfItems);
                 allStacks.Add(stack);
+                
+                numOfItems = 0;
             }
         }
         

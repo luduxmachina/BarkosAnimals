@@ -18,18 +18,23 @@ public class ShipData : MonoBehaviour, IInventoryData
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-            TryStackItem(ItemNames.Bread, 10);
-        if (Input.GetKeyDown(KeyCode.P))
-            TryAddItem(ItemNames.Duck);
-        
-        if (Input.GetKeyDown(KeyCode.R))
-            EmptyInventory();
+        // if (Input.GetKeyDown(KeyCode.O))
+        //     TryStackItem(ItemNames.Bread, 10);
+        // if (Input.GetKeyDown(KeyCode.P))
+        //     TryAddItem(ItemNames.Duck);
+        // 
+        // if (Input.GetKeyDown(KeyCode.R))
+        //     EmptyInventory();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        shipInventory = shipInventoryDataBase.GetAllStacks();
+        GetInventoryFormDataBase();
+    }
+
+    public int TryStackItem(InventoryItemDataObjects item)
+    {
+        return TryStackItem(item.Name, item.Count);
     }
 
     public int TryStackItem(ItemNames itemName, int amount)
@@ -181,6 +186,19 @@ public class ShipData : MonoBehaviour, IInventoryData
                 overflow = amount - maxStack;
                 amount = maxStack;
             }
+        }
+    }
+    
+    private void GetInventoryFormDataBase()
+    {
+        var db = shipInventoryDataBase?.GetAllStacks();
+        if(db == null)
+            return;
+
+        for (int i = 0; i < db.Count; i++)
+        {
+            shipInventory.Add(db[i]);
+            onInventoryAdd?.Invoke(i, db[i]);
         }
     }
 
