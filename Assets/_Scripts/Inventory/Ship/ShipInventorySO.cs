@@ -9,6 +9,16 @@ public class ShipInventorySO : ScriptableObject
     private AllObjectTypesSO dataBase;
     private readonly Dictionary<ItemNames, int> inventory = new();
     
+    [ContextMenu("Debug Inventory")]
+    public void DebugMensaje()
+    {
+        Debug.Log($"[ShipInventorySO]:");
+        foreach (var kvp in inventory)
+        {
+            Debug.Log($"\t{kvp.Key} => {kvp.Value}");
+        }
+    }
+    
 
     public List<InventoryItemDataObjects> GetAllStacksWithItemName(ItemNames itemName)
     {
@@ -29,6 +39,8 @@ public class ShipInventorySO : ScriptableObject
             {
                 InventoryItemDataObjects stack = new InventoryItemDataObjects(itemName, numOfItems);
                 allStacks.Add(stack);
+                
+                numOfItems = 0;
             }
         }
         
