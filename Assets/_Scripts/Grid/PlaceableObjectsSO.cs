@@ -26,4 +26,5 @@ public class ObjectData
     [field: SerializeField] public Vector2Int Size { get; private set; } = Vector2Int.one;
     [field: SerializeField] public GameObject Prefab{ get; private set; }
     
+    [field: SerializeField] public Sprite ImageUI{ get; private set; }
 }
