@@ -153,8 +153,9 @@ MonoBehaviour:
   ignoreSelf: 1
   ignoreChildren: 1
   ignoreParents: 1
-  ignoreSpecificGameObjects: 0
-  specificGameObjectsToIgnore: []
+  ignoreSpecificGameObjects: 1
+  specificGameObjectsToIgnore:
+  - {fileID: 6752797263426293632}
   filterByTag: 0
   targetTag: 
   useOtherTags: 0
