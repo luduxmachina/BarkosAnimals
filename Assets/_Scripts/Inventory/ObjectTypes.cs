@@ -1,7 +1,5 @@
 using System;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
-using UnityEngine.Internal;
 
 [Serializable]
 public class ObjectTypes
