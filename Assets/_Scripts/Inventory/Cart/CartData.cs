@@ -15,6 +15,17 @@ public class CartData : MonoBehaviour, IInventoryData
     
     private List<InventoryItemDataObjects> cartInventory = new();
     
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            TryStackItem(ItemNames.Bread, 10);
+        if (Input.GetKeyDown(KeyCode.L))
+            TryAddItem(ItemNames.Duck);
+        
+        if (Input.GetKeyDown(KeyCode.R))
+            EmptyInventory();
+    }
+    
     /// <summary>
     /// Calculates if all the inventory slots are taken
     /// </summary>

@@ -1,18 +1,26 @@
+using System;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class CartInventoryUIVisualization : MonoBehaviour, IInventoryUIVisualization
+public class InventoryUIVisualization : MonoBehaviour
 {
     [SerializeField]
-    private CartData cartData;
-    [SerializeField]
     private GameObject ItemSlotPrefab;
-    private List<GameObject> ItemSlots = new();
     
+    private List<GameObject> ItemSlots = new();
+    private IInventoryData data;
+
+    private void Start()
+    {
+        data = GetComponentInParent<IInventoryData>();
+    }
+
     public void AddNewItemSlot(int id, InventoryItemDataObjects item)
     {
         GameObject itemSlot = Instantiate(ItemSlotPrefab, transform);
-        itemSlot.GetComponent<InventorySlotManager>()?.SetInventoryData(cartData);
+        itemSlot.GetComponent<InventorySlotManager>()?.SetInventoryData(data);
         
         itemSlot.GetComponent<InventorySlotManager>()?.SetThisSlotAs(id, item);
         ItemSlots.Add(itemSlot);
