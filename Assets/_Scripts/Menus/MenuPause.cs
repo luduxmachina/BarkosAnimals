@@ -47,7 +47,7 @@ public class MenuPause : MonoBehaviour
 
     public void ExitToMainMenu()
     {
-        //GameFlowManager.instance.GoToMainMenu();
+        GameFlowManager.instance.GoToMainMenu();
     }
 }
 
