@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2125790095228402499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8197213849279686251}
+  - component: {fileID: 4082068131979517634}
+  m_Layer: 0
+  m_Name: Visual Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8197213849279686251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125790095228402499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6694159472043234705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4082068131979517634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125790095228402499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fd77875d11fa740a90c32bd85ccc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlotPrefab: {fileID: 7773079543035153865, guid: 27cbfd81f410be04194df14a9b2ae0e5, type: 3}
+  itemSlotParent: {fileID: 1858741822237310296}
 --- !u!1 &3009504926295599357
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,9 +237,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1858741822237310296}
   - component: {fileID: 7313945732285287693}
-  - component: {fileID: 4199945383944288575}
   m_Layer: 0
-  m_Name: Visual Inventory
+  m_Name: Grid Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,19 +287,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &4199945383944288575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8563910597098586129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06fd77875d11fa740a90c32bd85ccc9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemSlotPrefab: {fileID: 7773079543035153865, guid: 27cbfd81f410be04194df14a9b2ae0e5, type: 3}
 --- !u!1 &9019565970074027586
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8197213849279686251}
   - {fileID: 2009265510848203348}
   - {fileID: 3432888914031564045}
   m_Father: {fileID: 0}
@@ -306,8 +339,8 @@ MonoBehaviour:
   onInventoryAdd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4199945383944288575}
-        m_TargetAssemblyTypeName: ShipInventoryUIVisualization, Assembly-CSharp
+      - m_Target: {fileID: 4082068131979517634}
+        m_TargetAssemblyTypeName: InventoryUIVisualization, Assembly-CSharp
         m_MethodName: UpdateItemSlot
         m_Mode: 0
         m_Arguments:
@@ -321,8 +354,8 @@ MonoBehaviour:
   onInventoryRemove:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4199945383944288575}
-        m_TargetAssemblyTypeName: ShipInventoryUIVisualization, Assembly-CSharp
+      - m_Target: {fileID: 4082068131979517634}
+        m_TargetAssemblyTypeName: InventoryUIVisualization, Assembly-CSharp
         m_MethodName: RemoveItemSlot
         m_Mode: 0
         m_Arguments:
