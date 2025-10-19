@@ -366,12 +366,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuScene: {fileID: 102900000, guid: 9f63f81051faec3408da60024481fce9, type: 3}
-  mainMenuSceneIndex: 20
+  mainMenuSceneIndex: 0
   defaultLevel: {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
   tutorialLevels:
   - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
   - {fileID: 11400000, guid: 39534f8181360744385a7f039be00e6a, type: 2}
-  otherLevels: []
+  otherLevels:
+  - {fileID: 11400000, guid: 39534f8181360744385a7f039be00e6a, type: 2}
+  - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
+  - {fileID: 11400000, guid: 39534f8181360744385a7f039be00e6a, type: 2}
   infiniteMode: 0
   gameMode: 0
   currentLevel: {fileID: 0}
