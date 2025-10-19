@@ -46,9 +46,10 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
     }
     public bool OnPlayerInteraction(GameObject playerReference)
     {
-
+        Debug.Log("Se ha interactuado con el carro coño)");
         if (playerReference.CompareTag("Player"))
-        { 
+        {
+            Debug.Log("Abriendo UI del carro");
             OpenCartUI();
             
         }
@@ -58,6 +59,7 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
 
     private void OpenCartUI()
     {
+
         cartUI.SetActive(true);
 
     }
@@ -79,12 +81,14 @@ public class CartInScene : MonoBehaviour, IInteractable, IPlayerInteractionRecie
 
         return leftover;
     }
-    public void GiveItemToInteractor(ItemNames name, int amount)
+    public void GiveItemToInteractor(int id, InventoryItemDataObjects itemObject)
     {
+
         //basicamente spawnear el item en la escena y hacer que lo coja el grabber
         if(lastInteractor == null) { return; }
+        int amount = itemObject.Count;
         if(amount <= 0) { return; }
-
+        ItemNames name= itemObject.Name;
         IGrabber grabber = lastInteractor.GetComponent<IGrabber>();
         if (grabber == null) { return; }
         GameObject prefabToSpawn = allObjectTypes.GetObjectPrefab(name);

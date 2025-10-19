@@ -7,9 +7,12 @@ using UnityEngine.UIElements;
 public class InventoryUIVisualization : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ItemSlotPrefab;
+    private GameObject itemSlotPrefab;
     
-    private List<GameObject> ItemSlots = new();
+    [SerializeField]
+    private Transform itemSlotParent;
+    
+    private List<GameObject> itemSlots = new();
     private IInventoryData data;
 
     private void Start()
@@ -19,31 +22,31 @@ public class InventoryUIVisualization : MonoBehaviour
 
     public void AddNewItemSlot(int id, InventoryItemDataObjects item)
     {
-        GameObject itemSlot = Instantiate(ItemSlotPrefab, transform);
+        GameObject itemSlot = Instantiate(itemSlotPrefab, itemSlotParent);
         itemSlot.GetComponent<InventorySlotManager>()?.SetInventoryData(data);
         
         itemSlot.GetComponent<InventorySlotManager>()?.SetThisSlotAs(id, item);
-        ItemSlots.Add(itemSlot);
+        itemSlots.Add(itemSlot);
     }
 
     public void UpdateItemSlot(int id, InventoryItemDataObjects item)
     {
-        if (ItemSlots.Count <= id)
+        if (itemSlots.Count <= id)
         {
             AddNewItemSlot(id, item);
         }
         else
         {
-            ItemSlots[id].GetComponent<InventorySlotManager>()?.UpdateThisSlotTo(item);
+            itemSlots[id].GetComponent<InventorySlotManager>()?.UpdateThisSlotTo(item);
         }
     }
     
     public void RemoveItemSlot(int id, InventoryItemDataObjects item)
     {
-        if(ItemSlots.Count > id && ItemSlots[id] != null)
-            Destroy(ItemSlots[id]);
+        if(itemSlots.Count > id && itemSlots[id] != null)
+            Destroy(itemSlots[id]);
         
-        ItemSlots.RemoveAt(id);
+        itemSlots.RemoveAt(id);
     }
 
     public void SetAllItemSlots(List<InventoryItemDataObjects> shipInventory)
