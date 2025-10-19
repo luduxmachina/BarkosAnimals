@@ -10,12 +10,28 @@ public class GridInput : MonoBehaviour
     [SerializeField]
     private Camera mainCamera;
     
+    private GridPlacementManager  gridPlacementManager;
     private Vector3 lastMousePos;
 
     private void Awake()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+    }
+
+    private void Start()
+    {
+        gridPlacementManager = GetComponent<GridPlacementManager>();
+    }
+
+    public void StartPlacing(int id)
+    {
+        gridPlacementManager.StartPlacement(id);
+    }
+    
+    public void StartRemoving()
+    {
+        gridPlacementManager.StartRemoving();
     }
 
     private void Update()
@@ -27,15 +43,18 @@ public class GridInput : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
             onExit?.Invoke();
         
-        if(Input.GetKeyDown(KeyCode.Q))
-            GetComponent<GridPlacementManager>().StartPlacement(0);
-        if(Input.GetKeyDown(KeyCode.W))
-            GetComponent<GridPlacementManager>().StartPlacement(1);
-        if(Input.GetKeyDown(KeyCode.E))
-            GetComponent<GridPlacementManager>().StartPlacement(2);
-        
-        if(Input.GetKeyDown(KeyCode.R))
-            GetComponent<GridPlacementManager>().StartRemoving();
+        //////////////////// TESTEO ////////////////////
+        // 
+        // 
+        // if(Input.GetKeyDown(KeyCode.Q))
+        //     GetComponent<GridPlacementManager>().StartPlacement(0);
+        // if(Input.GetKeyDown(KeyCode.W))
+        //     GetComponent<GridPlacementManager>().StartPlacement(1);
+        // if(Input.GetKeyDown(KeyCode.E))
+        //     GetComponent<GridPlacementManager>().StartPlacement(2);
+        // 
+        // if(Input.GetKeyDown(KeyCode.R))
+        //     GetComponent<GridPlacementManager>().StartRemoving();
     }
 
     public Vector3 GetSelectedMapPosition()
@@ -53,9 +72,5 @@ public class GridInput : MonoBehaviour
         
         return lastMousePos;
     }
-    
-    //////////////////// TESTEO ////////////////////
-    public bool GetPlacementInput()
-        => Input.GetMouseButtonDown(0);
 }
 
