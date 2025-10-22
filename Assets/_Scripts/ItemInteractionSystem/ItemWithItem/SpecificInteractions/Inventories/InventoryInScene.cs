@@ -8,7 +8,6 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
     AllObjectTypesSO allObjectTypes;
     [SerializeField]
     GameObject inventoryUI;
-    SimpleGrabbable grabbable;
     GameObject lastInteractor;
 
     void Start()
