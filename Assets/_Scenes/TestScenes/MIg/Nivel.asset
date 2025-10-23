@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1220ab56c477883489acc1dd8f981cc3, type: 3}
   m_Name: Nivel
   m_EditorClassIdentifier: 
-  nombreNivel: NivelPruebaDefault
+  nombreNivel: 
   useDefaultSelectionPhaseScene: 0
   useDefaultIslands: 0
   useDefaultBoatPhaseScene: 0
@@ -21,19 +21,21 @@ MonoBehaviour:
   archipelagos:
   - islands:
     - {fileID: 11400000, guid: 221bcfa3cf668544c86f4015eab517ba, type: 2}
-    numberOfIslands: 1
+    - {fileID: 11400000, guid: 0aae161defdd3854fb4bd276d8e84402, type: 2}
+    - {fileID: 11400000, guid: 136045125cfc2ac4dbe8a49268099d3f, type: 2}
+    numberOfIslands: 3
   - islands:
     - {fileID: 11400000, guid: 04ffc859f26710e4a8e4b5db56e58d94, type: 2}
-    - {fileID: 0}
-    - {fileID: 0}
-    numberOfIslands: 1
+    - {fileID: 11400000, guid: 0902f47be6f226a4884b9d1bf749ec1b, type: 2}
+    - {fileID: 11400000, guid: d861531241feb1d47b9f23fe5191e356, type: 2}
+    numberOfIslands: 3
   SelectionPhaseScene: {fileID: 102900000, guid: d1a4a9862fd7b3b469568f3e51ded1f0, type: 3}
-  OrganizationPhaseScene: {fileID: 102900000, guid: 9f8f3adac63e97f43b72c0bd7bd32bed, type: 3}
+  OrganizationPhaseScene: {fileID: 102900000, guid: dd6fccb31c664104a9684555ec52cc81, type: 3}
   BoatPhaseScene: {fileID: 102900000, guid: f6909bcb6066bf94e9f22c9fe3f15792, type: 3}
   QuotaScene: {fileID: 102900000, guid: 1831627164f24f64b86950b215a17f6a, type: 3}
-  selectionPhaseSceneIndex: 4
-  organizationPhaseSceneIndex: 3
+  selectionPhaseSceneIndex: 11
+  organizationPhaseSceneIndex: 4
   boatPhaseSceneIndex: 2
-  quotaSceneIndex: 13
+  quotaSceneIndex: 12
   numberOfArchipelagos: 2
   useAutomaticQuota: 1

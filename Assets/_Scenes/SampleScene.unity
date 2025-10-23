@@ -471,6 +471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1635c1e4fe7a47952d423c5b57735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuScene: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+  mainMenuSceneIndex: 0
   defaultLevel: {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
   tutorialLevels:
   - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
@@ -480,8 +482,6 @@ MonoBehaviour:
   gameMode: 0
   currentLevel: {fileID: 0}
   currentLevelIndex: 0
-  currentQuotaInfo:
-    totalQuota: 0
   currentPhase: 0
   currentArchipelago: 0
   lastSelectedIsland: 0

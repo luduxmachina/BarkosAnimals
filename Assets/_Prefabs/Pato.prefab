@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955353302404813925}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.07, y: 3.73, z: 0.41739094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -103,6 +103,67 @@ MonoBehaviour:
   showHandles: 1
   hideParentHandle: 1
   sphereSize: 0.5
+--- !u!1 &1501636453372335149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3788946998767057924}
+  - component: {fileID: 6714018644154987414}
+  m_Layer: 0
+  m_Name: DeteccionInteraccionConOtros
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3788946998767057924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501636453372335149}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2086997906455400444}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6714018644154987414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501636453372335149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06927ee9532fa574cb4202f29fd1c299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastTargetFetched: {fileID: 0}
+  detectionRange: 1.23
+  shape: 0
+  ignoreSelf: 1
+  ignoreChildren: 1
+  ignoreParents: 1
+  ignoreSpecificGameObjects: 1
+  specificGameObjectsToIgnore:
+  - {fileID: 6752797263426293632}
+  filterByTag: 0
+  targetTag: 
+  useOtherTags: 0
+  otherTags: []
+  filterByLayer: 1
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &3871664777914731417
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +356,8 @@ GameObject:
   - component: {fileID: 6280552322280815977}
   - component: {fileID: 7983561685881129010}
   - component: {fileID: 7377827953790173439}
+  - component: {fileID: 3826448275079245795}
+  - component: {fileID: 1654632269875985004}
   m_Layer: 0
   m_Name: PatoHijo
   m_TagString: Item
@@ -315,6 +378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3788946998767057924}
   - {fileID: 7418126729919874412}
   - {fileID: 3727377646892151302}
   - {fileID: 3452928232591636695}
@@ -457,6 +521,45 @@ MonoBehaviour:
   show: 1
   parentColor: {r: 1, g: 0, b: 0, a: 1}
   sphereSize: 0.25
+--- !u!114 &3826448275079245795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909670556736856295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInteractable: 1
+  OnPlayerInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  interactionSuccessful: 1
+--- !u!114 &1654632269875985004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909670556736856295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3284e1a506e2a49aa572c27189d71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detector: {fileID: 6714018644154987414}
+  interactingObject: {fileID: 6752797263426293632}
+  useSpecificInteractionType: 0
+  interactionType: 0
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFailedInteraction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7990269605759857090
 GameObject:
   m_ObjectHideFlags: 0

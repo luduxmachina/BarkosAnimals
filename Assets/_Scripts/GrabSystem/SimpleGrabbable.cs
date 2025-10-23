@@ -22,6 +22,7 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
     ParentConstraint parentConstraint;
     [SerializeField]
     ParentConstraint thisConstraint;
+    ImpedeExtraMoveSetEffect impedeEffect = new ImpedeExtraMoveSetEffect();
     private void Awake()
     {
         if (parentConstraint == null)
@@ -50,10 +51,10 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
 
         if (!allowExtramoveSetWhenGrabbed)
         {
-            PlayerMovement pm = grabber.gameObject.GetComponent<PlayerMovement>();
+            PlayerInSceneEffects pm = grabber.gameObject.GetComponentInChildren<PlayerInSceneEffects>();
             if (pm != null)
             {
-                pm.ImpedeExtraMoveset();
+                pm.AddEffect(impedeEffect);
             }
         }
 
@@ -77,7 +78,23 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
 
         OnDrop?.Invoke(); //para que el grabber siga teniendo la referencia sin null
 
+
+
         currentGrabber.StopGrabbing();
+
+        if (!allowExtramoveSetWhenGrabbed)
+        {
+            PlayerInSceneEffects pm = currentGrabber.gameObject.GetComponentInChildren<PlayerInSceneEffects>();
+            if (pm != null)
+            {
+                pm.RemoveEffect(impedeEffect);
+            }
+            else
+            {
+                Debug.Log("No hay player effect");
+            }
+        }
+
         currentGrabber = null;
 
 
@@ -89,5 +106,16 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
 
 
         return true; //el objeto se ha soltado
+    }
+}
+public class ImpedeExtraMoveSetEffect : PlayerEffect
+{
+
+
+    public override void ApplyEffect(PlayerCurrentStats playerStats)
+    {
+        playerStats.canDash = false;
+        playerStats.canJump = false;
+
     }
 }
