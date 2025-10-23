@@ -14,6 +14,18 @@ public class CustomBoolMatrix
 
     public BoolRow[] matrix;
 
+    public CustomBoolMatrix(int rows, int columns)
+    {
+        this.rows = Mathf.Max(1, rows);
+        this.columns = Mathf.Max(1, columns);
+    }
+
+    public CustomBoolMatrix()
+    {
+        rows = 1;
+        columns = 1;
+    }
+
     public void EnsureSize()
     {
         if (matrix == null || matrix[0].values  == null || matrix.Length != rows || matrix[0].values.Length != columns)
