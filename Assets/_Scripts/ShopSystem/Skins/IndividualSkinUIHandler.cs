@@ -24,6 +24,26 @@ public class IndividualSkinUIHandler : MonoBehaviour
         UpdateUI();
 
     }
+
+    public void TryBuySkin()
+    {
+        Debug.Log("Trying to buy skin: " + skinName);
+        if (MetaCoinHandler.SpendMetaCoins(skinPrice))
+        {
+            BoughtSkins.BuySkin(skinName);
+            Debug.Log("Skin bought: " + skinName);
+
+        }
+        else
+        {
+            Debug.Log("Not enough MetaCoins to buy skin: " + skinName);
+        }
+
+
+      
+        UpdateUI();
+    }
+
     private void UpdateUI()
     {
         nameText.text = skinName;
@@ -41,20 +61,5 @@ public class IndividualSkinUIHandler : MonoBehaviour
             selectButton.SetActive(false);
         }
     }
-    public void TryBuySkin()
-    {
-        Debug.Log("Trying to buy skin: " + skinName);
-        if(Random.Range(0,1.0f) > 0.5f) //pongamos que lo compra
-        {
-            BoughtSkins.BuySkin(skinName);
 
-            Debug.Log("Skin bought: " + skinName);
-        }
-        else
-        {
-            Debug.Log("Not enough currency to buy skin: " + skinName);
-        }
-        UpdateUI();
-    }
-    
 }
