@@ -56,7 +56,7 @@ public class PlayerInSceneEffects : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        effects.AddRange(UpgradeEffects.effects);
+        effects.AddRange(Upgrades.playerUpgrades);
         UpdatePlayerStats();
     }
     // Update is called once per frame

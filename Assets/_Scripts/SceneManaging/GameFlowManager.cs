@@ -119,7 +119,7 @@ public class GameFlowManager : MonoBehaviour
 
     private void StartGame()
     {
-        UpgradeEffects.ClearEffects();
+        Upgrades.ClearUpgrades();
         StartLevel(levelsPlaying, currentLevelIndex);
     }
     private void StartLevel(NivelSO[] niveles, int index)
