@@ -24,7 +24,11 @@ public class IndividualSkinUIHandler : MonoBehaviour
         UpdateUI();
 
     }
-
+    public void SelectSkin()
+    {
+        Debug.Log("Selecting skin: " + skinName);
+        //PlayerSkinHandler.SetCurrentSkin(skinName);
+    }
     public void TryBuySkin()
     {
         Debug.Log("Trying to buy skin: " + skinName);

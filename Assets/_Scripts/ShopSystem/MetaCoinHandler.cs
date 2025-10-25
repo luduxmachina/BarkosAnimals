@@ -8,12 +8,14 @@ public class MetaCoinHandler : MonoBehaviour
     public static void AddMetaCoins(int amount)
     {
         metaCoinCount += amount;
+        SaveToFile();
     }
     public static bool SpendMetaCoins(int amount)
     {
         if (metaCoinCount >= amount)
         {
             metaCoinCount -= amount;
+            SaveToFile();
             return true;
         }
         return false;
