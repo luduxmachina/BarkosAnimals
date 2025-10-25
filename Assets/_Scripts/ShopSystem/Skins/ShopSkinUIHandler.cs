@@ -27,7 +27,7 @@ public class ShopSkinUIHandler : MonoBehaviour
             if (skinUIHandler != null)
             {
 
-                skinUIHandler.UpdateSkinInfo(skin.skinName, skin.price, skin.skinIcon);
+                skinUIHandler.UpdateSkinInfo(skin.skinName, skin.price);
             }
             else
             {

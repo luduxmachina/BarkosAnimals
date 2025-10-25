@@ -7,7 +7,6 @@ public class IndividualSkinUIHandler : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text priceText;
-    [SerializeField] private Image previewImage;
     [SerializeField] private GameObject buyButton;
     [SerializeField] private GameObject selectButton;
 
@@ -16,11 +15,10 @@ public class IndividualSkinUIHandler : MonoBehaviour
     private bool isOwned;
     private Sprite skinPreview;
 
-    public void UpdateSkinInfo(string skinName, int price, Sprite skinPreview)
+    public void UpdateSkinInfo(string skinName, int price)
     {
         this.skinName = skinName;
         this.skinPrice = price;
-        this.skinPreview = skinPreview;
         UpdateUI();
 
     }

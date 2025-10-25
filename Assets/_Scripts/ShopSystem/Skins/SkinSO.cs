@@ -6,6 +6,6 @@ public class SkinSO : ScriptableObject
    
     public int price;
     public string skinName;
-    public Sprite skinIcon;
-    //algo de material supongo
+
+    public GameObject skinModelo;
 }
