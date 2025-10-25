@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 1233807479016411507}
   - component: {fileID: 8342425176813634919}
   - component: {fileID: 7412595302531757126}
-  - component: {fileID: 2154816078965302194}
-  - component: {fileID: 8157880441723215746}
   m_Layer: 0
   m_Name: Barco
   m_TagString: Untagged
@@ -88,45 +86,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2154816078965302194
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7403286267000634428}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 84.00677, y: 35.641308, z: 20.471224}
-  m_Center: {x: 1.3872795, y: -2.6277008, z: 1.571343}
---- !u!65 &8157880441723215746
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7403286267000634428}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 39.447647, y: 35.641308, z: 54.81973}
-  m_Center: {x: -20.89228, y: -2.6277008, z: 18.745598}

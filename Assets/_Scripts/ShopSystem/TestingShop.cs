@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class TestingShop : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+   
+    public void AddMetaCoin(int amount)
     {
-        
+        MetaCoinHandler.AddMetaCoins(amount);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SpendMetaCoin(int amount)
     {
-        
+        bool success = MetaCoinHandler.SpendMetaCoins(amount);
+        if (success)
+        {
+            Debug.Log("Spent " + amount + " MetaCoins.");
+        }
+        else
+        {
+            Debug.Log("Not enough MetaCoins to spend " + amount + ".");
+        }
     }
 }

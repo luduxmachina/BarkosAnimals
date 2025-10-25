@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Upgrades 
 {
-    public static int inGameCoinCount = 0;
+    
   
     public static List<PlayerEffect> playerUpgrades = new List<PlayerEffect>();
 
@@ -15,17 +15,5 @@ public class Upgrades
     {
         playerUpgrades.Add(upgrade);
     }
-    public static void AddMetaCoins(int amount)
-    {
-        inGameCoinCount += amount;
-    }
-    public static bool SpendMetaCoins(int amount)
-    {
-        if (inGameCoinCount >= amount)
-        {
-            inGameCoinCount -= amount;
-            return true;
-        }
-        return false;
-    }
+   
 }

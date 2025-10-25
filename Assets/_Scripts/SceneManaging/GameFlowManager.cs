@@ -120,6 +120,7 @@ public class GameFlowManager : MonoBehaviour
     private void StartGame()
     {
         Upgrades.ClearUpgrades();
+        InGameCoindHandler.coinCount = 0;
         StartLevel(levelsPlaying, currentLevelIndex);
     }
     private void StartLevel(NivelSO[] niveles, int index)
