@@ -50,7 +50,7 @@ public class IndividualSkinUIHandler : MonoBehaviour
     {
         nameText.text = skinName;
         priceText.text = skinPrice.ToString();
-        previewImage.sprite = skinPreview;
+    
         isOwned = BoughtSkins.IsSkinBought(skinName);
         if (isOwned)
         {
