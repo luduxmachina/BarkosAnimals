@@ -16,12 +16,12 @@ public class NivelSO : ScriptableObject
     public string nombreNivel;
     [Space]
     public bool useDefaultSelectionPhaseScene = true;
-    public bool useDefaultIslands = false;
+    public bool useGeneratedIslands = false;
     public bool useDefaultBoatPhaseScene = true;
     public bool useDefaultOrganizationPhaseScene = true;
     public bool useDefaultQuotaScene = true;
 
-    [SerializeField, CustomLabel("", true), HideIf("useDefaultIslands")]
+    [SerializeField, CustomLabel("", true), HideIf("useGeneratedIslands")]
     public List<Archipelago> archipelagos;
 #if UNITY_EDITOR
 [SerializeField, HideIf("useDefaultSelectionPhaseScene")]
@@ -64,7 +64,7 @@ public class NivelSO : ScriptableObject
         organizationPhaseSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(OrganizationPhaseScene));
         boatPhaseSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(BoatPhaseScene));
         quotaSceneIndex = SceneAssetGetIndex.ForceGetIndexOf(AssetDatabase.GetAssetPath(QuotaScene));
-        if(!useDefaultIslands){
+        if(!useGeneratedIslands){
 
             numberOfArchipelagos = archipelagos.Count;
             
