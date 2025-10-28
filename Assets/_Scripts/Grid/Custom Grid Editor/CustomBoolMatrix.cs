@@ -58,4 +58,27 @@ public class CustomBoolMatrix
             for (int j = 0; j < columns; j++)
                 matrix[i].values[j] = !matrix[i].values[j];
     }
+
+    public bool IsFull() => AllAreInState(true);
+
+    public bool IsEmpty() => AllAreInState(false);
+
+    private bool AllAreInState(bool state)
+    {
+        bool result = true;   
+
+        foreach (var row in matrix)
+        {
+            if (result != state)
+                break;
+            foreach (bool value in row.values)
+            {
+                result = value;
+                if (result != state)
+                    break;
+            }
+        }
+
+        return result;
+    }
 }
