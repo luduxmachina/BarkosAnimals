@@ -6,6 +6,15 @@ using UnityEngine;
 public class PlaceableObjectsSO : ScriptableObject
 {
     public List<ObjectData> objectData;
+
+    private void OnValidate()
+    {
+        foreach (var obj in objectData)
+        {
+            if (obj.OcupiedSpace != null)
+                obj.OcupiedSpace.EnsureSize();
+        }
+    }
 }
 
 [Serializable]

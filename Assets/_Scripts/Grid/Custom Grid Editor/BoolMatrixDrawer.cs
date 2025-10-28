@@ -35,8 +35,26 @@ public class CustomBoolMatrixDrawer : PropertyDrawer
         EditorGUI.PropertyField(colRect, colsProp, new GUIContent("Columnas"));
         y += lineHeight + 4;
 
+        // --- Asegurar que la matriz exista y tenga el tamaño correcto ---
         int rows = Mathf.Max(1, rowsProp.intValue);
         int cols = Mathf.Max(1, colsProp.intValue);
+
+        if (matrixProp.arraySize != rows)
+        {
+            matrixProp.arraySize = rows;
+        }
+
+        for (int i = 0; i < rows; i++)
+        {
+            var row = matrixProp.GetArrayElementAtIndex(i);
+            var valuesProp = row.FindPropertyRelative("values");
+
+            if (valuesProp == null)
+                continue; // Evita NPE si algo no está serializado aún
+
+            if (valuesProp.arraySize != cols)
+                valuesProp.arraySize = cols;
+        }
 
         // --- Botones ---
         float buttonWidth = (position.width - 10) / 3f;
