@@ -81,4 +81,7 @@ public class CustomBoolMatrix
 
         return result;
     }
+
+    public int GetRows() => matrix.Length;
+    public int GetColums() => matrix[0].values.Length;
 }

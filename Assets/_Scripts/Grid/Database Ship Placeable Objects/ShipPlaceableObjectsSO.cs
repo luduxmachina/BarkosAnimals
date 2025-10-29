@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class PlaceableObjectsSO : ScriptableObject
+public class ShipPlaceableObjectsSO : ScriptableObject
 {
-    public List<ObjectData> objectData;
+    public List<ShipObjectData> shipObjectData;
 
     private void OnValidate()
     {
-        foreach (var obj in objectData)
+        foreach (var obj in shipObjectData)
         {
             if (obj.OcupiedSpace != null)
                 obj.OcupiedSpace.EnsureSize();
@@ -18,7 +18,7 @@ public class PlaceableObjectsSO : ScriptableObject
 }
 
 [Serializable]
-public class ObjectData
+public class ShipObjectData
 {
     [field: SerializeField] public string Name{ get; private set; }
     [field: SerializeField] public int ID{ get; set; }
