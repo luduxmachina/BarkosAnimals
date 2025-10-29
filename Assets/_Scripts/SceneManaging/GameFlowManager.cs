@@ -21,7 +21,7 @@ public class GameFlowManager : MonoBehaviour
 
     [Header("Levels to play")]
     [SerializeField]
-    private NivelSO defaultLevel;
+    public NivelSO defaultLevel;
     [SerializeField]
     private NivelSO[] tutorialLevels;
     [SerializeField]
