@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectPlacer))]
 public class GridPlacementManager : MonoBehaviour
 {
-    [SerializeField] private PlaceableObjectsSO dataBase;
+    [SerializeField] private ShipPlaceableObjectsSO dataBase;
 
     [SerializeField] private GameObject gridVisualization;
 
