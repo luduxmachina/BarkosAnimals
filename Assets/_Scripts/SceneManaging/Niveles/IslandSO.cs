@@ -33,7 +33,8 @@ public class Archipelago
 public struct PreviewInfo
 {
     public Sprite previewImage;
-    public Sprite[] animalesDeLaIsla;
+    public ItemNames[] animalesDeLaIsla;
+
 }
 [CreateAssetMenu(fileName = "Island", menuName = "ScriptableObjects/IslandSO", order = 1)]
 public class IslandSO : ScriptableObject
