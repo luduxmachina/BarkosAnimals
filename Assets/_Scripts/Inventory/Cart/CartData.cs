@@ -17,24 +17,20 @@ public class CartData : MonoBehaviour, IInventoryData
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-            TryStackItem(ItemNames.Bread, 10);
-        if (Input.GetKeyDown(KeyCode.L))
-            TryAddItem(ItemNames.Duck);
-        
-        if (Input.GetKeyDown(KeyCode.R))
-            EmptyInventory();
+        // if (Input.GetKeyDown(KeyCode.K))
+        //     TryStackItem(ItemNames.Bread, 10);
+        // if (Input.GetKeyDown(KeyCode.L))
+        //     TryAddItem(ItemNames.Duck);
+        // 
+        // if (Input.GetKeyDown(KeyCode.R))
+        //     EmptyInventory();
     }
     
-    /// <summary>
-    /// Calculates if all the inventory slots are taken
-    /// </summary>
-    /// <returns>True if the inventory has all the slots taken, False in every other case</returns>
-    public bool InventoryIsFull()
-    {
-        return cartInventory.Count >= MAX_ITEMS;
-    }
-    
+   
+    public bool InventoryIsFull() => cartInventory.Count >= MAX_ITEMS;
+    public bool InventoryIsEmpty() => cartInventory.Count == 0;
+
+    public int TryStackItem(InventoryItemDataObjects item) => TryStackItem(item.Name, item.Count);
     public int TryStackItem(ItemNames itemName, int amount)
     {
         // If there are no items to stack, we don't do shit
@@ -84,6 +80,32 @@ public class CartData : MonoBehaviour, IInventoryData
         Debug.Log("Ship inventory cleared");
         Debug.Log("Cart inventory cleared");
         cartInventory.Clear();
+    }
+
+
+
+    public List<InventoryItemDataObjects> GetAllInventoryObjects() => cartInventory;
+
+    public List<InventoryItemDataObjects> ExtractAllInventoryObjects()
+    {
+        List<InventoryItemDataObjects> returnList = cartInventory;
+        EmptyInventory();
+        return returnList;
+    }
+
+    public List<InventoryItemDataObjects> TryStackAllItems(List<InventoryItemDataObjects> objectsToAdd)
+    {
+        List<InventoryItemDataObjects> returnList = new();
+
+        foreach(var obj in objectsToAdd)
+        {
+            int leftover = TryStackItem(obj);
+
+            if (leftover > 0)
+                returnList.Add(new InventoryItemDataObjects(obj.Name, leftover));
+        }
+
+        return returnList;
     }
 
     private int AddInExistingSlots(ItemNames itemName, int amount)
@@ -157,5 +179,5 @@ public class CartData : MonoBehaviour, IInventoryData
 
         // We return the amount of items we could not add to the cart
         return amount;
-    }    
+    }
 }
