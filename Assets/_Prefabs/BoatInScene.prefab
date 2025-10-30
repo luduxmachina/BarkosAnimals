@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4112807907845072433}
   - component: {fileID: 1053498968096977768}
   - component: {fileID: 5432987086088412434}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CartToBoatHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipData: {fileID: 5453373539788189388}
+  onTransferComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1579847896328755274
 GameObject:
   m_ObjectHideFlags: 0

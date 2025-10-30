@@ -691,13 +691,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 802784674647932166, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1579847896328755274, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_Name
       value: BoatInScene (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2152944873426768721, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38
+      value: 39.6
       objectReference: {fileID: 0}
     - target: {fileID: 2152944873426768721, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_LocalPosition.y
@@ -705,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2152944873426768721, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.9
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: 2152944873426768721, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_LocalRotation.w
@@ -737,15 +741,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2516870111135420832, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 2516870111135420832, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 2516870111135420832, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1195,7 +1199,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2822870388944253255, guid: 4cec588271983f648ad941a63ce4ec0e, type: 3}
       propertyPath: slowEffect.percentageOfSpeed
-      value: 0.136
+      value: 0.401
       objectReference: {fileID: 0}
     - target: {fileID: 7280910670555278356, guid: 4cec588271983f648ad941a63ce4ec0e, type: 3}
       propertyPath: m_LocalPosition.x
