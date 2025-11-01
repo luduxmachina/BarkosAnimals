@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
         move = Vector3.ProjectOnPlane(move, adaptToFloor.upVector).normalized;
         move *= playerCurrentStats.currentStats.moveSpeed * Time.fixedDeltaTime;
-        Debug.Log(move);
         rb.MovePosition(rb.position + move);
 
 
