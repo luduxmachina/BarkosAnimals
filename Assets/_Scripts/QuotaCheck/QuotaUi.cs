@@ -45,12 +45,12 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface
     {
         quota = GameFlowManager.instance.quotaChecker.GetQuota();
         int numImage = 0;
-        if (quota.Restrictions[Restriction.Herbivore] > 0)
-        {
-            imageHerbivore.gameObject.SetActive(true);
-            imageHerbivore.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
-            numImage++;
-        }
+        //if (quota.Restrictions[Restriction.Herbivore] > 0)
+        //{
+        //    imageHerbivore.gameObject.SetActive(true);
+        //    imageHerbivore.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
+        //    numImage++;
+        //}
 
         cuotaText = quota.QuotaValue.ToString();
 

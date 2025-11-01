@@ -21,6 +21,7 @@ public class QuotaChecker
     public void AddNewUI (QuotaUiInterface quotaUi)
     {
         quotaUIs.Add(quotaUi);
+        quotaUi.UpdateQuotaPassed(quotaPassed, isQuotaPass);
     }
 
 
