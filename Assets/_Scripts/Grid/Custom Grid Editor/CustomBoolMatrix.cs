@@ -84,4 +84,6 @@ public class CustomBoolMatrix
 
     public int GetRows() => matrix.Length;
     public int GetColums() => matrix[0].values.Length;
+
+    public bool GetValue(int row, int colum) => matrix[row].values[colum];
 }

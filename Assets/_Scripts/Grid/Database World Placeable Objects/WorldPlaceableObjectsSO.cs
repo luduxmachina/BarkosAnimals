@@ -12,6 +12,7 @@ public class WorldPlaceableObjectsSO : ScriptableObject
     {
         foreach (var obj in worldObjectData)
         {
+            // Matrices de espacios ocupados
             if (obj.B_OcupiedSpace != null)
                 obj.B_OcupiedSpace.EnsureSize();
 
