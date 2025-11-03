@@ -53,7 +53,7 @@ public class GridPlacementState : IGridBuildingState
         int gameObjectIndex = objectPlacer.PlaceObject(dataBase.shipObjectData[selectedObjectIndex].Prefab, worldCellPos);
         
         GridData selectedGrid = GetSlelectedGrid(selectedObjectIndex); 
-        selectedGrid.AddObject(relativeCellPos, dataBase.shipObjectData[selectedObjectIndex].Size, selectedObjectIndex, gameObjectIndex);
+        selectedGrid.AddObject(relativeCellPos, dataBase.shipObjectData[selectedObjectIndex].OcupiedSpace, selectedObjectIndex, gameObjectIndex);
         gridPreview.UpdatePosition(worldCellPos,false, grid.cellSize.x, false);
     }
 
@@ -71,7 +71,7 @@ public class GridPlacementState : IGridBuildingState
     private bool CheckPlacementValidity(Vector2Int relativeCellPos, int objectID)
     {
         GridData selectedGrid = GetSlelectedGrid(objectID); 
-        return selectedGrid.CanPlaceObjectAt(relativeCellPos, dataBase.shipObjectData[selectedObjectIndex].Size);
+        return selectedGrid.CanPlaceObjectAt(relativeCellPos, dataBase.shipObjectData[selectedObjectIndex].OcupiedSpace);
     }
     
     private GridData GetSlelectedGrid(int objectID)
