@@ -9,10 +9,10 @@ public class GridPlacementState : IGridBuildingState
     private GridPreview gridPreview;
     private ShipPlaceableObjectsSO dataBase;
     private GridData gridObjectsData;
-    private ObjectPlacer objectPlacer;
+    private IObjectPlacer objectPlacer;
 
     public GridPlacementState(int id, Grid grid, GridPreview gridPreview, ShipPlaceableObjectsSO dataBase,
-        GridData gridObjectsData, ObjectPlacer objectPlacer)
+        GridData gridObjectsData, IObjectPlacer objectPlacer)
     {
         this.id = id;
         this.grid = grid;

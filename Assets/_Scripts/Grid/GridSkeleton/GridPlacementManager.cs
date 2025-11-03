@@ -4,9 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Grid))]
-[RequireComponent(typeof(GridInput))]
 [RequireComponent(typeof(GridPreview))]
-[RequireComponent(typeof(ObjectPlacer))]
+[RequireComponent(typeof(IGridInput))]
+[RequireComponent(typeof(IObjectPlacer))]
+
 public class GridPlacementManager : MonoBehaviour
 {
     [SerializeField] private ShipPlaceableObjectsSO dataBase;
@@ -14,10 +15,10 @@ public class GridPlacementManager : MonoBehaviour
     [SerializeField] private GameObject gridVisualization;
 
     private Grid grid;
-    private GridInput gridInput;
+    private IGridInput gridInput;
     private GridData gridObjectsData;
     private GridPreview gridPreview;
-    private ObjectPlacer objectPlacer;
+    private IObjectPlacer objectPlacer;
     
     private Vector3Int lastPos = Vector3Int.zero;
     
@@ -26,9 +27,10 @@ public class GridPlacementManager : MonoBehaviour
     private void Awake()
     {
         grid = GetComponent<Grid>();
-        gridInput = GetComponent<GridInput>();
         gridPreview = GetComponent<GridPreview>();
-        objectPlacer = GetComponent<ObjectPlacer>();
+        gridInput = GetComponent<IGridInput>();
+        objectPlacer = GetComponent<IObjectPlacer>();
+        
     }
 
     private void Start()
@@ -62,7 +64,7 @@ public class GridPlacementManager : MonoBehaviour
     {
         gridVisualization.SetActive(false);
         gridInput.OnClick -= PlaceStructure;
-        gridInput.onExit -= StopPlacement;
+        gridInput.OnExit -= StopPlacement;
         
         lastPos = Vector3Int.zero;
         
@@ -82,7 +84,7 @@ public class GridPlacementManager : MonoBehaviour
         buildingState = new GridPlacementState(id, grid, gridPreview, dataBase, gridObjectsData, objectPlacer);
         
         gridInput.OnClick += PlaceStructure;
-        gridInput.onExit += StopPlacement;
+        gridInput.OnExit += StopPlacement;
     }
 
     public void StartRemoving()
@@ -94,7 +96,7 @@ public class GridPlacementManager : MonoBehaviour
         buildingState = new GridRemovingState(grid, gridPreview, gridObjectsData, objectPlacer);
         
         gridInput.OnClick += PlaceStructure;
-        gridInput.onExit += StopPlacement;
+        gridInput.OnExit += StopPlacement;
     }
 
     private void PlaceStructure()
