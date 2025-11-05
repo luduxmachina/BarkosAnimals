@@ -7,19 +7,31 @@ public class WorldGridInput : MonoBehaviour, IGridInput
 
     [SerializeField]
     private LayerMask groundLayerMask;
+    
+    [SerializeField]
+    private GridPlacementManager gridPlacementManager;
 
     public Vector3 GetSelectedMapPosition()
     {
-        throw new NotImplementedException();
+        // TESTEO
+        return Vector3.zero;
     }
 
     public void StartPlacing(int id)
     {
-        throw new NotImplementedException();
+        gridPlacementManager.StartPlacement(id);
     }
 
     public void StartRemoving()
     {
         throw new NotImplementedException();
+    }
+
+    public void ReadyForStartPlacing()
+    {
+        // TESTEO
+        Debug.Log("ReadyForStartPlacing");
+        StartPlacing(0);
+        OnClick?.Invoke();
     }
 }

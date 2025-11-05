@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[Serializable]
 public class PlaceableObjectDataBase : IPlaceableObjectData
 {
     [field: SerializeField] public string Name { get; private set; }

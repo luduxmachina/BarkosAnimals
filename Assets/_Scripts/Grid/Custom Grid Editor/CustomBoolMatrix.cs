@@ -9,8 +9,8 @@ public class BoolRow
 [System.Serializable]
 public class CustomBoolMatrix
 {
-    [Min(1)] public int rows = 2;
-    [Min(1)] public int columns = 2;
+    [Min(1)] public int rows;
+    [Min(1)] public int columns;
 
     public BoolRow[] matrix;
 

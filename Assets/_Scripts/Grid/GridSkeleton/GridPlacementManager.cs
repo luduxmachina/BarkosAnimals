@@ -31,6 +31,7 @@ public class GridPlacementManager : MonoBehaviour
         grid = GetComponent<Grid>();
         gridInput = GetComponent<IGridInput>();
         objectPlacer = GetComponent<IObjectPlacer>();
+        gridObjectsData = new GridData();
 
         if (TryGetComponent(out GridPreview aux))
         {
@@ -41,8 +42,6 @@ public class GridPlacementManager : MonoBehaviour
     private void Start()
     {
         StopPlacement();
-
-        gridObjectsData = new GridData();
     }
 
     private void Update()
@@ -67,7 +66,8 @@ public class GridPlacementManager : MonoBehaviour
 
     private void StopPlacement()
     {
-        gridVisualization.SetActive(false);
+        if(gridVisualization != null)
+            gridVisualization.SetActive(false);
         gridInput.OnClick -= PlaceStructure;
         gridInput.OnExit -= StopPlacement;
         
@@ -84,7 +84,8 @@ public class GridPlacementManager : MonoBehaviour
     {
         StopPlacement();
         
-        gridVisualization.SetActive(true);
+        if(gridVisualization != null)
+            gridVisualization?.SetActive(true);
         
         buildingState = new GridPlacementState(id, grid, gridPreview, dataBase, gridObjectsData, objectPlacer);
         
@@ -96,7 +97,8 @@ public class GridPlacementManager : MonoBehaviour
     {
         StopPlacement();
         
-        gridVisualization.SetActive(true);
+        if(gridVisualization != null)
+            gridVisualization?.SetActive(true);
         
         buildingState = new GridRemovingState(grid, gridPreview, gridObjectsData, objectPlacer);
         

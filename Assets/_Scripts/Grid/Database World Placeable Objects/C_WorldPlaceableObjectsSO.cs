@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ShipPlaceableObjectsSO : BasePlaceableObjectsSO<ShipPlaceableObjectData>
+public class C_WorldPlaceableObjectsSO : BasePlaceableObjectsSO<C_WolrdObjectData>
 {
     private void OnValidate()
     {
@@ -20,7 +19,6 @@ public class ShipPlaceableObjectsSO : BasePlaceableObjectsSO<ShipPlaceableObject
 }
 
 [Serializable]
-public class ShipPlaceableObjectData : PlaceableObjectDataBase
+public class C_WolrdObjectData : PlaceableObjectDataBase
 {
-    [field: SerializeField] public Sprite ImageUI { get; private set; }
 }

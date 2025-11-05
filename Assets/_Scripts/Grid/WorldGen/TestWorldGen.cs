@@ -3,21 +3,21 @@ using UnityEngine;
 public class TestWorldGen : MonoBehaviour
 {
     [SerializeField]
-    private WorldPlaceableObjectsSO database;
+    private B_WorldPlaceableObjectsSO database;
 
     private void Start()
     {
-        foreach(var obj in database.worldObjectData)
+        foreach(var obj in database.PlaceableObjectData)
         {
-            Debug.Log($"La matriz [{obj.Name}] es de {obj.B_OcupiedSpace.GetRows()} x {obj.B_OcupiedSpace.GetColums()}");
+            Debug.Log($"La matriz [{obj.Name}] es de {obj.Size.x} x {obj.Size.y}");
             
             Debug.Log($"\t Matriz B:");
-            for (int i = 0; i < obj.B_OcupiedSpace.GetRows(); i++)
+            for (int i = 0; i < obj.OcupiedSpace.GetRows(); i++)
             {
                 string str = "\t";
-                for (int j = 0; j < obj.B_OcupiedSpace.GetColums(); j++)
+                for (int j = 0; j < obj.OcupiedSpace.GetColums(); j++)
                 {
-                    if (obj.B_OcupiedSpace.GetValue(i, j)) 
+                    if (obj.OcupiedSpace.GetValue(i, j)) 
                     {
                         str += "X";
                     }
