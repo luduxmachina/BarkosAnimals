@@ -4,6 +4,7 @@ using UnityEngine;
 public class AdaptToFloor : MonoBehaviour
 {
     private Rigidbody rb;
+    [HideInInspector]
     public Vector3 upVector = new Vector3(0, 1, 0);
     [Header("Ground Check")]
     [SerializeField] private float heightFromGround = 1.1f;
@@ -30,7 +31,7 @@ public class AdaptToFloor : MonoBehaviour
         Ray ray = new Ray(transform.position + Vector3.up * 0.1f, Vector3.down);
 
 
-        if (Physics.Raycast(ray, out RaycastHit hit, heightFromGround))
+        if (Physics.Raycast(ray, out RaycastHit hit, heightFromGround*1.25f))
         {
             upVector = hit.normal;
             Vector3 right = transform.right;
