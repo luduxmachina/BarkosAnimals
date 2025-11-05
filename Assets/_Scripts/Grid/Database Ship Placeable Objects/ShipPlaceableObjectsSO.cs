@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ShipPlaceableObjectsSo : ScriptableObject, IPlaceableObjectsSO<ShipPlaceableObjectData>
+public class ShipPlaceableObjectsSO : BasePlaceableObjectsSO<ShipPlaceableObjectData>
 {
-    [field: SerializeField] public List<ShipPlaceableObjectData> PlaceableObjectData { get; set; }
+    // [field: SerializeField] public List<ShipPlaceableObjectData> PlaceableObjectData { get; set; }
     
     
     private void OnValidate()

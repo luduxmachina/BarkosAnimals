@@ -11,8 +11,8 @@ using UnityEngine;
 
 public class GridPlacementManager : MonoBehaviour
 {
-    [SerializeField] private ScriptableObject  DataBase;
-    private IPlaceableObjectsSO<ShipPlaceableObjectData> dataBase => DataBase as IPlaceableObjectsSO<ShipPlaceableObjectData>;
+    [SerializeField] private ABasePlaceableObjectsSO dataBase;
+    // private BasePlaceableObjectsSO<PlaceableObjectDataBase> dataBase => DataBase as BasePlaceableObjectsSO<PlaceableObjectDataBase>;
 
     [SerializeField] private GameObject gridVisualization;
 
