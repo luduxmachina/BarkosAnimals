@@ -7,11 +7,11 @@ public class GridPlacementState : IGridBuildingState
     
     private Grid grid;
     private GridPreview gridPreview;
-    private ShipPlaceableObjectsSO dataBase;
+    private IPlaceableObjectsSO<ShipPlaceableObjectData> dataBase;
     private GridData gridObjectsData;
     private IObjectPlacer objectPlacer;
 
-    public GridPlacementState(int id, Grid grid, GridPreview gridPreview, ShipPlaceableObjectsSO dataBase,
+    public GridPlacementState(int id, Grid grid, GridPreview gridPreview, IPlaceableObjectsSO<ShipPlaceableObjectData> dataBase,
         GridData gridObjectsData, IObjectPlacer objectPlacer)
     {
         this.id = id;
@@ -21,10 +21,10 @@ public class GridPlacementState : IGridBuildingState
         this.gridObjectsData = gridObjectsData;
         this.objectPlacer = objectPlacer;
         
-        selectedObjectIndex = dataBase.shipObjectData.FindIndex(data => data.ID == id);
+        selectedObjectIndex = dataBase.PlaceableObjectData.FindIndex(data => data.ID == id);
         if (selectedObjectIndex > -1)
         {
-            gridPreview.StartPreview(dataBase.shipObjectData[selectedObjectIndex].Prefab, dataBase.shipObjectData[selectedObjectIndex].Size);
+            gridPreview?.StartPreview(dataBase.PlaceableObjectData[selectedObjectIndex].Prefab, dataBase.PlaceableObjectData[selectedObjectIndex].Size);
         }
         else
         {
@@ -34,7 +34,7 @@ public class GridPlacementState : IGridBuildingState
 
     public void EndState()
     {
-        gridPreview.StopPreview();
+        gridPreview?.StopPreview();
     }
 
     public void OnAction(Vector3 position)
@@ -50,11 +50,11 @@ public class GridPlacementState : IGridBuildingState
             return;
 
         // Place Object
-        int gameObjectIndex = objectPlacer.PlaceObject(dataBase.shipObjectData[selectedObjectIndex].Prefab, worldCellPos);
+        int gameObjectIndex = objectPlacer.PlaceObject(dataBase.PlaceableObjectData[selectedObjectIndex].Prefab, worldCellPos);
         
         GridData selectedGrid = GetSlelectedGrid(selectedObjectIndex); 
-        selectedGrid.AddObject(relativeCellPos, dataBase.shipObjectData[selectedObjectIndex].OcupiedSpace, selectedObjectIndex, gameObjectIndex);
-        gridPreview.UpdatePosition(worldCellPos,false, grid.cellSize.x, false);
+        selectedGrid.AddObject(relativeCellPos, dataBase.PlaceableObjectData[selectedObjectIndex].OcupiedSpace, selectedObjectIndex, gameObjectIndex);
+        gridPreview?.UpdatePosition(worldCellPos,false, grid.cellSize.x, false);
     }
 
     public void UpdateState(Vector3Int cellPos)
@@ -65,13 +65,13 @@ public class GridPlacementState : IGridBuildingState
         Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
         bool validPlace = CheckPlacementValidity(relativeCellPos, selectedObjectIndex);
         
-        gridPreview.UpdatePosition(worldCellPos, validPlace, grid.cellSize.x, false);
+        gridPreview?.UpdatePosition(worldCellPos, validPlace, grid.cellSize.x, false);
     }
     
     private bool CheckPlacementValidity(Vector2Int relativeCellPos, int objectID)
     {
         GridData selectedGrid = GetSlelectedGrid(objectID); 
-        return selectedGrid.CanPlaceObjectAt(relativeCellPos, dataBase.shipObjectData[selectedObjectIndex].OcupiedSpace);
+        return selectedGrid.CanPlaceObjectAt(relativeCellPos, dataBase.PlaceableObjectData[selectedObjectIndex].OcupiedSpace);
     }
     
     private GridData GetSlelectedGrid(int objectID)

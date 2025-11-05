@@ -4,13 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Grid))]
-[RequireComponent(typeof(GridPreview))]
 [RequireComponent(typeof(IGridInput))]
 [RequireComponent(typeof(IObjectPlacer))]
 
+// [RequireComponent(typeof(GridPreview))]
+
 public class GridPlacementManager : MonoBehaviour
 {
-    [SerializeField] private ShipPlaceableObjectsSO dataBase;
+    [SerializeField] private ScriptableObject  DataBase;
+    private IPlaceableObjectsSO<ShipPlaceableObjectData> dataBase => DataBase as IPlaceableObjectsSO<ShipPlaceableObjectData>;
 
     [SerializeField] private GameObject gridVisualization;
 
@@ -27,10 +29,13 @@ public class GridPlacementManager : MonoBehaviour
     private void Awake()
     {
         grid = GetComponent<Grid>();
-        gridPreview = GetComponent<GridPreview>();
         gridInput = GetComponent<IGridInput>();
         objectPlacer = GetComponent<IObjectPlacer>();
-        
+
+        if (TryGetComponent(out GridPreview aux))
+        {
+            gridPreview = aux;
+        }
     }
 
     private void Start()
