@@ -3,6 +3,8 @@ using System;
 using UnityEngine;
 using NUnit.Framework;
 using System.Runtime.CompilerServices;
+using System.Collections;
+
 
 
 #if UNITY_EDITOR
@@ -47,17 +49,12 @@ public class Quota: ISerializationCallbackReceiver
     }
 
     [SerializeField]
-    public List<RestrictionTupple> RestrictionsList = new List<RestrictionTupple>();
+    List<RestrictionTupple> RestrictionsList = new List<RestrictionTupple>();
 
     public int this[Restriction restriction] => restrictions[restriction];
 
     public void OnAfterDeserialize()
     {
-        foreach (Restriction restriction in Enum.GetValues(typeof(Restriction)))
-        {
-            if(!RestrictionsList.Exists(x=>x.restriction == restriction))
-                RestrictionsList.Add(new RestrictionTupple { restriction = restriction, value = 0 });
-        }
 
 #if UNITY_EDITOR
         // En el editor queremos mantener la lista editable, así que no transformamos todavía
@@ -73,7 +70,7 @@ public class Quota: ISerializationCallbackReceiver
 
 
 
-    Dictionary<Restriction, int> restrictions;
+Dictionary<Restriction, int> restrictions;
     public Dictionary<Restriction, int> Restrictions {
         get { return restrictions; }
     }

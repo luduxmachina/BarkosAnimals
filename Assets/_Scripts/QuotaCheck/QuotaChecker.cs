@@ -61,28 +61,22 @@ public class QuotaChecker
     /// <param name="number"></param>
     public void UpdateCuote(InventoryItemDataObjects animal)
     {
+        ItemNames tipo = animal.Name;
 
-        switch (animal.Name)
+        switch (tipo)
         {
             case ItemNames.Duck:
-                quotaPassed.AddRestictionPassed(Restriction.Duck, animal.Count);
-                quotaPassed.AddRestictionPassed(Restriction.Herbivore, animal.Count);
 
                 break;
-
-            //case AnimalType.Pangolin:
-            //    quotaPassed.AddRestictionPassed(Restriction.Herbivore, number);
-            //
-            //    break;
-            //
-            //
-            //case AnimalType.Snake:
-            //    //quotaPassed.AddRestictionPassed(Restriction.Carnivore, number);
-            //    break;
-
             default:
-                return;
+                Debug.LogError("Animal type not recognized in QuotaChecker");
+                break;
         }
+
+
+
+
+
 
 
         quotaPassed.AddPoints(animalValues[animal.Name]);
