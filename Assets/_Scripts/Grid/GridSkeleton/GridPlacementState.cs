@@ -88,7 +88,7 @@ public class GridPlacementState : IGridBuildingState
         return selectedGrid.CanPlaceObjectAt(relativeCellPos, placeableObjects[selectedObjectIndex].OcupiedSpace);
     }
     
-    private GridData GetSlelectedGrid(int objectID)
+    private GridData GetSlelectedGrid(int dataBase)
     {
         return gridObjectsData; // Can be selected multiple gridDatas in order to select floor or walls if needed
     }

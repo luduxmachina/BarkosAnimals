@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
 {
+    [SerializeField]
+    private LayerMask HeightCheckLayerMask;
+
     private List<GameObject> placedObjects = new List<GameObject>();
     
     public int PlaceObject(GameObject prefab, Vector3 worldCellPos)
@@ -32,7 +35,7 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
 
         RaycastHit hit;
 
-        if (Physics.Raycast(start, direction, out hit, Mathf.Infinity))
+        if (Physics.Raycast(start, direction, out hit, Mathf.Infinity, HeightCheckLayerMask))
         {
             return hit.point.y;   // Y del punto de colisión
         }
