@@ -32,7 +32,7 @@ public class WorldGridInput : MonoBehaviour, IGridInput
         // TESTEO
         StartPlacing(0);
         OnClick?.Invoke();
-        StartPlacing(1);
-        OnClick?.Invoke();
+        // StartPlacing(1);
+        // OnClick?.Invoke();
     }
 }
