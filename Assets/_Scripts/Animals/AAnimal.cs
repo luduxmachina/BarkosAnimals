@@ -25,29 +25,36 @@ public abstract class AAnimal : MonoBehaviour
     QuotaChecker quotaChecker;
     AnimalType animalType;
 
-    float actualSpeed = 0;
-
-    Action<Vector3, float, AAnimal, Transform, float> mover;
-
-    private void Mover(Vector3 direccion, float velocidad, AAnimal objeto, Transform objetivo, float distObjetivo)
-    {
-        objeto.transform.position += direccion * objeto.walkingSpeed * Time.deltaTime;
-    }
-
 
     void Start()
     {
         quotaChecker = GameFlowManager.instance.quotaChecker;
 
-
-
     }
 
-    // Update is called once per frame
-    void Update()
+    public float GetWalkingSpeed()
     {
-        this.transform.position += this.transform.forward * this.actualSpeed* Time.deltaTime;
+        return this.walkingSpeed;
     }
+    public float GetRotateSpeed()
+    {
+        return this.rotateSpeed;
+    }
+    public float GetRadioAwareness()
+    {
+        return this.radioDetection;
+    }
+    public Animator GetAnimator()
+    {
+        return this.animator;
+    }
+
+    public Transform GetClosestObjetive()
+    {
+        throw new System.NotImplementedException();
+    }
+
+
 
     private void OnDestroy()
     {
@@ -70,9 +77,5 @@ public abstract class AAnimal : MonoBehaviour
 
         this.transform.position += direccion * this.walkingSpeed * Time.deltaTime;
     }
-    protected abstract void Eat();
-    protected abstract void ScapeFrom(Transform objetive);
-    protected abstract void RunTo(Transform objetive);
-    protected abstract void Attack(Transform objetive);
 
 }

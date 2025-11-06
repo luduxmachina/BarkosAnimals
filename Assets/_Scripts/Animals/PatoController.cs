@@ -12,24 +12,5 @@ public class PatoMovement : AAnimal
         
     }
 
-    protected override void Attack(Transform objetive)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void Eat()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void RunTo(Transform objetive)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void ScapeFrom(Transform objetive)
-    {
-        throw new System.NotImplementedException();
-    }
     
 }
