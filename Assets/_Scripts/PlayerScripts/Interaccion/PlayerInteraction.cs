@@ -11,11 +11,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
     [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
     IGrabbable objInHand;
-    private PlayerMovement playerMovement;
-    private void Awake()
-    {
-        playerMovement = GetComponent<PlayerMovement>();
-    }
+
     public void Interact()
     {
         Debug.Log("Interacting");
@@ -96,7 +92,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
     public void StopGrabbing()
     {
-        playerMovement.AllowExtraMoveSet(); 
+
         hasObjInHand = false;
         objInHand = null;
     }
