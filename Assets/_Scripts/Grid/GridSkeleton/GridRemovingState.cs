@@ -8,11 +8,11 @@ public class GridRemovingState : IGridBuildingState
     private Grid grid;
     private GridPreview gridPreview;
     private GridData gridObjectsData;
-    private ObjectPlacer objectPlacer;
+    private IObjectPlacer objectPlacer;
     
     private int pastPlacementID = -1;
 
-    public GridRemovingState(Grid grid, GridPreview gridPreview, GridData gridObjectsData, ObjectPlacer objectPlacer)
+    public GridRemovingState(Grid grid, GridPreview gridPreview, GridData gridObjectsData, IObjectPlacer objectPlacer)
     {
         this.grid = grid;
         this.gridPreview = gridPreview;

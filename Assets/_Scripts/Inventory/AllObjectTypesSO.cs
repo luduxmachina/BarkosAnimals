@@ -47,7 +47,5 @@ public class AllObjectTypesSO : ScriptableObject
     public GameObject GetObjectPrefab(ItemNames itemName) => FindItem(itemName).Prefab;
     public Sprite GetSprite(ItemNames itemName) => FindItem(itemName).ItemImage;
     public int GetObjectMaxStackSize(ItemNames itemName) => FindItem(itemName).MaxStackSize;
-    public bool GetIsAnimal(ItemNames itemName) => FindItem(itemName).IsAnimal;
-    public bool GetIsCarnivore(ItemNames itemName) => FindItem(itemName).IsCarnivore;
-    public bool GetIsFood(ItemNames itemName) => FindItem(itemName).IsFood;
+    public List<Restriction> GetRestrictions(ItemNames itemName) => FindItem(itemName).checkRestrictions;
 }

@@ -1,16 +1,16 @@
 using System;
 using UnityEngine;
 
-public class GridInput : MonoBehaviour
+public class GridInput : MonoBehaviour, IGridInput
 {
-    public event Action OnClick, onExit;
-    
+    public event Action OnClick, OnExit;
+
     [SerializeField]
     private LayerMask groundLayerMask;
     [SerializeField]
     private Camera mainCamera;
-    
-    private GridPlacementManager  gridPlacementManager;
+
+    private GridPlacementManager gridPlacementManager;
     private Vector3 lastMousePos;
 
     private void Awake()
@@ -28,7 +28,7 @@ public class GridInput : MonoBehaviour
     {
         gridPlacementManager.StartPlacement(id);
     }
-    
+
     public void StartRemoving()
     {
         gridPlacementManager.StartRemoving();
@@ -37,12 +37,12 @@ public class GridInput : MonoBehaviour
     private void Update()
     {
         //////////////////// TESTEO ////////////////////
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
             OnClick?.Invoke();
-        
-        if(Input.GetKeyDown(KeyCode.Escape))
-            onExit?.Invoke();
-        
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnExit?.Invoke();
+
         //////////////////// TESTEO ////////////////////
         // 
         // 
@@ -63,13 +63,13 @@ public class GridInput : MonoBehaviour
         mousePos.z = mainCamera.nearClipPlane;
         Ray ray = mainCamera.ScreenPointToRay(mousePos);
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
-        
+
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100, groundLayerMask))
         {
             lastMousePos = hit.point;
         }
-        
+
         return lastMousePos;
     }
 }
