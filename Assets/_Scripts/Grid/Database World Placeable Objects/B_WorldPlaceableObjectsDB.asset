@@ -20,10 +20,10 @@ MonoBehaviour:
       rows: 4
       columns: 4
       matrix:
-      - values: 01010101
-      - values: 01010101
-      - values: 01010101
-      - values: 01010101
+      - values: 00000000
+      - values: 00000000
+      - values: 00000000
+      - values: 00000000
     C_OcupiedSpace:
       rows: 4
       columns: 4
@@ -47,3 +47,26 @@ MonoBehaviour:
       matrix:
       - values: 0100
       - values: 0100
+  - <Name>k__BackingField: Cascada
+    <ID>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 8104990606442457655, guid: 76e5fe628d14e6d4195faa02c6292b39, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 6
+      columns: 6
+      matrix:
+      - values: 010101010101
+      - values: 010101010101
+      - values: 010101010101
+      - values: 010101010101
+      - values: 010101010101
+      - values: 010101010100
+    C_OcupiedSpace:
+      rows: 6
+      columns: 6
+      matrix:
+      - values: 010101010101
+      - values: 010001010001
+      - values: 010101010101
+      - values: 010101010101
+      - values: 010101010101
+      - values: 010101010100

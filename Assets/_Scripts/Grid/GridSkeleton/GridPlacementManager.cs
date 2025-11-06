@@ -112,4 +112,37 @@ public class GridPlacementManager : MonoBehaviour
 
         buildingState.OnAction(selectedPos);
     }
+
+    public void SetObligatoryOccupiedSpaces(CustomBoolMatrix placementMatrix)
+    {
+        int rows = placementMatrix.rows;
+        int colums = placementMatrix.columns;
+
+        gridObjectsData.AddObject(new Vector2Int(-(rows / 2 + 1), -(colums / 2 + 1)), placementMatrix, -1, -1);
+
+        SetBordersAsOccupiedSpaces(rows, colums);
+    }
+
+    private void SetBordersAsOccupiedSpaces(int rows, int colums)
+    {
+        // >
+        Vector2Int pos = new Vector2Int(-(rows / 2 + 1), -(colums / 2 + 1));
+        Vector2Int spaces = new Vector2Int(1, colums + 1);
+        gridObjectsData.AddObject(pos, spaces, -1, -1);
+
+        // ^
+        pos = new Vector2Int(rows / 2 + 1, -(colums / 2 + 1));
+        spaces = new Vector2Int(rows + 1, 1);
+        gridObjectsData.AddObject(pos, spaces, -1, -1);
+
+        // <
+        pos = new Vector2Int(rows / 2 + 1, colums / 2 + 1);
+        spaces = new Vector2Int(-(rows + 1), 1);
+        gridObjectsData.AddObject(pos, spaces, -1, -1);
+
+        // V
+        pos = new Vector2Int(-(rows / 2 + 1), colums / 2 + 1);
+        spaces = new Vector2Int(1, -(colums + 1));
+        gridObjectsData.AddObject(pos, spaces, -1, -1);
+    }
 }

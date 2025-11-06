@@ -30,9 +30,13 @@ public class WorldGridInput : MonoBehaviour, IGridInput
     public void ReadyForStartPlacing()
     {
         // TESTEO
-        StartPlacing(0);
+        // PlaceObjOfID(0);
+        PlaceObjOfID(2);
+    }
+
+    private void PlaceObjOfID(int id)
+    {
+        StartPlacing(id);
         OnClick?.Invoke();
-        // StartPlacing(1);
-        // OnClick?.Invoke();
     }
 }
