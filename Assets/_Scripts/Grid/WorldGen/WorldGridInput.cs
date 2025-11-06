@@ -14,7 +14,7 @@ public class WorldGridInput : MonoBehaviour, IGridInput
     public Vector3 GetSelectedMapPosition()
     {
         // TESTEO
-        return Vector3.zero;
+        return new Vector3(0f, 0f, 0f);
     }
 
     public void StartPlacing(int id)
@@ -30,8 +30,9 @@ public class WorldGridInput : MonoBehaviour, IGridInput
     public void ReadyForStartPlacing()
     {
         // TESTEO
-        Debug.Log("ReadyForStartPlacing");
         StartPlacing(0);
+        OnClick?.Invoke();
+        StartPlacing(1);
         OnClick?.Invoke();
     }
 }

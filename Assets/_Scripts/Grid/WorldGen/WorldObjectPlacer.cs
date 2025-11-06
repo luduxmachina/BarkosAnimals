@@ -7,8 +7,11 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
     
     public int PlaceObject(GameObject prefab, Vector3 worldCellPos)
     {
-        Debug.Log("Placing object");
-        
+        // Calcular la componente Y para que coincida con el suelo
+        float y = GetHighestY(worldCellPos);
+        worldCellPos = new Vector3(worldCellPos.x, y, worldCellPos.z);
+
+        // Colocar el objeto
         GameObject newObj = Instantiate(prefab);
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
@@ -21,4 +24,20 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
     {
         throw new System.NotImplementedException();
     }
+
+    private float GetHighestY(Vector3 position)
+    {
+        Vector3 start = new Vector3(position.x, 10000f, position.z);
+        Vector3 direction = Vector3.down;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(start, direction, out hit, Mathf.Infinity))
+        {
+            return hit.point.y;   // Y del punto de colisión
+        }
+
+        return 0; // No golpeó nada
+    }
+
 }
