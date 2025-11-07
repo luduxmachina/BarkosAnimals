@@ -950,23 +950,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.5190899
+      value: 0.4290972
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5190895
+      value: 0.4290972
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.48015213
+      value: 0.5620281
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.48015174
+      value: -0.5620281
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -974,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -85.537
+      value: -105.278
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5cee912c0303e214bb4ddecf4b29064e, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -2253,8 +2253,332 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3861474199279081320, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8582699792414751907}
   m_SourcePrefab: {fileID: 100100000, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+--- !u!1 &8582699792414751906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3861474199279081320, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+  m_PrefabInstance: {fileID: 8582699792414751905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8582699792414751907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582699792414751906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7033c32493b38240a6a2c47736ac9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeOnLoop: 0
+  interruptOptions: 0
+  _eventHandler:
+    debugStatusChanges: 0
+    identifier: 
+  data:
+    graphs:
+    - name: PatoBT
+      id: 565f8bc7-ae37-4843-ae83-71f69019a0d4
+      graph:
+        rid: 3915210452180140219
+      nodes:
+      - name: Root
+        id: 119df255-f82d-4df3-87a8-c901d029842c
+        position: {x: 150, y: 0}
+        node:
+          rid: 3915210452180140220
+        references: []
+        parentIds: []
+        childIds:
+        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
+      - name: 
+        id: 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
+        position: {x: 150, y: 200}
+        node:
+          rid: 3915210452180140221
+        references: []
+        parentIds:
+        - 119df255-f82d-4df3-87a8-c901d029842c
+        childIds:
+        - 6a98050c-6298-44b1-ac52-ed19b5cb139d
+        - 8bdadcff-95ff-4582-a0a3-4c0e7c7e33a9
+        - 1356e002-41d1-4684-81ef-7726e2512dda
+      - name: Mirar comida
+        id: 5655b64f-b54a-4062-9e3e-8314aaf128c8
+        position: {x: -600, y: 800}
+        node:
+          rid: 3915210452180140225
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2504f682-5013-4f91-a93b-8bf778634398
+        childIds: []
+      - name: Comer si hay comida
+        id: 6a98050c-6298-44b1-ac52-ed19b5cb139d
+        position: {x: -300, y: 400}
+        node:
+          rid: 3915210452180140226
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
+        childIds:
+        - 2504f682-5013-4f91-a93b-8bf778634398
+      - name: 'Volver al estanque si fuera '
+        id: 8bdadcff-95ff-4582-a0a3-4c0e7c7e33a9
+        position: {x: 0, y: 400}
+        node:
+          rid: 3915210452180140227
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
+        childIds:
+        - 66211732-b8be-44cd-b5d1-5e3f0a88ac17
+      - name: Estar en agua
+        id: 1356e002-41d1-4684-81ef-7726e2512dda
+        position: {x: 600, y: 400}
+        node:
+          rid: 3915210452180140228
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
+        childIds:
+        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
+      - name: 
+        id: 2504f682-5013-4f91-a93b-8bf778634398
+        position: {x: -300, y: 600}
+        node:
+          rid: 3915210452180140229
+        references: []
+        parentIds:
+        - 6a98050c-6298-44b1-ac52-ed19b5cb139d
+        childIds:
+        - 5655b64f-b54a-4062-9e3e-8314aaf128c8
+        - 119c4837-97bb-406f-854a-1ef4c32c8269
+        - 7ac56cec-3b14-42a0-843e-998267800b94
+      - name: Salir del gua
+        id: c27708de-6c20-4584-a0f7-4c293e06f04d
+        position: {x: -300, y: 1200}
+        node:
+          rid: 3915210452180140230
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - eb0ef9dd-dd70-46eb-aac7-24b00ce2b3a2
+        childIds: []
+      - name: Estar en agua
+        id: eb0ef9dd-dd70-46eb-aac7-24b00ce2b3a2
+        position: {x: -300, y: 1000}
+        node:
+          rid: 3915210452180140231
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 119c4837-97bb-406f-854a-1ef4c32c8269
+        childIds:
+        - c27708de-6c20-4584-a0f7-4c293e06f04d
+      - name: 
+        id: 119c4837-97bb-406f-854a-1ef4c32c8269
+        position: {x: -300, y: 800}
+        node:
+          rid: 3915210452180140232
+        references: []
+        parentIds:
+        - 2504f682-5013-4f91-a93b-8bf778634398
+        childIds:
+        - eb0ef9dd-dd70-46eb-aac7-24b00ce2b3a2
+      - name: Andar hacia comida
+        id: 7ac56cec-3b14-42a0-843e-998267800b94
+        position: {x: 0, y: 800}
+        node:
+          rid: 3915210452180140233
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2504f682-5013-4f91-a93b-8bf778634398
+        childIds: []
+      - name: Volve al esanque
+        id: 66211732-b8be-44cd-b5d1-5e3f0a88ac17
+        position: {x: 0, y: 600}
+        node:
+          rid: 3915210452180140234
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 8bdadcff-95ff-4582-a0a3-4c0e7c7e33a9
+        childIds: []
+      - name: Nada
+        id: b33c2bf9-23cc-4348-8793-c6240a4258e5
+        position: {x: 300, y: 800}
+        node:
+          rid: 3915210452180140235
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
+        childIds: []
+      - name: Ests cansado
+        id: 2e288971-97e1-4f8d-b069-82c5ff32138c
+        position: {x: 600, y: 800}
+        node:
+          rid: 3915210452180140236
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
+        childIds:
+        - 2f05d8a3-0846-4b89-9cb2-9063e3046d8f
+      - name: Aletear
+        id: 5ecb0c82-0f3c-45da-b11d-85175804d8d5
+        position: {x: 900, y: 800}
+        node:
+          rid: 3915210452180140237
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
+        childIds: []
+      - name: Descansar
+        id: 2f05d8a3-0846-4b89-9cb2-9063e3046d8f
+        position: {x: 600, y: 1000}
+        node:
+          rid: 3915210452180140238
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2e288971-97e1-4f8d-b069-82c5ff32138c
+        childIds: []
+      - name: 
+        id: 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
+        position: {x: 600, y: 600}
+        node:
+          rid: 3915210452180140239
+        references: []
+        parentIds:
+        - 1356e002-41d1-4684-81ef-7726e2512dda
+        childIds:
+        - b33c2bf9-23cc-4348-8793-c6240a4258e5
+        - 2e288971-97e1-4f8d-b069-82c5ff32138c
+        - 5ecb0c82-0f3c-45da-b11d-85175804d8d5
+    pushPerceptions: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3915210452180140219
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140220
+      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        Iterations: -1
+    - rid: 3915210452180140221
+      type: {class: SelectorNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 3915210452180140225
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140226
+      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140227
+      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140228
+      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140229
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 3915210452180140230
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140231
+      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140232
+      type: {class: SuccederNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140233
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140234
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140235
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140236
+      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140237
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140238
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3915210452180140239
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
