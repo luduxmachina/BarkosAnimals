@@ -19,10 +19,36 @@ public class GridData
             placedObjects.Add(position, data);
         }
     }
+    
+    public void AddObject(Vector2Int gridPos, CustomBoolMatrix placementMatrix, int id, int placedObjectIndex)
+    {
+        List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, placementMatrix);
+        PlacementData data = new PlacementData(positionsToOccupy, id, placedObjectIndex);
+        
+        foreach (var position in positionsToOccupy)
+        {
+            if(placedObjects.ContainsKey(position))
+                throw new Exception($"HashSet already contains position {position}");
+            
+            placedObjects.Add(position, data);
+        }
+    }
    
     public bool CanPlaceObjectAt(Vector2Int gridPos, Vector2Int objSize)
     {
         List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, objSize);
+        foreach (var position in positionsToOccupy)
+        {
+            if(placedObjects.ContainsKey(position))
+                return false;
+        }
+            
+        return true;
+    }
+    
+    public bool CanPlaceObjectAt(Vector2Int gridPos, CustomBoolMatrix placementMatrix)
+    {
+        List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, placementMatrix);
         foreach (var position in positionsToOccupy)
         {
             if(placedObjects.ContainsKey(position))
@@ -80,6 +106,22 @@ public class GridData
             for (int y = 0; y < objSize.y; y++)
             {
                 returnValues.Add(gridPos +  new Vector2Int(x, y));
+            }
+        }
+        
+        return returnValues;
+    }
+    
+    private List<Vector2Int> CalculatePositions(Vector2Int gridPos, CustomBoolMatrix placementMatrix)
+    {
+        List<Vector2Int> returnValues = new List<Vector2Int>();
+        
+        for (int x = 0; x < placementMatrix.GetRows(); x++)
+        {
+            for (int y = 0; y < placementMatrix.GetColums(); y++)
+            {
+                if(placementMatrix.GetValue(x, y))
+                    returnValues.Add(gridPos +  new Vector2Int(x, y));
             }
         }
         
