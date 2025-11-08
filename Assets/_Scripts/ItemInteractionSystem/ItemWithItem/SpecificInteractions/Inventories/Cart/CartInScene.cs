@@ -1,17 +1,17 @@
 using System;
 using UnityEngine;
-[RequireComponent(typeof(SimpleGrabbable))]
+[RequireComponent(typeof(IGrabbable))]
 public class CartInScene : InventoryInScene
 {
     [SerializeField]
     CartSlowEffect slowEffect = new();
     [SerializeField]
     CartData cartData;
-    SimpleGrabbable grabbable;
+    IGrabbable grabbable;
 
     void Awake()
     {
-         grabbable = GetComponent<SimpleGrabbable>();
+         grabbable = GetComponent<IGrabbable>();
         if (grabbable == null)
         {
             Debug.LogError("Da fuck?");

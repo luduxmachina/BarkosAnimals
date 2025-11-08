@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ItemInScene : MonoBehaviour
 {
+    [SerializeField] private GameObject itemParent;
     [Tooltip("Cuantos items de este tipo hay en este objeto")]
     public int amountInStack = 1;
     public ItemNames itemName;
@@ -36,7 +37,7 @@ public class ItemInScene : MonoBehaviour
         Debug.Log("Item " + gameObject.name + " getting in cart");
         GetGrabbable()?.Drop();
 
-        Destroy(gameObject);
+        Destroy(itemParent);
     }
     private IGrabbable GetGrabbable()
     {
