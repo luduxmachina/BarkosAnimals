@@ -65,7 +65,7 @@ public class GridPreview : MonoBehaviour
         // Preview
         if (previewObject != null)
         {
-            MovePreview(position);
+            MovePreview(position, gridSize);
             ApplyFeedbackToPreview(validity, removing);
         }
         
@@ -96,9 +96,14 @@ public class GridPreview : MonoBehaviour
         removingMarkers.Clear();
     }
 
-    private void MovePreview(Vector3 position)
+    private void MovePreview(Vector3 position, float gridSize)
     {
-        previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
+        // previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
+        previewObject.transform.position = new Vector3(
+            position.x - gridSize * 0.5f, 
+            previewYOffset, 
+            position.z - gridSize * 0.5f
+        );
     }
 
     private void MoveCursor(Vector3 position, float gridSize)

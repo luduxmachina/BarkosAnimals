@@ -2,16 +2,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WorldGridCreator : MonoBehaviour
+public class GridCreator : MonoBehaviour
 {
     [SerializeField]
     private GameObject grid;
     [SerializeField]
-    private CustomBoolMatrix wolrdGridOcupiedSpaces = new CustomBoolMatrix();
+    private CustomBoolMatrix gridOcupiedSpaces = new CustomBoolMatrix();
     [SerializeField]
-    private int cellSize = 4;
+    private int cellSize = 1;
 
-    public UnityEvent OnWorldGridCreated;
+    public UnityEvent OnGridCreated;
 
     private GridPlacementManager placementManager;
 
@@ -26,8 +26,8 @@ public class WorldGridCreator : MonoBehaviour
 
     private void Start()
     {
-        placementManager.SetObligatoryOccupiedSpaces(wolrdGridOcupiedSpaces);
+        placementManager.SetObligatoryOccupiedSpaces(gridOcupiedSpaces);
 
-        OnWorldGridCreated?.Invoke();
+        OnGridCreated?.Invoke();
     }
 }

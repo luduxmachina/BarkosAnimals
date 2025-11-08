@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1517556677}
-  wolrdGridOcupiedSpaces:
+  gridOcupiedSpaces:
     rows: 8
     columns: 8
     matrix:
@@ -465,7 +465,7 @@ MonoBehaviour:
     - values: 0000000000000000
     - values: 0000000000000000
   cellSize: 4
-  OnWorldGridCreated:
+  OnGridCreated:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1517556685}

@@ -117,10 +117,30 @@ public class GridPlacementManager : MonoBehaviour
     {
         int rows = placementMatrix.rows;
         int colums = placementMatrix.columns;
+        
+        CustomBoolMatrix occupiedSpace = new CustomBoolMatrix(rows + 2, colums + 2);
+        occupiedSpace.EnsureSize();
 
-        gridObjectsData.AddObject(new Vector2Int(-(rows / 2 + 1), -(colums / 2 + 1)), placementMatrix, -1, -1);
+        for (int i = 0; i < occupiedSpace.GetRows(); i++)
+        {
+            for (int j = 0; j < occupiedSpace.GetColums(); j++)
+            {
+                if (i == 0 || j == 0 || i == occupiedSpace.GetRows() - 1 || j == occupiedSpace.GetColums() - 1)
+                {
+                    occupiedSpace.SetValue(i, j, true);
+                }
+                else
+                {
+                    occupiedSpace.SetValue(i, j, placementMatrix.GetValue(i - 1, j - 1));
+                }
+            }
+        }
+        
+        occupiedSpace.DebugMatrix();
 
-        SetBordersAsOccupiedSpaces(rows, colums);
+        gridObjectsData.AddObject(new Vector2Int(-(rows / 2) - 1, -(colums / 2) - 1), occupiedSpace, -1, -1);
+
+        // SetBordersAsOccupiedSpaces(rows, colums);
     }
 
     private void SetBordersAsOccupiedSpaces(int rows, int colums)
@@ -128,7 +148,7 @@ public class GridPlacementManager : MonoBehaviour
         // >
         Vector2Int pos = new Vector2Int(-(rows / 2 + 1), -(colums / 2 + 1));
         Vector2Int spaces = new Vector2Int(1, colums + 1);
-        gridObjectsData.AddObject(pos, spaces, -1, -1);
+        gridObjectsData.AddObject(pos, spaces, -1, -1); 
 
         // ^
         pos = new Vector2Int(rows / 2 + 1, -(colums / 2 + 1));

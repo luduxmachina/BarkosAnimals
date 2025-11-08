@@ -50,8 +50,8 @@ public class GridPlacementState : IGridBuildingState
     public void OnAction(Vector3 position)
     {
         Vector3Int cellPos = grid.WorldToCell(position);
-        // cellPos.y = 0;
-        // Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
+        cellPos.y = 0;
+        Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
 
         // Check if can be placed
         Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
@@ -66,7 +66,7 @@ public class GridPlacementState : IGridBuildingState
         
         GridData selectedGrid = GetSlelectedGrid(selectedObjectIndex); 
         selectedGrid.AddObject(relativeCellPos, placeableObjects[selectedObjectIndex].OcupiedSpace, selectedObjectIndex, gameObjectIndex);
-        gridPreview?.UpdatePosition(cellPos, false, grid.cellSize.x, false);
+        gridPreview?.UpdatePosition(worldCellPos, false, grid.cellSize.x, false);
     }
 
     public void UpdateState(Vector3Int cellPos)
