@@ -16,6 +16,14 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
     public bool allowExtramoveSetWhenGrabbed = true;
 
     public bool isBeingGrabbed { get { return currentGrabber != null; } }
+
+    //putas cosas de interfaces lol
+    UnityEvent IGrabbable.OnGrab => OnGrab;
+
+    UnityEvent IGrabbable.OnDrop => OnDrop;
+
+    IGrabber IGrabbable.currentGrabber => currentGrabber;
+
     private Rigidbody rb;
     private int originalLayer;
     [SerializeField]

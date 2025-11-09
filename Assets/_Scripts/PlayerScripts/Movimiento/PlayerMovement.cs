@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private PlayerInSceneEffects playerInSceneEffects;
     [Header("Ground Check")]
-    [SerializeField] private float heightFromGround = 1.1f;
+    [SerializeField] private AdaptToFloor adaptToFloor;
+
 
 
     private void Awake()
@@ -20,8 +21,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
         if (!playerCurrentStats.canMove) return;
+
+        if(rb.angularVelocity.sqrMagnitude < (2f *Time.fixedDeltaTime))
+        {
+            rb.angularVelocity = Vector3.zero;
+        }
         if (moveInput.sqrMagnitude > 0.1f)
         {
             MoveAndRotate();
@@ -31,15 +36,28 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Idle");
         }
     }
+  
     private void MoveAndRotate()
     {
-        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y) * playerCurrentStats.currentStats.moveSpeed * Time.fixedDeltaTime;
+        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
+
+        move = Vector3.ProjectOnPlane(move, adaptToFloor.upVector).normalized;
+        move *= playerCurrentStats.currentStats.moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
 
-        Quaternion targetRotation = Quaternion.LookRotation(move);
-        rb.rotation = Quaternion.RotateTowards(rb.rotation, targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime);
-        animator.SetTrigger("Walk");
-        
+
+        if (move.sqrMagnitude > 0.0001f)
+        {
+            Vector3 forward = move.normalized;
+            Vector3 right = Vector3.Cross(adaptToFloor.upVector, forward);
+            forward = Vector3.Cross(right, adaptToFloor.upVector);
+
+            Quaternion targetRotation = Quaternion.LookRotation(forward, adaptToFloor.upVector);
+            rb.angularVelocity = Vector3.zero;
+            rb.rotation = Quaternion.RotateTowards( rb.rotation,targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime);
+        }
+
+                
     }
     public void Dash()
     {
@@ -57,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!playerCurrentStats.canMove) return;
         if (!playerCurrentStats.canJump) return;
-        if (!IsGrounded()) return;
+        if (!adaptToFloor.IsGrounded()) return;
         
         playerInSceneEffects.AddOnJumpEffects();
         animator.SetTrigger("Jump");
@@ -65,15 +83,6 @@ public class PlayerMovement : MonoBehaviour
 
         
     }
-    private bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position, -Vector3.up, heightFromGround);
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position - Vector3.up * heightFromGround);
-        Gizmos.DrawSphere(transform.position - (Vector3.up * (heightFromGround - 0.1f)), 0.1f);
-    }
+  
 
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class HighlighterScript : MonoBehaviour
 {
     [SerializeField]
-    TaggedDetector detector;
+    CompleteTaggedDetector detector;
     [Header("Layers")]
     [SerializeField]
     private int defaultLayer = 0;
