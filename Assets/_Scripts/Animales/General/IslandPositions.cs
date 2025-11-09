@@ -60,7 +60,7 @@ public class IslandPositions : MonoBehaviour //lo pdoria hacer a pelo sin monobe
     {
         return boatTransform;
     }
-    public Transform GetClosest(params ItemNames[] types)
+    public Transform GetClosest(Vector3 pos, params ItemNames[] types)
     {
         Transform closest = null;
         float closestDistance = float.MaxValue;
@@ -72,7 +72,7 @@ public class IslandPositions : MonoBehaviour //lo pdoria hacer a pelo sin monobe
             }
             foreach (var tr in itemsDictionary[type])
             {
-                float dist = Vector3.Distance(playerTransform.position, tr.position);
+                float dist = Vector3.Distance(pos, tr.position);
                 if (dist < closestDistance)
                 {
                     closestDistance = dist;
@@ -83,9 +83,9 @@ public class IslandPositions : MonoBehaviour //lo pdoria hacer a pelo sin monobe
 
         return closest;
     }
-    public bool HasType(ItemNames type)
+    public bool HasType(ItemNames name)
     {
-        return itemsDictionary.ContainsKey(type) && itemsDictionary[type].Count > 0;
+        return itemsDictionary.ContainsKey(name) && itemsDictionary[name].Count > 0;
     }
 #if UNITY_EDITOR
     [ContextMenu("Debug Positions")]

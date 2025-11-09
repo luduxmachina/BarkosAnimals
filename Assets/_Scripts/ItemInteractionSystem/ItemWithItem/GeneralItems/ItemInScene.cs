@@ -45,7 +45,7 @@ public class ItemInScene : MonoBehaviour
         if (!useParentGrabbable) return simpleGrabbable;
         return GetComponentInParent<IGrabbable>();
     }
-    private void OnEnable()
+    private void Start()
     {
         IslandPositions.instance?.AddPosition(itemName, itemParent.transform);
     }
