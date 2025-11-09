@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ActionWalkTo : AAction
 {
     private Transform animalTransform;
-    private Transform objetive;
-    private float speed;
-    private float rotateSpeed;
+    private Transform objetiveTransform;
+    //private float speed;
+    //private float rotateSpeed;
     private float interactRadio;
+    //Quaternion rotation;
+    NavMeshAgent agent;
 
     public ActionWalkTo(AAnimal animal) : base(animal)
     {
@@ -15,9 +18,15 @@ public class ActionWalkTo : AAction
     public override void Enter()
     {
         animalTransform  = this._animal.transform;
-        speed = this._animal.GetWalkingSpeed();
-        rotateSpeed = this._animal.GetRotateSpeed();
-        objetive = this._animal.GetClosestObjetive();
+        //speed = this._animal.GetWalkingSpeed();
+        //rotateSpeed = this._animal.GetRotateSpeed();
+        objetiveTransform = this._animal.GetClosestObjetive();
+        //Vector3 direccion = objetiveTransform.position - animalTransform.position;
+        //rotation = Quaternion.LookRotation(direccion);
+        agent = _animal.GetComponent<NavMeshAgent>();
+        agent.SetDestination(objetiveTransform.position);
+
+        
     }
 
     public override void Exit()
@@ -27,21 +36,19 @@ public class ActionWalkTo : AAction
 
     public override void FixedUpdate()
     {
-        //throw new System.NotImplementedException();
+        //animalTransform.rotation = Quaternion.Slerp(animalTransform.rotation, rotation, rotateSpeed * Time.deltaTime);
+        //this.animalTransform.LookAt(objetiveTransform);
+        //
+        //this.animalTransform.position += this.animalTransform.forward * this.speed * Time.deltaTime;
+        agent.SetDestination(objetiveTransform.position);
+
+        if (Vector3.Distance(animalTransform.position, objetiveTransform.position) <= interactRadio)
+        {
+            this._animal.ReachedObjetivePush();
+        }
     }
 
     public override void Update()
     {
-        Vector3 direccion = objetive.position - animalTransform.position;
-        Quaternion rotation = Quaternion.LookRotation(direccion);
-        animalTransform.rotation = Quaternion.Slerp(animalTransform.rotation, rotation, rotateSpeed * Time.deltaTime);
-        this.animalTransform.LookAt(objetive);
-
-        this.animalTransform.position += this.animalTransform.forward * this.speed * Time.deltaTime;
-
-        if (Vector3.Distance(animalTransform.position, objetive.position)<= interactRadio)
-        {
-            
-        }
     }
 }

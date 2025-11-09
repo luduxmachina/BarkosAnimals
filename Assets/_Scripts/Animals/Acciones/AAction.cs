@@ -1,5 +1,5 @@
 using UnityEngine;
-public abstract class AAction 
+public abstract class AAction : IAction
 {
     protected AAnimal _animal;
 
