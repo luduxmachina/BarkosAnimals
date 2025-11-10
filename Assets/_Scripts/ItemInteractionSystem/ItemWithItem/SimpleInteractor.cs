@@ -51,8 +51,10 @@ public class SimpleInteractor : MonoBehaviour
 
 
         bool success= target.Interact(sentInteraction, interactor);
-        playerReceiver.interactionSuccessful = success;
-
+        if (playerReceiver != null)
+        {
+            playerReceiver.interactionSuccessful = success;
+        }
         if (success)
         {
             OnInteraction?.Invoke();

@@ -58,6 +58,9 @@ public enum ItemNames
     None,
     Bread,
     Duck,
+    Snake,
+    Pangolin,
+    Sheep
 }
 
 public enum ItemType
