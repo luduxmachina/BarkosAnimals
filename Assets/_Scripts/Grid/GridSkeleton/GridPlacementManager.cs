@@ -136,7 +136,7 @@ public class GridPlacementManager : MonoBehaviour
             }
         }
         
-        occupiedSpace.DebugMatrix();
+        // occupiedSpace.DebugMatrix();
 
         gridObjectsData.AddObject(new Vector2Int(-(rows / 2) - 1, -(colums / 2) - 1), occupiedSpace, -1, -1);
 
@@ -164,5 +164,10 @@ public class GridPlacementManager : MonoBehaviour
         pos = new Vector2Int(-(rows / 2 + 1), colums / 2 + 1);
         spaces = new Vector2Int(1, -(colums + 1));
         gridObjectsData.AddObject(pos, spaces, -1, -1);
+    }
+
+    public float GetGridSize()
+    {
+        return grid.cellSize.x;
     }
 }

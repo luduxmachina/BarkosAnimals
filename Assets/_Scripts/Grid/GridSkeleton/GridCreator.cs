@@ -11,7 +11,9 @@ public class GridCreator : MonoBehaviour
     [SerializeField]
     private int cellSize = 1;
 
+    public UnityEvent<CustomBoolMatrix> ConfigureGrid;
     public UnityEvent OnGridCreated;
+    
 
     private GridPlacementManager placementManager;
 
@@ -28,6 +30,7 @@ public class GridCreator : MonoBehaviour
     {
         placementManager.SetObligatoryOccupiedSpaces(gridOcupiedSpaces);
 
+        ConfigureGrid?.Invoke(gridOcupiedSpaces);
         OnGridCreated?.Invoke();
     }
 }
