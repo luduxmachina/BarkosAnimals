@@ -15,8 +15,6 @@ public class PatoFase1 : MonoBehaviour
     [SerializeField]
     private int energiaMax = 6;
     [Header("Misc")]
-    [SerializeField, Tooltip("La distancia a la que el pato considera que está pegado al pan para comérselo")]
-    private float radioAlcance;
     [SerializeField, Tooltip("Desde e lcentro del estanque cuanto 'es agua'")]
     private float radioDentroEstanque;
     [SerializeField]
@@ -42,12 +40,7 @@ public class PatoFase1 : MonoBehaviour
         }
         return false;
     }
-    public void FijarObjetivo()
-    {
-        comidaObjetivo = IslandPositions.instance.GetClosest(transform.position, ItemNames.Bread);
-        comidaObjetivoPos = comidaObjetivo.position;
-    }
-   
+
     public bool EnAgua()
     {
         if (posEstanque)
@@ -64,6 +57,7 @@ public class PatoFase1 : MonoBehaviour
     {
         return energiaActual <= 0.0f;
     }
+
     public void UsarEnergia() 
     {
         energiaActual--;
@@ -113,4 +107,10 @@ public class PatoFase1 : MonoBehaviour
     {
         movimiento.CancelMove();
     }
+    private void FijarObjetivo()
+    {
+        comidaObjetivo = IslandPositions.instance.GetClosest(transform.position, ItemNames.Bread);
+        comidaObjetivoPos = comidaObjetivo.position;
+    }
+
 }
