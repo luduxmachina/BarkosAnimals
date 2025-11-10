@@ -440,9 +440,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 4382326936322199079}
   priceText: {fileID: 5737090804151481680}
+  previewImage: {fileID: 711391485247173586}
+  textoEquipado: {fileID: 7003927070804041464}
   buyButton: {fileID: 733293002694804543}
   selectButton: {fileID: 3504889840097868611}
-  skinPreviewImage: {fileID: 711391485247173586}
 --- !u!1 &3504889840097868611
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2418251401179893418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -860,12 +861,12 @@ GameObject:
   - component: {fileID: 8857107911063352972}
   - component: {fileID: 2305215397505659660}
   m_Layer: 5
-  m_Name: Precio (1)
+  m_Name: TextoEquipado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4093765266855039426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -882,7 +883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -273, y: -435}
+  m_AnchoredPosition: {x: -85, y: -435}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8857107911063352972

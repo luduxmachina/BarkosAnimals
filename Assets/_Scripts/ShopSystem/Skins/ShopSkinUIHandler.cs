@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ShopSkinUIHandler : MonoBehaviour
@@ -5,34 +6,44 @@ public class ShopSkinUIHandler : MonoBehaviour
     [Header("UI Setup")]
     [SerializeField] private GameObject individualSkinUIPrefab;
     [SerializeField] private Transform contentParent;
-
+    [SerializeField] private TextMeshProUGUI monedasActuales;
+    [SerializeField] private bool useGivenSkingUIs = true;
+    [SerializeField, HideIf("useGivenSkingUIs", false)] private IndividualSkinUIHandler[] skinUIs;
     private void Start()
     {
         LoadAndDisplaySkins();
     }
-
+    private void Update()
+    {
+        monedasActuales.text = MetaCoinHandler.metaCoinCount.ToString();
+    }
     private void LoadAndDisplaySkins()
     {
-        // Load all Skin ScriptableObjects from the Resources/Skins folder
+        
         SkinSO[] allSkins = Resources.LoadAll<SkinSO>("Skins");
-
-        foreach (SkinSO skin in allSkins)
+        if (!useGivenSkingUIs)
         {
-            // Instantiate prefab
-            GameObject newSkinUI = Instantiate(individualSkinUIPrefab, contentParent);
-
-            // Get the UI handler
-            IndividualSkinUIHandler skinUIHandler = newSkinUI.GetComponentInChildren<IndividualSkinUIHandler>();
-
-            if (skinUIHandler != null)
+            int index = 0;
+            foreach (SkinSO skin in allSkins)
             {
+                // Instantiate prefab
+                GameObject newSkinUI = Instantiate(individualSkinUIPrefab, contentParent);
 
-                skinUIHandler.UpdateSkinInfo(skin.skinName, skin.price);
+                skinUIs[index] = newSkinUI.GetComponentInChildren<IndividualSkinUIHandler>();
+
             }
-            else
-            {
-                Destroy(newSkinUI);
-            }
+        }
+        for (int i = 0; i < skinUIs.Length && i<allSkins.Length; i++)
+        {
+            skinUIs[i].UpdateSkinInfo(allSkins[i], this);
+        }
+
+    }
+    public void UpdateUI()
+    {
+        foreach (IndividualSkinUIHandler skinUI in skinUIs)
+        {
+            skinUI.UpdateUI();
         }
     }
 }
