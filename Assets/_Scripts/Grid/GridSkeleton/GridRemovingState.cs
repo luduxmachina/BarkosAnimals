@@ -19,12 +19,12 @@ public class GridRemovingState : IGridBuildingState
         this.gridObjectsData = gridObjectsData;
         this.objectPlacer = objectPlacer;
         
-        gridPreview.StartRemovePreview();
+        gridPreview?.StartRemovePreview();
     }
 
     public void EndState()
     {
-        gridPreview.StopPreview();
+        gridPreview?.StopPreview();
     }
 
     public void OnAction(Vector3 position)
@@ -51,8 +51,8 @@ public class GridRemovingState : IGridBuildingState
             objectPlacer.RemoveObject(gameObjectIndex);
         }
         
-        gridPreview.UpdatePosition(worldCellPos, ChechIfSelectionIsValid(relativeCellPos), grid.cellSize.x, true);
-        gridPreview.EraseRemovePreview();
+        gridPreview?.UpdatePosition(worldCellPos, ChechIfSelectionIsValid(relativeCellPos), grid.cellSize.x, true);
+        gridPreview?.EraseRemovePreview();
     }
 
     public void UpdateState(Vector3Int cellPos)
@@ -63,12 +63,12 @@ public class GridRemovingState : IGridBuildingState
         
         bool validity = ChechIfSelectionIsValid(relativeCellPos);
         int placementID = GetPlacementID(relativeCellPos);
-        gridPreview.UpdatePosition(worldCellPos, validity, grid.cellSize.x, true);
+        gridPreview?.UpdatePosition(worldCellPos, validity, grid.cellSize.x, true);
         
         if (placementID != pastPlacementID)
         {
             // We erase the remove preview if we select another object
-            gridPreview.EraseRemovePreview();
+            gridPreview?.EraseRemovePreview();
 
             // We show the actual remove preview
             if (validity)
@@ -84,7 +84,7 @@ public class GridRemovingState : IGridBuildingState
                     occupiedWorldPositions.Add(grid.GetCellCenterWorld(aux));
                 }
 
-                gridPreview.UpdateRemovePreview(occupiedWorldPositions);
+                gridPreview?.UpdateRemovePreview(occupiedWorldPositions);
             }
         }
         

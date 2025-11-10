@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class CurrentSkin : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+ public static SkinSO currentSkin;
+    [RuntimeInitializeOnLoadMethod]
+    public static void InitializeCurrentSkin()
     {
-        
+        SkinSO[] allSkins = Resources.LoadAll<SkinSO>("Skins");
+        if(allSkins.Length > 0)
+        {
+            currentSkin = allSkins[0];
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

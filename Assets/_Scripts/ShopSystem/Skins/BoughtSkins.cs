@@ -1,12 +1,20 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class BoughtSkins 
 {
     public static List<string> boughtSkinsNames = new List<string>();
 
+    [RuntimeInitializeOnLoadMethod]
     public static void LoadFromFile() 
     {
         string data = ""; //cargarlo de algun sitio
+
+        //al menos la defaultskin
+        if(data == "")
+        {
+            data= "Pato amarillo";
+        }
         boughtSkinsNames = new List<string>(data.Split(','));
     }
     public static void SaveToFile() //supongo que en las cookies se podra guardar algo

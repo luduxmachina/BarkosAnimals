@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ShipPlaceableObjectsSO : ScriptableObject
+public class ShipPlaceableObjectsSO : BasePlaceableObjectsSO<ShipPlaceableObjectData>
 {
-    public List<ShipObjectData> shipObjectData;
-
     private void OnValidate()
     {
-        foreach (var obj in shipObjectData)
+        for (int i = 0; i < PlaceableObjectData.Count; i++)
         {
+            var obj =  PlaceableObjectData[i];
+
+            obj.ID = i;
+            
             if (obj.OcupiedSpace != null)
                 obj.OcupiedSpace.EnsureSize();
         }
@@ -18,23 +20,7 @@ public class ShipPlaceableObjectsSO : ScriptableObject
 }
 
 [Serializable]
-public class ShipObjectData
+public class ShipPlaceableObjectData : PlaceableObjectDataBase
 {
-    [field: SerializeField] public string Name{ get; private set; }
-    [field: SerializeField] public int ID{ get; set; }
-    // [field: SerializeField] public Vector2Int Size { get ; private set; } = Vector2Int.one;
-    [field: SerializeField] public GameObject Prefab{ get; private set; }
-    [field: SerializeField] public Sprite ImageUI{ get; private set; }
-    [field: SerializeField] public CustomBoolMatrix OcupiedSpace = new CustomBoolMatrix(); // { get; private set; } = new CustomBoolMatrix();
-
-    public Vector2Int Size
-    {
-        get
-        {
-            if (OcupiedSpace == null)
-                return Vector2Int.zero;
-
-            return new Vector2Int(OcupiedSpace.rows, OcupiedSpace.columns);
-        }
-    }
+    [field: SerializeField] public Sprite ImageUI { get; private set; }
 }

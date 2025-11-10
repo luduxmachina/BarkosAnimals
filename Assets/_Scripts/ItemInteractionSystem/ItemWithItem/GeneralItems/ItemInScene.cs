@@ -14,6 +14,7 @@ public class ItemInScene : MonoBehaviour
     private bool useParentGrabbable = true;
     [SerializeField, HideIf("useParentGrabbable", true)]
     private SimpleGrabbable simpleGrabbable;
+
     public void GetInCart(int leftOver)
     {
         amountInStack = leftOver;
@@ -43,5 +44,13 @@ public class ItemInScene : MonoBehaviour
     {
         if (!useParentGrabbable) return simpleGrabbable;
         return GetComponentInParent<IGrabbable>();
+    }
+    private void Start()
+    {
+        IslandPositions.instance?.AddPosition(itemName, itemParent.transform);
+    }
+    private void OnDisable()
+    {
+        IslandPositions.instance?.RemovePosition(itemName, itemParent.transform);
     }
 }

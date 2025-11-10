@@ -5,7 +5,6 @@ public class ObjectPlacer : MonoBehaviour, IObjectPlacer
 {
     private List<GameObject> placedObjects = new List<GameObject>();
 
-
     public int PlaceObject(GameObject prefab, Vector3 worldCellPos)
     {
         GameObject newObj = Instantiate(prefab);
