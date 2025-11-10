@@ -742,7 +742,7 @@ Transform:
   m_GameObject: {fileID: 606671381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.806, z: 0}
+  m_LocalPosition: {x: -2.36, y: 0.806, z: -7.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2933,6 +2933,30 @@ PrefabInstance:
     - target: {fileID: 3861474199279081320, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
       propertyPath: m_Name
       value: PatoItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494067772258813564, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+      propertyPath: data.graphs.Array.data[0].nodes.Array.data[6].position.x
+      value: -460
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494067772258813564, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+      propertyPath: data.graphs.Array.data[0].nodes.Array.data[6].position.y
+      value: 772
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494067772258813564, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+      propertyPath: data.graphs.Array.data[0].nodes.Array.data[8].position.x
+      value: 312.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494067772258813564, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+      propertyPath: data.graphs.Array.data[0].nodes.Array.data[8].position.y
+      value: 793.60004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494067772258813564, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+      propertyPath: data.graphs.Array.data[0].nodes.Array.data[13].position.x
+      value: -230.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494067772258813564, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
+      propertyPath: data.graphs.Array.data[0].nodes.Array.data[13].position.y
+      value: 788.80005
       objectReference: {fileID: 0}
     - target: {fileID: 7786798524681370391, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
       propertyPath: m_LocalPosition.x

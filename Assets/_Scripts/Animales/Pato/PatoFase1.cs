@@ -98,8 +98,10 @@ public class PatoFase1 : MonoBehaviour
         }
         if (movimiento.HasArrived())
         {
+
             return Status.Success;
         }
+
 
         return Status.Running;
     }
