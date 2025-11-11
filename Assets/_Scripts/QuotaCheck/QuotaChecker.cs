@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class QuotaChecker
 {
-    Quota quota;
+    Quota quota = new Quota();
 
     Quota quotaPassed = new Quota();
 
@@ -32,7 +32,7 @@ public class QuotaChecker
     /// <returns></returns>
     public Quota GenerateCuote(Quota quota)
     {
-        this.quota = quota;
+        this.quota.Copy(quota);
         return quota;
     }
 

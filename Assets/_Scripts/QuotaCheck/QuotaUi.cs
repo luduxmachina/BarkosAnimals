@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 [Serializable]
@@ -18,6 +19,7 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 {
     GameFlowManager gameFlowManager;
 
+    [SerializeField]
     TextMeshProUGUI textoQuota;
 
     TextMeshProUGUI[] texts;
@@ -36,16 +38,21 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 
     private void Start()
     {
-        texts = GetComponentsInChildren<TextMeshProUGUI>();
-
-        foreach (TextMeshProUGUI text in texts)
-        {
-            if (text.text == "")
-            {
-                textoQuota = text;
-                break;
-            }
-        }
+        //TextMeshProUGUI[] textos = GetComponentsInChildren<TextMeshProUGUI>(true);
+        //int i = 0;
+        //foreach (TextMeshProUGUI text in texts)
+        //{
+        //    if (text.text == ""&& i == 1)
+        //    {
+        //        textoQuota = text;
+        //    }
+        //    else
+        //    {
+        //        texts[i-2] = text;
+        //    }
+        //
+        //        i++;
+        //}
 
         SetQuota();
         GameFlowManager.instance.quotaChecker.AddNewUI(this);
@@ -77,10 +84,11 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 
                 restrictionUI.textPass.gameObject.SetActive(true);
                 restrictionUI.textNeeded.gameObject.SetActive(true);
-                restrictionUI.textPass.text = "0";
+                restrictionUI.textPass.text = "0/";
                 restrictionUI.textNeeded.text = restictions[restrictionUI.restriction].ToString();
                 restrictionUI.textPass.gameObject.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
                 restrictionUI.textNeeded.gameObject.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
+                numImage++;
 
             }
 
@@ -89,8 +97,8 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 
     public void UpdateQuotaPassed(Quota quotaPassed, bool isQuotaPassed)
     {
-        this.cuotaPassText = quota.QuotaValue.ToString();
-        textoQuota.text = $"{cuotaPassText}/{cuotaText}";
+        this.cuotaText = quota.QuotaValue.ToString();
+        textoQuota.text = $"{quotaPassed.QuotaValue.ToString()}/{cuotaText}";
         if (isQuotaPassed)
         {
             textoQuota.color = Color.green;
@@ -105,7 +113,7 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
             if (restictions[restrictionUI.restriction] > 0)
             {
                 restrictionUI.textNeeded.gameObject.SetActive(true);
-                restrictionUI.textPass.text = quotaPassed.Restrictions[restrictionUI.restriction].ToString();
+                restrictionUI.textPass.text = quotaPassed.Restrictions[restrictionUI.restriction].ToString()+"/";
                 if (restictions[restrictionUI.restriction] <= quotaPassed.Restrictions[restrictionUI.restriction])
                 {
                     restrictionUI.textPass.color = Color.green;

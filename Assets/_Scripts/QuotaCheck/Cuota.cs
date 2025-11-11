@@ -53,6 +53,12 @@ public class Quota: ISerializationCallbackReceiver
 
     public int this[Restriction restriction] => restrictions[restriction];
 
+    public void Copy(Quota quota)
+    {
+        this.quotaValue = quota.quotaValue;
+        this.restrictions = quota.Restrictions;
+    }
+
     public void OnAfterDeserialize()
     {
 
@@ -72,7 +78,27 @@ public class Quota: ISerializationCallbackReceiver
 
 Dictionary<Restriction, int> restrictions;
     public Dictionary<Restriction, int> Restrictions {
-        get { return restrictions; }
+        get { 
+            bool restrcNull = true;
+
+            foreach(Restriction restriction in Enum.GetValues(typeof(Restriction)))
+            {
+                if (restrictions[restriction] != 0)
+                {
+                    restrcNull = false;
+                    break;
+                }
+            }
+
+            if (restrcNull)
+            {
+                foreach (var e in RestrictionsList)
+                {
+                        restrictions[e.restriction] =  e.value;
+                }
+            }
+            return restrictions; 
+        }
     }
 
     public Quota()
