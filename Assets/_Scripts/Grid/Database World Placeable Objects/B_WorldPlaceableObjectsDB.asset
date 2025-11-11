@@ -25,33 +25,37 @@ MonoBehaviour:
       - values: 010101010101
       - values: 010101010101
       - values: 010101010101
-      - values: 010101010100
+      - values: 000101010101
     C_OcupiedSpace:
       rows: 6
       columns: 6
       matrix:
       - values: 010101010101
-      - values: 010001010001
+      - values: 010101010001
       - values: 010101010101
-      - values: 010101010101
-      - values: 010101010101
-      - values: 010101010100
+      - values: 010101010001
+      - values: 010101010001
+      - values: 000101010101
   - <Name>k__BackingField: Rampa
     <ID>k__BackingField: 1
-    <Prefab>k__BackingField: {fileID: 5884527363794710910, guid: 37628feb90727584f9160603f0ff6793, type: 3}
+    <Prefab>k__BackingField: {fileID: 4194544342390226969, guid: 37628feb90727584f9160603f0ff6793, type: 3}
     <OcupiedSpace>k__BackingField:
-      rows: 4
-      columns: 6
+      rows: 6
+      columns: 4
       matrix:
-      - values: 010001010101
-      - values: 010101010101
-      - values: 010101010101
-      - values: 010101010101
+      - values: 01010101
+      - values: 00010101
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
     C_OcupiedSpace:
-      rows: 4
-      columns: 6
+      rows: 6
+      columns: 4
       matrix:
-      - values: 010001010101
-      - values: 010101000001
-      - values: 010100000001
-      - values: 010101010101
+      - values: 01010101
+      - values: 00010101
+      - values: 01010101
+      - values: 01000001
+      - values: 01000001
+      - values: 01010101

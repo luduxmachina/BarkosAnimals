@@ -15,10 +15,11 @@ public class GridPlacementManager : MonoBehaviour
     // private BasePlaceableObjectsSO<PlaceableObjectDataBase> dataBase => DataBase as BasePlaceableObjectsSO<PlaceableObjectDataBase>;
 
     [SerializeField] private GameObject gridVisualization;
+    [SerializeField] private int numOfGrids = 1;
 
     private Grid grid;
     private IGridInput gridInput;
-    private GridData gridObjectsData;
+    private List<GridData> gridObjectsDatas;
     private GridPreview gridPreview;
     private IObjectPlacer objectPlacer;
     
@@ -31,7 +32,11 @@ public class GridPlacementManager : MonoBehaviour
         grid = GetComponent<Grid>();
         gridInput = GetComponent<IGridInput>();
         objectPlacer = GetComponent<IObjectPlacer>();
-        gridObjectsData = new GridData();
+        gridObjectsDatas = new List<GridData>();
+        for (int i = 0; i < numOfGrids; i++)
+        {
+            gridObjectsDatas.Add(new GridData());
+        }
 
         if (TryGetComponent(out GridPreview aux))
         {
@@ -87,10 +92,20 @@ public class GridPlacementManager : MonoBehaviour
         if(gridVisualization != null)
             gridVisualization?.SetActive(true);
         
-        buildingState = new GridPlacementState(id, grid, gridPreview, dataBase, gridObjectsData, objectPlacer);
+        buildingState = new GridPlacementState(id, grid, gridPreview, dataBase, gridObjectsDatas, objectPlacer);
         
         gridInput.OnClick += PlaceStructure;
         gridInput.OnExit += StopPlacement;
+    }
+
+    public void StartPlacement(int id, ABasePlaceableObjectsSO db)
+    {
+        var aux = dataBase;
+        dataBase = db;
+
+        StartPlacement(id);
+
+        dataBase = aux;
     }
 
     public void StartRemoving()
@@ -100,7 +115,7 @@ public class GridPlacementManager : MonoBehaviour
         if(gridVisualization != null)
             gridVisualization?.SetActive(true);
         
-        buildingState = new GridRemovingState(grid, gridPreview, gridObjectsData, objectPlacer);
+        buildingState = new GridRemovingState(grid, gridPreview, gridObjectsDatas, objectPlacer);
         
         gridInput.OnClick += PlaceStructure;
         gridInput.OnExit += StopPlacement;
@@ -135,35 +150,12 @@ public class GridPlacementManager : MonoBehaviour
                 }
             }
         }
-        
+
         // occupiedSpace.DebugMatrix();
-
-        gridObjectsData.AddObject(new Vector2Int(-(rows / 2) - 1, -(colums / 2) - 1), occupiedSpace, -1, -1);
-
-        // SetBordersAsOccupiedSpaces(rows, colums);
-    }
-
-    private void SetBordersAsOccupiedSpaces(int rows, int colums)
-    {
-        // >
-        Vector2Int pos = new Vector2Int(-(rows / 2 + 1), -(colums / 2 + 1));
-        Vector2Int spaces = new Vector2Int(1, colums + 1);
-        gridObjectsData.AddObject(pos, spaces, -1, -1); 
-
-        // ^
-        pos = new Vector2Int(rows / 2 + 1, -(colums / 2 + 1));
-        spaces = new Vector2Int(rows + 1, 1);
-        gridObjectsData.AddObject(pos, spaces, -1, -1);
-
-        // <
-        pos = new Vector2Int(rows / 2 + 1, colums / 2 + 1);
-        spaces = new Vector2Int(-(rows + 1), 1);
-        gridObjectsData.AddObject(pos, spaces, -1, -1);
-
-        // V
-        pos = new Vector2Int(-(rows / 2 + 1), colums / 2 + 1);
-        spaces = new Vector2Int(1, -(colums + 1));
-        gridObjectsData.AddObject(pos, spaces, -1, -1);
+        foreach (var gd in gridObjectsDatas)
+        {
+            gd.AddObject(new Vector2Int(-(rows / 2) - 1, -(colums / 2) - 1), occupiedSpace, -1, -1);
+        }
     }
 
     public float GetGridSize()

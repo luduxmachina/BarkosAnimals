@@ -372,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 289749512}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49999917, y: -0, z: -0, w: 0.8660259}
-  m_LocalPosition: {x: 0, y: 30, z: -10}
+  m_LocalPosition: {x: 0, y: 83, z: -60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -597,12 +597,12 @@ GameObject:
   - component: {fileID: 1394710708}
   - component: {fileID: 1394710707}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: VisualGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1394710706
 Transform:
   m_ObjectHideFlags: 0
@@ -755,6 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataBase: {fileID: 11400000, guid: ee04dc4ff1a4c404f83a94144ff2a4a7, type: 2}
   gridVisualization: {fileID: 0}
+  numOfGrids: 2
 --- !u!114 &1517556684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +787,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   gridPlacementManager: {fileID: 1517556683}
-  dataBase: {fileID: 11400000, guid: ee04dc4ff1a4c404f83a94144ff2a4a7, type: 2}
+  bDataBase: {fileID: 11400000, guid: ee04dc4ff1a4c404f83a94144ff2a4a7, type: 2}
+  cDataBase: {fileID: 11400000, guid: dabd732e5b94e054c9659d49a2c153e7, type: 2}
 --- !u!114 &1517556686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,8 +801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea17248ee4318e49b18f13365295461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  N_B_OBJECTS: 5
-  N_C_OBJECTS: 10
+  N_B_OBJECTS: 30
+  N_C_OBJECTS: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
