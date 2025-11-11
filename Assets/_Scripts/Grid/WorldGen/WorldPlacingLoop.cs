@@ -4,9 +4,9 @@ using UnityEngine;
 public class WorldPlacingLoop : MonoBehaviour
 {
     [SerializeField]
-    public const int N_B_OBJECTS = 5;
+    private int N_B_OBJECTS = 5;
     [SerializeField]
-    public const int N_C_OBJECTS = 10;
+    private int N_C_OBJECTS = 10;
     // public const int N_LOOPS = 5;
 
     private BWorldGridInput bGridInput;
@@ -20,7 +20,7 @@ public class WorldPlacingLoop : MonoBehaviour
     {
         for (int i = 0; i < N_B_OBJECTS; i++)
         {
-            bGridInput.PlaceObjOfID(2);
+            bGridInput.PlaceObjOfRandomID();
         }
 
         for (int i = 0; i < N_C_OBJECTS; i++)
