@@ -12,9 +12,10 @@ public class GridPlacementState : IGridBuildingState
     private ABasePlaceableObjectsSO dataBase;
     private List<GridData> gridObjectsDatas;
     private IObjectPlacer objectPlacer;
+    private Transform parentTransform;
 
     public GridPlacementState(int id, Grid grid, GridPreview gridPreview, ABasePlaceableObjectsSO dataBase,
-        List<GridData> gridObjectsDatas, IObjectPlacer objectPlacer)
+        List<GridData> gridObjectsDatas, IObjectPlacer objectPlacer, Transform parentTransform)
     {
         this.id = id;
         this.grid = grid;
@@ -22,7 +23,9 @@ public class GridPlacementState : IGridBuildingState
         this.dataBase = dataBase;
         this.gridObjectsDatas = gridObjectsDatas;
         this.objectPlacer = objectPlacer;
-        
+        this.parentTransform = parentTransform;
+
+
         var placeableObjects = dataBase.GetPlaceableObjects();
         selectedObjectIndex = -1;
         for (int i = 0; i < placeableObjects.Count; i++)
@@ -66,8 +69,16 @@ public class GridPlacementState : IGridBuildingState
 
         // Place Object
         var placeableObjects = dataBase.GetPlaceableObjects();
-        
-        int gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos);
+
+        int gameObjectIndex;
+        if (parentTransform != null)
+        {
+            gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos, parentTransform);
+        }
+        else
+        {
+            gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos);
+        }
 
         AddOcupiedSpaces(relativeCellPos, placeableObjects[selectedObjectIndex], selectedObjectIndex, gameObjectIndex);
         gridPreview?.UpdatePosition(worldCellPos, false, grid.cellSize.x, false);
