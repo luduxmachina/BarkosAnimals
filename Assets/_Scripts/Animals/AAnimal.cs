@@ -34,35 +34,6 @@ public abstract class AAnimal : MonoBehaviour
     ItemNames animalType;
 
     public List<IAction> activeActions;
-
-
-    void Start()
-    {
-        //quotaChecker = GameFlowManager.instance.quotaChecker;
-
-    }
-
-    void Update()
-    {
-        if (activeActions.Count > 0)
-        {
-            foreach (IAction action in activeActions)
-            {
-                action.Update();
-            }
-        }
-    }
-    void FixedUpdate() {
-        if (activeActions.Count > 0)
-        {
-            foreach (IAction action in activeActions)
-            {
-                action.FixedUpdate();
-            }
-        }
-                
-    }
-
     public float GetWalkingSpeed()
     {
         return this.walkingSpeed;
@@ -99,13 +70,6 @@ public abstract class AAnimal : MonoBehaviour
     public void PredatorClosePush()
     {
         throw new System.NotImplementedException();
-    }
-
-
-
-    private void OnDestroy()
-    {
-        //quotaChecker.UpdateCuote(new InventoryItemDataObjects(animalType, -1));
     }
 
     public void WalkRamdom(int limitSupX, int limitInfX, int limitSupY, int limitInfY)

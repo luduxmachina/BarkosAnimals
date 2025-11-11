@@ -4,7 +4,7 @@ public class PatoMovement : AAnimal
 {
     [Header("------------Variables propias-----------")]
     [SerializeField]
-    Vector2[] points;
+    Transform[] points;
 
     public override Transform GetClosestObjetive()
     {
