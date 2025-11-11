@@ -49,7 +49,10 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
     {
         //Si alguien quiere hacer comprobaciones y tal pues que lo haga heredando y eso
         if (!canBeGrabbed) return false;
-
+        if (currentGrabber != null)
+        {
+            currentGrabber.StopGrabbing();
+        }
 
         joint = gameObject.AddComponent<HingeJoint>();  
         currentGrabber = grabber;

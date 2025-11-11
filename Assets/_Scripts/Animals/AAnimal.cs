@@ -34,17 +34,31 @@ public abstract class AAnimal : MonoBehaviour
     protected float radioDetectionObjective = 10f;
     [SerializeField]
     protected float radioDetectionPredator = 15f;
-
+    [SerializeField]
+    protected  float radioAtaqueComida = 2.0f;
+    [Header("------------------Tiempos------------------")]
+    [SerializeField]
+    protected float tiempoEnComer = 3.0f;
+    protected float tiempoComiendo = 0.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     ItemNames animalType;
     protected IMovementComponent movimiento;
+    protected Transform lastObjectve;
     protected Vector3 lastTargetPos;
 
     public List<IAction> activeActions;
     protected virtual void Awake()
     {
         movimiento = GetComponent<IMovementComponent>();
+    }
+    protected virtual void Start()
+    {
+        movimiento.Speed = walkingSpeed;
+        if(movimiento as NavmeshAgentMovement)
+        {
+            (movimiento as NavmeshAgentMovement).minDistanceToTarget= radioAtaqueComida;
+        }
     }
     public float GetWalkingSpeed()
     {
@@ -92,7 +106,70 @@ public abstract class AAnimal : MonoBehaviour
         }
         return count;
     }
-    public Status AndarHaciaObjetivo()
+    public virtual void InitComer()
+    {
+        if(!ObjectiveClose()) { return; }
+        lastObjectve = GetClosestObjetive();
+        var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
+        if (temp) //se lo va a comer lit
+        {
+            if (animator)
+            {
+                animator.SetTrigger("Comer");
+
+            }
+        }
+        tiempoComiendo = 0.0f;
+
+        //  if (!) { return;  }
+        //animator supongo
+        //comer el pan
+        //  comidaObjetivo.GetComponentInChildren<ItemInScene>()?.ReduceByOne();
+    }
+    public virtual Status UpdateComer()
+    {
+        if (!ObjectiveClose()) //la comida puede desaparecer
+        {
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+
+            return Status.Failure;
+        }
+        if(Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida*1.25) //alguien ha movido la comida o al animal y ya no esta comiendo lol
+        {
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+
+            return Status.Failure;
+        }
+
+        tiempoComiendo += Time.deltaTime;
+        if(tiempoComiendo >= tiempoEnComer)
+        {
+            var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
+            if (temp) //se lo va a comer lit
+            {
+                temp.ReduceByOne();
+            }
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+            return Status.Success;
+        }
+        return Status.Running;
+    }
+    public Status MoveTowardsObjective()
     {
         if (!ObjectiveClose()) //la comida puede desaparecer
         {
@@ -106,6 +183,7 @@ public abstract class AAnimal : MonoBehaviour
         if (lastTargetPos != currentObjPos)
         {
             lastTargetPos= currentObjPos;
+            lastObjectve = objTR;
             //o se ha movido o un pan mas cercano
             movimiento.SetTarget(currentObjPos);
 
@@ -117,7 +195,6 @@ public abstract class AAnimal : MonoBehaviour
             return Status.Success;
         }
 
-        movimiento.CancelMove();
 
         return Status.Running;
     }

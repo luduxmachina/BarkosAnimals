@@ -7,7 +7,7 @@ namespace BehaviourAPI.UnityToolkit
     {
         [SerializeField] float speed;
         [SerializeField] float targetThreshold = 1f;
-        [SerializeField] float minDistanceToTarget = 0.3f;
+        [SerializeField] public float minDistanceToTarget = 0.3f;
 
         [Header("Debug")]
         [SerializeField] bool drawGizmos;
