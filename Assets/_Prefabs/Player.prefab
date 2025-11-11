@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 1902929742204463537}
   - component: {fileID: 6527734477578111207}
   - component: {fileID: 2971463814529771907}
+  - component: {fileID: 2978198161349859278}
   m_Layer: 6
   m_Name: Stats
   m_TagString: Untagged
@@ -387,6 +388,24 @@ MonoBehaviour:
   canMove: 1
   canJump: 1
   canDash: 1
+--- !u!114 &2978198161349859278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019636645184113292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 112263543333647012}
+  amountInStack: 1
+  itemName: 6
+  itemType: 0
+  useParentGrabbable: 0
+  simpleGrabbable: {fileID: 0}
 --- !u!1 &9029195677763816837
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +434,7 @@ Transform:
   m_GameObject: {fileID: 9029195677763816837}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.88119245, y: -0.39292294, z: 0.03462279}
+  m_LocalPosition: {x: 0.8811923, y: -0.39292288, z: 0.034622908}
   m_LocalScale: {x: 1.0584478, y: 1.0584481, z: 1.0584478}
   m_ConstrainProportionsScale: 0
   m_Children: []

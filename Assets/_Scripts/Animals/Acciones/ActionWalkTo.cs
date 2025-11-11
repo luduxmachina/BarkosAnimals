@@ -44,7 +44,7 @@ public class ActionWalkTo : AAction
 
         if (Vector3.Distance(animalTransform.position, objetiveTransform.position) <= interactRadio)
         {
-            this._animal.ReachedObjetivePush();
+            //this._animal.ReachedObjetivePush();
         }
     }
 

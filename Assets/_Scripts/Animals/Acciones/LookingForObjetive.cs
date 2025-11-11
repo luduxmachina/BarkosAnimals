@@ -27,7 +27,7 @@ public class LookingForObjetive : AAction
         Transform objetive = this._animal.GetClosestObjetive();
         if (Vector3.Distance(objetive.position, animalTransform.position) <radioDetection)
         {
-            this._animal.NewObjetivePush();
+         //   this._animal.NewObjetivePush();
         }
     }
 }

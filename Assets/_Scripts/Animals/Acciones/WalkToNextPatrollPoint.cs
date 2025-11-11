@@ -44,7 +44,7 @@ public class WalkToNextPatrollPoint : AAction
 
         if (Vector3.Distance(animalTransform.position, newPos) <= interactRadio)
         {
-            this._animal.ReachedObjetivePush();
+         //   this._animal.ReachedObjetivePush();
         }
     }
 

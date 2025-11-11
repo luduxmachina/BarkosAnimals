@@ -20,7 +20,7 @@ public class LookingForPredators : AAction
         Transform predator = this._animal.GetClosestPredator();
         if(Vector3.Distance(predator.position, this._animal.transform.position) < radioDetection)
         {
-            _animal.PredatorClosePush();
+           // _animal.PredatorClosePush();
         }
     }
 
