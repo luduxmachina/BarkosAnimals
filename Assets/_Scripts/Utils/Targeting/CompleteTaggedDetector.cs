@@ -4,8 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Rigidbody))]
-public class TaggedDetector : MonoBehaviour, ITargeter
+public class CompleteTaggedDetector : MonoBehaviour, ITargeter
 {
     public UnityEvent<GameObject> onTargetChanged;
     [Header ("Camera settings")]
@@ -127,6 +126,7 @@ public class TaggedDetector : MonoBehaviour, ITargeter
 
     private void Update()
     {
+        RemoveNUllOrDestroyed();
         if (locked) return;
         Move();
         var temp = GetClosestItem();
@@ -168,6 +168,21 @@ public class TaggedDetector : MonoBehaviour, ITargeter
     {
         currentTarget = null;
         itemsInTrigger.Clear();
+    }
+    private void RemoveNUllOrDestroyed()
+    {
+        List<GameObject> toRemove = new List<GameObject>();
+        foreach (GameObject go in itemsInTrigger)
+        {
+            if (go == null)
+            {
+                toRemove.Add(go);
+            }
+        }
+        foreach (GameObject go in toRemove)
+        {
+            itemsInTrigger.Remove(go);
+        }
     }
     private void Awake()
     {

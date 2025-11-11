@@ -2,7 +2,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerInteraction : MonoBehaviour, IGrabber
 {
-    [SerializeField] TaggedDetector detector;
+    [SerializeField] CompleteTaggedDetector detector;
     [SerializeField] Transform posCogerObj;
 
     [SerializeField, ReadOnly] bool hasObjInHand = false;
@@ -11,14 +11,9 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
     [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
     IGrabbable objInHand;
-    private PlayerMovement playerMovement;
-    private void Awake()
-    {
-        playerMovement = GetComponent<PlayerMovement>();
-    }
+
     public void Interact()
     {
-        Debug.Log("Interacting");
         bool interacted = false;
         if (!hasObjInHand )
         {
@@ -29,7 +24,6 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
         }
         else
         {
-            Debug.Log("Interacting with obj in hand");
             interacted = InteractWith(objInHand.gameObject);
 
         }
@@ -96,7 +90,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
     public void StopGrabbing()
     {
-        playerMovement.AllowExtraMoveSet(); 
+
         hasObjInHand = false;
         objInHand = null;
     }

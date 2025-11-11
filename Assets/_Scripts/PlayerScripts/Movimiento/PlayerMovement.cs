@@ -4,89 +4,29 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField, ReadOnly] public Vector2 moveInput;
-    private Rigidbody rb;
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 720f; // Degrees per second
-    [Header("Jump")]
-    [SerializeField] private float heightFromGround = 1f;
-    [SerializeField] private float jumpForce = 5f;
-    [Header("Dash")]
-    [SerializeField] private float dashForce = 5f;
-    [SerializeField] private float dashCooldown = 0.3f;
-    [SerializeField] private float dashNoGravityDuration = 0.15f;
+    public Rigidbody rb;
     [SerializeField] private Animator animator;
-    private bool onDashCooldown = false;
-    private float dashCooldownTimer = 0.0f;
-    private float dashNoGravityTimer = 0.0f;
+    [SerializeField]
+    private PlayerCurrentStats playerCurrentStats;
+    [SerializeField]
+    private PlayerInSceneEffects playerInSceneEffects;
+    [Header("Ground Check")]
+    [SerializeField] private AdaptToFloor adaptToFloor;
 
-    [Header("Negative effects")]
-    [SerializeField] private float slowMoveSpeed = 2f;
-    [SerializeField] private float slowRotationSpeed = 270f;
-    [SerializeField, ReadOnly] private float stunTime = 0.0f;
-    public bool canMove = true;
-    [SerializeField] private bool impedeExtraMoveset = false;
-    private bool isSlowed { get { return slowStack > 0; } }
-    private int slowStack = 0;
-    private bool isStunned = false;
-    public void ImpedeExtraMoveset()
-    {
-        impedeExtraMoveset = true;
-    }
-    public void AllowExtraMoveSet()
-    {
-        impedeExtraMoveset = false;
-    }
-    public void ApplySlow()
-    {
-        slowStack++;
-    }
-    public void RemoveSlow()
-    {
-        slowStack--;
-    }
-    public void ApplyStun(float duration)
-    {
-        isStunned = true;
-        stunTime += duration;
-    }
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void Update()
-    {
-        if(isStunned)
-        {
-            stunTime -= Time.deltaTime;
-            if(stunTime < 0.0f)
-            {
-                isStunned = false;      
-            }
-        }
-
-        if (onDashCooldown)
-        {
-            dashCooldownTimer -= Time.fixedDeltaTime;
-            if (dashCooldownTimer < 0.0f)
-            {
-                onDashCooldown = false;
-            }
-
-            dashNoGravityTimer -= Time.fixedDeltaTime;
-            if (dashNoGravityTimer < 0.0f)
-            {
-                rb.useGravity = true;
-                dashNoGravityTimer = 100.0f; //para que no vuelva a entrar aqui
-            }
-        }
-    }
     private void FixedUpdate()
     {
+        if (!playerCurrentStats.canMove) return;
 
-        if (!canMove) return;
-        if (isStunned) return;
+        if(rb.angularVelocity.sqrMagnitude < (2f *Time.fixedDeltaTime))
+        {
+            rb.angularVelocity = Vector3.zero;
+        }
         if (moveInput.sqrMagnitude > 0.1f)
         {
             MoveAndRotate();
@@ -96,56 +36,53 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Idle");
         }
     }
+  
     private void MoveAndRotate()
     {
-        float moveSpeed = isSlowed ? slowMoveSpeed : this.moveSpeed;
-        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y) * moveSpeed * Time.fixedDeltaTime;
+        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
+
+        move = Vector3.ProjectOnPlane(move, adaptToFloor.upVector).normalized;
+        move *= playerCurrentStats.currentStats.moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
 
-        float rotationSpeed = isSlowed ? slowRotationSpeed : this.rotationSpeed;
-        Quaternion targetRotation = Quaternion.LookRotation(move);
-        rb.rotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
-        animator.SetTrigger("Walk");
-        
+
+        if (move.sqrMagnitude > 0.0001f)
+        {
+            Vector3 forward = move.normalized;
+            Vector3 right = Vector3.Cross(adaptToFloor.upVector, forward);
+            forward = Vector3.Cross(right, adaptToFloor.upVector);
+
+            Quaternion targetRotation = Quaternion.LookRotation(forward, adaptToFloor.upVector);
+            rb.angularVelocity = Vector3.zero;
+            rb.rotation = Quaternion.RotateTowards( rb.rotation,targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime);
+        }
+
+                
     }
     public void Dash()
     {
-        if (!canMove) return;
-        if (impedeExtraMoveset) return;
-        if (onDashCooldown) return;
-
-        onDashCooldown = true;
-        dashCooldownTimer = dashCooldown;
+        if(!playerCurrentStats.canMove) return;
+        if (!playerCurrentStats.canDash) return;
 
 
-
-        dashNoGravityTimer = dashNoGravityDuration;
-        rb.useGravity = false;
         animator.SetTrigger("Dash");
-        rb.AddForce(transform.forward*dashForce, ForceMode.Impulse);
-        
+        rb.AddForce(transform.forward*playerCurrentStats.currentStats.dashForce, ForceMode.Impulse);
+        playerInSceneEffects.AddOnDashEffects();
         Debug.Log("Dash");
     }
     public void Jump()
     {
-        if (!canMove) return;
-        if (impedeExtraMoveset) return;
-        if (!IsGrounded()) return;
+
+        if (!playerCurrentStats.canMove) return;
+        if (!playerCurrentStats.canJump) return;
+        if (!adaptToFloor.IsGrounded()) return;
         
+        playerInSceneEffects.AddOnJumpEffects();
         animator.SetTrigger("Jump");
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * playerCurrentStats.currentStats.jumpForce, ForceMode.Impulse);
 
         
     }
-    private bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position, -Vector3.up, heightFromGround);
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position - Vector3.up * heightFromGround);
-        Gizmos.DrawSphere(transform.position - (Vector3.up * (heightFromGround - 0.1f)), 0.1f);
-    }
+  
 
 }

@@ -1,8 +1,6 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Image = UnityEngine.UI.Image;
 
 public class InventorySlotManager : MonoBehaviour
 {

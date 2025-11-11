@@ -31,11 +31,9 @@ public class ShipData : MonoBehaviour, IInventoryData
     {
         GetInventoryFormDataBase();
     }
-
-    public int TryStackItem(InventoryItemDataObjects item)
-    {
-        return TryStackItem(item.Name, item.Count);
-    }
+    public bool InventoryIsFull() => false;
+    public bool InventoryIsEmpty() => shipInventory.Count == 0;
+    public int TryStackItem(InventoryItemDataObjects item) => TryStackItem(item.Name, item.Count);
 
     public int TryStackItem(ItemNames itemName, int amount)
     {
@@ -108,6 +106,25 @@ public class ShipData : MonoBehaviour, IInventoryData
         }
         
         return count;
+    }
+
+    public List<InventoryItemDataObjects> GetAllInventoryObjects() => shipInventory;
+
+    public List<InventoryItemDataObjects> ExtractAllInventoryObjects()
+    {
+        List<InventoryItemDataObjects> returnList = shipInventory;
+        EmptyInventory();
+        return returnList;
+    }
+
+    public List<InventoryItemDataObjects> TryStackAllItems(List<InventoryItemDataObjects> objectsToAdd)
+    {
+        foreach(var obj in objectsToAdd)
+        {
+            TryStackItem(obj);
+        }
+
+        return new List<InventoryItemDataObjects>();
     }
 
     private int AddInExistingSlots(ItemNames itemName, int amount)

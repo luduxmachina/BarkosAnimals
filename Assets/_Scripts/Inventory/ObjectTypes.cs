@@ -1,7 +1,6 @@
 using System;
-using Unity.VisualScripting.Dependencies.Sqlite;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Internal;
 
 [Serializable]
 public class ObjectTypes
@@ -16,11 +15,7 @@ public class ObjectTypes
     
     [field: SerializeField, Min(1)] public int MaxStackSize { get; private set; }
      
-    [field: SerializeField] public bool IsAnimal { get; private set; }
-     
-    [field: SerializeField] public bool IsCarnivore { get; private set; }
-     
-    [field: SerializeField] public bool IsFood { get; private set; }
+    [field: SerializeField] public List<Restriction> checkRestrictions { get; private set; }
     
     
 
@@ -29,19 +24,27 @@ public class ObjectTypes
         Name = ItemNames.None;
         Type = ItemType.None;
         MaxStackSize = 1;
-        IsAnimal = false;
-        IsCarnivore = false;
-        IsFood = false;
+        checkRestrictions = new();
     }
     
-    public ObjectTypes(ItemNames name, ItemType type, int maxStackSize, bool isAnimal, bool isCarnivore, bool isFood)
+    public ObjectTypes(ItemNames name, ItemType type, int maxStackSize)
     {
         Name = name;
         Type = type;
         MaxStackSize = maxStackSize;
-        IsAnimal = isAnimal;
-        IsCarnivore = isCarnivore;
-        IsFood = isFood;
+        checkRestrictions = new();
+    }
+
+    public ObjectTypes(ItemNames name, ItemType type, int maxStackSize, List<Restriction> restrictions)
+    {
+        Name = name;
+        Type = type;
+        MaxStackSize = maxStackSize;
+        checkRestrictions = new();
+        foreach (var r in restrictions)
+        {
+            checkRestrictions.Add(r);
+        }
     }
 
     public override string ToString()
@@ -55,6 +58,9 @@ public enum ItemNames
     None,
     Bread,
     Duck,
+    Snake,
+    Pangolin,
+    Sheep
 }
 
 public enum ItemType

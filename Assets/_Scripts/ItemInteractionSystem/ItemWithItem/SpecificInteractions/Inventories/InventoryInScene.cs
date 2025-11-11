@@ -8,7 +8,6 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
     AllObjectTypesSO allObjectTypes;
     [SerializeField]
     GameObject inventoryUI;
-    SimpleGrabbable grabbable;
     GameObject lastInteractor;
 
     void Start()
@@ -31,7 +30,6 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
     }
     public bool OnPlayerInteraction(GameObject playerReference)
     {
-        Debug.Log("Se ha interactuado con el carro coño)");
         if (playerReference.CompareTag("Player"))
         {
             Debug.Log("Abriendo UI del carro");

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombreNivel: 
   useDefaultSelectionPhaseScene: 1
-  useDefaultIslands: 0
+  useGeneratedIslands: 0
   useDefaultBoatPhaseScene: 1
   useDefaultOrganizationPhaseScene: 1
   useDefaultQuotaScene: 1
@@ -43,11 +43,4 @@ MonoBehaviour:
   boatPhaseSceneIndex: 13
   quotaSceneIndex: 13
   numberOfArchipelagos: 3
-  useAutomaticQuota: 0
-  quotaInfo:
-    quotaValue: 200
-    RestrictionsList:
-    - restriction: 0
-      value: 1
-    - restriction: 1
-      value: 2
+  useAutomaticQuota: 1

@@ -5,16 +5,36 @@ public class JoinStacks : MonoBehaviour
 {
     public bool canJoinStacks = true;
     StackManager stackManager;
+    [SerializeField]
+    CompleteTaggedDetector detector;
     private void Awake()
     {
         stackManager = GetComponent<StackManager>();
     }
+    private void Update()
+    {
+        if (detector == null) return;
+        if (!canJoinStacks) return;
+        if (!detector.HasTarget()) return;
+        foreach (GameObject detected in detector.GetAllTargets())
+        {
+            JoinStacks otherStack = detected.GetComponentInChildren<JoinStacks>();
+            if (otherStack != null)
+            {
+                Debug.Log("Joining stacks");
+                JoinTwoStacks(this, otherStack);
+                return; //total se hace cada frame
+            }
+        }
+    }
 
     public static void JoinTwoStacks(JoinStacks baseStack, JoinStacks addedStack)
     {
-        if(baseStack.GetHashCode() <= addedStack.GetHashCode()) return; //solo voy a coger un caso, que probablemente se repita al reves
+        Debug.Log("Trying to join stacks");
+        if (baseStack.GetHashCode() <= addedStack.GetHashCode()) return; //solo voy a coger un caso, que probablemente se repita al reves
+        Debug.Log("Passed hashcode check");
         if (baseStack == null || addedStack == null) return;
-        if(!baseStack.canJoinStacks || addedStack.canJoinStacks ) return;
+        if(!baseStack.canJoinStacks || !addedStack.canJoinStacks ) return;
 
 
         if (baseStack.stackManager.itemInScene.itemName != addedStack.stackManager.itemInScene.itemName) return;

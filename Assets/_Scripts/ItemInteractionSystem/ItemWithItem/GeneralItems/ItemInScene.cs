@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ItemInScene : MonoBehaviour
 {
+    [SerializeField] private GameObject itemParent;
     [Tooltip("Cuantos items de este tipo hay en este objeto")]
     public int amountInStack = 1;
     public ItemNames itemName;
@@ -13,6 +14,7 @@ public class ItemInScene : MonoBehaviour
     private bool useParentGrabbable = true;
     [SerializeField, HideIf("useParentGrabbable", true)]
     private SimpleGrabbable simpleGrabbable;
+
     public void GetInCart(int leftOver)
     {
         amountInStack = leftOver;
@@ -36,11 +38,19 @@ public class ItemInScene : MonoBehaviour
         Debug.Log("Item " + gameObject.name + " getting in cart");
         GetGrabbable()?.Drop();
 
-        Destroy(gameObject);
+        Destroy(itemParent);
     }
     private IGrabbable GetGrabbable()
     {
         if (!useParentGrabbable) return simpleGrabbable;
         return GetComponentInParent<IGrabbable>();
+    }
+    private void Start()
+    {
+        IslandPositions.instance?.AddPosition(itemName, itemParent.transform);
+    }
+    private void OnDisable()
+    {
+        IslandPositions.instance?.RemovePosition(itemName, itemParent.transform);
     }
 }

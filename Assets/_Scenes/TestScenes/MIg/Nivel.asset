@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombreNivel: 
   useDefaultSelectionPhaseScene: 0
-  useDefaultIslands: 0
+  useGeneratedIslands: 0
   useDefaultBoatPhaseScene: 0
   useDefaultOrganizationPhaseScene: 0
   useDefaultQuotaScene: 0
@@ -33,16 +33,9 @@ MonoBehaviour:
   OrganizationPhaseScene: {fileID: 102900000, guid: 9f8f3adac63e97f43b72c0bd7bd32bed, type: 3}
   BoatPhaseScene: {fileID: 102900000, guid: f6909bcb6066bf94e9f22c9fe3f15792, type: 3}
   QuotaScene: {fileID: 102900000, guid: 1831627164f24f64b86950b215a17f6a, type: 3}
-  selectionPhaseSceneIndex: 3
-  organizationPhaseSceneIndex: 12
-  boatPhaseSceneIndex: 5
-  quotaSceneIndex: 6
+  selectionPhaseSceneIndex: 11
+  organizationPhaseSceneIndex: 3
+  boatPhaseSceneIndex: 2
+  quotaSceneIndex: 12
   numberOfArchipelagos: 2
-  useAutomaticQuota: 0
-  quotaInfo:
-    quotaValue: 200
-    RestrictionsList:
-    - restriction: 0
-      value: 1
-    - restriction: 1
-      value: 2
+  useAutomaticQuota: 1
