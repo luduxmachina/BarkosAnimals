@@ -7,16 +7,16 @@ public class GridRemovingState : IGridBuildingState
     
     private Grid grid;
     private GridPreview gridPreview;
-    private GridData gridObjectsData;
+    private List<GridData> gridObjectsDatas;
     private IObjectPlacer objectPlacer;
     
     private int pastPlacementID = -1;
 
-    public GridRemovingState(Grid grid, GridPreview gridPreview, GridData gridObjectsData, IObjectPlacer objectPlacer)
+    public GridRemovingState(Grid grid, GridPreview gridPreview, List<GridData> gridObjectsDatas, IObjectPlacer objectPlacer)
     {
         this.grid = grid;
         this.gridPreview = gridPreview;
-        this.gridObjectsData = gridObjectsData;
+        this.gridObjectsDatas = gridObjectsDatas;
         this.objectPlacer = objectPlacer;
         
         gridPreview?.StartRemovePreview();
@@ -102,9 +102,19 @@ public class GridRemovingState : IGridBuildingState
         GridData selectedGrid = GetSlelectedGrid();
         return selectedGrid.GetRepresentationIndex(relativeCellPos);
     }
-    
+
     private GridData GetSlelectedGrid()
     {
-        return gridObjectsData; // Can be selected multiple gridDatas in order to select floor or walls if needed
+        // if (dataBase.PlaceableType == PlaceableDatabaseType.ShipBuildable)
+        //     return gridObjectsDatas[0];
+        // 
+        // if (dataBase.PlaceableType == PlaceableDatabaseType.WorldB)
+        //     return gridObjectsDatas[0];
+        // 
+        // if (dataBase.PlaceableType == PlaceableDatabaseType.WorldC)
+        //     return gridObjectsDatas[1];
+
+        // Default
+        return gridObjectsDatas[0];
     }
 }

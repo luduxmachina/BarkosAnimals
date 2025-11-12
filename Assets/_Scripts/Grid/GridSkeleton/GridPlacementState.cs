@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridPlacementState : IGridBuildingState
@@ -8,19 +10,22 @@ public class GridPlacementState : IGridBuildingState
     private Grid grid;
     private GridPreview gridPreview;
     private ABasePlaceableObjectsSO dataBase;
-    private GridData gridObjectsData;
+    private List<GridData> gridObjectsDatas;
     private IObjectPlacer objectPlacer;
+    private Transform parentTransform;
 
     public GridPlacementState(int id, Grid grid, GridPreview gridPreview, ABasePlaceableObjectsSO dataBase,
-        GridData gridObjectsData, IObjectPlacer objectPlacer)
+        List<GridData> gridObjectsDatas, IObjectPlacer objectPlacer, Transform parentTransform)
     {
         this.id = id;
         this.grid = grid;
         this.gridPreview = gridPreview;
         this.dataBase = dataBase;
-        this.gridObjectsData = gridObjectsData;
+        this.gridObjectsDatas = gridObjectsDatas;
         this.objectPlacer = objectPlacer;
-        
+        this.parentTransform = parentTransform;
+
+
         var placeableObjects = dataBase.GetPlaceableObjects();
         selectedObjectIndex = -1;
         for (int i = 0; i < placeableObjects.Count; i++)
@@ -38,7 +43,7 @@ public class GridPlacementState : IGridBuildingState
         }
         else
         {
-            throw new System.Exception($"No objects with this ID: {id}");
+            throw new System.Exception($"[GridPlacementSatate] No objects with this ID: {id}");
         }
     }
 
@@ -64,12 +69,35 @@ public class GridPlacementState : IGridBuildingState
 
         // Place Object
         var placeableObjects = dataBase.GetPlaceableObjects();
-        
-        int gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos);
-        
-        GridData selectedGrid = GetSlelectedGrid(selectedObjectIndex); 
-        selectedGrid.AddObject(relativeCellPos, placeableObjects[selectedObjectIndex].OcupiedSpace, selectedObjectIndex, gameObjectIndex);
+
+        int gameObjectIndex;
+        if (parentTransform != null)
+        {
+            gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos, parentTransform);
+        }
+        else
+        {
+            gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos);
+        }
+
+        AddOcupiedSpaces(relativeCellPos, placeableObjects[selectedObjectIndex], selectedObjectIndex, gameObjectIndex);
         gridPreview?.UpdatePosition(worldCellPos, false, grid.cellSize.x, false);
+    }
+
+    private void AddOcupiedSpaces(Vector2Int relativeCellPos, IPlaceableObjectData ObjData, int id, int placedObjIndex)
+    {
+        GridData selectedGrid = GetSlelectedGrid();
+        selectedGrid.AddObject(relativeCellPos, ObjData.OcupiedSpace, id, placedObjIndex);
+
+        if(dataBase.PlaceableType == PlaceableDatabaseType.WorldB)
+        {
+            selectedGrid = gridObjectsDatas[1];
+
+            B_WolrdObjectData BObjData;
+            BObjData = ObjData as B_WolrdObjectData;
+
+            selectedGrid.AddObject(relativeCellPos, BObjData.C_OcupiedSpace, id, placedObjIndex);
+        }
     }
 
     public void UpdateState(Vector3Int cellPos)
@@ -87,12 +115,22 @@ public class GridPlacementState : IGridBuildingState
     {
         var placeableObjects = dataBase.GetPlaceableObjects();
         
-        GridData selectedGrid = GetSlelectedGrid(objectID); 
+        GridData selectedGrid = GetSlelectedGrid(); 
         return selectedGrid.CanPlaceObjectAt(relativeCellPos, placeableObjects[selectedObjectIndex].OcupiedSpace);
     }
     
-    private GridData GetSlelectedGrid(int dataBase)
+    private GridData GetSlelectedGrid()
     {
-        return gridObjectsData; // Can be selected multiple gridDatas in order to select floor or walls if needed
+        if(dataBase.PlaceableType == PlaceableDatabaseType.ShipBuildable)
+            return gridObjectsDatas[0];
+
+        if (dataBase.PlaceableType == PlaceableDatabaseType.WorldB)
+            return gridObjectsDatas[0];
+
+        if (dataBase.PlaceableType == PlaceableDatabaseType.WorldC)
+            return gridObjectsDatas[1];
+
+        // Default
+        return gridObjectsDatas[0];
     }
 }

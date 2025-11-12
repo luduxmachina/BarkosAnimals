@@ -1,31 +1,31 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BWorldGridInput))]
+[RequireComponent(typeof(WorldGridInput))]
 public class WorldPlacingLoop : MonoBehaviour
 {
     [SerializeField]
-    public const int N_B_OBJECTS = 5;
+    private int N_B_OBJECTS = 5;
     [SerializeField]
-    public const int N_C_OBJECTS = 10;
+    private int N_C_OBJECTS = 10;
     // public const int N_LOOPS = 5;
 
-    private BWorldGridInput bGridInput;
+    private WorldGridInput gridInput;
 
     private void Awake()
     {
-        bGridInput = GetComponent<BWorldGridInput>();
+        gridInput = GetComponent<WorldGridInput>();
     }
 
     public void StartPlacing()
     {
         for (int i = 0; i < N_B_OBJECTS; i++)
         {
-            bGridInput.PlaceObjOfID(2);
+            gridInput.PlaceBObjOfRandomID();
         }
 
         for (int i = 0; i < N_C_OBJECTS; i++)
         {
-            // Grid C
+            gridInput.PlaceCObjOfRandomID();
         }
     }
 }
