@@ -15,6 +15,16 @@ public class ObjectPlacer : MonoBehaviour, IObjectPlacer
         return placedObjects.Count - 1;
     }
 
+    public int PlaceObject(GameObject prefab, Vector3 worldCellPos, Transform parentTransform)
+    {
+        GameObject newObj = Instantiate(prefab, parentTransform);
+        newObj.transform.position = worldCellPos;
+        placedObjects.Add(newObj);
+
+        // return gameObjectIndex
+        return placedObjects.Count - 1;
+    }
+
     public void RemoveObject(int gameObjectIndex)
     {
         if (placedObjects.Count <= gameObjectIndex || placedObjects[gameObjectIndex] == null)
