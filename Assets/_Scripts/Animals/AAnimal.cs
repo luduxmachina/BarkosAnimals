@@ -35,6 +35,9 @@ public abstract class AAnimal : MonoBehaviour
     [SerializeField]
     protected float radioDetectionPredator = 15f;
 
+    [Header("-----------------Fase 2-----------------")]
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     ItemNames animalType;
@@ -154,5 +157,20 @@ public abstract class AAnimal : MonoBehaviour
     }
 
 
+    public int GetAnimalsOnEstable()
+    {
+        return 1;
+    }
 
+    public int GetComaradesOnEstable()
+    {
+        return 0;
+    }
+
+    public int GetPredatorsOnEstable()
+    {
+        return 1;
+    }
 }
+
+
