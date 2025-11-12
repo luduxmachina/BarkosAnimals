@@ -48,10 +48,15 @@ public class SerpienteInScene : AAnimal
         return false;
 
     }
-    public bool ObjectiveIsCart(Transform objective)
+    public void ComerEnCarro()
     {
-        if (objective == null) { return false; }
-        return objective.GetComponentInChildren<CartData>() != null;
+        Debug.Log("COmido en carro");
+    }
+    public bool ObjectiveIsCart()
+    {
+
+        if (lastObjectve == null) { return false; }
+        return lastObjectve.GetComponentInChildren<CartData>() != null;
     }
     public override Transform GetClosestObjetive()
     {

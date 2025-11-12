@@ -221,6 +221,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &124626533 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 972435327249276080, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
+  m_PrefabInstance: {fileID: 199265487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &199265487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1980,7 +1985,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 3915210562827976903
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -2049,7 +2054,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 3915210562827976902
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -2063,7 +2068,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 3915210562827976901
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -2085,7 +2090,7 @@ MonoBehaviour:
         - 6334c669-ee45-467f-8ab8-0812915cdcad
       - name: MovimientoAleatorio
         id: 6334c669-ee45-467f-8ab8-0812915cdcad
-        position: {x: 111.333336, y: 658}
+        position: {x: 100.666664, y: 635.3333}
         node:
           rid: 3915210562827976896
         references: []
@@ -2093,8 +2098,6 @@ MonoBehaviour:
         - 12179098-f5e6-4234-ad54-78fd29fa020b
         childIds:
         - c5da00ad-8298-47f8-8906-ee50b66c60f1
-        - 1e080eac-73cc-4f14-970e-e40401af22cb
-        - 42ba3b95-1f3c-4c2b-8b55-642600305c9d
       - name: HuirUnPocoIzq
         id: c5da00ad-8298-47f8-8906-ee50b66c60f1
         position: {x: -249.33333, y: 834.6666}
@@ -2103,7 +2106,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 3915210562827976904
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -2111,17 +2114,16 @@ MonoBehaviour:
         childIds: []
       - name: HuirUnPocoDer
         id: 1e080eac-73cc-4f14-970e-e40401af22cb
-        position: {x: 78, y: 842.6666}
+        position: {x: 90, y: 850.6666}
         node:
           rid: 3915210562827976898
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 3915210562827976907
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 6334c669-ee45-467f-8ab8-0812915cdcad
+        parentIds: []
         childIds: []
       - name: HuirRecto
         id: 42ba3b95-1f3c-4c2b-8b55-642600305c9d
@@ -2131,11 +2133,10 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 3915210562827976906
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 6334c669-ee45-467f-8ab8-0812915cdcad
+        parentIds: []
         childIds: []
     pushPerceptions:
     - name: Cogido
@@ -2158,7 +2159,7 @@ MonoBehaviour:
     - rid: 3915210562827976775
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
-        StatusFlags: -1
+        StatusFlags: 0
     - rid: 3915210562827976776
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
@@ -2364,6 +2365,77 @@ MonoBehaviour:
     - rid: 3915210562827976899
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
+    - rid: 3915210562827976901
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 10.14
+    - rid: 3915210562827976902
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: SerpienteInScene
+          methodName: ComerEnCarro
+    - rid: 3915210562827976903
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: 
+          methodName: 
+        update:
+          componentName: SerpienteInScene
+          methodName: MoveTowardsObjective
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 3915210562827976904
+      type: {class: FleeAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        OtherTransform: {fileID: 124626533}
+        speed: 5
+        distance: 10
+        maxTimeRunning: 10
+    - rid: 3915210562827976906
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: 
+          methodName: 
+        update:
+          componentName: 
+          methodName: 
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 3915210562827976907
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: 
+          methodName: 
+        update:
+          componentName: 
+          methodName: 
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
 --- !u!1 &1776209610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,7 +2920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786798524681370391, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.28
+      value: -28.13
       objectReference: {fileID: 0}
     - target: {fileID: 7786798524681370391, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2856,7 +2928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786798524681370391, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.72
+      value: -7.02
       objectReference: {fileID: 0}
     - target: {fileID: 7786798524681370391, guid: f4ebdeea019ba1a43a9a29b5f6f48ed3, type: 3}
       propertyPath: m_LocalRotation.w
