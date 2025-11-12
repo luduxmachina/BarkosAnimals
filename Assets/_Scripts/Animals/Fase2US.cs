@@ -53,10 +53,8 @@ public class Fase2US : BehaviourRunner
 		
 		var Felicidad = Fase2US.CreateFusion<WeightedFusionFactor>("Felicidad", Salud, Comodidad);
 		
-		//var Comer_action = new CustomAction();
-		//Comer_action.start = ;
-		//Comer_action.update = ;
-		//var Comer = Fase2US.CreateAction("Comer", F1, Comer_action);
+		var Comer_action = new CustomAction();
+		var Comer = Fase2US.CreateAction("Comer", F1, Comer_action);
 		
 		//var Enfermar_action = new WalkAction();
 		//Enfermar_action.Target = new Vector3(10f, 1f, 1f);

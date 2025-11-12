@@ -495,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4893248385388879846, guid: 1233ec6088e60b84db163fa05c9a6d78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5983734
+      value: 0.099
       objectReference: {fileID: 0}
     - target: {fileID: 4893248385388879846, guid: 1233ec6088e60b84db163fa05c9a6d78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1677,7 +1677,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1140000447}
   - component: {fileID: 1140000449}
-  - component: {fileID: 1140000448}
+  - component: {fileID: 1140000450}
+  - component: {fileID: 1140000451}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1694,46 +1695,16 @@ RectTransform:
   m_GameObject: {fileID: 1140000446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 69070871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.02, y: -0.31}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1140000448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140000446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.7132075, g: 0.052481227, b: 0.052481227, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1140000449
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1742,6 +1713,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140000446}
   m_CullTransparentMesh: 1
+--- !u!212 &1140000450
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140000446}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1910014628, guid: 6ed03beed9ff2334c9082c42ed1f2348, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.29, y: 0.3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &1140000451
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140000446}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf75fcc3905ccd74d99ee8a2e0b1b66c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1292779130 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2338021840084825078, guid: b63514bfb07c44348b6a093bc0aa1213, type: 3}
@@ -1944,67 +1992,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1772181979}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1448877878
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.6416442
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5983753
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.1192245
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669866195926835964, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4154055466866882630, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_Name
-      value: EstabloAnimadoUnwrapeadaBien
-      objectReference: {fileID: 0}
-    - target: {fileID: 4154055466866882630, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 519f6c08254ce844e88324bdd4de9f5c, type: 3}
 --- !u!1001 &1470683721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2609,7 +2596,7 @@ MonoBehaviour:
             PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         parentIds:
-        - 48f98221-2961-4b7b-a32a-20a4a4181236
+        - 8581f366-4625-46ce-8c56-df65650c0f32
         childIds: []
       - name: F3
         id: 3d746ae2-50bf-4cac-a12d-fc83e8553834
@@ -2639,20 +2626,9 @@ MonoBehaviour:
         references: []
         parentIds:
         - 64a82012-b616-4ec0-b307-ceee5b070969
-        - 48f98221-2961-4b7b-a32a-20a4a4181236
+        - 8581f366-4625-46ce-8c56-df65650c0f32
         childIds:
         - f965e5fe-bb1f-4f74-a454-9f9b6464b07e
-      - name: F1
-        id: 48f98221-2961-4b7b-a32a-20a4a4181236
-        position: {x: 716, y: -89}
-        node:
-          rid: 6361364432508157970
-        references: []
-        parentIds:
-        - 501a86f8-2851-4ee7-9f96-5439058be448
-        childIds:
-        - 3c131928-35e5-4238-aa60-52fe5e6880fa
-        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
       - name: Salud
         id: 64a82012-b616-4ec0-b307-ceee5b070969
         position: {x: 647, y: 119}
@@ -2700,23 +2676,9 @@ MonoBehaviour:
         childIds:
         - 64a82012-b616-4ec0-b307-ceee5b070969
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
-      - name: Comer
-        id: 501a86f8-2851-4ee7-9f96-5439058be448
-        position: {x: 1240, y: -99}
-        node:
-          rid: 6361364432508157977
-        references:
-        - fieldName: Action
-          value:
-            rid: 6361364432508158051
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds: []
-        childIds:
-        - 48f98221-2961-4b7b-a32a-20a4a4181236
       - name: Enfermar
         id: c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
-        position: {x: 1232, y: 78}
+        position: {x: 1256, y: 110}
         node:
           rid: 6361364432508157978
         references:
@@ -2730,7 +2692,7 @@ MonoBehaviour:
         - 64a82012-b616-4ec0-b307-ceee5b070969
       - name: MandarCorazones
         id: a801683e-3c6f-4349-bef3-0b861c11173b
-        position: {x: 1248, y: 374}
+        position: {x: 1272, y: 374}
         node:
           rid: 6361364432508157979
         references:
@@ -2780,6 +2742,74 @@ MonoBehaviour:
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
         childIds:
         - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
+      - name: F1
+        id: 8581f366-4625-46ce-8c56-df65650c0f32
+        position: {x: 726, y: -76}
+        node:
+          rid: 6361364450751021120
+        references: []
+        parentIds:
+        - 546ab615-b9ad-4159-8a30-5c73cea78010
+        childIds:
+        - 3c131928-35e5-4238-aa60-52fe5e6880fa
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+      - name: Comer
+        id: 546ab615-b9ad-4159-8a30-5c73cea78010
+        position: {x: 1272, y: -81}
+        node:
+          rid: 6361364450751021132
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364450751021133
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds:
+        - 8581f366-4625-46ce-8c56-df65650c0f32
+    - name: Comer
+      id: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
+      graph:
+        rid: 6361364450751021125
+      nodes:
+      - name: EATING
+        id: 2b3299eb-71af-4d95-a41c-92fe856f688a
+        position: {x: 1092, y: -157}
+        node:
+          rid: 6361364450751021129
+        references: []
+        parentIds: []
+        childIds:
+        - 81255824-0a7a-498f-9ffc-d777242edf76
+        - 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
+      - name: GoToEat
+        id: 81255824-0a7a-498f-9ffc-d777242edf76
+        position: {x: 945.2174, y: 19.99999}
+        node:
+          rid: 6361364450751021126
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364450751021130
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds: []
+      - name: Eat
+        id: 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
+        position: {x: 1234, y: 29}
+        node:
+          rid: 6361364450751021127
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364450751021131
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds: []
     pushPerceptions: []
   references:
     version: 2
@@ -2797,7 +2827,7 @@ MonoBehaviour:
     - rid: 6361364432508157956
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: PatoFase1
+        componentName: AAnimal
         methodName: GetPredatorsOnEstable
     - rid: 6361364432508157957
       type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
@@ -2808,7 +2838,7 @@ MonoBehaviour:
     - rid: 6361364432508157958
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: PatoFase1
+        componentName: AAnimal
         methodName: GetTimeWithoutShower
     - rid: 6361364432508157959
       type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
@@ -2819,7 +2849,7 @@ MonoBehaviour:
     - rid: 6361364432508157960
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: PatoFase1
+        componentName: AAnimal
         methodName: GetAnimalsOnEstable
     - rid: 6361364432508157961
       type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
@@ -2830,7 +2860,7 @@ MonoBehaviour:
     - rid: 6361364432508157962
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: PatoFase1
+        componentName: AAnimal
         methodName: GetPredatorsOnEstable
     - rid: 6361364432508157963
       type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
@@ -2841,7 +2871,7 @@ MonoBehaviour:
     - rid: 6361364432508157964
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: PatoFase1
+        componentName: AAnimal
         methodName: GetPredatorsOnEstable
     - rid: 6361364432508157965
       type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
@@ -2852,7 +2882,7 @@ MonoBehaviour:
     - rid: 6361364432508157966
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: PatoFase1
+        componentName: AAnimal
         methodName: TieneComida
     - rid: 6361364432508157967
       type: {class: ExponentialCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
@@ -2873,13 +2903,6 @@ MonoBehaviour:
         PullingEnabled: 1
         Slope: 1
         YIntercept: 0
-    - rid: 6361364432508157970
-      type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-        Weights:
-        - 1
-        - 2
     - rid: 6361364432508157971
       type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -2908,11 +2931,6 @@ MonoBehaviour:
         Weights:
         - 0.7
         - 0.3
-    - rid: 6361364432508157977
-      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-        FinishSystemOnComplete: 0
     - rid: 6361364432508157978
       type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -2945,12 +2963,6 @@ MonoBehaviour:
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         maxDistance: 10
-    - rid: 6361364432508158051
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: PatoFase1
-          methodName: Comer
     - rid: 6361364432508158052
       type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -2963,29 +2975,70 @@ MonoBehaviour:
         PullingEnabled: 1
         Slope: 1
         YIntercept: 0
---- !u!1 &1949939594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3834372903808297247, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
-  m_PrefabInstance: {fileID: 7907721375119270541}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1949939601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949939594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ef8be813f0be84cb4bd316f13ad476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceptedFoodType: 1
-  wantsFood: 1
-  stopsBeingHungryOnEat: 1
-  OnEat:
-    m_PersistentCalls:
-      m_Calls: []
+    - rid: 6361364450751021120
+      type: {class: PowerFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: Assembly-CSharp}
+      data:
+        PullingEnabled: 1
+    - rid: 6361364450751021125
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 6361364450751021126
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 6361364450751021127
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 6361364450751021129
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 6361364450751021130
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: 
+          methodName: 
+        update:
+          componentName: AAnimal
+          methodName: MoveTowardsObjective
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 6361364450751021131
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: AAnimal
+          methodName: InitComer
+        update:
+          componentName: AAnimal
+          methodName: UpdateComer
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 6361364450751021132
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364450751021133
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 0
+        InterruptOptions: 2
+        subgraphId: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
 --- !u!1001 &2038520614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3061,7 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3470992753089955334, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.479
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3470992753089955334, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3099,15 +3152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemBarril
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9150896390599590828, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
-    - {fileID: 499363044660916697, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3834372903808297247, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1949939601}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
 --- !u!1001 &8215785807234256934
 PrefabInstance:
@@ -3123,7 +3171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1190833304012273474, guid: 83080086088c3474d914cc48fc388896, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.479
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 1190833304012273474, guid: 83080086088c3474d914cc48fc388896, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3187,7 +3235,6 @@ SceneRoots:
   - {fileID: 43883942}
   - {fileID: 222996984}
   - {fileID: 746612585}
-  - {fileID: 1448877878}
   - {fileID: 419892214}
   - {fileID: 1772181979}
   - {fileID: 8215785807234256934}

@@ -261,6 +261,22 @@ public abstract class AAnimal : MonoBehaviour
             return false;
         }
     }
+
+    public void Enfermar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void PegatinaComer()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void QuitarPegatinaEstado()
+    {
+        throw new NotImplementedException();
+    }
+
     public virtual bool NotObjectiveCloseToAttack()
     {
         return !this.ObjectiveCloseToAttack();
@@ -268,32 +284,33 @@ public abstract class AAnimal : MonoBehaviour
 
     public float GetAnimalsOnEstable()
     {
-        return 1;
+        throw new NotImplementedException();
     }
 
     public float GetComaradesOnEstable()
     {
-        return 0;
+        throw new NotImplementedException();
     }
 
     public float GetPredatorsOnEstable()
     {
-        return 1;
+        throw new NotImplementedException();
     }
 
     public float GetTimeWithoutShower()
     {
-        return 0.0f;
+        throw new NotImplementedException();
     }
     public float GetTimeWithoutEating()
     {
-        return 0.0f;
+        throw new NotImplementedException();
     }
 
     public float TieneComida()
     {
-        return 0.0f;
+        throw new NotImplementedException();
     }
+
 }
 
 
