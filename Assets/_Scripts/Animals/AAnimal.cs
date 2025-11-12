@@ -36,6 +36,12 @@ public abstract class AAnimal : MonoBehaviour
     protected float radioDetectionPredator = 15f;
 
     [Header("-----------------Fase 2-----------------")]
+    [SerializeField]
+    public float Tfc = 0.0f;
+    public float Tfl = 0.0f;
+    public float AMax = 0.0f;
+    public float CMax = 0.0f;
+    public float DMax = 0.0f;
 
 
 
@@ -157,19 +163,33 @@ public abstract class AAnimal : MonoBehaviour
     }
 
 
-    public int GetAnimalsOnEstable()
+    public float GetAnimalsOnEstable()
     {
         return 1;
     }
 
-    public int GetComaradesOnEstable()
+    public float GetComaradesOnEstable()
     {
         return 0;
     }
 
-    public int GetPredatorsOnEstable()
+    public float GetPredatorsOnEstable()
     {
         return 1;
+    }
+
+    public float GetTimeWithoutShower()
+    {
+        return 0.0f;
+    }
+    public float GetTimeWithoutEating()
+    {
+        return 0.0f;
+    }
+
+    public float TieneComida()
+    {
+        return 0.0f;
     }
 }
 

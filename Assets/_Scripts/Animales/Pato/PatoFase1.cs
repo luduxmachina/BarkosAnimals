@@ -1,5 +1,6 @@
 using BehaviourAPI.Core;
 using BehaviourAPI.UnityToolkit;
+using BehaviourAPI.UtilitySystems;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -71,27 +72,5 @@ public class PatoFase1 : AAnimal
     {
         throw new System.NotImplementedException();
     }
-    public int GetAnimalsOnEstable()
-    {
-        return 1;
-    }
-
-    public int GetComaradesOnEstable()
-    {
-        return 0;
-    }
-
-    public int GetPredatorsOnEstable()
-    {
-        return 1;
-    }
-
-    public float GetTimeWithoutShower()
-    {
-        return 0.0f;
-    }
-    public float GetTimeWithoutEating()
-    {
-        return 0.0f;
-    }
+    
 }
