@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 7200505001038125891}
   - component: {fileID: 4714741850160017479}
   - component: {fileID: 3114667173495178349}
+  - component: {fileID: 4301804014141999268}
   m_Layer: 0
   m_Name: CarroInScene
   m_TagString: Item
@@ -175,6 +176,24 @@ MonoBehaviour:
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 0
   grabPoint: {fileID: 2833514412061221371}
+--- !u!114 &4301804014141999268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615219840054943829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 6615219840054943829}
+  amountInStack: 1
+  itemName: 7
+  itemType: 0
+  useParentGrabbable: 1
+  simpleGrabbable: {fileID: 0}
 --- !u!1001 &2633262050889094983
 PrefabInstance:
   m_ObjectHideFlags: 0

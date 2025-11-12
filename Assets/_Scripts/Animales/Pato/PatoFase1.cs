@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PatoFase1 : MonoBehaviour
+public class PatoFase1 : AAnimal
 {
-    [SerializeField]
-    NavmeshAgentMovement movimiento;
+
 
     [Header("Datos/Stats")]
-    public float radioDeteccionComida;
     public List<Transform> puntosEstanque;
     [SerializeField]
     private int energiaMax = 6;
@@ -20,26 +18,12 @@ public class PatoFase1 : MonoBehaviour
     [SerializeField]
     private int energiaActual=6;
     public Transform posEstanque;
-    [SerializeField, ReadOnly]
-    private Transform comidaObjetivo;
-    private Vector3 comidaObjetivoPos;
+
     private void Start()
     {
         energiaActual = energiaMax;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public bool HayPan()
-    {
-        if (IslandPositions.instance)
-        {
-            var temp= IslandPositions.instance.HasType(ItemNames.Bread);
-            if(temp)
-            {
-                return Vector3.Distance(transform.position, IslandPositions.instance.GetClosest(transform.position, ItemNames.Bread).position) <= radioDeteccionComida;
-            }
-        }
-        return false;
-    }
+
 
     public bool EnAgua()
     {
@@ -77,40 +61,14 @@ public class PatoFase1 : MonoBehaviour
     }
     public void Comer()
     {
-        if (!comidaObjetivo) { return;  }
+      //  if (!) { return;  }
         //animator supongo
         //comer el pan
-        comidaObjetivo.GetComponentInChildren<ItemInScene>()?.ReduceByOne();
-    }
-    public Status AndarHaciaComida()
-    {
-        if (!HayPan()) //la comida puede desaparecer
-        {
-            return Status.Failure;
-        }
-        Vector3 lastTargetPos = comidaObjetivoPos;
-        FijarObjetivo(); //puede que haya otro pan mas cerca 
-        if(lastTargetPos != comidaObjetivoPos)
-        {
-            //o se ha movido o un pan mas cercano
-            movimiento.SetTarget(comidaObjetivo.position);
-
-        }
-        if (movimiento.HasArrived())
-        {
-            return Status.Success;
-        }
-
-        return Status.Running;
-    }
-    public void StopAndarHaciaComida()
-    {
-        movimiento.CancelMove();
-    }
-    private void FijarObjetivo()
-    {
-        comidaObjetivo = IslandPositions.instance.GetClosest(transform.position, ItemNames.Bread);
-        comidaObjetivoPos = comidaObjetivo.position;
+      //  comidaObjetivo.GetComponentInChildren<ItemInScene>()?.ReduceByOne();
     }
 
+    public override Vector3 GetNewPosition()
+    {
+        throw new System.NotImplementedException();
+    }
 }
