@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7786798524681370391}
   - component: {fileID: 76316342550003921}
-  - component: {fileID: 5052600753734355402}
   - component: {fileID: 7406246666013410458}
   - component: {fileID: 8899541994499259305}
   - component: {fileID: 7570775946478225264}
@@ -192,27 +191,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.06, z: 0.27}
---- !u!65 &5052600753734355402
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.73}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7406246666013410458
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -405,7 +383,7 @@ MonoBehaviour:
         - 03f432c0-71ea-46bb-9a62-0fad6c19e979
       - name: Andar hacia comida
         id: 7ac56cec-3b14-42a0-843e-998267800b94
-        position: {x: -436.66666, y: 794.6666}
+        position: {x: -460, y: 772}
         node:
           rid: 3915210452180140233
         references:
@@ -425,7 +403,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: 3915210491625209943
+            rid: 8790748559051325521
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -433,7 +411,7 @@ MonoBehaviour:
         childIds: []
       - name: Nada
         id: b33c2bf9-23cc-4348-8793-c6240a4258e5
-        position: {x: 300, y: 800}
+        position: {x: 296.8, y: 840}
         node:
           rid: 3915210452180140235
         references:
@@ -447,7 +425,7 @@ MonoBehaviour:
         childIds: []
       - name: Ests cansado
         id: 2e288971-97e1-4f8d-b069-82c5ff32138c
-        position: {x: 787.3333, y: 811.3333}
+        position: {x: 809.6, y: 932}
         node:
           rid: 3915210452180140236
         references:
@@ -457,7 +435,7 @@ MonoBehaviour:
           fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         parentIds:
-        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
+        - 03577b3a-b0d3-44ba-90c6-53e69dd2e054
         childIds:
         - 2f05d8a3-0846-4b89-9cb2-9063e3046d8f
       - name: Aletear
@@ -468,7 +446,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: 3915210491625209922
+            rid: 8790748559051325510
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -476,7 +454,7 @@ MonoBehaviour:
         childIds: []
       - name: Descansar
         id: 2f05d8a3-0846-4b89-9cb2-9063e3046d8f
-        position: {x: 795.3333, y: 1012.6667}
+        position: {x: 801.6, y: 1092.8}
         node:
           rid: 3915210452180140238
         references:
@@ -499,17 +477,17 @@ MonoBehaviour:
         childIds:
         - b33c2bf9-23cc-4348-8793-c6240a4258e5
         - 81532ffa-3b1a-4b23-a071-defbf0935ca2
-        - 2e288971-97e1-4f8d-b069-82c5ff32138c
+        - 03577b3a-b0d3-44ba-90c6-53e69dd2e054
         - 5ecb0c82-0f3c-45da-b11d-85175804d8d5
       - name: Comer
         id: 03f432c0-71ea-46bb-9a62-0fad6c19e979
-        position: {x: -214, y: 804.6666}
+        position: {x: -230.4, y: 788.80005}
         node:
           rid: 3915210491625209932
         references:
         - fieldName: Action
           value:
-            rid: 3915210491625209933
+            rid: 8790748559051325514
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -529,6 +507,16 @@ MonoBehaviour:
         parentIds:
         - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
         childIds: []
+      - name: 
+        id: 03577b3a-b0d3-44ba-90c6-53e69dd2e054
+        position: {x: 809.6, y: 832}
+        node:
+          rid: 8790748559051325533
+        references: []
+        parentIds:
+        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
+        childIds:
+        - 2e288971-97e1-4f8d-b069-82c5ff32138c
     pushPerceptions: []
   references:
     version: 2
@@ -585,12 +573,6 @@ MonoBehaviour:
         method:
           componentName: PatoFase1
           methodName: Descansar
-    - rid: 3915210491625209922
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: PatoFase1
-          methodName: Aletear
     - rid: 3915210491625209925
       type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -599,7 +581,7 @@ MonoBehaviour:
           methodName: 
         check:
           componentName: PatoFase1
-          methodName: HayPan
+          methodName: ObjectiveClose
         reset:
           componentName: 
           methodName: 
@@ -666,12 +648,6 @@ MonoBehaviour:
     - rid: 3915210491625209932
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
-    - rid: 3915210491625209933
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: PatoFase1
-          methodName: Comer
     - rid: 3915210491625209939
       type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -680,10 +656,10 @@ MonoBehaviour:
           methodName: 
         update:
           componentName: PatoFase1
-          methodName: AndarHaciaComida
+          methodName: MoveTowardsObjective
         stop:
-          componentName: PatoFase1
-          methodName: StopAndarHaciaComida
+          componentName: 
+          methodName: 
         pause:
           componentName: 
           methodName: 
@@ -703,10 +679,69 @@ MonoBehaviour:
         method:
           componentName: PatoFase1
           methodName: UsarEnergia
-    - rid: 3915210491625209943
-      type: {class: WalkAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+    - rid: 8790748559051325510
+      type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        Target: {x: 0, y: 0.5, z: 0}
+        compoundAction:
+          rid: 8790748559051325511
+        subActions:
+        - action:
+            rid: 8790748559051325512
+        - action:
+            rid: 8790748559051325513
+    - rid: 8790748559051325511
+      type: {class: SerialAction, ns: BehaviourAPI.Core.Actions, asm: BehaviourAPI.Core}
+      data:
+        TargetStatus: 2
+    - rid: 8790748559051325512
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: PatoFase1
+          methodName: Aletear
+    - rid: 8790748559051325513
+      type: {class: DelayAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        delayTime: 1
+    - rid: 8790748559051325514
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: PatoFase1
+          methodName: InitComer
+        update:
+          componentName: PatoFase1
+          methodName: UpdateComer
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 8790748559051325521
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: PatoFase1
+          methodName: IrAEstanqueInit
+        update:
+          componentName: PatoFase1
+          methodName: IrAEstanqueUpdate
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 8790748559051325533
+      type: {class: SuccederNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
 --- !u!114 &3265168231409010287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,16 +755,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  predators: 
-  objectives: 
-  walkingSpeed: 0.1
-  run: 0.2
+  predators: 03000000
+  objectives: 01000000
+  walkingSpeed: 2.3
+  run: 3.73
   rotateSpeed: 1
   radioDetectionObjective: 10
   radioDetectionPredator: 15
+  radioAtaqueComida: 2.13
+  tiempoEnComer: 3
   puntosEstanque: []
   energiaMax: 6
-  radioDentroEstanque: 2.96
+  radioDentroEstanque: 4.37
   energiaActual: 6
   posEstanque: {fileID: 0}
 --- !u!114 &2443815622253805130

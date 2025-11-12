@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SerpienteInScene : AAnimal
@@ -8,26 +9,12 @@ public class SerpienteInScene : AAnimal
     [SerializeField]
     private float stuntTime = 2.0f;
     [SerializeField]
-    private float radioDeteccionPeligro = 10.0f;
-    [SerializeField]
-    private float radioDeteccionComida = 15.0f;
-    [SerializeField]
-    private float distanciaAtaque = 2.0f;
-    [SerializeField]
     private float tiempoDescanso = 5.0f;
 
-    [Header("Misc")]
-    [SerializeField]
-    Transform peligroDetectado;
-    [SerializeField]
-    Transform presaDetectada;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         grabbable = GetComponentInParent<IGrabbable>();
-    }
-    private void Start()
-    {
-        
     }
     public void AttackGrabber()
     {
@@ -61,7 +48,36 @@ public class SerpienteInScene : AAnimal
         return false;
 
     }
+    public bool ObjectiveIsCart(Transform objective)
+    {
+        if (objective == null) { return false; }
+        return objective.GetComponentInChildren<CartData>() != null;
+    }
+    public override Transform GetClosestObjetive()
+    {
+        if (CheckCart(this.objectives.ToList()))
+        {
+            //el carro mas cercano tiene alguna presa
+            Transform carroT = IslandPositions.instance.GetClosest(transform.position, ItemNames.Cart);
+            Transform objective = base.GetClosestObjetive();
+            if (objective == null) { return carroT; }
+            float distCarro = Vector3.Distance(transform.position, carroT.position);
+            float distObjective = Vector3.Distance(transform.position, objective.position);
+            if (distCarro < distObjective)
+            {
+                return carroT;
+            }
+            else
+            {
+                return objective;
+            }
 
+
+        }
+        return base.GetClosestObjetive();
+
+
+    }
     public override Vector3 GetNewPosition()
     {
         throw new System.NotImplementedException();
