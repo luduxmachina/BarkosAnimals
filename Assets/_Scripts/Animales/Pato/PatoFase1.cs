@@ -1,9 +1,7 @@
 using BehaviourAPI.Core;
 using BehaviourAPI.UnityToolkit;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PatoFase1 : AAnimal
 {
@@ -22,6 +20,7 @@ public class PatoFase1 : AAnimal
 
     private void Start()
     {
+        base.Start();
         energiaActual = energiaMax;
     }
     public void IrAEstanqueInit()

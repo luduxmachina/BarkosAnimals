@@ -4,19 +4,21 @@ using BehaviourAPI.UnityToolkit;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.IO.LowLevel.Unsafe;
+
 [RequireComponent(typeof(IMovementComponent))]
 public abstract class AAnimal : MonoBehaviour
 {
     [Header("---------------Importante---------------")]
     [SerializeField]
     protected Animator animator;
-    [SerializeField]
+    [SerializeField, CustomLabel("", true)]
     protected ItemNames[] predators;
-    [SerializeField]
+    [SerializeField, CustomLabel("", true)]
     protected ItemNames[] objectives;
 
     [Header("-----------------Fase 1-----------------")]
-    [Tooltip("Speed when the character is relax and in patrol state")]
+    [Tooltip("Speed when the character is relaxed and in patrol state")]
     [SerializeField]
     protected float walkingSpeed = 0.1f;
 
@@ -202,11 +204,12 @@ public abstract class AAnimal : MonoBehaviour
 
     public void Die()
     {
+        //no creo que este bien 
         GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects( animalType, -1));
         Destroy(this.gameObject);
     }
 
-    public bool PredatorClose()
+    public virtual bool PredatorClose()
     {
         if(GetClosestPredator() != null && Vector3.Distance(transform.position, GetClosestPredator().position) <= radioDetectionPredator)
         {
@@ -217,7 +220,11 @@ public abstract class AAnimal : MonoBehaviour
             return false;
         }
     }
-    public bool ObjectiveClose()
+    public virtual bool NotPredatorClose()
+    {
+        return !this.PredatorClose();
+    }
+    public virtual bool ObjectiveClose()
     {
         if (GetClosestObjetive() != null && Vector3.Distance(transform.position, GetClosestObjetive().position) <= radioDetectionObjective)
         {
@@ -229,7 +236,25 @@ public abstract class AAnimal : MonoBehaviour
         }
 
     }
-
+    public virtual bool NotObjectiveClose()
+    {
+        return !this.ObjectiveClose();
+    }
+    public virtual bool ObjectiveCloseToAttack()
+    {
+        if(GetClosestObjetive() != null && Vector3.Distance(transform.position, GetClosestObjetive().position) <= radioAtaqueComida)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public virtual bool NotObjectiveCloseToAttack()
+    {
+        return !this.ObjectiveCloseToAttack();
+    }
 
 
 }
