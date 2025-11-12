@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SerpienteInScene : MonoBehaviour
+public class SerpienteInScene : AAnimal
 {
     IGrabbable grabbable;
     [Header("Stats")]
@@ -29,42 +29,6 @@ public class SerpienteInScene : MonoBehaviour
     {
         
     }
-    public bool PeligroAcercandose()
-    {
-        CalcularPeligroMasCercano();
-        if (Vector3.Distance(transform.position, peligroDetectado.position) <= radioDeteccionPeligro) //que podria cachear las distancias, pero me la suda
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-
-        }
-
-    }
-    public bool PresaEncontrada()
-    {
-        CalcularPresaMasCercana();
-
-        if (presaDetectada == null)
-        {
-            return false;
-        }
-        if (Vector3.Distance(transform.position, presaDetectada.position) <= radioDeteccionComida) //que podria cachear las distancias, pero me la suda
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-
-        }
-    }
-    public bool PresaARangoDeCaza()
-    {
-        return false;
-    }
     public void AttackGrabber()
     {
         IGrabber grabber = grabbable.currentGrabber;
@@ -75,37 +39,10 @@ public class SerpienteInScene : MonoBehaviour
         
         grabbable.Drop(); //se libera  si misma
     }
-    private void CalcularPeligroMasCercano()
-    {
-        peligroDetectado = IslandPositions.instance.GetPlayerPosition();
-
-        var otroPeligro = IslandPositions.instance.GetClosest(transform.position, ItemNames.Snake); //pongamos que tambie nse ahuyenten unas a otras
-        if (Vector3.Distance(transform.position, otroPeligro.position) < Vector3.Distance(transform.position, peligroDetectado.position)) //el mas cercano es el otro
-        {
-            peligroDetectado = otroPeligro;
-
-        }
-    }
-    private void CalcularPresaMasCercana()
-    {
-        List<ItemNames> posiblesPresas = new List<ItemNames> { ItemNames.Duck, ItemNames.Pangolin };
-        presaDetectada = IslandPositions.instance.GetClosest(transform.position, posiblesPresas.ToArray()); //no siempre hay presa 
-
-        if (CheckCart(posiblesPresas))
-        {
-            var cartT = IslandPositions.instance.GetCartPosition();
-            if (Vector3.Distance(transform.position, cartT.position) < Vector3.Distance(transform.position, peligroDetectado.position)) //el mas cercano es el otro
-            {
-                presaDetectada = cartT;
-
-            }
-        }
-
-    }
     private bool CheckCart(List<ItemNames> posiblesPresas)
     {
         //poner aqui el carro si tiene animal dentro
-        Transform carroT = IslandPositions.instance.GetCartPosition();
+        Transform carroT = IslandPositions.instance.GetClosest(transform.position, ItemNames.Cart);
         if(carroT == null) { return false;  }
 
 
@@ -123,6 +60,11 @@ public class SerpienteInScene : MonoBehaviour
         }
         return false;
 
+    }
+
+    public override Vector3 GetNewPosition()
+    {
+        throw new System.NotImplementedException();
     }
 }
 

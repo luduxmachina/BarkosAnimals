@@ -68,14 +68,14 @@ public class QuotaOverwriter : MonoBehaviour, QuotaUiInterface
         PlayAd();
         int pointsNeeded = GameFlowManager.instance.quotaChecker.GetQuota().QuotaValue - quotaPassed.QuotaValue;
         quotaPassed.AddPoints(pointsNeeded);
-        GameFlowManager.instance.quotaChecker.UpdateCuote(AnimalType.Duck, 0); //forzar a que se recalcule la cuota
+        GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(ItemNames.Duck, 0)); //forzar a que se recalcule la cuota
     }
     public void ForcePassQuotaRestriccion(Restriction restriction) // ni idea de que cojones poner lol
     {
         PlayAd();
         int pointsNeeded = GameFlowManager.instance.quotaChecker.GetQuota().Restrictions[restriction] - quotaPassed.Restrictions[restriction];
         quotaPassed.AddRestictionPassed(restriction, pointsNeeded);
-        GameFlowManager.instance.quotaChecker.UpdateCuote(AnimalType.Duck, 0); //lets go
+        GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(ItemNames.Duck, 0)); //lets go
     }
     private void PlayAd()
     {

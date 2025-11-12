@@ -1,24 +1,76 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using NUnit.Framework;
+using System.Runtime.CompilerServices;
+using System.Collections;
 
+
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+[Serializable]
 public enum Restriction
 {
+    Duck,
     Herbivore
 }
 
-
-public class Quota
+[Serializable]
+public struct RestrictionTupple
 {
+    public Restriction restriction;
+    public int value;
+}
+
+[Serializable]
+public class Quota: ISerializationCallbackReceiver
+{
+#if UNITY_EDITOR
+    private static bool isInPlayMode = false;
+
+    [InitializeOnLoadMethod]
+    private static void Init()
+    {
+        EditorApplication.playModeStateChanged += change =>
+        {
+            isInPlayMode = change == PlayModeStateChange.EnteredPlayMode;
+        };
+    }
+#endif
+
+    [SerializeField]
     int quotaValue;
     public int QuotaValue {
         get { return quotaValue; }
         set { quotaValue = value; }
     }
 
+    [SerializeField]
+    List<RestrictionTupple> RestrictionsList = new List<RestrictionTupple>();
+
+    public int this[Restriction restriction] => restrictions[restriction];
+
+    public void OnAfterDeserialize()
+    {
+
+#if UNITY_EDITOR
+        // En el editor queremos mantener la lista editable, así que no transformamos todavía
+        if (!isInPlayMode) return;
+#endif
+        restrictions.Clear();
+        foreach (var e in RestrictionsList)
+        {
+            if (!restrictions.ContainsKey(e.restriction))
+                restrictions.Add(e.restriction, e.value);
+        }
+    }
 
 
-    Dictionary<Restriction, int> restrictions;
+
+Dictionary<Restriction, int> restrictions;
     public Dictionary<Restriction, int> Restrictions {
         get { return restrictions; }
     }
@@ -127,4 +179,6 @@ public class Quota
 
         return passed;
     }
+
+    public void OnBeforeSerialize(){}
 }

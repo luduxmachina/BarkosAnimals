@@ -60,7 +60,10 @@ public enum ItemNames
     Duck,
     Snake,
     Pangolin,
-    Sheep
+    Sheep,
+    Player,
+    Cart,
+    Ship
 }
 
 public enum ItemType
