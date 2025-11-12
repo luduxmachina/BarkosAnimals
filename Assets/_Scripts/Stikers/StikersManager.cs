@@ -21,4 +21,6 @@ public class StikersManager : MonoBehaviour
     {
         this.transform.LookAt(camera.transform.position);
     }
+
+    
 }

@@ -72,12 +72,4 @@ public abstract class AAnimal : MonoBehaviour
         throw new System.NotImplementedException();
     }
 
-    public void WalkRamdom(int limitSupX, int limitInfX, int limitSupY, int limitInfY)
-    {
-        //Vector3 newPos = new Vector3(Random.Range(limitInfX, limitSupX), Random.Range(limitInfY, limitSupY), transform.position.z);
-        //Vector3 direccion = newPos - transform.position;
-        //Quaternion rotation = Quaternion.LookRotation(direccion);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
-    }
-
 }
