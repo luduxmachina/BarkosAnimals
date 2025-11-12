@@ -2719,7 +2719,7 @@ MonoBehaviour:
         childIds: []
       - name: AnimEstablo
         id: e7eafa89-15bf-4fdb-ae61-18a5f2f4f730
-        position: {x: 8, y: 419}
+        position: {x: -11, y: 350}
         node:
           rid: 6361364432508157959
         references:
@@ -2734,7 +2734,7 @@ MonoBehaviour:
         childIds: []
       - name: AnimEspecie
         id: 90919fd0-305f-4a37-b20e-01788c51a1b3
-        position: {x: -6, y: 616}
+        position: {x: 26, y: 601}
         node:
           rid: 6361364432508157961
         references:
@@ -2760,7 +2760,7 @@ MonoBehaviour:
             PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         parentIds:
-        - ea3e0742-d939-44f5-8ce0-b2de5c9b5309
+        - 378984b5-a450-4e4b-893b-de8801733873
         childIds: []
       - name: HayComida
         id: 3c131928-35e5-4238-aa60-52fe5e6880fa
@@ -2842,26 +2842,9 @@ MonoBehaviour:
         - 5231d177-c636-4915-9685-cfec7f7c8c63
         childIds:
         - 8dfa8787-1041-4e98-be5d-e7c7e084bca6
-      - name: F4
-        id: ea3e0742-d939-44f5-8ce0-b2de5c9b5309
-        position: {x: 823, y: 770}
-        node:
-          rid: 6361364432508157973
-        references:
-        - fieldName: Function
-          value:
-            rid: 6361364432508157974
-          fieldType: System.Func`2[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b77a5c561934e089
-        parentIds:
-        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
-        childIds:
-        - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
       - name: Comodidad
         id: 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
-        position: {x: 663, y: 460}
+        position: {x: 683, y: 609}
         node:
           rid: 6361364432508157975
         references: []
@@ -2871,10 +2854,10 @@ MonoBehaviour:
         childIds:
         - a5f88f8b-ddbc-4767-9a2f-1b376b2bbbd2
         - 3d746ae2-50bf-4cac-a12d-fc83e8553834
-        - ea3e0742-d939-44f5-8ce0-b2de5c9b5309
+        - 378984b5-a450-4e4b-893b-de8801733873
       - name: Felicidad
         id: a2ead301-dc4b-493b-a3ce-84db5e7f89c7
-        position: {x: 970, y: 377}
+        position: {x: 1002, y: 390}
         node:
           rid: 6361364432508157976
         references: []
@@ -2953,6 +2936,16 @@ MonoBehaviour:
         parentIds: []
         childIds:
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+      - name: F4
+        id: 378984b5-a450-4e4b-893b-de8801733873
+        position: {x: 354, y: 762}
+        node:
+          rid: 6361364450751021118
+        references: []
+        parentIds:
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        childIds:
+        - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
     pushPerceptions: []
   references:
     version: 2
@@ -2970,8 +2963,8 @@ MonoBehaviour:
     - rid: 6361364432508157956
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: 
-        methodName: 
+        componentName: PatoFase1
+        methodName: GetPredatorsOnEstable()
     - rid: 6361364432508157957
       type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -2981,8 +2974,8 @@ MonoBehaviour:
     - rid: 6361364432508157958
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        componentName: 
-        methodName: 
+        componentName: PatoFase1
+        methodName: GetTimeWithoutShower()
     - rid: 6361364432508157959
       type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -3050,7 +3043,9 @@ MonoBehaviour:
       type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
         PullingEnabled: 1
-        Weights: []
+        Weights:
+        - 1
+        - 2
     - rid: 6361364432508157971
       type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -3064,15 +3059,6 @@ MonoBehaviour:
         PullingEnabled: 1
         Slope: -1
         YIntercept: 1
-    - rid: 6361364432508157973
-      type: {class: CustomCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-    - rid: 6361364432508157974
-      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        componentName: 
-        methodName: 
     - rid: 6361364432508157975
       type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -3120,11 +3106,11 @@ MonoBehaviour:
     - rid: 6361364432508158049
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
-        maxDistance: 0
+        maxDistance: 10
     - rid: 6361364432508158050
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
-        maxDistance: 0
+        maxDistance: 10
     - rid: 6361364432508158051
       type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -3137,6 +3123,12 @@ MonoBehaviour:
         method:
           componentName: PatoFase1
           methodName: Aletear()
+    - rid: 6361364450751021118
+      type: {class: LinearCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Slope: 1
+        YIntercept: 0
 --- !u!1001 &2038520614
 PrefabInstance:
   m_ObjectHideFlags: 0

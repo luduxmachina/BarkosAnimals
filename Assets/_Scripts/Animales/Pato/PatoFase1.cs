@@ -85,4 +85,13 @@ public class PatoFase1 : AAnimal
     {
         return 1;
     }
+
+    public float GetTimeWithoutShower()
+    {
+        return 0.0f;
+    }
+    public float GetTimeWithoutEating()
+    {
+        return 0.0f;
+    }
 }
