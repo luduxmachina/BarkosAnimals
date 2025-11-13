@@ -100,13 +100,11 @@ public class PatoFase1 : AAnimal
     {
         energiaActual = energiaMax;
         //Animator supongo
-        Debug.Log("Descansando");
 
     }
     public void Aletear()
     {
         //animator supongo
-        Debug.Log("Aleteando");
     }
   
 

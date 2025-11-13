@@ -2,9 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SerpienteInScene : AAnimal
+public class SerpienteInScene : AAnimal 
 {
+    [Header("----------Serpiente---------")]
     IGrabbable grabbable;
+    [SerializeField]
+    SimpleGrabber thisGrabber;
     [Header("Stats")]
     [SerializeField]
     private float stuntTime = 2.0f;
@@ -16,12 +19,29 @@ public class SerpienteInScene : AAnimal
         base.Awake();
         grabbable = GetComponentInParent<IGrabbable>();
     }
+    public void PlayAttackAnim()
+    {
+        animator.SetTrigger("Attack");
+    }
+    public void PlaySurpriseAnim()
+    {
+        animator.SetTrigger("Surprise");
+    }
+    public void PlayRunAnim()
+    {
+        animator.SetTrigger("Run");
+    }    
+    public void PlayWalkAnim()
+    {
+        animator.SetTrigger("Walk");
+    }
     public void AttackGrabber()
     {
         IGrabber grabber = grabbable.currentGrabber;
         if(grabber != null)
         {
             grabber.gameObject.GetComponentInChildren<PlayerInSceneEffects>()?.AddStunt(stuntTime);
+            PlayAttackAnim();
         }
         
         grabbable.Drop(); //se libera  si misma
@@ -46,6 +66,12 @@ public class SerpienteInScene : AAnimal
            
         }
         return false;
+
+    }
+    public override void InitComer()
+    {
+        base.InitComer();
+        thisGrabber.TryGrab(lastObjectve);
 
     }
     public void ComerEnCarro()

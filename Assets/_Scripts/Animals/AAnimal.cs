@@ -171,10 +171,21 @@ public abstract class AAnimal : MonoBehaviour
         }
         return Status.Running;
     }
+    public void MoveTowardsObjectiveInit()
+    {
+        if (animator != null)
+        {
+            animator.SetTrigger("Walk");
+        }
+    }
     public Status MoveTowardsObjective()
     {
         if (!ObjectiveClose()) //la comida puede desaparecer
         {
+            if (animator != null)
+            {
+                animator.SetTrigger("Idle");
+            }
             movimiento.CancelMove();
 
             return Status.Failure;
@@ -192,6 +203,10 @@ public abstract class AAnimal : MonoBehaviour
         }
         if (movimiento.HasArrived())
         {
+            if (animator != null)
+            {
+                animator.SetTrigger("Idle");
+            }
             movimiento.CancelMove();
 
             return Status.Success;

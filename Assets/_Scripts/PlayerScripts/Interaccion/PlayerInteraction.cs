@@ -64,14 +64,14 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
         }
         return; //no se ha cogido el objeto
     }
-    public void GrabObject(IGrabbable grabable)
+    public void GrabObject(IGrabbable grabbable)
     {
         if (hasObjInHand) { DropObj(); return; } //si ya tengo algo en la mano, lo suelto primero
 
-        if (grabable.Grab(posCogerObj, this))
+        if (grabbable.Grab(posCogerObj, this))
         {
 
-            objInHand = grabable;
+            objInHand = grabbable;
             hasObjInHand = true;
             animator.SetTrigger("Take");
             animator.SetBool("TakeSomething", true);
