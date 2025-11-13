@@ -2627,9 +2627,10 @@ MonoBehaviour:
         parentIds:
         - 64a82012-b616-4ec0-b307-ceee5b070969
         - 8581f366-4625-46ce-8c56-df65650c0f32
+        - b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
         childIds:
         - f965e5fe-bb1f-4f74-a454-9f9b6464b07e
-      - name: Salud
+      - name: Insalubridad
         id: 64a82012-b616-4ec0-b307-ceee5b070969
         position: {x: 647, y: 119}
         node:
@@ -2641,7 +2642,7 @@ MonoBehaviour:
         childIds:
         - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
         - 734d7dcd-d8d4-4b44-a372-bbe72682044f
-      - name: Limpieza
+      - name: Suciedad
         id: 734d7dcd-d8d4-4b44-a372-bbe72682044f
         position: {x: 348, y: 213}
         node:
@@ -2692,7 +2693,7 @@ MonoBehaviour:
         - 64a82012-b616-4ec0-b307-ceee5b070969
       - name: MandarCorazones
         id: a801683e-3c6f-4349-bef3-0b861c11173b
-        position: {x: 1272, y: 374}
+        position: {x: 1304, y: 376}
         node:
           rid: 6361364432508157979
         references:
@@ -2767,6 +2768,20 @@ MonoBehaviour:
         parentIds: []
         childIds:
         - 8581f366-4625-46ce-8c56-df65650c0f32
+      - name: Hambre
+        id: b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
+        position: {x: 1550, y: 32}
+        node:
+          rid: 6361364450751021174
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds:
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
     - name: Comer
       id: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
       graph:
@@ -2814,6 +2829,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 6361364432508157952
       type: {class: UtilitySystem, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -2908,14 +2925,14 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         Weights:
-        - -0.5
+        - 0.5
         - 0.5
     - rid: 6361364432508157972
       type: {class: LinearCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
         PullingEnabled: 1
-        Slope: -1
-        YIntercept: 1
+        Slope: 1
+        YIntercept: 0
     - rid: 6361364432508157975
       type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -2929,7 +2946,7 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         Weights:
-        - 0.7
+        - -0.7
         - 0.3
     - rid: 6361364432508157978
       type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
@@ -3039,6 +3056,11 @@ MonoBehaviour:
         ExecuteOnLoop: 0
         InterruptOptions: 2
         subgraphId: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
+    - rid: 6361364450751021174
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
 --- !u!1001 &2038520614
 PrefabInstance:
   m_ObjectHideFlags: 0

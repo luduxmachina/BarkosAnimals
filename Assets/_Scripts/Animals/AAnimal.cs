@@ -267,9 +267,9 @@ public abstract class AAnimal : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public void PegatinaComer()
+    public void MostrarHambre()
     {
-        throw new NotImplementedException();
+
     }
 
     public void QuitarPegatinaEstado()
