@@ -63,7 +63,8 @@ public enum ItemNames
     Sheep,
     Player,
     Cart,
-    Ship
+    Ship,
+    Feeder
 }
 
 public enum ItemType

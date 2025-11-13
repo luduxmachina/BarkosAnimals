@@ -2,12 +2,11 @@ using BehaviourAPI.Core;
 using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.UtilitySystems;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class PatoFase1 : AAnimal
 {
-
-
     [Header("Datos/Stats")]
     public List<Transform> puntosEstanque;
     [SerializeField]
@@ -23,6 +22,7 @@ public class PatoFase1 : AAnimal
     {
         base.Start();
         energiaActual = energiaMax;
+        this.itemName = ItemNames.Duck;
     }
     public void IrAEstanqueInit()
     {

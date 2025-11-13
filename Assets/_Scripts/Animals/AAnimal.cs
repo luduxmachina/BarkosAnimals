@@ -5,10 +5,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(IMovementComponent))]
 public abstract class AAnimal : MonoBehaviour
 {
+    protected ItemNames itemName;
+    public ItemNames ThisItemName
+    {
+        get { return itemName; }
+    }
+
+
+
     [Header("---------------Importante---------------")]
     [SerializeField]
     protected Animator animator;
@@ -45,6 +54,7 @@ public abstract class AAnimal : MonoBehaviour
     public float CMax = 0.0f;
     public float DMax = 0.0f;
 
+    protected Stable establo;
 
     [SerializeField]
     protected  float radioAtaqueComida = 2.0f;
@@ -59,11 +69,12 @@ public abstract class AAnimal : MonoBehaviour
     protected Transform lastObjectve;
     protected Vector3 lastTargetPos;
 
-    public List<IAction> activeActions;
+    #region Monobehaviour
     protected virtual void Awake()
     {
         movimiento = GetComponent<IMovementComponent>();
     }
+
     protected virtual void Start()
     {
         movimiento.Speed = walkingSpeed;
@@ -72,6 +83,9 @@ public abstract class AAnimal : MonoBehaviour
             (movimiento as NavmeshAgentMovement).minDistanceToTarget= radioAtaqueComida;
         }
     }
+    #endregion
+
+    #region Getters
     public float GetWalkingSpeed()
     {
         return this.walkingSpeed;
@@ -118,6 +132,10 @@ public abstract class AAnimal : MonoBehaviour
         }
         return count;
     }
+
+    #endregion
+
+    #region Actions
     public virtual void InitComer()
     {
         if(!ObjectiveClose()) { return; }
@@ -219,6 +237,15 @@ public abstract class AAnimal : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public virtual bool NotObjectiveCloseToAttack()
+    {
+        return !this.ObjectiveCloseToAttack();
+    }
+
+    #endregion
+
+    #region Pulls
+
     public virtual bool PredatorClose()
     {
         if(GetClosestPredator() != null && Vector3.Distance(transform.position, GetClosestPredator().position) <= radioDetectionPredator)
@@ -262,55 +289,7 @@ public abstract class AAnimal : MonoBehaviour
         }
     }
 
-    public void Enfermar()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void MostrarHambre()
-    {
-
-    }
-
-    public void QuitarPegatinaEstado()
-    {
-        throw new NotImplementedException();
-    }
-
-    public virtual bool NotObjectiveCloseToAttack()
-    {
-        return !this.ObjectiveCloseToAttack();
-    }
-
-    public float GetAnimalsOnEstable()
-    {
-        throw new NotImplementedException();
-    }
-
-    public float GetComaradesOnEstable()
-    {
-        throw new NotImplementedException();
-    }
-
-    public float GetPredatorsOnEstable()
-    {
-        throw new NotImplementedException();
-    }
-
-    public float GetTimeWithoutShower()
-    {
-        throw new NotImplementedException();
-    }
-    public float GetTimeWithoutEating()
-    {
-        throw new NotImplementedException();
-    }
-
-    public float TieneComida()
-    {
-        throw new NotImplementedException();
-    }
-
+    #endregion
 }
 
 
