@@ -2,19 +2,18 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Stable : MonoBehaviour
 {
-    [SerializeField] int maxStacksFood = 3;
 
     Dictionary<ItemNames, int> animalesEstablo = new Dictionary<ItemNames, int>();
-
-    public int comidaStacks = 0;
 
     [SerializeField] List<ItemNames> tiposDeComidaAceptados = new List<ItemNames>();
     ItemNames tipoActual;
 
-    [SerializeField] Transform comedero;
+    [SerializeField] RecipientController comedero;
+    [SerializeField] 
 
 
     /// <summary>
@@ -47,45 +46,11 @@ public class Stable : MonoBehaviour
 
         return numAnimales;
     }
-
-    public bool AddStack(ItemNames tipoComida)
-    {
-        if(comidaStacks >= maxStacksFood)
-        {
-            return false;
-        }
-        else
-        {
-            comidaStacks++;
-            return true;
-        }
-    }
-
-    public bool HayComida(ItemNames[] tiposComida)
-    {
-        if (!tiposComida.ToList().Contains(tipoActual))
-        {
-            return false;
-        }
-        return comidaStacks > 0;
-    }
-
-    public bool RemoveStack(ItemNames[] tiposComida)
-    {
-        if (!tiposComida.ToList().Contains(tipoActual) || comidaStacks <= 0)
-        {
-            return false ;
-        }
-        else
-        {
-            comidaStacks--;
-            return true;
-        }
-    }
+    
 
     public Transform GetComedero()
     {
-        return comedero;
+        return comedero.gameObject.transform;
     }
 
     void OnTriggerEnter(Collider other)
@@ -103,6 +68,11 @@ public class Stable : MonoBehaviour
                 animalesEstablo[nameAnim]++;
             }
         }
+    }
+
+    public bool HayComida(ItemNames[] comidasPosibles)
+    {
+        throw new NotImplementedException();
     }
 
     void OnTriggerExit(Collider other)

@@ -4,26 +4,58 @@ using UnityEngine;
 
 public class AAnimalFase2: AAnimal
 {
+    [SerializeField] float MaxSinLimpiar;
+    [SerializeField] float MaxSinComer;
+
+
+
+    float tiempoSinLimpiar = 0f;
+    float tiempoSinComer = 0f;
+
+    #region Monobehavior
+
+    protected override void Update()
+    {
+        base.Update();
+
+        tiempoSinLimpiar += Time.deltaTime;
+        tiempoSinComer += Time.deltaTime;
+    }
+
+    #endregion
+
     #region Actions
     public override void InitComer()
     {
-        if (!TieneComida()) { return; }
-        lastObjectve = establo.GetComedero();
-        var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
-        if (temp) //se lo va a comer lit
+        if (TieneComida())
         {
-            if (animator)
+            lastObjectve = establo.GetComedero();
+            RecipientController temp = lastObjectve.GetComponentInChildren<RecipientController>();
+            if (temp) //se lo va a comer lit
             {
-                animator.SetTrigger("Comer");
+                if (animator)
+                {
+                    animator.SetTrigger("Comer");
 
+                }
             }
         }
+        //else if (!ObjectiveClose())
+        //{
+        //    lastObjectve = GetClosestObjetive();
+        //    var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
+        //    if (temp) //se lo va a comer lit
+        //    {
+        //        if (animator)
+        //        {
+        //            animator.SetTrigger("Comer");
+        //        }
+        //    }
+        //
+        //}
         tiempoComiendo = 0.0f;
 
-        //  if (!) { return;  }
-        //animator supongo
-        //comer el pan
-        //  comidaObjetivo.GetComponentInChildren<ItemInScene>()?.ReduceByOne();
+        
     }
     public override Status UpdateComer()
     {
@@ -32,10 +64,10 @@ public class AAnimalFase2: AAnimal
             if (animator)
             {
                 animator.SetTrigger("Idle");
-
+        
             }
             tiempoComiendo = 0.0f;
-
+        
             return Status.Failure;
         }
         if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.25) //alguien ha movido la comida o al animal y ya no esta comiendo lol
@@ -53,10 +85,11 @@ public class AAnimalFase2: AAnimal
         tiempoComiendo += Time.deltaTime;
         if (tiempoComiendo >= tiempoEnComer)
         {
-            var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
+            var temp = lastObjectve.GetComponentInChildren<RecipientController>();
             if (temp) //se lo va a comer lit
             {
-                temp.ReduceByOne();
+                temp.RemoveStack(objectives);
+                tiempoSinComer = 0f;
             }
             if (animator)
             {
@@ -69,9 +102,22 @@ public class AAnimalFase2: AAnimal
         return Status.Running;
     }
 
-    public void GetObjetivo()
+    public override bool ObjectiveClose()
     {
+        foreach(ItemNames objetivo in objectives)
+        {
+            if (establo.GetAnimalsInEstable(objetivo)>0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public override Transform GetClosestObjetive()
+    {
+        return IslandPositions.instance.GetClosest(establo.transform.position, objectives);
+        
     }
 
     public void Enfermar()
@@ -79,14 +125,34 @@ public class AAnimalFase2: AAnimal
         throw new NotImplementedException();
     }
 
+    public void Rascarse()
+    {
+        throw new NotImplementedException();
+    }
+
     public void MostrarHambre()
     {
+        throw new NotImplementedException();
+    }
 
+    public void MandarCorazones()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void MostrarIncomodidad()
+    {
+        throw new NotImplementedException();
     }
 
     public void QuitarPegatinaEstado()
     {
         throw new NotImplementedException();
+    }
+
+    public void Limpiarse()
+    {
+        this.tiempoSinLimpiar = 0f;
     }
 
     #endregion
@@ -128,11 +194,11 @@ public class AAnimalFase2: AAnimal
 
     public float TimeWithoutShower()
     {
-        throw new NotImplementedException();
+        return tiempoSinLimpiar/MaxSinLimpiar;
     }
     public float TimeWithoutEating()
     {
-        throw new NotImplementedException();
+        return tiempoSinComer/MaxSinComer;
     }
 
     public bool TieneComida()
@@ -142,7 +208,8 @@ public class AAnimalFase2: AAnimal
 
     public override Vector3 GetNewPosition()
     {
-        throw new NotImplementedException();
+        Debug.LogError("Esto no debería estar siendo usado...");
+        return Vector3.zero;
     }
     #endregion
 }

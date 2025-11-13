@@ -83,6 +83,9 @@ public abstract class AAnimal : MonoBehaviour
             (movimiento as NavmeshAgentMovement).minDistanceToTarget= radioAtaqueComida;
         }
     }
+
+    protected virtual void Update(){}
+
     #endregion
 
     #region Getters
