@@ -4,6 +4,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class C_WorldPlaceableObjectsSO : BasePlaceableObjectsSO<C_WolrdObjectData>
 {
+    private void Awake()
+    {
+        placeableType = PlaceableDatabaseType.WorldC;
+    }
+
     private void OnValidate()
     {
         for (int i = 0; i < PlaceableObjectData.Count; i++)

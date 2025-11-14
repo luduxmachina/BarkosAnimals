@@ -1,16 +1,13 @@
 using BehaviourAPI.Core;
 using BehaviourAPI.UnityToolkit;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PatoFase1 : MonoBehaviour
+public class PatoFase1 : AAnimal
 {
-    [SerializeField]
-    NavmeshAgentMovement movimiento;
+
 
     [Header("Datos/Stats")]
-    public float radioDeteccionComida;
     public List<Transform> puntosEstanque;
     [SerializeField]
     private int energiaMax = 6;
@@ -20,27 +17,63 @@ public class PatoFase1 : MonoBehaviour
     [SerializeField]
     private int energiaActual=6;
     public Transform posEstanque;
-    [SerializeField, ReadOnly]
-    private Transform comidaObjetivo;
-    private Vector3 comidaObjetivoPos;
+
     private void Start()
     {
+        base.Start();
         energiaActual = energiaMax;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public bool HayPan()
+    public void IrAEstanqueInit()
     {
-        if (IslandPositions.instance)
+
+        if (posEstanque != null || !movimiento.CanMove(posEstanque.position))
         {
-            var temp= IslandPositions.instance.HasType(ItemNames.Bread);
-            if(temp)
+            movimiento.SetTarget(posEstanque.position);
+            if (animator != null)
             {
-                return Vector3.Distance(transform.position, IslandPositions.instance.GetClosest(transform.position, ItemNames.Bread).position) <= radioDeteccionComida;
+                animator.SetFloat("Speed", walkingSpeed);
+
             }
         }
-        return false;
     }
+    public Status IrAEstanqueUpdate()
+    {
 
+        if (movimiento.HasArrived())
+        {
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+
+            }
+
+            return Status.Success;
+           
+        }
+        if(Vector3.Distance(transform.position, posEstanque.position) <= radioDentroEstanque)
+        {
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+
+            }
+
+            return Status.Success;
+        }
+        if (!movimiento.CanMove(posEstanque.position))
+        {
+
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+
+            }
+
+            return Status.Failure;
+        }
+
+        return Status.Running;
+    }
     public bool EnAgua()
     {
         if (posEstanque)
@@ -67,52 +100,17 @@ public class PatoFase1 : MonoBehaviour
     {
         energiaActual = energiaMax;
         //Animator supongo
-        Debug.Log("Descansando");
 
     }
     public void Aletear()
     {
         //animator supongo
-        Debug.Log("Aleteando");
     }
-    public void Comer()
+  
+
+
+    public override Vector3 GetNewPosition()
     {
-        if (!comidaObjetivo) { return;  }
-        //animator supongo
-        //comer el pan
-        comidaObjetivo.GetComponentInChildren<ItemInScene>()?.ReduceByOne();
+        throw new System.NotImplementedException();
     }
-    public Status AndarHaciaComida()
-    {
-        if (!HayPan()) //la comida puede desaparecer
-        {
-            return Status.Failure;
-        }
-        Vector3 lastTargetPos = comidaObjetivoPos;
-        FijarObjetivo(); //puede que haya otro pan mas cerca 
-        if(lastTargetPos != comidaObjetivoPos)
-        {
-            //o se ha movido o un pan mas cercano
-            movimiento.SetTarget(comidaObjetivo.position);
-
-        }
-        if (movimiento.HasArrived())
-        {
-
-            return Status.Success;
-        }
-
-
-        return Status.Running;
-    }
-    public void StopAndarHaciaComida()
-    {
-        movimiento.CancelMove();
-    }
-    private void FijarObjetivo()
-    {
-        comidaObjetivo = IslandPositions.instance.GetClosest(transform.position, ItemNames.Bread);
-        comidaObjetivoPos = comidaObjetivo.position;
-    }
-
 }

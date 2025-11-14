@@ -32,9 +32,17 @@ public class IslandSelectionUI : MonoBehaviour
                 }
                 usedIndexes.Add(randomIndex);
 
-                individualIslandSelectionInScene[i].InitUI(archipelago.islands[randomIndex], randomIndex, allObjectTypesSO);
+                individualIslandSelectionInScene[i].InitUI(archipelago.islands[randomIndex], randomIndex, allObjectTypesSO, this);
 
             }
+            individualIslandSelectionInScene[0].SelectIsland();
+        }
+    }
+    public void UpdateUI()
+    {
+        foreach (var islandUI in individualIslandSelectionInScene)
+        {
+            islandUI.UpdateUI();
         }
     }
 }

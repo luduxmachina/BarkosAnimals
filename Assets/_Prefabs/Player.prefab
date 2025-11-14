@@ -120,7 +120,7 @@ Rigidbody:
   m_GameObject: {fileID: 112263543333647012}
   serializedVersion: 4
   m_Mass: 100
-  m_Drag: 1
+  m_Drag: 0.2
   m_AngularDrag: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -243,7 +243,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266403472016658464}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 14.8
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 1902929742204463537}
   - component: {fileID: 6527734477578111207}
   - component: {fileID: 2971463814529771907}
+  - component: {fileID: 2978198161349859278}
   m_Layer: 6
   m_Name: Stats
   m_TagString: Untagged
@@ -387,6 +388,24 @@ MonoBehaviour:
   canMove: 1
   canJump: 1
   canDash: 1
+--- !u!114 &2978198161349859278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019636645184113292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 112263543333647012}
+  amountInStack: 1
+  itemName: 6
+  itemType: 0
+  useParentGrabbable: 0
+  simpleGrabbable: {fileID: 0}
 --- !u!1 &9029195677763816837
 GameObject:
   m_ObjectHideFlags: 0

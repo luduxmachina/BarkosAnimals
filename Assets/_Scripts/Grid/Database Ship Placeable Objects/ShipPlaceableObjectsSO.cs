@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ShipPlaceableObjectsSO : BasePlaceableObjectsSO<ShipPlaceableObjectData>
 {
+    private void Awake()
+    {
+        placeableType = PlaceableDatabaseType.ShipBuildable;
+    }
+
     private void OnValidate()
     {
         for (int i = 0; i < PlaceableObjectData.Count; i++)

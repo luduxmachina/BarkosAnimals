@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         animator.SetTrigger("Dash");
-        rb.AddForce(transform.forward*playerCurrentStats.currentStats.dashForce, ForceMode.Impulse);
+        rb.AddForce(rb.mass*transform.forward*playerCurrentStats.currentStats.dashForce, ForceMode.Impulse);
         playerInSceneEffects.AddOnDashEffects();
         Debug.Log("Dash");
     }
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         
         playerInSceneEffects.AddOnJumpEffects();
         animator.SetTrigger("Jump");
-        rb.AddForce(Vector3.up * playerCurrentStats.currentStats.jumpForce, ForceMode.Impulse);
+        rb.AddForce(rb.mass*Vector3.up * playerCurrentStats.currentStats.jumpForce, ForceMode.Impulse);
 
         
     }

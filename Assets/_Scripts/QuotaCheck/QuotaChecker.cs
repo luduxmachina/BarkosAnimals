@@ -9,11 +9,9 @@ public class QuotaChecker
 
     Quota quotaPassed = new Quota();
 
-    Dictionary<AnimalType, int> animalValues = new Dictionary<AnimalType, int>()
+    Dictionary<ItemNames, int> animalValues = new Dictionary<ItemNames, int>()
     {
-        {AnimalType.Duck, 50 },
-        {AnimalType.Pangolin, 100},
-        {AnimalType.Snake, 200},
+        {ItemNames.Duck, 50 }
     };    
 
 
@@ -23,6 +21,7 @@ public class QuotaChecker
     public void AddNewUI (QuotaUiInterface quotaUi)
     {
         quotaUIs.Add(quotaUi);
+        quotaUi.UpdateQuotaPassed(quotaPassed, isQuotaPass);
     }
 
 
@@ -60,31 +59,27 @@ public class QuotaChecker
     /// </summary>
     /// <param name="animal"></param>
     /// <param name="number"></param>
-    public void UpdateCuote(AnimalType animal, int number)
+    public void UpdateCuote(InventoryItemDataObjects animal)
     {
-        quotaPassed.AddPoints(animalValues[animal]);
-        
-        switch (animal)
+        ItemNames tipo = animal.Name;
+
+        switch (tipo)
         {
-            case AnimalType.Duck:
-                //quotaPassed.AddRestictionPassed(Restriction.Duck, number);
-                quotaPassed.AddRestictionPassed(Restriction.Herbivore, number);
+            case ItemNames.Duck:
 
                 break;
-
-            case AnimalType.Pangolin:
-                quotaPassed.AddRestictionPassed(Restriction.Herbivore, number);
-
-                break;
-
-
-            case AnimalType.Snake:
-                //quotaPassed.AddRestictionPassed(Restriction.Carnivore, number);
-                break;
-
             default:
+                Debug.LogError("Animal type not recognized in QuotaChecker");
                 break;
         }
+
+
+
+
+
+
+
+        quotaPassed.AddPoints(animalValues[animal.Name]);
 
         this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);
 
