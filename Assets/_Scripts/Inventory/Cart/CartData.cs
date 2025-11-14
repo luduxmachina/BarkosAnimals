@@ -88,7 +88,8 @@ public class CartData : MonoBehaviour, IInventoryData
 
     public List<InventoryItemDataObjects> ExtractAllInventoryObjects()
     {
-        List<InventoryItemDataObjects> returnList = cartInventory;
+        List<InventoryItemDataObjects> returnList=new();
+        returnList.AddRange(cartInventory);
         EmptyInventory();
         return returnList;
     }
