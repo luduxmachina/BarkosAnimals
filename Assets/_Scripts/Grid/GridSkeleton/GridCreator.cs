@@ -13,7 +13,9 @@ public class GridCreator : MonoBehaviour
 
     public UnityEvent<CustomBoolMatrix> ConfigureGrid;
     public UnityEvent OnGridCreated;
-    
+    public UnityEvent OnDecorationPlacing;
+    public UnityEvent OnNavMeshGenerating;
+    public UnityEvent<Vector2> OnItemPlacing;
 
     private GridPlacementManager placementManager;
 
@@ -29,8 +31,12 @@ public class GridCreator : MonoBehaviour
     private void Start()
     {
         placementManager.SetObligatoryOccupiedSpaces(gridOcupiedSpaces);
+        Vector2 worldDimensions = new Vector2(gridOcupiedSpaces.rows * cellSize, gridOcupiedSpaces.columns * cellSize);
 
         ConfigureGrid?.Invoke(gridOcupiedSpaces);
         OnGridCreated?.Invoke();
+        OnDecorationPlacing?.Invoke();
+        OnNavMeshGenerating?.Invoke();
+        OnItemPlacing?.Invoke(worldDimensions);
     }
 }

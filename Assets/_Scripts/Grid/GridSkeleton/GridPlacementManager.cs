@@ -15,7 +15,6 @@ public class GridPlacementManager : MonoBehaviour
     // private BasePlaceableObjectsSO<PlaceableObjectDataBase> dataBase => DataBase as BasePlaceableObjectsSO<PlaceableObjectDataBase>;
 
     [SerializeField] private GameObject gridVisualization;
-    [SerializeField] private Transform parentTransform;
     [SerializeField] private int numOfGrids = 1;
 
     private Grid grid;
@@ -93,7 +92,7 @@ public class GridPlacementManager : MonoBehaviour
         if(gridVisualization != null)
             gridVisualization?.SetActive(true);
         
-        buildingState = new GridPlacementState(id, grid, gridPreview, dataBase, gridObjectsDatas, objectPlacer, parentTransform);
+        buildingState = new GridPlacementState(id, grid, gridPreview, dataBase, gridObjectsDatas, objectPlacer);
         
         gridInput.OnClick += PlaceStructure;
         gridInput.OnExit += StopPlacement;
