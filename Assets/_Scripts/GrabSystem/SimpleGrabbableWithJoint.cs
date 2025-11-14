@@ -94,8 +94,8 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
         joint.useSpring = true;
         joint.spring = new JointSpring()
         {
-            spring = 200f,
-            damper = 50f,
+            spring = 2000f,
+            damper = 500f,
             targetPosition = 0f
         };
 
