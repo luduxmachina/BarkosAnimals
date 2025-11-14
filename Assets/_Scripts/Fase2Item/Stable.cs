@@ -55,10 +55,10 @@ public class Stable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        AAnimal animal = other.gameObject.GetComponent<AAnimal>();
+        AAnimalFase2 animal = other.gameObject.GetComponent<AAnimalFase2>();
         if(animal != null)
         {
-            ItemNames nameAnim = animal.ThisItemName;
+            ItemNames nameAnim = animal.thisItemName;
             if (!animalesEstablo.ContainsKey(nameAnim))
             {
                 animalesEstablo.Add(nameAnim, 1);
@@ -67,6 +67,7 @@ public class Stable : MonoBehaviour
             {
                 animalesEstablo[nameAnim]++;
             }
+            animal.SetEstablo(this);
         }
     }
 
@@ -80,7 +81,7 @@ public class Stable : MonoBehaviour
         AAnimal animal = other.gameObject.GetComponent<AAnimal>();
         if (animal != null)
         {
-            ItemNames nameAnim = animal.ThisItemName;
+            ItemNames nameAnim = animal.thisItemName;
             animalesEstablo.TryGetValue(nameAnim, out int value);
             if (value != 0)
             {
@@ -91,5 +92,19 @@ public class Stable : MonoBehaviour
                 Debug.Log("Hay algo raro se ha salido un animal que no debería estar aquí.");
             }
         }
+    }
+
+    public void ExitFromStable(ItemNames nameAnim)
+    {
+        animalesEstablo.TryGetValue(nameAnim, out int value);
+        if (value != 0)
+        {
+            animalesEstablo[nameAnim]--;
+        }
+        else
+        {
+            Debug.Log("Hay algo raro se ha salido un animal que no debería estar aquí.");
+        }
+
     }
 }

@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class AAnimalFase2: AAnimal
 {
+
+    [Header("-----------------Fase 2-----------------")]
+    [SerializeField]
+    public float Tfc = 0.0f;
+    public float Tfl = 0.0f;
+    public float AMax = 0.0f;
+    public float CMax = 0.0f;
+    public float DMax = 0.0f;
+
+    [SerializeField] protected Stable establo;
     [SerializeField] float MaxSinLimpiar;
     [SerializeField] float MaxSinComer;
 
@@ -24,9 +34,22 @@ public class AAnimalFase2: AAnimal
 
     #endregion
 
+    #region Setter
+    public void SetEstablo(Stable establo)
+    {
+        this.establo = establo;
+    }
+
+    #endregion
+
     #region Actions
     public override void InitComer()
     {
+        if (establo == null)
+        {
+            Debug.LogWarning("El pato no está en ningún establo");
+            return;
+        }
         if (TieneComida())
         {
             lastObjectve = establo.GetComedero();
@@ -59,6 +82,12 @@ public class AAnimalFase2: AAnimal
     }
     public override Status UpdateComer()
     {
+        if (establo == null)
+        {
+            Debug.LogWarning("El pato no está en ningún establo");
+            return Status.Failure;
+        }
+
         if (!TieneComida()) //la comida puede desaparecer
         {
             if (animator)
@@ -104,7 +133,12 @@ public class AAnimalFase2: AAnimal
 
     public override bool ObjectiveClose()
     {
-        foreach(ItemNames objetivo in objectives)
+        if (establo == null)
+        {
+            Debug.LogWarning("El pato no está en ningún establo");
+            return false;
+        }
+        foreach (ItemNames objetivo in objectives)
         {
             if (establo.GetAnimalsInEstable(objetivo)>0)
             {
@@ -155,11 +189,26 @@ public class AAnimalFase2: AAnimal
         this.tiempoSinLimpiar = 0f;
     }
 
+    public override void Die()
+    {
+        if (establo == null)
+        {
+            Debug.LogWarning("El pato no está en ningún establo");
+            return;
+        }
+        establo.ExitFromStable(thisItemName);
+    }
+
     #endregion
 
     #region Pulls
     public float AnimalsOnEstable()
     {
+        if (establo == null)
+        {
+            Debug.LogWarning("El pato no está en ningún establo");
+            return 0f;
+        }
         return (float)establo.GetAnimalsInEstable();
     }
 
@@ -212,4 +261,13 @@ public class AAnimalFase2: AAnimal
         return Vector3.zero;
     }
     #endregion
+
+    #region Fatores del sist de utilidad
+    public float CurveFactorF4(float x)
+    {
+        return (Mathf.Log10(x + 1)/Mathf.Log10(2))
+            /(Mathf.Log10(DMax - 1)/Mathf.Log10(2));
+    }
+    #endregion
+
 }

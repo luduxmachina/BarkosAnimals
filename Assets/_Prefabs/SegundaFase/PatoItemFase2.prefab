@@ -448,12 +448,11 @@ GameObject:
   - component: {fileID: 5574510814882769586}
   - component: {fileID: 8121735144066868213}
   - component: {fileID: 377693831318831142}
-  - component: {fileID: 1797550448796893371}
   - component: {fileID: 1549247482912388678}
   - component: {fileID: 3001176560405313657}
   - component: {fileID: 5942847103440764155}
   m_Layer: 0
-  m_Name: PatoItem
+  m_Name: PatoItemFase2
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -592,38 +591,6 @@ MonoBehaviour:
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 1
   grabPoint: {fileID: 2475594923796127505}
---- !u!114 &1797550448796893371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643027423853108606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a844a2f954e5e4ba1fbad3cb1d9900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  predators: 03000000
-  objectives: 01000000
-  walkingSpeed: 2.3
-  run: 3.73
-  rotateSpeed: 1
-  radioDetectionObjective: 10
-  radioDetectionPredator: 15
-  Tfc: 0
-  Tfl: 0
-  AMax: 0
-  CMax: 0
-  DMax: 0
-  radioAtaqueComida: 2.13
-  tiempoEnComer: 3
-  puntosEstanque: []
-  energiaMax: 6
-  radioDentroEstanque: 4.37
-  energiaActual: 6
-  posEstanque: {fileID: 0}
 --- !u!114 &1549247482912388678
 MonoBehaviour:
   m_ObjectHideFlags: 0

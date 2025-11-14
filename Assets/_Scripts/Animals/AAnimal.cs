@@ -11,7 +11,7 @@ using Unity.VisualScripting;
 public abstract class AAnimal : MonoBehaviour
 {
     protected ItemNames itemName;
-    public ItemNames ThisItemName
+    public ItemNames thisItemName
     {
         get { return itemName; }
     }
@@ -45,16 +45,6 @@ public abstract class AAnimal : MonoBehaviour
     protected float radioDetectionObjective = 10f;
     [SerializeField]
     protected float radioDetectionPredator = 15f;
-
-    [Header("-----------------Fase 2-----------------")]
-    [SerializeField]
-    public float Tfc = 0.0f;
-    public float Tfl = 0.0f;
-    public float AMax = 0.0f;
-    public float CMax = 0.0f;
-    public float DMax = 0.0f;
-
-    protected Stable establo;
 
     [SerializeField]
     protected  float radioAtaqueComida = 2.0f;
@@ -233,7 +223,7 @@ public abstract class AAnimal : MonoBehaviour
     }
 
 
-    public void Die()
+    public virtual void Die()
     {
         //no creo que este bien 
         GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects( animalType, -1));
