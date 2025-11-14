@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SerpienteInScene : AAnimal 
 {
-    [Header("----------Serpiente---------")]
     IGrabbable grabbable;
+    [Header("----------Serpiente---------")]
+
     [SerializeField]
     SimpleGrabber thisGrabber;
     [Header("Stats")]
@@ -18,6 +19,10 @@ public class SerpienteInScene : AAnimal
     {
         base.Awake();
         grabbable = GetComponentInParent<IGrabbable>();
+    }
+    public float GetTiempoDescanso()
+    {
+        return tiempoDescanso;
     }
     public void PlayAttackAnim()
     {
@@ -76,7 +81,27 @@ public class SerpienteInScene : AAnimal
     }
     public void ComerEnCarro()
     {
-        Debug.Log("COmido en carro");
+        CartData cartData = lastObjectve.GetComponent<CartData>();
+        if (cartData == null) { return; }
+
+        var temp = cartData.GetAllInventoryObjects();
+        ItemNames itemAComer;
+        int i;
+        for( i = 0; i < temp.Count; i++)
+        {
+            if(this.objectives.Contains(temp[i].Name))
+            {
+                itemAComer = temp[i].Name;
+                break;
+            }
+        }
+        //esto funciona porque justo la serpiente no tiene un grabber, lo tiene algun hijo
+        var cartInScene=cartData.GetComponentInChildren<CartInScene>();
+        if(cartInScene== null) { return; }
+        cartInScene.OnPlayerInteraction(this.gameObject); //"abre" el carro pero no abre la interfazx porqu no es el player, y se queda como ultimo interactor
+        cartData.ExtractInventoryObjectByIndex(i); //lo "saca" pero no lo spawnea en la escena asi que es como si se lo "come"
+        cartInScene.Interact(animalType, this.gameObject); //con esto se deberia meter y todo funciona 
+
     }
     public bool ObjectiveIsCart()
     {

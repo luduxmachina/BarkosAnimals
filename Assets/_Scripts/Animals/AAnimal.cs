@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.IO.LowLevel.Unsafe;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(IMovementComponent))]
 public abstract class AAnimal : MonoBehaviour
@@ -29,6 +30,8 @@ public abstract class AAnimal : MonoBehaviour
 
     [SerializeField]
     protected float rotateSpeed = 1.0f;
+    [SerializeField]
+    protected float patrolRadius = 5.0f;
 
     [Header("-----------------Rangos-----------------")]
 
@@ -43,8 +46,7 @@ public abstract class AAnimal : MonoBehaviour
     protected float tiempoEnComer = 3.0f;
     protected float tiempoComiendo = 0.0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    ItemNames animalType;
+    protected ItemNames animalType;
     protected IMovementComponent movimiento;
     protected Transform lastObjectve;
     protected Vector3 lastTargetPos;
@@ -61,6 +63,20 @@ public abstract class AAnimal : MonoBehaviour
         {
             (movimiento as NavmeshAgentMovement).minDistanceToTarget= radioAtaqueComida;
         }
+        NavMeshAgent nav = GetComponent<NavMeshAgent>();
+        if (nav != null)
+        {
+           // nav.stoppingDistance = radioAtaqueComida;
+            nav.angularSpeed = rotateSpeed;
+        }
+    }
+    public float GetPatrolRadius()
+    {
+        return this.patrolRadius;
+    }
+    public float GetRunSpeed()
+    {
+        return this.run;
     }
     public float GetWalkingSpeed()
     {
