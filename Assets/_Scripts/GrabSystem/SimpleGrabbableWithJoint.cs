@@ -49,7 +49,7 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
     {
         //Si alguien quiere hacer comprobaciones y tal pues que lo haga heredando y eso
         if (!canBeGrabbed) return false;
-        if (currentGrabber != null)
+        if (isBeingGrabbed)
         {
             currentGrabber.StopGrabbing();
         }
@@ -107,12 +107,14 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
     }
     public virtual bool Drop()
     {
+        Debug.Log("Drop");
+
         if (!canBeDropped) return false;
         if (!isBeingGrabbed) return false; //no se puede soltar si no se esta cogido
 
         OnDrop?.Invoke(); //para que el grabber siga teniendo la referencia sin null
 
-
+        Debug.Log("Se ha mandado la orden de soltar el objeto a " + currentGrabber.gameObject.name);
         currentGrabber.StopGrabbing();
 
         if (!allowExtramoveSetWhenGrabbed)

@@ -49,12 +49,19 @@ public class SerpienteBehaviour : BehaviourRunner
         ParallelAction parallelHuyendo = new ParallelAction(false, false, Huyendo_action, new SimpleAction(m_SerpienteInScene.PlayRunAnim));
         //State Huyendo = SnakeFSM.CreateState("Huyendo", Huyendo_action);
         State Huyendo = SnakeFSM.CreateState("Huyendo",parallelHuyendo);
-		
-		SimpleAction AtacarJugador_action = new SimpleAction();
+
+		State recienCogido = SnakeFSM.CreateState("RecienCogido");
+        StateTransition SerCogido = SnakeFSM.CreateTransition(Huyendo, recienCogido, statusFlags: StatusFlags.None);
+
+
+        UnityTimePerception tiempoTrasCogido_perception = new UnityTimePerception();
+        tiempoTrasCogido_perception.TotalTime = 0.6f;
+
+        SimpleAction AtacarJugador_action = new SimpleAction();
 		AtacarJugador_action.action = m_SerpienteInScene.AttackGrabber;
 		State AtacarJugador = SnakeFSM.CreateState("AtacarJugador", AtacarJugador_action);
 		
-		StateTransition SerCogido = SnakeFSM.CreateTransition(Huyendo, AtacarJugador, statusFlags: StatusFlags.None);
+		StateTransition pasarAAtacar = SnakeFSM.CreateTransition(recienCogido, AtacarJugador, tiempoTrasCogido_perception);
 		
 		UnityTimePerception TiempoTrasAtacar_perception = new UnityTimePerception();
 		TiempoTrasAtacar_perception.TotalTime = m_SerpienteInScene.GetTiempoDescanso();

@@ -47,7 +47,6 @@ namespace BehaviourAPI.UnityToolkit
 
 
                 var targetPos = context.Transform.position + rotated;
-                Debug.Log("Contexto:" + context.Movement.ToString() + " Dir: " + dir + " Rotated: " + rotated + " TargetPos: " + targetPos);
                 context.Movement.SetTarget(targetPos);
                 return Status.Running;
             }
