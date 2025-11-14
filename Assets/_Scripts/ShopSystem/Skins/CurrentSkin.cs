@@ -3,9 +3,9 @@ using UnityEngine;
 public class CurrentSkin : MonoBehaviour
 {
     private static SkinSO _currentSkin;
-    public static SkinSO currentSkin { get { return _currentSkin; }
+    public static SkinSO currentSkin {  get { return _currentSkin; }
 
-        private set {
+         set {
             _currentSkin = value;
             SaveCurrentSkin();
         }
