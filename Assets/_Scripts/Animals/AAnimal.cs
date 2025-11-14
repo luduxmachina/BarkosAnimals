@@ -69,6 +69,10 @@ public abstract class AAnimal : MonoBehaviour
            // nav.stoppingDistance = radioAtaqueComida;
             nav.angularSpeed = rotateSpeed;
         }
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
     public float GetPatrolRadius()
     {
