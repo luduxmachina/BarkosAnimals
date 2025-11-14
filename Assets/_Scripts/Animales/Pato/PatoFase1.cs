@@ -18,7 +18,7 @@ public class PatoFase1 : AAnimal
     private int energiaActual=6;
     public Transform posEstanque;
 
-    private void Start()
+    protected override void Start()
     {
         base.Start();
         energiaActual = energiaMax;
