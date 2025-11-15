@@ -39,6 +39,7 @@ public class PlayerInputHandler : MonoBehaviour
         inputActions.FindActionMap("Player").Enable();
         dashAction.performed += ctx => movement.Dash();
         interactAction.performed += ctx => interaction.Interact();
+        interactAction.canceled += ctx => interaction.StopInteractingWithTarget();
         grabAction.performed += ctx => interaction.Grab();
         jumpAction.performed += ctx => movement.Jump();
     }
@@ -46,6 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         dashAction.performed -= ctx => movement.Dash();
         interactAction.performed -= ctx => interaction.Interact();
+        interactAction.canceled -= ctx => interaction.StopInteractingWithTarget();
         grabAction.performed -= ctx => interaction.Grab();
         jumpAction.performed -= ctx => movement.Jump();
         inputActions.FindActionMap("Player").Disable();

@@ -1551,6 +1551,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1089596116981423393, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.49995
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089596116981423393, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089596116981423393, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.49995
+      objectReference: {fileID: 0}
     - target: {fileID: 2336509758508425979, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 55.331757
@@ -1591,6 +1603,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2490971705730955567, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490971705730955567, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490971705730955567, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593702124311709946, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.49995
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593702124311709946, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225167953487476564, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225167953487476564, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7894681897370460706, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1601,7 +1641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9209050532430464108, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2832,8 +2872,8 @@ GameObject:
   - component: {fileID: 1746515911}
   - component: {fileID: 1746515914}
   - component: {fileID: 1746515913}
-  - component: {fileID: 1746515915}
   - component: {fileID: 1746515916}
+  - component: {fileID: 1746515917}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Item
@@ -2930,35 +2970,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1746515915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746515910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayerInteractable: 1
-  OnPlayerInteract:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1746515916}
-        m_TargetAssemblyTypeName: CannonItem, Assembly-CSharp
-        m_MethodName: Fire
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  interactionSuccessful: 1
 --- !u!114 &1746515916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2971,10 +2982,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5017ddcc9b641264e9e2dbf77ff5ca22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbable: {fileID: 1746515913}
   thisRb: {fileID: 1746515914}
   disparador: {fileID: 715493354}
-  retroceso: 700
+  retroceso: 15
+  firing: 0
+--- !u!114 &1746515917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746515910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbb6a68f578a554a973468b589f46a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInteractable: 1
+  OnPlayerInteractStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerInteractStop:
+    m_PersistentCalls:
+      m_Calls: []
+  interactionSuccessful: 1
 --- !u!1 &1776209610
 GameObject:
   m_ObjectHideFlags: 0

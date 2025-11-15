@@ -12,6 +12,12 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
     [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
     IGrabbable objInHand;
 
+    IContinuousPlayerInteractionReciever continuousTarget;
+    public void StopInteractingWithTarget()
+    {
+       continuousTarget.OnPlayerStopInteraction(gameObject);
+        continuousTarget = null;
+    }
     public void Interact()
     {
         bool interacted = false;
@@ -35,15 +41,27 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
     private bool InteractWith(GameObject target)
     {
         IPlayerInteractionReciever interactable = target.GetComponent<IPlayerInteractionReciever>();
+        bool interacted = false;
         if (interactable != null)
         {
     
-            bool interacted = interactable.OnPlayerInteraction(gameObject);
+             interacted = interactable.OnPlayerInteraction(gameObject);
 
 
-            return interacted;
+            
         }
-        return false;
+
+        IContinuousPlayerInteractionReciever continuousInteractable = target.GetComponent<IContinuousPlayerInteractionReciever>();
+        if (continuousInteractable != null)
+        {
+            if(continuousTarget != null && continuousTarget != continuousInteractable)
+            {
+                StopInteractingWithTarget();
+            }
+            continuousTarget = continuousInteractable;
+            interacted = interacted || continuousInteractable.OnPlayerStartInteraction(gameObject);
+        }
+        return interacted;
     }
     public void Grab()
     {
