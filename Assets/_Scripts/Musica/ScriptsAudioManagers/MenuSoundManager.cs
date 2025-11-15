@@ -15,8 +15,10 @@ public class MenuSoundManager : MonoBehaviour
 
         ActivarMusicaInicio();
     }
-    public void CambiarEstadoAjustes(bool pausaActivada)
+    public void CambiarEstadoAjustes()
     {
+        bool pausaActivada = this.estaEnPausa;
+        pausaActivada = !pausaActivada;
         if (pausaActivada)
         {
             Debug.Log("Entrando menu ajustes...");
@@ -29,14 +31,14 @@ public class MenuSoundManager : MonoBehaviour
         }
     }
 
-    private void ActivarMusicaInicio()
+    public void ActivarMusicaInicio()
     {
         musicaPantallaAjustes.Stop();
         musicaPantallaInicio.Play(); 
         
     }
 
-    private void ActivarMusicaAjustes()
+    public void ActivarMusicaAjustes()
     {
         
         musicaPantallaInicio.Stop(); 

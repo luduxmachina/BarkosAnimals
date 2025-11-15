@@ -37,7 +37,17 @@ public class IslandSoundManager : MonoBehaviour
             ActivarModoJuego();
         }
     }
+    private void OnEnable()
+    {
+        MenuPause.OnPause.AddListener(ActivarModoPausa);
+        MenuPause.OnResume.AddListener(ActivarModoJuego);
+    }
 
+    private void OnDisable()
+    {
+        MenuPause.OnPause.RemoveListener(ActivarModoPausa);
+        MenuPause.OnResume.RemoveListener(ActivarModoJuego);
+    }
     void ActivarModoJuego()
     {
         

@@ -23,8 +23,8 @@ public class InputHipotetico : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            this.estadoAjustes = !estadoAjustes;
-            this.gestor_menu_sonido.CambiarEstadoAjustes(estadoAjustes);
+            
+            this.gestor_menu_sonido.CambiarEstadoAjustes();
         }
     }
 
