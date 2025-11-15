@@ -8,4 +8,5 @@ public class SkinSO : ScriptableObject
     public string skinName;
     public Sprite previewImage;
     public GameObject skinModelo;
+    public Material skinMaterial;
 }
