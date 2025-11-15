@@ -15,6 +15,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
     IContinuousPlayerInteractionReciever continuousTarget;
     public void StopInteractingWithTarget()
     {
+        if (continuousTarget == null) { return; }
        continuousTarget.OnPlayerStopInteraction(gameObject);
         continuousTarget = null;
     }

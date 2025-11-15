@@ -9,7 +9,12 @@ public class CannonItem : MonoBehaviour
     Rigidbody empujeRB;
     [SerializeField]
     private CannonDisparador disparador;
-    public float retroceso = 30.0f;
+    [SerializeField]
+    float retroceso = 30.0f;
+    [SerializeField]
+    float retrocesoInicial = 150.0f;
+    [SerializeField]
+    float rotacionRandom= 5.0f;
     [SerializeField, ReadOnly]
     bool firing = false;
     private void Awake()
@@ -23,6 +28,8 @@ public class CannonItem : MonoBehaviour
     }
     public void StartFire()
     {
+
+        empujeRB.AddForce(empujeRB.mass * retrocesoInicial * -transform.forward);
         firing = true;
     }
     public void StopFire()
@@ -39,9 +46,18 @@ public class CannonItem : MonoBehaviour
 
     public void Fire()
     {
-        //poner el del grabbr si esta cogida
-       empujeRB.AddForce(-transform.forward * retroceso * empujeRB.mass);
-     
+
+       empujeRB.AddForce(empujeRB.mass * retroceso * -transform.forward);
+        float dir = 0;
+        if(Time.fixedTime % 0.5f < 0.25f)
+        {
+            dir = 1;
+        }
+        else
+        {
+            dir = -1;
+        }
+        empujeRB.AddTorque(empujeRB.mass * rotacionRandom * dir * transform.up);
         disparador.Fire();
     }
     private void OnEnable()

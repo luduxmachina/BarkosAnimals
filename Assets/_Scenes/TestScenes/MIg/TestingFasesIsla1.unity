@@ -316,6 +316,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4182961102059438687, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 027b7aa2a2aac174db2bfbf06589ccf5, type: 2}
+    - target: {fileID: 4968308654661359306, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
+      propertyPath: baseStats.moveAcceleration
+      value: 23.81
+      objectReference: {fileID: 0}
     - target: {fileID: 8358508347450069034, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.03462255
@@ -2985,6 +2993,8 @@ MonoBehaviour:
   thisRb: {fileID: 1746515914}
   disparador: {fileID: 715493354}
   retroceso: 15
+  retrocesoInicial: 150
+  rotacionRandom: 5
   firing: 0
 --- !u!114 &1746515917
 MonoBehaviour:
