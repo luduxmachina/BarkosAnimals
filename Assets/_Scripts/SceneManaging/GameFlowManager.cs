@@ -35,7 +35,7 @@ public class GameFlowManager : MonoBehaviour
     public int currentLevelIndex = 0;
 
     [Header("CurrentLvl Info")]
-    public LevelPhases currentPhase;
+   // public LevelPhases currentPhase;
     public int currentArchipelago = 0;
     public int lastSelectedIsland = 0;
     public bool generatedIsland = false;
@@ -97,7 +97,7 @@ public class GameFlowManager : MonoBehaviour
             return;
         }
 
-        LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, lastSelectedIsland);
+        LoadPlayingScene(currentLevel, currentArchipelago, nextPhaseHandler.currentPhase, lastSelectedIsland);
 
     }
 
@@ -144,7 +144,7 @@ public class GameFlowManager : MonoBehaviour
         currentArchipelago = 0;
         generatedIsland = currentLevel.useGeneratedIslands;
 
-        LoadPlayingScene(currentLevel, currentArchipelago, currentPhase, 0);
+        LoadPlayingScene(currentLevel, currentArchipelago, nextPhaseHandler.currentPhase, 0);
     }
     private void LoadPlayingScene(NivelSO level, int archipelagoIndex, LevelPhases phase, int chosenIsland)
     {

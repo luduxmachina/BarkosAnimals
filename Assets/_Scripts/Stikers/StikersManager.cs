@@ -9,7 +9,13 @@ public class StikersManager : MonoBehaviour
     Camera camera;
 
     [SerializeField]
-    List<Image> images;
+    SpriteRenderer spriteRenderer;
+
+    [SerializeField]
+    StickersGeneralesSO generalesDB;
+
+    StikersGenerales stickerActual = StikersGenerales.None;
+    public StikersGenerales StickerActual { get { return stickerActual; } }
 
     void Start()
     {
@@ -21,4 +27,18 @@ public class StikersManager : MonoBehaviour
     {
         this.transform.LookAt(camera.transform.position);
     }
+
+    public void SetImage(StikersGenerales stickerType)
+    {
+        Sprite sprite = generalesDB.GetSticker(stickerType);
+        spriteRenderer.sprite = sprite;
+        stickerActual = stickerType;
+    }
+
+    public void OcultSprites()
+    {
+        spriteRenderer.sprite = null;
+        stickerActual = StikersGenerales.None;
+    }
+    
 }

@@ -2,15 +2,35 @@ using UnityEngine;
 
 public class CurrentSkin : MonoBehaviour
 {
- public static SkinSO currentSkin;
+    private static SkinSO _currentSkin;
+    public static SkinSO currentSkin {  get { return _currentSkin; }
+
+         set {
+            _currentSkin = value;
+            SaveCurrentSkin();
+        }
+    }
     [RuntimeInitializeOnLoadMethod]
     public static void InitializeCurrentSkin()
     {
-        SkinSO[] allSkins = Resources.LoadAll<SkinSO>("Skins");
-        if(allSkins.Length > 0)
+        
+        string currentSkinName = PlayerPrefs.GetString("CurrentSkin", "Pato amarillo");
+        SkinSO[] skin = Resources.LoadAll<SkinSO>("Skins");
+        foreach (SkinSO s in skin)
         {
-            currentSkin = allSkins[0];
+            if (s.skinName == currentSkinName)
+            {
+                currentSkin = s;
+                return;
+            }
         }
+        currentSkin = skin[0]; // Default skin if not found
+
+    }
+    private static void SaveCurrentSkin()
+    {
+        PlayerPrefs.SetString("CurrentSkin", currentSkin.skinName);
+        PlayerPrefs.Save();
     }
 
 }

@@ -3,11 +3,22 @@ using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour, IObjectPlacer
 {
+    [SerializeField] private Transform parent;
+    
     private List<GameObject> placedObjects = new List<GameObject>();
 
     public int PlaceObject(GameObject prefab, Vector3 worldCellPos)
     {
-        GameObject newObj = Instantiate(prefab);
+        GameObject newObj;
+        if (parent == null)
+        {
+            newObj = Instantiate(prefab);
+        }
+        else
+        {
+            newObj = Instantiate(prefab, parent);
+        }
+        
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
 

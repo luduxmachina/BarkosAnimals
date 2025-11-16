@@ -5,7 +5,9 @@ using UnityEngine;
 public class GridPreview : MonoBehaviour
 {
     [SerializeField] 
-    private float previewYOffset = 0.05f;
+    private float scaleOffset = 1.05f;
+    [SerializeField] 
+    private float heightOffset = 0f;
 
     [SerializeField] 
     private GameObject cellIndicator;
@@ -43,6 +45,7 @@ public class GridPreview : MonoBehaviour
     {
         cellIndicator.SetActive(true);
         previewObject = Instantiate(prefab);
+        
         PrepareCursor(size);
         PreparePreview();
     }
@@ -98,12 +101,12 @@ public class GridPreview : MonoBehaviour
 
     private void MovePreview(Vector3 position, float gridSize)
     {
-        // previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
         previewObject.transform.position = new Vector3(
             position.x - gridSize * 0.5f, 
-            previewYOffset, 
+            heightOffset, 
             position.z - gridSize * 0.5f
         );
+        previewObject.transform.localScale = Vector3.one * scaleOffset;
     }
 
     private void MoveCursor(Vector3 position, float gridSize)
@@ -137,7 +140,7 @@ public class GridPreview : MonoBehaviour
 
     private void PreparePreview()
     {
-        Renderer[]  renderers = previewObject.GetComponentsInChildren<Renderer>();
+        Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
         foreach (Renderer r in renderers)
         {
             Material[] materials = r.materials;
@@ -146,6 +149,19 @@ public class GridPreview : MonoBehaviour
                 materials[i] = previewMaterialInstance;
             }
             r.materials = materials;
+        }
+        
+        Collider[] colliders = previewObject.GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+        {
+            col.enabled = false;
+        }
+        
+        Rigidbody[] rigidbodies = previewObject.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody r in rigidbodies)
+        {
+            r.isKinematic = false;
+            r.useGravity = false;
         }
         
         var layer = LayerMask.NameToLayer("Ignore Raycast");

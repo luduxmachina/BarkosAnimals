@@ -39,7 +39,7 @@ public class CustomLabelDrawer : PropertyDrawer
         else
         {
             // Si hay un label personalizado, usarlo
-            GUIContent newLabel = string.IsNullOrEmpty(custom.label) ? label : new GUIContent(custom.label);
+            GUIContent newLabel = /*string.IsNullOrEmpty(custom.label) ? label : */new GUIContent(custom.label);
             EditorGUI.PropertyField(position, property, newLabel, true);
         }
     }

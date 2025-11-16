@@ -19,5 +19,16 @@ public class MuteControler : MonoBehaviour
             audioMixer.SetFloat("MasterVolume", Mathf.Log10(Settings.Instance.GetVolume()) * 20);
         }
     }
+    private void Start() //habria que hacer que el toogle lo sepa lol
+    {
+        if (Settings.Instance.IsMuted())
+        {
+            audioMixer.SetFloat("MasterVolume", -80f); // Mute
+        }
+        else
+        {
+            audioMixer.SetFloat("MasterVolume", Mathf.Log10(Settings.Instance.GetVolume()) * 20);
+        }
+    }
 
 }

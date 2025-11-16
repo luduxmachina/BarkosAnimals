@@ -1,13 +1,12 @@
 using BehaviourAPI.Core;
 using BehaviourAPI.UnityToolkit;
+using BehaviourAPI.UtilitySystems;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class PatoFase1 : AAnimal
 {
-
-
     [Header("Datos/Stats")]
     public List<Transform> puntosEstanque;
     [SerializeField]
@@ -19,12 +18,63 @@ public class PatoFase1 : AAnimal
     private int energiaActual=6;
     public Transform posEstanque;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         energiaActual = energiaMax;
+        //this.itemName = ItemNames.Duck;
     }
+    public void IrAEstanqueInit()
+    {
 
+        if (posEstanque != null || !movimiento.CanMove(posEstanque.position))
+        {
+            movimiento.SetTarget(posEstanque.position);
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", walkingSpeed);
 
+            }
+        }
+    }
+    public Status IrAEstanqueUpdate()
+    {
+
+        if (movimiento.HasArrived())
+        {
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+
+            }
+
+            return Status.Success;
+           
+        }
+        if(Vector3.Distance(transform.position, posEstanque.position) <= radioDentroEstanque)
+        {
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+
+            }
+
+            return Status.Success;
+        }
+        if (!movimiento.CanMove(posEstanque.position))
+        {
+
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", 0);
+
+            }
+
+            return Status.Failure;
+        }
+
+        return Status.Running;
+    }
     public bool EnAgua()
     {
         if (posEstanque)
@@ -51,24 +101,18 @@ public class PatoFase1 : AAnimal
     {
         energiaActual = energiaMax;
         //Animator supongo
-        Debug.Log("Descansando");
 
     }
     public void Aletear()
     {
         //animator supongo
-        Debug.Log("Aleteando");
     }
-    public void Comer()
-    {
-      //  if (!) { return;  }
-        //animator supongo
-        //comer el pan
-      //  comidaObjetivo.GetComponentInChildren<ItemInScene>()?.ReduceByOne();
-    }
+  
+
 
     public override Vector3 GetNewPosition()
     {
         throw new System.NotImplementedException();
     }
+    
 }

@@ -57,13 +57,16 @@ public enum ItemNames
 {
     None,
     Bread,
+    Meat,
     Duck,
     Snake,
     Pangolin,
     Sheep,
     Player,
     Cart,
-    Ship
+    Ship,
+    Feeder,
+    Coal
 }
 
 public enum ItemType
