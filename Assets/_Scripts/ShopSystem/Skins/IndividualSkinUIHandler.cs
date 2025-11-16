@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class IndividualSkinUIHandler : MonoBehaviour
 {
     [Header("UI References")]
+    [SerializeField] private GameObject notEnoughCoins;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text priceText;
     [SerializeField]
@@ -49,7 +50,9 @@ public class IndividualSkinUIHandler : MonoBehaviour
         }
         else
         {
+            notEnoughCoins.SetActive(true);
             Debug.Log("Not enough MetaCoins to buy skin: " + skinName);
+
         }
 
 
