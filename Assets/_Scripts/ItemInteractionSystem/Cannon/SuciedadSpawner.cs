@@ -4,6 +4,8 @@ using UnityEngine;
 public class SuciedadSpawner : MonoBehaviour
 {
     [SerializeField]
+    Sprite[] suciedadSprites;
+    [SerializeField]
     float suciedadMediaSpawn = 50f;
     [SerializeField]
     float RandomOffsetMedia = 5f;
@@ -55,6 +57,9 @@ public class SuciedadSpawner : MonoBehaviour
         Vector3 pos = centroEstablo.position + new Vector3(Random.Range(-dimensionEstablo/2, dimensionEstablo/2), 0, Random.Range(-dimensionEstablo/2, dimensionEstablo/2));
         GameObject suciedad = Instantiate(suciedadPrefab, pos, Quaternion.identity);
         suciedad.GetComponent<Suciedad>().SetStable(stable);
+        if(suciedadSprites.Length == 0) return;
+        int randomIndex= Random.Range(0, suciedadSprites.Length);
+        suciedad.GetComponentInChildren<SpriteRenderer>().sprite = suciedadSprites[randomIndex];
 
     }
 
