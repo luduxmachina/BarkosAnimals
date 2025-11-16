@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 680003361910681132}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.82, y: 1.07, z: -11.48}
+  m_LocalPosition: {x: -22.660393, y: 7.9103007, z: 29.505318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -201,6 +201,7 @@ MonoBehaviour:
   energiaMax: 6
   radioDentroEstanque: 3.1
   energiaActual: 6
+  lazyDetector: {fileID: 0}
   posEstanque: {fileID: 0}
 --- !u!114 &4755471148070525510
 MonoBehaviour:
@@ -256,6 +257,66 @@ MonoBehaviour:
   _eventHandler:
     debugStatusChanges: 1
     identifier: 
+--- !u!1 &715010777476063646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 779844469412199992}
+  - component: {fileID: 4187617561856461967}
+  m_Layer: 0
+  m_Name: DeteccionEstanqueCercano
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &779844469412199992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715010777476063646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6589561979161053450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4187617561856461967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715010777476063646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06927ee9532fa574cb4202f29fd1c299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastTargetFetched: {fileID: 0}
+  detectionRange: 15.2
+  shape: 0
+  ignoreSelf: 1
+  ignoreChildren: 1
+  ignoreParents: 1
+  ignoreSpecificGameObjects: 0
+  specificGameObjectsToIgnore: []
+  filterByTag: 1
+  targetTag: Estanque
+  useOtherTags: 0
+  otherTags: []
+  filterByLayer: 1
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &3856177900926464247
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemParent: {fileID: 680003361910681132}
   amountInStack: 1
-  itemName: 2
+  itemName: 3
   itemType: 0
   useParentGrabbable: 1
   simpleGrabbable: {fileID: 0}
@@ -533,7 +594,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 779844469412199992}
   m_Father: {fileID: 6437857797374941389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8427072093982098739
