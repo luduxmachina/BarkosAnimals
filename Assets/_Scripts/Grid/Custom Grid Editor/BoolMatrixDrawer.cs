@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
-
+# if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(CustomBoolMatrix))]
 public class CustomBoolMatrixDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         int rows = Mathf.Max(1, property.FindPropertyRelative("rows").intValue);
-        // Calcula altura total: título + inputs + botones + grid + padding
-        float baseHeight = EditorGUIUtility.singleLineHeight * 3f; // título + filas/columnas + botones
+        // Calcula altura total: tï¿½tulo + inputs + botones + grid + padding
+        float baseHeight = EditorGUIUtility.singleLineHeight * 3f; // tï¿½tulo + filas/columnas + botones
         float gridHeight = rows * 22f + 10f;
         return baseHeight + gridHeight;
     }
@@ -35,7 +35,7 @@ public class CustomBoolMatrixDrawer : PropertyDrawer
         EditorGUI.PropertyField(colRect, colsProp, new GUIContent("Columnas"));
         y += lineHeight + 4;
 
-        // --- Asegurar que la matriz exista y tenga el tamaño correcto ---
+        // --- Asegurar que la matriz exista y tenga el tamaï¿½o correcto ---
         int rows = Mathf.Max(1, rowsProp.intValue);
         int cols = Mathf.Max(1, colsProp.intValue);
 
@@ -50,7 +50,7 @@ public class CustomBoolMatrixDrawer : PropertyDrawer
             var valuesProp = row.FindPropertyRelative("values");
 
             if (valuesProp == null)
-                continue; // Evita NPE si algo no está serializado aún
+                continue; // Evita NPE si algo no estï¿½ serializado aï¿½n
 
             if (valuesProp.arraySize != cols)
                 valuesProp.arraySize = cols;
@@ -94,7 +94,7 @@ public class CustomBoolMatrixDrawer : PropertyDrawer
 
         y += lineHeight + 6;
 
-        // --- Dibujar la cuadrícula ---
+        // --- Dibujar la cuadrï¿½cula ---
         float toggleSize = 20f;
         float totalGridWidth = cols * (toggleSize + 2);
         float startX = position.x + (position.width - totalGridWidth) * 0.5f; // centrado horizontalmente
@@ -118,3 +118,4 @@ public class CustomBoolMatrixDrawer : PropertyDrawer
         EditorGUI.EndProperty();
     }
 }
+#endif
