@@ -43,6 +43,11 @@ public class Stable : MonoBehaviour
 
         return numAnimales;
     }
+
+    public List<AAnimalFase2> GetAnimalesF2EnElEstablo()
+    {
+        return this.animalesEnEstablo;
+    }
     
 
     public Transform GetComedero()
