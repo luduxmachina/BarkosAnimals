@@ -9,9 +9,6 @@ public class Stable : MonoBehaviour
 
     Dictionary<ItemNames, int> animalesEstablo = new Dictionary<ItemNames, int>();
 
-    [SerializeField] List<ItemNames> tiposDeComidaAceptados = new List<ItemNames>();
-    ItemNames tipoActual;
-
     [SerializeField] RecipientController comedero;
     [SerializeField] 
 
@@ -73,12 +70,12 @@ public class Stable : MonoBehaviour
 
     public bool HayComida(ItemNames[] comidasPosibles)
     {
-        throw new NotImplementedException();
+        return comedero.HayComida(comidasPosibles);
     }
 
     void OnTriggerExit(Collider other)
     {
-        AAnimal animal = other.gameObject.GetComponent<AAnimal>();
+        AAnimalFase2 animal = other.gameObject.GetComponent<AAnimalFase2>();
         if (animal != null)
         {
             ItemNames nameAnim = animal.thisItemName;

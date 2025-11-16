@@ -57,6 +57,7 @@ public enum ItemNames
 {
     None,
     Bread,
+    Meat,
     Duck,
     Snake,
     Pangolin,

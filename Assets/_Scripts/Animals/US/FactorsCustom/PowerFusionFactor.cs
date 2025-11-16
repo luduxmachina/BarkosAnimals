@@ -11,7 +11,8 @@ namespace BehaviourAPI.UtilitySystems
 
         protected override float Evaluate(List<float> utilities)
         {
-            return utilities.Aggregate(1f, (x, n) => x * n);
+            float val = utilities.Aggregate(1f, (x, n) => x * n);
+            return val *1.5f;
         }
     }
 }

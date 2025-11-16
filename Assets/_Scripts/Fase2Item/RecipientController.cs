@@ -7,25 +7,35 @@ public class RecipientController : MonoBehaviour
     [SerializeField] int maxStacksFood = 3;
     int comidaStacks = 0;
 
+    [SerializeField] GameObject comederoLleno;
+    [SerializeField] GameObject comederoVacio;
+
     [SerializeField] List<ItemNames> tiposDeComidaAceptados = new List<ItemNames>();
-    ItemNames tipoActual;
+    [SerializeField, ReadOnly] ItemNames tipoActual;
 
     public bool AddStack(ItemNames tipoComida)
     {
-        if (comidaStacks >= maxStacksFood)
+        if (tiposDeComidaAceptados.Contains(tipoComida))
         {
-            return false;
+            if (comidaStacks >= maxStacksFood)
+            {
+                return false;
+            }
+            else
+            {
+                comidaStacks++;
+                comederoLleno.SetActive(true);
+                comederoVacio.SetActive(false);
+                tipoActual = tipoComida;
+                return true;
+            }
         }
-        else
-        {
-            comidaStacks++;
-            return true;
-        }
+        return false;
     }
 
     public bool HayComida(ItemNames[] tiposComida)
     {
-        if (!tiposComida.ToList().Contains(tipoActual))
+        if (!tiposComida.ToList().Contains(tipoActual) && comidaStacks>0)
         {
             return false;
         }
@@ -46,6 +56,11 @@ public class RecipientController : MonoBehaviour
         else
         {
             comidaStacks--;
+            if(comidaStacks <= 0)
+            {
+                comederoLleno.SetActive(false);
+                comederoVacio.SetActive(true);
+            }
             return true;
         }
     }

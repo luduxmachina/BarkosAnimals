@@ -22,7 +22,7 @@ public class PatoFase1 : AAnimal
     {
         base.Start();
         energiaActual = energiaMax;
-        this.itemName = ItemNames.Duck;
+        //this.itemName = ItemNames.Duck;
     }
     public void IrAEstanqueInit()
     {

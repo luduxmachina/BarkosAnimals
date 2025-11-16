@@ -1,19 +1,18 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public class EmbudoController : MonoBehaviour, IInteractable
+public class BarrilInteractionControlesr : MonoBehaviour, IInteractable
 {
-    [SerializeField] RecipientController recipiente;
+    [SerializeField]ItemNames tipoContenido;
+    [SerializeField]int stacksContenido = 20;
 
     public bool Interact(ItemNames interactorType, GameObject interactor)
     {
-        if (!recipiente.AddStack(interactorType)) return false;
-
         ItemInScene temp = interactor.GetComponent<ItemInScene>();
         CuencoManager cManager = temp.gameObject.GetComponentInParent<CuencoManager>();
-        if (cManager != null)
+        if (cManager != null && stacksContenido > 0)
         {
-            cManager.SetFood(ItemNames.None);
+            cManager.SetFood(tipoContenido);
+            stacksContenido--;
             return true;
         }
         return false;

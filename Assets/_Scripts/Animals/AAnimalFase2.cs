@@ -1,28 +1,58 @@
 using BehaviourAPI.Core;
+using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AAnimalFase2: AAnimal
 {
+    [SerializeField] ItemNames itemName;
+    public ItemNames thisItemName
+    {
+        get { return itemName; }
+    }
 
     [Header("-----------------Fase 2-----------------")]
-    [SerializeField]
-    public float Tfc = 0.0f;
-    public float Tfl = 0.0f;
+    [SerializeField] float MaxSinLimpiar;
+    [SerializeField] float MaxSinComer;
     public float AMax = 0.0f;
     public float CMax = 0.0f;
     public float DMax = 0.0f;
 
     [SerializeField] protected Stable establo;
-    [SerializeField] float MaxSinLimpiar;
-    [SerializeField] float MaxSinComer;
+    [SerializeField] StikersManager stikersManager;
+    [SerializeField] AllObjectTypesSO animalsDataBase;
+    [SerializeField] EditorBehaviourRunner SistemaUtilidad;
+    [SerializeField] NavMeshAgent navMeshAgent;
 
+    public bool hayComida = false;
 
+    [SerializeField, ReadOnly]bool isHerbivore = false;
 
     float tiempoSinLimpiar = 0f;
-    float tiempoSinComer = 0f;
+    float tiempoSinComer = 6000f;
+
+    public float depredadoresCerca = 0f;
 
     #region Monobehavior
+    protected override void Awake()
+    {
+
+        ItemInScene thisItem = gameObject.GetComponentInChildren<ItemInScene>();
+        itemName = thisItem.itemName;
+        List<Restriction> restrict = animalsDataBase.GetRestrictions(itemName);
+        if (restrict.Contains(Restriction.Herbivore))
+        {
+            isHerbivore = true;
+        }
+        else
+        {
+            isHerbivore = false;
+        }
+        base.Awake();
+    }
 
     protected override void Update()
     {
@@ -30,6 +60,14 @@ public class AAnimalFase2: AAnimal
 
         tiempoSinLimpiar += Time.deltaTime;
         tiempoSinComer += Time.deltaTime;
+        
+        if(establo != null)
+        {
+            Debug.Log("Establo en el animal");
+
+            SistemaUtilidad.enabled = true;
+            navMeshAgent.enabled = true;
+        }
     }
 
     #endregion
@@ -131,6 +169,40 @@ public class AAnimalFase2: AAnimal
         return Status.Running;
     }
 
+    public override Status MoveTowardsObjective()
+    {
+        if(establo == null)
+        {
+            return Status.Failure;
+        }
+        if (!TieneComida()) //la comida puede desaparecer
+        {
+            movimiento.CancelMove();
+
+            return Status.Failure;
+        }
+        Transform objTR = establo.GetComedero().transform;
+        Vector3 currentObjPos = objTR.position;
+
+        if (lastTargetPos != currentObjPos)
+        {
+            lastTargetPos = currentObjPos;
+            lastObjectve = objTR;
+            //o se ha movido o un pan mas cercano
+            movimiento.SetTarget(currentObjPos);
+
+        }
+        if (movimiento.HasArrived())
+        {
+            movimiento.CancelMove();
+
+            return Status.Success;
+        }
+
+
+        return Status.Running;
+    }
+
     public override bool ObjectiveClose()
     {
         if (establo == null)
@@ -156,32 +228,39 @@ public class AAnimalFase2: AAnimal
 
     public void Enfermar()
     {
-        throw new NotImplementedException();
+        stikersManager.SetImage(StikersGenerales.Enfermo);
     }
 
     public void Rascarse()
     {
-        throw new NotImplementedException();
+        stikersManager.SetImage(StikersGenerales.Enfermo);
     }
 
     public void MostrarHambre()
     {
-        throw new NotImplementedException();
+        if (isHerbivore)
+        {
+            stikersManager.SetImage(StikersGenerales.NecesitaComerZanahoria);
+        }
+        else
+        {
+            stikersManager.SetImage(StikersGenerales.NecesitaComerCarne);
+        }
     }
 
     public void MandarCorazones()
     {
-        throw new NotImplementedException();
+        stikersManager.SetImage(StikersGenerales.Corazones);
     }
 
     public void MostrarIncomodidad()
     {
-        throw new NotImplementedException();
+        stikersManager.SetImage(StikersGenerales.Incomodo);
     }
 
     public void QuitarPegatinaEstado()
     {
-        throw new NotImplementedException();
+        stikersManager.OcultSprites();
     }
 
     public void Limpiarse()
@@ -191,12 +270,15 @@ public class AAnimalFase2: AAnimal
 
     public override void Die()
     {
+        GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(thisItemName, -1));
+
         if (establo == null)
         {
             Debug.LogWarning("El pato no está en ningún establo");
             return;
         }
         establo.ExitFromStable(thisItemName);
+        base.Die();
     }
 
     #endregion
@@ -209,7 +291,7 @@ public class AAnimalFase2: AAnimal
             Debug.LogWarning("El pato no está en ningún establo");
             return 0f;
         }
-        return (float)establo.GetAnimalsInEstable();
+        return ((float)establo.GetAnimalsInEstable()-1)/AMax;
     }
 
     public float ComaradesOnEstable()
@@ -220,9 +302,9 @@ public class AAnimalFase2: AAnimal
             return 0f;
         }
 
-        float numPredators = 0;
-        numPredators += establo.GetAnimalsInEstable(itemName);
-        return numPredators - 1;//No le queremos contar a él mismo.
+        float numCompis = 0;
+        numCompis += establo.GetAnimalsInEstable(itemName);
+        return (numCompis - 1)/CMax;//No le queremos contar a él mismo.
     }
 
     public float PredatorsOnEstable()
@@ -238,7 +320,9 @@ public class AAnimalFase2: AAnimal
         {
             numPredators += establo.GetAnimalsInEstable(predator);
         }
-        return numPredators;
+        depredadoresCerca = numPredators;
+
+        return numPredators/DMax;
     }
 
     public float TimeWithoutShower()
@@ -253,6 +337,16 @@ public class AAnimalFase2: AAnimal
     public bool TieneComida()
     {
         return establo.HayComida(objectives);
+    }
+
+    public float HayComida()
+    {
+        hayComida = TieneComida();
+        if (TieneComida())
+        {
+            return 1f;
+        }
+        return 0f;
     }
 
     public override Vector3 GetNewPosition()

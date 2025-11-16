@@ -10,14 +10,6 @@ using Unity.VisualScripting;
 [RequireComponent(typeof(IMovementComponent))]
 public abstract class AAnimal : MonoBehaviour
 {
-    protected ItemNames itemName;
-    public ItemNames thisItemName
-    {
-        get { return itemName; }
-    }
-
-
-
     [Header("---------------Importante---------------")]
     [SerializeField]
     protected Animator animator;
@@ -54,7 +46,6 @@ public abstract class AAnimal : MonoBehaviour
     protected float tiempoComiendo = 0.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    ItemNames animalType;
     protected IMovementComponent movimiento;
     protected Transform lastObjectve;
     protected Vector3 lastTargetPos;
@@ -192,7 +183,7 @@ public abstract class AAnimal : MonoBehaviour
         }
         return Status.Running;
     }
-    public Status MoveTowardsObjective()
+    public virtual Status MoveTowardsObjective()
     {
         if (!ObjectiveClose()) //la comida puede desaparecer
         {
@@ -226,7 +217,6 @@ public abstract class AAnimal : MonoBehaviour
     public virtual void Die()
     {
         //no creo que este bien 
-        GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects( animalType, -1));
         Destroy(this.gameObject);
     }
 
