@@ -23,14 +23,11 @@ public class Suciedad : MonoBehaviour
     {
         nivelSuciedad = maxSuciedad;
         originalLocalScale = transform.localScale;
-        Debug.Log("Original local scale: " + originalLocalScale);
     }
     public void Limpiar()
     {
         nivelSuciedad--;
-        Debug.Log("OrinigalLocal scale: " + originalLocalScale);
         transform.localScale = (nivelSuciedad+(maxSuciedad*0.5f))/(float)maxSuciedad * originalLocalScale;
-        Debug.Log("New local scale: " + transform.localScale);
         if (nivelSuciedad <= 0)
         {
             LimpiarEstablo();
