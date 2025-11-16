@@ -59,7 +59,6 @@ public class IslandPositions : MonoBehaviour //lo pdoria hacer a pelo sin monobe
             foreach (var tr in itemsDictionary[type])
             {
                 float dist = Vector3.Distance(pos, tr.position);
-                if(dist< 0.01f) { continue; } //para evitar pillar el mismo objeto 
                 if (dist < closestDistance)
                 {
                     closestDistance = dist;

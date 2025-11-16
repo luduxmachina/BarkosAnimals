@@ -1,12 +1,12 @@
 using BehaviourAPI.Core;
 using BehaviourAPI.UnityToolkit;
+using BehaviourAPI.UtilitySystems;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class PatoFase1 : AAnimal
 {
-
-
     [Header("Datos/Stats")]
     public List<Transform> puntosEstanque;
     [SerializeField]
@@ -18,10 +18,11 @@ public class PatoFase1 : AAnimal
     private int energiaActual=6;
     public Transform posEstanque;
 
-    protected override void Start()
+    private void Start()
     {
         base.Start();
         energiaActual = energiaMax;
+        //this.itemName = ItemNames.Duck;
     }
     public void IrAEstanqueInit()
     {
@@ -100,11 +101,13 @@ public class PatoFase1 : AAnimal
     {
         energiaActual = energiaMax;
         //Animator supongo
+        Debug.Log("Descansando");
 
     }
     public void Aletear()
     {
         //animator supongo
+        Debug.Log("Aleteando");
     }
   
 
@@ -113,4 +116,5 @@ public class PatoFase1 : AAnimal
     {
         throw new System.NotImplementedException();
     }
+    
 }

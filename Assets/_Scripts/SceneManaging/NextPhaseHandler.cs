@@ -115,17 +115,5 @@ public class NextPhaseHandler
                 break;
         }
     }
-    public UnityEvent GetPhaseEvent(LevelPhases phase)
-    {
-        return phase switch
-        {
-            LevelPhases.SelectionPhase => onStartSelectionPhase,
-            LevelPhases.IslandPhase => onStartIslandPhase,
-            LevelPhases.OrganizationPhase => onStartOrganizationPhase,
-            LevelPhases.BoatPhase => onStartBoatPhase,
-            LevelPhases.QuotaPhase => onStartQuotaPhase,
-            _ => null,
-        };
-    }
 
 }

@@ -8,14 +8,19 @@ public class BoughtSkins
     [RuntimeInitializeOnLoadMethod]
     public static void LoadFromFile() 
     {
-        string data = PlayerPrefs.GetString("BoughtSkins", "Pato amarillo");
+        string data = ""; //cargarlo de algun sitio
+
+        //al menos la defaultskin
+        if(data == "")
+        {
+            data= "Pato amarillo";
+        }
         boughtSkinsNames = new List<string>(data.Split(','));
     }
     public static void SaveToFile() //supongo que en las cookies se podra guardar algo
     {
         string text= string.Join(",", boughtSkinsNames);
         //guardarlo en algun sitio
-        PlayerPrefs.SetString("BoughtSkins", text);
 
         return; 
     }

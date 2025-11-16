@@ -17,7 +17,7 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
     public bool Interact(ItemNames interactorType, GameObject interactor)
     {
 
-        ItemInScene itemInScene = interactor.GetComponentInChildren<ItemInScene>();
+        ItemInScene itemInScene = interactor.GetComponent<ItemInScene>();
         if (itemInScene == null)
         {
             return false;

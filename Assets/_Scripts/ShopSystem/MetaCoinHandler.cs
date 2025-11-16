@@ -20,14 +20,14 @@ public class MetaCoinHandler : MonoBehaviour
         }
         return false;
     }
-    [RuntimeInitializeOnLoadMethod]
     public static void LoadFromFile()
     {
-        metaCoinCount = PlayerPrefs.GetInt("MetaCoinCount", 0);
+        string data = "0"; //cargarlo de algun sitio
+        metaCoinCount = int.Parse(data);
     }
     public static void SaveToFile() //supongo que en las cookies se podra guardar algo
     {
-        PlayerPrefs.SetInt("MetaCoinCount", metaCoinCount);
-        PlayerPrefs.Save();
+        string text = metaCoinCount.ToString();
+        return;
     }
 }

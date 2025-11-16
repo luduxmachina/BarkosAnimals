@@ -31,9 +31,9 @@ namespace BehaviourAPI.UnityToolkit
         /// </summary>
         public float maxTimeRunning;
 
-        protected float _timeRunning;
+        float _timeRunning;
 
-        protected Vector3 _target;
+        Vector3 _target;
 
         /// <summary>
         /// Create a new flee action.
