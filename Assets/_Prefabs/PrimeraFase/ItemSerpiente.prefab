@@ -191,12 +191,13 @@ Transform:
   m_GameObject: {fileID: 4700676213041966600}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.700436, y: 10.635828, z: -7.1420593}
+  m_LocalPosition: {x: 18.965206, y: 7.910301, z: -20.132355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3184325342509151209}
   - {fileID: 4755173530295618732}
+  - {fileID: 8862360251322611777}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3010140063992893358
@@ -380,6 +381,51 @@ MonoBehaviour:
   _eventHandler:
     debugStatusChanges: 0
     identifier: 
+--- !u!1 &8410560425736783097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4497063375370002475, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+  m_PrefabInstance: {fileID: 5390975284149675218}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8862360251322611777}
+  - component: {fileID: 9078209087600460288}
+  m_Layer: 0
+  m_Name: PuffOnDestroy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8862360251322611777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+  m_PrefabInstance: {fileID: 5390975284149675218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410560425736783097}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 856.19714, y: 527.57794, z: 1265.8241}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8454186698301673351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9078209087600460288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3975781700109133522, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+  m_PrefabInstance: {fileID: 5390975284149675218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410560425736783097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b06ab7d5be3234448e536be380444ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puffPrefab: {fileID: 2499176458507652304, guid: bddb9532ffbb69b4aabb0a87d6289375, type: 3}
 --- !u!1 &8962043825903553419
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,3 +567,60 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4849295098602107030, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
   m_PrefabInstance: {fileID: 2429534006397805048}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5390975284149675218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8454186698301673351}
+    m_Modifications:
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 856.19714
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 527.57794
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1265.8241
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497063375370002475, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_Name
+      value: PuffOnDestroy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}

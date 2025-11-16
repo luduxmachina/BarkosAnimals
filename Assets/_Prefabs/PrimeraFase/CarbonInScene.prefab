@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3260419119722635150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.047304, y: 7.910301, z: -38.423843}
+  m_LocalPosition: {x: -34.01455, y: 7.910301, z: 1.27071}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -38,6 +38,7 @@ Transform:
   - {fileID: 455184614119569259}
   - {fileID: 1209018947300334479}
   - {fileID: 7838398621725049699}
+  - {fileID: 6465430287285312109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5563669326414405633
@@ -181,6 +182,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1007758834580687207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6340205174747735765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4497063375370002475, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+  m_PrefabInstance: {fileID: 7607750009743181566}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6465430287285312109}
+  - component: {fileID: 6825478153695617068}
+  m_Layer: 0
+  m_Name: PuffOnDestroy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6465430287285312109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+  m_PrefabInstance: {fileID: 7607750009743181566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340205174747735765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 856.19714, y: 527.57794, z: 1265.8241}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1007758834580687207}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6825478153695617068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3975781700109133522, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+  m_PrefabInstance: {fileID: 7607750009743181566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340205174747735765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b06ab7d5be3234448e536be380444ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puffPrefab: {fileID: 2499176458507652304, guid: bddb9532ffbb69b4aabb0a87d6289375, type: 3}
 --- !u!1 &7201872897541906220
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,3 +419,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2533439405136121346, guid: 7cf173cc054494b4e8b14af206028c71, type: 3}
   m_PrefabInstance: {fileID: 1265588822474445718}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7607750009743181566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1007758834580687207}
+    m_Modifications:
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 856.19714
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 527.57794
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1265.8241
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471706610966387859, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497063375370002475, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
+      propertyPath: m_Name
+      value: PuffOnDestroy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a4da88aba39af24589d6f1fe1029b33, type: 3}
