@@ -25,10 +25,14 @@ public class IslandSelectionUI : MonoBehaviour
             for(int i = 0; i < 3; i++)
             {
                 int randomIndex = Random.Range(0, maxIslands);
-
-                while (usedIndexes.Contains(randomIndex) && !(randomIndex>=maxIslands))
+                if (usedIndexes.Contains(randomIndex))
                 {
-                    randomIndex++;
+                    randomIndex = 0;
+
+                    while (usedIndexes.Contains(randomIndex) && !(randomIndex >= maxIslands))
+                    {
+                        randomIndex++;
+                    }
                 }
                 usedIndexes.Add(randomIndex);
 
