@@ -117,6 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6624683778427328790}
+  - component: {fileID: 1623805482274079838}
   m_Layer: 2
   m_Name: CubeGridTest 1
   m_TagString: Untagged
@@ -140,3 +141,16 @@ Transform:
   - {fileID: 5963193712509946609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623805482274079838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940381423143047339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b06ab7d5be3234448e536be380444ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puffPrefab: {fileID: 2499176458507652304, guid: bddb9532ffbb69b4aabb0a87d6289375, type: 3}
