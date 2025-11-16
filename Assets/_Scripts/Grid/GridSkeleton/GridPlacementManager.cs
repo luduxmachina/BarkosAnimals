@@ -58,7 +58,7 @@ public class GridPlacementManager : MonoBehaviour
         Vector3 selectedPos = gridInput.GetSelectedMapPosition();
 
         Vector3Int cellPos = grid.WorldToCell(selectedPos);
-        cellPos.y = 0;
+        // cellPos.y = 0;
         
         // check if we didnt move positions
         if (lastPos != cellPos)

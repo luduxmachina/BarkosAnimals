@@ -10,6 +10,8 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
     private LayerMask animalGroundLayerMask = LayerMask.GetMask("AnimalCell");
     [SerializeField]
     private Camera mainCamera;
+
+    [SerializeField] private float yOffset = 0.5f;
     
     private GridPlacementManager gridPlacementManager;
     private Vector3 lastMousePos;
@@ -47,6 +49,7 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
         {
             lastMousePos = hit.point;
         }
+        lastMousePos = new Vector3(lastMousePos.x, lastMousePos.y + yOffset, lastMousePos.z);
 
         return lastMousePos;
     }
