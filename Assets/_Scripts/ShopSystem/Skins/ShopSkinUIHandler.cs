@@ -7,6 +7,8 @@ public class ShopSkinUIHandler : MonoBehaviour
     [SerializeField] private GameObject individualSkinUIPrefab;
     [SerializeField] private Transform contentParent;
     [SerializeField] private TextMeshProUGUI monedasActuales;
+    [SerializeField] private TextMeshProUGUI monedasActuales2;
+
     [SerializeField] private bool useGivenSkingUIs = true;
     [SerializeField, HideIf("useGivenSkingUIs", false)] private IndividualSkinUIHandler[] skinUIs;
     private void Start()
@@ -16,6 +18,8 @@ public class ShopSkinUIHandler : MonoBehaviour
     private void Update()
     {
         monedasActuales.text = MetaCoinHandler.metaCoinCount.ToString();
+        monedasActuales2.text = MetaCoinHandler.metaCoinCount.ToString();
+
     }
     private void LoadAndDisplaySkins()
     {
