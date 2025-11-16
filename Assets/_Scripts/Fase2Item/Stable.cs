@@ -10,7 +10,7 @@ public class Stable : MonoBehaviour
     Dictionary<ItemNames, int> animalesEstablo = new Dictionary<ItemNames, int>();
 
     [SerializeField] RecipientController comedero;
-    [SerializeField] 
+    List<AAnimalFase2> animalesEnEstablo = new();
 
 
     /// <summary>
@@ -48,6 +48,12 @@ public class Stable : MonoBehaviour
     public Transform GetComedero()
     {
         return comedero.gameObject.transform;
+    }
+
+
+    public List<AAnimalFase2> GetAnimalesF2EnElEstablo()
+    {
+        return this.animalesEnEstablo;
     }
 
     void OnTriggerEnter(Collider other)
