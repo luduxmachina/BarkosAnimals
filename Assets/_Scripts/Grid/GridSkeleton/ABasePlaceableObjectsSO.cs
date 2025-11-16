@@ -13,4 +13,5 @@ public enum PlaceableDatabaseType
     WorldB,
     WorldC,
     ShipBuildable,
+    Animal,
 }

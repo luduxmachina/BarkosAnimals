@@ -34,6 +34,22 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
         return placedObjects.Count - 1;
     }
 
+    public int PlaceObject(GameObject prefab, Vector3 worldCellPos, Transform parent)
+    {
+        // Calcular la componente Y para que coincida con el suelo
+        float y = GetHighestY(worldCellPos);
+        worldCellPos = new Vector3(worldCellPos.x, y, worldCellPos.z);
+
+        // Colocar el objeto
+        GameObject newObj = Instantiate(prefab, parent);
+        
+        newObj.transform.position = worldCellPos;
+        placedObjects.Add(newObj);
+
+        // return gameObjectIndex
+        return placedObjects.Count - 1;
+    }
+
     public void RemoveObject(int gameObjectIndex)
     {
         throw new System.NotImplementedException();
