@@ -1,0 +1,213 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1676965857499768731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2123607216501349884}
+  m_Layer: 0
+  m_Name: Chimenea
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2123607216501349884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676965857499768731}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.69530463, z: 0, w: 0.7187152}
+  m_LocalPosition: {x: 10.22, y: 1.44, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3372865384393368361}
+  - {fileID: 8387374303335612885}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -88.103, z: 0}
+--- !u!1 &5202624250181862407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8387374303335612885}
+  - component: {fileID: 5734973053845315090}
+  - component: {fileID: 3305341595980387180}
+  - component: {fileID: 3741259490999534670}
+  m_Layer: 0
+  m_Name: InteraccionChimenea
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8387374303335612885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202624250181862407}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.507, y: 0.411, z: -0.567}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2123607216501349884}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5734973053845315090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202624250181862407}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3305341595980387180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202624250181862407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ef8be813f0be84cb4bd316f13ad476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceptedFoodType: 0
+  wantsFood: 1
+  stopsBeingHungryOnEat: 0
+  OnEat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3741259490999534670}
+        m_TargetAssemblyTypeName: Chimeneahandler, Assembly-CSharp
+        m_MethodName: RecibirCarbon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3741259490999534670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5202624250181862407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe11257db5c31c498e023c2b4f79476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AvancePorPiezaCarbon: 10
+  phaseTimer: {fileID: 0}
+--- !u!1001 &533415840873218514
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2123607216501349884}
+    m_Modifications:
+    - target: {fileID: 1679107125673553131, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_Size.x
+      value: 2.4796784
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679107125673553131, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_Size.z
+      value: 3.9154458
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679107125673553131, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_Center.x
+      value: -1.7701571
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679107125673553131, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_Center.z
+      value: -1.8653593
+      objectReference: {fileID: 0}
+    - target: {fileID: 2513590781023533121, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_Name
+      value: ChimeneaBarco
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -4.3297806e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -4.3297806e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1679107125673553131, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+--- !u!4 &3372865384393368361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3002143742748189435, guid: ace2ceb8a91f63b448afe89d89e1fe43, type: 3}
+  m_PrefabInstance: {fileID: 533415840873218514}
+  m_PrefabAsset: {fileID: 0}

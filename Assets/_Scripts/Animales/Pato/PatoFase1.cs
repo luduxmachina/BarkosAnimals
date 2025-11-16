@@ -16,6 +16,8 @@ public class PatoFase1 : AAnimal
     private float radioDentroEstanque;
     [SerializeField]
     private int energiaActual=6;
+    [SerializeField]
+    private LazyDetector lazyDetector;
     public Transform posEstanque;
 
     protected override void Start()
@@ -23,6 +25,19 @@ public class PatoFase1 : AAnimal
         base.Start();
         energiaActual = energiaMax;
         //this.itemName = ItemNames.Duck;
+        if (posEstanque == null)
+        {
+            GameObject estanqueMasCercano= lazyDetector.GetTarget();
+            if (estanqueMasCercano != null)
+            {
+                posEstanque = estanqueMasCercano.transform;
+            }
+            else
+            {
+                posEstanque = transform;
+            }
+        }
+
     }
     public void IrAEstanqueInit()
     {

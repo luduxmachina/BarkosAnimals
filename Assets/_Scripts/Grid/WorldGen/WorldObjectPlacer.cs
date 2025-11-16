@@ -5,6 +5,8 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
 {
     [SerializeField]
     private LayerMask HeightCheckLayerMask;
+    [SerializeField]
+    private Transform parentTransform;
 
     private List<GameObject> placedObjects = new List<GameObject>();
     
@@ -15,7 +17,16 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
         worldCellPos = new Vector3(worldCellPos.x, y, worldCellPos.z);
 
         // Colocar el objeto
-        GameObject newObj = Instantiate(prefab);
+        GameObject newObj;
+        if (parentTransform != null)
+        {
+            newObj = Instantiate(prefab, parentTransform);
+        }
+        else
+        {
+            newObj = Instantiate(prefab);
+        }
+        
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
 
@@ -23,14 +34,15 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
         return placedObjects.Count - 1;
     }
 
-    public int PlaceObject(GameObject prefab, Vector3 worldCellPos, Transform parentTransform)
+    public int PlaceObject(GameObject prefab, Vector3 worldCellPos, Transform parent)
     {
         // Calcular la componente Y para que coincida con el suelo
         float y = GetHighestY(worldCellPos);
         worldCellPos = new Vector3(worldCellPos.x, y, worldCellPos.z);
 
         // Colocar el objeto
-        GameObject newObj = Instantiate(prefab, parentTransform);
+        GameObject newObj = Instantiate(prefab, parent);
+        
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
 
@@ -52,10 +64,10 @@ public class WorldObjectPlacer : MonoBehaviour, IObjectPlacer
 
         if (Physics.Raycast(start, direction, out hit, Mathf.Infinity, HeightCheckLayerMask))
         {
-            return hit.point.y;   // Y del punto de colisión
+            return hit.point.y;   // Y del punto de colisiï¿½n
         }
 
-        return 0; // No golpeó nada
+        return 0; // No golpeï¿½ nada
     }
 
 }

@@ -69,8 +69,8 @@ public class CannonItem : MonoBehaviour
     }
     private void OnDisable()
     {
-        grabbable.OnGrab.RemoveListener(OnGrabbed);
-        grabbable.OnDrop.RemoveListener(OnReleased);
+        grabbable?.OnGrab?.RemoveListener(OnGrabbed);
+        grabbable?.OnDrop?.RemoveListener(OnReleased);
         continuousInteraction.OnPlayerInteractStart.RemoveListener(StartFire);
         continuousInteraction.OnPlayerInteractStop.RemoveListener(StopFire);
     }

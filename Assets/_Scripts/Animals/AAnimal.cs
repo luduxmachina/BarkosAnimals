@@ -204,7 +204,7 @@ public abstract class AAnimal : MonoBehaviour
         }
         return Status.Running;
     }
-    public void MoveTowardsObjectiveInit()
+    public virtual void MoveTowardsObjectiveInit()
     {
         if (animator != null)
         {

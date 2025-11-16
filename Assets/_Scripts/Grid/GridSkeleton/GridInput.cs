@@ -42,19 +42,6 @@ public class GridInput : MonoBehaviour, IGridInput
 
         if (Input.GetKeyDown(KeyCode.Escape))
             OnExit?.Invoke();
-
-        //////////////////// TESTEO ////////////////////
-        // 
-        // 
-        // if(Input.GetKeyDown(KeyCode.Q))
-        //     GetComponent<GridPlacementManager>().StartPlacement(0);
-        // if(Input.GetKeyDown(KeyCode.W))
-        //     GetComponent<GridPlacementManager>().StartPlacement(1);
-        // if(Input.GetKeyDown(KeyCode.E))
-        //     GetComponent<GridPlacementManager>().StartPlacement(2);
-        // 
-        // if(Input.GetKeyDown(KeyCode.R))
-        //     GetComponent<GridPlacementManager>().StartRemoving();
     }
 
     public Vector3 GetSelectedMapPosition()

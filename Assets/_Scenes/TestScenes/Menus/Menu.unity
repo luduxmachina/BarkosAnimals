@@ -815,15 +815,13 @@ MonoBehaviour:
   defaultLevel: {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
   tutorialLevels:
   - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
-  - {fileID: 11400000, guid: 39534f8181360744385a7f039be00e6a, type: 2}
-  otherLevels:
-  - {fileID: 11400000, guid: 39534f8181360744385a7f039be00e6a, type: 2}
   - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
-  - {fileID: 11400000, guid: 39534f8181360744385a7f039be00e6a, type: 2}
+  otherLevels:
+  - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
+  - {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
   infiniteMode: 0
   currentLevel: {fileID: 0}
   currentLevelIndex: 0
-  currentPhase: 0
   currentArchipelago: 0
   lastSelectedIsland: 0
   generatedIsland: 0
@@ -2031,6 +2029,65 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a428b5510130c8c48bc105ad3d736511, type: 3}
+--- !u!1 &1741536024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1741536026}
+  - component: {fileID: 1741536025}
+  - component: {fileID: 1741536027}
+  m_Layer: 0
+  m_Name: MUteCOntrollerextra por cojnes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1741536025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741536024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f3599e09e7fc24b8ce17480ece5322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: c4a3bd065ac89f14dafc3bb2dc3451d1, type: 2}
+--- !u!4 &1741536026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741536024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 829.68146, y: 665.8137, z: -2.7373638}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1741536027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741536024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3fff6af9b0b7e4d9c4004266c42e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: c4a3bd065ac89f14dafc3bb2dc3451d1, type: 2}
 --- !u!1001 &1755538957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2931,6 +2988,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 433952563650300435, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_text
+      value: BARKO'S ANIMALS
+      objectReference: {fileID: 0}
     - target: {fileID: 725696296826169315, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3206,3 +3267,4 @@ SceneRoots:
   - {fileID: 1468915373}
   - {fileID: 1223807563}
   - {fileID: 1755538957}
+  - {fileID: 1741536026}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1592913642740527563
+--- !u!1 &680003361910681132
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,139 +8,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8930885552787034948}
-  m_Layer: 0
-  m_Name: "---A este item se le interactua con comida pues se la come \xF1am ---"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8930885552787034948
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592913642740527563}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7786798524681370391}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2526202097830895610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8584214460462712390}
-  - component: {fileID: 4793675403974879364}
-  m_Layer: 0
-  m_Name: DeteccionInteraccionConOtros
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8584214460462712390
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2526202097830895610}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7786798524681370391}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4793675403974879364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2526202097830895610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06927ee9532fa574cb4202f29fd1c299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastTargetFetched: {fileID: 0}
-  detectionRange: 1.23
-  shape: 0
-  ignoreSelf: 1
-  ignoreChildren: 1
-  ignoreParents: 1
-  ignoreSpecificGameObjects: 1
-  specificGameObjectsToIgnore:
-  - {fileID: 7532906148717974664}
-  filterByTag: 0
-  targetTag: 
-  useOtherTags: 0
-  otherTags: []
-  filterByLayer: 1
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
---- !u!1 &3023310694266635112
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6002905490257931734}
-  m_Layer: 0
-  m_Name: GrabPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6002905490257931734
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3023310694266635112}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: -0.43}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7786798524681370391}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3861474199279081320
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7786798524681370391}
-  - component: {fileID: 76316342550003921}
-  - component: {fileID: 7406246666013410458}
-  - component: {fileID: 8899541994499259305}
-  - component: {fileID: 7570775946478225264}
-  - component: {fileID: 7254296871283564126}
-  - component: {fileID: 7494067772258813564}
-  - component: {fileID: 3265168231409010287}
-  - component: {fileID: 2443815622253805130}
-  - component: {fileID: 6929240427020917792}
+  - component: {fileID: 6437857797374941389}
+  - component: {fileID: 4665941568934373272}
+  - component: {fileID: 6400712771653683453}
+  - component: {fileID: 3582154979060046960}
+  - component: {fileID: 3955151358488796597}
+  - component: {fileID: 640104534720344094}
+  - component: {fileID: 8790891698503787155}
+  - component: {fileID: 7825277932379568860}
+  - component: {fileID: 4755471148070525510}
+  - component: {fileID: 7145521477485007439}
+  - component: {fileID: 8015346038508110730}
   m_Layer: 0
   m_Name: PatoItem
   m_TagString: Item
@@ -148,33 +26,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7786798524681370391
+--- !u!4 &6437857797374941389
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.89, y: 0.38821125, z: -2.09}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9024544, y: 7.910301, z: -36.79605}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8584214460462712390}
-  - {fileID: 7824398969198209910}
-  - {fileID: 8930885552787034948}
-  - {fileID: 5527169980876146993}
-  - {fileID: 6002905490257931734}
+  - {fileID: 7163902101016823029}
+  - {fileID: 422819611393915240}
+  - {fileID: 6589561979161053450}
+  - {fileID: 4734618897094371112}
+  - {fileID: 1867665542779049918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &76316342550003921
+--- !u!136 &4665941568934373272
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -191,13 +69,13 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: -0.06, z: 0.27}
---- !u!54 &7406246666013410458
+--- !u!54 &6400712771653683453
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0.5
@@ -218,13 +96,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8899541994499259305
+--- !u!114 &3582154979060046960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
@@ -235,20 +113,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactionSuccessful: 1
---- !u!114 &7570775946478225264
+--- !u!114 &3955151358488796597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd3284e1a506e2a49aa572c27189d71c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detector: {fileID: 4793675403974879364}
-  interactingObject: {fileID: 7532906148717974664}
+  detector: {fileID: 2118359663946339485}
+  interactingObject: {fileID: 7809717569867627393}
   useSpecificInteractionType: 0
   interactionType: 0
   OnInteraction:
@@ -257,13 +135,13 @@ MonoBehaviour:
   OnFailedInteraction:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7254296871283564126
+--- !u!114 &640104534720344094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
@@ -279,476 +157,30 @@ MonoBehaviour:
   canBeGrabbed: 1
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 1
-  grabPoint: {fileID: 6002905490257931734}
---- !u!114 &7494067772258813564
+  grabPoint: {fileID: 1867665542779049918}
+--- !u!114 &8790891698503787155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7033c32493b38240a6a2c47736ac9c0, type: 3}
+  m_Script: {fileID: 11500000, guid: cd765a585b227b848b300bbc6226d32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   executeOnLoop: 0
   interruptOptions: 0
-  _eventHandler:
-    debugStatusChanges: 0
-    identifier: 
-  data:
-    graphs:
-    - name: PatoBT
-      id: 565f8bc7-ae37-4843-ae83-71f69019a0d4
-      graph:
-        rid: 3915210452180140219
-      nodes:
-      - name: Root
-        id: 119df255-f82d-4df3-87a8-c901d029842c
-        position: {x: 150, y: 0}
-        node:
-          rid: 3915210452180140220
-        references: []
-        parentIds: []
-        childIds:
-        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
-      - name: 
-        id: 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
-        position: {x: 150, y: 200}
-        node:
-          rid: 3915210452180140221
-        references: []
-        parentIds:
-        - 119df255-f82d-4df3-87a8-c901d029842c
-        childIds:
-        - 6a98050c-6298-44b1-ac52-ed19b5cb139d
-        - 8bdadcff-95ff-4582-a0a3-4c0e7c7e33a9
-        - 1356e002-41d1-4684-81ef-7726e2512dda
-      - name: Comer si hay comida
-        id: 6a98050c-6298-44b1-ac52-ed19b5cb139d
-        position: {x: -300, y: 400}
-        node:
-          rid: 3915210452180140226
-        references:
-        - fieldName: Perception
-          value:
-            rid: 3915210491625209925
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
-        childIds:
-        - 2504f682-5013-4f91-a93b-8bf778634398
-      - name: 'Volver al estanque si fuera '
-        id: 8bdadcff-95ff-4582-a0a3-4c0e7c7e33a9
-        position: {x: 34, y: 521.3333}
-        node:
-          rid: 3915210452180140227
-        references:
-        - fieldName: Perception
-          value:
-            rid: 3915210491625209927
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
-        childIds:
-        - 66211732-b8be-44cd-b5d1-5e3f0a88ac17
-      - name: Estar en agua
-        id: 1356e002-41d1-4684-81ef-7726e2512dda
-        position: {x: 600, y: 400}
-        node:
-          rid: 3915210452180140228
-        references:
-        - fieldName: Perception
-          value:
-            rid: 3915210491625209931
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 0dfdd0bb-5c07-4cd8-bc41-d8c5c714ef3f
-        childIds:
-        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
-      - name: 
-        id: 2504f682-5013-4f91-a93b-8bf778634398
-        position: {x: -300, y: 600}
-        node:
-          rid: 3915210452180140229
-        references: []
-        parentIds:
-        - 6a98050c-6298-44b1-ac52-ed19b5cb139d
-        childIds:
-        - 7ac56cec-3b14-42a0-843e-998267800b94
-        - 03f432c0-71ea-46bb-9a62-0fad6c19e979
-      - name: Andar hacia comida
-        id: 7ac56cec-3b14-42a0-843e-998267800b94
-        position: {x: -460, y: 772}
-        node:
-          rid: 3915210452180140233
-        references:
-        - fieldName: Action
-          value:
-            rid: 3915210491625209939
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 2504f682-5013-4f91-a93b-8bf778634398
-        childIds: []
-      - name: Volve al esanque
-        id: 66211732-b8be-44cd-b5d1-5e3f0a88ac17
-        position: {x: 39.333332, y: 725.3333}
-        node:
-          rid: 3915210452180140234
-        references:
-        - fieldName: Action
-          value:
-            rid: 8790748559051325521
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 8bdadcff-95ff-4582-a0a3-4c0e7c7e33a9
-        childIds: []
-      - name: Nada
-        id: b33c2bf9-23cc-4348-8793-c6240a4258e5
-        position: {x: 296.8, y: 840}
-        node:
-          rid: 3915210452180140235
-        references:
-        - fieldName: Action
-          value:
-            rid: 3915210491625209940
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
-        childIds: []
-      - name: Ests cansado
-        id: 2e288971-97e1-4f8d-b069-82c5ff32138c
-        position: {x: 809.6, y: 932}
-        node:
-          rid: 3915210452180140236
-        references:
-        - fieldName: Perception
-          value:
-            rid: 3915210491625209928
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 03577b3a-b0d3-44ba-90c6-53e69dd2e054
-        childIds:
-        - 2f05d8a3-0846-4b89-9cb2-9063e3046d8f
-      - name: Aletear
-        id: 5ecb0c82-0f3c-45da-b11d-85175804d8d5
-        position: {x: 1048, y: 806}
-        node:
-          rid: 3915210452180140237
-        references:
-        - fieldName: Action
-          value:
-            rid: 8790748559051325510
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
-        childIds: []
-      - name: Descansar
-        id: 2f05d8a3-0846-4b89-9cb2-9063e3046d8f
-        position: {x: 801.6, y: 1092.8}
-        node:
-          rid: 3915210452180140238
-        references:
-        - fieldName: Action
-          value:
-            rid: 3915210491625209921
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 2e288971-97e1-4f8d-b069-82c5ff32138c
-        childIds: []
-      - name: 
-        id: 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
-        position: {x: 600, y: 600}
-        node:
-          rid: 3915210452180140239
-        references: []
-        parentIds:
-        - 1356e002-41d1-4684-81ef-7726e2512dda
-        childIds:
-        - b33c2bf9-23cc-4348-8793-c6240a4258e5
-        - 81532ffa-3b1a-4b23-a071-defbf0935ca2
-        - 03577b3a-b0d3-44ba-90c6-53e69dd2e054
-        - 5ecb0c82-0f3c-45da-b11d-85175804d8d5
-      - name: Comer
-        id: 03f432c0-71ea-46bb-9a62-0fad6c19e979
-        position: {x: -230.4, y: 788.80005}
-        node:
-          rid: 3915210491625209932
-        references:
-        - fieldName: Action
-          value:
-            rid: 8790748559051325514
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 2504f682-5013-4f91-a93b-8bf778634398
-        childIds: []
-      - name: CansarUnPoco
-        id: 81532ffa-3b1a-4b23-a071-defbf0935ca2
-        position: {x: 515.3333, y: 834.6666}
-        node:
-          rid: 3915210491625209941
-        references:
-        - fieldName: Action
-          value:
-            rid: 3915210491625209942
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
-        childIds: []
-      - name: 
-        id: 03577b3a-b0d3-44ba-90c6-53e69dd2e054
-        position: {x: 809.6, y: 832}
-        node:
-          rid: 8790748559051325533
-        references: []
-        parentIds:
-        - 31d9daa5-78d5-4fa3-9da4-d330f69d1fa4
-        childIds:
-        - 2e288971-97e1-4f8d-b069-82c5ff32138c
-    pushPerceptions: []
-  references:
-    version: 2
-    RefIds:
-    - rid: 3915210452180140219
-      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140220
-      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data:
-        Iterations: -1
-    - rid: 3915210452180140221
-      type: {class: SelectorNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data:
-        IsRandomized: 0
-    - rid: 3915210452180140226
-      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140227
-      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140228
-      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140229
-      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data:
-        IsRandomized: 0
-    - rid: 3915210452180140233
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140234
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140235
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140236
-      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140237
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140238
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210452180140239
-      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data:
-        IsRandomized: 0
-    - rid: 3915210491625209921
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: PatoFase1
-          methodName: Descansar
-    - rid: 3915210491625209925
-      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        init:
-          componentName: 
-          methodName: 
-        check:
-          componentName: PatoFase1
-          methodName: ObjectiveClose
-        reset:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
-    - rid: 3915210491625209927
-      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        init:
-          componentName: 
-          methodName: 
-        check:
-          componentName: PatoFase1
-          methodName: FueraAgua
-        reset:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
-    - rid: 3915210491625209928
-      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        init:
-          componentName: 
-          methodName: 
-        check:
-          componentName: PatoFase1
-          methodName: EstaCansado
-        reset:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
-    - rid: 3915210491625209931
-      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        init:
-          componentName: 
-          methodName: 
-        check:
-          componentName: PatoFase1
-          methodName: EnAgua
-        reset:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
-    - rid: 3915210491625209932
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210491625209939
-      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        start:
-          componentName: 
-          methodName: 
-        update:
-          componentName: PatoFase1
-          methodName: MoveTowardsObjective
-        stop:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
-    - rid: 3915210491625209940
-      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
-      data:
-        maxDistance: 4.04
-    - rid: 3915210491625209941
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3915210491625209942
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: PatoFase1
-          methodName: UsarEnergia
-    - rid: 8790748559051325510
-      type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        compoundAction:
-          rid: 8790748559051325511
-        subActions:
-        - action:
-            rid: 8790748559051325512
-        - action:
-            rid: 8790748559051325513
-    - rid: 8790748559051325511
-      type: {class: SerialAction, ns: BehaviourAPI.Core.Actions, asm: BehaviourAPI.Core}
-      data:
-        TargetStatus: 2
-    - rid: 8790748559051325512
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: PatoFase1
-          methodName: Aletear
-    - rid: 8790748559051325513
-      type: {class: DelayAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
-      data:
-        delayTime: 1
-    - rid: 8790748559051325514
-      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        start:
-          componentName: PatoFase1
-          methodName: InitComer
-        update:
-          componentName: PatoFase1
-          methodName: UpdateComer
-        stop:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
-    - rid: 8790748559051325521
-      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        start:
-          componentName: PatoFase1
-          methodName: IrAEstanqueInit
-        update:
-          componentName: PatoFase1
-          methodName: IrAEstanqueUpdate
-        stop:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
-    - rid: 8790748559051325533
-      type: {class: SuccederNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
---- !u!114 &3265168231409010287
+  m_PatoFase1: {fileID: 7825277932379568860}
+  debuggerComponent: {fileID: 8015346038508110730}
+--- !u!114 &7825277932379568860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a844a2f954e5e4ba1fbad3cb1d9900, type: 3}
@@ -769,14 +201,15 @@ MonoBehaviour:
   energiaMax: 6
   radioDentroEstanque: 3.1
   energiaActual: 6
+  lazyDetector: {fileID: 0}
   posEstanque: {fileID: 0}
---- !u!114 &2443815622253805130
+--- !u!114 &4755471148070525510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81016613ea3feb04b8c61c0b1124211a, type: 3}
@@ -787,13 +220,13 @@ MonoBehaviour:
   minDistanceToTarget: 1.43
   drawGizmos: 1
   targetColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!195 &6929240427020917792
+--- !u!195 &7145521477485007439
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3861474199279081320}
+  m_GameObject: {fileID: 680003361910681132}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
@@ -809,7 +242,22 @@ NavMeshAgent:
   m_BaseOffset: 0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!1 &4261474014042962397
+--- !u!114 &8015346038508110730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680003361910681132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1726e9fdb9ff2d4baa8710d607b31ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventHandler:
+    debugStatusChanges: 1
+    identifier: 
+--- !u!1 &715010777476063646
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -817,7 +265,67 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7824398969198209910}
+  - component: {fileID: 779844469412199992}
+  - component: {fileID: 4187617561856461967}
+  m_Layer: 0
+  m_Name: DeteccionEstanqueCercano
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &779844469412199992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715010777476063646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6589561979161053450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4187617561856461967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715010777476063646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06927ee9532fa574cb4202f29fd1c299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastTargetFetched: {fileID: 0}
+  detectionRange: 15.2
+  shape: 0
+  ignoreSelf: 1
+  ignoreChildren: 1
+  ignoreParents: 1
+  ignoreSpecificGameObjects: 0
+  specificGameObjectsToIgnore: []
+  filterByTag: 1
+  targetTag: Estanque
+  useOtherTags: 0
+  otherTags: []
+  filterByLayer: 1
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!1 &3856177900926464247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422819611393915240}
   m_Layer: 0
   m_Name: ---Este item SI se mete en el carro---
   m_TagString: Untagged
@@ -825,22 +333,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7824398969198209910
+--- !u!4 &422819611393915240
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4261474014042962397}
+  m_GameObject: {fileID: 3856177900926464247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7786798524681370391}
+  m_Father: {fileID: 6437857797374941389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7532906148717974664
+--- !u!1 &6236250245175557067
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -848,80 +356,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5527169980876146993}
-  - component: {fileID: 104233677479796680}
-  - component: {fileID: 7651718791821259170}
-  m_Layer: 0
-  m_Name: CosasDelPropioItem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5527169980876146993
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7532906148717974664}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2218180882925251927}
-  - {fileID: 5030346121232568663}
-  m_Father: {fileID: 7786798524681370391}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &104233677479796680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7532906148717974664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemParent: {fileID: 3861474199279081320}
-  amountInStack: 1
-  itemName: 2
-  itemType: 0
-  useParentGrabbable: 1
-  simpleGrabbable: {fileID: 0}
---- !u!114 &7651718791821259170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7532906148717974664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ef8be813f0be84cb4bd316f13ad476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceptedFoodType: 1
-  wantsFood: 1
-  stopsBeingHungryOnEat: 1
-  OnEat:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1 &8938820840941726670
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5030346121232568663}
-  - component: {fileID: 2404026471683223656}
-  - component: {fileID: 9018712717441458165}
+  - component: {fileID: 5189430019634792863}
+  - component: {fileID: 2445770843596326793}
+  - component: {fileID: 5909069157623011513}
   m_Layer: 0
   m_Name: Modelo
   m_TagString: Untagged
@@ -929,36 +366,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &5030346121232568663
+--- !u!4 &5189430019634792863
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8938820840941726670}
+  m_GameObject: {fileID: 6236250245175557067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5527169980876146993}
+  m_Father: {fileID: 4734618897094371112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2404026471683223656
+--- !u!33 &2445770843596326793
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8938820840941726670}
+  m_GameObject: {fileID: 6236250245175557067}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9018712717441458165
+--- !u!23 &5909069157623011513
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8938820840941726670}
+  m_GameObject: {fileID: 6236250245175557067}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -997,13 +434,208 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &1820077396748864188
+--- !u!1 &7809717569867627393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4734618897094371112}
+  - component: {fileID: 2715451622575097306}
+  - component: {fileID: 8970698537241242186}
+  m_Layer: 0
+  m_Name: CosasDelPropioItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4734618897094371112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809717569867627393}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1172405520191469914}
+  - {fileID: 5189430019634792863}
+  m_Father: {fileID: 6437857797374941389}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2715451622575097306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809717569867627393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 680003361910681132}
+  amountInStack: 1
+  itemName: 3
+  itemType: 0
+  useParentGrabbable: 1
+  simpleGrabbable: {fileID: 0}
+--- !u!114 &8970698537241242186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809717569867627393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ef8be813f0be84cb4bd316f13ad476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceptedFoodType: 1
+  wantsFood: 1
+  stopsBeingHungryOnEat: 1
+  OnEat:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &7923539118289555011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7163902101016823029}
+  - component: {fileID: 2118359663946339485}
+  m_Layer: 0
+  m_Name: DeteccionInteraccionConOtros
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7163902101016823029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7923539118289555011}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6437857797374941389}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118359663946339485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7923539118289555011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06927ee9532fa574cb4202f29fd1c299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastTargetFetched: {fileID: 0}
+  detectionRange: 1.23
+  shape: 0
+  ignoreSelf: 1
+  ignoreChildren: 1
+  ignoreParents: 1
+  ignoreSpecificGameObjects: 1
+  specificGameObjectsToIgnore:
+  - {fileID: 7809717569867627393}
+  filterByTag: 0
+  targetTag: 
+  useOtherTags: 0
+  otherTags: []
+  filterByLayer: 1
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!1 &8011988971508330972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6589561979161053450}
+  m_Layer: 0
+  m_Name: "---A este item se le interactua con comida pues se la come \xF1am ---"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6589561979161053450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011988971508330972}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 779844469412199992}
+  m_Father: {fileID: 6437857797374941389}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8427072093982098739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1867665542779049918}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1867665542779049918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427072093982098739}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.15, z: -0.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6437857797374941389}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1715732810528284337
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5527169980876146993}
+    m_TransformParent: {fileID: 4734618897094371112}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bfb1415f1ff432d4b8625791cb3cd7f1, type: 3}
       propertyPath: m_LocalScale.x
@@ -1075,21 +707,26 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfb1415f1ff432d4b8625791cb3cd7f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1464707258727775752}
+      addedObject: {fileID: 1073388531177852727}
   m_SourcePrefab: {fileID: 100100000, guid: bfb1415f1ff432d4b8625791cb3cd7f1, type: 3}
---- !u!1 &1550187623549646829 stripped
+--- !u!4 &1172405520191469914 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfb1415f1ff432d4b8625791cb3cd7f1, type: 3}
+  m_PrefabInstance: {fileID: 1715732810528284337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1949751013649441760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bfb1415f1ff432d4b8625791cb3cd7f1, type: 3}
-  m_PrefabInstance: {fileID: 1820077396748864188}
+  m_PrefabInstance: {fileID: 1715732810528284337}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1464707258727775752
+--- !u!95 &1073388531177852727
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550187623549646829}
+  m_GameObject: {fileID: 1949751013649441760}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a5aff07e6b2dc5143b26b62d97e958eb, type: 2}
@@ -1104,8 +741,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!4 &2218180882925251927 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfb1415f1ff432d4b8625791cb3cd7f1, type: 3}
-  m_PrefabInstance: {fileID: 1820077396748864188}
-  m_PrefabAsset: {fileID: 0}

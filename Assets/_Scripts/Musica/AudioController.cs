@@ -17,4 +17,5 @@ public class AudioController : MonoBehaviour
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
         Settings.Instance.NewVolume(volume);
     }
+ 
 }
