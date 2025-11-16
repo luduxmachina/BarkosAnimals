@@ -11,6 +11,8 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
     [SerializeField, ReadOnly, HideIf("hasObjInHand", false)]
     IGrabbable objInHand;
+    [Header("Audios")]
+    [SerializeField] private PlayerSoundManager soundManager;
 
     IContinuousPlayerInteractionReciever continuousTarget;
     public void StopInteractingWithTarget()
@@ -26,11 +28,13 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
         {
             if (detector.HasTarget())
             {
+                soundManager.ActivarSonidoPickUp();
                interacted= InteractWith(detector.GetTarget()); 
             }
         }
         else
         {
+            soundManager.ActivarSonidoPickUp();
             interacted = InteractWith(objInHand.gameObject);
 
         }
