@@ -18,7 +18,8 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 {
     GameFlowManager gameFlowManager;
 
-    TextMeshProUGUI textoQuota;
+    [SerializeField]TextMeshProUGUI textoQuota;
+    [SerializeField]TextMeshProUGUI textoQuotaNeeded;
 
     TextMeshProUGUI[] texts;
 
@@ -55,6 +56,7 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
     {
         quota = GameFlowManager.instance.quotaChecker.GetQuota();
         int numImage = 0;
+                
         //if (quota.Restrictions[Restriction.Herbivore] > 0)
         //{
         //    imageHerbivore.gameObject.SetActive(true);
@@ -64,7 +66,8 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 
         cuotaText = quota.QuotaValue.ToString();
 
-        textoQuota.text = $"{cuotaPassText}/{cuotaText}";
+        textoQuota.text = "0/";
+        textoQuotaNeeded.text = cuotaText;
         restictions.Clear();
         restictions = quota.Restrictions;
 
@@ -77,7 +80,7 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 
                 restrictionUI.textPass.gameObject.SetActive(true);
                 restrictionUI.textNeeded.gameObject.SetActive(true);
-                restrictionUI.textPass.text = "0";
+                restrictionUI.textPass.text = "0/";
                 restrictionUI.textNeeded.text = restictions[restrictionUI.restriction].ToString();
                 restrictionUI.textPass.gameObject.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
                 restrictionUI.textNeeded.gameObject.GetComponent<RectTransform>().anchoredPosition -= new Vector2(0, numImage * height);
@@ -89,8 +92,8 @@ public class QuotaUi : MonoBehaviour, QuotaUiInterface, ISerializationCallbackRe
 
     public void UpdateQuotaPassed(Quota quotaPassed, bool isQuotaPassed)
     {
-        this.cuotaPassText = quota.QuotaValue.ToString();
-        textoQuota.text = $"{cuotaPassText}/{cuotaText}";
+        this.cuotaPassText = quotaPassed.QuotaValue.ToString();
+        textoQuota.text = $"{cuotaPassText}/";
         if (isQuotaPassed)
         {
             textoQuota.color = Color.green;
