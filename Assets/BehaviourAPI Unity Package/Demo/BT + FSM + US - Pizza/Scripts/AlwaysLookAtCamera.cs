@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace BehaviourAPI.UnityToolkit.Demos
 {
@@ -7,9 +8,15 @@ namespace BehaviourAPI.UnityToolkit.Demos
 
         #region variables
 
-        [SerializeField] private GameObject target;
+        [SerializeField] private Camera target;
 
         #endregion variables
+
+        private void Start()
+        {
+            if (target == null)
+                target = Camera.main;
+        }
 
         // Update is called once per frame
         private void Update()
