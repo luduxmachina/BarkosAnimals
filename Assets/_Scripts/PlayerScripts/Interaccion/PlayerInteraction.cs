@@ -28,17 +28,19 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
         {
             if (detector.HasTarget())
             {
-                soundManager.ActivarSonidoPickUp();
                interacted= InteractWith(detector.GetTarget()); 
             }
         }
         else
         {
-            soundManager.ActivarSonidoPickUp();
             interacted = InteractWith(objInHand.gameObject);
 
         }
+        if (interacted)
+        {
+            soundManager.ActivarSonidoPickUp();
 
+        }
         //si quereis hacer un sonidito o algo con interacted aqui:
 
 
