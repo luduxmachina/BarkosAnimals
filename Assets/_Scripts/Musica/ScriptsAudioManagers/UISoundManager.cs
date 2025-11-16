@@ -8,6 +8,7 @@ public class UISoundManager : MonoBehaviour
     public AudioSource CancelarSound;
     public AudioSource MaximizarSound;
     public AudioSource MinimizarSound;
+    public AudioSource PasarPaginaSound;
 
     public void ActivarSonidoBoton()
     {
@@ -37,6 +38,13 @@ public class UISoundManager : MonoBehaviour
     {
 
         CancelarSound.Play();
+
+    }
+
+    public void ActivarSonidoPasarPagina()
+    {
+
+        PasarPaginaSound.Play();
 
     }
 
