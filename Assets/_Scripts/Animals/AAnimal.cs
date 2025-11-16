@@ -204,14 +204,14 @@ public abstract class AAnimal : MonoBehaviour
         }
         return Status.Running;
     }
-    public void MoveTowardsObjectiveInit()
+    public virtual void MoveTowardsObjectiveInit()
     {
         if (animator != null)
         {
             animator.SetTrigger("Walk");
         }
     }
-    public Status MoveTowardsObjective()
+    public virtual Status MoveTowardsObjective()
     {
         if (!ObjectiveClose()) //la comida puede desaparecer
         {

@@ -1,16 +1,29 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SuciedadSpawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [SerializeField]
+    private GameObject suciedadPrefab;
+    [SerializeField]
+    float spawnInterval = 5f;
+    [SerializeField]
+    float randomAddedTimeRange = 2f;
+    private float timeUntilSpawn = 0f;
+
+    private void Update()
     {
-        
+        timeUntilSpawn -= Time.deltaTime;
+        if (timeUntilSpawn <= 0f)
+        {
+            SpawnSuciedad();
+            timeUntilSpawn = spawnInterval + Random.Range(-randomAddedTimeRange, randomAddedTimeRange);
+        }
+    }
+    private void SpawnSuciedad()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
