@@ -57,7 +57,9 @@ public class GridPlacementState : IGridBuildingState
         Vector3Int cellPos = grid.WorldToCell(position);
         cellPos.y = 0;
         Vector3 worldCellPos = grid.GetCellCenterWorld(cellPos);
-        worldCellPos = new Vector3(worldCellPos.x + girdSize / 2, worldCellPos.y, worldCellPos.z + girdSize / 2);
+        gridPreview?.UpdatePosition(worldCellPos, false, grid.cellSize.x, false);
+        
+        worldCellPos = new Vector3(worldCellPos.x - girdSize / 2, cellPos.y, worldCellPos.z - girdSize / 2);
 
         // Check if can be placed
         Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
@@ -72,7 +74,6 @@ public class GridPlacementState : IGridBuildingState
         gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos);
 
         AddOcupiedSpaces(relativeCellPos, placeableObjects[selectedObjectIndex], selectedObjectIndex, gameObjectIndex);
-        gridPreview?.UpdatePosition(worldCellPos, false, grid.cellSize.x, false);
     }
 
     private void AddOcupiedSpaces(Vector2Int relativeCellPos, IPlaceableObjectData ObjData, int id, int placedObjIndex)

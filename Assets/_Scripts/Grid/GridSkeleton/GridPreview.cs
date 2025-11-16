@@ -98,7 +98,6 @@ public class GridPreview : MonoBehaviour
 
     private void MovePreview(Vector3 position, float gridSize)
     {
-        // previewObject.transform.position = new Vector3(position.x, position.y + previewYOffset, position.z);
         previewObject.transform.position = new Vector3(
             position.x - gridSize * 0.5f, 
             previewYOffset, 
