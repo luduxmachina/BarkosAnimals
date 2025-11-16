@@ -1,27 +1,57 @@
 using System;
 using UnityEngine;
 
-public class GridInput : MonoBehaviour, IGridInput
+public class AnimalGridInput : MonoBehaviour, IGridInput
 {
-    public event Action OnClick, OnExit;
-
+    public event Action OnClick;
+    public event Action OnExit;
+    
     [SerializeField]
-    private LayerMask groundLayerMask;
+    private LayerMask animalGroundLayerMask = LayerMask.GetMask("AnimalCell");
     [SerializeField]
     private Camera mainCamera;
 
+    [SerializeField] private float yOffset = 0.5f;
+    
     private GridPlacementManager gridPlacementManager;
     private Vector3 lastMousePos;
-
+    
     private void Awake()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
     }
-
+    
     private void Start()
     {
         gridPlacementManager = GetComponent<GridPlacementManager>();
+    }
+    
+    private void Update()
+    {
+        //////////////////// TESTEO ////////////////////
+        if (Input.GetMouseButtonDown(0))
+            OnClick?.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            OnExit?.Invoke();
+    }
+    
+    public Vector3 GetSelectedMapPosition()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = mainCamera.nearClipPlane;
+        Ray ray = mainCamera.ScreenPointToRay(mousePos);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, animalGroundLayerMask))
+        {
+            lastMousePos = hit.point;
+        }
+        lastMousePos = new Vector3(lastMousePos.x, lastMousePos.y + yOffset, lastMousePos.z);
+
+        return lastMousePos;
     }
 
     public void StartPlacing(int id)
@@ -33,31 +63,4 @@ public class GridInput : MonoBehaviour, IGridInput
     {
         gridPlacementManager.StartRemoving();
     }
-
-    private void Update()
-    {
-        //////////////////// TESTEO ////////////////////
-        if (Input.GetMouseButtonDown(0))
-            OnClick?.Invoke();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            OnExit?.Invoke();
-    }
-
-    public Vector3 GetSelectedMapPosition()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = mainCamera.nearClipPlane;
-        Ray ray = mainCamera.ScreenPointToRay(mousePos);
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, groundLayerMask))
-        {
-            lastMousePos = hit.point;
-        }
-
-        return lastMousePos;
-    }
 }
-

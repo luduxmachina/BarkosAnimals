@@ -9,11 +9,19 @@ public class BarrilInteractionControlesr : MonoBehaviour, IInteractable
     {
         ItemInScene temp = interactor.GetComponent<ItemInScene>();
         CuencoManager cManager = temp.gameObject.GetComponentInParent<CuencoManager>();
-        if (cManager != null && stacksContenido > 0)
+        if (cManager != null)
         {
-            cManager.SetFood(tipoContenido);
-            stacksContenido--;
-            return true;
+            if(stacksContenido > 0 && !cManager.HayComida())
+            {
+                cManager.SetFood(tipoContenido);
+                stacksContenido--;
+                return true;
+            }
+            else if(cManager.HayComida() && cManager.ComidaEnCuenco() == tipoContenido)
+            {
+                stacksContenido++;
+                cManager.SetFood(ItemNames.None);
+            }
         }
         return false;
     }

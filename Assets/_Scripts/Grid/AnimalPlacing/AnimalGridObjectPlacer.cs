@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPlacer : MonoBehaviour, IObjectPlacer
+public class AnimalGridObjectPlacer : MonoBehaviour, IObjectPlacer
 {
     [SerializeField] private Transform parent;
+    [SerializeField] private float heightOffset = 0.5f;
     
     private List<GameObject> placedObjects = new List<GameObject>();
-
+    
     public int PlaceObject(GameObject prefab, Vector3 worldCellPos)
     {
+        
         GameObject newObj;
         if (parent == null)
         {
@@ -19,20 +21,23 @@ public class ObjectPlacer : MonoBehaviour, IObjectPlacer
             newObj = Instantiate(prefab, parent);
         }
         
+        worldCellPos = new Vector3(worldCellPos.x, worldCellPos.y + heightOffset, worldCellPos.z);
+        
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
 
-        // return gameObjectIndex
         return placedObjects.Count - 1;
     }
 
     public int PlaceObject(GameObject prefab, Vector3 worldCellPos, Transform parentTransform)
     {
         GameObject newObj = Instantiate(prefab, parentTransform);
+        
+        worldCellPos = new Vector3(worldCellPos.x, worldCellPos.y + heightOffset, worldCellPos.z);
+        
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
 
-        // return gameObjectIndex
         return placedObjects.Count - 1;
     }
 

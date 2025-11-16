@@ -32,7 +32,7 @@ public class AAnimalFase2: AAnimal
     [SerializeField, ReadOnly]bool isHerbivore = false;
 
     float tiempoSinLimpiar = 0f;
-    float tiempoSinComer = 6000f;
+    float tiempoSinComer = 0f;
 
     public float depredadoresCerca = 0f;
 
@@ -58,8 +58,8 @@ public class AAnimalFase2: AAnimal
     {
         base.Update();
 
-        tiempoSinLimpiar += Time.deltaTime;
-        tiempoSinComer += Time.deltaTime;
+        if(tiempoSinLimpiar <= MaxSinLimpiar)tiempoSinLimpiar += Time.deltaTime;
+        if(tiempoSinComer <= MaxSinComer)tiempoSinComer += Time.deltaTime;
         
         if(establo != null)
         {
@@ -136,7 +136,7 @@ public class AAnimalFase2: AAnimal
         
             return Status.Failure;
         }
-        if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.25) //alguien ha movido la comida o al animal y ya no esta comiendo lol
+        if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.75) //alguien ha movido la comida o al animal y ya no esta comiendo lol
         {
             if (animator)
             {
@@ -232,7 +232,8 @@ public class AAnimalFase2: AAnimal
 
     public void Rascarse()
     {
-        stikersManager.SetImage(StikersGenerales.Enfermo);
+        stikersManager.SetImage(StikersGenerales.NecesitaLimpiar);
+        tiempoSinLimpiar -= (MaxSinLimpiar / 6);
     }
 
     public void MostrarHambre()
