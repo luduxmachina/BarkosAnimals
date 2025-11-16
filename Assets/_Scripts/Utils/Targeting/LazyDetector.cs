@@ -25,7 +25,7 @@ public class LazyDetector : MonoBehaviour, ITargeter
     [Space]
     [SerializeField] bool filterByTag = false;
     [SerializeField, HideIf("filterByTag", false)] string targetTag = "";
-    [SerializeField] bool useOtherTags = false;
+    [SerializeField, HideIf("filterByTag", false)] bool useOtherTags = false;
     [SerializeField, HideIf("useOtherTags", false)] string[] otherTags = new string[0];
     [SerializeField] bool filterByLayer = true;
     [SerializeField, HideIf("filterByLayer", false)] LayerMask targetLayerMask = 1;
