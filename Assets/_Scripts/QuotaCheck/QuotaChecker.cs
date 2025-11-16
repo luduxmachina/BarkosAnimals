@@ -11,8 +11,14 @@ public class QuotaChecker
 
     Dictionary<ItemNames, int> animalValues = new Dictionary<ItemNames, int>()
     {
-        {ItemNames.Duck, 50 }
-    };    
+        {ItemNames.Duck, 50 }, {ItemNames.Snake, 100}
+    };
+
+    List<ItemNames> sonAnimales = new List<ItemNames>
+    {
+        ItemNames.Snake,
+        ItemNames.Duck
+    };
 
 
     bool isQuotaPass = false;
@@ -63,29 +69,18 @@ public class QuotaChecker
     {
         ItemNames tipo = animal.Name;
 
-        switch (tipo)
+        if(sonAnimales.Contains(tipo))
         {
-            case ItemNames.Duck:
 
-                break;
-            default:
-                Debug.LogError("Animal type not recognized in QuotaChecker");
-                break;
-        }
+            quotaPassed.AddPoints(animalValues[animal.Name]);
 
+            this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);
 
+            foreach (var item in quotaUIs)
+            {
+                item.UpdateQuotaPassed(quotaPassed, isQuotaPass);
+            }
 
-
-
-
-
-        quotaPassed.AddPoints(animalValues[animal.Name]);
-
-        this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);
-
-        foreach (var item in quotaUIs)
-        {
-            item.UpdateQuotaPassed(quotaPassed, isQuotaPass);
         }
     }
 
