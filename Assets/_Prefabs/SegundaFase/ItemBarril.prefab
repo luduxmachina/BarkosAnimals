@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3470992753089955334}
   - component: {fileID: 6286832907531543121}
-  - component: {fileID: 931005356193459741}
-  - component: {fileID: 8282092802670869120}
-  - component: {fileID: 4556912750804896740}
+  - component: {fileID: 6443881228165092239}
+  - component: {fileID: 747017966377030175}
+  - component: {fileID: 6736355857018764605}
   m_Layer: 0
   m_Name: ItemBarril
   m_TagString: Item
@@ -66,7 +66,6 @@ Transform:
   m_Children:
   - {fileID: 3559941757200800050}
   - {fileID: 2922802865182948498}
-  - {fileID: 81044207914191962}
   - {fileID: 6352437305572241628}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -95,9 +94,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &931005356193459741
+--- !u!114 &6443881228165092239
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,16 +105,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3834372903808297247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
+  m_Script: {fileID: 11500000, guid: b0979e1c5b0966f45a7170970f7e7f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerInteractable: 1
-  OnPlayerInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionSuccessful: 1
---- !u!65 &8282092802670869120
-BoxCollider:
+  tipoContenido: 1
+  stacksContenido: 20
+--- !u!135 &747017966377030175
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -129,30 +125,28 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.95, z: 1}
-  m_Center: {x: -0.04, y: -0.6, z: 0.04}
---- !u!114 &4556912750804896740
-MonoBehaviour:
+  m_Radius: 1.21
+  m_Center: {x: 0, y: -0.58, z: 0}
+--- !u!208 &6736355857018764605
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3834372903808297247}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ef8be813f0be84cb4bd316f13ad476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceptedFoodType: 1
-  wantsFood: 1
-  stopsBeingHungryOnEat: 1
-  OnEat:
-    m_PersistentCalls:
-      m_Calls: []
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.54, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7411442334459693038
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,66 +232,6 @@ MonoBehaviour:
   itemType: 0
   useParentGrabbable: 1
   simpleGrabbable: {fileID: 0}
---- !u!1 &7821840092683191319
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 81044207914191962}
-  - component: {fileID: 2108432865169259974}
-  m_Layer: 0
-  m_Name: DeteccionInteraccionConOtros
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &81044207914191962
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821840092683191319}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.735, z: 0.02}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3470992753089955334}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2108432865169259974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821840092683191319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06927ee9532fa574cb4202f29fd1c299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastTargetFetched: {fileID: 0}
-  detectionRange: 1.23
-  shape: 0
-  ignoreSelf: 1
-  ignoreChildren: 1
-  ignoreParents: 1
-  ignoreSpecificGameObjects: 0
-  specificGameObjectsToIgnore: []
-  filterByTag: 0
-  targetTag: 
-  useOtherTags: 0
-  otherTags: []
-  filterByLayer: 1
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!1001 &1541112682210516840
 PrefabInstance:
   m_ObjectHideFlags: 0

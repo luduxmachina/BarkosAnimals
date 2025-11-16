@@ -211,7 +211,7 @@ public abstract class AAnimal : MonoBehaviour
             animator.SetTrigger("Walk");
         }
     }
-    public Status MoveTowardsObjective()
+    public virtual Status MoveTowardsObjective()
     {
         if (!ObjectiveClose()) //la comida puede desaparecer
         {

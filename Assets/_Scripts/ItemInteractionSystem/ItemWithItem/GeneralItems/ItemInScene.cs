@@ -29,6 +29,7 @@ public class ItemInScene : MonoBehaviour
     }
     public void ReduceByOne()
     {
+        Debug.Log("Se ha comido un trozo");
         amountInStack--;
         CheckStatus();
     }

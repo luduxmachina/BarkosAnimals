@@ -10,8 +10,18 @@ public class Stable : MonoBehaviour
     Dictionary<ItemNames, int> animalesEstablo = new Dictionary<ItemNames, int>();
 
     [SerializeField] RecipientController comedero;
-    [SerializeField] 
+    
+    public static List<Stable> allStables = new List<Stable>();
+    private void OnEnable()
+    {
+        allStables.Add(this);
+    }
+    private void OnDisable()
+    {
+        allStables.Remove(this);
+    }
 
+    public List<AAnimalFase2> animalesReferecia = new List<AAnimalFase2>();
 
     /// <summary>
     /// Returns all the animals with the specified ItemName

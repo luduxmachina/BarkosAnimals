@@ -66,7 +66,6 @@ public class AAnimalFase2: AAnimal
             Debug.Log("Establo en el animal");
 
             SistemaUtilidad.enabled = true;
-            navMeshAgent.enabled = true;
         }
     }
 
