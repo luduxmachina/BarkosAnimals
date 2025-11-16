@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridPreview : MonoBehaviour
 {
     [SerializeField] 
-    private float previewYOffset = 0.05f;
+    private float ScaleOffset = 1.05f;
 
     [SerializeField] 
     private GameObject cellIndicator;
@@ -100,9 +100,10 @@ public class GridPreview : MonoBehaviour
     {
         previewObject.transform.position = new Vector3(
             position.x - gridSize * 0.5f, 
-            previewYOffset, 
+            0, 
             position.z - gridSize * 0.5f
         );
+        previewObject.transform.localScale = new Vector3(ScaleOffset, ScaleOffset, ScaleOffset);
     }
 
     private void MoveCursor(Vector3 position, float gridSize)

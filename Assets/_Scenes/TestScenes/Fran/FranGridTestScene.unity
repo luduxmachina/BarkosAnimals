@@ -1969,7 +1969,19 @@ MonoBehaviour:
     - values: 00000000000000000000
     - values: 00000000000000000000
   cellSize: 1
+  ConfigureGrid:
+    m_PersistentCalls:
+      m_Calls: []
   OnGridCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDecorationPlacing:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNavMeshGenerating:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemPlacing:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1874163652
@@ -2026,6 +2038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataBase: {fileID: 11400000, guid: fc1d8eefb75d2a94f815df2d81c38845, type: 2}
   gridVisualization: {fileID: 1448095906}
+  numOfGrids: 1
 --- !u!156049354 &1971174127
 Grid:
   m_ObjectHideFlags: 0
@@ -2158,7 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaf4c6161942bd438767ee8b11c9387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewYOffset: 0.05
+  ScaleOffset: 1.05
   cellIndicator: {fileID: 1620073478}
   previewMaterialPrefab: {fileID: 2100000, guid: fa51ebb6f1ea7c2418816898232aea8b, type: 2}
   canBePlacedColor: {r: 1, g: 1, b: 1, a: 1}
