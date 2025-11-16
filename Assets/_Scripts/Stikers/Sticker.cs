@@ -1,8 +1,24 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum StikersGenerales
+{
+    None,
+    Enfadado,
+    Enfermo,
+    Corazones,
+    Incomodo,
+    Cansancio,
+    NecesitaLimpiar,
+    NecesitaComerZanahoria,
+    NecesitaComerCarne
+}
+
+
+[Serializable]
 public class Sticker
 {
-    public string Name;
-    public Image image;
+    [field: SerializeField]public StikersGenerales tipo;
+    [field: SerializeField]public Sprite spritePegatina;
 }

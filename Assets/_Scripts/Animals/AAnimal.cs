@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(IMovementComponent))]
@@ -39,6 +40,7 @@ public abstract class AAnimal : MonoBehaviour
     protected float radioDetectionObjective = 10f;
     [SerializeField]
     protected float radioDetectionPredator = 15f;
+
     [SerializeField]
     protected  float radioAtaqueComida = 2.0f;
     [Header("------------------Tiempos------------------")]
@@ -51,11 +53,12 @@ public abstract class AAnimal : MonoBehaviour
     protected Transform lastObjectve;
     protected Vector3 lastTargetPos;
 
-    public List<IAction> activeActions;
+    #region Monobehaviour
     protected virtual void Awake()
     {
         movimiento = GetComponent<IMovementComponent>();
     }
+
     protected virtual void Start()
     {
         movimiento.Speed = walkingSpeed;
@@ -82,6 +85,12 @@ public abstract class AAnimal : MonoBehaviour
     {
         return this.run;
     }
+
+    protected virtual void Update(){}
+
+    #endregion
+
+    #region Getters
     public float GetWalkingSpeed()
     {
         return this.walkingSpeed;
@@ -99,7 +108,7 @@ public abstract class AAnimal : MonoBehaviour
         return this.animator;
     }
     /// <summary>
-    /// Objetivo más cercano
+    /// Objetivo mï¿½s cercano
     /// </summary>
     /// <returns></returns>
     public virtual Transform GetClosestObjetive(){
@@ -128,6 +137,10 @@ public abstract class AAnimal : MonoBehaviour
         }
         return count;
     }
+
+    #endregion
+
+    #region Actions
     public virtual void InitComer()
     {
         if(!ObjectiveClose()) { return; }
@@ -237,12 +250,20 @@ public abstract class AAnimal : MonoBehaviour
     }
 
 
-    public void Die()
+    public virtual void Die()
     {
         //no creo que este bien 
-        GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects( animalType, -1));
         Destroy(this.gameObject);
     }
+
+    public virtual bool NotObjectiveCloseToAttack()
+    {
+        return !this.ObjectiveCloseToAttack();
+    }
+
+    #endregion
+
+    #region Pulls
 
     public virtual bool PredatorClose()
     {
@@ -286,10 +307,8 @@ public abstract class AAnimal : MonoBehaviour
             return false;
         }
     }
-    public virtual bool NotObjectiveCloseToAttack()
-    {
-        return !this.ObjectiveCloseToAttack();
-    }
 
-
+    #endregion
 }
+
+
