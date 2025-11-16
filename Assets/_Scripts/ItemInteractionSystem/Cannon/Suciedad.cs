@@ -8,6 +8,13 @@ public class Suciedad : MonoBehaviour
     int nivelSuciedad = 50;
     Vector3 originalLocalScale;
 
+    Stable stable;
+
+    public void SetStable(Stable stable)
+    {
+        this.stable = stable;
+    }
+
     private void Awake()
     {
         this.tag = "Suciedad";
@@ -22,17 +29,20 @@ public class Suciedad : MonoBehaviour
     {
         nivelSuciedad--;
         Debug.Log("OrinigalLocal scale: " + originalLocalScale);
-        transform.localScale = (nivelSuciedad+20)/(float)maxSuciedad * originalLocalScale;
+        transform.localScale = (nivelSuciedad+(maxSuciedad*0.5f))/(float)maxSuciedad * originalLocalScale;
         Debug.Log("New local scale: " + transform.localScale);
         if (nivelSuciedad <= 0)
         {
-            LimpiarAlrededor();
+            LimpiarEstablo();
             Destroy(this.gameObject);
         }
     }
 
-    private void LimpiarAlrededor()
+    private void LimpiarEstablo()
     {
-
+        foreach (AAnimalFase2 animal in stable.animalesReferecia)
+        {
+            animal.AMax = 0f;
+        }
     }
 }
