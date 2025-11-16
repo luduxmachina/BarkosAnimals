@@ -6,6 +6,8 @@ public class PuffAnimation : MonoBehaviour
 
     private void OnDisable()
     {
+        if (!gameObject.scene.isLoaded) return;
+        
         if (puffPrefab == null)
         {
             Debug.LogWarning($"No se asignó un prefab para el Puff en [{gameObject.name}]");
