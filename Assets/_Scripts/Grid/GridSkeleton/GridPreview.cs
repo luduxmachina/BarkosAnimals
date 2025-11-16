@@ -27,6 +27,7 @@ public class GridPreview : MonoBehaviour
     private GameObject removingGameObject;
     private GameObject removingGameObjectInstance;
     private List<GameObject> removingMarkers = new List<GameObject>();
+    private Vector3 previewScale;
     
     private void Start()
     {
@@ -46,6 +47,7 @@ public class GridPreview : MonoBehaviour
         cellIndicator.SetActive(true);
         previewObject = Instantiate(prefab);
         
+        previewScale = previewObject.transform.localScale * scaleOffset;
         PrepareCursor(size);
         PreparePreview();
     }
@@ -106,7 +108,7 @@ public class GridPreview : MonoBehaviour
             heightOffset, 
             position.z - gridSize * 0.5f
         );
-        previewObject.transform.localScale = Vector3.one * scaleOffset;
+        previewObject.transform.localScale = previewScale;
     }
 
     private void MoveCursor(Vector3 position, float gridSize)
