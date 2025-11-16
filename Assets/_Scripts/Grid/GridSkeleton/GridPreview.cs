@@ -163,6 +163,10 @@ public class GridPreview : MonoBehaviour
             r.isKinematic = false;
             r.useGravity = false;
         }
+
+        PuffAnimation puff;
+        if (TryGetComponent<PuffAnimation>(out puff))
+            puff.enabled = false;
         
         var layer = LayerMask.NameToLayer("Ignore Raycast");
         previewObject.layer = layer;
