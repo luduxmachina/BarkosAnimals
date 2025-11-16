@@ -7,7 +7,7 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
     public event Action OnExit;
     
     [SerializeField]
-    private LayerMask animalGroundLayerMask = LayerMask.GetMask("AnimalCell");
+    private LayerMask animalGroundLayerMask;
     [SerializeField]
     private Camera mainCamera;
 
