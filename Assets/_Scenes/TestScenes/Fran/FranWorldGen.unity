@@ -1722,11 +1722,55 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5453373539788189388, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453373539788189388, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1384470612}
+    - target: {fileID: 5453373539788189388, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453373539788189388, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddItemToQuota
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453373539788189388, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AddAnimal, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453373539788189388, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 901740855681791228, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1384470612}
   m_SourcePrefab: {fileID: 100100000, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+--- !u!1 &1384470611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 901740855681791228, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+  m_PrefabInstance: {fileID: 1384470609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1384470612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384470611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756d943a793033047a3d2d75266c350d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1394710705
 GameObject:
   m_ObjectHideFlags: 0
