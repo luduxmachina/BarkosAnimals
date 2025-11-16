@@ -16,6 +16,7 @@ public class CuencoManager : MonoBehaviour
     [SerializeField]List<ComidaModelo> comidasYModelo = new();
 
     ItemNames tipoComida = ItemNames.None;
+    bool hayComida = false;
 
     public void SetFood(ItemNames tipoComida)
     {
@@ -31,6 +32,19 @@ public class CuencoManager : MonoBehaviour
                 com.modelo.gameObject.SetActive(false);
             }
         }
+        if(tipoComida != ItemNames.None)
+        {
+            hayComida = true;
+        }
+        else
+        {
+            hayComida = false;
+        }
+    }
+
+    public bool HayComida()
+    {
+        return hayComida;
     }
 
 
