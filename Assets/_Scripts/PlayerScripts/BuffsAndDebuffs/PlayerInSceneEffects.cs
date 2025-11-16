@@ -36,6 +36,7 @@ public class PlayerInSceneEffects : MonoBehaviour
     }
     public void AddStunt(float time)
     {
+        Debug.Log("Aplicando Stunt al jugador" + time);
         AddEffect(new StuntEffect(time));
     }
     private void Awake()

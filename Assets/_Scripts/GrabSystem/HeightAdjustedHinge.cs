@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class HeightAdjustedHinge : MonoBehaviour
 {
+    Rigidbody rb;
     [SerializeField]
     Transform rotationTransform;
     [SerializeField]
     float distanceToGround = 1.0f;
+    private void Awake()
+    {
+        rb = GetComponentInChildren<Rigidbody>();
+    }
     private void FixedUpdate()
     {
         transform.localPosition = Vector3.zero;
@@ -17,6 +22,7 @@ public class HeightAdjustedHinge : MonoBehaviour
             float heightDiff = hit.distance - distanceToGround;
             transform.position -= new Vector3(0, heightDiff, 0);
         }
+        rb.MovePosition(transform.position); //para que se acutalice la pos del rigid body, no lo puedo poner congelado porque entonces no me coge los cambios el hinge cuando no giro lol
     }
     private void OnDrawGizmosSelected()
     {

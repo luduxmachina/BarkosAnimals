@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInSceneEffects playerInSceneEffects;
     [Header("Ground Check")]
     [SerializeField] private AdaptToFloor adaptToFloor;
+    [Header("Audios")]
+    [SerializeField] private PlayerSoundManager soundManager;
 
 
 
@@ -30,10 +32,12 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.sqrMagnitude > 0.1f)
         {
             MoveAndRotate();
+            soundManager.StartMovementLoop();
         }
         else
         {
             animator.SetTrigger("Idle");
+            soundManager.StopMovementLoop();
         }
     }
   
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         move = Vector3.ProjectOnPlane(move, adaptToFloor.upVector).normalized;
         move *= playerCurrentStats.currentStats.moveSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
+        
 
 
         if (move.sqrMagnitude > 0.0001f)
@@ -66,7 +71,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         animator.SetTrigger("Dash");
-        rb.AddForce(transform.forward*playerCurrentStats.currentStats.dashForce, ForceMode.Impulse);
+        soundManager.ActivarSonidoDash();
+        rb.AddForce(rb.mass*transform.forward*playerCurrentStats.currentStats.dashForce, ForceMode.Impulse);
         playerInSceneEffects.AddOnDashEffects();
         Debug.Log("Dash");
     }
@@ -79,7 +85,8 @@ public class PlayerMovement : MonoBehaviour
         
         playerInSceneEffects.AddOnJumpEffects();
         animator.SetTrigger("Jump");
-        rb.AddForce(Vector3.up * playerCurrentStats.currentStats.jumpForce, ForceMode.Impulse);
+        soundManager.ActivarSonidoSalto();
+        rb.AddForce(rb.mass*Vector3.up * playerCurrentStats.currentStats.jumpForce, ForceMode.Impulse);
 
         
     }

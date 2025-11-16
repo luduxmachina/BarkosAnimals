@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(IMovementComponent))]
 public abstract class AAnimal : MonoBehaviour
@@ -30,6 +31,8 @@ public abstract class AAnimal : MonoBehaviour
 
     [SerializeField]
     protected float rotateSpeed = 1.0f;
+    [SerializeField]
+    protected float patrolRadius = 5.0f;
 
     [Header("-----------------Rangos-----------------")]
 
@@ -45,7 +48,7 @@ public abstract class AAnimal : MonoBehaviour
     protected float tiempoEnComer = 3.0f;
     protected float tiempoComiendo = 0.0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    protected ItemNames animalType;
     protected IMovementComponent movimiento;
     protected Transform lastObjectve;
     protected Vector3 lastTargetPos;
@@ -63,6 +66,24 @@ public abstract class AAnimal : MonoBehaviour
         {
             (movimiento as NavmeshAgentMovement).minDistanceToTarget= radioAtaqueComida;
         }
+        NavMeshAgent nav = GetComponent<NavMeshAgent>();
+        if (nav != null)
+        {
+           // nav.stoppingDistance = radioAtaqueComida;
+            nav.angularSpeed = rotateSpeed;
+        }
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+    }
+    public float GetPatrolRadius()
+    {
+        return this.patrolRadius;
+    }
+    public float GetRunSpeed()
+    {
+        return this.run;
     }
 
     protected virtual void Update(){}
@@ -183,10 +204,21 @@ public abstract class AAnimal : MonoBehaviour
         }
         return Status.Running;
     }
-    public virtual Status MoveTowardsObjective()
+    public void MoveTowardsObjectiveInit()
+    {
+        if (animator != null)
+        {
+            animator.SetTrigger("Walk");
+        }
+    }
+    public Status MoveTowardsObjective()
     {
         if (!ObjectiveClose()) //la comida puede desaparecer
         {
+            if (animator != null)
+            {
+                animator.SetTrigger("Idle");
+            }
             movimiento.CancelMove();
 
             return Status.Failure;
@@ -204,6 +236,10 @@ public abstract class AAnimal : MonoBehaviour
         }
         if (movimiento.HasArrived())
         {
+            if (animator != null)
+            {
+                animator.SetTrigger("Idle");
+            }
             movimiento.CancelMove();
 
             return Status.Success;

@@ -2,9 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SerpienteInScene : AAnimal
+public class SerpienteInScene : AAnimal 
 {
     IGrabbable grabbable;
+    [Header("----------Serpiente---------")]
+
+    [SerializeField]
+    SimpleGrabber thisGrabber;
     [Header("Stats")]
     [SerializeField]
     private float stuntTime = 2.0f;
@@ -16,14 +20,34 @@ public class SerpienteInScene : AAnimal
         base.Awake();
         grabbable = GetComponentInParent<IGrabbable>();
     }
+    public float GetTiempoDescanso()
+    {
+        return tiempoDescanso;
+    }
+    public void PlayAttackAnim()
+    {
+        animator.SetTrigger("Attack");
+    }
+    public void PlaySurpriseAnim()
+    {
+        animator.SetTrigger("Surprise");
+    }
+    public void PlayRunAnim()
+    {
+        animator.SetTrigger("Run");
+    }    
+    public void PlayWalkAnim()
+    {
+        animator.SetTrigger("Walk");
+    }
     public void AttackGrabber()
     {
         IGrabber grabber = grabbable.currentGrabber;
         if(grabber != null)
         {
             grabber.gameObject.GetComponentInChildren<PlayerInSceneEffects>()?.AddStunt(stuntTime);
+            PlayAttackAnim();
         }
-        
         grabbable.Drop(); //se libera  si misma
     }
     private bool CheckCart(List<ItemNames> posiblesPresas)
@@ -32,10 +56,8 @@ public class SerpienteInScene : AAnimal
         Transform carroT = IslandPositions.instance.GetClosest(transform.position, ItemNames.Cart);
         if(carroT == null) { return false;  }
 
-
-        CartData cartData = carroT?.GetComponent<CartData>();
+        CartData cartData = carroT?.GetComponentInChildren<CartData>();
         if (cartData == null) { return false; }
-
         var temp= cartData.GetAllInventoryObjects();
         foreach (var item in temp)
         {
@@ -48,9 +70,47 @@ public class SerpienteInScene : AAnimal
         return false;
 
     }
+    public override void InitComer()
+    {
+        base.InitComer();
+        thisGrabber.TryGrab(lastObjectve);
+
+    }
     public void ComerEnCarro()
     {
-        Debug.Log("COmido en carro");
+        CartData cartData = lastObjectve.GetComponentInChildren<CartData>();
+        if (cartData == null) { return; }
+
+        var temp = cartData.GetAllInventoryObjects();
+        ItemNames itemAComer;
+        int i;
+        for( i = 0; i < temp.Count; i++)
+        {
+
+            if (this.objectives.Contains(temp[i].Name))
+            {
+
+                itemAComer = temp[i].Name;
+                break;
+            }
+        }
+
+        //esto funciona porque justo la serpiente no tiene un grabber, lo tiene algun hijo
+        var cartInScene =cartData.GetComponentInChildren<CartInScene>();
+        if(cartInScene== null)
+        {
+            cartInScene = cartData.GetComponentInParent<CartInScene>(); //tu en algun puto lado
+
+        }
+
+        if (cartInScene == null) { return; }
+        Debug.Log("6");
+
+        cartInScene.OnPlayerInteraction(this.gameObject); //"abre" el carro pero no abre la interfazx porqu no es el player, y se queda como ultimo interactor
+        cartData.ExtractInventoryObjectByIndex(i); //lo "saca" pero no lo spawnea en la escena asi que es como si se lo "come"
+        cartInScene.Interact(animalType, this.gameObject); //con esto se deberia meter y todo funciona 
+        Debug.Log("7");
+
     }
     public bool ObjectiveIsCart()
     {

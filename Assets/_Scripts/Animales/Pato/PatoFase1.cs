@@ -18,7 +18,7 @@ public class PatoFase1 : AAnimal
     private int energiaActual=6;
     public Transform posEstanque;
 
-    private void Start()
+    protected override void Start()
     {
         base.Start();
         energiaActual = energiaMax;
@@ -101,13 +101,11 @@ public class PatoFase1 : AAnimal
     {
         energiaActual = energiaMax;
         //Animator supongo
-        Debug.Log("Descansando");
 
     }
     public void Aletear()
     {
         //animator supongo
-        Debug.Log("Aleteando");
     }
   
 
