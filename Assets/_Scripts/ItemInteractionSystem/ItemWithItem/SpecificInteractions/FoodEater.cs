@@ -14,7 +14,11 @@ public class FoodEater : MonoBehaviour, IInteractable
         {
             return false;
         }
-
+        ItemInScene itemInScene = interactor.GetComponentInChildren<ItemInScene>();
+        if (itemInScene != null )
+        {
+            itemInScene.ReduceByOne();
+        }
         //si es la comida que come
         if (stopsBeingHungryOnEat)
         {
