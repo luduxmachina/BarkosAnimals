@@ -7,9 +7,6 @@ public class IslandPositions : MonoBehaviour //lo pdoria hacer a pelo sin monobe
     public static IslandPositions instance;
     Dictionary<ItemNames, List<Transform>> itemsDictionary = new Dictionary<ItemNames, List<Transform>>();
 
-    Transform playerTransform;
-    Transform cartTransform;
-    Transform boatTransform;
     public UnityEvent<Vector3> DangerEvent = new UnityEvent<Vector3>();
     void Awake()
     {
@@ -36,29 +33,18 @@ public class IslandPositions : MonoBehaviour //lo pdoria hacer a pelo sin monobe
         }
         itemsDictionary[animalType].Remove(tr);
     }
-    public void SetPlayerPosition(Transform tr)
+    public Transform[] GetAll(params ItemNames[] type)
     {
-        playerTransform = tr;
-    }
-    public Transform GetPlayerPosition()
-    {
-        return playerTransform;
-    }
-    public void SetCartPosition(Transform tr)
-    {
-        cartTransform = tr;
-    }
-    public Transform GetCartPosition()
-    {
-        return cartTransform;
-    }
-    public void SetBoatPosition(Transform tr)
-    {
-        boatTransform = tr;
-    }
-    public Transform GetBoatPosition()
-    {
-        return boatTransform;
+        List<Transform> result = new List<Transform>();
+        foreach (var t in type)
+        {
+            if (!itemsDictionary.ContainsKey(t))
+            {
+                continue;
+            }
+            result.AddRange(itemsDictionary[t]);
+        }
+        return result.ToArray();
     }
     public Transform GetClosest(Vector3 pos, params ItemNames[] types)
     {
@@ -73,6 +59,7 @@ public class IslandPositions : MonoBehaviour //lo pdoria hacer a pelo sin monobe
             foreach (var tr in itemsDictionary[type])
             {
                 float dist = Vector3.Distance(pos, tr.position);
+                if(dist< 0.01f) { continue; } //para evitar pillar el mismo objeto 
                 if (dist < closestDistance)
                 {
                     closestDistance = dist;

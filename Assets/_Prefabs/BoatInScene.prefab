@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4112807907845072433}
   - component: {fileID: 1053498968096977768}
   - component: {fileID: 5432987086088412434}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CartToBoatHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipData: {fileID: 5453373539788189388}
+  onTransferComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1579847896328755274
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,6 +83,7 @@ GameObject:
   - component: {fileID: 5750659359589934027}
   - component: {fileID: 613518823362481880}
   - component: {fileID: 3885113769053348718}
+  - component: {fileID: 1482791068389471543}
   m_Layer: 0
   m_Name: BoatInScene
   m_TagString: Item
@@ -176,6 +180,24 @@ MonoBehaviour:
   allObjectTypes: {fileID: 11400000, guid: ac343572966cfa248988fcbc42391523, type: 2}
   inventoryUI: {fileID: 6371369959180425795}
   shipData: {fileID: 5453373539788189388}
+--- !u!114 &1482791068389471543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579847896328755274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 1579847896328755274}
+  amountInStack: 1
+  itemName: 8
+  itemType: 0
+  useParentGrabbable: 1
+  simpleGrabbable: {fileID: 0}
 --- !u!1001 &3743306417222189267
 PrefabInstance:
   m_ObjectHideFlags: 0

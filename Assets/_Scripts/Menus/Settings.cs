@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Settings
 {
-    private float volume = 0.5f;
-    private bool isMuted = false;
-    private int difficulty = 2; // 1: Easy, 2: Medium, 3: Hard
+    private float volume;
+    private bool isMuted;
+    private int difficulty;
 
     private static Settings _instance;
 
@@ -17,10 +17,17 @@ public class Settings
             return _instance;
         }
     }
-
+    private Settings()
+    {
+        volume = PlayerPrefs.GetFloat("volume", 0.5f);
+        isMuted = PlayerPrefs.GetInt("isMuted", 0) == 1;
+        difficulty = PlayerPrefs.GetInt("difficulty", 2);
+    }
     public void NewVolume(float volume)
     {
         this.volume = volume;
+        PlayerPrefs.SetFloat("volume", volume);
+        PlayerPrefs.Save();
     }
 
     public bool IsMuted()
@@ -31,6 +38,8 @@ public class Settings
     public void ToggleMute(bool isMuted)
     {
         this.isMuted = isMuted;
+        PlayerPrefs.SetInt("isMuted", isMuted ? 1 : 0);
+        PlayerPrefs.Save();
     }
     public float GetVolume()
     {
@@ -40,6 +49,8 @@ public class Settings
     public void SetDifficulty(int difficulty)
     {
         this.difficulty = difficulty;
+        PlayerPrefs.SetInt("difficulty", difficulty);
+        PlayerPrefs.Save();
     }
 
     public int GetDifficulty()

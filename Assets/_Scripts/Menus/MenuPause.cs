@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements.InputSystem;
 
@@ -12,7 +13,9 @@ public class MenuPause : MonoBehaviour
     public GameObject Bestiary;
     public GameObject Options;
 
-    
+    public static UnityEvent OnPause = new UnityEvent();
+    public static UnityEvent OnResume = new UnityEvent();
+
     private void Awake()
     {
         pausePlayerAction = inputActions.FindActionMap("Player").FindAction("Pause"); //awsd o left joystick
@@ -35,6 +38,7 @@ public class MenuPause : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         PausaMenuUI.SetActive(true);
+        OnPause?.Invoke();
     }
 
     public void ResumeGame()
@@ -43,6 +47,7 @@ public class MenuPause : MonoBehaviour
         PausaMenuUI.SetActive(false);
         Bestiary.SetActive(false);
         Options.SetActive(false);
+        OnResume?.Invoke();
     }
 
     public void ExitToMainMenu()
