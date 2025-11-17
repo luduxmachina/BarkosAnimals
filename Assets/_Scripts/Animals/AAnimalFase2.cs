@@ -1,5 +1,4 @@
 using BehaviourAPI.Core;
-using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -24,7 +23,6 @@ public class AAnimalFase2: AAnimal
     [SerializeField] protected Stable establo;
     [SerializeField] StikersManager stikersManager;
     [SerializeField] AllObjectTypesSO animalsDataBase;
-    [SerializeField] EditorBehaviourRunner SistemaUtilidad;
     [SerializeField] NavMeshAgent navMeshAgent;
 
     public bool hayComida = false;
@@ -65,7 +63,7 @@ public class AAnimalFase2: AAnimal
         {
             Debug.Log("Establo en el animal");
 
-            SistemaUtilidad.enabled = true;
+            //SistemaUtilidad.enabled = true;
         }
     }
 

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using BehaviourAPI.UnityToolkit;
 using UnityEditor;
 using UnityEngine;
@@ -62,3 +63,4 @@ namespace BehaviourAPI.UnityToolkit.Editor
         }
     }
 }
+#endif

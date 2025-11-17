@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
-using static UnityEditor.PlayerSettings;
 
 public class CameraCinematic : MonoBehaviour
 {

@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using BehaviourAPI.UnityToolkit;
+
 using UnityEditor;
 using UnityEngine;
 
@@ -59,3 +61,4 @@ public class InteractionMapPropertyDrawer : PropertyDrawer
         return EditorGUIUtility.singleLineHeight * (count + 2) + k_RowSpaceSize * (count);
     }
 }
+#endif
