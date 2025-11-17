@@ -1,4 +1,6 @@
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
+using static UnityEditor.PlayerSettings;
 
 public class CameraCinematic : MonoBehaviour
 {
@@ -22,10 +24,10 @@ public class CameraCinematic : MonoBehaviour
     {
         if (isMoving)
         {
-            // Traslaciï¿½n
+            // Traslación
             transform.position = Vector3.Lerp( transform.position, targetPosition, Time.deltaTime * positionSmoothSpeed);
 
-            // Rotaciï¿½n
+            // Rotación
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothSpeed);
 
             if (Vector3.Distance(transform.position, targetPosition) < 0.01f && Quaternion.Angle(transform.rotation, targetRotation) < 0.5f)
