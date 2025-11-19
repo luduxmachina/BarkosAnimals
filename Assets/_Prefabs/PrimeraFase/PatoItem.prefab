@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 7825277932379568860}
   - component: {fileID: 4755471148070525510}
   - component: {fileID: 7145521477485007439}
-  - component: {fileID: 8015346038508110730}
   m_Layer: 0
   m_Name: PatoItem
   m_TagString: Item
@@ -174,7 +173,6 @@ MonoBehaviour:
   executeOnLoop: 0
   interruptOptions: 0
   m_PatoFase1: {fileID: 7825277932379568860}
-  debuggerComponent: {fileID: 8015346038508110730}
 --- !u!114 &7825277932379568860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,21 +241,6 @@ NavMeshAgent:
   m_BaseOffset: 0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8015346038508110730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680003361910681132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1726e9fdb9ff2d4baa8710d607b31ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventHandler:
-    debugStatusChanges: 1
-    identifier: 
 --- !u!1 &715010777476063646
 GameObject:
   m_ObjectHideFlags: 0
