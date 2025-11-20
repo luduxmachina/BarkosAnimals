@@ -17,7 +17,7 @@ MonoBehaviour:
     <ID>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 4925871895595155890, guid: ac216125b1ae67543a4169a54fa5e417, type: 3}
     <OcupiedSpace>k__BackingField:
-      rows: 10
+      rows: 11
       columns: 9
       matrix:
       - values: 010101010101010101
@@ -30,13 +30,23 @@ MonoBehaviour:
       - values: 010101010101010101
       - values: 010101010101010101
       - values: 010101010101010101
-    <ImageUI>k__BackingField: {fileID: 0}
-  - <Name>k__BackingField: Barril
+      - values: 010101010101010101
+    <ImageUI>k__BackingField: {fileID: 21300000, guid: c5e083025259f6146b0384dcaa5d6df3, type: 3}
+  - <Name>k__BackingField: BarrilPan
     <ID>k__BackingField: 1
-    <Prefab>k__BackingField: {fileID: 4925871895595155890, guid: ac216125b1ae67543a4169a54fa5e417, type: 3}
+    <Prefab>k__BackingField: {fileID: 7752556588645477509, guid: 2a61ccc50ca7d6d4ea735fa9e4132bf7, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
       columns: 1
       matrix:
       - values: 01
-    <ImageUI>k__BackingField: {fileID: 0}
+    <ImageUI>k__BackingField: {fileID: 21300000, guid: b32507996881f1f4a959f5cd56e5a663, type: 3}
+  - <Name>k__BackingField: BarrilCarne
+    <ID>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 8440886757882110126, guid: 246bccfde982eb14ea892fc11448a2f0, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 1
+      columns: 1
+      matrix:
+      - values: 01
+    <ImageUI>k__BackingField: {fileID: 21300000, guid: a9ee0d687510dc14a92bb4763f95f1ba, type: 3}

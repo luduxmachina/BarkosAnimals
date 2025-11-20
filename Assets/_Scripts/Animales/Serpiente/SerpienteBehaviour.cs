@@ -7,12 +7,10 @@ using BehaviourAPI.Core.Perceptions;
 using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.StateMachines;
 using BehaviourAPI.BehaviourTrees;
-using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 
 public class SerpienteBehaviour : BehaviourRunner
 {
 	[SerializeField] private SerpienteInScene m_SerpienteInScene;
-	[SerializeField] private BSRuntimeDebugger debuggerComponent;
     [SerializeField] private Transform HuirRecto_action_OtherTransform;
 	[SerializeField] private Transform HuirIzq_action_OtherTransform;
 	private PushPerception Cogido;
@@ -54,18 +52,18 @@ public class SerpienteBehaviour : BehaviourRunner
         StateTransition SerCogido = SnakeFSM.CreateTransition(Huyendo, recienCogido, statusFlags: StatusFlags.None);
 
 
-        UnityTimePerception tiempoTrasCogido_perception = new UnityTimePerception();
-        tiempoTrasCogido_perception.TotalTime = 0.6f;
+        UnityTimePerception pasadoTiempoTrasCogido_perception = new UnityTimePerception();
+        pasadoTiempoTrasCogido_perception.TotalTime = 0.6f;
 
         SimpleAction AtacarJugador_action = new SimpleAction();
 		AtacarJugador_action.action = m_SerpienteInScene.AttackGrabber;
 		State AtacarJugador = SnakeFSM.CreateState("AtacarJugador", AtacarJugador_action);
 		
-		StateTransition pasarAAtacar = SnakeFSM.CreateTransition(recienCogido, AtacarJugador, tiempoTrasCogido_perception);
+		StateTransition pasarAAtacar = SnakeFSM.CreateTransition(recienCogido, AtacarJugador, pasadoTiempoTrasCogido_perception);
 		
-		UnityTimePerception TiempoTrasAtacar_perception = new UnityTimePerception();
-		TiempoTrasAtacar_perception.TotalTime = m_SerpienteInScene.GetTiempoDescanso();
-		StateTransition TiempoTrasAtacar = SnakeFSM.CreateTransition(AtacarJugador, Huyendo, TiempoTrasAtacar_perception);
+		UnityTimePerception pasadoTiempoTrasAtacar_perception = new UnityTimePerception();
+		pasadoTiempoTrasAtacar_perception.TotalTime = m_SerpienteInScene.GetTiempoDescanso();
+		StateTransition TiempoTrasAtacar = SnakeFSM.CreateTransition(AtacarJugador, Huyendo, pasadoTiempoTrasAtacar_perception);
 		
 		ConditionPerception PeligroCerca_perception = new ConditionPerception();
 		PeligroCerca_perception.onCheck = m_SerpienteInScene.PredatorClose;
@@ -167,9 +165,6 @@ public class SerpienteBehaviour : BehaviourRunner
         SnakeHuyendoBT.SetRootNode(rootHuyendo);
 
         Cogido = new PushPerception(SerCogido);
-		debuggerComponent.RegisterGraph(SnakeTranquiCazandoBT);
-		debuggerComponent.RegisterGraph(SnakeHuyendoBT);
-        debuggerComponent.RegisterGraph(SnakeFSM);
 		return SnakeFSM;
 	}
 }
