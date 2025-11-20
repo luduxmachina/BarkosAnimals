@@ -8,10 +8,12 @@ public class Stable : MonoBehaviour
 {
 
     Dictionary<ItemNames, int> animalesEstablo = new Dictionary<ItemNames, int>();
+    public List<AAnimalFase2> animalesReferecia = new List<AAnimalFase2>();
 
     [SerializeField] RecipientController comedero;
     
     public static List<Stable> allStables = new List<Stable>();
+
     private void OnEnable()
     {
         allStables.Add(this);
@@ -20,8 +22,6 @@ public class Stable : MonoBehaviour
     {
         allStables.Remove(this);
     }
-
-    public List<AAnimalFase2> animalesReferecia = new List<AAnimalFase2>();
 
     /// <summary>
     /// Returns all the animals with the specified ItemName
@@ -52,6 +52,30 @@ public class Stable : MonoBehaviour
         }
 
         return numAnimales;
+    }
+    public int GetAnimalsInEstable(ItemNames[] tipos)
+    {
+        List<ItemNames> tiposAnim = tipos.ToList();
+        int numAnimales = 0;
+        foreach (ItemNames animName in animalesEstablo.Keys)
+        {
+            if(tiposAnim.Contains(animName)) numAnimales += animalesEstablo[animName];
+        }
+
+        return numAnimales;
+    }
+
+    public AAnimalFase2 GetAnimalFromTypes(ItemNames[] tipos)
+    {
+        List<ItemNames>tiposAnim = tipos.ToList();
+
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            if (tiposAnim.Contains(animal.thisItemName)){
+                return animal;
+            }
+        }
+        return null;
     }
     
 

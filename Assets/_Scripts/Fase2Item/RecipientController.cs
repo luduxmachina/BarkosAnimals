@@ -1,16 +1,24 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+[Serializable]
+public struct ComidaYComedero
+{
+    public ItemNames tipoComida;
+    public GameObject comedero;
+}
 
 public class RecipientController : MonoBehaviour
 {
     [SerializeField] int maxStacksFood = 3;
     int comidaStacks = 0;
 
-    [SerializeField] GameObject comederoLleno;
     [SerializeField] GameObject comederoVacio;
 
     [SerializeField] List<ItemNames> tiposDeComidaAceptados = new List<ItemNames>();
+    [SerializeField] List<ComidaYComedero> comidaYComederoList = new List<ComidaYComedero>();
+
     [SerializeField, ReadOnly] ItemNames tipoActual;
 
     public bool AddStack(ItemNames tipoComida)
@@ -24,7 +32,10 @@ public class RecipientController : MonoBehaviour
             else
             {
                 comidaStacks++;
-                comederoLleno.SetActive(true);
+                foreach (ComidaYComedero comedero in comidaYComederoList)
+                {
+                    if(comedero.tipoComida==tipoComida)comedero.comedero.SetActive(true);
+                }
                 comederoVacio.SetActive(false);
                 tipoActual = tipoComida;
                 return true;
@@ -58,7 +69,10 @@ public class RecipientController : MonoBehaviour
             comidaStacks--;
             if(comidaStacks <= 0)
             {
-                comederoLleno.SetActive(false);
+                foreach (ComidaYComedero comedero in comidaYComederoList)
+                {
+                    comedero.comedero.SetActive(false);
+                }
                 comederoVacio.SetActive(true);
             }
             return true;

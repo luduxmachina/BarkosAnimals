@@ -35,6 +35,14 @@ public class AAnimalFase2: AAnimal
     float tiempoSinComer = 0f;
 
     public float depredadoresCerca = 0f;
+    public bool estaFeliz;
+
+    public void SetEstaFeliz(bool esFeliz)
+    {
+        if (esFeliz == estaFeliz) { 
+        }
+    }
+    
 
     #region Monobehavior
     protected override void Awake()
@@ -100,19 +108,19 @@ public class AAnimalFase2: AAnimal
                 }
             }
         }
-        //else if (!ObjectiveClose())
-        //{
-        //    lastObjectve = GetClosestObjetive();
-        //    var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
-        //    if (temp) //se lo va a comer lit
-        //    {
-        //        if (animator)
-        //        {
-        //            animator.SetTrigger("Comer");
-        //        }
-        //    }
-        //
-        //}
+        else if (establo.GetAnimalsInEstable(objectives)>0)
+        {
+            lastObjectve = establo.GetAnimalFromTypes(objectives).transform;
+            var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
+            if (temp) //se lo va a comer lit
+            {
+                if (animator)
+                {
+                    animator.SetTrigger("Comer");
+                }
+            }
+        
+        }
         tiempoComiendo = 0.0f;
 
         
@@ -125,7 +133,7 @@ public class AAnimalFase2: AAnimal
             return Status.Failure;
         }
 
-        if (!TieneComida()) //la comida puede desaparecer
+        if (!TieneComida() && establo.GetAnimalsInEstable(objectives) <= 0) //la comida puede desaparecer
         {
             if (animator)
             {
@@ -157,6 +165,15 @@ public class AAnimalFase2: AAnimal
                 temp.RemoveStack(objectives);
                 tiempoSinComer = 0f;
             }
+            else
+            {
+                var temp2 = lastObjectve.GetComponentInChildren<ItemInScene>();
+                if (temp2) //se lo va a comer lit
+                {
+                    temp2.ReduceByOne();
+                }
+            }
+
             if (animator)
             {
                 animator.SetTrigger("Idle");
@@ -236,7 +253,7 @@ public class AAnimalFase2: AAnimal
         tiempoSinLimpiar -= (MaxSinLimpiar / 6);
     }
 
-    public void MostrarHambre()
+    public Status MostrarHambre()
     {
         if (isHerbivore)
         {
@@ -246,11 +263,18 @@ public class AAnimalFase2: AAnimal
         {
             stikersManager.SetImage(StikersGenerales.NecesitaComerCarne);
         }
+        return Status.Success;
     }
 
     public void MandarCorazones()
     {
         stikersManager.SetImage(StikersGenerales.Corazones);
+        GameFlowManager.instance.quotaChecker.UpdateCuotaWithHappinesOfAnimal(true);
+    }
+
+    public void YaNoEstaContento()
+    {
+        GameFlowManager.instance.quotaChecker.UpdateCuotaWithHappinesOfAnimal(false);
     }
 
     public void MostrarIncomodidad()
@@ -339,14 +363,14 @@ public class AAnimalFase2: AAnimal
         return establo.HayComida(objectives);
     }
 
-    public float HayComida()
+    public bool HayComida()
     {
         hayComida = TieneComida();
-        if (TieneComida())
+        if (TieneComida() || establo.GetAnimalsInEstable(objectives) > 0)
         {
-            return 1f;
+            return true;
         }
-        return 0f;
+        return false;
     }
 
     public override Vector3 GetNewPosition()
