@@ -27,6 +27,7 @@ public class BarrilInteractionControlesr : MonoBehaviour, IInteractable
                 stacksContenido++;
                 cManager.SetFood(ItemNames.None);
             }
+
             if (stacksContenido > 0)
             {
                 ModeloLleno.SetActive(true);
