@@ -210,6 +210,10 @@ public abstract class AAnimal : MonoBehaviour
         {
             animator.SetTrigger("Walk");
         }
+        lastObjectve = GetClosestObjetive();
+        lastTargetPos = lastObjectve.position;        
+        //o se ha movido o un pan mas cercano
+        movimiento.SetTarget(lastTargetPos);
     }
     public virtual Status MoveTowardsObjective()
     {

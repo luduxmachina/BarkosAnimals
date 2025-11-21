@@ -3,6 +3,7 @@ using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,7 +24,7 @@ public class AAnimalFase2: AAnimal
 
     [SerializeField] protected Stable establo;
     [SerializeField] StikersManager stikersManager;
-    [SerializeField] AllObjectTypesSO animalsDataBase;
+    //[SerializeField] AllObjectTypesSO animalsDataBase;
     [SerializeField] EditorBehaviourRunner SistemaUtilidad;
     [SerializeField] NavMeshAgent navMeshAgent;
 
@@ -48,10 +49,9 @@ public class AAnimalFase2: AAnimal
     protected override void Awake()
     {
 
-        ItemInScene thisItem = gameObject.GetComponentInChildren<ItemInScene>();
-        itemName = thisItem.itemName;
-        List<Restriction> restrict = animalsDataBase.GetRestrictions(itemName);
-        if (restrict.Contains(Restriction.Herbivore))
+
+        List<ItemNames> list = objectives.ToList();
+        if (list.Contains(ItemNames.Bread))
         {
             isHerbivore = true;
         }
@@ -95,36 +95,37 @@ public class AAnimalFase2: AAnimal
             Debug.LogWarning("El pato no está en ningún establo");
             return;
         }
-        if (TieneComida())
+        lastObjectve = GetClosestObjetive();
+        if (lastObjectve != null)
         {
-            lastObjectve = establo.GetComedero();
-            RecipientController temp = lastObjectve.GetComponentInChildren<RecipientController>();
-            if (temp) //se lo va a comer lit
+            if (animator)
             {
-                if (animator)
-                {
-                    animator.SetTrigger("Comer");
+                animator.SetTrigger("Comer");
 
-                }
             }
+            tiempoComiendo = 0.0f;
         }
-        else if (establo.GetAnimalsInEstable(objectives)>0)
-        {
-            lastObjectve = establo.GetAnimalFromTypes(objectives).transform;
-            var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
-            if (temp) //se lo va a comer lit
-            {
-                if (animator)
-                {
-                    animator.SetTrigger("Comer");
-                }
-            }
-        
-        }
-        tiempoComiendo = 0.0f;
-
-        
     }
+
+    public override bool ObjectiveClose()
+    {
+        return TieneComida() || establo.GetAnimalsInEstable(objectives) > 0;
+    }
+
+    public override Transform GetClosestObjetive()
+    {
+        if (!TieneComida())
+        {
+            return establo.GetComedero();
+        }
+        if(establo.GetAnimalsInEstable(objectives) > 0)
+        {
+            return establo.GetAnimalFromTypes(objectives).transform;
+        }
+        return null;
+    }
+
+
     public override Status UpdateComer()
     {
         if (establo == null)
@@ -133,7 +134,7 @@ public class AAnimalFase2: AAnimal
             return Status.Failure;
         }
 
-        if (!TieneComida() && establo.GetAnimalsInEstable(objectives) <= 0) //la comida puede desaparecer
+        if (!ObjectiveClose()) //la comida puede desaparecer
         {
             if (animator)
             {
@@ -144,6 +145,10 @@ public class AAnimalFase2: AAnimal
         
             return Status.Failure;
         }
+
+        Transform newObjetive = GetClosestObjetive();
+        if(!newObjetive == lastObjectve) return Status.Failure;
+
         if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.75) //alguien ha movido la comida o al animal y ya no esta comiendo lol
         {
             if (animator)
@@ -191,55 +196,7 @@ public class AAnimalFase2: AAnimal
         {
             return Status.Failure;
         }
-        if (!TieneComida()) //la comida puede desaparecer
-        {
-            movimiento.CancelMove();
-
-            return Status.Failure;
-        }
-        Transform objTR = establo.GetComedero().transform;
-        Vector3 currentObjPos = objTR.position;
-
-        if (lastTargetPos != currentObjPos)
-        {
-            lastTargetPos = currentObjPos;
-            lastObjectve = objTR;
-            //o se ha movido o un pan mas cercano
-            movimiento.SetTarget(currentObjPos);
-
-        }
-        if (movimiento.HasArrived())
-        {
-            movimiento.CancelMove();
-
-            return Status.Success;
-        }
-
-
-        return Status.Running;
-    }
-
-    public override bool ObjectiveClose()
-    {
-        if (establo == null)
-        {
-            Debug.LogWarning("El pato no está en ningún establo");
-            return false;
-        }
-        foreach (ItemNames objetivo in objectives)
-        {
-            if (establo.GetAnimalsInEstable(objetivo)>0)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public override Transform GetClosestObjetive()
-    {
-        return IslandPositions.instance.GetClosest(establo.transform.position, objectives);
-        
+        return base.MoveTowardsObjective();
     }
 
     public void Enfermar()
@@ -253,7 +210,7 @@ public class AAnimalFase2: AAnimal
         tiempoSinLimpiar -= (MaxSinLimpiar / 6);
     }
 
-    public Status MostrarHambre()
+    public void MostrarHambre()
     {
         if (isHerbivore)
         {
@@ -262,8 +219,7 @@ public class AAnimalFase2: AAnimal
         else
         {
             stikersManager.SetImage(StikersGenerales.NecesitaComerCarne);
-        }
-        return Status.Success;
+        }        
     }
 
     public void MandarCorazones()
@@ -277,14 +233,14 @@ public class AAnimalFase2: AAnimal
         GameFlowManager.instance.quotaChecker.UpdateCuotaWithHappinesOfAnimal(false);
     }
 
+    public void NoMostrarNada()
+    {
+        stikersManager.HideSprites();
+    }
+
     public void MostrarIncomodidad()
     {
         stikersManager.SetImage(StikersGenerales.Incomodo);
-    }
-
-    public void QuitarPegatinaEstado()
-    {
-        stikersManager.OcultSprites();
     }
 
     public void Limpiarse()

@@ -12,6 +12,9 @@ public class StikersManager : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     [SerializeField]
+    GameObject fondo;
+
+    [SerializeField]
     StickersGeneralesSO generalesDB;
 
     StikersGenerales stickerActual = StikersGenerales.None;
@@ -30,13 +33,16 @@ public class StikersManager : MonoBehaviour
 
     public void SetImage(StikersGenerales stickerType)
     {
+        fondo.SetActive(true);
+        
         Sprite sprite = generalesDB.GetSticker(stickerType);
         spriteRenderer.sprite = sprite;
         stickerActual = stickerType;
     }
 
-    public void OcultSprites()
+    public void HideSprites()
     {
+        fondo.SetActive(false);
         spriteRenderer.sprite = null;
         stickerActual = StikersGenerales.None;
     }

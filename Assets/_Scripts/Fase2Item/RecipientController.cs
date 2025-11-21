@@ -53,10 +53,6 @@ public class RecipientController : MonoBehaviour
         return comidaStacks > 0;
     }
 
-    public bool Interact(ItemNames interactorType, GameObject interactor)
-    {
-        throw new System.NotImplementedException();
-    }
 
     public bool RemoveStack(ItemNames[] tiposComida)
     {
