@@ -64,7 +64,7 @@ public class SerpienteBehaviour : BehaviourRunner
 		StateTransition pasarAAtacar = SnakeFSM.CreateTransition(recienCogido, AtacarJugador, tiempoTrasCogido_perception);
 		
 		UnityTimePerception TiempoTrasAtacar_perception = new UnityTimePerception();
-		TiempoTrasAtacar_perception.TotalTime = m_SerpienteInScene.GetTiempoDescanso();
+		TiempoTrasAtacar_perception.TotalTime = m_SerpienteInScene.GetTiempoTrasAtaque();
 		StateTransition TiempoTrasAtacar = SnakeFSM.CreateTransition(AtacarJugador, Huyendo, TiempoTrasAtacar_perception);
 		
 		ConditionPerception PeligroCerca_perception = new ConditionPerception();
@@ -101,8 +101,20 @@ public class SerpienteBehaviour : BehaviourRunner
 		ComerNormal_action.onStarted = m_SerpienteInScene.InitComer;
 		ComerNormal_action.onUpdated = m_SerpienteInScene.UpdateComer;
 		LeafNode ComerNormal = SnakeTranquiCazandoBT.CreateLeafNode("ComerNormal", ComerNormal_action);
-		
-		SelectorNode ComerOMeterseAlCarro = SnakeTranquiCazandoBT.CreateComposite<SelectorNode>(false, ObjetivoEsCarro, ComerNormal);
+
+		SimpleAction mostrarDescanso= new SimpleAction();
+        mostrarDescanso.action = m_SerpienteInScene.Descansar;
+        LeafNode DescansarNode = SnakeTranquiCazandoBT.CreateLeafNode("Descansar", mostrarDescanso);
+
+        DelayAction TiempoTrasComer = new DelayAction(m_SerpienteInScene.GetTiempoDescanso());
+		LeafNode TiempoTrasComerNode = SnakeTranquiCazandoBT.CreateLeafNode("TiempoTrasComer", TiempoTrasComer);
+
+
+        SequencerNode ComerConDelay = SnakeTranquiCazandoBT.CreateComposite<SequencerNode>("Comer y descansar", false, ComerNormal, DescansarNode, TiempoTrasComerNode);
+
+
+
+        SelectorNode ComerOMeterseAlCarro = SnakeTranquiCazandoBT.CreateComposite<SelectorNode>("Comer",false, ObjetivoEsCarro, ComerConDelay);
 		ComerOMeterseAlCarro.IsRandomized = false;
 		
 		ConditionNode PresaARangoDeComida = SnakeTranquiCazandoBT.CreateDecorator<ConditionNode>("PresaARango de comida", ComerOMeterseAlCarro);
@@ -110,7 +122,7 @@ public class SerpienteBehaviour : BehaviourRunner
         presaARangoDeComidaPerception.onCheck = m_SerpienteInScene.ObjectiveCloseToAttack;
         PresaARangoDeComida.Perception = presaARangoDeComidaPerception;
 
-        SequencerNode Cazando = SnakeTranquiCazandoBT.CreateComposite<SequencerNode>(false, Hay_PresaCerca, PresaARangoDeComida);
+        SequencerNode Cazando = SnakeTranquiCazandoBT.CreateComposite<SequencerNode>("Cazando", false, Hay_PresaCerca, PresaARangoDeComida);
 		Cazando.IsRandomized = false;
 		
 		PatrolAction Patrullar_action = new PatrolAction();

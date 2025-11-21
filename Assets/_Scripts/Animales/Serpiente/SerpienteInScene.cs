@@ -15,12 +15,18 @@ public class SerpienteInScene : AAnimal
     [SerializeField]
     private float tiempoDescanso = 5.0f;
     [SerializeField]
+    private float tiempoTrasAtacar = 0.75f;
+    [SerializeField]
     private StikersManager stickersManager;
 
     protected override void Awake()
     {
         base.Awake();
         grabbable = GetComponentInParent<IGrabbable>();
+    }
+    public float GetTiempoTrasAtaque()
+    {
+        return tiempoTrasAtacar;
     }
     public float GetTiempoDescanso()
     {
@@ -42,6 +48,11 @@ public class SerpienteInScene : AAnimal
     public void PlayWalkAnim()
     {
         animator.SetTrigger("Walk");
+    }
+    public void Descansar()
+    {
+        stickersManager.SetImage(StikersGenerales.Corazones);
+        animator.SetTrigger("Idle");
     }
     public void AttackGrabber()
     {
