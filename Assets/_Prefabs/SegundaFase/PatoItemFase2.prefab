@@ -407,7 +407,7 @@ MonoBehaviour:
       nodes:
       - name: TC
         id: f965e5fe-bb1f-4f74-a454-9f9b6464b07e
-        position: {x: 60, y: -89.6}
+        position: {x: 25, y: -122}
         node:
           rid: 6361364432508157955
         references:
@@ -492,13 +492,14 @@ MonoBehaviour:
         - e7eafa89-15bf-4fdb-ae61-18a5f2f4f730
       - name: Hambre
         id: 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
-        position: {x: 353, y: -82}
+        position: {x: 350, y: -130}
         node:
           rid: 6361364432508157969
         references: []
         parentIds:
-        - b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
         - 64a82012-b616-4ec0-b307-ceee5b070969
+        - 144f4729-034e-485f-a801-0c8089e154ee
+        - f43de9a8-5406-458c-a778-52ef467ef7e3
         childIds:
         - f965e5fe-bb1f-4f74-a454-9f9b6464b07e
       - name: Insalubridad
@@ -526,7 +527,7 @@ MonoBehaviour:
         - 8dfa8787-1041-4e98-be5d-e7c7e084bca6
       - name: Incomodidad
         id: 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
-        position: {x: 764, y: 579}
+        position: {x: 810, y: 631}
         node:
           rid: 6361364432508157975
         references: []
@@ -595,7 +596,7 @@ MonoBehaviour:
         - 734d7dcd-d8d4-4b44-a372-bbe72682044f
       - name: EstarIncomodo
         id: 6d37117d-e219-4782-918c-6a215222080e
-        position: {x: 1181.6, y: 921.60004}
+        position: {x: 1264, y: 834}
         node:
           rid: 6361364432508157981
         references:
@@ -610,7 +611,7 @@ MonoBehaviour:
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
       - name: Hambre
         id: b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
-        position: {x: 970.4, y: -313.6}
+        position: {x: 1010, y: -183}
         node:
           rid: 6361364450751021174
         references:
@@ -622,7 +623,7 @@ MonoBehaviour:
         parentIds:
         - 877682a0-6e01-4a40-a222-7cbca968302b
         childIds:
-        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+        - 144f4729-034e-485f-a801-0c8089e154ee
       - name: Felicidad
         id: 53a63e00-d108-4cd1-8b80-7ab9e9511d6f
         position: {x: 1688, y: 264}
@@ -635,7 +636,7 @@ MonoBehaviour:
         - a2ead301-dc4b-493b-a3ce-84db5e7f89c7
       - name: Patrol
         id: 5e57d581-5f2f-468b-8ed0-6b81966beee8
-        position: {x: 5.6, y: 1324.8}
+        position: {x: 4, y: 1041}
         node:
           rid: 6361364534266953795
         references: []
@@ -644,7 +645,7 @@ MonoBehaviour:
         childIds: []
       - name: Patruyar
         id: ae348b90-e4e6-40e7-8b6a-a27d266c481b
-        position: {x: 409.6, y: 1337.6}
+        position: {x: 408, y: 1054}
         node:
           rid: 6361364534266953796
         references:
@@ -658,7 +659,7 @@ MonoBehaviour:
         - 5e57d581-5f2f-468b-8ed0-6b81966beee8
       - name: AccionesQueRepercuten
         id: 877682a0-6e01-4a40-a222-7cbca968302b
-        position: {x: 1692, y: -305.6}
+        position: {x: 1714, y: -166}
         node:
           rid: 3784766880363577413
         references: []
@@ -697,6 +698,46 @@ MonoBehaviour:
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
         childIds:
         - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
+      - name: HayComida
+        id: 7ca0c86c-77fb-499e-8f3b-45ea637eb037
+        position: {x: 307, y: -389}
+        node:
+          rid: 6361364654760132608
+        references:
+        - fieldName: Variable
+          value:
+            rid: 6361364654760132609
+          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        parentIds:
+        - 144f4729-034e-485f-a801-0c8089e154ee
+        childIds: []
+      - name: Puede comer
+        id: 144f4729-034e-485f-a801-0c8089e154ee
+        position: {x: 810, y: -362}
+        node:
+          rid: 6361364654760132610
+        references: []
+        parentIds:
+        - b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
+        childIds:
+        - 7ca0c86c-77fb-499e-8f3b-45ea637eb037
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+      - name: TieneHambre
+        id: f43de9a8-5406-458c-a778-52ef467ef7e3
+        position: {x: 1106, y: -149}
+        node:
+          rid: 6361364654760132611
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364654760132612
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds:
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
     - name: Comer
       id: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
       graph:
@@ -711,12 +752,12 @@ MonoBehaviour:
         parentIds: []
         childIds:
         - 8e6e7717-5e2d-4eba-b381-7e6ccb7c1a15
-        - adb8ce98-2af3-406d-b5bf-21a3debcaae1
+        - 81255824-0a7a-498f-9ffc-d777242edf76
         - 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
         - ebed57a6-15f6-4b21-bc65-5d30e0fefa25
       - name: GoToEat
         id: 81255824-0a7a-498f-9ffc-d777242edf76
-        position: {x: 812.8, y: 392.8}
+        position: {x: 798, y: 141}
         node:
           rid: 6361364450751021126
         references:
@@ -726,7 +767,7 @@ MonoBehaviour:
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
-        - adb8ce98-2af3-406d-b5bf-21a3debcaae1
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
         childIds: []
       - name: Eat
         id: 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
@@ -744,13 +785,13 @@ MonoBehaviour:
         childIds: []
       - name: Moverse un poco
         id: ebed57a6-15f6-4b21-bc65-5d30e0fefa25
-        position: {x: 1450.4, y: 92.00001}
+        position: {x: 1472, y: 116}
         node:
           rid: 6361364534266953867
         references:
         - fieldName: Action
           value:
-            rid: 6361364534266953868
+            rid: 6361364654760132681
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -770,21 +811,6 @@ MonoBehaviour:
         parentIds:
         - 2b3299eb-71af-4d95-a41c-92fe856f688a
         childIds: []
-      - name: HayComida
-        id: adb8ce98-2af3-406d-b5bf-21a3debcaae1
-        position: {x: 794.4, y: 116.799995}
-        node:
-          rid: 3784766880363577476
-        references:
-        - fieldName: Perception
-          value:
-            rid: 3784766880363577477
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 2b3299eb-71af-4d95-a41c-92fe856f688a
-        childIds:
-        - 81255824-0a7a-498f-9ffc-d777242edf76
     - name: EstaFeliz
       id: bf45f6aa-b383-4e7c-9b9f-9a1f2ab5256f
       graph:
@@ -941,27 +967,6 @@ MonoBehaviour:
         method:
           componentName: AAnimalFase2
           methodName: MostrarHambre
-    - rid: 3784766880363577476
-      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 3784766880363577477
-      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        init:
-          componentName: 
-          methodName: 
-        check:
-          componentName: AAnimalFase2
-          methodName: HayComida
-        reset:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
     - rid: 3784766883916677187
       type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -1231,10 +1236,6 @@ MonoBehaviour:
     - rid: 6361364534266953867
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
-    - rid: 6361364534266953868
-      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
-      data:
-        maxDistance: 6
     - rid: 6361364647463616579
       type: {class: PointedCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -1253,6 +1254,39 @@ MonoBehaviour:
         Exponent: 0.5
         DespX: 0
         DespY: 0
+    - rid: 6361364654760132608
+      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        min: 0
+        max: 1
+    - rid: 6361364654760132609
+      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        componentName: AAnimalFase2
+        methodName: PuedeComer
+    - rid: 6361364654760132610
+      type: {class: MinFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+    - rid: 6361364654760132611
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364654760132612
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MostrarHambre
+    - rid: 6361364654760132681
+      type: {class: FleeAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        OtherTransform: {fileID: 0}
+        speed: 3
+        distance: 6
+        maxTimeRunning: 20
 --- !u!114 &7958219938240571257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,17 +1302,18 @@ MonoBehaviour:
   animator: {fileID: 3837092645045900981}
   predators: 04000000
   objectives: 01000000
-  walkingSpeed: 0.1
-  run: 0.2
+  walkingSpeed: 3.5
+  run: 6
   rotateSpeed: 121
   patrolRadius: 5
   radioDetectionObjective: 10
   radioDetectionPredator: 15
   radioAtaqueComida: 1
-  tiempoEnComer: 3
+  tiempoEnComer: 1
   itemName: 3
-  MaxSinLimpiar: 60
-  MaxSinComer: 70
+  MaxSinLimpiar: 10
+  MaxSinComer: 10
+  TiempoEnfermoHastaMorir: 54.3
   AMax: 2
   CMax: 3
   DMax: 2

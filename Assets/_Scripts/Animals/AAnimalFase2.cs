@@ -118,7 +118,7 @@ public class AAnimalFase2: AAnimal
 
             }
             tiempoComiendo = 0.0f;
-            if (!TieneComida())
+            if (!TieneComidaEnEstablo())
             {
                 this.GetComponentInChildren<SimpleGrabber>().TryGrab(lastObjectve);
             }
@@ -127,12 +127,12 @@ public class AAnimalFase2: AAnimal
 
     public override bool ObjectiveClose()
     {
-        return TieneComida() || establo.GetAnimalsInEstable(objectives) > 0;
+        return TieneComidaEnEstablo() || establo.GetAnimalsInEstable(objectives) > 0;
     }
 
     public override Transform GetClosestObjetive()
     {
-        if (TieneComida())
+        if (TieneComidaEnEstablo())
         {
             return establo.GetComedero();
         }
@@ -341,15 +341,21 @@ public class AAnimalFase2: AAnimal
         return tiempoSinComer/MaxSinComer;
     }
 
-    public bool TieneComida()
+    public bool TieneComidaEnEstablo()
     {
         return establo.HayComida(objectives);
     }
 
+    public float PuedeComer()
+    {
+        if (HayComida()) return 1f;
+        else return 0f;
+    }
+
     public bool HayComida()
     {
-        hayComida = TieneComida();
-        if (TieneComida() || establo.GetAnimalsInEstable(objectives) > 0)
+        hayComida = TieneComidaEnEstablo();
+        if (TieneComidaEnEstablo() || establo.GetAnimalsInEstable(objectives) > 0)
         {
             return true;
         }
