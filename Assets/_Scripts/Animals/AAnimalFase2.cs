@@ -77,6 +77,11 @@ public class AAnimalFase2: AAnimal
         }
     }
 
+    private void OnDestroy()
+    {
+        establo.ExitFromStable(this);  
+    }
+
     #endregion
 
     #region Setter
@@ -114,13 +119,14 @@ public class AAnimalFase2: AAnimal
 
     public override Transform GetClosestObjetive()
     {
-        if (!TieneComida())
+        if (TieneComida())
         {
             return establo.GetComedero();
         }
         if(establo.GetAnimalsInEstable(objectives) > 0)
         {
-            return establo.GetAnimalFromTypes(objectives).transform;
+            AAnimalFase2 animal = establo.GetAnimalFromTypes(objectives);
+            return animal.transform;
         }
         return null;
     }
@@ -257,7 +263,7 @@ public class AAnimalFase2: AAnimal
             Debug.LogWarning("El pato no está en ningún establo");
             return;
         }
-        establo.ExitFromStable(thisItemName);
+        establo.ExitFromStable(this);
         base.Die();
     }
 

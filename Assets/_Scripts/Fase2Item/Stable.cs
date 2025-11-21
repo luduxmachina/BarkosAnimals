@@ -99,6 +99,7 @@ public class Stable : MonoBehaviour
                 animalesEstablo[nameAnim]++;
             }
             animal.SetEstablo(this);
+            animalesReferecia.Add(animal);
         }
     }
 
@@ -122,15 +123,17 @@ public class Stable : MonoBehaviour
             {
                 Debug.Log("Hay algo raro se ha salido un animal que no debería estar aquí.");
             }
+            animalesReferecia.Remove(animal);
         }
     }
 
-    public void ExitFromStable(ItemNames nameAnim)
+    public void ExitFromStable(AAnimalFase2 animal)
     {
-        animalesEstablo.TryGetValue(nameAnim, out int value);
+        animalesEstablo.TryGetValue(animal.thisItemName, out int value);
         if (value != 0)
         {
-            animalesEstablo[nameAnim]--;
+            animalesEstablo[animal.thisItemName]--;
+            animalesReferecia.Remove(animal);
         }
         else
         {

@@ -12,7 +12,7 @@ public struct ComidaYComedero
 public class RecipientController : MonoBehaviour
 {
     [SerializeField] int maxStacksFood = 3;
-    int comidaStacks = 0;
+    [SerializeField, ReadOnly] int comidaStacks = 0;
 
     [SerializeField] GameObject comederoVacio;
 
@@ -31,13 +31,22 @@ public class RecipientController : MonoBehaviour
             }
             else
             {
-                comidaStacks++;
-                foreach (ComidaYComedero comedero in comidaYComederoList)
+                if(tipoComida == tipoActual)
                 {
-                    if(comedero.tipoComida==tipoComida)comedero.comedero.SetActive(true);
+                    comidaStacks++;
                 }
-                comederoVacio.SetActive(false);
-                tipoActual = tipoComida;
+                else
+                {
+                    comidaStacks = 1;
+                    foreach (ComidaYComedero comedero in comidaYComederoList)
+                    {
+                        if (comedero.tipoComida == tipoComida) comedero.comedero.SetActive(true);
+                        else comedero.comedero.SetActive(false);
+                    }
+                    comederoVacio.SetActive(false);
+                    tipoActual = tipoComida;
+
+                }
                 return true;
             }
         }
@@ -70,6 +79,7 @@ public class RecipientController : MonoBehaviour
                     comedero.comedero.SetActive(false);
                 }
                 comederoVacio.SetActive(true);
+                tipoActual = ItemNames.None;
             }
             return true;
         }
