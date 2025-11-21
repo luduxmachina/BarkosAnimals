@@ -193,129 +193,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8867997848718819774}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3332847269464670083
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5287912679388814783}
-  - component: {fileID: 1233330782568919048}
-  - component: {fileID: 3111767827157181541}
-  - component: {fileID: 7282029635124435078}
-  m_Layer: 5
-  m_Name: Fondo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5287912679388814783
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332847269464670083}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1387486602046429848}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.02, y: -0.25}
-  m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1233330782568919048
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332847269464670083}
-  m_CullTransparentMesh: 1
---- !u!212 &3111767827157181541
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332847269464670083}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1910014628, guid: 6ed03beed9ff2334c9082c42ed1f2348, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.29, y: 0.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!95 &7282029635124435078
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332847269464670083}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf75fcc3905ccd74d99ee8a2e0b1b66c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4945863141103908473
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,13 +235,12 @@ GameObject:
   - component: {fileID: 8867997848718819774}
   - component: {fileID: 5984007976266816062}
   - component: {fileID: 5635544596619664442}
-  - component: {fileID: 5574510814882769586}
-  - component: {fileID: 8121735144066868213}
   - component: {fileID: 377693831318831142}
   - component: {fileID: 1549247482912388678}
   - component: {fileID: 3001176560405313657}
   - component: {fileID: 5942847103440764155}
   - component: {fileID: 7958219938240571257}
+  - component: {fileID: 3306075770266489809}
   m_Layer: 0
   m_Name: PatoItemFase2
   m_TagString: Item
@@ -443,45 +319,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &5574510814882769586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643027423853108606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c234939b9f923f42b6cc160814f72bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayerInteractable: 1
-  OnPlayerInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  interactionSuccessful: 1
---- !u!114 &8121735144066868213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643027423853108606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3284e1a506e2a49aa572c27189d71c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detector: {fileID: 8649727599755163032}
-  interactingObject: {fileID: 1640679195367809110}
-  useSpecificInteractionType: 0
-  interactionType: 0
-  OnInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  OnFailedInteraction:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &377693831318831142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +407,7 @@ MonoBehaviour:
       nodes:
       - name: TC
         id: f965e5fe-bb1f-4f74-a454-9f9b6464b07e
-        position: {x: 8, y: 16}
+        position: {x: 60, y: -89.6}
         node:
           rid: 6361364432508157955
         references:
@@ -600,7 +437,7 @@ MonoBehaviour:
         childIds: []
       - name: AnimEstablo
         id: e7eafa89-15bf-4fdb-ae61-18a5f2f4f730
-        position: {x: 31, y: 435}
+        position: {x: 20.8, y: 446.4}
         node:
           rid: 6361364432508157959
         references:
@@ -615,7 +452,7 @@ MonoBehaviour:
         childIds: []
       - name: AnimEspecie
         id: 90919fd0-305f-4a37-b20e-01788c51a1b3
-        position: {x: 26, y: 601}
+        position: {x: 20.8, y: 598.4}
         node:
           rid: 6361364432508157961
         references:
@@ -626,11 +463,11 @@ MonoBehaviour:
             PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         parentIds:
-        - 3d746ae2-50bf-4cac-a12d-fc83e8553834
+        - 7c2a3300-a1b6-41fd-87a7-ab7f9c4889dc
         childIds: []
       - name: Depredadores
         id: 47b898d3-e63a-423a-aaeb-c36f9b6336a8
-        position: {x: 10, y: 762}
+        position: {x: 15.2, y: 808.80005}
         node:
           rid: 6361364432508157963
         references:
@@ -641,33 +478,8 @@ MonoBehaviour:
             PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         parentIds:
-        - 797b3661-cbce-459c-9d72-0e5fffda5ff8
+        - aae17ae9-5360-46fa-8ca1-1a4c34713e12
         childIds: []
-      - name: HayComida
-        id: 3c131928-35e5-4238-aa60-52fe5e6880fa
-        position: {x: 16, y: -162}
-        node:
-          rid: 6361364432508157965
-        references:
-        - fieldName: Variable
-          value:
-            rid: 6361364432508157966
-          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        parentIds:
-        - 8581f366-4625-46ce-8c56-df65650c0f32
-        childIds: []
-      - name: F3
-        id: 3d746ae2-50bf-4cac-a12d-fc83e8553834
-        position: {x: 348, y: 585}
-        node:
-          rid: 6361364432508157967
-        references: []
-        parentIds:
-        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
-        childIds:
-        - 90919fd0-305f-4a37-b20e-01788c51a1b3
       - name: F2
         id: a5f88f8b-ddbc-4767-9a2f-1b376b2bbbd2
         position: {x: 364, y: 435}
@@ -680,18 +492,18 @@ MonoBehaviour:
         - e7eafa89-15bf-4fdb-ae61-18a5f2f4f730
       - name: Hambre
         id: 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
-        position: {x: 340, y: 13}
+        position: {x: 353, y: -82}
         node:
           rid: 6361364432508157969
         references: []
         parentIds:
-        - 8581f366-4625-46ce-8c56-df65650c0f32
-        - ac0b01e2-e0e5-49b6-bdac-55749be4f57c
+        - b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
+        - 64a82012-b616-4ec0-b307-ceee5b070969
         childIds:
         - f965e5fe-bb1f-4f74-a454-9f9b6464b07e
       - name: Insalubridad
         id: 64a82012-b616-4ec0-b307-ceee5b070969
-        position: {x: 924, y: 160}
+        position: {x: 794.4, y: 116.799995}
         node:
           rid: 6361364432508157971
         references: []
@@ -699,8 +511,8 @@ MonoBehaviour:
         - a2ead301-dc4b-493b-a3ce-84db5e7f89c7
         - c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
         childIds:
-        - ac0b01e2-e0e5-49b6-bdac-55749be4f57c
         - 734d7dcd-d8d4-4b44-a372-bbe72682044f
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
       - name: Suciedad
         id: 734d7dcd-d8d4-4b44-a372-bbe72682044f
         position: {x: 364, y: 226}
@@ -708,13 +520,13 @@ MonoBehaviour:
           rid: 6361364432508157972
         references: []
         parentIds:
-        - 5231d177-c636-4915-9685-cfec7f7c8c63
         - 64a82012-b616-4ec0-b307-ceee5b070969
+        - 5231d177-c636-4915-9685-cfec7f7c8c63
         childIds:
         - 8dfa8787-1041-4e98-be5d-e7c7e084bca6
       - name: Incomodidad
         id: 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
-        position: {x: 683, y: 609}
+        position: {x: 791.2, y: 624.80005}
         node:
           rid: 6361364432508157975
         references: []
@@ -723,11 +535,11 @@ MonoBehaviour:
         - 6d37117d-e219-4782-918c-6a215222080e
         childIds:
         - a5f88f8b-ddbc-4767-9a2f-1b376b2bbbd2
-        - 3d746ae2-50bf-4cac-a12d-fc83e8553834
-        - 797b3661-cbce-459c-9d72-0e5fffda5ff8
+        - 7c2a3300-a1b6-41fd-87a7-ab7f9c4889dc
+        - aae17ae9-5360-46fa-8ca1-1a4c34713e12
       - name: Infelicidad
         id: a2ead301-dc4b-493b-a3ce-84db5e7f89c7
-        position: {x: 1028, y: 390}
+        position: {x: 1248, y: 289.6}
         node:
           rid: 6361364432508157976
         references: []
@@ -738,49 +550,52 @@ MonoBehaviour:
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
       - name: Enfermar
         id: c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
-        position: {x: 1306, y: 135}
+        position: {x: 1312.8, y: 15.200005}
         node:
           rid: 6361364432508157978
         references:
         - fieldName: Action
           value:
-            rid: 6361364475241824325
+            rid: 3784766813850042439
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 64a82012-b616-4ec0-b307-ceee5b070969
       - name: MandarCorazones
         id: a801683e-3c6f-4349-bef3-0b861c11173b
-        position: {x: 1706, y: 372}
+        position: {x: 2047.2, y: 280.8}
         node:
           rid: 6361364432508157979
         references:
         - fieldName: Action
           value:
-            rid: 6361364534266953807
+            rid: 3784766813850042437
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 53a63e00-d108-4cd1-8b80-7ab9e9511d6f
-      - name: Rascarse
+      - name: NecesitaLimpiarse
         id: 5231d177-c636-4915-9685-cfec7f7c8c63
-        position: {x: 1249, y: 249}
+        position: {x: 1444, y: 507.99997}
         node:
           rid: 6361364432508157980
         references:
         - fieldName: Action
           value:
-            rid: 6361364432508158052
+            rid: 3784766813850042438
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 734d7dcd-d8d4-4b44-a372-bbe72682044f
       - name: EstarIncomodo
         id: 6d37117d-e219-4782-918c-6a215222080e
-        position: {x: 1232, y: 624}
+        position: {x: 1181.6, y: 921.60004}
         node:
           rid: 6361364432508157981
         references:
@@ -789,48 +604,28 @@ MonoBehaviour:
             rid: 6361364475241824326
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
-      - name: F1
-        id: 8581f366-4625-46ce-8c56-df65650c0f32
-        position: {x: 594, y: -130}
-        node:
-          rid: 6361364450751021120
-        references: []
-        parentIds:
-        - ac0b01e2-e0e5-49b6-bdac-55749be4f57c
-        - b13dda23-bf5a-49e5-8866-305ac00ccbe9
-        childIds:
-        - 3c131928-35e5-4238-aa60-52fe5e6880fa
-        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
       - name: Hambre
         id: b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
-        position: {x: 1430, y: -29}
+        position: {x: 970.4, y: -313.6}
         node:
           rid: 6361364450751021174
         references:
         - fieldName: Action
           value:
-            rid: 6361364475241824319
+            rid: 3784766834176688131
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
-        childIds:
-        - ac0b01e2-e0e5-49b6-bdac-55749be4f57c
-      - name: F4
-        id: 797b3661-cbce-459c-9d72-0e5fffda5ff8
-        position: {x: 393, y: 794}
-        node:
-          rid: 6361364504055382080
-        references: []
         parentIds:
-        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        - 877682a0-6e01-4a40-a222-7cbca968302b
         childIds:
-        - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
-      - name: 
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+      - name: Felicidad
         id: 53a63e00-d108-4cd1-8b80-7ab9e9511d6f
-        position: {x: 1364, y: 371}
+        position: {x: 1688, y: 264}
         node:
           rid: 6361364523197923392
         references: []
@@ -838,35 +633,9 @@ MonoBehaviour:
         - a801683e-3c6f-4349-bef3-0b861c11173b
         childIds:
         - a2ead301-dc4b-493b-a3ce-84db5e7f89c7
-      - name: PuedeComerONo
-        id: ac0b01e2-e0e5-49b6-bdac-55749be4f57c
-        position: {x: 733, y: 46}
-        node:
-          rid: 6361364523197923394
-        references: []
-        parentIds:
-        - b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
-        - 64a82012-b616-4ec0-b307-ceee5b070969
-        childIds:
-        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
-        - 8581f366-4625-46ce-8c56-df65650c0f32
-      - name: 
-        id: b13dda23-bf5a-49e5-8866-305ac00ccbe9
-        position: {x: 1232, y: -189}
-        node:
-          rid: 6361364523197923397
-        references:
-        - fieldName: Action
-          value:
-            rid: 6361364523197923398
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds: []
-        childIds:
-        - 8581f366-4625-46ce-8c56-df65650c0f32
       - name: Patrol
         id: 5e57d581-5f2f-468b-8ed0-6b81966beee8
-        position: {x: 11, y: 1018}
+        position: {x: 5.6, y: 1324.8}
         node:
           rid: 6361364534266953795
         references: []
@@ -875,18 +644,59 @@ MonoBehaviour:
         childIds: []
       - name: Patruyar
         id: ae348b90-e4e6-40e7-8b6a-a27d266c481b
-        position: {x: 401, y: 1015}
+        position: {x: 409.6, y: 1337.6}
         node:
           rid: 6361364534266953796
         references:
         - fieldName: Action
           value:
-            rid: 6361364534266953797
+            rid: 3784766883916677187
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds: []
         childIds:
         - 5e57d581-5f2f-468b-8ed0-6b81966beee8
+      - name: AccionesQueRepercuten
+        id: 877682a0-6e01-4a40-a222-7cbca968302b
+        position: {x: 1692, y: -305.6}
+        node:
+          rid: 3784766880363577413
+        references: []
+        parentIds: []
+        childIds:
+        - b8ce6bb4-1ce4-4154-80fa-a0c678ce7ca3
+      - name: AccionesDePedir
+        id: ad70025a-1e1e-4e38-a654-027443691bae
+        position: {x: 2574.4, y: 286.4}
+        node:
+          rid: 3784766880363577414
+        references: []
+        parentIds: []
+        childIds:
+        - c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
+        - a801683e-3c6f-4349-bef3-0b861c11173b
+        - 5231d177-c636-4915-9685-cfec7f7c8c63
+        - 6d37117d-e219-4782-918c-6a215222080e
+      - name: F3
+        id: 7c2a3300-a1b6-41fd-87a7-ab7f9c4889dc
+        position: {x: 355, y: 615}
+        node:
+          rid: 6361364647463616579
+        references: []
+        parentIds:
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        childIds:
+        - 90919fd0-305f-4a37-b20e-01788c51a1b3
+      - name: 
+        id: aae17ae9-5360-46fa-8ca1-1a4c34713e12
+        position: {x: 355, y: 817}
+        node:
+          rid: 6361364647463616581
+        references: []
+        parentIds:
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        childIds:
+        - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
     - name: Comer
       id: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
       graph:
@@ -894,19 +704,19 @@ MonoBehaviour:
       nodes:
       - name: EATING
         id: 2b3299eb-71af-4d95-a41c-92fe856f688a
-        position: {x: 1092, y: -157}
+        position: {x: 846.4, y: -208}
         node:
           rid: 6361364450751021129
         references: []
         parentIds: []
         childIds:
-        - 37d5b21c-8fee-40cc-94f7-7a326dd6e973
-        - 81255824-0a7a-498f-9ffc-d777242edf76
+        - 8e6e7717-5e2d-4eba-b381-7e6ccb7c1a15
+        - adb8ce98-2af3-406d-b5bf-21a3debcaae1
         - 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
         - ebed57a6-15f6-4b21-bc65-5d30e0fefa25
       - name: GoToEat
         id: 81255824-0a7a-498f-9ffc-d777242edf76
-        position: {x: 990, y: 117}
+        position: {x: 812.8, y: 392.8}
         node:
           rid: 6361364450751021126
         references:
@@ -916,11 +726,11 @@ MonoBehaviour:
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
-        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        - adb8ce98-2af3-406d-b5bf-21a3debcaae1
         childIds: []
       - name: Eat
         id: 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
-        position: {x: 1212, y: 120}
+        position: {x: 1116, y: 147.20001}
         node:
           rid: 6361364450751021127
         references:
@@ -932,23 +742,9 @@ MonoBehaviour:
         parentIds:
         - 2b3299eb-71af-4d95-a41c-92fe856f688a
         childIds: []
-      - name: IndicarTieneHambre
-        id: 37d5b21c-8fee-40cc-94f7-7a326dd6e973
-        position: {x: 752, y: 67}
-        node:
-          rid: 6361364534266953865
-        references:
-        - fieldName: Action
-          value:
-            rid: 6361364534266953866
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 2b3299eb-71af-4d95-a41c-92fe856f688a
-        childIds: []
       - name: Moverse un poco
         id: ebed57a6-15f6-4b21-bc65-5d30e0fefa25
-        position: {x: 1449, y: 68}
+        position: {x: 1450.4, y: 92.00001}
         node:
           rid: 6361364534266953867
         references:
@@ -960,6 +756,35 @@ MonoBehaviour:
         parentIds:
         - 2b3299eb-71af-4d95-a41c-92fe856f688a
         childIds: []
+      - name: Indica que tiene Hambre
+        id: 8e6e7717-5e2d-4eba-b381-7e6ccb7c1a15
+        position: {x: 422.4, y: 122.4}
+        node:
+          rid: 3784766834176688128
+        references:
+        - fieldName: Action
+          value:
+            rid: 3784766880363577475
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds: []
+      - name: HayComida
+        id: adb8ce98-2af3-406d-b5bf-21a3debcaae1
+        position: {x: 794.4, y: 116.799995}
+        node:
+          rid: 3784766880363577476
+        references:
+        - fieldName: Perception
+          value:
+            rid: 3784766880363577477
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds:
+        - 81255824-0a7a-498f-9ffc-d777242edf76
     - name: EstaFeliz
       id: bf45f6aa-b383-4e7c-9b9f-9a1f2ab5256f
       graph:
@@ -967,13 +792,13 @@ MonoBehaviour:
       nodes:
       - name: EstaFeliz
         id: 5747f74f-bbfd-46c3-b88d-d8bfce77afc3
-        position: {x: 365, y: 213}
+        position: {x: 381.6, y: 228.79999}
         node:
           rid: 6361364534266953800
         references:
         - fieldName: Action
           value:
-            rid: 6361364534266953801
+            rid: 3784766813850042436
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -1041,6 +866,126 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 3784766813850042436
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MandarCorazones
+    - rid: 3784766813850042437
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 0
+        InterruptOptions: 2
+        subgraphId: bf45f6aa-b383-4e7c-9b9f-9a1f2ab5256f
+    - rid: 3784766813850042438
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: AAnimalFase2
+          methodName: Rascarse
+        update:
+          componentName: 
+          methodName: 
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 3784766813850042439
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: AAnimalFase2
+          methodName: Enfermar
+        update:
+          componentName: 
+          methodName: 
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 3784766834176688128
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3784766834176688131
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 1
+        InterruptOptions: 2
+        subgraphId: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
+    - rid: 3784766880363577413
+      type: {class: UtilityBucket, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Inertia: 1.3
+        BucketThreshold: 1
+    - rid: 3784766880363577414
+      type: {class: UtilityBucket, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Inertia: 1.3
+        BucketThreshold: 0.9
+    - rid: 3784766880363577475
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MostrarHambre
+    - rid: 3784766880363577476
+      type: {class: ConditionNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3784766880363577477
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: AAnimalFase2
+          methodName: HayComida
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 3784766883916677187
+      type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundAction:
+          rid: 3784766883916677188
+        subActions:
+        - action:
+            rid: 3784766883916677189
+        - action:
+            rid: 3784766883916677190
+    - rid: 3784766883916677188
+      type: {class: SequenceAction, ns: BehaviourAPI.Core.Actions, asm: BehaviourAPI.Core}
+      data:
+        TargetStatus: 2
+    - rid: 3784766883916677189
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: NoMostrarNada
+    - rid: 3784766883916677190
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 5
     - rid: 6361364432508157952
       type: {class: UtilitySystem, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -1100,24 +1045,6 @@ MonoBehaviour:
       data:
         componentName: AAnimalFase2
         methodName: PredatorsOnEstable
-    - rid: 6361364432508157965
-      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-        min: 0
-        max: 1
-    - rid: 6361364432508157966
-      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        componentName: AAnimalFase2
-        methodName: HayComida
-    - rid: 6361364432508157967
-      type: {class: ExponentialCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-        Exponent: 2
-        DespX: 1
-        DespY: 0
     - rid: 6361364432508157968
       type: {class: SigmoidCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -1178,16 +1105,6 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         FinishSystemOnComplete: 0
-    - rid: 6361364432508158052
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: AAnimalFase2
-          methodName: Rascarse
-    - rid: 6361364450751021120
-      type: {class: PowerFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: Assembly-CSharp}
-      data:
-        PullingEnabled: 1
     - rid: 6361364450751021125
       type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
@@ -1205,10 +1122,10 @@ MonoBehaviour:
       type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
         start:
-          componentName: 
-          methodName: 
-        update:
           componentName: AAnimal
+          methodName: MoveTowardsObjectiveInit
+        update:
+          componentName: AAnimalFase2
           methodName: MoveTowardsObjective
         stop:
           componentName: 
@@ -1242,18 +1159,6 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         FinishSystemOnComplete: 0
-    - rid: 6361364475241824319
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: AAnimalFase2
-          methodName: MostrarHambre
-    - rid: 6361364475241824325
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: AAnimalFase2
-          methodName: Enfermar
     - rid: 6361364475241824326
       type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -1278,37 +1183,12 @@ MonoBehaviour:
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         maxDistance: 10
-    - rid: 6361364504055382080
-      type: {class: ExponentialCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-        Exponent: 3
-        DespX: -0.5
-        DespY: 0
     - rid: 6361364523197923392
       type: {class: LinearCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
         PullingEnabled: 1
         Slope: -1
         YIntercept: 1
-    - rid: 6361364523197923394
-      type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-        Weights:
-        - 1
-        - -0.6
-    - rid: 6361364523197923397
-      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
-      data:
-        PullingEnabled: 1
-        FinishSystemOnComplete: 0
-    - rid: 6361364523197923398
-      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        ExecuteOnLoop: 0
-        InterruptOptions: 2
-        subgraphId: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
     - rid: 6361364534266953795
       type: {class: ConstantFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -1319,22 +1199,12 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         FinishSystemOnComplete: 0
-    - rid: 6361364534266953797
-      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
-      data:
-        maxDistance: 5
     - rid: 6361364534266953799
       type: {class: FSM, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
     - rid: 6361364534266953800
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
-    - rid: 6361364534266953801
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: AAnimalFase2
-          methodName: MandarCorazones
     - rid: 6361364534266953802
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
@@ -1354,32 +1224,35 @@ MonoBehaviour:
       type: {class: UnityTimePerception, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         TotalTime: 5
-    - rid: 6361364534266953807
-      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        ExecuteOnLoop: 0
-        InterruptOptions: 2
-        subgraphId: bf45f6aa-b383-4e7c-9b9f-9a1f2ab5256f
     - rid: 6361364534266953864
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         maxDistance: 3
-    - rid: 6361364534266953865
-      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data: 
-    - rid: 6361364534266953866
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        method:
-          componentName: AAnimalFase2
-          methodName: MostrarHambre
     - rid: 6361364534266953867
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
     - rid: 6361364534266953868
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
-        maxDistance: 5
+        maxDistance: 6
+    - rid: 6361364647463616579
+      type: {class: PointedCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Points:
+        - x: 0
+          y: 1
+        - x: 0.5
+          y: 0
+        - x: 1
+          y: 1
+    - rid: 6361364647463616581
+      type: {class: ExponentialCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Exponent: 0.5
+        DespX: 0
+        DespY: 0
 --- !u!114 &7958219938240571257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,7 +1267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3837092645045900981}
   predators: 04000000
-  objectives: 010000000a000000
+  objectives: 01000000
   walkingSpeed: 0.1
   run: 0.2
   rotateSpeed: 121
@@ -1404,237 +1277,155 @@ MonoBehaviour:
   radioAtaqueComida: 1
   tiempoEnComer: 3
   itemName: 3
-  MaxSinLimpiar: 20
-  MaxSinComer: 20
+  MaxSinLimpiar: 60
+  MaxSinComer: 70
   AMax: 2
   CMax: 3
   DMax: 2
   establo: {fileID: 0}
   stikersManager: {fileID: 475001849510169783}
-  animalsDataBase: {fileID: 11400000, guid: ac343572966cfa248988fcbc42391523, type: 2}
   SistemaUtilidad: {fileID: 5942847103440764155}
   navMeshAgent: {fileID: 3001176560405313657}
   hayComida: 0
   isHerbivore: 0
   depredadoresCerca: 0
---- !u!1 &7065930020031931942
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8603640240353402316}
-  - component: {fileID: 8529512026921538948}
-  - component: {fileID: 6524537010716150113}
-  m_Layer: 5
-  m_Name: Sticker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &8603640240353402316
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065930020031931942}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1387486602046429848}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.056}
-  m_SizeDelta: {x: 5.7713, y: 5.4927}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8529512026921538948
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065930020031931942}
-  m_CullTransparentMesh: 1
---- !u!212 &6524537010716150113
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7065930020031931942}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 643676205
-  m_SortingLayer: 1
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3.801044, y: 3.57}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &8169976679440260677
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1387486602046429848}
-  - component: {fileID: 6971302003456573784}
-  - component: {fileID: 583928870151798839}
-  - component: {fileID: 3965508593990558710}
-  - component: {fileID: 475001849510169783}
-  m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1387486602046429848
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169976679440260677}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5287912679388814783}
-  - {fileID: 8603640240353402316}
-  m_Father: {fileID: 8867997848718819774}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.5}
-  m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!223 &6971302003456573784
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169976679440260677}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!114 &583928870151798839
+  estaFeliz: 0
+--- !u!114 &3306075770266489809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169976679440260677}
+  m_GameObject: {fileID: 6643027423853108606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
---- !u!114 &3965508593990558710
-MonoBehaviour:
+  grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDrop:
+    m_PersistentCalls:
+      m_Calls: []
+  canBeGrabbed: 1
+  canBeDropped: 1
+  allowExtramoveSetWhenGrabbed: 1
+  grabPoint: {fileID: 2475594923796127505}
+--- !u!1001 &2518895302329791131
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169976679440260677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &475001849510169783
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8867997848718819774}
+    m_Modifications:
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022860188720524510, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 640a079c679f99640ac2072543d33055, type: 3}
+--- !u!114 &475001849510169783 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
+  m_PrefabInstance: {fileID: 2518895302329791131}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169976679440260677}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef02021f3e2170d47a58fcf1e3b0c993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6524537010716150113}
-  generalesDB: {fileID: 11400000, guid: ceb9194171464644799029fbe0f542a2, type: 2}
+--- !u!224 &1387486602046429848 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+  m_PrefabInstance: {fileID: 2518895302329791131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6866472768423778650
 PrefabInstance:
   m_ObjectHideFlags: 0

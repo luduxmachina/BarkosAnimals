@@ -109,6 +109,10 @@ public class AAnimalFase2: AAnimal
 
             }
             tiempoComiendo = 0.0f;
+            if (!TieneComida())
+            {
+                this.GetComponentInChildren<SimpleGrabber>().TryGrab(lastObjectve);
+            }
         }
     }
 
