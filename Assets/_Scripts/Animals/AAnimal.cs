@@ -163,7 +163,7 @@ public abstract class AAnimal : MonoBehaviour
     }
     public virtual Status UpdateComer()
     {
-        if (!ObjectiveClose()) //la comida puede desaparecer
+        if (lastObjectve==null) //la comida puede desaparecer
         {
             if (animator)
             {
