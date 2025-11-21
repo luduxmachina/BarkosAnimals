@@ -52,6 +52,37 @@ MonoBehaviour:
   itemType: 0
   useParentGrabbable: 1
   simpleGrabbable: {fileID: 0}
+--- !u!1 &1547447328266215549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2691672324723109249}
+  m_Layer: 0
+  m_Name: GrabbedPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2691672324723109249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547447328266215549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 0, z: -1.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8454186698301673351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2598677497904051066
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +230,7 @@ Transform:
   - {fileID: 3184325342509151209}
   - {fileID: 4755173530295618732}
   - {fileID: 8862360251322611777}
+  - {fileID: 2691672324723109249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3010140063992893358
@@ -283,7 +315,7 @@ MonoBehaviour:
   canBeGrabbed: 1
   canBeDropped: 1
   allowExtramoveSetWhenGrabbed: 1
-  grabPoint: {fileID: 8454186698301673351}
+  grabPoint: {fileID: 2691672324723109249}
 --- !u!114 &3472573385973157507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +337,8 @@ MonoBehaviour:
   patrolRadius: 13.69
   radioDetectionObjective: 20.26
   radioDetectionPredator: 15
-  radioAtaqueComida: 3.78
-  tiempoEnComer: 0.32
+  radioAtaqueComida: 1.58
+  tiempoEnComer: 1.25
   thisGrabber: {fileID: 385117234111516967}
   stuntTime: 2
   tiempoDescanso: 5.66
