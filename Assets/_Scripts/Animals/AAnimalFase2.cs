@@ -18,6 +18,7 @@ public class AAnimalFase2: AAnimal
     [Header("-----------------Fase 2-----------------")]
     [SerializeField] float MaxSinLimpiar;
     [SerializeField] float MaxSinComer;
+    [SerializeField] float TiempoEnfermoHastaMorir = 60;
     public float AMax = 0.0f;
     public float CMax = 0.0f;
     public float DMax = 0.0f;
@@ -37,12 +38,15 @@ public class AAnimalFase2: AAnimal
 
     public float depredadoresCerca = 0f;
     public bool estaFeliz;
+    bool estaEnfermo;
+    float tiempoEnfermo;
 
     public void SetEstaFeliz(bool esFeliz)
     {
         if (esFeliz == estaFeliz) { 
         }
     }
+    
     
 
     #region Monobehavior
@@ -68,6 +72,11 @@ public class AAnimalFase2: AAnimal
 
         if(tiempoSinLimpiar <= MaxSinLimpiar)tiempoSinLimpiar += Time.deltaTime;
         if(tiempoSinComer <= MaxSinComer)tiempoSinComer += Time.deltaTime;
+        if (estaEnfermo) { tiempoEnfermo += Time.deltaTime; }
+        if(tiempoEnfermo > TiempoEnfermoHastaMorir)
+        {
+            this.Die();
+        }
         
         if(establo != null)
         {
@@ -144,7 +153,7 @@ public class AAnimalFase2: AAnimal
             return Status.Failure;
         }
 
-        if (!ObjectiveClose()) //la comida puede desaparecer
+        if (lastObjectve == null) 
         {
             if (animator)
             {
@@ -186,6 +195,7 @@ public class AAnimalFase2: AAnimal
                 if (temp2) //se lo va a comer lit
                 {
                     temp2.ReduceByOne();
+                    tiempoSinComer = 0f;
                 }
             }
 
@@ -212,6 +222,13 @@ public class AAnimalFase2: AAnimal
     public void Enfermar()
     {
         stikersManager.SetImage(StikersGenerales.Enfermo);
+        tiempoEnfermo = 0.0f;
+        estaEnfermo = true;
+        
+    }
+    public void YaNoEst·Enfermo()
+    {
+        estaEnfermo = false;
     }
 
     public void Rascarse()
