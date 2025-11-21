@@ -14,6 +14,8 @@ public class SerpienteInScene : AAnimal
     private float stuntTime = 2.0f;
     [SerializeField]
     private float tiempoDescanso = 5.0f;
+    [SerializeField]
+    private StikersManager stickersManager;
 
     protected override void Awake()
     {
@@ -30,6 +32,7 @@ public class SerpienteInScene : AAnimal
     }
     public void PlaySurpriseAnim()
     {
+        stickersManager.SetImage(StikersGenerales.Incomodo);
         animator.SetTrigger("Surprise");
     }
     public void PlayRunAnim()
@@ -49,6 +52,7 @@ public class SerpienteInScene : AAnimal
             PlayAttackAnim();
         }
         grabbable.Drop(); //se libera  si misma
+        stickersManager.SetImage(StikersGenerales.Incomodo);
     }
     private bool CheckCart(List<ItemNames> posiblesPresas)
     {
@@ -74,6 +78,7 @@ public class SerpienteInScene : AAnimal
     {
         base.InitComer();
         thisGrabber.TryGrab(lastObjectve);
+        stickersManager.SetImage(StikersGenerales.NecesitaComerCarne);
 
     }
     public void ComerEnCarro()
