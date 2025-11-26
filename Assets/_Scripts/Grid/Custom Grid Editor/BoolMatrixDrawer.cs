@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -118,3 +119,4 @@ public class CustomBoolMatrixDrawer : PropertyDrawer
         EditorGUI.EndProperty();
     }
 }
+#endif
