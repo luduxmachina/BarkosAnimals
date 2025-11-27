@@ -42,7 +42,7 @@ public class PatoFase1 : AAnimal
     public void IrAEstanqueInit()
     {
 
-        if (posEstanque != null || !movimiento.CanMove(posEstanque.position))
+        if (posEstanque != null && movimiento.CanMove(posEstanque.position))
         {
             movimiento.SetTarget(posEstanque.position);
             if (animator != null)
