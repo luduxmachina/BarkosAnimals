@@ -22,18 +22,8 @@ MonoBehaviour:
       matrix:
       - values: 0101
       - values: 0101
-  - <Name>k__BackingField: Bosque
-    <ID>k__BackingField: 1
-    <Prefab>k__BackingField: {fileID: 862822654763788868, guid: abd12637754749c49b7378c4c0a4e5a3, type: 3}
-    <OcupiedSpace>k__BackingField:
-      rows: 3
-      columns: 1
-      matrix:
-      - values: 01
-      - values: 01
-      - values: 01
   - <Name>k__BackingField: Prado
-    <ID>k__BackingField: 2
+    <ID>k__BackingField: 1
     <Prefab>k__BackingField: {fileID: 6790712281907630743, guid: 8dbfc5acc7e3bc44299a5527db32759e, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 3
@@ -43,7 +33,7 @@ MonoBehaviour:
       - values: 010101
       - values: 010101
   - <Name>k__BackingField: BosqueGrande
-    <ID>k__BackingField: 3
+    <ID>k__BackingField: 2
     <Prefab>k__BackingField: {fileID: 8621202609839823903, guid: 6f0695d7af93829488897962f4afb6e1, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 5
@@ -55,18 +45,17 @@ MonoBehaviour:
       - values: 01010101010101
       - values: 01010101010101
   - <Name>k__BackingField: Pueblo1
-    <ID>k__BackingField: 4
+    <ID>k__BackingField: 3
     <Prefab>k__BackingField: {fileID: 2056200015636105159, guid: 61d20bee3f05c174e8d628e920163609, type: 3}
     <OcupiedSpace>k__BackingField:
-      rows: 4
-      columns: 3
+      rows: 3
+      columns: 4
       matrix:
-      - values: 010101
-      - values: 010101
-      - values: 010101
-      - values: 010101
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
   - <Name>k__BackingField: "BosquePeque\xF1oVariacion1"
-    <ID>k__BackingField: 5
+    <ID>k__BackingField: 4
     <Prefab>k__BackingField: {fileID: 3659379767781771068, guid: 37416d797d7e20c46925a1184e37b853, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 3
@@ -76,8 +65,8 @@ MonoBehaviour:
       - values: 01
       - values: 01
   - <Name>k__BackingField: "BosquePeque\xF1oVariacion2"
-    <ID>k__BackingField: 6
-    <Prefab>k__BackingField: {fileID: 862822654763788868, guid: abd12637754749c49b7378c4c0a4e5a3, type: 3}
+    <ID>k__BackingField: 5
+    <Prefab>k__BackingField: {fileID: 2170801795728673572, guid: 093b582cfedecd842af27df283946387, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 3
       columns: 1
@@ -86,7 +75,7 @@ MonoBehaviour:
       - values: 01
       - values: 01
   - <Name>k__BackingField: Lego
-    <ID>k__BackingField: 7
+    <ID>k__BackingField: 6
     <Prefab>k__BackingField: {fileID: 5087866198957002229, guid: 581629ea42150434589c9ddc20082564, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
@@ -94,7 +83,7 @@ MonoBehaviour:
       matrix:
       - values: 01
   - <Name>k__BackingField: Lego1
-    <ID>k__BackingField: 8
+    <ID>k__BackingField: 7
     <Prefab>k__BackingField: {fileID: 8152573896371472797, guid: add0f72100097144289929626a726f1d, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
@@ -102,7 +91,7 @@ MonoBehaviour:
       matrix:
       - values: 01
   - <Name>k__BackingField: Lego2
-    <ID>k__BackingField: 9
+    <ID>k__BackingField: 8
     <Prefab>k__BackingField: {fileID: 8152573896371472797, guid: add0f72100097144289929626a726f1d, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
@@ -110,7 +99,7 @@ MonoBehaviour:
       matrix:
       - values: 0101
   - <Name>k__BackingField: Helecho
-    <ID>k__BackingField: 10
+    <ID>k__BackingField: 9
     <Prefab>k__BackingField: {fileID: 8315588821240645619, guid: cec2d5e7410a94b40b86a8aa0e06a474, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
@@ -118,10 +107,33 @@ MonoBehaviour:
       matrix:
       - values: 01
   - <Name>k__BackingField: Palmera
-    <ID>k__BackingField: 11
+    <ID>k__BackingField: 10
     <Prefab>k__BackingField: {fileID: 1836878415479941266, guid: f48d2f444aad26d4d82c77831fdbcc3b, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
       columns: 1
       matrix:
+      - values: 01
+  - <Name>k__BackingField: PradoGrande
+    <ID>k__BackingField: 11
+    <Prefab>k__BackingField: {fileID: 3844064656289293656, guid: b77a0663b8c6cbc4782010fa680c457f, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 6
+      columns: 4
+      matrix:
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
+  - <Name>k__BackingField: Bosque
+    <ID>k__BackingField: 12
+    <Prefab>k__BackingField: {fileID: 862822654763788868, guid: abd12637754749c49b7378c4c0a4e5a3, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 3
+      columns: 1
+      matrix:
+      - values: 01
+      - values: 01
       - values: 01
