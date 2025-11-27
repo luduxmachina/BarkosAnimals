@@ -43,7 +43,7 @@ namespace BehaviourAPI.UnityToolkit
             // Actualizar el temporizador
             _timer += Time.deltaTime;
 
-            // Verificar si ha pasado el tiempo suficiente para realizar una comprobaciï¿½n
+            // Verificar si ha pasado el tiempo suficiente para realizar una comprobación
             if (_timer >= intervalTime)
             {
                 LocateObjects();                

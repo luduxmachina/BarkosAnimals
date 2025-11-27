@@ -96,7 +96,7 @@ public class PatoFase1 : AAnimal
         {
             return Vector3.Distance(transform.position, posEstanque.position) <= radioDentroEstanque;
         }
-        return true;
+        return false;
     }
     public bool FueraAgua()
     {

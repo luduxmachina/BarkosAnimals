@@ -112,7 +112,6 @@ public abstract class AAnimal : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public virtual Transform GetClosestObjetive(){
-        if (IslandPositions.instance == null) { return null; }
         return IslandPositions.instance.GetClosest(transform.position, objectives);
 
     }
@@ -123,8 +122,6 @@ public abstract class AAnimal : MonoBehaviour
     public abstract Vector3 GetNewPosition();
     public virtual Transform GetClosestPredator()
     {
-        if (IslandPositions.instance == null) { return null; }
-
         return IslandPositions.instance.GetClosest(transform.position, predators);
     }
     public virtual int GetNumberOfPredatorsCloser()

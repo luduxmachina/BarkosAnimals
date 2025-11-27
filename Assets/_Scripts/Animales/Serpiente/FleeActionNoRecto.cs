@@ -26,13 +26,17 @@ namespace BehaviourAPI.UnityToolkit
             {
                 return Status.Success;
             }
+            Debug.Log("1");
             if (_timeRunning + maxTimeRunning < Time.time) return Status.Failure;
+            Debug.Log("2");
             if (Vector3.Distance(context.Transform.position, OtherTransform.position) > distance)
             {
+                Debug.Log("3");
                 return Status.Success;
             }
             else
             {
+                Debug.Log("4" + OtherTransform.name);
                 var dir = (context.Transform.position - OtherTransform.position).normalized;
 
                 //añadir aqui un poco de angulo
