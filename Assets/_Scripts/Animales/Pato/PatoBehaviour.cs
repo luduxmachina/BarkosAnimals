@@ -7,14 +7,12 @@ using BehaviourAPI.Core.Perceptions;
 using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.BehaviourTrees;
 
-using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 
 public class PatoBehaviour : BehaviourRunner
 {
 	[SerializeField] private PatoFase1 m_PatoFase1;
 
 
-    [SerializeField] private BSRuntimeDebugger debuggerComponent;
     protected override void Init()
 	{
 		m_PatoFase1 = GetComponent<PatoFase1>();
@@ -99,7 +97,6 @@ public class PatoBehaviour : BehaviourRunner
 		
 		PatoBT.SetRootNode(Root);
 
-        debuggerComponent.RegisterGraph(PatoBT);
         return PatoBT;
 	}
 }

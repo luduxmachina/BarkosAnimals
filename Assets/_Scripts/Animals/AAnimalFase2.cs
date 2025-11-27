@@ -1,5 +1,4 @@
 using BehaviourAPI.Core;
-using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -27,6 +26,7 @@ public class AAnimalFase2: AAnimal
     [SerializeField] StikersManager stikersManager;
     //[SerializeField] AllObjectTypesSO animalsDataBase;
     [SerializeField] EditorBehaviourRunner SistemaUtilidad;
+    [SerializeField] AllObjectTypesSO animalsDataBase;
     [SerializeField] NavMeshAgent navMeshAgent;
 
     public bool hayComida = false;
@@ -82,7 +82,7 @@ public class AAnimalFase2: AAnimal
         {
             Debug.Log("Establo en el animal");
 
-            SistemaUtilidad.enabled = true;
+            //SistemaUtilidad.enabled = true;
         }
     }
 
@@ -106,7 +106,7 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return;
         }
         lastObjectve = GetClosestObjetive();
@@ -149,7 +149,7 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return Status.Failure;
         }
 
@@ -226,7 +226,7 @@ public class AAnimalFase2: AAnimal
         estaEnfermo = true;
         
     }
-    public void YaNoEstáEnfermo()
+    public void YaNoEstï¿½Enfermo()
     {
         estaEnfermo = false;
     }
@@ -281,7 +281,7 @@ public class AAnimalFase2: AAnimal
 
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return;
         }
         establo.ExitFromStable(this);
@@ -295,7 +295,7 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
         return ((float)establo.GetAnimalsInEstable()-1)/AMax;
@@ -305,20 +305,20 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
 
         float numCompis = 0;
         numCompis += establo.GetAnimalsInEstable(itemName);
-        return (numCompis - 1)/CMax;//No le queremos contar a él mismo.
+        return (numCompis - 1)/CMax;//No le queremos contar a ï¿½l mismo.
     }
 
     public float PredatorsOnEstable()
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
 
@@ -364,7 +364,7 @@ public class AAnimalFase2: AAnimal
 
     public override Vector3 GetNewPosition()
     {
-        Debug.LogError("Esto no debería estar siendo usado...");
+        Debug.LogError("Esto no deberï¿½a estar siendo usado...");
         return Vector3.zero;
     }
     #endregion
