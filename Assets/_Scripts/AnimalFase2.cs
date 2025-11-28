@@ -58,19 +58,19 @@ public class AnimalFase2 : BehaviourRunner
 		FunctionalAction Enfermar_action = new FunctionalAction();
 		Enfermar_action.onStarted = m_AAnimalFase2.Enfermar;
 		Enfermar_action.onUpdated = () => Status.Running;
-		UtilityAction Enfermar = Fase2US.CreateAction("Enfermar",Insalubridad, Enfermar_action, AccionesDePedir);
+		UtilityAction Enfermar = Fase2US.CreateAction("Enfermar", Insalubridad, Enfermar_action);//, AccionesDePedir);
 		
 		LinearCurveFactor Felicidad = Fase2US.CreateCurve<LinearCurveFactor>(Infelicidad);
 		
 		SubsystemAction MandarCorazones_action = new SubsystemAction(EstaFeliz);
-		UtilityAction MandarCorazones = Fase2US.CreateAction("Felicidad", Felicidad, MandarCorazones_action, AccionesDePedir);
+		UtilityAction MandarCorazones = Fase2US.CreateAction("Felicidad", Felicidad, MandarCorazones_action);//, AccionesDePedir);
 		
 		FunctionalAction NecesitaLimpiarse_action = new FunctionalAction();
 		NecesitaLimpiarse_action.onStarted = m_AAnimalFase2.Rascarse;
 		NecesitaLimpiarse_action.onUpdated = () => Status.Running;
-		UtilityAction NecesitaLimpiarse = Fase2US.CreateAction("NecesitaLimpiarse", Suciedad, NecesitaLimpiarse_action, AccionesDePedir);
-		
-		UtilityAction EstarIncomodo = Fase2US.CreateAction("MostrarIncomodidad", Incomodidad, null /*this action is not supported by code generation tool*/, AccionesDePedir);
+		UtilityAction NecesitaLimpiarse = Fase2US.CreateAction("NecesitaLimpiarse", Suciedad, NecesitaLimpiarse_action);//, AccionesDePedir);
+
+		UtilityAction EstarIncomodo = Fase2US.CreateAction("MostrarIncomodidad", Incomodidad, null /*this action is not supported by code generation tool*/);//, AccionesDePedir);
 		
 		ConstantFactor Patrol = Fase2US.CreateConstant(0.5f);
 		
@@ -83,13 +83,13 @@ public class AnimalFase2 : BehaviourRunner
 		MinFusionFactor PuedeComer = Fase2US.CreateFusion<MinFusionFactor>(unnamed_1, Hambre);
 		
 		SubsystemAction TieneHambre_action = new SubsystemAction(Comer);
-		UtilityAction TieneHambre = Fase2US.CreateAction(PuedeComer, TieneHambre_action, AccionesQueRepercuten);
-		
-		WeightedFusionFactor unnamed_2 = Fase2US.CreateFusion<WeightedFusionFactor>(Hambre, PuedeComer);
+		UtilityAction TieneHambre = Fase2US.CreateAction(PuedeComer, TieneHambre_action);//AccionesQueRepercuten
+
+        WeightedFusionFactor unnamed_2 = Fase2US.CreateFusion<WeightedFusionFactor>(Hambre, PuedeComer);
 		
 		SimpleAction MostrarHambre_action = new SimpleAction();
 		MostrarHambre_action.action = m_AAnimalFase2.MostrarHambre;
-		UtilityAction MostrarHambre = Fase2US.CreateAction(unnamed_2, MostrarHambre_action, AccionesDePedir);
+		UtilityAction MostrarHambre = Fase2US.CreateAction(unnamed_2, MostrarHambre_action);//, AccionesDePedir);
 		
 		SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
 		Indica_que_tiene_Hambre_action.action = m_AAnimalFase2.MostrarHambre;
