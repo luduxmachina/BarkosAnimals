@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1220ab56c477883489acc1dd8f981cc3, type: 3}
+  m_Name: NivelTutorial
+  m_EditorClassIdentifier: 
+  nombreNivel: Tutorial
+  useDefaultSelectionPhaseScene: 0
+  useGeneratedIslands: 0
+  useDefaultBoatPhaseScene: 0
+  useDefaultOrganizationPhaseScene: 0
+  useDefaultQuotaScene: 1
+  archipelagos:
+  - islands:
+    - {fileID: 11400000, guid: 221bcfa3cf668544c86f4015eab517ba, type: 2}
+    numberOfIslands: 1
+  SelectionPhaseScene: {fileID: 102900000, guid: 9f63f81051faec3408da60024481fce9, type: 3}
+  OrganizationPhaseScene: {fileID: 102900000, guid: 92bac9ca602c9874c9f866eed310e5ca, type: 3}
+  BoatPhaseScene: {fileID: 102900000, guid: 92bac9ca602c9874c9f866eed310e5ca, type: 3}
+  QuotaScene: {fileID: 102900000, guid: 3d08c4fca284f2a47870263f673efb57, type: 3}
+  selectionPhaseSceneIndex: 0
+  organizationPhaseSceneIndex: 3
+  boatPhaseSceneIndex: 3
+  quotaSceneIndex: 5
+  numberOfArchipelagos: 1
+  useAutomaticQuota: 1
+  quotaInfo:
+    quotaValue: 0
+    RestrictionsList: []

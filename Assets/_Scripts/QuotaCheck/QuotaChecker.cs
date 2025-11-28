@@ -84,6 +84,18 @@ public class QuotaChecker
         }
     }
 
+    public void UpdateCuotaWithHappinesOfAnimal(bool anAnimalIsNowHappy)
+    {
+        if (anAnimalIsNowHappy)
+        {
+            this.quotaPassed.AddPoints(30);
+        }
+        else
+        {
+            this.quotaPassed.AddPoints(-30);
+        }
+    }
+
     /// <summary>
     /// This function returns if the quota is completed.
     /// </summary>

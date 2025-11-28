@@ -21,6 +21,9 @@ public class CuencoManager : MonoBehaviour
     public void SetFood(ItemNames tipoComida)
     {
         this.tipoComida = tipoComida;
+        SimpleInteractor interactor = this.GetComponent<SimpleInteractor>();
+        interactor.interactionType = tipoComida;
+
         foreach (var com in comidasYModelo)
         {
             if(tipoComida == com.tipoComida)

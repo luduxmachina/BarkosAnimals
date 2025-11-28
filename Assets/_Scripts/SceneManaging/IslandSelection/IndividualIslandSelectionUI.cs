@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class IndividualIslandSelectionUI : MonoBehaviour
-{
+{/*
     int islandIndex;
     IslandSelectionUI parentUI;
     [SerializeField]
@@ -93,8 +93,8 @@ public class IndividualIslandSelectionUI : MonoBehaviour
     }
     public void SelectIsland()
     {
-        GameFlowManager.instance.lastSelectedIsland = islandIndex;
-        parentUI.UpdateUI();
+      //  GameFlowManager.instance.lastSelectedIsland = islandIndex;
+      //  parentUI.UpdateUI();
     }
     public void UpdateUI()
     {
@@ -108,5 +108,5 @@ public class IndividualIslandSelectionUI : MonoBehaviour
             selectButton.SetActive(true);
             selectedText.SetActive(false);
         }
-    }
+    }*/
 }

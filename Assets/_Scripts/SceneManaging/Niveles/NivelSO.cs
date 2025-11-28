@@ -6,8 +6,6 @@ using UnityEditor.Build;
 #endif
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System;
 
 
 [CreateAssetMenu(fileName = "Nivel", menuName = "ScriptableObjects/NivelSO", order = 1)]
@@ -15,11 +13,11 @@ public class NivelSO : ScriptableObject
 {
     public string nombreNivel;
     [Space]
-    public bool useDefaultSelectionPhaseScene = true;
+    public bool useDefaultSelectionPhaseScene = false;
     public bool useGeneratedIslands = false;
-    public bool useDefaultBoatPhaseScene = true;
-    public bool useDefaultOrganizationPhaseScene = true;
-    public bool useDefaultQuotaScene = true;
+    public bool useDefaultBoatPhaseScene = false;
+    public bool useDefaultOrganizationPhaseScene = false;
+    public bool useDefaultQuotaScene = false;
 
     [SerializeField, CustomLabel("", true), HideIf("useGeneratedIslands")]
     public List<Archipelago> archipelagos;

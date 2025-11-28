@@ -13,38 +13,134 @@ MonoBehaviour:
   m_Name: B_WorldPlaceableObjectsDB
   m_EditorClassIdentifier: 
   <PlaceableObjectData>k__BackingField:
-  - <Name>k__BackingField: Cascada
+  - <Name>k__BackingField: RampaLago
     <ID>k__BackingField: 0
-    <Prefab>k__BackingField: {fileID: 8104990606442457655, guid: 76e5fe628d14e6d4195faa02c6292b39, type: 3}
+    <Prefab>k__BackingField: {fileID: 8555658935523368712, guid: 1b259d4467ff54d40af22265f9db8f94, type: 3}
     <OcupiedSpace>k__BackingField:
-      rows: 6
-      columns: 6
+      rows: 14
+      columns: 9
       matrix:
-      - values: 010101010101
-      - values: 010101010101
-      - values: 010101010101
-      - values: 010101010101
-      - values: 010101010101
-      - values: 000101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
     C_OcupiedSpace:
-      rows: 6
-      columns: 6
+      rows: 14
+      columns: 9
       matrix:
-      - values: 010101010101
-      - values: 010101010001
-      - values: 010101010101
-      - values: 010101010001
-      - values: 010101010001
-      - values: 000101010101
-  - <Name>k__BackingField: Rampa
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+      - values: 010101010101010101
+  - <Name>k__BackingField: LLanuraConCascada
     <ID>k__BackingField: 1
+    <Prefab>k__BackingField: {fileID: 4199702843382874621, guid: 7a031351d8b7fba4d9482ffc3a8bc48c, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 17
+      columns: 13
+      matrix:
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+    C_OcupiedSpace:
+      rows: 17
+      columns: 13
+      matrix:
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+      - values: 01010101010101010101010101
+  - <Name>k__BackingField: RampaGrande
+    <ID>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 268580121956241487, guid: c791b40a01df1c84ab503737cb1e8784, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 12
+      columns: 8
+      matrix:
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+    C_OcupiedSpace:
+      rows: 12
+      columns: 8
+      matrix:
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+      - values: 0101010101010101
+  - <Name>k__BackingField: "RampaPeque\xF1a"
+    <ID>k__BackingField: 3
     <Prefab>k__BackingField: {fileID: 4194544342390226969, guid: 37628feb90727584f9160603f0ff6793, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 6
       columns: 4
       matrix:
       - values: 01010101
-      - values: 00010101
+      - values: 01010101
       - values: 01010101
       - values: 01010101
       - values: 01010101
@@ -54,8 +150,8 @@ MonoBehaviour:
       columns: 4
       matrix:
       - values: 01010101
-      - values: 00010101
       - values: 01010101
-      - values: 01000001
-      - values: 01000001
+      - values: 01010101
+      - values: 01010101
+      - values: 01010101
       - values: 01010101

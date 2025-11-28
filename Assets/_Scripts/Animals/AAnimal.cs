@@ -166,7 +166,7 @@ public abstract class AAnimal : MonoBehaviour
     }
     public virtual Status UpdateComer()
     {
-        if (!ObjectiveClose()) //la comida puede desaparecer
+        if (lastObjectve==null) //la comida puede desaparecer
         {
             if (animator)
             {
@@ -213,6 +213,10 @@ public abstract class AAnimal : MonoBehaviour
         {
             animator.SetTrigger("Walk");
         }
+        lastObjectve = GetClosestObjetive();
+        lastTargetPos = lastObjectve.position;        
+        //o se ha movido o un pan mas cercano
+        movimiento.SetTarget(lastTargetPos);
     }
     public virtual Status MoveTowardsObjective()
     {
