@@ -2097,12 +2097,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e1635c1e4fe7a47952d423c5b57735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuScene: {fileID: 102900000, guid: 9f63f81051faec3408da60024481fce9, type: 3}
+  gameMenuScene: {fileID: 0}
+  mainMenuSceneIndex: 0
+  gameMenuSceneIndex: 6
+  normalLevel: {fileID: 0}
+  tutorialLevel: {fileID: 0}
+  challengeLevel: {fileID: 0}
+  currentLevel: {fileID: 0}
+  currentIsland: {fileID: 0}
   nextPhaseHandler:
-    gameMode: 0
     currentPhase: 0
-    onStartSelectionPhase:
-      m_PersistentCalls:
-        m_Calls: []
     onStartIslandPhase:
       m_PersistentCalls:
         m_Calls: []
@@ -2115,18 +2120,6 @@ MonoBehaviour:
     onStartQuotaPhase:
       m_PersistentCalls:
         m_Calls: []
-  mainMenuScene: {fileID: 102900000, guid: 9f63f81051faec3408da60024481fce9, type: 3}
-  mainMenuSceneIndex: 0
-  defaultLevel: {fileID: 11400000, guid: 066ec0ee396fb4e438c060c00199fa01, type: 2}
-  tutorialLevels: []
-  otherLevels: []
-  infiniteMode: 0
-  currentLevel: {fileID: 0}
-  currentLevelIndex: 0
-  currentArchipelago: 0
-  lastSelectedIsland: 0
-  generatedIsland: 0
-  currentIsland: {fileID: 0}
 --- !u!4 &804061497
 Transform:
   m_ObjectHideFlags: 0

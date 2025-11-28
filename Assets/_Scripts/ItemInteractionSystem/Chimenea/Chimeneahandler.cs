@@ -14,7 +14,7 @@ public class Chimeneahandler : MonoBehaviour
     {
         if (phaseTimer == null)
         {
-            phaseTimer =Object.FindFirstObjectByType<PhaseTimer>();
+            phaseTimer =Object.FindFirstObjectByType<PhaseTimer>( FindObjectsInactive.Include);
         }
         if (phaseTimer == null)
         {

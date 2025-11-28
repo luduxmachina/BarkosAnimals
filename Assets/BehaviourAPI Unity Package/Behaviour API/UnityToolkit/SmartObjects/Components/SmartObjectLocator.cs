@@ -78,8 +78,10 @@ namespace BehaviourAPI.UnityToolkit
 
         private void OnDrawGizmosSelected()
         {
+#if UNITY_EDITOR
             UnityEditor.Handles.color = gizmoColor;
             UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, maxDistance);
+#endif
         }
 
         private void OnDrawGizmos()
