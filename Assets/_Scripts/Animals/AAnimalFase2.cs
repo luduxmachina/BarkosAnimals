@@ -28,6 +28,8 @@ public class AAnimalFase2: AAnimal
     //[SerializeField] AllObjectTypesSO animalsDataBase;
     [SerializeField] EditorBehaviourRunner SistemaUtilidad;
     [SerializeField] NavMeshAgent navMeshAgent;
+    [SerializeField] Predicate<float> funcionFelicidad;
+
 
     public bool hayComida = false;
 
@@ -37,17 +39,13 @@ public class AAnimalFase2: AAnimal
     float tiempoSinComer = 0f;
 
     public float depredadoresCerca = 0f;
-    public bool estaFeliz;
     bool estaEnfermo;
     float tiempoEnfermo;
-
-    public void SetEstaFeliz(bool esFeliz)
-    {
-        if (esFeliz == estaFeliz) { 
-        }
-    }
     
-    
+    //public float GetHappiness()
+    //{
+    //    
+    //}
 
     #region Monobehavior
     protected override void Awake()
