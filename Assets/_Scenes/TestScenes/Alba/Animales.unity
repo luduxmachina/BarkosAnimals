@@ -535,6 +535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 992715263}
     m_Modifications:
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: TiempoEnfermoHastaMorir
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -908,6 +912,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 992715263}
     m_Modifications:
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: MaxSinLimpiar
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: TiempoEnfermoHastaMorir
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1998,6 +2010,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 992715263}
     m_Modifications:
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: TiempoEnfermoHastaMorir
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: managedReferences[6361364654760132680].OtherTransform
       value: 
@@ -2405,8 +2421,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 992715263}
     m_Modifications:
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: MaxSinComer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: MaxSinLimpiar
-      value: 30
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: TiempoEnfermoHastaMorir
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: 'managedReferences[6361364654760132682]'
@@ -6573,6 +6597,10 @@ PrefabInstance:
     - target: {fileID: 6643027423853108606, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
       propertyPath: m_Name
       value: PatoItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958219938240571257, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: TiempoEnfermoHastaMorir
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8867997848718819774, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
       propertyPath: m_LocalPosition.x

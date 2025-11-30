@@ -74,6 +74,7 @@ public class AAnimalFase2: AAnimal
         if(tiempoEnfermo > TiempoEnfermoHastaMorir)
         {
             this.Die();
+            tiempoEnfermo = 0f;
         }
         
         if(establo != null)
@@ -275,7 +276,7 @@ public class AAnimalFase2: AAnimal
 
     public override void Die()
     {
-        GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(thisItemName, -1));
+        //GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(thisItemName, -1));
 
         if (establo == null)
         {
@@ -283,7 +284,10 @@ public class AAnimalFase2: AAnimal
             return;
         }
         establo.ExitFromStable(this);
+        ItemInScene snake = GetComponentInChildren<ItemInScene>();
+        snake.ReduceByOne();
         base.Die();
+        
     }
 
     #endregion
