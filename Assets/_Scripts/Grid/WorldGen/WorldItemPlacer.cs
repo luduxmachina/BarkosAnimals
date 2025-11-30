@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WorldItemPlacer : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class WorldItemPlacer : MonoBehaviour
     private LayerMask heightCheckLayerMask;
     [SerializeField]
     private int numOfItemsOfEach = 10;
+    [SerializeField]
+    private int attempts = 20;
     [SerializeField]
     private Transform parentObject;
     [SerializeField]
@@ -19,23 +22,35 @@ public class WorldItemPlacer : MonoBehaviour
         {
             for (int i = 0; i < numOfItemsOfEach; i++)
             {
-                float x = Random.Range(-dimensions.x * 0.5f, dimensions.x * 0.5f);
-                float z = Random.Range(-dimensions.y * 0.5f, dimensions.y * 0.5f);
-                
-                float y = GetHighestY(new Vector3(x, 0f, z)) + heightOffset;
-                
-                Vector3 pos = new Vector3(x, y, z);
-                GameObject obj = item.Prefab;
-                if(parentObject != null)
+                bool placed = false;
+                int attempt = 0;
+                while (!placed && attempt < attempts)
                 {
-                    Instantiate(obj, parentObject);
-                }
-                else
-                {
-                    Instantiate(obj);
+                    float x = Random.Range(-dimensions.x * 0.5f, dimensions.x * 0.5f);
+                    float z = Random.Range(-dimensions.y * 0.5f, dimensions.y * 0.5f);
+                    float y = GetHighestY(new Vector3(x, 0f, z)) + heightOffset;
+                
+                    Vector3 pos = new Vector3(x, y, z);
+                    GameObject obj = item.Prefab;
+                
+                    if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+                    {
+                        if(parentObject != null)
+                        {
+                            Instantiate(obj, hit.position, Quaternion.identity, parentObject);
+                        }
+                        else
+                        {
+                            Instantiate(obj, hit.position, Quaternion.identity);
+                        }
+                        
+                        placed =  true;
+                    }
+                
+                    // obj.transform.position = pos;
+                    attempt++;
                 }
                 
-                obj.transform.position = pos;
             }
         }
     }
