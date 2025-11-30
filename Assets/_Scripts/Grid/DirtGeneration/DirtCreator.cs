@@ -181,14 +181,18 @@ public class DirtCreator : MonoBehaviour
         Vector3 pos = grid.GetCellCenterWorld(new Vector3Int(gridPos.x, 0, gridPos.y));
         pos = new Vector3(pos.x, pos.y + yOffset, pos.z);
 
+        GameObject dirt;
         if (dirtPrefab != null)
         {
-            Instantiate(dirtPrefab, pos, Quaternion.identity, dirtParent);
+            dirt = Instantiate(dirtPrefab, pos, Quaternion.identity, dirtParent);
         }
         else
         {
-            Instantiate(dirtPrefab, pos, Quaternion.identity);
+            dirt = Instantiate(dirtPrefab, pos, Quaternion.identity);
         }
+
+        dirt.AddComponent<DirtInstance>();
+        dirt.GetComponent<DirtInstance>().dirtCreator = this;
         
         onDirtPlacedGrid?.Invoke(gridPos);
         onDirtPlacedWorld?.Invoke(pos);
