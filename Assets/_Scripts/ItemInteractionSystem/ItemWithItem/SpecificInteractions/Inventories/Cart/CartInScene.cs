@@ -6,7 +6,7 @@ public class CartInScene : InventoryInScene
     [SerializeField]
     CartSlowEffect slowEffect = new();
     [SerializeField]
-    CartData cartData;
+    ShipData cartData;
     IGrabbable grabbable;
 
     void Awake()

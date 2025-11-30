@@ -7,10 +7,12 @@ using BehaviourAPI.Core.Perceptions;
 using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.StateMachines;
 using BehaviourAPI.BehaviourTrees;
+using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 
 public class SerpienteBehaviour : BehaviourRunner
 {
 	[SerializeField] private SerpienteInScene m_SerpienteInScene;
+	[SerializeField] private BSRuntimeDebugger debuggerComponent;
     [SerializeField] private Transform HuirRecto_action_OtherTransform;
 	[SerializeField] private Transform HuirIzq_action_OtherTransform;
 	private PushPerception Cogido;
@@ -52,18 +54,18 @@ public class SerpienteBehaviour : BehaviourRunner
         StateTransition SerCogido = SnakeFSM.CreateTransition(Huyendo, recienCogido, statusFlags: StatusFlags.None);
 
 
-        UnityTimePerception pasadoTiempoTrasCogido_perception = new UnityTimePerception();
-        pasadoTiempoTrasCogido_perception.TotalTime = 0.6f;
+        UnityTimePerception tiempoTrasCogido_perception = new UnityTimePerception();
+        tiempoTrasCogido_perception.TotalTime = 0.6f;
 
         SimpleAction AtacarJugador_action = new SimpleAction();
 		AtacarJugador_action.action = m_SerpienteInScene.AttackGrabber;
 		State AtacarJugador = SnakeFSM.CreateState("AtacarJugador", AtacarJugador_action);
 		
-		StateTransition pasarAAtacar = SnakeFSM.CreateTransition(recienCogido, AtacarJugador, pasadoTiempoTrasCogido_perception);
+		StateTransition pasarAAtacar = SnakeFSM.CreateTransition(recienCogido, AtacarJugador, tiempoTrasCogido_perception);
 		
-		UnityTimePerception pasadoTiempoTrasAtacar_perception = new UnityTimePerception();
-		pasadoTiempoTrasAtacar_perception.TotalTime = m_SerpienteInScene.GetTiempoDescanso();
-		StateTransition TiempoTrasAtacar = SnakeFSM.CreateTransition(AtacarJugador, Huyendo, pasadoTiempoTrasAtacar_perception);
+		UnityTimePerception TiempoTrasAtacar_perception = new UnityTimePerception();
+		TiempoTrasAtacar_perception.TotalTime = m_SerpienteInScene.GetTiempoTrasAtaque();
+		StateTransition TiempoTrasAtacar = SnakeFSM.CreateTransition(AtacarJugador, Huyendo, TiempoTrasAtacar_perception);
 		
 		ConditionPerception PeligroCerca_perception = new ConditionPerception();
 		PeligroCerca_perception.onCheck = m_SerpienteInScene.PredatorClose;
@@ -99,8 +101,20 @@ public class SerpienteBehaviour : BehaviourRunner
 		ComerNormal_action.onStarted = m_SerpienteInScene.InitComer;
 		ComerNormal_action.onUpdated = m_SerpienteInScene.UpdateComer;
 		LeafNode ComerNormal = SnakeTranquiCazandoBT.CreateLeafNode("ComerNormal", ComerNormal_action);
-		
-		SelectorNode ComerOMeterseAlCarro = SnakeTranquiCazandoBT.CreateComposite<SelectorNode>(false, ObjetivoEsCarro, ComerNormal);
+
+		SimpleAction mostrarDescanso= new SimpleAction();
+        mostrarDescanso.action = m_SerpienteInScene.Descansar;
+        LeafNode DescansarNode = SnakeTranquiCazandoBT.CreateLeafNode("Descansar", mostrarDescanso);
+
+        DelayAction TiempoTrasComer = new DelayAction(m_SerpienteInScene.GetTiempoDescanso());
+		LeafNode TiempoTrasComerNode = SnakeTranquiCazandoBT.CreateLeafNode("TiempoTrasComer", TiempoTrasComer);
+
+
+        SequencerNode ComerConDelay = SnakeTranquiCazandoBT.CreateComposite<SequencerNode>("Comer y descansar", false, ComerNormal, DescansarNode, TiempoTrasComerNode);
+
+
+
+        SelectorNode ComerOMeterseAlCarro = SnakeTranquiCazandoBT.CreateComposite<SelectorNode>("Comer",false, ObjetivoEsCarro, ComerConDelay);
 		ComerOMeterseAlCarro.IsRandomized = false;
 		
 		ConditionNode PresaARangoDeComida = SnakeTranquiCazandoBT.CreateDecorator<ConditionNode>("PresaARango de comida", ComerOMeterseAlCarro);
@@ -108,7 +122,7 @@ public class SerpienteBehaviour : BehaviourRunner
         presaARangoDeComidaPerception.onCheck = m_SerpienteInScene.ObjectiveCloseToAttack;
         PresaARangoDeComida.Perception = presaARangoDeComidaPerception;
 
-        SequencerNode Cazando = SnakeTranquiCazandoBT.CreateComposite<SequencerNode>(false, Hay_PresaCerca, PresaARangoDeComida);
+        SequencerNode Cazando = SnakeTranquiCazandoBT.CreateComposite<SequencerNode>("Cazando", false, Hay_PresaCerca, PresaARangoDeComida);
 		Cazando.IsRandomized = false;
 		
 		PatrolAction Patrullar_action = new PatrolAction();
@@ -165,6 +179,9 @@ public class SerpienteBehaviour : BehaviourRunner
         SnakeHuyendoBT.SetRootNode(rootHuyendo);
 
         Cogido = new PushPerception(SerCogido);
+		debuggerComponent.RegisterGraph(SnakeTranquiCazandoBT);
+		debuggerComponent.RegisterGraph(SnakeHuyendoBT);
+        debuggerComponent.RegisterGraph(SnakeFSM);
 		return SnakeFSM;
 	}
 }

@@ -43,7 +43,7 @@ namespace BehaviourAPI.UnityToolkit
             // Actualizar el temporizador
             _timer += Time.deltaTime;
 
-            // Verificar si ha pasado el tiempo suficiente para realizar una comprobaciï¿½n
+            // Verificar si ha pasado el tiempo suficiente para realizar una comprobación
             if (_timer >= intervalTime)
             {
                 LocateObjects();                
@@ -78,8 +78,10 @@ namespace BehaviourAPI.UnityToolkit
 
         private void OnDrawGizmosSelected()
         {
-            // UnityEditor.Handles.color = gizmoColor;
-            // UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, maxDistance);
+#if UNITY_EDITOR
+            UnityEditor.Handles.color = gizmoColor;
+            UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, maxDistance);
+#endif
         }
 
         private void OnDrawGizmos()

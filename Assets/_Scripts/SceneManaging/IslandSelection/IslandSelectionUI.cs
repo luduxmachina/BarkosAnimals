@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 public class IslandSelectionUI : MonoBehaviour
-{
+{/*
     [SerializeField]
     IndividualIslandSelectionUI[] individualIslandSelectionInScene;
     [SerializeField]
@@ -48,5 +48,5 @@ public class IslandSelectionUI : MonoBehaviour
         {
             islandUI.UpdateUI();
         }
-    }
+    }*/
 }
