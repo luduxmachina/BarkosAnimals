@@ -82,6 +82,25 @@ public class DirtCreator : MonoBehaviour
         gridSize.y = boolMatrix.GetColums();
     }
 
+    public int GetHowMuchDirtIsNear(Vector3 pos, float range)
+    {
+        int count = 0;
+        float rangeSqr = range * range;
+
+        foreach (Vector2Int dirtPos in dirtsPlaced)
+        {
+            Vector3 posToCheck = new Vector3(dirtPos.x, 0f, dirtPos.y);
+            
+            if ((posToCheck - pos).sqrMagnitude <= rangeSqr)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+
     private void PlaceDirt()
     {
         if (gridSize.sqrMagnitude < 0.001f)
