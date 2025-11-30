@@ -276,7 +276,7 @@ public class AAnimalFase2: AAnimal
 
     public override void Die()
     {
-        //GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(thisItemName, -1));
+        GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(thisItemName, -1));
 
         if (establo == null)
         {

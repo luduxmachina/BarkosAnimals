@@ -536,8 +536,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 992715263}
     m_Modifications:
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: MaxSinLimpiar
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: TiempoEnfermoHastaMorir
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: m_Enabled
@@ -918,7 +922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: TiempoEnfermoHastaMorir
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: m_Enabled
@@ -2011,8 +2015,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 992715263}
     m_Modifications:
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: MaxSinLimpiar
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: TiempoEnfermoHastaMorir
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: managedReferences[6361364654760132680].OtherTransform
@@ -2422,15 +2430,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: MaxSinComer
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: MaxSinLimpiar
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: TiempoEnfermoHastaMorir
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6174060735597555040, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: 'managedReferences[6361364654760132682]'
