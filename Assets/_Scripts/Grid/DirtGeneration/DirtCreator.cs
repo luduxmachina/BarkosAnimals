@@ -82,7 +82,13 @@ public class DirtCreator : MonoBehaviour
         gridSize.y = boolMatrix.GetColums();
     }
 
-    public int GetHowMuchDirtIsNear(Vector3 pos, float range)
+    /// <summary>
+    /// Checks how much dirt is near a specific world position
+    /// </summary>
+    /// <param name="worldPosition">The point to check near to</param>
+    /// <param name="range">The range in witch it checks</param>
+    /// <returns>The amount of dirt near the position at that range or less</returns>
+    public int GetHowMuchDirtIsNear(Vector3 worldPosition, float range)
     {
         int count = 0;
         float rangeSqr = range * range;
@@ -91,7 +97,7 @@ public class DirtCreator : MonoBehaviour
         {
             Vector3 posToCheck = new Vector3(dirtPos.x, 0f, dirtPos.y);
             
-            if ((posToCheck - pos).sqrMagnitude <= rangeSqr)
+            if ((posToCheck - worldPosition).sqrMagnitude <= rangeSqr)
             {
                 count++;
             }
