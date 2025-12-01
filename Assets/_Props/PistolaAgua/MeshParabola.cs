@@ -18,7 +18,7 @@ public class WaterStreamMeshFijoInicial : MonoBehaviour
     [Header("Ondulaciones")]
     public float amplitudBase = 0.02f;
     public float amplitudVariacion = 0.01f;
-    public float frecuenciaBase = 3f;
+    public float frecuenciaBase = 3f;   
     public float frecuenciaVariacion = 1.5f;
     public float velocidadOscilacion = 1f;
 
