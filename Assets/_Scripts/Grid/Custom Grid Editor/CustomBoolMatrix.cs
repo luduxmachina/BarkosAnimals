@@ -116,6 +116,43 @@ public class CustomBoolMatrix
 
         return result;
     }
+    
+    public void Rotate90()
+    {
+        EnsureSize();
+
+        int newRows = columns;
+        int newCols = rows;
+
+        bool[,] rotated = new bool[newRows, newCols];
+
+        // Llenar la matriz rotada
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                rotated[j, rows - 1 - i] = matrix[i].values[j];
+            }
+        }
+
+        // Reasignar el tamaño
+        rows = newRows;
+        columns = newCols;
+
+        // Reconstruir estructura matrix[][] según el nuevo tamaño
+        matrix = new BoolRow[rows];
+        for (int i = 0; i < rows; i++)
+        {
+            matrix[i] = new BoolRow();
+            matrix[i].values = new bool[columns];
+
+            for (int j = 0; j < columns; j++)
+                matrix[i].values[j] = rotated[i, j];
+        }
+        
+        EnsureSize();
+    }
+
 
     public int GetRows() => matrix.Length;
     public int GetColums() => matrix[0].values.Length;

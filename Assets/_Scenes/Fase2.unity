@@ -1785,6 +1785,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83080086088c3474d914cc48fc388896, type: 3}
+--- !u!1 &683049445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683049446}
+  m_Layer: 0
+  m_Name: DirtParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &683049446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683049445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.530605, y: -431.40085, z: 446.52753}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &709444550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,6 +1937,63 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &756509673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 756509675}
+  - component: {fileID: 756509674}
+  m_Layer: 0
+  m_Name: DirtCreator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &756509674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756509673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee39719a7b2d474096430478939fd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirtPrefab: {fileID: 3737595034790365527, guid: 4e735f529929ebf47a8b8e6c65d2eee7, type: 3}
+  dirtParent: {fileID: 683049446}
+  grid: {fileID: 1916467959}
+  placementTries: 5
+  yOffset: 0.1
+  cooldown: 5
+  probabilityToSpreadNearOtherDirt: 0.6
+  onDirtPlacedGrid:
+    m_PersistentCalls:
+      m_Calls: []
+  onDirtPlacedWorld:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &756509675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756509673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1941425210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &764142371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4599,6 +4687,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7356164174949252839, guid: e52bf821b19d8234b9056a4e5d086421, type: 3}
   m_PrefabInstance: {fileID: 1886548042}
   m_PrefabAsset: {fileID: 0}
+--- !u!156049354 &1916467959 stripped
+Grid:
+  m_CorrespondingSourceObject: {fileID: 6121909750729470956, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+  m_PrefabInstance: {fileID: 1941425209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1926937984
 GameObject:
   m_ObjectHideFlags: 0
@@ -4768,6 +4861,14 @@ PrefabInstance:
       value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: ConfigureGrid.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: OnItemPlacing.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
       propertyPath: gridOcupiedSpaces.matrix.Array.data[0].values.Array.size
       value: 20
       objectReference: {fileID: 0}
@@ -4896,6 +4997,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: OnItemPlacing.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
       propertyPath: 'gridOcupiedSpaces.matrix.Array.data[16].values.Array.data[6]'
       value: 0
       objectReference: {fileID: 0}
@@ -4967,6 +5072,46 @@ PrefabInstance:
       propertyPath: 'gridOcupiedSpaces.matrix.Array.data[25].values.Array.data[11]'
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: ConfigureGrid.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 756509674}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: OnItemPlacing.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 756509674}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: ConfigureGrid.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: OnItemPlacing.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: ConfigureGrid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfigureGrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: OnItemPlacing.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartPlacingDirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: ConfigureGrid.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DirtCreator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: OnItemPlacing.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DirtCreator, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: ConfigureGrid.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374089764558062217, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      propertyPath: OnItemPlacing.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5470712464051686440, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
       propertyPath: mainCamera
       value: 
@@ -5015,6 +5160,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 543385469625794060, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1926937988}
+    - targetCorrespondingSourceObject: {fileID: 543385469625794060, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 756509675}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde2a6bc82ec1174b8e2c05f8ec187eb, type: 3}
 --- !u!4 &1941425210 stripped
@@ -5712,3 +5860,4 @@ SceneRoots:
   - {fileID: 391256898}
   - {fileID: 651113894}
   - {fileID: 1965631323}
+  - {fileID: 683049446}
