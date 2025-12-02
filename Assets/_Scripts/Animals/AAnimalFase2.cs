@@ -28,6 +28,8 @@ public class AAnimalFase2: AAnimal
     //[SerializeField] AllObjectTypesSO animalsDataBase;
     [SerializeField] EditorBehaviourRunner SistemaUtilidad;
     [SerializeField] NavMeshAgent navMeshAgent;
+    [SerializeField] Predicate<float> funcionFelicidad;
+
 
     public bool hayComida = false;
 
@@ -37,17 +39,13 @@ public class AAnimalFase2: AAnimal
     float tiempoSinComer = 0f;
 
     public float depredadoresCerca = 0f;
-    public bool estaFeliz;
     bool estaEnfermo;
     float tiempoEnfermo;
-
-    public void SetEstaFeliz(bool esFeliz)
-    {
-        if (esFeliz == estaFeliz) { 
-        }
-    }
     
-    
+    //public float GetHappiness()
+    //{
+    //    
+    //}
 
     #region Monobehavior
     protected override void Awake()
@@ -76,6 +74,7 @@ public class AAnimalFase2: AAnimal
         if(tiempoEnfermo > TiempoEnfermoHastaMorir)
         {
             this.Die();
+            tiempoEnfermo = 0f;
         }
         
         if(establo != null)
@@ -285,7 +284,10 @@ public class AAnimalFase2: AAnimal
             return;
         }
         establo.ExitFromStable(this);
+        ItemInScene snake = GetComponentInChildren<ItemInScene>();
+        snake.ReduceByOne();
         base.Die();
+        
     }
 
     #endregion
