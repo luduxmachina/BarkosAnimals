@@ -15,4 +15,13 @@ public class InventoryItemDataObjects
     {
         Count += amount;
     }
+
+    public void Remove(int amount)
+    {
+        Count -= amount;
+        if (Count < 0)
+        {
+            Count = 0;
+        }
+    }
 }
