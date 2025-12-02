@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 2071199891386107965}
   - component: {fileID: 8532148973094207547}
   - component: {fileID: 5234811617194349607}
+  - component: {fileID: 7264137979792110078}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Item
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisRb: {fileID: 1578362754392846782}
   disparador: {fileID: 2718038454778964738}
+  agua: {fileID: 7264137979792110078}
   retroceso: 15
   retrocesoInicial: 150
   rotacionRandom: 5
@@ -456,6 +458,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactionSuccessful: 1
+--- !u!114 &7264137979792110078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086089927867809933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f8ca4ebd70f2447a43fdbf670ba333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agua: {fileID: 1535506975258858871}
 --- !u!1001 &5870897691564384670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,6 +528,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e78d62bebcf0f46ad841f4588f640a, type: 3}
+--- !u!114 &1535506975258858871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4915302055002469609, guid: b5e78d62bebcf0f46ad841f4588f640a, type: 3}
+  m_PrefabInstance: {fileID: 5870897691564384670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bce72d35fe3cb34086f95b48c6b09d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5902776268441424530 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 41449276455629580, guid: b5e78d62bebcf0f46ad841f4588f640a, type: 3}
