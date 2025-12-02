@@ -17,7 +17,7 @@ public class CannonDisparador : MonoBehaviour
             AAnimalFase2 animal = target.GetComponentInChildren<AAnimalFase2>();
             if (animal != null)
             {
-                animal.Limpiarse();
+                animal.Limpiar();
                 return;
             }
         }

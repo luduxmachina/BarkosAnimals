@@ -440,7 +440,7 @@ Transform:
   m_GameObject: {fileID: 6544289954468732073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.911}
+  m_LocalPosition: {x: 0, y: 0, z: 1.116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -718,10 +718,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.53
+  m_Radius: 0.73
   m_Height: 1.01
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.09}
+  m_Center: {x: 0, y: 0, z: 0.04}
 --- !u!54 &6201926675312330601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -775,7 +775,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8607783061081812760}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.34
+  m_Radius: 0.75
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1800,7 +1800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 882125390730471819, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.758
+      value: -1.348
       objectReference: {fileID: 0}
     - target: {fileID: 882125390730471819, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
       propertyPath: m_LocalRotation.w
