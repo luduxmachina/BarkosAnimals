@@ -269,7 +269,7 @@ public class AAnimalFase2: AAnimal
         stikersManager.SetImage(StikersGenerales.Incomodo);
     }
 
-    public void Limpiarse()
+    public void Limpiar()
     {
         this.tiempoSinLimpiar = 0f;
     }

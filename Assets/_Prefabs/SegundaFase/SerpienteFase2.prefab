@@ -812,9 +812,9 @@ MonoBehaviour:
   radioAtaqueComida: 1.5
   tiempoEnComer: 1
   itemName: 4
-  MaxSinLimpiar: 1000
+  MaxSinLimpiar: 40
   MaxSinComer: 30
-  TiempoEnfermoHastaMorir: 60
+  TiempoEnfermoHastaMorir: 20
   AMax: 2
   CMax: 3
   DMax: 2
@@ -825,7 +825,6 @@ MonoBehaviour:
   hayComida: 0
   isHerbivore: 0
   depredadoresCerca: 0
-  estaFeliz: 0
 --- !u!114 &9083101998368258996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,7 +1253,7 @@ MonoBehaviour:
         childIds: []
       - name: Moverse un poco
         id: ebed57a6-15f6-4b21-bc65-5d30e0fefa25
-        position: {x: 1472, y: 116}
+        position: {x: 1486, y: 131}
         node:
           rid: 6361364534266953867
         references:
