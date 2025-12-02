@@ -128,7 +128,7 @@ public class SerpienteBehaviour : BehaviourRunner
 		PatrolAction Patrullar_action = new PatrolAction();
 	
 		Patrullar_action.maxDistance = m_SerpienteInScene.GetPatrolRadius();
-		ParallelAction parallelPatrullar= new ParallelAction(false, true, Patrullar_action, new SimpleAction(m_SerpienteInScene.PlayWalkAnim));
+		ParallelAction parallelPatrullar= new ParallelAction(false, true, Patrullar_action, new SimpleAction(m_SerpienteInScene.PlayWalkingAnim));
 
         //LeafNode Patrullar = SnakeTranquiCazandoBT.CreateLeafNode("Patrullar", Patrullar_action);
         LeafNode Patrullar = SnakeTranquiCazandoBT.CreateLeafNode("Patrullar", parallelPatrullar);
