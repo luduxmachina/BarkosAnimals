@@ -29,7 +29,7 @@ public class DirtCreator : MonoBehaviour
 
     private HashSet<Vector2Int> dirtsPlaced = new HashSet<Vector2Int>();
     
-    private Vector2Int gridSize = new Vector2Int();
+    private Vector2Int gridSize = new Vector2Int(10,10);
     private bool startPlacing = false;
     private float timer = 0f;
 

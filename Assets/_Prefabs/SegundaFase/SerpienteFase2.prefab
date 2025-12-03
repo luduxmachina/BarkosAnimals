@@ -802,7 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5861753263699587296}
   predators: 00000000
-  objectives: 0200000003000000
+  objectives: 020000000300000005000000
   walkingSpeed: 0.1
   run: 0.2
   rotateSpeed: 121
@@ -812,7 +812,7 @@ MonoBehaviour:
   radioAtaqueComida: 1.5
   tiempoEnComer: 1
   itemName: 4
-  MaxSinLimpiar: 40
+  suciedadMaxima: 60
   MaxSinComer: 30
   TiempoEnfermoHastaMorir: 20
   AMax: 2
@@ -822,8 +822,10 @@ MonoBehaviour:
   stikersManager: {fileID: 2255792413961149102}
   SistemaUtilidad: {fileID: 9083101998368258996}
   navMeshAgent: {fileID: 815999090571376006}
+  dirtCreator: {fileID: 0}
   hayComida: 0
   isHerbivore: 0
+  suciedadQueQuita: 10
   depredadoresCerca: 0
 --- !u!114 &9083101998368258996
 MonoBehaviour:
