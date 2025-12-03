@@ -21,6 +21,8 @@ public class DirtInstance : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!gameObject.scene.isLoaded) return;
+        
         dirtCreator?.RemoveDirt(transform.position);
     }
     
