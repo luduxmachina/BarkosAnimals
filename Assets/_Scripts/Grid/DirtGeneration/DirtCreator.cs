@@ -23,6 +23,11 @@ public class DirtCreator : MonoBehaviour
     private float cooldown = 5f;
     [SerializeField] 
     private float probabilityToSpreadNearOtherDirt = 0.6f;
+
+    [SerializeField] 
+    private float dirtAnimationTime = 0.3f;
+    [SerializeField] 
+    private float dirtStartScale = 0.1f;
     
     public UnityEvent<Vector2Int> onDirtPlacedGrid = new UnityEvent<Vector2Int>();
     public UnityEvent<Vector3> onDirtPlacedWorld = new UnityEvent<Vector3>();
@@ -179,20 +184,28 @@ public class DirtCreator : MonoBehaviour
         dirtsPlaced.Add(gridPos);
 
         Vector3 pos = grid.GetCellCenterWorld(new Vector3Int(gridPos.x, 0, gridPos.y));
-        pos = new Vector3(pos.x, pos.y + yOffset, pos.z);
+        float y = pos.y + yOffset - grid.cellSize.y * 0.5f;
+        pos = new Vector3(pos.x, y, pos.z);
 
         GameObject dirt;
+        float randomY = Random.Range(0f, 360f);
+        Quaternion randomRotation = Quaternion.Euler(0, randomY, 0);
+        
         if (dirtPrefab != null)
         {
-            dirt = Instantiate(dirtPrefab, pos, Quaternion.identity, dirtParent);
+            dirt = Instantiate(dirtPrefab, pos, randomRotation, dirtParent);
         }
         else
         {
-            dirt = Instantiate(dirtPrefab, pos, Quaternion.identity);
+            dirt = Instantiate(dirtPrefab, pos, randomRotation);
         }
 
+
         dirt.AddComponent<DirtInstance>();
-        dirt.GetComponent<DirtInstance>().dirtCreator = this;
+        DirtInstance  dirtInstance = dirt.GetComponent<DirtInstance>();
+        dirtInstance.dirtCreator = this;
+        dirtInstance.duration = dirtAnimationTime;
+        dirtInstance.startScale =  dirtStartScale;
         
         onDirtPlacedGrid?.Invoke(gridPos);
         onDirtPlacedWorld?.Invoke(pos);
