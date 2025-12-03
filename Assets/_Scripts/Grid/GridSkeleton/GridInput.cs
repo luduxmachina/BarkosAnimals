@@ -23,6 +23,11 @@ public class GridInput : MonoBehaviour, IGridInput
     {
         gridPlacementManager = GetComponent<GridPlacementManager>();
     }
+    
+    public void StopPlacing()
+    {
+        OnExit?.Invoke();
+    }
 
     public void StartPlacing(int id)
     {
@@ -41,7 +46,7 @@ public class GridInput : MonoBehaviour, IGridInput
             OnClick?.Invoke();
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            OnExit?.Invoke();
+            StopPlacing();
     }
 
     public Vector3 GetSelectedMapPosition()

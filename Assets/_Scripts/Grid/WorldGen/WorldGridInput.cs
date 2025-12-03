@@ -40,6 +40,11 @@ public class WorldGridInput : MonoBehaviour, IGridInput
         );
     }
 
+    public void StopPlacing()
+    {
+        OnExit?.Invoke();
+    }
+    
     public void StartPlacing(int id)
     {
         actualObjId = id;

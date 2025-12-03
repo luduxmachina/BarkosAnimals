@@ -5,12 +5,12 @@ public class AnimalGridObjectPlacer : MonoBehaviour, IObjectPlacer
 {
     [SerializeField] private Transform parent;
     [SerializeField] private float heightOffset = 0.5f;
+    [SerializeField] private ShipInventorySO shipInventory;
     
     private List<GameObject> placedObjects = new List<GameObject>();
     
     public int PlaceObject(GameObject prefab, Vector3 worldCellPos)
     {
-        
         GameObject newObj;
         if (parent == null)
         {
@@ -25,6 +25,9 @@ public class AnimalGridObjectPlacer : MonoBehaviour, IObjectPlacer
         
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
+        
+        if(shipInventory != null)
+            newObj.GetComponent<InformWhenRemovingFromGrid>().SetShipInventory(shipInventory);
 
         return placedObjects.Count - 1;
     }

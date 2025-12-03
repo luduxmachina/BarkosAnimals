@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu]
 public class ShipInventorySO : ScriptableObject
 {
     [SerializeField]
     private AllObjectTypesSO dataBase;
-    private readonly Dictionary<ItemNames, int> inventory = new();
+    private Dictionary<ItemNames, int> inventory = new();
+    
+    public UnityEvent<ItemNames> OnInventoryUpdated = new();
     
     [ContextMenu("Debug Inventory")]
     public void DebugMensaje()
@@ -51,12 +54,21 @@ public class ShipInventorySO : ScriptableObject
     {
         if (count > dataBase.GetObjectMaxStackSize(itemName))
             count =  dataBase.GetObjectMaxStackSize(itemName);
-        
-        if (inventory.ContainsKey(itemName))
+
+        int value = 0;
+        if (inventory.TryGetValue(itemName, out value))
         {
-            return new InventoryItemDataObjects(itemName, Mathf.Min(count, inventory[itemName]));
+            int num = Mathf.Min(count, value);
+            inventory[itemName] = value - num;
+            
+            if(inventory[itemName] <= 0)
+                inventory.Remove(itemName);
+            
+            OnInventoryUpdated?.Invoke(itemName);
+            return new InventoryItemDataObjects(itemName, num);
         }
 
+        OnInventoryUpdated?.Invoke(itemName);
         return null;
     }
 
@@ -80,6 +92,8 @@ public class ShipInventorySO : ScriptableObject
         {
             inventory.Add(itemName, amount);
         }
+        
+        OnInventoryUpdated?.Invoke(itemName);
     }
     
     public void AddToInventory(InventoryItemDataObjects item) => AddToInventory(item.Name, item.Count);
@@ -93,6 +107,7 @@ public class ShipInventorySO : ScriptableObject
     public void EmptyInventory()
     {
         inventory.Clear();
+        OnInventoryUpdated?.Invoke(ItemNames.None);
     }
 
     public List<InventoryItemDataObjects> GetAllStacks()
@@ -109,5 +124,10 @@ public class ShipInventorySO : ScriptableObject
         }
         
         return retrunValues;
+    }
+
+    public bool ContainsItemsOf(ItemNames itemName)
+    {
+        return inventory.ContainsKey(itemName);
     }
 }

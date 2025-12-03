@@ -4,6 +4,7 @@ using UnityEngine;
 public class ObjectPlacer : MonoBehaviour, IObjectPlacer
 {
     [SerializeField] private Transform parent;
+    [SerializeField] private ShipInventorySO shipInventory;
     
     private List<GameObject> placedObjects = new List<GameObject>();
 
@@ -21,6 +22,9 @@ public class ObjectPlacer : MonoBehaviour, IObjectPlacer
         
         newObj.transform.position = worldCellPos;
         placedObjects.Add(newObj);
+        
+        if(shipInventory != null)
+            newObj.GetComponent<InformWhenRemovingFromGrid>()?.SetShipInventory(shipInventory);
 
         // return gameObjectIndex
         return placedObjects.Count - 1;
@@ -40,7 +44,7 @@ public class ObjectPlacer : MonoBehaviour, IObjectPlacer
     {
         if (placedObjects.Count <= gameObjectIndex || placedObjects[gameObjectIndex] == null)
             return;
-
+        
         Destroy(placedObjects[gameObjectIndex]);
         placedObjects[gameObjectIndex] = null;
     }
