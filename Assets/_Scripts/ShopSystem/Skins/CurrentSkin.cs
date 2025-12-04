@@ -26,23 +26,23 @@ public class CurrentSkin : MonoBehaviour
     {
         
         string currentDuckSkinName = PlayerPrefs.GetString("CurrentDuckSkin", "Pato amarillo");
-        string currentPlayerSkinName = PlayerPrefs.GetString("CurrentPlayerSkin", "Player default");
+        string currentPlayerSkinName = PlayerPrefs.GetString("CurrentPlayerSkin", "Barkito");
         SkinSO[] skin = Resources.LoadAll<SkinSO>("Skins");
         foreach (SkinSO s in skin)
         {
             if (s.skinName == currentDuckSkinName)
             {
-                currentDuckSkin = s;
+                _currentDuckSkin = s;
                // return;
             }
             if (s.skinName == currentPlayerSkinName)
             {
-                currentPlayerSkin = s;
+                _currentPlayerSkin = s;
                // return;
             }
         }
-        if(currentDuckSkin==null) currentDuckSkin = skin[0]; // Default skin if not found
-        if (currentPlayerSkin == null) currentPlayerSkin = skin[0]; // Default skin if not found
+        if(_currentDuckSkin == null && skin.Length>0) _currentDuckSkin = skin[0]; // Default skin if not found
+        if (_currentPlayerSkin == null && skin.Length > 0) _currentPlayerSkin = skin[0]; // Default skin if not found
 
 
 

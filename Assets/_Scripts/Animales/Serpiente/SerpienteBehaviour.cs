@@ -11,8 +11,10 @@ using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 
 public class SerpienteBehaviour : BehaviourRunner
 {
-	[SerializeField] private SerpienteInScene m_SerpienteInScene;
-	[SerializeField] private BSRuntimeDebugger debuggerComponent;
+
+    [SerializeField] private bool useDebugger = false;
+    [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
+    [SerializeField] private SerpienteInScene m_SerpienteInScene;
     [SerializeField] private Transform HuirRecto_action_OtherTransform;
 	[SerializeField] private Transform HuirIzq_action_OtherTransform;
 	private PushPerception Cogido;
@@ -179,9 +181,13 @@ public class SerpienteBehaviour : BehaviourRunner
         SnakeHuyendoBT.SetRootNode(rootHuyendo);
 
         Cogido = new PushPerception(SerCogido);
-		debuggerComponent.RegisterGraph(SnakeTranquiCazandoBT);
-		debuggerComponent.RegisterGraph(SnakeHuyendoBT);
-        debuggerComponent.RegisterGraph(SnakeFSM);
+		if (useDebugger)
+		{
+
+			debuggerComponent.RegisterGraph(SnakeTranquiCazandoBT);
+			debuggerComponent.RegisterGraph(SnakeHuyendoBT);
+			debuggerComponent.RegisterGraph(SnakeFSM);
+		}
 		return SnakeFSM;
 	}
 }
