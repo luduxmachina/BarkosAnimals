@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class CurrentSkin : MonoBehaviour
 {
-    private static SkinSO _currentSkin;
-    public static SkinSO currentSkin {  get { return _currentSkin; }
+    private static SkinSO _currentDuckSkin;
+    public static SkinSO currentDuckSkin {  get { return _currentDuckSkin; }
 
          set {
-            _currentSkin = value;
+            _currentDuckSkin = value;
+            SaveCurrentSkin();
+        }
+    }
+    private static SkinSO _currentPlayerSkin;
+    public static SkinSO currentPlayerSkin
+    {
+        get { return _currentPlayerSkin; }
+
+        set
+        {
+            _currentPlayerSkin = value;
             SaveCurrentSkin();
         }
     }
@@ -14,22 +25,32 @@ public class CurrentSkin : MonoBehaviour
     public static void InitializeCurrentSkin()
     {
         
-        string currentSkinName = PlayerPrefs.GetString("CurrentSkin", "Pato amarillo");
+        string currentDuckSkinName = PlayerPrefs.GetString("CurrentDuckSkin", "Pato amarillo");
+        string currentPlayerSkinName = PlayerPrefs.GetString("CurrentPlayerSkin", "Player default");
         SkinSO[] skin = Resources.LoadAll<SkinSO>("Skins");
         foreach (SkinSO s in skin)
         {
-            if (s.skinName == currentSkinName)
+            if (s.skinName == currentDuckSkinName)
             {
-                currentSkin = s;
-                return;
+                currentDuckSkin = s;
+               // return;
+            }
+            if (s.skinName == currentPlayerSkinName)
+            {
+                currentPlayerSkin = s;
+               // return;
             }
         }
-        currentSkin = skin[0]; // Default skin if not found
+        if(currentDuckSkin==null) currentDuckSkin = skin[0]; // Default skin if not found
+        if (currentPlayerSkin == null) currentPlayerSkin = skin[0]; // Default skin if not found
+
+
 
     }
     private static void SaveCurrentSkin()
     {
-        PlayerPrefs.SetString("CurrentSkin", currentSkin.skinName);
+        PlayerPrefs.SetString("CurrentDuckSkin", currentDuckSkin.skinName);
+        PlayerPrefs.SetString("CurrentPlayerSkin", currentPlayerSkin.skinName);
         PlayerPrefs.Save();
     }
 

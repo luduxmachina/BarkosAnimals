@@ -34,7 +34,7 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
             OnClick?.Invoke();
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            OnExit?.Invoke();
+            StopPlacing();
     }
     
     public Vector3 GetSelectedMapPosition()
@@ -57,6 +57,11 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
     public void StartPlacing(int id)
     {
         gridPlacementManager.StartPlacement(id);
+    }
+
+    public void StopPlacing()
+    {
+        OnExit?.Invoke();
     }
 
     public void StartRemoving()

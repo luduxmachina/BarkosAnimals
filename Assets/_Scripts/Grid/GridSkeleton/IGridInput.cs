@@ -8,5 +8,6 @@ public interface IGridInput
 
     Vector3 GetSelectedMapPosition();
     void StartPlacing(int id);
+    void StopPlacing();
     void StartRemoving();
 }

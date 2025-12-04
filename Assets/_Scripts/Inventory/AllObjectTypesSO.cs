@@ -43,6 +43,19 @@ public class AllObjectTypesSO : ScriptableObject
         throw new KeyNotFoundException($"Item with name {itemName} not found on the objects data base");
     }
 
+    public bool ConteinsItem(ItemNames itemName)
+    {
+        foreach (var item in itemsData)
+        {
+            if (item.Name == itemName)
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     public ItemType GetItemType(ItemNames itemName) => FindItem(itemName).Type;
     public GameObject GetObjectPrefab(ItemNames itemName) => FindItem(itemName).Prefab;
     public Sprite GetSprite(ItemNames itemName) => FindItem(itemName).ItemImage;

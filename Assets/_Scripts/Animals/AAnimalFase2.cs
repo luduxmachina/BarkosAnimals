@@ -16,7 +16,7 @@ public class AAnimalFase2: AAnimal
     }
 
     [Header("-----------------Fase 2-----------------")]
-    [SerializeField] float MaxSinLimpiar;
+    [SerializeField] float suciedadMaxima;
     [SerializeField] float MaxSinComer;
     [SerializeField] float TiempoEnfermoHastaMorir = 60;
     public float AMax = 0.0f;
@@ -28,26 +28,26 @@ public class AAnimalFase2: AAnimal
     //[SerializeField] AllObjectTypesSO animalsDataBase;
     [SerializeField] EditorBehaviourRunner SistemaUtilidad;
     [SerializeField] NavMeshAgent navMeshAgent;
+    [SerializeField] Predicate<float> funcionFelicidad;
+    [SerializeField] DirtCreator dirtCreator;
+
 
     public bool hayComida = false;
 
     [SerializeField, ReadOnly]bool isHerbivore = false;
 
-    float tiempoSinLimpiar = 0f;
+    float suciedad = 0f;
+    public float suciedadQueQuita = 10f;
     float tiempoSinComer = 0f;
 
     public float depredadoresCerca = 0f;
-    public bool estaFeliz;
     bool estaEnfermo;
     float tiempoEnfermo;
-
-    public void SetEstaFeliz(bool esFeliz)
-    {
-        if (esFeliz == estaFeliz) { 
-        }
-    }
     
-    
+    //public float GetHappiness()
+    //{
+    //    
+    //}
 
     #region Monobehavior
     protected override void Awake()
@@ -64,25 +64,31 @@ public class AAnimalFase2: AAnimal
             isHerbivore = false;
         }
         base.Awake();
+        dirtCreator = FindAnyObjectByType<DirtCreator>();
     }
 
     protected override void Update()
     {
         base.Update();
 
-        if(tiempoSinLimpiar <= MaxSinLimpiar)tiempoSinLimpiar += Time.deltaTime;
+        if (suciedad <= suciedadMaxima)
+        {
+            suciedad += dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f);
+            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f)} y tiene suciedad de {suciedad}");        
+        }
         if(tiempoSinComer <= MaxSinComer)tiempoSinComer += Time.deltaTime;
         if (estaEnfermo) { tiempoEnfermo += Time.deltaTime; }
         if(tiempoEnfermo > TiempoEnfermoHastaMorir)
         {
             this.Die();
+            tiempoEnfermo = 0f;
         }
         
         if(establo != null)
         {
             Debug.Log("Establo en el animal");
-
             SistemaUtilidad.enabled = true;
+            //navMeshAgent.enabled = true;
         }
     }
 
@@ -123,6 +129,7 @@ public class AAnimalFase2: AAnimal
                 this.GetComponentInChildren<SimpleGrabber>().TryGrab(lastObjectve);
             }
         }
+
     }
 
     public override bool ObjectiveClose()
@@ -234,7 +241,7 @@ public class AAnimalFase2: AAnimal
     public void Rascarse()
     {
         stikersManager.SetImage(StikersGenerales.NecesitaLimpiar);
-        tiempoSinLimpiar -= (MaxSinLimpiar / 6);
+        suciedad -= (suciedadMaxima / 6);
     }
 
     public void MostrarHambre()
@@ -270,9 +277,10 @@ public class AAnimalFase2: AAnimal
         stikersManager.SetImage(StikersGenerales.Incomodo);
     }
 
-    public void Limpiarse()
+    public void Limpiar()
     {
-        this.tiempoSinLimpiar = 0f;
+        this.suciedad -= suciedadQueQuita;
+        Debug.Log("Esta limpiandose");
     }
 
     public override void Die()
@@ -285,7 +293,10 @@ public class AAnimalFase2: AAnimal
             return;
         }
         establo.ExitFromStable(this);
+        ItemInScene snake = GetComponentInChildren<ItemInScene>();
+        snake.ReduceByOne();
         base.Die();
+        
     }
 
     #endregion
@@ -334,7 +345,7 @@ public class AAnimalFase2: AAnimal
 
     public float TimeWithoutShower()
     {
-        return tiempoSinLimpiar/MaxSinLimpiar;
+        return suciedad/suciedadMaxima;
     }
     public float TimeWithoutEating()
     {

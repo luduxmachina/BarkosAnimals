@@ -2,8 +2,15 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+public enum TipoSkin
+{
+    pato, player
+}
 public class IndividualSkinUIHandler : MonoBehaviour
 {
+  
+    [SerializeField]
+    private TipoSkin tipoSkin= TipoSkin.pato;
     [Header("UI References")]
     [SerializeField] private GameObject notEnoughCoins;
     [SerializeField] private TMP_Text nameText;
@@ -34,7 +41,14 @@ public class IndividualSkinUIHandler : MonoBehaviour
     public void SelectSkin()
     {
         Debug.Log("Selecting skin: " + skinName);
-        CurrentSkin.currentSkin = skin;
+        if(tipoSkin == TipoSkin.player)
+        {
+
+        }
+        if (tipoSkin == TipoSkin.pato)
+        {
+            CurrentSkin.currentDuckSkin = skin;
+        }
         UpdateUI();
         shopSkinUIHandler.UpdateUI();
     }
@@ -43,7 +57,7 @@ public class IndividualSkinUIHandler : MonoBehaviour
         Debug.Log("Trying to buy skin: " + skinName);
         if (MetaCoinHandler.SpendMetaCoins(skinPrice))
         {
-            BoughtSkins.BuySkin(skinName);
+            BoughtSkins.BuySkin(skinName, tipoSkin);
             SelectSkin();
             Debug.Log("Skin bought: " + skinName);
 
@@ -70,7 +84,7 @@ public class IndividualSkinUIHandler : MonoBehaviour
         if (isOwned)
         {
             buyButton.SetActive(false);
-            if(CurrentSkin.currentSkin == skin)
+            if(CurrentSkin.currentDuckSkin == skin)
             {
                 textoEquipado.SetActive(true);
                 selectButton.SetActive(false);

@@ -40,19 +40,11 @@ public class SerpienteInScene : AAnimal
     {
         stickersManager.SetImage(StikersGenerales.Incomodo);
         animator.SetTrigger("Surprise");
-    }
-    public void PlayRunAnim()
-    {
-        animator.SetTrigger("Run");
-    }    
-    public void PlayWalkAnim()
-    {
-        animator.SetTrigger("Walk");
-    }
+    } 
     public void Descansar()
     {
         stickersManager.SetImage(StikersGenerales.Corazones);
-        animator.SetTrigger("Idle");
+        PlayIdleAnim();
     }
     public void AttackGrabber()
     {
@@ -120,12 +112,10 @@ public class SerpienteInScene : AAnimal
         }
 
         if (cartInScene == null) { return; }
-        Debug.Log("6");
 
         cartInScene.OnPlayerInteraction(this.gameObject); //"abre" el carro pero no abre la interfazx porqu no es el player, y se queda como ultimo interactor
         cartData.ExtractInventoryObjectByIndex(i); //lo "saca" pero no lo spawnea en la escena asi que es como si se lo "come"
         cartInScene.Interact(animalType, this.gameObject); //con esto se deberia meter y todo funciona 
-        Debug.Log("7");
 
     }
     public bool ObjectiveIsCart()

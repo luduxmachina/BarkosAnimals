@@ -440,7 +440,7 @@ Transform:
   m_GameObject: {fileID: 6544289954468732073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.911}
+  m_LocalPosition: {x: 0, y: 0, z: 1.116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -718,10 +718,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.53
+  m_Radius: 0.73
   m_Height: 1.01
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.09}
+  m_Center: {x: 0, y: 0, z: 0.04}
 --- !u!54 &6201926675312330601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -775,7 +775,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8607783061081812760}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.34
+  m_Radius: 0.75
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5861753263699587296}
   predators: 00000000
-  objectives: 0200000003000000
+  objectives: 020000000300000005000000
   walkingSpeed: 0.1
   run: 0.2
   rotateSpeed: 121
@@ -812,9 +812,9 @@ MonoBehaviour:
   radioAtaqueComida: 1.5
   tiempoEnComer: 1
   itemName: 4
-  MaxSinLimpiar: 1000
-  MaxSinComer: 30
-  TiempoEnfermoHastaMorir: 60
+  suciedadMaxima: 60
+  MaxSinComer: 20
+  TiempoEnfermoHastaMorir: 20
   AMax: 2
   CMax: 3
   DMax: 2
@@ -822,10 +822,11 @@ MonoBehaviour:
   stikersManager: {fileID: 2255792413961149102}
   SistemaUtilidad: {fileID: 9083101998368258996}
   navMeshAgent: {fileID: 815999090571376006}
+  dirtCreator: {fileID: 0}
   hayComida: 0
   isHerbivore: 0
+  suciedadQueQuita: 10
   depredadoresCerca: 0
-  estaFeliz: 0
 --- !u!114 &9083101998368258996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,7 +1180,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: 6361364655950004299
+            rid: 7608421538974400512
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -1355,6 +1356,49 @@ MonoBehaviour:
         - 84976a18-db78-4255-87ea-7bc771552d74
         childIds:
         - 5747f74f-bbfd-46c3-b88d-d8bfce77afc3
+    - name: TieneHambre
+      id: 0321d97b-5e5d-4085-a881-61641db4396d
+      graph:
+        rid: 5299021605705613384
+      nodes:
+      - name: SecuenciaPrincipal
+        id: 9df3044d-6597-4082-aa18-05dc921b6211
+        position: {x: 1118.4, y: -279.2}
+        node:
+          rid: 5299021605705613386
+        references: []
+        parentIds: []
+        childIds:
+        - 2f574add-eedb-4f68-8000-3ae277419a94
+        - 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
+      - name: MostrarHambre
+        id: 2f574add-eedb-4f68-8000-3ae277419a94
+        position: {x: 950.4, y: -92.8}
+        node:
+          rid: 5299021605705613387
+        references:
+        - fieldName: Action
+          value:
+            rid: 5299021605705613388
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 9df3044d-6597-4082-aa18-05dc921b6211
+        childIds: []
+      - name: 
+        id: 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
+        position: {x: 1320, y: -67}
+        node:
+          rid: 5299021605705613390
+        references:
+        - fieldName: Action
+          value:
+            rid: 5299021605705613391
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 9df3044d-6597-4082-aa18-05dc921b6211
+        childIds: []
     pushPerceptions: []
   references:
     version: 2
@@ -1454,6 +1498,29 @@ MonoBehaviour:
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         maxDistance: 5
+    - rid: 5299021605705613384
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613386
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 5299021605705613387
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613388
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MostrarHambre
+    - rid: 5299021605705613390
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613391
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 10
     - rid: 6361364432508157952
       type: {class: UtilitySystem, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -1761,12 +1828,12 @@ MonoBehaviour:
         Weights:
         - 1
         - -1
-    - rid: 6361364655950004299
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+    - rid: 7608421538974400512
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        method:
-          componentName: AAnimalFase2
-          methodName: MostrarHambre
+        ExecuteOnLoop: 1
+        InterruptOptions: 2
+        subgraphId: 0321d97b-5e5d-4085-a881-61641db4396d
 --- !u!1001 &1302958362751942774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1801,7 +1868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 882125390730471819, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.758
+      value: -1.348
       objectReference: {fileID: 0}
     - target: {fileID: 882125390730471819, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
       propertyPath: m_LocalRotation.w

@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(IMovementComponent))]
-public abstract class AAnimal : MonoBehaviour
+public class AAnimal : MonoBehaviour
 {
     [Header("---------------Importante---------------")]
     [SerializeField]
@@ -91,6 +91,10 @@ public abstract class AAnimal : MonoBehaviour
     #endregion
 
     #region Getters
+    public float GetTiempoEnComer()
+    {
+        return this.tiempoEnComer;
+    }
     public float GetWalkingSpeed()
     {
         return this.walkingSpeed;
@@ -120,7 +124,10 @@ public abstract class AAnimal : MonoBehaviour
     /// Posiciones en plan patrulla
     /// </summary>
     /// <returns></returns>
-    public abstract Vector3 GetNewPosition();
+    public virtual Vector3 GetNewPosition()
+    {
+        return Vector3.zero;
+    }
     public virtual Transform GetClosestPredator()
     {
         if (IslandPositions.instance == null) { return null; }
@@ -144,6 +151,29 @@ public abstract class AAnimal : MonoBehaviour
     #endregion
 
     #region Actions
+    public void PlayIdleAnim()
+    {
+        if(animator == null) { return; }
+        animator.SetTrigger("Idle");
+    }
+    public void PlayWalkingAnim()
+    {
+        if (animator == null) { return; }
+
+        animator.SetTrigger("Walk");
+    }
+    public void PlayComerAnim()
+    {
+        if (animator == null) { return; }
+
+        animator.SetTrigger("Comer");
+    }
+    public void PlayRunAnim()
+    {
+        if (animator == null) { return; }
+
+        animator.SetTrigger("Run");
+    }
     public virtual void InitComer()
     {
         if(!ObjectiveClose()) { return; }
@@ -151,11 +181,7 @@ public abstract class AAnimal : MonoBehaviour
         var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
         if (temp) //se lo va a comer lit
         {
-            if (animator)
-            {
-                animator.SetTrigger("Comer");
-
-            }
+            PlayComerAnim();
         }
         tiempoComiendo = 0.0f;
 
@@ -168,22 +194,14 @@ public abstract class AAnimal : MonoBehaviour
     {
         if (lastObjectve==null) //la comida puede desaparecer
         {
-            if (animator)
-            {
-                animator.SetTrigger("Idle");
-
-            }
+            PlayIdleAnim();
             tiempoComiendo = 0.0f;
 
             return Status.Failure;
         }
         if(Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida*1.25) //alguien ha movido la comida o al animal y ya no esta comiendo lol
         {
-            if (animator)
-            {
-                animator.SetTrigger("Idle");
-
-            }
+            PlayIdleAnim();
             tiempoComiendo = 0.0f;
 
             return Status.Failure;
@@ -197,11 +215,7 @@ public abstract class AAnimal : MonoBehaviour
             {
                 temp.ReduceByOne();
             }
-            if (animator)
-            {
-                animator.SetTrigger("Idle");
-
-            }
+            PlayIdleAnim();
             tiempoComiendo = 0.0f;
             return Status.Success;
         }
@@ -209,10 +223,7 @@ public abstract class AAnimal : MonoBehaviour
     }
     public virtual void MoveTowardsObjectiveInit()
     {
-        if (animator != null)
-        {
-            animator.SetTrigger("Walk");
-        }
+        PlayWalkingAnim();
         lastObjectve = GetClosestObjetive();
         lastTargetPos = lastObjectve.position;        
         //o se ha movido o un pan mas cercano
@@ -222,10 +233,7 @@ public abstract class AAnimal : MonoBehaviour
     {
         if (!ObjectiveClose()) //la comida puede desaparecer
         {
-            if (animator != null)
-            {
-                animator.SetTrigger("Idle");
-            }
+            PlayIdleAnim();
             movimiento.CancelMove();
 
             return Status.Failure;
@@ -243,10 +251,7 @@ public abstract class AAnimal : MonoBehaviour
         }
         if (movimiento.HasArrived())
         {
-            if (animator != null)
-            {
-                animator.SetTrigger("Idle");
-            }
+            PlayIdleAnim();
             movimiento.CancelMove();
 
             return Status.Success;

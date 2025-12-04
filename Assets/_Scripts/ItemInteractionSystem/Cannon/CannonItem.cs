@@ -10,6 +10,8 @@ public class CannonItem : MonoBehaviour
     [SerializeField]
     private CannonDisparador disparador;
     [SerializeField]
+    private CannonAgua[] agua;
+    [SerializeField]
     float retroceso = 30.0f;
     [SerializeField]
     float retrocesoInicial = 150.0f;
@@ -41,6 +43,10 @@ public class CannonItem : MonoBehaviour
         if (firing)
         {
             Fire();
+            foreach (CannonAgua ca in agua)
+            {
+                ca.Fire();
+            }
         }
     }
 

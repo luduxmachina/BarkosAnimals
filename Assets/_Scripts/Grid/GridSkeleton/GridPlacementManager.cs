@@ -82,7 +82,7 @@ public class GridPlacementManager : MonoBehaviour
             return;
         
         buildingState.EndState();
-        buildingState = null;
+        // buildingState = null;
     }
 
     public void StartPlacement(int id)

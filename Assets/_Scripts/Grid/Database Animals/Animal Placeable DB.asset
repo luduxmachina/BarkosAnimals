@@ -15,15 +15,32 @@ MonoBehaviour:
   <PlaceableObjectData>k__BackingField:
   - <Name>k__BackingField: Duck
     <ID>k__BackingField: 0
-    <Prefab>k__BackingField: {fileID: 6643027423853108606, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+    <Prefab>k__BackingField: {fileID: 8318469142512312685, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
-      columns: 1
+      columns: 2
       matrix:
-      - values: 00
+      - values: 0000
   - <Name>k__BackingField: Serpiente
     <ID>k__BackingField: 1
-    <Prefab>k__BackingField: {fileID: 8607783061081812760, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+    <Prefab>k__BackingField: {fileID: 6267012446889319204, guid: 40f32ff3bed9b6a43b32b84fbd2c5815, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 1
+      columns: 4
+      matrix:
+      - values: 00000000
+  - <Name>k__BackingField: Oveja
+    <ID>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 4187976562711363487, guid: 5a85296fdd589ed45bd4717bd57dc1b8, type: 3}
+    <OcupiedSpace>k__BackingField:
+      rows: 2
+      columns: 2
+      matrix:
+      - values: 0000
+      - values: 0000
+  - <Name>k__BackingField: Pangolin
+    <ID>k__BackingField: 3
+    <Prefab>k__BackingField: {fileID: 82110452451205496, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
     <OcupiedSpace>k__BackingField:
       rows: 1
       columns: 1
