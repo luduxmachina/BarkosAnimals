@@ -66,7 +66,7 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
             }
         }
 
-        rb.excludeLayers = LayerMask.GetMask("Player");
+        //rb.excludeLayers = LayerMask.GetMask("Player");
         gameObject.layer = LayerMask.NameToLayer("GrabbedObj");
 
 

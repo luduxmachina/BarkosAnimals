@@ -12,7 +12,8 @@ using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 
 public class ComportamientoAnimalFase1 : BehaviourRunner
 {
-    [SerializeField] private BSRuntimeDebugger debuggerComponent;
+	[SerializeField] private bool useDebugger = false;
+    [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
 
     [SerializeField] private AAnimal Huir_action_animalContext;
 	[SerializeField] private Transform Huir_action_OtherTransform;
@@ -83,8 +84,12 @@ public class ComportamientoAnimalFase1 : BehaviourRunner
 		unnamed.Iterations = -1;
 		newbehaviourgraph.SetRootNode(unnamed);
 
-        debuggerComponent.RegisterGraph(HuirNoHuir);
-        debuggerComponent.RegisterGraph(newbehaviourgraph);
+		if (useDebugger)
+		{
+
+			debuggerComponent.RegisterGraph(HuirNoHuir);
+			debuggerComponent.RegisterGraph(newbehaviourgraph);
+		}
         return HuirNoHuir;
 	}
 }

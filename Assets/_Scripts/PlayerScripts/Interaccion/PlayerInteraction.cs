@@ -4,7 +4,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 {
     [SerializeField] CompleteTaggedDetector detector;
     [SerializeField] Transform posCogerObj;
-
+    
     [SerializeField, ReadOnly] bool hasObjInHand = false;
 
     [SerializeField] private Animator animator;
@@ -15,6 +15,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
     [SerializeField] private PlayerSoundManager soundManager;
 
     IContinuousPlayerInteractionReciever continuousTarget;
+    GameObject proxyColliders;
     public void StopInteractingWithTarget()
     {
         if (continuousTarget == null) { return; }
@@ -95,7 +96,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
         if (grabbable.Grab(posCogerObj, this))
         {
-
+            CopiarColliders(grabbable.gameObject);
             objInHand = grabbable;
             hasObjInHand = true;
             animator.SetTrigger("Take");
@@ -115,8 +116,52 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
     public void StopGrabbing()
     {
-
+       if(proxyColliders != null)
+        {
+            Destroy(proxyColliders);
+        }
         hasObjInHand = false;
         objInHand = null;
+    }
+    private void CopiarColliders(GameObject grabbed)
+    {
+
+        Collider[] cols = grabbed.GetComponentsInChildren<Collider>();
+
+        foreach (Collider col in cols)
+        {
+            // create a container object on the player
+            proxyColliders = new GameObject();
+            proxyColliders.transform.SetParent(this.transform);
+            proxyColliders.transform.position = col.transform.position;
+            proxyColliders.transform.rotation = col.transform.rotation;
+            
+            if (col is BoxCollider bc)
+            {
+                var copy = proxyColliders.AddComponent<BoxCollider>();
+                copy.size = bc.size;
+                copy.center = bc.center;
+                copy.excludeLayers = LayerMask.GetMask("GrabbedObj");
+            }
+            else if (col is SphereCollider sc)
+            {
+                var copy = proxyColliders.AddComponent<SphereCollider>();
+                copy.radius = sc.radius;
+                copy.center = sc.center;
+                copy.excludeLayers = LayerMask.GetMask("GrabbedObj");
+
+            }
+            else if (col is CapsuleCollider cc)
+            {
+                var copy = proxyColliders.AddComponent<CapsuleCollider>();
+                copy.radius = cc.radius;
+                copy.height = cc.height;
+                copy.direction = cc.direction;
+                copy.center = cc.center;
+                copy.excludeLayers = LayerMask.GetMask("GrabbedObj");
+
+            }
+
+        }
     }
 }

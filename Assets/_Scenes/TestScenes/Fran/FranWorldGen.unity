@@ -993,34 +993,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3199809540328888548, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3199809540328888548, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 631477750}
-    - target: {fileID: 3199809540328888548, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3199809540328888548, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: UpdateItemSlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 3199809540328888548, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: InventoryUIVisualization, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3199809540328888548, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-      propertyPath: onInventoryAdd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6254276383090401862, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: f86d40a6cfbe1614e99c61133d564d06, type: 2}
     - target: {fileID: 6615219840054943829, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
       propertyPath: m_Name
       value: CarroInScene
@@ -1070,17 +1042,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
---- !u!114 &631477750 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3371053321000311380, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
-  m_PrefabInstance: {fileID: 631477749}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06fd77875d11fa740a90c32bd85ccc9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &684485402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,22 +2839,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrupoPlayerCamara
       objectReference: {fileID: 0}
-    - target: {fileID: 2698127821542719369, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.037730694
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698127821542719369, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.2359414
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698127821542719369, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.9902
-      objectReference: {fileID: 0}
-    - target: {fileID: 2816764520007308308, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: c363396b6237f67489cbfeb990985979, type: 2}
     - target: {fileID: 4082085120944278574, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.64
@@ -2934,17 +2879,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8358508347450069034, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.88119197
+    - target: {fileID: 7577686933839854548, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.95
       objectReference: {fileID: 0}
-    - target: {fileID: 8358508347450069034, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.39292294
-      objectReference: {fileID: 0}
-    - target: {fileID: 8358508347450069034, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.03462279
+    - target: {fileID: 7577686933839854548, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
