@@ -25,6 +25,7 @@ public class AAnimalFase2: AAnimal
 
     [SerializeField] protected Stable establo;
     [SerializeField] StikersManager stikersManager;
+    [SerializeField] StikersManager stickerLimpieza;
     //[SerializeField] AllObjectTypesSO animalsDataBase;
     [SerializeField] EditorBehaviourRunner SistemaUtilidad;
     [SerializeField] NavMeshAgent navMeshAgent;
@@ -37,17 +38,19 @@ public class AAnimalFase2: AAnimal
     [SerializeField, ReadOnly]bool isHerbivore = false;
 
     float suciedad = 0f;
+
+    [Tooltip("Timpo que pasa hasta que comprueba que está sucio.")]
+    public float tiempoHastaSucio = 5f;
+    float tiempoSinLimpiar = 0f;
+
+    [SerializeField, ReadOnly]
+    public float Suciedad => suciedad;
     public float suciedadQueQuita = 10f;
     float tiempoSinComer = 0f;
 
     public float depredadoresCerca = 0f;
     bool estaEnfermo;
     float tiempoEnfermo;
-    
-    //public float GetHappiness()
-    //{
-    //    
-    //}
 
     #region Monobehavior
     protected override void Awake()
@@ -71,11 +74,14 @@ public class AAnimalFase2: AAnimal
     {
         base.Update();
 
-        if (suciedad <= suciedadMaxima)
-        {
+        if (suciedad <= suciedadMaxima && tiempoSinLimpiar >= tiempoHastaSucio)
+        {            
             suciedad += dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f);
-            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f)} y tiene suciedad de {suciedad}");        
+            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f)} y tiene suciedad de {suciedad}");
+            tiempoSinLimpiar = 0f;
         }
+        tiempoSinLimpiar += Time.deltaTime;
+
         if(tiempoSinComer <= MaxSinComer)tiempoSinComer += Time.deltaTime;
         if (estaEnfermo) { tiempoEnfermo += Time.deltaTime; }
         if(tiempoEnfermo > TiempoEnfermoHastaMorir)
@@ -280,6 +286,7 @@ public class AAnimalFase2: AAnimal
     public void Limpiar()
     {
         this.suciedad -= suciedadQueQuita;
+        stickerLimpieza.SetImage(StikersGenerales.Cansancio);
         Debug.Log("Esta limpiandose");
     }
 
