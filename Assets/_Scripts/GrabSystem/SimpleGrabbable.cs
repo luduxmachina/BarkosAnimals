@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Animations;
 using UnityEngine.Events;
 
@@ -75,7 +76,11 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
         parentConstraint.constraintActive = true;
         thisConstraint.constraintActive = true;
 
-
+        var temp = GetComponent<NavMeshAgent>();
+        if (temp != null)
+        {
+            temp.enabled = false;
+        }
         OnGrab?.Invoke();
         return true; //el objeto se ha cogido
     }
@@ -112,6 +117,11 @@ public class SimpleGrabbable : MonoBehaviour, IGrabbable
         rb.excludeLayers = 0;
         gameObject.layer = originalLayer;
 
+        var temp = GetComponent<NavMeshAgent>();
+        if (temp != null)
+        {
+            temp.enabled = true;
+        }
 
         return true; //el objeto se ha soltado
     }

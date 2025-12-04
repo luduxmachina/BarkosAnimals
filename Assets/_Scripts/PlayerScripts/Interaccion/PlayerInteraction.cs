@@ -130,8 +130,13 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
 
         foreach (Collider col in cols)
         {
+            if (col.isTrigger)
+            {
+                continue;
+            }
             // create a container object on the player
             proxyColliders = new GameObject();
+            proxyColliders.layer = LayerMask.NameToLayer("GrabbedObj");
             proxyColliders.transform.SetParent(this.transform);
             proxyColliders.transform.position = col.transform.position;
             proxyColliders.transform.rotation = col.transform.rotation;
