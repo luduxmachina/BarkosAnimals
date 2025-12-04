@@ -6,7 +6,7 @@ public class AplicarSinDelPatoEspagueti : MonoBehaviour
     private SkinnedMeshRenderer skinnedMeshRenderer;
     void Start()
     {
-        Material mat = CurrentSkin.currentSkin.skinMaterial;       
+        Material mat = CurrentSkin.currentDuckSkin.skinMaterial;       
         if(mat != null)
         {
             skinnedMeshRenderer.material = mat;
