@@ -1,5 +1,7 @@
+using BehaviourAPI.UnityToolkit;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Animations;
 using UnityEngine.Events;
 
@@ -7,6 +9,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
 {
+    [Header("Disable settings")]
+    [SerializeField] bool disableNavMeshAgentOnGrab = true;
+    [SerializeField] bool disableBehavioursOnGrab = true;
     [SerializeField] PhysicsMaterial grabbedMaterial;
     PhysicsMaterial originalMaterial;
     //putas cosas de interfaces lol
@@ -103,6 +108,23 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
 
 
         OnGrab?.Invoke();
+        if (disableNavMeshAgentOnGrab)
+        {
+            var temp = GetComponent<NavMeshAgent>();
+            if (temp != null)
+            {
+                temp.enabled = false;
+            }
+        }
+        if (disableBehavioursOnGrab)
+        {
+            var temp = GetComponent<BehaviourRunner>();
+            if (temp != null)
+            {
+                temp.enabled = false;
+            }
+        }
+
         return true; //el objeto se ha cogido
     }
     public virtual bool Drop()
@@ -141,6 +163,24 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
         gameObject.layer = originalLayer;
 
         GetComponent<Collider>().material = originalMaterial;
+
+        if (disableNavMeshAgentOnGrab)
+        {
+            var temp = GetComponent<NavMeshAgent>();
+            if (temp != null)
+            {
+                temp.enabled = true;
+            }
+
+        }
+         if (disableBehavioursOnGrab)
+        {
+            var temp = GetComponent<BehaviourRunner>();
+            if (temp != null)
+            {
+                temp.enabled = true;
+            }
+        }
 
         return true; //el objeto se ha soltado
     }
