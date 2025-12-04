@@ -572,6 +572,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
+      propertyPath: suciedadMaxima
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398727250656660563, guid: 92919197099205e428f00a71e0354b1c, type: 3}
       propertyPath: TiempoEnfermoHastaMorir
       value: 20
       objectReference: {fileID: 0}
@@ -1003,6 +1007,91 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bf9846914d3e1247b41fc5a7017a954, type: 3}
+--- !u!1 &268089585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 268089587}
+  - component: {fileID: 268089586}
+  - component: {fileID: 268089588}
+  m_Layer: 0
+  m_Name: DirtCreator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &268089586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268089585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee39719a7b2d474096430478939fd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirtPrefab: {fileID: 7644136263562873798, guid: 151c78b90f134a34282bc21472834aa1, type: 3}
+  dirtParent: {fileID: 268089587}
+  grid: {fileID: 559489146}
+  placementTries: 5
+  yOffset: 0.1
+  cooldown: 10
+  probabilityToSpreadNearOtherDirt: 0.6
+  onDirtPlacedGrid:
+    m_PersistentCalls:
+      m_Calls: []
+  onDirtPlacedWorld:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &268089587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268089585}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &268089588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268089585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2a47f3ae795f3488391a245362fe25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 268089586}
+        m_TargetAssemblyTypeName: DirtCreator, Assembly-CSharp
+        m_MethodName: StartPlacingDirt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &272407331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1930,13 +2019,14 @@ GameObject:
   - component: {fileID: 559489142}
   - component: {fileID: 559489141}
   - component: {fileID: 559489140}
+  - component: {fileID: 559489146}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &559489140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,12 +2155,24 @@ Transform:
   m_GameObject: {fileID: 559489139}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.0361, y: 3.0361, z: 2.5198112}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!156049354 &559489146
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559489139}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &561130827 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7880605535525774429, guid: e52bf821b19d8234b9056a4e5d086421, type: 3}
@@ -7194,7 +7296,7 @@ MonoBehaviour:
   radioAtaqueComida: 1.5
   tiempoEnComer: 1
   itemName: 4
-  MaxSinLimpiar: 20
+  suciedadMaxima: 0
   MaxSinComer: 20
   TiempoEnfermoHastaMorir: 20
   AMax: 2
@@ -7204,8 +7306,10 @@ MonoBehaviour:
   stikersManager: {fileID: 859995832}
   SistemaUtilidad: {fileID: 1919924380}
   navMeshAgent: {fileID: 1919924382}
+  dirtCreator: {fileID: 0}
   hayComida: 0
   isHerbivore: 0
+  suciedadQueQuita: 10
   depredadoresCerca: 0
 --- !u!195 &1919924382
 NavMeshAgent:
@@ -8173,3 +8277,4 @@ SceneRoots:
   - {fileID: 992715263}
   - {fileID: 1650394580}
   - {fileID: 756582461}
+  - {fileID: 268089587}

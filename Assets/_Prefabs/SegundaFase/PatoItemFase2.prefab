@@ -734,7 +734,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: 6361364655950004299
+            rid: 7608421538974400512
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -910,6 +910,49 @@ MonoBehaviour:
         - 84976a18-db78-4255-87ea-7bc771552d74
         childIds:
         - 5747f74f-bbfd-46c3-b88d-d8bfce77afc3
+    - name: TieneHambre
+      id: 0321d97b-5e5d-4085-a881-61641db4396d
+      graph:
+        rid: 5299021605705613384
+      nodes:
+      - name: SecuenciaPrincipal
+        id: 9df3044d-6597-4082-aa18-05dc921b6211
+        position: {x: 1118.4, y: -279.2}
+        node:
+          rid: 5299021605705613386
+        references: []
+        parentIds: []
+        childIds:
+        - 2f574add-eedb-4f68-8000-3ae277419a94
+        - 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
+      - name: MostrarHambre
+        id: 2f574add-eedb-4f68-8000-3ae277419a94
+        position: {x: 950.4, y: -92.8}
+        node:
+          rid: 5299021605705613387
+        references:
+        - fieldName: Action
+          value:
+            rid: 5299021605705613388
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 9df3044d-6597-4082-aa18-05dc921b6211
+        childIds: []
+      - name: 
+        id: 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
+        position: {x: 1320, y: -67}
+        node:
+          rid: 5299021605705613390
+        references:
+        - fieldName: Action
+          value:
+            rid: 5299021605705613391
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 9df3044d-6597-4082-aa18-05dc921b6211
+        childIds: []
     pushPerceptions: []
   references:
     version: 2
@@ -1009,6 +1052,29 @@ MonoBehaviour:
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         maxDistance: 5
+    - rid: 5299021605705613384
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613386
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 5299021605705613387
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613388
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MostrarHambre
+    - rid: 5299021605705613390
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613391
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 10
     - rid: 6361364432508157952
       type: {class: UtilitySystem, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -1316,12 +1382,12 @@ MonoBehaviour:
         Weights:
         - 1
         - -1
-    - rid: 6361364655950004299
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+    - rid: 7608421538974400512
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        method:
-          componentName: AAnimalFase2
-          methodName: MostrarHambre
+        ExecuteOnLoop: 1
+        InterruptOptions: 2
+        subgraphId: 0321d97b-5e5d-4085-a881-61641db4396d
 --- !u!114 &7958219938240571257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,7 +1412,7 @@ MonoBehaviour:
   radioAtaqueComida: 1
   tiempoEnComer: 1
   itemName: 3
-  MaxSinLimpiar: 10
+  suciedadMaxima: 60
   MaxSinComer: 10
   TiempoEnfermoHastaMorir: 30
   AMax: 2
@@ -1356,8 +1422,10 @@ MonoBehaviour:
   stikersManager: {fileID: 475001849510169783}
   SistemaUtilidad: {fileID: 5942847103440764155}
   navMeshAgent: {fileID: 3001176560405313657}
+  dirtCreator: {fileID: 0}
   hayComida: 0
   isHerbivore: 0
+  suciedadQueQuita: 10
   depredadoresCerca: 0
 --- !u!114 &3306075770266489809
 MonoBehaviour:
