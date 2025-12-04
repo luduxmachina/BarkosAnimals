@@ -140,7 +140,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
             proxyColliders.transform.SetParent(this.transform);
             proxyColliders.transform.position = col.transform.position;
             proxyColliders.transform.rotation = col.transform.rotation;
-            var temp = proxyColliders.AddComponent<FollowObject>();
+            var temp = proxyColliders.AddComponent<FollowObjectRot>();
             temp.target = col.transform;
 
             if (col is BoxCollider bc)

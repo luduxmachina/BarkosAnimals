@@ -29,14 +29,14 @@ public class ItemInScene : MonoBehaviour
     }
     public void ReduceByOne()
     {
-        Debug.Log("Se ha comido un trozo");
+        //Debug.Log("Se ha comido un trozo");
         amountInStack--;
         CheckStatus();
     }
     private void CheckStatus()
     {
         if (amountInStack > 0) return;
-        Debug.Log("Item " + gameObject.name + " getting in cart");
+       // Debug.Log("Item " + gameObject.name + " getting in cart");
         GetGrabbable()?.Drop();
 
         Destroy(itemParent);

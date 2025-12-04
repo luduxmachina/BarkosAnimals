@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-   
+            rb.angularVelocity *= 0.05f;
             soundManager.StopMovementLoop();
         }
         if (adaptToFloor.IsGrounded())
@@ -50,28 +50,69 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
 
-        move = Vector3.ProjectOnPlane(move, adaptToFloor.upVector).normalized;
-        move *= playerCurrentStats.currentStats.moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + move);
-        
+            //primero solo adapt to floor
+            Vector3 currentForward = transform.forward;
+            Vector3 currentRight = Vector3.Cross(adaptToFloor.upVector, currentForward);
+            currentForward = Vector3.Cross(currentRight, adaptToFloor.upVector);
+            Quaternion currentRotation = Quaternion.LookRotation(currentForward, adaptToFloor.upVector);
+            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, currentRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime));
+
+            //ahora puto aplicar el intento de giro del player
+            Vector3 newForward = move;
+            float angleDiff = Vector3.SignedAngle(currentForward, newForward, adaptToFloor.upVector);
+            rb.angularVelocity = adaptToFloor.upVector * Mathf.Deg2Rad * angleDiff * Mathf.Deg2Rad * playerCurrentStats.currentStats.rotationSpeed;
 
 
-        if (move.sqrMagnitude > 0.0001f)
+
+            //ultimo moverse
+            move = Vector3.ProjectOnPlane(move, adaptToFloor.upVector).normalized;
+            rb.MovePosition(rb.position + (move * playerCurrentStats.currentStats.moveSpeed * Time.fixedDeltaTime));
+
+
+
+        /*if (move.sqrMagnitude > 0.0001f)
         {
-            Vector3 forward = move.normalized;
-            Vector3 right = Vector3.Cross(adaptToFloor.upVector, forward);
-            forward = Vector3.Cross(right, adaptToFloor.upVector);
 
-            Quaternion targetRotation = Quaternion.LookRotation(forward, adaptToFloor.upVector);
-           rb.angularVelocity *= 0.5f;
-           
-              rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime));
-            
+            //primero solo adapt to floor
+            Vector3 currentForward = transform.forward;
+            Vector3 currentRight = Vector3.Cross(adaptToFloor.upVector, currentForward);
+            currentForward = Vector3.Cross(currentRight, adaptToFloor.upVector);
+            Quaternion currentRotation = Quaternion.LookRotation(currentForward, adaptToFloor.upVector);
+            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, currentRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime));
+
+            //ahora puto aplicar el intento de giro del player
+            Vector3 newForward = move;
+            float angleDiff = Vector3.SignedAngle(currentForward, newForward, adaptToFloor.upVector);
+            rb.angularVelocity = adaptToFloor.upVector * Mathf.Deg2Rad *angleDiff * Mathf.Deg2Rad * playerCurrentStats.currentStats.rotationSpeed;
+
+        }*/
+        /* Vector3 forward = move;
+           Vector3 right = Vector3.Cross(adaptToFloor.upVector, forward);
+           forward = Vector3.Cross(right, adaptToFloor.upVector);
 
 
-        }
 
 
+
+           Quaternion targetRotation = Quaternion.LookRotation(forward, adaptToFloor.upVector);
+
+           float angleDiff = Vector3.SignedAngle(currentForward, forward, adaptToFloor.upVector);
+           float torque = angleDiff * Mathf.Deg2Rad * playerCurrentStats.currentStats.rotationSpeed * rb.mass;
+           if(Mathf.Abs(torque) < 0.1f)
+           {
+
+                rb.angularVelocity *= 0.0f;
+
+                 rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime));
+               return;
+           }
+
+           rb.AddRelativeTorque(Vector3.up * torque);
+          */
+
+        // rb.angularVelocity *= 0.5f;
+
+        //  rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime));
     }
 
     public void Dash()

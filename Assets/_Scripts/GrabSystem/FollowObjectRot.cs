@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FollowObject : MonoBehaviour
+public class FollowObjectRot : MonoBehaviour
 {
     
     public Transform target;
@@ -8,7 +8,7 @@ public class FollowObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = target.position;
+       // transform.position = target.position;
         transform.rotation = target.rotation;
     }
 }
