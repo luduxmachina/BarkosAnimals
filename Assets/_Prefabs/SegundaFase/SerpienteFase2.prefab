@@ -813,7 +813,7 @@ MonoBehaviour:
   tiempoEnComer: 1
   itemName: 4
   suciedadMaxima: 60
-  MaxSinComer: 30
+  MaxSinComer: 20
   TiempoEnfermoHastaMorir: 20
   AMax: 2
   CMax: 3
@@ -1180,7 +1180,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: 5299021605705613392
+            rid: 7608421538974400512
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -1370,7 +1370,7 @@ MonoBehaviour:
         parentIds: []
         childIds:
         - 2f574add-eedb-4f68-8000-3ae277419a94
-        - 6b359cc7-3b52-4fed-8d1f-123a3006d6aa
+        - 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
       - name: MostrarHambre
         id: 2f574add-eedb-4f68-8000-3ae277419a94
         position: {x: 950.4, y: -92.8}
@@ -1385,19 +1385,9 @@ MonoBehaviour:
         parentIds:
         - 9df3044d-6597-4082-aa18-05dc921b6211
         childIds: []
-      - name: Patrullar
-        id: 6b359cc7-3b52-4fed-8d1f-123a3006d6aa
-        position: {x: 1316.8, y: -125.6}
-        node:
-          rid: 5299021605705613389
-        references: []
-        parentIds:
-        - 9df3044d-6597-4082-aa18-05dc921b6211
-        childIds:
-        - 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
       - name: 
         id: 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
-        position: {x: 1323.2, y: 44.800003}
+        position: {x: 1320, y: -67}
         node:
           rid: 5299021605705613390
         references:
@@ -1407,7 +1397,7 @@ MonoBehaviour:
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
-        - 6b359cc7-3b52-4fed-8d1f-123a3006d6aa
+        - 9df3044d-6597-4082-aa18-05dc921b6211
         childIds: []
     pushPerceptions: []
   references:
@@ -1524,10 +1514,6 @@ MonoBehaviour:
         method:
           componentName: AAnimalFase2
           methodName: MostrarHambre
-    - rid: 5299021605705613389
-      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data:
-        Iterations: -1
     - rid: 5299021605705613390
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
@@ -1535,12 +1521,6 @@ MonoBehaviour:
       type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         maxDistance: 10
-    - rid: 5299021605705613392
-      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        ExecuteOnLoop: 0
-        InterruptOptions: 2
-        subgraphId: 0321d97b-5e5d-4085-a881-61641db4396d
     - rid: 6361364432508157952
       type: {class: UtilitySystem, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
@@ -1848,6 +1828,12 @@ MonoBehaviour:
         Weights:
         - 1
         - -1
+    - rid: 7608421538974400512
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 1
+        InterruptOptions: 2
+        subgraphId: 0321d97b-5e5d-4085-a881-61641db4396d
 --- !u!1001 &1302958362751942774
 PrefabInstance:
   m_ObjectHideFlags: 0

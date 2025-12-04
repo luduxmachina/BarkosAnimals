@@ -74,7 +74,7 @@ public class AAnimalFase2: AAnimal
         if (suciedad <= suciedadMaxima)
         {
             suciedad += dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f);
-            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f)} y tiene suciedad de {suciedad}");
+            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f)} y tiene suciedad de {suciedad}");        
         }
         if(tiempoSinComer <= MaxSinComer)tiempoSinComer += Time.deltaTime;
         if (estaEnfermo) { tiempoEnfermo += Time.deltaTime; }
@@ -87,8 +87,8 @@ public class AAnimalFase2: AAnimal
         if(establo != null)
         {
             Debug.Log("Establo en el animal");
-
             SistemaUtilidad.enabled = true;
+            //navMeshAgent.enabled = true;
         }
     }
 
@@ -280,6 +280,7 @@ public class AAnimalFase2: AAnimal
     public void Limpiar()
     {
         this.suciedad -= suciedadQueQuita;
+        Debug.Log("Esta limpiandose");
     }
 
     public override void Die()
