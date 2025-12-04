@@ -14,7 +14,8 @@ public class PatoBehaviour : BehaviourRunner
 	[SerializeField] private PatoFase1 m_PatoFase1;
 
 
-    [SerializeField] private BSRuntimeDebugger debuggerComponent;
+    [SerializeField] private bool useDebugger = false;
+    [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
     protected override void Init()
 	{
 		m_PatoFase1 = GetComponent<PatoFase1>();
@@ -98,8 +99,11 @@ public class PatoBehaviour : BehaviourRunner
 		Root.Iterations = -1;
 		
 		PatoBT.SetRootNode(Root);
+		if (useDebugger)
+		{
 
-        debuggerComponent.RegisterGraph(PatoBT);
+            debuggerComponent.RegisterGraph(PatoBT);
+        }
         return PatoBT;
 	}
 }

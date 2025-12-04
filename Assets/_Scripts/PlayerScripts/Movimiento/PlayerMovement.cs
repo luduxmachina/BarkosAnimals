@@ -36,8 +36,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            animator.SetTrigger("Idle");
+   
             soundManager.StopMovementLoop();
+        }
+        if (adaptToFloor.IsGrounded())
+        {
+            animator.SetTrigger("Idle");
+
         }
     }
   
@@ -58,8 +63,10 @@ public class PlayerMovement : MonoBehaviour
             forward = Vector3.Cross(right, adaptToFloor.upVector);
 
             Quaternion targetRotation = Quaternion.LookRotation(forward, adaptToFloor.upVector);
-            rb.angularVelocity = Vector3.zero;
-            rb.rotation = Quaternion.RotateTowards( rb.rotation,targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime);
+            rb.angularVelocity *= 0.5f;
+              rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime));
+         
+           
         }
 
                 

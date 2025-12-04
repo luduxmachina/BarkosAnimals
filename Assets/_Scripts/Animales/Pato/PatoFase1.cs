@@ -45,11 +45,7 @@ public class PatoFase1 : AAnimal
         if (posEstanque != null && movimiento.CanMove(posEstanque.position))
         {
             movimiento.SetTarget(posEstanque.position);
-            if (animator != null)
-            {
-                animator.SetFloat("Speed", walkingSpeed);
-
-            }
+            PlayWalkingAnim();
         }
     }
     public Status IrAEstanqueUpdate()
@@ -57,23 +53,14 @@ public class PatoFase1 : AAnimal
 
         if (movimiento.HasArrived())
         {
-            if (animator != null)
-            {
-                animator.SetFloat("Speed", 0);
-
-            }
+            PlayIdleAnim();
 
             return Status.Success;
            
         }
         if(Vector3.Distance(transform.position, posEstanque.position) <= radioDentroEstanque)
         {
-            if (animator != null)
-            {
-                animator.SetFloat("Speed", 0);
-
-            }
-
+            PlayIdleAnim();
             return Status.Success;
         }
         if (!movimiento.CanMove(posEstanque.position))
