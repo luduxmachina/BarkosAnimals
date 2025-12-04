@@ -32,17 +32,17 @@ public class CurrentSkin : MonoBehaviour
         {
             if (s.skinName == currentDuckSkinName)
             {
-                currentDuckSkin = s;
+                _currentDuckSkin = s;
                // return;
             }
             if (s.skinName == currentPlayerSkinName)
             {
-                currentPlayerSkin = s;
+                _currentPlayerSkin = s;
                // return;
             }
         }
-        if(currentDuckSkin==null) currentDuckSkin = skin[0]; // Default skin if not found
-        if (currentPlayerSkin == null) currentPlayerSkin = skin[0]; // Default skin if not found
+        if(_currentDuckSkin == null && skin.Length>0) _currentDuckSkin = skin[0]; // Default skin if not found
+        if (_currentPlayerSkin == null && skin.Length > 0) _currentPlayerSkin = skin[0]; // Default skin if not found
 
 
 
