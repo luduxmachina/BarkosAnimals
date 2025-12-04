@@ -560,7 +560,8 @@ MonoBehaviour:
             rid: 3784766813850042439
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 64a82012-b616-4ec0-b307-ceee5b070969
       - name: MandarCorazones
@@ -574,7 +575,8 @@ MonoBehaviour:
             rid: 3784766813850042437
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 53a63e00-d108-4cd1-8b80-7ab9e9511d6f
       - name: NecesitaLimpiarse
@@ -588,7 +590,8 @@ MonoBehaviour:
             rid: 3784766813850042438
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 734d7dcd-d8d4-4b44-a372-bbe72682044f
       - name: EstarIncomodo
@@ -602,7 +605,8 @@ MonoBehaviour:
             rid: 6361364475241824326
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
       - name: Felicidad
@@ -638,6 +642,28 @@ MonoBehaviour:
         parentIds: []
         childIds:
         - 5e57d581-5f2f-468b-8ed0-6b81966beee8
+      - name: AccionesQueRepercuten
+        id: 877682a0-6e01-4a40-a222-7cbca968302b
+        position: {x: 1598, y: -574}
+        node:
+          rid: 3784766880363577413
+        references: []
+        parentIds: []
+        childIds:
+        - f43de9a8-5406-458c-a778-52ef467ef7e3
+      - name: AccionesDePedir
+        id: ad70025a-1e1e-4e38-a654-027443691bae
+        position: {x: 2492, y: 41}
+        node:
+          rid: 3784766880363577414
+        references: []
+        parentIds: []
+        childIds:
+        - a801683e-3c6f-4349-bef3-0b861c11173b
+        - 6d37117d-e219-4782-918c-6a215222080e
+        - 2283a61e-c933-40de-8104-2f746174226e
+        - 5231d177-c636-4915-9685-cfec7f7c8c63
+        - c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
       - name: F3
         id: 7c2a3300-a1b6-41fd-87a7-ab7f9c4889dc
         position: {x: 309, y: 813}
@@ -650,7 +676,7 @@ MonoBehaviour:
         - 90919fd0-305f-4a37-b20e-01788c51a1b3
       - name: 
         id: aae17ae9-5360-46fa-8ca1-1a4c34713e12
-        position: {x: 321.6, y: 1033.6}
+        position: {x: 309, y: 1013}
         node:
           rid: 6361364647463616581
         references: []
@@ -660,7 +686,7 @@ MonoBehaviour:
         - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
       - name: TieneHambre
         id: f43de9a8-5406-458c-a778-52ef467ef7e3
-        position: {x: 1060, y: -609.6}
+        position: {x: 1032, y: -601}
         node:
           rid: 6361364654760132611
         references:
@@ -669,7 +695,8 @@ MonoBehaviour:
             rid: 6361364654760132684
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - 877682a0-6e01-4a40-a222-7cbca968302b
         childIds:
         - 74d72329-1472-4b57-bb42-300b8d25183e
       - name: 
@@ -707,10 +734,11 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: 6361364655950004299
+            rid: 7608421538974400512
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
         childIds:
         - a849b1ce-5113-429a-a1a7-4eb27162e69b
       - name: 
@@ -896,7 +924,7 @@ MonoBehaviour:
         parentIds: []
         childIds:
         - 2f574add-eedb-4f68-8000-3ae277419a94
-        - 6b359cc7-3b52-4fed-8d1f-123a3006d6aa
+        - 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
       - name: MostrarHambre
         id: 2f574add-eedb-4f68-8000-3ae277419a94
         position: {x: 950.4, y: -92.8}
@@ -911,19 +939,9 @@ MonoBehaviour:
         parentIds:
         - 9df3044d-6597-4082-aa18-05dc921b6211
         childIds: []
-      - name: Patrullar
-        id: 6b359cc7-3b52-4fed-8d1f-123a3006d6aa
-        position: {x: 1316.8, y: -125.6}
-        node:
-          rid: 5299021605705613389
-        references: []
-        parentIds:
-        - 9df3044d-6597-4082-aa18-05dc921b6211
-        childIds:
-        - 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
       - name: 
         id: 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
-        position: {x: 1323.2, y: 44.800003}
+        position: {x: 1320, y: -67}
         node:
           rid: 5299021605705613390
         references:
@@ -933,7 +951,7 @@ MonoBehaviour:
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
-        - 6b359cc7-3b52-4fed-8d1f-123a3006d6aa
+        - 9df3044d-6597-4082-aa18-05dc921b6211
         childIds: []
     pushPerceptions: []
   references:
@@ -992,6 +1010,18 @@ MonoBehaviour:
     - rid: 3784766834176688128
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
+    - rid: 3784766880363577413
+      type: {class: UtilityBucket, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Inertia: 1.3
+        BucketThreshold: 0.5
+    - rid: 3784766880363577414
+      type: {class: UtilityBucket, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Inertia: 1.3
+        BucketThreshold: 0.7
     - rid: 3784766880363577475
       type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -1038,10 +1068,6 @@ MonoBehaviour:
         method:
           componentName: AAnimalFase2
           methodName: MostrarHambre
-    - rid: 5299021605705613389
-      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
-      data:
-        Iterations: -1
     - rid: 5299021605705613390
       type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
       data: 
@@ -1080,7 +1106,7 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         min: 0
-        max: 0.6
+        max: 1
     - rid: 6361364432508157960
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -1091,7 +1117,7 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         min: 0
-        max: 0.6
+        max: 1
     - rid: 6361364432508157962
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -1102,7 +1128,7 @@ MonoBehaviour:
       data:
         PullingEnabled: 1
         min: 0
-        max: 0.6
+        max: 1
     - rid: 6361364432508157964
       type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -1356,12 +1382,12 @@ MonoBehaviour:
         Weights:
         - 1
         - -1
-    - rid: 6361364655950004299
-      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+    - rid: 7608421538974400512
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        method:
-          componentName: AAnimalFase2
-          methodName: MostrarHambre
+        ExecuteOnLoop: 1
+        InterruptOptions: 2
+        subgraphId: 0321d97b-5e5d-4085-a881-61641db4396d
 --- !u!114 &7958219938240571257
 MonoBehaviour:
   m_ObjectHideFlags: 0
