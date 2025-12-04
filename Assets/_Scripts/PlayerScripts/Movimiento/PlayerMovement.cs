@@ -36,8 +36,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            animator.SetTrigger("Idle");
+   
             soundManager.StopMovementLoop();
+        }
+        if (adaptToFloor.IsGrounded())
+        {
+            animator.SetTrigger("Idle");
+
         }
     }
   

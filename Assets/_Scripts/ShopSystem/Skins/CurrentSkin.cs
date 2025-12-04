@@ -26,7 +26,7 @@ public class CurrentSkin : MonoBehaviour
     {
         
         string currentDuckSkinName = PlayerPrefs.GetString("CurrentDuckSkin", "Pato amarillo");
-        string currentPlayerSkinName = PlayerPrefs.GetString("CurrentPlayerSkin", "Player default");
+        string currentPlayerSkinName = PlayerPrefs.GetString("CurrentPlayerSkin", "Barkito");
         SkinSO[] skin = Resources.LoadAll<SkinSO>("Skins");
         foreach (SkinSO s in skin)
         {

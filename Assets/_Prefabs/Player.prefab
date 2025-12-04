@@ -1005,7 +1005,7 @@ Transform:
   m_GameObject: {fileID: 9029195677763816837}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.88119245, y: -0.39292294, z: 0.03462279}
+  m_LocalPosition: {x: 0.8811923, y: -0.39292288, z: 0.034622908}
   m_LocalScale: {x: 1.0584478, y: 1.0584481, z: 1.0584478}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1172,6 +1172,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3743993344710040121, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4829899705375492696}
+    - targetCorrespondingSourceObject: {fileID: 3743993344710040121, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5061065834946729487}
   m_SourcePrefab: {fileID: 100100000, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
 --- !u!1 &1367449004382173002 stripped
 GameObject:
@@ -1225,3 +1228,21 @@ MonoBehaviour:
   player: {fileID: 667669641718851136}
   scrollSpeed: {x: 15, y: 0}
   textureName: _BaseMap
+--- !u!114 &5061065834946729487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300602319363264546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b2573a81ce09b46881fe9468004271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 8758730008328678255}
+--- !u!137 &8758730008328678255 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1750197354950549132, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
+  m_PrefabInstance: {fileID: 2178420942729120283}
+  m_PrefabAsset: {fileID: 0}
