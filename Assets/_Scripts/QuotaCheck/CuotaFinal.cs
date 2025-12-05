@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CuotaFinal : MonoBehaviour, QuotaUiInterface
 {
-    [SerializeField]TextMeshProUGUI textoQuota;
+    [SerializeField]bool mostrarQuotaNecesaria;
+    [SerializeField, HideIf("mostrarQuotaNecesaria", false)] TextMeshProUGUI textoQuota;
+
+
     [SerializeField]TextMeshProUGUI textoQuotaPassed;
     [SerializeField] TextMeshProUGUI textoQuotaFailed;
 
@@ -14,7 +17,7 @@ public class CuotaFinal : MonoBehaviour, QuotaUiInterface
         get { return _quota; }
         set { 
             _quota = value; 
-            textoQuota.text = _quota.ToString();
+            if(mostrarQuotaNecesaria)textoQuota.text = _quota.ToString();
         }
     }
 
@@ -49,6 +52,7 @@ public class CuotaFinal : MonoBehaviour, QuotaUiInterface
     public void UpdateQuotaPassed(Quota quotaPassed, bool isQuotaPassed)
     {
         QuotaPassed = quotaPassed.QuotaValue;
+        if (!mostrarQuotaNecesaria)Quota = QuotaPassed;
 
         if (QuotaPassed < Quota)
         {

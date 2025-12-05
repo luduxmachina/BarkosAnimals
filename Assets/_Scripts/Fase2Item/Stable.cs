@@ -65,6 +65,20 @@ public class Stable : MonoBehaviour
         return numAnimales;
     }
 
+    public int GetHappyAnimals()
+    {
+        int numAnimales = 0;
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            if (animal.IsHappy)
+            {
+                numAnimales++;
+            }
+        }
+
+        return numAnimales;
+    }
+
     public AAnimalFase2 GetAnimalFromTypes(ItemNames[] tipos)
     {
         List<ItemNames>tiposAnim = tipos.ToList();
