@@ -44,6 +44,7 @@ public class CuotaFinal : MonoBehaviour, QuotaUiInterface
     private void Start()
     {
         Quota = GameFlowManager.instance.quotaChecker.GetQuota().QuotaValue;
+        GameFlowManager.instance.quotaChecker.AddNewUI(this);
     }
     public void UpdateQuotaPassed(Quota quotaPassed, bool isQuotaPassed)
     {

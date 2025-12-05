@@ -52,6 +52,9 @@ public class AAnimalFase2: AAnimal
     bool estaEnfermo;
     float tiempoEnfermo;
 
+    bool isHappy;
+    public bool IsHappy => isHappy;
+
     #region Monobehavior
     protected override void Awake()
     {
@@ -266,6 +269,12 @@ public class AAnimalFase2: AAnimal
     {
         stikersManager.SetImage(StikersGenerales.Corazones);
         GameFlowManager.instance.quotaChecker.UpdateCuotaWithHappinesOfAnimal(true);
+        isHappy = true;
+    }
+
+    public void YaNoEstaFeliz()
+    {
+        isHappy = false;
     }
 
     public void YaNoEstaContento()

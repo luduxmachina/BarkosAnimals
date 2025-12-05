@@ -84,20 +84,9 @@ public class QuotaChecker
         }
     }
 
-    public void checkCuoteWithOnlySecondFase(List<Stable>stables)
+    public void ResetQuote()
     {
         quotaPassed = new Quota();
-        foreach (Stable stable in stables)
-        {
-            foreach(ItemNames itemName in Enum.GetValues(typeof(ItemNames)))
-            {
-                ItemNames[] name = {
-                    itemName
-                };
-                int numAnim = stable.GetAnimalsInEstable(new ItemNames[] {itemName});
-                this.UpdateCuote(new InventoryItemDataObjects(itemName, numAnim));
-            }
-        }
     }
 
     public void UpdateCuotaWithHappinesOfAnimal(bool anAnimalIsNowHappy)
