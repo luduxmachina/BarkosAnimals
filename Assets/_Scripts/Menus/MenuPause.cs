@@ -15,30 +15,39 @@ public class MenuPause : MonoBehaviour
 
     public static UnityEvent OnPause = new UnityEvent();
     public static UnityEvent OnResume = new UnityEvent();
+    static bool inittialized = false;
 
     private void Awake()
     {
+        if (inittialized)
+        {
+            return;
+        }
+        inittialized = true;
         pausePlayerAction = inputActions.FindActionMap("Player").FindAction("Pause"); //awsd o left joystick
         exitUIACtion = inputActions.FindActionMap("UI").FindAction("Exit"); //awsd o left joystick
+
+        pausePlayerAction.performed += ctx => OnPause?.Invoke();
+        exitUIACtion.performed += ctx => OnResume?.Invoke();
 
     }
 
     private void OnEnable()
     {
-        pausePlayerAction.performed += ctx => PauseGame();
-        exitUIACtion.performed += ctx => ResumeGame();
+       OnPause.AddListener(PauseGame);
+        OnResume.AddListener(ResumeGame);
     }
     private void OnDisable()
     {
-        pausePlayerAction.performed -= ctx => PauseGame();
-        exitUIACtion.performed -= ctx => ResumeGame();
+        OnPause.RemoveListener(PauseGame);
+        OnResume.RemoveListener(ResumeGame);
     }
 
     private void PauseGame()
     {
         Time.timeScale = 0.0f;
         PausaMenuUI.SetActive(true);
-        OnPause?.Invoke();
+       // OnPause?.Invoke();
     }
 
     public void ResumeGame()
@@ -47,7 +56,7 @@ public class MenuPause : MonoBehaviour
         PausaMenuUI.SetActive(false);
         Bestiary.SetActive(false);
         Options.SetActive(false);
-        OnResume?.Invoke();
+      //  OnResume?.Invoke();
     }
 
     public void ExitToMainMenu()
