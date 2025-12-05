@@ -4,6 +4,7 @@ public class PlayerCurrentStats : MonoBehaviour
 {
     [SerializeField]
     private PlayerBaseStats playerBaseStats;
+    [ReadOnly]
     public Stats currentStats;
 
     [Header("Negative effects")]

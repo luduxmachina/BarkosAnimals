@@ -15,7 +15,7 @@ public class AplicarSkinSuciedad : MonoBehaviour
     float lastAppliedSuciedad = 0f;
     void Update()
     {
-        float sucideadNormalizada = 0.5f;
+        float sucideadNormalizada = animalFase2.TimeWithoutShower();
         if(sucideadNormalizada < empieceAplicarSuciedad)
         {
             if(lastAppliedSuciedad != 0f)
@@ -26,7 +26,7 @@ public class AplicarSkinSuciedad : MonoBehaviour
         }
         sucideadNormalizada = Mathf.Clamp(sucideadNormalizada, suciedadInicio, suciedadFinal);
 
-        rendererAnimal.material.SetFloat("Suciedad", sucideadNormalizada);
+        rendererAnimal.material.SetFloat("_Suciedad", sucideadNormalizada);
         lastAppliedSuciedad = sucideadNormalizada;
     }
 }

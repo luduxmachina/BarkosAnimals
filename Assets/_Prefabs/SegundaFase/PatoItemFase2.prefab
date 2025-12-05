@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3638374976884592985}
   - component: {fileID: 647673756919052672}
   - component: {fileID: 8208378982257326284}
+  - component: {fileID: 924385325949386342}
   m_Layer: 0
   m_Name: CosasDelPropioItem
   m_TagString: Untagged
@@ -101,6 +102,23 @@ MonoBehaviour:
   OnEat:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &924385325949386342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640679195367809110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 029e99a9204d09e4b88adf4d0bfacf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalFase2: {fileID: 7958219938240571257}
+  rendererAnimal: {fileID: 7759590377662752701}
+  empieceAplicarSuciedad: 0.2
+  suciedadFinal: 1
+  suciedadInicio: 0
 --- !u!1 &2353041292150400715
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
   grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
   OnGrab:
     m_PersistentCalls:
@@ -1442,6 +1462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
   grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
   OnGrab:
     m_PersistentCalls:
@@ -1774,7 +1796,7 @@ PrefabInstance:
     - target: {fileID: 3811460134273187559, guid: bfb1415f1ff432d4b8625791cb3cd7f1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: dc5348873c800a241806667fbe172648, type: 2}
+      objectReference: {fileID: 2100000, guid: a9e3cb708fc858b4798d1f6901c0b814, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

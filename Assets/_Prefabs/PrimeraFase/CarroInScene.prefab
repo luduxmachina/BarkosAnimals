@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
   grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
   OnGrab:
     m_PersistentCalls:
@@ -203,61 +205,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 8651400292802854815}
     m_Modifications:
     - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 4588570697968135275}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 4714741850160017479}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: GiveItemToInteractor
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: CartInScene, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4181039915963686002, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
-      propertyPath: onInventoryRemove.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6694159472043234705, guid: b610b190e987dfe44a4efb7056f603ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3223334

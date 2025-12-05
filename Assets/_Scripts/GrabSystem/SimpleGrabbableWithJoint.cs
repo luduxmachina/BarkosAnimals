@@ -71,7 +71,7 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
             }
         }
 
-        //rb.excludeLayers = LayerMask.GetMask("Player");
+        rb.excludeLayers = LayerMask.GetMask("Player");
         gameObject.layer = LayerMask.NameToLayer("GrabbedObj");
 
 
@@ -129,14 +129,13 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
     }
     public virtual bool Drop()
     {
-        Debug.Log("Drop");
 
         if (!canBeDropped) return false;
         if (!isBeingGrabbed) return false; //no se puede soltar si no se esta cogido
 
         OnDrop?.Invoke(); //para que el grabber siga teniendo la referencia sin null
 
-        Debug.Log("Se ha mandado la orden de soltar el objeto a " + currentGrabber.gameObject.name);
+       // Debug.Log("Se ha mandado la orden de soltar el objeto a " + currentGrabber.gameObject.name);
         currentGrabber.StopGrabbing();
 
         if (!allowExtramoveSetWhenGrabbed)
@@ -148,7 +147,7 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
             }
             else
             {
-                Debug.Log("No hay player effect");
+               // Debug.Log("No hay player effect");
             }
         }
 

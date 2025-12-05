@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 2461159829639402515}
   - component: {fileID: 5644041075474310974}
   - component: {fileID: 8446783219284720813}
+  - component: {fileID: 7689068276402041764}
   m_Layer: 0
   m_Name: CosasDelPropioItem
   m_TagString: Untagged
@@ -635,6 +636,23 @@ MonoBehaviour:
   OnEat:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7689068276402041764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168748101614290879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 029e99a9204d09e4b88adf4d0bfacf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalFase2: {fileID: 2398727250656660563}
+  rendererAnimal: {fileID: 7777970486629022656}
+  empieceAplicarSuciedad: 0.2
+  suciedadFinal: 1
+  suciedadInicio: 0
 --- !u!1 &6544289954468732073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,6 +2263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8783689744934173622, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5fe3e2e7c42113042aec3d05f4d92a19, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2258,5 +2280,10 @@ Transform:
 --- !u!95 &5861753263699587296 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4849295098602107030, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
+  m_PrefabInstance: {fileID: 1302958362751942774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7777970486629022656 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8783689744934173622, guid: 7f78de6e2c906904b9c4b208c0985d92, type: 3}
   m_PrefabInstance: {fileID: 1302958362751942774}
   m_PrefabAsset: {fileID: 0}
