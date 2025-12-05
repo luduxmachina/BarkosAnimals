@@ -301,7 +301,6 @@ GameObject:
   - component: {fileID: 8250854732599061864}
   - component: {fileID: 4784780951512080431}
   - component: {fileID: 3478034697555963467}
-  - component: {fileID: 4085448442974964101}
   m_Layer: 8
   m_Name: CalculoDeAnimalesEstablo
   m_TagString: Untagged
@@ -359,34 +358,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.26, y: 0.15, z: 7.9}
-  m_Center: {x: 1.99, y: 0.26, z: 0.4}
---- !u!114 &4085448442974964101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6667172910968842051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca6ef945fedba7f479709f3c8dbaec59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  suciedadSprites:
-  - {fileID: -1188220056, guid: b4fa2bd8d7248df49936159d118410bc, type: 3}
-  - {fileID: -950468529, guid: b4fa2bd8d7248df49936159d118410bc, type: 3}
-  - {fileID: 828226853, guid: b4fa2bd8d7248df49936159d118410bc, type: 3}
-  - {fileID: -176662301, guid: b4fa2bd8d7248df49936159d118410bc, type: 3}
-  - {fileID: 41213255, guid: b4fa2bd8d7248df49936159d118410bc, type: 3}
-  - {fileID: -442362152, guid: b4fa2bd8d7248df49936159d118410bc, type: 3}
-  suciedadMediaSpawn: 50
-  RandomOffsetMedia: 5
-  stable: {fileID: 4784780951512080431}
-  suciedadPrefab: {fileID: 7644136263562873798, guid: 151c78b90f134a34282bc21472834aa1, type: 3}
-  centroEstablo: {fileID: 8765290378054143061}
-  dimensionEstablo: 9
-  tiempoEntreDosSuciedades: 5
+  m_Size: {x: 10.2, y: 0.15, z: 6.95}
+  m_Center: {x: 1.99, y: 0.26, z: 0.61}
 --- !u!1 &7682439541099090832
 GameObject:
   m_ObjectHideFlags: 0

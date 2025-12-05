@@ -29,12 +29,18 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
     
     private void Update()
     {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = mainCamera.nearClipPlane;
+        Ray ray = mainCamera.ScreenPointToRay(mousePos);
+        if (!Physics.Raycast(ray, out RaycastHit hit, 100, animalGroundLayerMask))
+            return;
+        
         //////////////////// TESTEO ////////////////////
         if (Input.GetMouseButtonDown(0))
             OnClick?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            StopPlacing();
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        //     StopPlacing();
     }
     
     public Vector3 GetSelectedMapPosition()
