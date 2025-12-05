@@ -45,8 +45,8 @@ public class GridInput : MonoBehaviour, IGridInput
         if (Input.GetMouseButtonDown(0))
             OnClick?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            StopPlacing();
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        //     StopPlacing();
     }
 
     public Vector3 GetSelectedMapPosition()
