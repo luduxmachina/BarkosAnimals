@@ -17,6 +17,11 @@ public class ContadorAnimales : MonoBehaviour
                 int numAnim = stable.GetAnimalsInEstable(new ItemNames[] { itemName });
                 GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(itemName, numAnim));
             }
+            int animFelices = stable.GetHappyAnimals();
+            GameFlowManager.instance.quotaChecker.UpdateQuoteWithHappinesOfAnimal(true, animFelices);
+
         }
+
+
     }
 }

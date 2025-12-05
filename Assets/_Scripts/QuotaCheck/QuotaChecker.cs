@@ -89,7 +89,7 @@ public class QuotaChecker
         quotaPassed = new Quota();
     }
 
-    public void UpdateCuotaWithHappinesOfAnimal(bool anAnimalIsNowHappy)
+    public void UpdateQuoteWithHappinesOfAnimal(bool anAnimalIsNowHappy)
     {
         if (anAnimalIsNowHappy)
         {
@@ -98,6 +98,18 @@ public class QuotaChecker
         else
         {
             this.quotaPassed.AddPoints(-30);
+        }
+    }
+
+    public void UpdateQuoteWithHappinesOfAnimal(bool animalIsNowHappy, int numAnimals)
+    {
+        if (animalIsNowHappy)
+        {
+            this.quotaPassed.AddPoints(30*numAnimals);
+        }
+        else
+        {
+            this.quotaPassed.AddPoints(-30 * numAnimals);
         }
     }
 

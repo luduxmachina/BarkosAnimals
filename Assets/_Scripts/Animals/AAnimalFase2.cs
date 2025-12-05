@@ -268,18 +268,14 @@ public class AAnimalFase2: AAnimal
     public void MandarCorazones()
     {
         stikersManager.SetImage(StikersGenerales.Corazones);
-        GameFlowManager.instance.quotaChecker.UpdateCuotaWithHappinesOfAnimal(true);
+        if(!isHappy)GameFlowManager.instance.quotaChecker.UpdateQuoteWithHappinesOfAnimal(true);
         isHappy = true;
-    }
-
-    public void YaNoEstaFeliz()
-    {
-        isHappy = false;
     }
 
     public void YaNoEstaContento()
     {
-        GameFlowManager.instance.quotaChecker.UpdateCuotaWithHappinesOfAnimal(false);
+        if(isHappy)GameFlowManager.instance.quotaChecker.UpdateQuoteWithHappinesOfAnimal(false);
+        isHappy = false;
     }
 
     public void NoMostrarNada()
