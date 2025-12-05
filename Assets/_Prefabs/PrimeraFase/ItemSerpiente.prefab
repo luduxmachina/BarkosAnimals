@@ -293,6 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 0
   grabbedMaterial: {fileID: 0}
   OnGrab:
     m_PersistentCalls:
@@ -397,8 +399,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executeOnLoop: 0
   interruptOptions: 0
-  m_SerpienteInScene: {fileID: 3472573385973157507}
+  useDebugger: 0
   debuggerComponent: {fileID: 8624167023052076220}
+  m_SerpienteInScene: {fileID: 3472573385973157507}
   HuirRecto_action_OtherTransform: {fileID: 0}
   HuirIzq_action_OtherTransform: {fileID: 0}
 --- !u!114 &8624167023052076220

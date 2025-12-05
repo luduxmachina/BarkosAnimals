@@ -1,0 +1,1799 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &736032064321851129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6997159862247538396}
+  m_Layer: 0
+  m_Name: ---Este item SI se mete en el carro---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6997159862247538396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736032064321851129}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8867997848718819774}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1640679195367809110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3638374976884592985}
+  - component: {fileID: 647673756919052672}
+  - component: {fileID: 8208378982257326284}
+  - component: {fileID: 8487608032886456322}
+  m_Layer: 0
+  m_Name: CosasDelPropioItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3638374976884592985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640679195367809110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5542747556078738322}
+  m_Father: {fileID: 8867997848718819774}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647673756919052672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640679195367809110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12563faededd634cab6a3d2c5e5fd41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 6643027423853108606}
+  amountInStack: 1
+  itemName: 5
+  itemType: 0
+  useParentGrabbable: 1
+  simpleGrabbable: {fileID: 0}
+--- !u!114 &8208378982257326284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640679195367809110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ef8be813f0be84cb4bd316f13ad476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceptedFoodType: 1
+  wantsFood: 1
+  stopsBeingHungryOnEat: 1
+  OnEat:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8487608032886456322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640679195367809110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 029e99a9204d09e4b88adf4d0bfacf62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalFase2: {fileID: 7958219938240571257}
+  rendererAnimal: {fileID: 3231190016149003533}
+  empieceAplicarSuciedad: 0.2
+  suciedadFinal: 1
+  suciedadInicio: 0
+--- !u!1 &2353041292150400715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 274236526144311372}
+  - component: {fileID: 8649727599755163032}
+  m_Layer: 0
+  m_Name: DeteccionInteraccionConOtros
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &274236526144311372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353041292150400715}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8867997848718819774}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8649727599755163032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353041292150400715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06927ee9532fa574cb4202f29fd1c299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastTargetFetched: {fileID: 0}
+  detectionRange: 1.23
+  shape: 0
+  ignoreSelf: 1
+  ignoreChildren: 1
+  ignoreParents: 1
+  ignoreSpecificGameObjects: 1
+  specificGameObjectsToIgnore:
+  - {fileID: 1640679195367809110}
+  filterByTag: 0
+  targetTag: 
+  useOtherTags: 0
+  otherTags: []
+  filterByLayer: 1
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!1 &2881116726443410501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2475594923796127505}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2475594923796127505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881116726443410501}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7181993, z: -0, w: 0.6958375}
+  m_LocalPosition: {x: -0.657, y: -0.15, z: 0.074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8867997848718819774}
+  m_LocalEulerAnglesHint: {x: 0, y: 91.812, z: 0}
+--- !u!1 &4945863141103908473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2855414080650885516}
+  m_Layer: 0
+  m_Name: "---A este item se le interactua con comida pues se la come \xF1am ---"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2855414080650885516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945863141103908473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8867997848718819774}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6643027423853108606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8867997848718819774}
+  - component: {fileID: 5984007976266816062}
+  - component: {fileID: 5635544596619664442}
+  - component: {fileID: 377693831318831142}
+  - component: {fileID: 1549247482912388678}
+  - component: {fileID: 3001176560405313657}
+  - component: {fileID: 5942847103440764155}
+  - component: {fileID: 7958219938240571257}
+  - component: {fileID: 3306075770266489809}
+  m_Layer: 0
+  m_Name: PangolinItemFase2
+  m_TagString: Suciedad
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8867997848718819774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.37, y: 0.6396252, z: 5.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 274236526144311372}
+  - {fileID: 6997159862247538396}
+  - {fileID: 2855414080650885516}
+  - {fileID: 3638374976884592985}
+  - {fileID: 2475594923796127505}
+  - {fileID: 1387486602046429848}
+  - {fileID: 7112599158048704758}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5984007976266816062
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Height: 1.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0.06}
+--- !u!54 &5635544596619664442
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0.5
+  m_AngularDrag: 0.5
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!114 &377693831318831142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
+  grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDrop:
+    m_PersistentCalls:
+      m_Calls: []
+  canBeGrabbed: 1
+  canBeDropped: 1
+  allowExtramoveSetWhenGrabbed: 1
+  grabPoint: {fileID: 2475594923796127505}
+--- !u!114 &1549247482912388678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81016613ea3feb04b8c61c0b1124211a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.88
+  targetThreshold: 122.5
+  minDistanceToTarget: 1.43
+  drawGizmos: 1
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!195 &3001176560405313657
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.96
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.09
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1.39
+  m_BaseOffset: 0.64
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &5942847103440764155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7033c32493b38240a6a2c47736ac9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeOnLoop: 0
+  interruptOptions: 0
+  _eventHandler:
+    debugStatusChanges: 0
+    identifier: 
+  data:
+    graphs:
+    - name: Fase2US
+      id: 9d4c3a78-f1db-4382-9b58-8ed09762ec6a
+      graph:
+        rid: 6361364432508157952
+      nodes:
+      - name: TC
+        id: f965e5fe-bb1f-4f74-a454-9f9b6464b07e
+        position: {x: -37, y: -252}
+        node:
+          rid: 6361364432508157955
+        references:
+        - fieldName: Variable
+          value:
+            rid: 6361364432508157956
+          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        parentIds:
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+        childIds: []
+      - name: TL
+        id: 8dfa8787-1041-4e98-be5d-e7c7e084bca6
+        position: {x: -46, y: 106}
+        node:
+          rid: 6361364432508157957
+        references:
+        - fieldName: Variable
+          value:
+            rid: 6361364432508157958
+          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        parentIds:
+        - 734d7dcd-d8d4-4b44-a372-bbe72682044f
+        childIds: []
+      - name: AnimEstablo
+        id: e7eafa89-15bf-4fdb-ae61-18a5f2f4f730
+        position: {x: 9, y: 613}
+        node:
+          rid: 6361364432508157959
+        references:
+        - fieldName: Variable
+          value:
+            rid: 6361364432508157960
+          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        parentIds:
+        - a5f88f8b-ddbc-4767-9a2f-1b376b2bbbd2
+        childIds: []
+      - name: AnimEspecie
+        id: 90919fd0-305f-4a37-b20e-01788c51a1b3
+        position: {x: 9, y: 813}
+        node:
+          rid: 6361364432508157961
+        references:
+        - fieldName: Variable
+          value:
+            rid: 6361364432508157962
+          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        parentIds:
+        - 7c2a3300-a1b6-41fd-87a7-ab7f9c4889dc
+        childIds: []
+      - name: Depredadores
+        id: 47b898d3-e63a-423a-aaeb-c36f9b6336a8
+        position: {x: 9, y: 1013}
+        node:
+          rid: 6361364432508157963
+        references:
+        - fieldName: Variable
+          value:
+            rid: 6361364432508157964
+          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        parentIds:
+        - aae17ae9-5360-46fa-8ca1-1a4c34713e12
+        childIds: []
+      - name: F2
+        id: a5f88f8b-ddbc-4767-9a2f-1b376b2bbbd2
+        position: {x: 309, y: 613}
+        node:
+          rid: 6361364432508157968
+        references: []
+        parentIds:
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        childIds:
+        - e7eafa89-15bf-4fdb-ae61-18a5f2f4f730
+      - name: Hambre
+        id: 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+        position: {x: 270, y: -247}
+        node:
+          rid: 6361364432508157969
+        references: []
+        parentIds:
+        - 64a82012-b616-4ec0-b307-ceee5b070969
+        - 74d72329-1472-4b57-bb42-300b8d25183e
+        - a849b1ce-5113-429a-a1a7-4eb27162e69b
+        childIds:
+        - f965e5fe-bb1f-4f74-a454-9f9b6464b07e
+      - name: Insalubridad
+        id: 64a82012-b616-4ec0-b307-ceee5b070969
+        position: {x: 644, y: -19}
+        node:
+          rid: 6361364432508157971
+        references: []
+        parentIds:
+        - a2ead301-dc4b-493b-a3ce-84db5e7f89c7
+        - c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
+        childIds:
+        - 734d7dcd-d8d4-4b44-a372-bbe72682044f
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+      - name: Suciedad
+        id: 734d7dcd-d8d4-4b44-a372-bbe72682044f
+        position: {x: 254, y: 106}
+        node:
+          rid: 6361364432508157972
+        references: []
+        parentIds:
+        - 64a82012-b616-4ec0-b307-ceee5b070969
+        - 5231d177-c636-4915-9685-cfec7f7c8c63
+        childIds:
+        - 8dfa8787-1041-4e98-be5d-e7c7e084bca6
+      - name: Incomodidad
+        id: 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        position: {x: 609, y: 738}
+        node:
+          rid: 6361364432508157975
+        references: []
+        parentIds:
+        - a2ead301-dc4b-493b-a3ce-84db5e7f89c7
+        - 6d37117d-e219-4782-918c-6a215222080e
+        childIds:
+        - a5f88f8b-ddbc-4767-9a2f-1b376b2bbbd2
+        - 7c2a3300-a1b6-41fd-87a7-ab7f9c4889dc
+        - aae17ae9-5360-46fa-8ca1-1a4c34713e12
+      - name: Infelicidad
+        id: a2ead301-dc4b-493b-a3ce-84db5e7f89c7
+        position: {x: 1016, y: 350}
+        node:
+          rid: 6361364432508157976
+        references: []
+        parentIds:
+        - 53a63e00-d108-4cd1-8b80-7ab9e9511d6f
+        childIds:
+        - 64a82012-b616-4ec0-b307-ceee5b070969
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+      - name: Enfermar
+        id: c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
+        position: {x: 1433, y: -47}
+        node:
+          rid: 6361364432508157978
+        references:
+        - fieldName: Action
+          value:
+            rid: 3784766813850042439
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
+        childIds:
+        - 64a82012-b616-4ec0-b307-ceee5b070969
+      - name: MandarCorazones
+        id: a801683e-3c6f-4349-bef3-0b861c11173b
+        position: {x: 1593, y: 325}
+        node:
+          rid: 6361364432508157979
+        references:
+        - fieldName: Action
+          value:
+            rid: 3784766813850042437
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
+        childIds:
+        - 53a63e00-d108-4cd1-8b80-7ab9e9511d6f
+      - name: NecesitaLimpiarse
+        id: 5231d177-c636-4915-9685-cfec7f7c8c63
+        position: {x: 1155, y: 134}
+        node:
+          rid: 6361364432508157980
+        references:
+        - fieldName: Action
+          value:
+            rid: 3784766813850042438
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
+        childIds:
+        - 734d7dcd-d8d4-4b44-a372-bbe72682044f
+      - name: EstarIncomodo
+        id: 6d37117d-e219-4782-918c-6a215222080e
+        position: {x: 1401, y: 710}
+        node:
+          rid: 6361364432508157981
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364475241824326
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
+        childIds:
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+      - name: Felicidad
+        id: 53a63e00-d108-4cd1-8b80-7ab9e9511d6f
+        position: {x: 1323, y: 310}
+        node:
+          rid: 6361364523197923392
+        references: []
+        parentIds:
+        - a801683e-3c6f-4349-bef3-0b861c11173b
+        childIds:
+        - a2ead301-dc4b-493b-a3ce-84db5e7f89c7
+      - name: Patrol
+        id: 5e57d581-5f2f-468b-8ed0-6b81966beee8
+        position: {x: 9, y: 1213}
+        node:
+          rid: 6361364534266953795
+        references: []
+        parentIds:
+        - ae348b90-e4e6-40e7-8b6a-a27d266c481b
+        childIds: []
+      - name: Patruyar
+        id: ae348b90-e4e6-40e7-8b6a-a27d266c481b
+        position: {x: 309, y: 1213}
+        node:
+          rid: 6361364534266953796
+        references:
+        - fieldName: Action
+          value:
+            rid: 3784766883916677187
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds:
+        - 5e57d581-5f2f-468b-8ed0-6b81966beee8
+      - name: AccionesQueRepercuten
+        id: 877682a0-6e01-4a40-a222-7cbca968302b
+        position: {x: 1598, y: -574}
+        node:
+          rid: 3784766880363577413
+        references: []
+        parentIds: []
+        childIds:
+        - f43de9a8-5406-458c-a778-52ef467ef7e3
+      - name: AccionesDePedir
+        id: ad70025a-1e1e-4e38-a654-027443691bae
+        position: {x: 2492, y: 41}
+        node:
+          rid: 3784766880363577414
+        references: []
+        parentIds: []
+        childIds:
+        - a801683e-3c6f-4349-bef3-0b861c11173b
+        - 6d37117d-e219-4782-918c-6a215222080e
+        - 2283a61e-c933-40de-8104-2f746174226e
+        - 5231d177-c636-4915-9685-cfec7f7c8c63
+        - c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
+      - name: F3
+        id: 7c2a3300-a1b6-41fd-87a7-ab7f9c4889dc
+        position: {x: 309, y: 813}
+        node:
+          rid: 6361364647463616579
+        references: []
+        parentIds:
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        childIds:
+        - 90919fd0-305f-4a37-b20e-01788c51a1b3
+      - name: 
+        id: aae17ae9-5360-46fa-8ca1-1a4c34713e12
+        position: {x: 309, y: 1013}
+        node:
+          rid: 6361364647463616581
+        references: []
+        parentIds:
+        - 07ebe9e6-5c28-4b1e-b839-6c86ef23cb71
+        childIds:
+        - 47b898d3-e63a-423a-aaeb-c36f9b6336a8
+      - name: TieneHambre
+        id: f43de9a8-5406-458c-a778-52ef467ef7e3
+        position: {x: 1032, y: -601}
+        node:
+          rid: 6361364654760132611
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364654760132684
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 877682a0-6e01-4a40-a222-7cbca968302b
+        childIds:
+        - 74d72329-1472-4b57-bb42-300b8d25183e
+      - name: 
+        id: 57a8108b-c4a4-4d5e-bbf9-a8e521abbeef
+        position: {x: 7, y: -614}
+        node:
+          rid: 6361364655950004292
+        references:
+        - fieldName: Variable
+          value:
+            rid: 6361364655950004293
+          fieldType: System.Func`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        parentIds:
+        - 74d72329-1472-4b57-bb42-300b8d25183e
+        childIds: []
+      - name: PuedeComer
+        id: 74d72329-1472-4b57-bb42-300b8d25183e
+        position: {x: 625, y: -592}
+        node:
+          rid: 6361364655950004295
+        references: []
+        parentIds:
+        - f43de9a8-5406-458c-a778-52ef467ef7e3
+        - a849b1ce-5113-429a-a1a7-4eb27162e69b
+        childIds:
+        - 57a8108b-c4a4-4d5e-bbf9-a8e521abbeef
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+      - name: MostrarHambre
+        id: 2283a61e-c933-40de-8104-2f746174226e
+        position: {x: 1371, y: -263}
+        node:
+          rid: 6361364655950004296
+        references:
+        - fieldName: Action
+          value:
+            rid: 7608421538974400512
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - ad70025a-1e1e-4e38-a654-027443691bae
+        childIds:
+        - a849b1ce-5113-429a-a1a7-4eb27162e69b
+      - name: 
+        id: a849b1ce-5113-429a-a1a7-4eb27162e69b
+        position: {x: 1037, y: -235}
+        node:
+          rid: 6361364655950004297
+        references: []
+        parentIds:
+        - 2283a61e-c933-40de-8104-2f746174226e
+        childIds:
+        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+        - 74d72329-1472-4b57-bb42-300b8d25183e
+    - name: Comer
+      id: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
+      graph:
+        rid: 6361364450751021125
+      nodes:
+      - name: 
+        id: 002efc9a-4a4c-4d79-b8ab-8b8958501cce
+        position: {x: 829, y: -336}
+        node:
+          rid: 6361364654760132749
+        references: []
+        parentIds: []
+        childIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+      - name: EATING
+        id: 2b3299eb-71af-4d95-a41c-92fe856f688a
+        position: {x: 846.4, y: -208}
+        node:
+          rid: 6361364450751021129
+        references: []
+        parentIds:
+        - 002efc9a-4a4c-4d79-b8ab-8b8958501cce
+        childIds:
+        - 8e6e7717-5e2d-4eba-b381-7e6ccb7c1a15
+        - 81255824-0a7a-498f-9ffc-d777242edf76
+        - 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
+        - ebed57a6-15f6-4b21-bc65-5d30e0fefa25
+      - name: GoToEat
+        id: 81255824-0a7a-498f-9ffc-d777242edf76
+        position: {x: 776, y: 138}
+        node:
+          rid: 6361364450751021126
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364450751021130
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds: []
+      - name: Eat
+        id: 47edea87-00a9-4fd5-8c3f-1afd9d99f2ac
+        position: {x: 1116, y: 147.20001}
+        node:
+          rid: 6361364450751021127
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364450751021131
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds: []
+      - name: Moverse un poco
+        id: ebed57a6-15f6-4b21-bc65-5d30e0fefa25
+        position: {x: 1472, y: 116}
+        node:
+          rid: 6361364534266953867
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364654760132681
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds: []
+      - name: Indica que tiene Hambre
+        id: 8e6e7717-5e2d-4eba-b381-7e6ccb7c1a15
+        position: {x: 422.4, y: 122.4}
+        node:
+          rid: 3784766834176688128
+        references:
+        - fieldName: Action
+          value:
+            rid: 3784766880363577475
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 2b3299eb-71af-4d95-a41c-92fe856f688a
+        childIds: []
+    - name: EstaFeliz
+      id: bf45f6aa-b383-4e7c-9b9f-9a1f2ab5256f
+      graph:
+        rid: 6361364534266953799
+      nodes:
+      - name: EstaFeliz
+        id: 5747f74f-bbfd-46c3-b88d-d8bfce77afc3
+        position: {x: 381.6, y: 228.79999}
+        node:
+          rid: 6361364534266953800
+        references:
+        - fieldName: Action
+          value:
+            rid: 3784766813850042436
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 5b2873f2-0fca-4ce0-afef-4b05533f1958
+        childIds:
+        - 93a4aa7e-3b31-48cf-9e7d-575799308668
+      - name: Patrulla
+        id: 84976a18-db78-4255-87ea-7bc771552d74
+        position: {x: 1135, y: 229}
+        node:
+          rid: 6361364534266953802
+        references:
+        - fieldName: Action
+          value:
+            rid: 6361364534266953864
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 93a4aa7e-3b31-48cf-9e7d-575799308668
+        childIds:
+        - 5b2873f2-0fca-4ce0-afef-4b05533f1958
+      - name: 1
+        id: 93a4aa7e-3b31-48cf-9e7d-575799308668
+        position: {x: 753, y: 53}
+        node:
+          rid: 6361364534266953803
+        references:
+        - fieldName: Perception
+          value:
+            rid: 6361364534266953804
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 5747f74f-bbfd-46c3-b88d-d8bfce77afc3
+        childIds:
+        - 84976a18-db78-4255-87ea-7bc771552d74
+      - name: 2
+        id: 5b2873f2-0fca-4ce0-afef-4b05533f1958
+        position: {x: 749, y: 364}
+        node:
+          rid: 6361364534266953805
+        references:
+        - fieldName: Perception
+          value:
+            rid: 6361364534266953806
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 84976a18-db78-4255-87ea-7bc771552d74
+        childIds:
+        - 5747f74f-bbfd-46c3-b88d-d8bfce77afc3
+    - name: TieneHambre
+      id: 0321d97b-5e5d-4085-a881-61641db4396d
+      graph:
+        rid: 5299021605705613384
+      nodes:
+      - name: SecuenciaPrincipal
+        id: 9df3044d-6597-4082-aa18-05dc921b6211
+        position: {x: 1118.4, y: -279.2}
+        node:
+          rid: 5299021605705613386
+        references: []
+        parentIds: []
+        childIds:
+        - 2f574add-eedb-4f68-8000-3ae277419a94
+        - 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
+      - name: MostrarHambre
+        id: 2f574add-eedb-4f68-8000-3ae277419a94
+        position: {x: 950.4, y: -92.8}
+        node:
+          rid: 5299021605705613387
+        references:
+        - fieldName: Action
+          value:
+            rid: 5299021605705613388
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 9df3044d-6597-4082-aa18-05dc921b6211
+        childIds: []
+      - name: 
+        id: 5b0854fc-ee58-4ddc-9af5-9c99fd8f2c1b
+        position: {x: 1320, y: -67}
+        node:
+          rid: 5299021605705613390
+        references:
+        - fieldName: Action
+          value:
+            rid: 5299021605705613391
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 9df3044d-6597-4082-aa18-05dc921b6211
+        childIds: []
+    pushPerceptions: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3784766813850042436
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MandarCorazones
+    - rid: 3784766813850042437
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 0
+        InterruptOptions: 2
+        subgraphId: bf45f6aa-b383-4e7c-9b9f-9a1f2ab5256f
+    - rid: 3784766813850042438
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: AAnimalFase2
+          methodName: Rascarse
+        update:
+          componentName: 
+          methodName: 
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 3784766813850042439
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: AAnimalFase2
+          methodName: Enfermar
+        update:
+          componentName: 
+          methodName: 
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 3784766834176688128
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 3784766880363577413
+      type: {class: UtilityBucket, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Inertia: 1.3
+        BucketThreshold: 0.5
+    - rid: 3784766880363577414
+      type: {class: UtilityBucket, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Inertia: 1.3
+        BucketThreshold: 0.7
+    - rid: 3784766880363577475
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MostrarHambre
+    - rid: 3784766883916677187
+      type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundAction:
+          rid: 3784766883916677188
+        subActions:
+        - action:
+            rid: 3784766883916677189
+        - action:
+            rid: 3784766883916677190
+    - rid: 3784766883916677188
+      type: {class: SequenceAction, ns: BehaviourAPI.Core.Actions, asm: BehaviourAPI.Core}
+      data:
+        TargetStatus: 2
+    - rid: 3784766883916677189
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: NoMostrarNada
+    - rid: 3784766883916677190
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 5
+    - rid: 5299021605705613384
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613386
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 5299021605705613387
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613388
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MostrarHambre
+    - rid: 5299021605705613390
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 5299021605705613391
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 10
+    - rid: 6361364432508157952
+      type: {class: UtilitySystem, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        Inertia: 1
+    - rid: 6361364432508157955
+      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        min: 0
+        max: 1
+    - rid: 6361364432508157956
+      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        componentName: AAnimalFase2
+        methodName: TimeWithoutEating
+    - rid: 6361364432508157957
+      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        min: 0
+        max: 1
+    - rid: 6361364432508157958
+      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        componentName: AAnimalFase2
+        methodName: TimeWithoutShower
+    - rid: 6361364432508157959
+      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        min: 0
+        max: 1
+    - rid: 6361364432508157960
+      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        componentName: AAnimalFase2
+        methodName: AnimalsOnEstable
+    - rid: 6361364432508157961
+      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        min: 0
+        max: 1
+    - rid: 6361364432508157962
+      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        componentName: AAnimalFase2
+        methodName: ComaradesOnEstable
+    - rid: 6361364432508157963
+      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        min: 0
+        max: 1
+    - rid: 6361364432508157964
+      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        componentName: AAnimalFase2
+        methodName: PredatorsOnEstable
+    - rid: 6361364432508157968
+      type: {class: SigmoidCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        GrownRate: 10
+        Midpoint: 0.5
+    - rid: 6361364432508157969
+      type: {class: LinearCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Slope: 0.8
+        YIntercept: 0
+    - rid: 6361364432508157971
+      type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Weights:
+        - 0.6
+        - 0.7
+    - rid: 6361364432508157972
+      type: {class: LinearCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Slope: 0.7
+        YIntercept: 0
+    - rid: 6361364432508157975
+      type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Weights:
+        - 0.25
+        - 0.25
+        - 0.5
+    - rid: 6361364432508157976
+      type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Weights:
+        - 0.7
+        - 0.3
+    - rid: 6361364432508157978
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364432508157979
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364432508157980
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364432508157981
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364450751021125
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 6361364450751021126
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 6361364450751021127
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 6361364450751021129
+      type: {class: SequencerNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+    - rid: 6361364450751021130
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: AAnimal
+          methodName: MoveTowardsObjectiveInit
+        update:
+          componentName: AAnimalFase2
+          methodName: MoveTowardsObjective
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 6361364450751021131
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: AAnimal
+          methodName: InitComer
+        update:
+          componentName: AAnimal
+          methodName: UpdateComer
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 6361364475241824326
+      type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundAction:
+          rid: 6361364475241824327
+        subActions:
+        - action:
+            rid: 6361364475241824328
+        - action:
+            rid: 6361364475241824329
+    - rid: 6361364475241824327
+      type: {class: SequenceAction, ns: BehaviourAPI.Core.Actions, asm: BehaviourAPI.Core}
+      data:
+        TargetStatus: 2
+    - rid: 6361364475241824328
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: AAnimalFase2
+          methodName: MostrarIncomodidad
+    - rid: 6361364475241824329
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 10
+    - rid: 6361364523197923392
+      type: {class: LinearCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Slope: -1
+        YIntercept: 1
+    - rid: 6361364534266953795
+      type: {class: ConstantFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        value: 0.5
+    - rid: 6361364534266953796
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364534266953799
+      type: {class: FSM, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 6361364534266953800
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 6361364534266953802
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 6361364534266953803
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 6361364534266953804
+      type: {class: UnityTimePerception, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        TotalTime: 0.3
+    - rid: 6361364534266953805
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 6361364534266953806
+      type: {class: UnityTimePerception, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        TotalTime: 5
+    - rid: 6361364534266953864
+      type: {class: PatrolAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        maxDistance: 3
+    - rid: 6361364534266953867
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 6361364647463616579
+      type: {class: PointedCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Points:
+        - x: 0
+          y: 1
+        - x: 0.5
+          y: 0
+        - x: 1
+          y: 1
+    - rid: 6361364647463616581
+      type: {class: ExponentialCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Exponent: 0.5
+        DespX: 0
+        DespY: 0
+    - rid: 6361364654760132611
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364654760132681
+      type: {class: FleeAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        OtherTransform: {fileID: 0}
+        speed: 3
+        distance: 6
+        maxTimeRunning: 20
+    - rid: 6361364654760132684
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 0
+        InterruptOptions: 2
+        subgraphId: 6f80dc3c-18e2-439b-8726-665e5f88f3eb
+    - rid: 6361364654760132749
+      type: {class: LoopNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        Iterations: -1
+    - rid: 6361364655950004292
+      type: {class: VariableFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        min: 0
+        max: 1
+    - rid: 6361364655950004293
+      type: {class: SerializedContextMethod, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        componentName: AAnimalFase2
+        methodName: PuedeComer
+    - rid: 6361364655950004295
+      type: {class: MinFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+    - rid: 6361364655950004296
+      type: {class: UtilityAction, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        FinishSystemOnComplete: 0
+    - rid: 6361364655950004297
+      type: {class: WeightedFusionFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
+      data:
+        PullingEnabled: 1
+        Weights:
+        - 1
+        - -1
+    - rid: 7608421538974400512
+      type: {class: SubgraphAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        ExecuteOnLoop: 1
+        InterruptOptions: 2
+        subgraphId: 0321d97b-5e5d-4085-a881-61641db4396d
+--- !u!114 &7958219938240571257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a69629fd7ab6e4cb1adcbfa5c5e7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 481069483563133570}
+  predators: 04000000
+  objectives: 01000000
+  walkingSpeed: 3.5
+  run: 6
+  rotateSpeed: 121
+  patrolRadius: 5
+  radioDetectionObjective: 10
+  radioDetectionPredator: 15
+  radioAtaqueComida: 1
+  tiempoEnComer: 1
+  itemName: 5
+  suciedadMaxima: 60
+  MaxSinComer: 10
+  TiempoEnfermoHastaMorir: 30
+  AMax: 2
+  CMax: 3
+  DMax: 2
+  establo: {fileID: 0}
+  stikersManager: {fileID: 475001849510169783}
+  stickerLimpieza: {fileID: 8602960904664784601}
+  SistemaUtilidad: {fileID: 5942847103440764155}
+  navMeshAgent: {fileID: 3001176560405313657}
+  dirtCreator: {fileID: 0}
+  hayComida: 0
+  isHerbivore: 0
+  tiempoHastaSucio: 5
+  suciedadQueQuita: 10
+  depredadoresCerca: 0
+--- !u!114 &3306075770266489809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
+  grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDrop:
+    m_PersistentCalls:
+      m_Calls: []
+  canBeGrabbed: 1
+  canBeDropped: 1
+  allowExtramoveSetWhenGrabbed: 1
+  grabPoint: {fileID: 2475594923796127505}
+--- !u!1001 &2518895302329791131
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8867997848718819774}
+    m_Modifications:
+    - target: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: timeToFade
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: fadeStickers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022860188720524510, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 640a079c679f99640ac2072543d33055, type: 3}
+--- !u!114 &475001849510169783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
+  m_PrefabInstance: {fileID: 2518895302329791131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef02021f3e2170d47a58fcf1e3b0c993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &1387486602046429848 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+  m_PrefabInstance: {fileID: 2518895302329791131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3329985958792303245
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3638374976884592985}
+    m_Modifications:
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.566179
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -4.566179
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -4.566179
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.598
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608382641835217829, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+      propertyPath: m_Name
+      value: PangoThePangolin
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+--- !u!95 &481069483563133570 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2926045304657885199, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+  m_PrefabInstance: {fileID: 3329985958792303245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3231190016149003533 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 207449966040518528, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+  m_PrefabInstance: {fileID: 3329985958792303245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5542747556078738322 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7124051530204203295, guid: 463ff0d62de67c946897c95d486fd499, type: 3}
+  m_PrefabInstance: {fileID: 3329985958792303245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5980983818170884341
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8867997848718819774}
+    m_Modifications:
+    - target: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: fadeStickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022860188720524510, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_Name
+      value: CanvasLimpieza
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 640a079c679f99640ac2072543d33055, type: 3}
+--- !u!224 &7112599158048704758 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
+  m_PrefabInstance: {fileID: 5980983818170884341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8602960904664784601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
+  m_PrefabInstance: {fileID: 5980983818170884341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef02021f3e2170d47a58fcf1e3b0c993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

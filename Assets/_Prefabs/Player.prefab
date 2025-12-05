@@ -124,7 +124,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 100
   m_Drag: 0.2
-  m_AngularDrag: 0.5
+  m_AngularDrag: 0.83
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -133,13 +133,13 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &3515231502254460425
 MonoBehaviour:
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     moveSpeed: 5
-    rotationSpeed: 720
+    rotationSpeed: 215
     heightFromGround: 1
     jumpForce: 5
     jumpCooldown: 0.3
@@ -1172,6 +1172,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3743993344710040121, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4829899705375492696}
+    - targetCorrespondingSourceObject: {fileID: 3743993344710040121, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5061065834946729487}
   m_SourcePrefab: {fileID: 100100000, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
 --- !u!1 &1367449004382173002 stripped
 GameObject:
@@ -1225,3 +1228,21 @@ MonoBehaviour:
   player: {fileID: 667669641718851136}
   scrollSpeed: {x: 15, y: 0}
   textureName: _BaseMap
+--- !u!114 &5061065834946729487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300602319363264546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b2573a81ce09b46881fe9468004271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinnedMeshRenderer: {fileID: 8758730008328678255}
+--- !u!137 &8758730008328678255 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1750197354950549132, guid: 86f65cd076d56f8429a1ec56559d523c, type: 3}
+  m_PrefabInstance: {fileID: 2178420942729120283}
+  m_PrefabAsset: {fileID: 0}

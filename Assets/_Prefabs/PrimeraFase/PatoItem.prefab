@@ -174,6 +174,7 @@ MonoBehaviour:
   executeOnLoop: 0
   interruptOptions: 0
   m_PatoFase1: {fileID: 7825277932379568860}
+  useDebugger: 0
   debuggerComponent: {fileID: 8015346038508110730}
 --- !u!114 &7825277932379568860
 MonoBehaviour:
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a844a2f954e5e4ba1fbad3cb1d9900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 1073388531177852727}
   predators: 04000000
   objectives: 01000000
   walkingSpeed: 2.3
