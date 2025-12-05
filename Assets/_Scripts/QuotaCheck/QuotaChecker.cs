@@ -11,13 +11,15 @@ public class QuotaChecker
 
     Dictionary<ItemNames, int> animalValues = new Dictionary<ItemNames, int>()
     {
-        {ItemNames.Duck, 50 }, {ItemNames.Snake, 100}
+        {ItemNames.Duck, 50 }, {ItemNames.Snake, 100}, {ItemNames.Pangolin, 60 }, {ItemNames.Sheep, 60 }
     };
 
     List<ItemNames> sonAnimales = new List<ItemNames>
     {
         ItemNames.Snake,
-        ItemNames.Duck
+        ItemNames.Duck,
+        ItemNames.Sheep,
+        ItemNames.Pangolin,
     };
 
 
@@ -71,8 +73,10 @@ public class QuotaChecker
 
         if(sonAnimales.Contains(tipo))
         {
-
-            quotaPassed.AddPoints(animalValues[animal.Name]);
+            for (int i = 0; i < animal.Count; i++)
+            {
+                quotaPassed.AddPoints(animalValues[animal.Name]);
+            }
 
             this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);
 
@@ -105,7 +109,7 @@ public class QuotaChecker
     {
         if (animalIsNowHappy)
         {
-            this.quotaPassed.AddPoints(30*numAnimals);
+            this.quotaPassed.AddPoints(30 * numAnimals);
         }
         else
         {
