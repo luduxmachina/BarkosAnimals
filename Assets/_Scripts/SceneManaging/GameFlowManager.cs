@@ -50,20 +50,20 @@ public class GameFlowManager : MonoBehaviour
     {
         SceneManager.LoadScene(gameMenuSceneIndex);
     }
-    public void StartTutorialGame()
+    public int StartTutorialGame()
     {
         currentLevel = tutorialLevel;
-        StartGame();
+        return StartGame();
     }
-    public void StartNormalGame()
+    public int StartNormalGame()
     {
         currentLevel = normalLevel;
-        StartGame();
+        return StartGame();
     }
-    public void StartChallengeGame()
+    public int StartChallengeGame()
     {
         currentLevel = challengeLevel;
-        StartGame();
+        return StartGame();
     }
     public void NextPhase()
     {
@@ -74,22 +74,22 @@ public class GameFlowManager : MonoBehaviour
     }
 
     
-    private void StartGame()
+    private int StartGame()
     {
         Upgrades.ClearUpgrades();
         InGameCoindHandler.coinCount = 0;
-        StartLevel();
+        return StartLevel();
     }
-    private void StartLevel()
+    private int StartLevel()
     {
        
         SetNewQuota();
         nextPhaseHandler.Initialize();
         currentIsland= currentLevel.archipelagos[0].islands[0]; //ya no hay nada que hacer aqui
 
-        LoadPlayingScene(currentLevel, nextPhaseHandler.currentPhase);
+        return LoadPlayingScene(currentLevel, nextPhaseHandler.currentPhase);
     }
-    private void LoadPlayingScene(NivelSO level,LevelPhases phase)
+    private int LoadPlayingScene(NivelSO level,LevelPhases phase)
     {
         int sceneToLoad = -1;
         switch (phase)
@@ -98,6 +98,7 @@ public class GameFlowManager : MonoBehaviour
             case LevelPhases.IslandPhase:
 
                 sceneToLoad = level.archipelagos[0].islands[0].islandSceneIndex;
+                return sceneToLoad; // PARA HACER LA PANTALLA DE CARGA, SI NO FUNCIONA BORRAR ESTA LINEA
 
                 
                 break;
@@ -116,14 +117,15 @@ public class GameFlowManager : MonoBehaviour
                 break;
             case LevelPhases.End:
                 GoToMainMenu();
-                return;
+                return -1;
         }
-        if (sceneToLoad == -1)
+        if (sceneToLoad <= -1)
         {
 
-            return;
+            return -1;
         }
         SceneManager.LoadScene(sceneToLoad);
+        return sceneToLoad;
     }
     private void SetNewQuota()
     {
