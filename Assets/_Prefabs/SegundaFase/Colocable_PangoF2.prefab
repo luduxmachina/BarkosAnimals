@@ -54,9 +54,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6343979823636619129}
     m_Modifications:
+    - target: {fileID: 2475594923796127505, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475594923796127505, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.98
+      objectReference: {fileID: 0}
     - target: {fileID: 6643027423853108606, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
       propertyPath: m_Name
       value: PangolinItemFase2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958219938240571257, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958219938240571257, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+      propertyPath: TiempoEnfermoHastaMorir
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8867997848718819774, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
       propertyPath: m_LocalPosition.x

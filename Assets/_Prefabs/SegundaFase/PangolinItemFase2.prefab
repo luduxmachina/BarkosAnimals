@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 2881116726443410501}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7181993, z: -0, w: 0.6958375}
-  m_LocalPosition: {x: -0.657, y: -0.15, z: 0.074}
+  m_LocalPosition: {x: -0.012, y: -0.15, z: -0.921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1442,7 +1442,9 @@ MonoBehaviour:
   establo: {fileID: 0}
   stikersManager: {fileID: 475001849510169783}
   stickerLimpieza: {fileID: 8602960904664784601}
-  SistemaUtilidad: {fileID: 5942847103440764155}
+  useEditorBehaviour: 1
+  SistemaUtilidadEBR: {fileID: 5942847103440764155}
+  SistemaUtilidadCode: {fileID: 0}
   navMeshAgent: {fileID: 3001176560405313657}
   dirtCreator: {fileID: 0}
   hayComida: 0

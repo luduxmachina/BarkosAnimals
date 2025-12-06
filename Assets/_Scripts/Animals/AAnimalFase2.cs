@@ -27,7 +27,10 @@ public class AAnimalFase2: AAnimal
     [SerializeField] StikersManager stikersManager;
     [SerializeField] StikersManager stickerLimpieza;
     //[SerializeField] AllObjectTypesSO animalsDataBase;
-    [SerializeField] AnimalesF2US SistemaUtilidad;
+    public bool useEditorBehaviour = true;
+    [SerializeField, HideIf("useEditorBehaviour", false)] EditorBehaviourRunner SistemaUtilidadEBR;
+    [SerializeField, HideIf("useEditorBehaviour", true)] AnimalesF2US SistemaUtilidadCode;
+
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] Predicate<float> funcionFelicidad;
     [SerializeField] DirtCreator dirtCreator;
@@ -73,6 +76,13 @@ public class AAnimalFase2: AAnimal
         dirtCreator = FindAnyObjectByType<DirtCreator>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        //if (useEditorBehaviour) SistemaUtilidadEBR.enabled = false;
+        //else SistemaUtilidadCode.enabled = false;
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -93,10 +103,13 @@ public class AAnimalFase2: AAnimal
             tiempoEnfermo = 0f;
         }
         
-        if(establo != null)
+        bool SUEnabled = (useEditorBehaviour)?SistemaUtilidadEBR.enabled : SistemaUtilidadCode.enabled;
+
+        if(establo != null && !SUEnabled)
         {
             Debug.Log("Establo en el animal");
-            SistemaUtilidad.enabled = true;
+            if(useEditorBehaviour)SistemaUtilidadEBR.enabled = true;
+            else SistemaUtilidadCode.enabled = true;
             //navMeshAgent.enabled = true;
         }
     }

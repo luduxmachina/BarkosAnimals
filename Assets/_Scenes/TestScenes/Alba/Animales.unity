@@ -1137,6 +1137,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323cd225d8d757840b08f1a2799f2d85, type: 3}
+--- !u!1 &452437303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4486140519654815773, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+  m_PrefabInstance: {fileID: 4774395240856651423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &452437304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1828543058873148637, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+  m_PrefabInstance: {fileID: 4774395240856651423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &452437313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452437303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1726e9fdb9ff2d4baa8710d607b31ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventHandler:
+    debugStatusChanges: 1
+    identifier: Debugger
 --- !u!1001 &472526021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1902,7 +1927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &756582461
 Transform:
   m_ObjectHideFlags: 0
@@ -4668,6 +4693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3862569503933394438, guid: 40f32ff3bed9b6a43b32b84fbd2c5815, type: 3}
+      propertyPath: radioAtaqueComida
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6267012446889319204, guid: 40f32ff3bed9b6a43b32b84fbd2c5815, type: 3}
       propertyPath: m_Name
       value: Colocable_SerpienteF2
@@ -4790,6 +4819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Colocable_OvejaF2
       objectReference: {fileID: 0}
+    - target: {fileID: 4187976562711363487, guid: 5a85296fdd589ed45bd4717bd57dc1b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8748111573669955434, guid: 5a85296fdd589ed45bd4717bd57dc1b8, type: 3}
       propertyPath: managedReferences[6361364654760132681].OtherTransform
       value: 
@@ -4810,26 +4843,6 @@ PrefabInstance:
     - target: {fileID: 82110452451205496, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
       propertyPath: m_Name
       value: Colocable_PangoF2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100507010264451140, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100507010264451140, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
-      propertyPath: itemName
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100507010264451140, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
-      propertyPath: MaxSinComer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100507010264451140, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
-      propertyPath: MaxSinLimpiar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100507010264451140, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
-      propertyPath: TiempoEnfermoHastaMorir
-      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3696809198918226886, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
       propertyPath: managedReferences[6361364654760132681].OtherTransform
@@ -4888,6 +4901,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 992715263}
     m_Modifications:
+    - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: executeOnLoop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: interruptOptions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: Moverse_un_poco_action_OtherTransform
+      value: 
+      objectReference: {fileID: 452437304}
     - target: {fileID: 3461021546690648472, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
       propertyPath: managedReferences[6361364654760132681].OtherTransform
       value: 
@@ -4939,7 +4968,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4486140519654815773, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 452437313}
   m_SourcePrefab: {fileID: 100100000, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
 --- !u!4 &4774395240856651424 stripped
 Transform:
