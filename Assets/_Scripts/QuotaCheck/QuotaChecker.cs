@@ -11,13 +11,15 @@ public class QuotaChecker
 
     Dictionary<ItemNames, int> animalValues = new Dictionary<ItemNames, int>()
     {
-        {ItemNames.Duck, 50 }, {ItemNames.Snake, 100}
+        {ItemNames.Duck, 50 }, {ItemNames.Snake, 100}, {ItemNames.Pangolin, 60 }, {ItemNames.Sheep, 60 }
     };
 
     List<ItemNames> sonAnimales = new List<ItemNames>
     {
         ItemNames.Snake,
-        ItemNames.Duck
+        ItemNames.Duck,
+        ItemNames.Sheep,
+        ItemNames.Pangolin,
     };
 
 
@@ -71,8 +73,10 @@ public class QuotaChecker
 
         if(sonAnimales.Contains(tipo))
         {
-
-            quotaPassed.AddPoints(animalValues[animal.Name]);
+            for (int i = 0; i < animal.Count; i++)
+            {
+                quotaPassed.AddPoints(animalValues[animal.Name]);
+            }
 
             this.isQuotaPass = this.quota.CheckIfPassed(quotaPassed);
 
@@ -84,23 +88,12 @@ public class QuotaChecker
         }
     }
 
-    public void checkCuoteWithOnlySecondFase(List<Stable>stables)
+    public void ResetQuote()
     {
         quotaPassed = new Quota();
-        foreach (Stable stable in stables)
-        {
-            foreach(ItemNames itemName in Enum.GetValues(typeof(ItemNames)))
-            {
-                ItemNames[] name = {
-                    itemName
-                };
-                int numAnim = stable.GetAnimalsInEstable(new ItemNames[] {itemName});
-                this.UpdateCuote(new InventoryItemDataObjects(itemName, numAnim));
-            }
-        }
     }
 
-    public void UpdateCuotaWithHappinesOfAnimal(bool anAnimalIsNowHappy)
+    public void UpdateQuoteWithHappinesOfAnimal(bool anAnimalIsNowHappy)
     {
         if (anAnimalIsNowHappy)
         {
@@ -109,6 +102,18 @@ public class QuotaChecker
         else
         {
             this.quotaPassed.AddPoints(-30);
+        }
+    }
+
+    public void UpdateQuoteWithHappinesOfAnimal(bool animalIsNowHappy, int numAnimals)
+    {
+        if (animalIsNowHappy)
+        {
+            this.quotaPassed.AddPoints(30 * numAnimals);
+        }
+        else
+        {
+            this.quotaPassed.AddPoints(-30 * numAnimals);
         }
     }
 

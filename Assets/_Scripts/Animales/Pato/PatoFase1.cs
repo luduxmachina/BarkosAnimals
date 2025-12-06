@@ -19,6 +19,8 @@ public class PatoFase1 : AAnimal
     [SerializeField]
     private LazyDetector lazyDetector;
     public Transform posEstanque;
+    [SerializeField]
+    private StikersManager stikersManager;
 
     protected override void Start()
     {
@@ -101,12 +103,20 @@ public class PatoFase1 : AAnimal
     }
     public void Descansar()
     {
+        if(stikersManager!=null)
+        {
+            stikersManager.SetImage(StikersGenerales.Corazones);
+        }
         energiaActual = energiaMax;
         //Animator supongo
 
     }
     public void Aletear()
     {
+        if (stikersManager != null)
+        {
+            stikersManager.SetImage(StikersGenerales.Corazones);
+        }
         //animator supongo
     }
   
