@@ -255,7 +255,7 @@ public class AAnimalFase2: AAnimal
         estaEnfermo = true;
         
     }
-    public void YaNoEst·Enfermo()
+    public void YaNoEstaEnfermo()
     {
         estaEnfermo = false;
     }
