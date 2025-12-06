@@ -27,7 +27,7 @@ public class AAnimalFase2: AAnimal
     [SerializeField] StikersManager stikersManager;
     [SerializeField] StikersManager stickerLimpieza;
     //[SerializeField] AllObjectTypesSO animalsDataBase;
-    [SerializeField] EditorBehaviourRunner SistemaUtilidad;
+    [SerializeField] AnimalesF2US SistemaUtilidad;
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] Predicate<float> funcionFelicidad;
     [SerializeField] DirtCreator dirtCreator;
@@ -101,9 +101,9 @@ public class AAnimalFase2: AAnimal
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        establo.ExitFromStable(this);  
+        establo?.ExitFromStable(this);  
     }
 
     #endregion
