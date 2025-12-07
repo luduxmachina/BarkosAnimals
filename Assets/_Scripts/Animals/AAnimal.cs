@@ -74,7 +74,7 @@ public class AAnimal : MonoBehaviour
         }
         if (animator == null)
         {
-            animator = GetComponentInChildren<Animator>();
+          //  animator = GetComponentInChildren<Animator>();
         }
     }
     public float GetPatrolRadius()
