@@ -426,25 +426,30 @@ MonoBehaviour:
   radioAtaqueComida: 1
   tiempoEnComer: 1
   itemName: 3
-  suciedadMaxima: 20
-  MaxSinComer: 30
-  TiempoEnfermoHastaMorir: 30
   AMax: 2
   CMax: 3
   DMax: 2
+  depredadoresCerca: 0
+  suciedadMaxima: 10
+  tiempoHastaSucio: 2
+  suciedad: 0
+  tiempoSinLimpiar: 0
+  suciedadQueQuita: 10
+  MaxSinComer: 30
+  tiempoSinComer: 0
+  hayComida: 0
+  isHerbivore: 0
+  estaEnfermo: 0
+  TiempoEnfermoHastaMorir: 10
+  tiempoEnfermo: 0
+  isHappy: 0
   establo: {fileID: 0}
   stikersManager: {fileID: 475001849510169783}
   stickerLimpieza: {fileID: 8602960904664784601}
   useEditorBehaviour: 0
-  SistemaUtilidadEBR: {fileID: 0}
-  SistemaUtilidadCode: {fileID: 7068417138557874833}
+  behaviourRunner: {fileID: 7068417138557874833}
   navMeshAgent: {fileID: 3001176560405313657}
   dirtCreator: {fileID: 0}
-  hayComida: 0
-  isHerbivore: 0
-  tiempoHastaSucio: 5
-  suciedadQueQuita: 10
-  depredadoresCerca: 0
 --- !u!114 &7068417138557874833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +467,7 @@ MonoBehaviour:
   useDebugger: 0
   debuggerComponent: {fileID: 0}
   m_AAnimalFase2: {fileID: 7958219938240571257}
-  Moverse_un_poco_action_OtherTransform: {fileID: 0}
+  Moverse_un_poco_action_OtherTransform: {fileID: 8867997848718819774}
 --- !u!114 &3306075770266489809
 MonoBehaviour:
   m_ObjectHideFlags: 0

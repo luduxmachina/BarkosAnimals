@@ -57,7 +57,7 @@ public class AnimalesF2US : BehaviourRunner
 		Suciedad.YIntercept = 0f;
 
         WeightedFusionFactor Insalubridad = Fase2US.CreateFusion<WeightedFusionFactor>("Insalubridad", Suciedad, Hambre);
-		Insalubridad.Weights = new float[]{ 0.6f, 1f };
+		Insalubridad.Weights = new float[]{ 0.1f, 0.8f };
 
         PointedCurveFactor F3 = Fase2US.CreateCurve<PointedCurveFactor>("F3", AnimEspecie);
 		F3.Points = new List<CurvePoint>() { new CurvePoint(0f, 0.6f), new CurvePoint(0.5f, 0f), new CurvePoint(0f, 0.6f) };
@@ -115,9 +115,9 @@ public class AnimalesF2US : BehaviourRunner
         SequenceAction patrullar_Parallel_action = new SequenceAction(Status.Success, patrullarNoMostrarNada_action, patrullarMoverse_action);
         UtilityAction Patruyar = Fase2US.CreateAction("Patrullar", Patrol, patrullar_Parallel_action);
 		
-		VariableFactor unnamed_1 = Fase2US.CreateVariable(m_AAnimalFase2.PuedeComer, 0f, 1f);
+		VariableFactor hayComida = Fase2US.CreateVariable(m_AAnimalFase2.PuedeComer, 0f, 1f);
 		
-		MinFusionFactor PuedeComer = Fase2US.CreateFusion<MinFusionFactor>("PuedeComer", unnamed_1, Hambre);
+		MinFusionFactor PuedeComer = Fase2US.CreateFusion<MinFusionFactor>("PuedeComer", hayComida, Hambre);
 		
 		SubsystemAction TieneHambreYPuedeComer_action = new SubsystemAction(Comer);
 		UtilityAction TieneHambreYPuedeComer = Fase2US.CreateAction("TieneHambreYPuedeComer", PuedeComer, TieneHambreYPuedeComer_action);
