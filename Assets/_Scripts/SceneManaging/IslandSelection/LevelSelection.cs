@@ -2,18 +2,22 @@ using UnityEngine;
 
 public class LevelSelection : MonoBehaviour
 {
+    public ASyncLoader asyncLoader;
     
     public void PlayTutorial()
     {
-        GameFlowManager.instance.StartTutorialGame();
+        int scene = GameFlowManager.instance.StartTutorialGame();
+        asyncLoader.LoadScene(scene);
     }
     public void PlayNormalLevel()
     {
-        GameFlowManager.instance.StartNormalGame();
+        int scene = GameFlowManager.instance.StartNormalGame();
+        asyncLoader.LoadScene(scene);
     }
     public void PlayChallengeLevel()
     {
-        GameFlowManager.instance.StartChallengeGame();
+        int scene = GameFlowManager.instance.StartChallengeGame();
+        asyncLoader.LoadScene(scene);
     }
     public void GoBackToMainMenu()
     {

@@ -16,6 +16,6 @@ public class InformWhenRemovingFromGrid : MonoBehaviour
     {
         if (!gameObject.scene.isLoaded) return;
         
-        shipInventory.AddToInventory(itemName, 1);
+        // shipInventory.AddToInventory(itemName, 1);
     }
 }

@@ -168,7 +168,7 @@ public class AAnimal : MonoBehaviour
 
         animator.SetTrigger("Comer");
     }
-    public void PlayRunAnim()
+    public virtual void PlayRunAnim()
     {
         if (animator == null) { return; }
 

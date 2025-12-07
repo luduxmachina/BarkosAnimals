@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GridPreview : MonoBehaviour
 {
@@ -147,9 +148,15 @@ public class GridPreview : MonoBehaviour
 
     private void PreparePreview()
     {
+        foreach (var script in previewObject.GetComponentsInChildren<MonoBehaviour>())
+        {
+            if (script != null) script.enabled = false;
+        }
+        
         Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
         foreach (Renderer r in renderers)
         {
+            r.enabled = true;
             Material[] materials = r.materials;
             for (int i = 0; i < materials.Length; i++)
             {
@@ -169,6 +176,12 @@ public class GridPreview : MonoBehaviour
         {
             r.isKinematic = false;
             r.useGravity = false;
+        }
+        
+        NavMeshAgent[] agents = previewObject.GetComponentsInChildren<NavMeshAgent>();
+        foreach (NavMeshAgent agent in agents)
+        {
+            agent.enabled = false;
         }
 
         PuffAnimation puff;
