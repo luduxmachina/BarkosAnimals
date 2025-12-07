@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 4558138818095195021}
   - component: {fileID: 8085068145193596798}
   - component: {fileID: 645150557461941150}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ItemCuenco
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -334,6 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
   grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
   OnGrab:
     m_PersistentCalls:

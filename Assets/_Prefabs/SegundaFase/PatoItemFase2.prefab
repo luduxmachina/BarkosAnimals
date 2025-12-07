@@ -426,8 +426,8 @@ MonoBehaviour:
   radioAtaqueComida: 1
   tiempoEnComer: 1
   itemName: 3
-  suciedadMaxima: 60
-  MaxSinComer: 10
+  suciedadMaxima: 20
+  MaxSinComer: 30
   TiempoEnfermoHastaMorir: 30
   AMax: 2
   CMax: 3
@@ -459,6 +459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executeOnLoop: 1
   interruptOptions: 0
+  useDebugger: 0
+  debuggerComponent: {fileID: 0}
   m_AAnimalFase2: {fileID: 7958219938240571257}
   Moverse_un_poco_action_OtherTransform: {fileID: 0}
 --- !u!114 &3306075770266489809

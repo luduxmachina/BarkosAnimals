@@ -4697,6 +4697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Colocable_SerpienteF2
       objectReference: {fileID: 0}
+    - target: {fileID: 6267012446889319204, guid: 40f32ff3bed9b6a43b32b84fbd2c5815, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7700819886618253793, guid: 40f32ff3bed9b6a43b32b84fbd2c5815, type: 3}
       propertyPath: 'managedReferences[7608421599814090820]'
       value: BehaviourAPI.StateMachines BehaviourAPI.StateMachines.ExitTransition
@@ -5348,6 +5352,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: useDebugger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
       propertyPath: executeOnLoop
       value: 1
       objectReference: {fileID: 0}
@@ -5356,9 +5364,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: debuggerComponent
+      value: 
+      objectReference: {fileID: 452437313}
+    - target: {fileID: 29608584030836722, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
       propertyPath: Moverse_un_poco_action_OtherTransform
       value: 
       objectReference: {fileID: 452437304}
+    - target: {fileID: 864825169522262554, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: MaxSinComer
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 864825169522262554, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
+      propertyPath: suciedadMaxima
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3461021546690648472, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
       propertyPath: managedReferences[6361364654760132681].OtherTransform
       value: 

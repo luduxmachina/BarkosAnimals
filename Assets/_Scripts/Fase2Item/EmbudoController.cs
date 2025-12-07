@@ -7,12 +7,13 @@ public class EmbudoController : MonoBehaviour, IInteractable
 
     public bool Interact(ItemNames interactorType, GameObject interactor)
     {
-        if (!recipiente.AddStack(interactorType)) return false;
 
         ItemInScene temp = interactor.GetComponent<ItemInScene>();
         CuencoManager cManager = temp.gameObject.GetComponentInParent<CuencoManager>();
-        if (cManager != null)
-        {
+
+        if (cManager != null ){
+
+            if (!recipiente.AddStack(cManager.TipoComida)) return false;
             cManager.SetFood(ItemNames.None);
             return true;
         }
