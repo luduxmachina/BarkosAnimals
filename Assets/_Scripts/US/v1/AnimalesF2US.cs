@@ -71,7 +71,7 @@ public class AnimalesF2US : BehaviourRunner
 		Incomodidad.Weights = new float[] { 0.25f, 0.25f, 0.5f };
 
         WeightedFusionFactor Infelicidad = Fase2US.CreateFusion<WeightedFusionFactor>("Infelicidad", Insalubridad, Incomodidad);
-        Infelicidad.Weights = new float[] { 0.7f, 0.3f };
+        Infelicidad.Weights = new float[] { 0.7f, 0.4f };
 
         FunctionalAction Enfermar_action = new FunctionalAction();
 		Enfermar_action.onStarted = m_AAnimalFase2.Enfermar;

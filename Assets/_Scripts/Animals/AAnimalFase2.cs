@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -32,6 +33,8 @@ public class AAnimalFase2: AAnimal
     public float tiempoHastaSucio = 5f;
     [SerializeField, ReadOnly] float suciedad = 0f;
     [SerializeField, ReadOnly] float tiempoSinLimpiar = 0f;
+    [SerializeField,UnityEngine.Range(0,5)]
+    float rangoSuciedad = 0f;
     public float Suciedad => suciedad;
     [SerializeField]float suciedadQueQuita = 10f;
 
@@ -96,7 +99,7 @@ public class AAnimalFase2: AAnimal
         if (suciedad <= suciedadMaxima && tiempoSinLimpiar >= tiempoHastaSucio)
         {            
             suciedad += dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f);
-            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f)} y tiene suciedad de {suciedad}");
+            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, rangoSuciedad)} y tiene suciedad de {suciedad}");
             tiempoSinLimpiar = 0f;
         }
         tiempoSinLimpiar += Time.deltaTime;
