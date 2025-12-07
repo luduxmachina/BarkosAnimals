@@ -390,18 +390,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2750225818179795718}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 7894681897370460706}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -413,6 +401,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2750225818179795718}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &5104802888961339085
 GameObject:
@@ -1354,16 +1354,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 2336509758508425979}
     m_Modifications:
     - target: {fileID: 1762036533075905885, guid: 817f6ad1fb8045040a1e327e0124271f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Target
       value: 
       objectReference: {fileID: 7894681897370460706}
     - target: {fileID: 3479027514129306488, guid: 817f6ad1fb8045040a1e327e0124271f, type: 3}
       propertyPath: m_Name
       value: Bestiary
-      objectReference: {fileID: 0}
-    - target: {fileID: 3479027514129306488, guid: 817f6ad1fb8045040a1e327e0124271f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5792023346734023142, guid: 817f6ad1fb8045040a1e327e0124271f, type: 3}
       propertyPath: m_Pivot.x
@@ -1503,7 +1499,19 @@ PrefabInstance:
     - target: {fileID: 1208547069373986370, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2750225818179795718}
+    - target: {fileID: 1208547069373986370, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 7894681897370460706}
+    - target: {fileID: 1208547069373986370, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208547069373986370, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1594611035015973127, guid: a0b22e4f5bf4b4845a62a77c87fd82b4, type: 3}
       propertyPath: m_fontAsset
       value: 
