@@ -48,14 +48,6 @@ PrefabInstance:
       propertyPath: 'objectives.Array.data[1]'
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1828543058873148637, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.821
-      objectReference: {fileID: 0}
-    - target: {fileID: 1828543058873148637, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.232
-      objectReference: {fileID: 0}
     - target: {fileID: 2488029123574563104, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
       propertyPath: itemName
       value: 6
@@ -115,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 7972827885150427909, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
       propertyPath: rendererAnimal
       value: 
-      objectReference: {fileID: 5703328879063919361}
+      objectReference: {fileID: 0}
     - target: {fileID: 8156133827570630651, guid: 51e35937346037a4ca6b106a2f954f22, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.747
@@ -204,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalFase2: {fileID: 5003486038046137576}
-  rendererAnimal: {fileID: 5703328879063919361}
+  rendererAnimal: {fileID: 0}
   empieceAplicarSuciedad: 0.2
   suciedadFinal: 1
   suciedadInicio: 0
@@ -229,31 +221,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.039340854
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.033
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.03532374
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.49999997
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.50000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49999997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.50000006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -266,10 +258,6 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -284,11 +272,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
---- !u!23 &5703328879063919361 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
-  m_PrefabInstance: {fileID: 6406333929216178053}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6876266251636379758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
