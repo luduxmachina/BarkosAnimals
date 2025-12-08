@@ -18,7 +18,7 @@ public class WaterStreamMeshFijoInicial : MonoBehaviour
     [Header("Ondulaciones")]
     public float amplitudBase = 0.02f;
     public float amplitudVariacion = 0.01f;
-    public float frecuenciaBase = 3f;   
+    public float frecuenciaBase = 3f;
     public float frecuenciaVariacion = 1.5f;
     public float velocidadOscilacion = 1f;
 
@@ -61,6 +61,7 @@ public class WaterStreamMeshFijoInicial : MonoBehaviour
         float c = y0;
         float disc = b * b - 4 * a * c;
         float tMax = 1f;
+
         if (disc >= 0)
         {
             float sqrt = Mathf.Sqrt(disc);
@@ -88,12 +89,11 @@ public class WaterStreamMeshFijoInicial : MonoBehaviour
                 vz * tVuelo
             );
 
-            // Tangente
+            // Tangente y perpendicular
             Vector3 tangent = new Vector3(0f, vy + gravedad * tVuelo, vz).normalized;
             Vector3 perp = Vector3.Cross(tangent, Vector3.up).normalized;
 
             float ancho = Mathf.Lerp(anchoInicio, anchoFinal, tNorm);
-
             Vector3 offset = Vector3.zero;
 
             // Solo aplicar ondulación si estamos más allá de la zona fija inicial
