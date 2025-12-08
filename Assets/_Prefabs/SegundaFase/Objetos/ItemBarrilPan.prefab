@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1193721746383648466}
   - component: {fileID: 7966870112494796421}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ItemBarrilPan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e909f3f9c7bad1642a4bb8d16cfe11f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipInventory: {fileID: 11400000, guid: 1898441a27266ae4abc547614d057251, type: 2}
   itemName: 1
 --- !u!1001 &232865049636921673
 PrefabInstance:
@@ -54,9 +55,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1193721746383648466}
     m_Modifications:
+    - target: {fileID: 568820117340252527, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 750242146254352191, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 750242146254352191, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372352385600086731, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3470992753089955334, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
       propertyPath: m_LocalScale.x
@@ -114,6 +127,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemBarril
       objectReference: {fileID: 0}
+    - target: {fileID: 3834372903808297247, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355694524716400019, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522224594058927430, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223514520571465165, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6443881228165092239, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
       propertyPath: ModeloLleno
       value: 
@@ -122,6 +151,14 @@ PrefabInstance:
       propertyPath: ModeloVacio
       value: 
       objectReference: {fileID: 5735808589536738319}
+    - target: {fileID: 7433083921659000851, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560498654222364799, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8871359717496913849, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
       propertyPath: itemName
       value: 1

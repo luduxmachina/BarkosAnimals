@@ -50,6 +50,7 @@ public class GridPreview : MonoBehaviour
 
         if (previewObject.TryGetComponent<InformWhenRemovingFromGrid>(out var component))
         {
+            component.shipInventory = null;
             component.enabled = false;
         }
         
