@@ -32,12 +32,12 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.sqrMagnitude > 0.1f)
         {
             MoveAndRotate();
-            soundManager.StartMovementLoop();
+            
         }
         else
         {
             rb.angularVelocity *= 0.05f;
-            soundManager.StopMovementLoop();
+            
         }
         if (adaptToFloor.IsGrounded())
         {
