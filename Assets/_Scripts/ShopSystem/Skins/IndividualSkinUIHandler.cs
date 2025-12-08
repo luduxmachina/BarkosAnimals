@@ -43,7 +43,7 @@ public class IndividualSkinUIHandler : MonoBehaviour
         Debug.Log("Selecting skin: " + skinName);
         if(tipoSkin == TipoSkin.player)
         {
-
+            CurrentSkin.currentPlayerSkin = skin;
         }
         if (tipoSkin == TipoSkin.pato)
         {
