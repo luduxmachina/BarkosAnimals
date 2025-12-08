@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &7079840 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7465162442720331199, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
+  m_PrefabInstance: {fileID: 1754109234441445342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &19561051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1193721746383648466, guid: 2a61ccc50ca7d6d4ea735fa9e4132bf7, type: 3}
@@ -5033,6 +5038,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Colocable_PangoF2
       objectReference: {fileID: 0}
+    - target: {fileID: 1100507010264451140, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 7079840}
     - target: {fileID: 3696809198918226886, guid: 7d58d221e8239fa4ebc7988768df8beb, type: 3}
       propertyPath: data.graphs.Array.data[0].nodes.Array.size
       value: 25
