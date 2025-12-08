@@ -117,6 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6320190134309621636}
+  spriteDoble1: {fileID: 0}
+  spriteDoble2: {fileID: 0}
   fondo: {fileID: 7953629954378606071}
   generalesDB: {fileID: 11400000, guid: ceb9194171464644799029fbe0f542a2, type: 2}
   fadeStickers: 1
@@ -330,6 +332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7722709998845080430}
+  spriteDoble1: {fileID: 0}
+  spriteDoble2: {fileID: 0}
   fondo: {fileID: 8204298805531558470}
   generalesDB: {fileID: 11400000, guid: ceb9194171464644799029fbe0f542a2, type: 2}
   fadeStickers: 0
@@ -1183,8 +1187,9 @@ MonoBehaviour:
   tiempoHastaSucio: 5
   suciedad: 0
   tiempoSinLimpiar: 0
+  rangoSuciedad: 0
   suciedadQueQuita: 10
-  MaxSinComer: 20
+  MaxSinComer: 15
   tiempoSinComer: 0
   hayComida: 0
   isHerbivore: 0
