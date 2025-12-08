@@ -208,7 +208,7 @@ MonoBehaviour:
       nodes:
       - name: TC
         id: f965e5fe-bb1f-4f74-a454-9f9b6464b07e
-        position: {x: -37, y: -252}
+        position: {x: -268, y: -247}
         node:
           rid: 6361364432508157955
         references:
@@ -293,19 +293,18 @@ MonoBehaviour:
         - e7eafa89-15bf-4fdb-ae61-18a5f2f4f730
       - name: Hambre
         id: 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
-        position: {x: 270, y: -247}
+        position: {x: 63, y: -247}
         node:
           rid: 6361364432508157969
         references: []
         parentIds:
-        - 64a82012-b616-4ec0-b307-ceee5b070969
         - 74d72329-1472-4b57-bb42-300b8d25183e
         - a849b1ce-5113-429a-a1a7-4eb27162e69b
         childIds:
         - f965e5fe-bb1f-4f74-a454-9f9b6464b07e
       - name: Insalubridad
         id: 64a82012-b616-4ec0-b307-ceee5b070969
-        position: {x: 644, y: -19}
+        position: {x: 922, y: -8}
         node:
           rid: 6361364432508157971
         references: []
@@ -314,10 +313,10 @@ MonoBehaviour:
         - c6bcbf27-c10f-4b7d-8b72-32cce3486dd9
         childIds:
         - 734d7dcd-d8d4-4b44-a372-bbe72682044f
-        - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
+        - a849b1ce-5113-429a-a1a7-4eb27162e69b
       - name: Suciedad
         id: 734d7dcd-d8d4-4b44-a372-bbe72682044f
-        position: {x: 254, y: 106}
+        position: {x: 456, y: 105}
         node:
           rid: 6361364432508157972
         references: []
@@ -490,7 +489,7 @@ MonoBehaviour:
         childIds: []
       - name: PuedeComer
         id: 74d72329-1472-4b57-bb42-300b8d25183e
-        position: {x: 625, y: -592}
+        position: {x: 363, y: -585}
         node:
           rid: 6361364655950004295
         references: []
@@ -516,12 +515,13 @@ MonoBehaviour:
         - a849b1ce-5113-429a-a1a7-4eb27162e69b
       - name: 
         id: a849b1ce-5113-429a-a1a7-4eb27162e69b
-        position: {x: 1037, y: -235}
+        position: {x: 610, y: -199}
         node:
           rid: 6361364655950004297
         references: []
         parentIds:
         - 2283a61e-c933-40de-8104-2f746174226e
+        - 64a82012-b616-4ec0-b307-ceee5b070969
         childIds:
         - 4cc80d43-8d7f-441d-b981-f88dc2d6a7a8
         - 74d72329-1472-4b57-bb42-300b8d25183e
@@ -1032,8 +1032,8 @@ MonoBehaviour:
       type: {class: LinearCurveFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
         PullingEnabled: 1
-        Slope: -1
-        YIntercept: 1
+        Slope: -0.7
+        YIntercept: 0.7
     - rid: 6361364534266953795
       type: {class: ConstantFactor, ns: BehaviourAPI.UtilitySystems, asm: BehaviourAPI.UtilitySystems}
       data:
