@@ -8,6 +8,8 @@ public class GridInput : MonoBehaviour, IGridInput
     [SerializeField]
     private LayerMask groundLayerMask;
     [SerializeField]
+    private LayerMask ignoreLayerMask;
+    [SerializeField]
     private Camera mainCamera;
 
     private GridPlacementManager gridPlacementManager;
@@ -57,6 +59,10 @@ public class GridInput : MonoBehaviour, IGridInput
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
 
         RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, ignoreLayerMask))
+        {
+            return lastMousePos;
+        }
         if (Physics.Raycast(ray, out hit, 100, groundLayerMask))
         {
             lastMousePos = hit.point;

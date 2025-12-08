@@ -50,7 +50,7 @@ public class GridPlacementState : IGridBuildingState
         gridPreview?.StopPreview();
     }
 
-    public void OnAction(Vector3 position)
+    public bool OnAction(Vector3 position)
     {
         float girdSize = grid.cellSize.x;
 
@@ -65,7 +65,7 @@ public class GridPlacementState : IGridBuildingState
         Vector2Int relativeCellPos = new Vector2Int(cellPos.x, cellPos.z);
         bool validPlace = CheckPlacementValidity(relativeCellPos, selectedObjectIndex);
         if (!validPlace)
-            return;
+            return false;
 
         // Place Object
         var placeableObjects = dataBase.GetPlaceableObjects();
@@ -74,6 +74,7 @@ public class GridPlacementState : IGridBuildingState
         gameObjectIndex = objectPlacer.PlaceObject(placeableObjects[selectedObjectIndex].Prefab, worldCellPos);
 
         AddOcupiedSpaces(relativeCellPos, placeableObjects[selectedObjectIndex], selectedObjectIndex, gameObjectIndex);
+        return true;
     }
 
     private void AddOcupiedSpaces(Vector2Int relativeCellPos, IPlaceableObjectData ObjData, int id, int placedObjIndex)

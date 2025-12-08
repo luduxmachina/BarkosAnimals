@@ -27,7 +27,7 @@ public class GridRemovingState : IGridBuildingState
         gridPreview?.StopPreview();
     }
 
-    public void OnAction(Vector3 position)
+    public bool OnAction(Vector3 position)
     {
         Vector3Int cellPos = grid.WorldToCell(position);
         cellPos.y = 0;
@@ -45,7 +45,7 @@ public class GridRemovingState : IGridBuildingState
         {
             gameObjectIndex = selectedData.GetRepresentationIndex(relativeCellPos);
             if(gameObjectIndex < 0)
-                return;
+                return false;
 
             selectedData.RemoveObjectAt(relativeCellPos);
             objectPlacer.RemoveObject(gameObjectIndex);
@@ -53,6 +53,7 @@ public class GridRemovingState : IGridBuildingState
         
         gridPreview?.UpdatePosition(worldCellPos, ChechIfSelectionIsValid(relativeCellPos), grid.cellSize.x, true);
         gridPreview?.EraseRemovePreview();
+        return true;
     }
 
     public void UpdateState(Vector3Int cellPos)

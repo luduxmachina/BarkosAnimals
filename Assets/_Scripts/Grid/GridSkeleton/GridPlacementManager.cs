@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Grid))]
 [RequireComponent(typeof(IGridInput))]
@@ -12,10 +13,13 @@ using UnityEngine;
 public class GridPlacementManager : MonoBehaviour
 {
     [SerializeField] private ABasePlaceableObjectsSO dataBase;
-    // private BasePlaceableObjectsSO<PlaceableObjectDataBase> dataBase => DataBase as BasePlaceableObjectsSO<PlaceableObjectDataBase>;
 
     [SerializeField] private GameObject gridVisualization;
     [SerializeField] private int numOfGrids = 1;
+
+    public UnityEvent OnPlaceStructure = new();
+    public UnityEvent OnRemoveStructure = new();
+    
 
     private Grid grid;
     private IGridInput gridInput;
@@ -26,6 +30,8 @@ public class GridPlacementManager : MonoBehaviour
     private Vector3Int lastPos = Vector3Int.zero;
     
     private IGridBuildingState buildingState;
+    
+    private bool isPlacing = false;
 
     private void Awake()
     {
@@ -69,7 +75,7 @@ public class GridPlacementManager : MonoBehaviour
         }
     }
 
-    private void StopPlacement()
+    public void StopPlacement()
     {
         if(gridVisualization != null)
             gridVisualization.SetActive(false);
@@ -82,7 +88,7 @@ public class GridPlacementManager : MonoBehaviour
             return;
         
         buildingState.EndState();
-        // buildingState = null;
+        buildingState = null;
     }
 
     public void StartPlacement(int id)
@@ -96,6 +102,8 @@ public class GridPlacementManager : MonoBehaviour
         
         gridInput.OnClick += PlaceStructure;
         gridInput.OnExit += StopPlacement;
+        
+        isPlacing = true;
     }
 
     public void StartPlacement(int id, ABasePlaceableObjectsSO db)
@@ -119,13 +127,27 @@ public class GridPlacementManager : MonoBehaviour
         
         gridInput.OnClick += PlaceStructure;
         gridInput.OnExit += StopPlacement;
+        
+        isPlacing = false;
     }
 
     private void PlaceStructure()
     {
         Vector3 selectedPos = gridInput.GetSelectedMapPosition();
 
-        buildingState.OnAction(selectedPos);
+        bool placed = buildingState.OnAction(selectedPos);
+
+        if (placed)
+        {
+            if (isPlacing)
+            {
+                OnPlaceStructure?.Invoke();
+            }
+            else
+            {
+                OnRemoveStructure?.Invoke();
+            }
+        }
     }
 
     public void SetObligatoryOccupiedSpaces(CustomBoolMatrix placementMatrix)
