@@ -56,9 +56,6 @@ public class AnimalesF2US : BehaviourRunner
 		Suciedad.Slope = 0.7f;
 		Suciedad.YIntercept = 0f;
 
-        WeightedFusionFactor Insalubridad = Fase2US.CreateFusion<WeightedFusionFactor>("Insalubridad", Suciedad, Hambre);
-		Insalubridad.Weights = new float[]{ 0.3f, 0.7f };
-
         PointedCurveFactor F3 = Fase2US.CreateCurve<PointedCurveFactor>("F3", AnimEspecie);
 		F3.Points = new List<CurvePoint>() { new CurvePoint(0f, 0.6f), new CurvePoint(0.5f, 0f), new CurvePoint(0f, 0.6f) };
 
@@ -69,21 +66,6 @@ public class AnimalesF2US : BehaviourRunner
 
         WeightedFusionFactor Incomodidad = Fase2US.CreateFusion<WeightedFusionFactor>("Incomodidad", F2, F3, F4);
 		Incomodidad.Weights = new float[] { 0.25f, 0.25f, 0.5f };
-
-        WeightedFusionFactor Infelicidad = Fase2US.CreateFusion<WeightedFusionFactor>("Infelicidad", Insalubridad, Incomodidad);
-        Infelicidad.Weights = new float[] { 0.7f, 0.3f };
-
-        FunctionalAction Enfermar_action = new FunctionalAction();
-		Enfermar_action.onStarted = m_AAnimalFase2.Enfermar;
-		Enfermar_action.onUpdated = () => Status.Running;
-		UtilityAction Enfermar = Fase2US.CreateAction("Enfermar", Insalubridad, Enfermar_action);
-		
-		LinearCurveFactor Felicidad = Fase2US.CreateCurve<LinearCurveFactor>("Felicidad", Infelicidad);
-		Felicidad.Slope = -1f;
-        Felicidad.YIntercept = 1f;
-
-        SubsystemAction MandarCorazones_action = new SubsystemAction(EstaFeliz);
-		UtilityAction MandarCorazones = Fase2US.CreateAction("MandarCorazones", Felicidad, MandarCorazones_action);
 		
 		FunctionalAction NecesitaLimpiarse_action = new FunctionalAction();
 		NecesitaLimpiarse_action.onStarted = m_AAnimalFase2.Rascarse;
@@ -127,8 +109,29 @@ public class AnimalesF2US : BehaviourRunner
 
         SubsystemAction MostrarHambre_action = new SubsystemAction(TieneHambre, true);
 		UtilityAction MostrarHambre = Fase2US.CreateAction("MostrarHambre", HambreComidaFusion, MostrarHambre_action);
-		
-		SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
+
+
+        WeightedFusionFactor Insalubridad = Fase2US.CreateFusion<WeightedFusionFactor>("Insalubridad", Suciedad, HambreComidaFusion);
+        Insalubridad.Weights = new float[] { 0.4f, 0.7f };
+
+        WeightedFusionFactor Infelicidad = Fase2US.CreateFusion<WeightedFusionFactor>("Infelicidad", Insalubridad, Incomodidad);
+        Infelicidad.Weights = new float[] { 0.7f, 0.3f };
+
+        FunctionalAction Enfermar_action = new FunctionalAction();
+        Enfermar_action.onStarted = m_AAnimalFase2.Enfermar;
+        Enfermar_action.onUpdated = () => Status.Running;
+		Enfermar_action.onStopped = m_AAnimalFase2.YaNoEstaEnfermo;
+		Enfermar_action.onPaused = m_AAnimalFase2.YaNoEstaEnfermo;
+        UtilityAction Enfermar = Fase2US.CreateAction("Enfermar", Insalubridad, Enfermar_action);
+
+        LinearCurveFactor Felicidad = Fase2US.CreateCurve<LinearCurveFactor>("Felicidad", Infelicidad);
+        Felicidad.Slope = -0.7f;
+        Felicidad.YIntercept = 0.7f;
+
+        SubsystemAction MandarCorazones_action = new SubsystemAction(EstaFeliz);
+        UtilityAction MandarCorazones = Fase2US.CreateAction("MandarCorazones", Felicidad, MandarCorazones_action);
+
+        SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
 		Indica_que_tiene_Hambre_action.action = m_AAnimalFase2.MostrarHambre;
 		LeafNode Indica_que_tiene_Hambre = Comer.CreateLeafNode("Indica que tiene Hambre", Indica_que_tiene_Hambre_action);
 		
