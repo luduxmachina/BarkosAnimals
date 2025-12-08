@@ -280,7 +280,10 @@ public class AAnimalFase2: AAnimal
         YaNoEstaContento();
         if (isHerbivore)
         {
-            stikersManager.SetImage(StikersGenerales.NecesitaComerZanahoria);
+            StikersGenerales[] stHerb = new StikersGenerales[] { 
+                StikersGenerales.NecesitaComerPan, StikersGenerales.NecesitaComerZanahoria 
+            };
+            stikersManager.SetImage(stHerb);
         }
         else
         {
@@ -315,7 +318,8 @@ public class AAnimalFase2: AAnimal
 
     public void Limpiar()
     {
-        this.suciedad -= suciedadQueQuita;
+        if(suciedad>0)this.suciedad -= suciedadQueQuita;
+        if(suciedad<0)this.suciedad = 0;
         stickerLimpieza.SetImage(StikersGenerales.Cansancio);
         Debug.Log("Esta limpiandose");
     }

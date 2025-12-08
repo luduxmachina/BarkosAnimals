@@ -12,7 +12,8 @@ public enum StikersGenerales
     Cansancio,
     NecesitaLimpiar,
     NecesitaComerZanahoria,
-    NecesitaComerCarne
+    NecesitaComerCarne,
+    NecesitaComerPan,
 }
 
 
