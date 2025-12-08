@@ -114,7 +114,11 @@ public class PlayerMovement : MonoBehaviour
 
         //  rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, playerCurrentStats.currentStats.rotationSpeed * Time.fixedDeltaTime));
     }
+    public void ForceRotate(float quant)
+    {
+        rb.angularVelocity = adaptToFloor.upVector * Mathf.Deg2Rad * quant;
 
+    }
     public void Dash()
     {
         if(!playerCurrentStats.canMove) return;

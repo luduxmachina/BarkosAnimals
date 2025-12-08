@@ -150,6 +150,13 @@ public class PlayerInSceneEffects : MonoBehaviour
             playerStats.canMove = false;
             playerStats.canDash = false;
             playerStats.canJump = false;
+            var temp =playerStats.GetComponentInParent<PlayerMovement>();
+            if (temp != null)
+            {
+                float quant = 720f/duration;
+                temp.ForceRotate(quant);
+            }
+
         }
         public override void RemoveEffect(PlayerCurrentStats playerStats)
         {

@@ -11,7 +11,7 @@ public class StickersGeneralesSO : ScriptableObject
 
     public Dictionary<StikersGenerales, Sprite> stickerDictionary = new();
 
-    bool inicializado;
+   // bool inicializado;
 
     public void Inicializar()
     {
@@ -20,13 +20,13 @@ public class StickersGeneralesSO : ScriptableObject
             if (stickerDictionary.ContainsKey(sticker.tipo)) continue;
             stickerDictionary.Add(sticker.tipo, sticker.spritePegatina);
         }
-        inicializado = true;
+       // inicializado = true;
     }
 
 
     public Sprite GetSticker(StikersGenerales stickerType)
     {
-        if(!inicializado)Inicializar();
+        if(!stickerDictionary.ContainsKey(stickerType)) Inicializar();
         return stickerDictionary[stickerType];
     }
 }
