@@ -441,7 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 481069483563133570}
   predators: 04000000
-  objectives: 01000000
+  objectives: 010000000c000000
   walkingSpeed: 3.5
   run: 6
   rotateSpeed: 121
@@ -459,6 +459,7 @@ MonoBehaviour:
   tiempoHastaSucio: 5
   suciedad: 0
   tiempoSinLimpiar: 0
+  rangoSuciedad: 0
   suciedadQueQuita: 10
   MaxSinComer: 10
   tiempoSinComer: 0
@@ -472,7 +473,7 @@ MonoBehaviour:
   stikersManager: {fileID: 475001849510169783}
   stickerLimpieza: {fileID: 8602960904664784601}
   useEditorBehaviour: 1
-  behaviourRunner: {fileID: 0}
+  behaviourRunner: {fileID: 8249677816440003835}
   navMeshAgent: {fileID: 3001176560405313657}
   dirtCreator: {fileID: 0}
 --- !u!114 &8249677816440003835

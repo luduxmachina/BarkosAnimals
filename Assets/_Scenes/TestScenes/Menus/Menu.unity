@@ -1323,6 +1323,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a06dae44836f78f41940a14baa01f18d, type: 3}
+--- !u!114 &968124785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4872686762859661857, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+  m_PrefabInstance: {fileID: 6991722789844276481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1045147050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1687,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 901740855681791228, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1579847896328755274, guid: d427e331a499d2948bcb9cd13a637324, type: 3}
       propertyPath: m_Name
       value: BoatInScene
@@ -1736,6 +1751,10 @@ PrefabInstance:
     - target: {fileID: 6615219840054943829, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
       propertyPath: m_Name
       value: CarroInScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729838332653191892, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8651400292802854815, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3288,10 +3307,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1045147051}
+    - target: {fileID: 4110150674489573599, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.94107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110150674489573599, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.94107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110150674489573599, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.94107
+      objectReference: {fileID: 0}
     - target: {fileID: 4261492917875460248, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 789292909}
+    - target: {fileID: 4786607208058214011, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: monedasActuales2
+      value: 
+      objectReference: {fileID: 968124785}
     - target: {fileID: 6080234066435891640, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -3304,6 +3339,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1361481661}
+    - target: {fileID: 6946640048913010246, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.417208
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946640048913010246, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.0402927
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946640048913010246, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.8029869
+      objectReference: {fileID: 0}
     - target: {fileID: 7379606024847173926, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
@@ -3312,6 +3359,46 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 231932215}
+    - target: {fileID: 7634506407726215864, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.633796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634506407726215864, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.3965921
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634506407726215864, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.3965921
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866921503717253491, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914080478303130195, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914080478303130195, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914080478303130195, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985529441175536657, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.704711
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985529441175536657, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.453684
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985529441175536657, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5562017
+      objectReference: {fileID: 0}
     - target: {fileID: 9128577585127105638, guid: 3b7962960e3625c4f923cc72d9a0a02f, type: 3}
       propertyPath: m_Name
       value: MainMenu

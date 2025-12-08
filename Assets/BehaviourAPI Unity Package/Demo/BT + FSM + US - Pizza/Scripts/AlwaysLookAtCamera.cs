@@ -21,7 +21,10 @@ namespace BehaviourAPI.UnityToolkit.Demos
         // Update is called once per frame
         private void Update()
         {
-            transform.LookAt(target.transform.position);
+            if(!target.enabled) target = Camera.main;
+
+            Vector3 dir = target.transform.position - transform.position;
+            transform.forward = -dir;
         }
     }
 }

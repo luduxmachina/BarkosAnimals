@@ -66,7 +66,8 @@ public enum ItemNames
     Cart,
     Ship,
     Feeder,
-    Coal
+    Coal,
+    Carrot
 }
 
 public enum ItemType

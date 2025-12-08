@@ -43,7 +43,7 @@ public class IndividualSkinUIHandler : MonoBehaviour
         Debug.Log("Selecting skin: " + skinName);
         if(tipoSkin == TipoSkin.player)
         {
-
+            CurrentSkin.currentPlayerSkin = skin;
         }
         if (tipoSkin == TipoSkin.pato)
         {
@@ -84,7 +84,7 @@ public class IndividualSkinUIHandler : MonoBehaviour
         if (isOwned)
         {
             buyButton.SetActive(false);
-            if(CurrentSkin.currentDuckSkin == skin)
+            if(CurrentSkin.currentDuckSkin == skin ||CurrentSkin.currentPlayerSkin ==skin)
             {
                 textoEquipado.SetActive(true);
                 selectButton.SetActive(false);

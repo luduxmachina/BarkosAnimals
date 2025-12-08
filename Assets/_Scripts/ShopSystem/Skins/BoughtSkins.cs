@@ -11,7 +11,7 @@ public class BoughtSkins
     {
         string data = PlayerPrefs.GetString("BoughtSkins", "Pato amarillo");
         boughtDuckSkinsNames = new List<string>(data.Split(','));
-        data = PlayerPrefs.GetString("BoughtPlayerSkins", "Player default");
+        data = PlayerPrefs.GetString("BoughtPlayerSkins", "Barkito");
         boughtPlayerSkinsNames = new List<string>(data.Split(','));
     }
     public static void SaveToFile() //supongo que en las cookies se podra guardar algo
