@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 [Serializable]
 public struct ComidaYComedero
@@ -20,6 +21,13 @@ public class RecipientController : MonoBehaviour
     [SerializeField] List<ComidaYComedero> comidaYComederoList = new List<ComidaYComedero>();
 
     [SerializeField, ReadOnly] ItemNames tipoActual;
+
+    [SerializeField] TextMeshProUGUI textoContenido;
+
+    private void Start()
+    {
+        textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
+    }
 
     public bool AddStack(ItemNames tipoComida)
     {
@@ -48,6 +56,9 @@ public class RecipientController : MonoBehaviour
                 tipoActual = tipoComida;
 
             }
+
+            textoContenido.text = comidaStacks.ToString()+"/"+maxStacksFood.ToString();
+
             return true;
         }
         return false;
@@ -81,6 +92,7 @@ public class RecipientController : MonoBehaviour
                 comederoVacio.SetActive(true);
                 tipoActual = ItemNames.None;
             }
+            textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
             return true;
         }
     }
