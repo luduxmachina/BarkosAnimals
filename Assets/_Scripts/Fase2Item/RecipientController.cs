@@ -25,30 +25,30 @@ public class RecipientController : MonoBehaviour
     {
         if (tiposDeComidaAceptados.Contains(tipoComida))
         {
-            if (comidaStacks >= maxStacksFood)
+            if(tipoComida == tipoActual)
             {
-                return false;
-            }
-            else
-            {
-                if(tipoComida == tipoActual)
+                if (comidaStacks >= maxStacksFood)
                 {
-                    comidaStacks++;
+                    return false;
                 }
                 else
                 {
-                    comidaStacks = 1;
-                    foreach (ComidaYComedero comedero in comidaYComederoList)
-                    {
-                        if (comedero.tipoComida == tipoComida) comedero.comedero.SetActive(true);
-                        else comedero.comedero.SetActive(false);
-                    }
-                    comederoVacio.SetActive(false);
-                    tipoActual = tipoComida;
-
+                    comidaStacks++;
                 }
-                return true;
             }
+            else
+            {
+                comidaStacks = 1;
+                foreach (ComidaYComedero comedero in comidaYComederoList)
+                {
+                    if (comedero.tipoComida == tipoComida) comedero.comedero.SetActive(true);
+                    else comedero.comedero.SetActive(false);
+                }
+                comederoVacio.SetActive(false);
+                tipoActual = tipoComida;
+
+            }
+            return true;
         }
         return false;
     }

@@ -16,6 +16,7 @@ public class CuencoManager : MonoBehaviour
     [SerializeField]List<ComidaModelo> comidasYModelo = new();
 
     ItemNames tipoComida = ItemNames.None;
+    public ItemNames TipoComida { get { return tipoComida;} }
     bool hayComida = false;
 
     public void SetFood(ItemNames tipoComida)

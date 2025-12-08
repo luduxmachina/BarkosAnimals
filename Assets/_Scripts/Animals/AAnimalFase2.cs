@@ -1,9 +1,11 @@
 using BehaviourAPI.Core;
+using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,44 +18,54 @@ public class AAnimalFase2: AAnimal
     }
 
     [Header("-----------------Fase 2-----------------")]
-    [SerializeField] float suciedadMaxima;
-    [SerializeField] float MaxSinComer;
-    [SerializeField] float TiempoEnfermoHastaMorir = 60;
+    [Header("Espacio en el establo")]
+    [Tooltip("Animales en el establo (Máximo)")]
     public float AMax = 0.0f;
+    [Tooltip("Compis de la misma especie en el establo (Máximo)")]
     public float CMax = 0.0f;
+    [Tooltip("Depredadores en el establo (Máximo)")]
     public float DMax = 0.0f;
+    [SerializeField, ReadOnly] public float depredadoresCerca = 0f;
 
+    [Header("Limpieza")]
+    [SerializeField] float suciedadMaxima;
+    [Tooltip("Timpo que pasa hasta que comprueba que está sucio.")]
+    public float tiempoHastaSucio = 5f;
+    [SerializeField, ReadOnly] float suciedad = 0f;
+    [SerializeField, ReadOnly] float tiempoSinLimpiar = 0f;
+    [SerializeField,UnityEngine.Range(0,5)]
+    float rangoSuciedad = 0f;
+    public float Suciedad => suciedad;
+    [SerializeField]float suciedadQueQuita = 10f;
+
+    [Header("Comida")]
+    [SerializeField] float MaxSinComer;
+    [SerializeField, ReadOnly] float tiempoSinComer = 0f;
+
+    [SerializeField, ReadOnly] public bool hayComida = false;
+    [SerializeField, ReadOnly] bool isHerbivore = false;
+
+    [Header("Enfermar")]
+    [SerializeField, ReadOnly] bool estaEnfermo;
+    [SerializeField] float TiempoEnfermoHastaMorir = 60;
+    [SerializeField, ReadOnly] float tiempoEnfermo;
+
+    [Header("Felicidad")]
+    [SerializeField, ReadOnly]bool isHappy;
+    public bool IsHappy => isHappy;
+
+    [Tooltip("No tocar lo siguiente")]
+    [Header("Establo y general")]
     [SerializeField] protected Stable establo;
     [SerializeField] StikersManager stikersManager;
     [SerializeField] StikersManager stickerLimpieza;
     //[SerializeField] AllObjectTypesSO animalsDataBase;
-    [SerializeField] EditorBehaviourRunner SistemaUtilidad;
+    public bool useEditorBehaviour = true;
+    [SerializeField] BehaviourRunner behaviourRunner;
+
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] Predicate<float> funcionFelicidad;
     [SerializeField] DirtCreator dirtCreator;
-
-
-    public bool hayComida = false;
-
-    [SerializeField, ReadOnly]bool isHerbivore = false;
-
-    float suciedad = 0f;
-
-    [Tooltip("Timpo que pasa hasta que comprueba que está sucio.")]
-    public float tiempoHastaSucio = 5f;
-    float tiempoSinLimpiar = 0f;
-
-    [SerializeField, ReadOnly]
-    public float Suciedad => suciedad;
-    public float suciedadQueQuita = 10f;
-    float tiempoSinComer = 0f;
-
-    public float depredadoresCerca = 0f;
-    bool estaEnfermo;
-    float tiempoEnfermo;
-
-    bool isHappy;
-    public bool IsHappy => isHappy;
 
     #region Monobehavior
     protected override void Awake()
@@ -73,6 +85,13 @@ public class AAnimalFase2: AAnimal
         dirtCreator = FindAnyObjectByType<DirtCreator>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        //if (useEditorBehaviour) SistemaUtilidadEBR.enabled = false;
+        //else SistemaUtilidadCode.enabled = false;
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -80,7 +99,7 @@ public class AAnimalFase2: AAnimal
         if (suciedad <= suciedadMaxima && tiempoSinLimpiar >= tiempoHastaSucio)
         {            
             suciedad += dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f);
-            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f)} y tiene suciedad de {suciedad}");
+            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, rangoSuciedad)} y tiene suciedad de {suciedad}");
             tiempoSinLimpiar = 0f;
         }
         tiempoSinLimpiar += Time.deltaTime;
@@ -92,18 +111,18 @@ public class AAnimalFase2: AAnimal
             this.Die();
             tiempoEnfermo = 0f;
         }
-        
-        if(establo != null)
+
+        if(establo != null && !behaviourRunner.enabled)
         {
             Debug.Log("Establo en el animal");
-            SistemaUtilidad.enabled = true;
+            behaviourRunner.enabled = true;
             //navMeshAgent.enabled = true;
         }
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        establo.ExitFromStable(this);  
+        establo?.ExitFromStable(this);  
     }
 
     #endregion
@@ -119,6 +138,7 @@ public class AAnimalFase2: AAnimal
     #region Actions
     public override void InitComer()
     {
+        YaNoEstaContento();
         if (establo == null)
         {
             Debug.LogWarning("El pato no está en ningún establo");
@@ -237,24 +257,27 @@ public class AAnimalFase2: AAnimal
 
     public void Enfermar()
     {
+        YaNoEstaContento();
         stikersManager.SetImage(StikersGenerales.Enfermo);
         tiempoEnfermo = 0.0f;
         estaEnfermo = true;
         
     }
-    public void YaNoEstáEnfermo()
+    public void YaNoEstaEnfermo()
     {
         estaEnfermo = false;
     }
 
     public void Rascarse()
     {
+        YaNoEstaContento();
         stikersManager.SetImage(StikersGenerales.NecesitaLimpiar);
         suciedad -= (suciedadMaxima / 6);
     }
 
     public void MostrarHambre()
     {
+        YaNoEstaContento();
         if (isHerbivore)
         {
             stikersManager.SetImage(StikersGenerales.NecesitaComerZanahoria);
@@ -281,11 +304,13 @@ public class AAnimalFase2: AAnimal
     public void NoMostrarNada()
     {
         stikersManager.HideSprites();
+        YaNoEstaContento();
     }
 
     public void MostrarIncomodidad()
     {
         stikersManager.SetImage(StikersGenerales.Incomodo);
+        YaNoEstaContento();
     }
 
     public void Limpiar()
@@ -297,6 +322,7 @@ public class AAnimalFase2: AAnimal
 
     public override void Die()
     {
+        YaNoEstaContento();
         GameFlowManager.instance.quotaChecker.UpdateCuote(new InventoryItemDataObjects(thisItemName, -1));
 
         if (establo == null)
@@ -304,11 +330,11 @@ public class AAnimalFase2: AAnimal
             Debug.LogWarning("El pato no está en ningún establo");
             return;
         }
+
         establo.ExitFromStable(this);
-        ItemInScene snake = GetComponentInChildren<ItemInScene>();
-        snake.ReduceByOne();
-        base.Die();
-        
+        ItemInScene animal = GetComponentInChildren<ItemInScene>();
+        animal.ReduceByOne();
+        base.Die();        
     }
 
     #endregion
