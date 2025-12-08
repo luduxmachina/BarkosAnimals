@@ -84,7 +84,7 @@ public class IndividualSkinUIHandler : MonoBehaviour
         if (isOwned)
         {
             buyButton.SetActive(false);
-            if(CurrentSkin.currentDuckSkin == skin)
+            if(CurrentSkin.currentDuckSkin == skin ||CurrentSkin.currentPlayerSkin ==skin)
             {
                 textoEquipado.SetActive(true);
                 selectButton.SetActive(false);
