@@ -36,6 +36,9 @@ public class GridData
    
     public bool CanPlaceObjectAt(Vector2Int gridPos, Vector2Int objSize)
     {
+        if(gridPos.x > 50)
+            return false;
+        
         List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, objSize);
         foreach (var position in positionsToOccupy)
         {
@@ -48,6 +51,9 @@ public class GridData
     
     public bool CanPlaceObjectAt(Vector2Int gridPos, CustomBoolMatrix placementMatrix)
     {
+        if(gridPos.x > 50)
+            return false;
+        
         List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, placementMatrix);
         foreach (var position in positionsToOccupy)
         {

@@ -5,14 +5,14 @@ public class CannonAgua : MonoBehaviour
 {
     [SerializeField]
     WaterStreamMeshFijoInicial agua;
-    float intensidadActual = 0f;
+    protected float intensidadActual = 0f;
 
     float anchoInicialMax;
     float anchoFinalMax;
     float velocidadInicialMax = 12f;
      float anguloMax = 45f;
      float gravedadMax = -9.81f;
-    private void Start()
+    protected virtual void Start()
     {
         anchoFinalMax = agua.anchoFinal;
         anchoInicialMax = agua.anchoInicio;
@@ -24,7 +24,7 @@ public class CannonAgua : MonoBehaviour
         
 
     }
-    public void Fire() //se llama en fixed
+    public virtual void Fire() //se llama en fixed
     {
         if(intensidadActual <= 0f)
         {
@@ -47,7 +47,7 @@ public class CannonAgua : MonoBehaviour
        
         ShowWater();
     }
-    void ShowWater()
+    protected virtual void ShowWater()
     {
         if(intensidadActual <= 0f)
         {
