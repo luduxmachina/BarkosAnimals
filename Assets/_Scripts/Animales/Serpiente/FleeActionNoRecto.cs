@@ -12,6 +12,7 @@ namespace BehaviourAPI.UnityToolkit
         /// The movement speed of the agent.
         /// </summary>
         public float angulo;
+        public float targetDistance = 6f;
 
         public override void Start()
         {
@@ -42,7 +43,7 @@ namespace BehaviourAPI.UnityToolkit
                 Vector3 rotated = Quaternion.AngleAxis(angulo, axis) * dir;
 
 
-                var targetPos = context.Transform.position + rotated;
+                var targetPos = context.Transform.position + rotated*targetDistance;
                 context.Movement.SetTarget(targetPos);
                 return Status.Running;
             }

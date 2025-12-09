@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class PhaseTimer : MonoBehaviour
 {
+    public UnityEvent OnForwardTime;
     public float phaseDuration = 60f;
     public float timeRemaining; //pal que lo quiera lol
     public float timeElapsed;
@@ -28,6 +29,7 @@ public class PhaseTimer : MonoBehaviour
     {
         timeElapsed += seconds;
         timeRemaining -= seconds;
+        OnForwardTime?.Invoke();
     }
     public void StartPhase()
     {
