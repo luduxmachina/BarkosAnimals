@@ -47,11 +47,15 @@ public class GridPreview : MonoBehaviour
     {
         cellIndicator.SetActive(true);
         previewObject = Instantiate(prefab);
-
-        if (previewObject.TryGetComponent<InformWhenRemovingFromGrid>(out var component))
+        
+        if (previewObject.TryGetComponent<InformWhenRemovingFromGrid>(out var informWhenRemovingFromGrid))
         {
-            component.shipInventory = null;
-            component.enabled = false;
+            informWhenRemovingFromGrid.shipInventory = null;
+            informWhenRemovingFromGrid.enabled = false;
+        }
+        if (previewObject.TryGetComponent<PuffAnimation>(out var puffAnimation))
+        {
+            puffAnimation.doAnimation = false;
         }
         
         previewScale = previewObject.transform.localScale * scaleOffset;

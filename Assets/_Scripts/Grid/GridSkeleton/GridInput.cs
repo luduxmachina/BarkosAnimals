@@ -19,6 +19,8 @@ public class GridInput : MonoBehaviour, IGridInput
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+        
+        lastMousePos = new Vector3(999f, 999f, 999f);
     }
 
     private void Start()
@@ -44,7 +46,7 @@ public class GridInput : MonoBehaviour, IGridInput
     private void Update()
     {
         //////////////////// TESTEO ////////////////////
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
             OnClick?.Invoke();
 
         // if (Input.GetKeyDown(KeyCode.Escape))

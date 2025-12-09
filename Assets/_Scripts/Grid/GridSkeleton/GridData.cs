@@ -48,11 +48,16 @@ public class GridData
     
     public bool CanPlaceObjectAt(Vector2Int gridPos, CustomBoolMatrix placementMatrix)
     {
+        // float x = placementMatrix.rows / 2f;
+        // float y = placementMatrix.columns / 2f;
+        // if(gridPos.x > x || gridPos.y > y || gridPos.x < -x || gridPos.y < -y)
+        //     return false;
+        
         List<Vector2Int> positionsToOccupy = CalculatePositions(gridPos, placementMatrix);
         foreach (var position in positionsToOccupy)
         {
             if(placedObjects.ContainsKey(position))
-                return false;
+                return false; 
         }
             
         return true;
