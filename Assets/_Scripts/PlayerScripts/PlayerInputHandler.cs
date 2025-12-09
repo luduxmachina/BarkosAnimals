@@ -10,49 +10,54 @@ public class PlayerInputHandler : MonoBehaviour
 
 
 
+    private InputActionMap playerMap;
     private InputAction moveAction;
     private InputAction dashAction;
     private InputAction interactAction;
     private InputAction grabAction;
     private InputAction jumpAction;
 
-
-
-
     private void Awake()
     {
-        moveAction = inputActions.FindActionMap("Player").FindAction("Move"); //awsd o left joystick
-        dashAction = inputActions.FindActionMap("Player").FindAction("Dash"); //C o east
-        grabAction = inputActions.FindActionMap("Player").FindAction("Grab"); //F o west
-        interactAction = inputActions.FindActionMap("Player").FindAction("Interact"); //E o north
-        jumpAction = inputActions.FindActionMap("Player").FindAction("Jump"); //space o south
+        playerMap = inputActions.FindActionMap("Player");
+
+        moveAction = playerMap.FindAction("Move");
+        dashAction = playerMap.FindAction("Dash");
+        grabAction = playerMap.FindAction("Grab");
+        interactAction = playerMap.FindAction("Interact");
+        jumpAction = playerMap.FindAction("Jump");
     }
+
     private void Update()
     {
         movement.moveInput = moveAction.ReadValue<Vector2>();
-  
     }
-   
- 
+
     private void OnEnable()
     {
-        inputActions.FindActionMap("Player").Enable();
-        dashAction.performed += ctx => movement.Dash();
-        interactAction.performed += ctx => interaction.Interact();
-        interactAction.canceled += ctx => interaction.StopInteractingWithTarget();
-        grabAction.performed += ctx => interaction.Grab();
-        jumpAction.performed += ctx => movement.Jump();
+        playerMap.Enable();
+
+        dashAction.performed += OnDash;
+        interactAction.performed += OnInteract;
+        interactAction.canceled += OnInteractCanceled;
+        grabAction.performed += OnGrab;
+        jumpAction.performed += OnJump;
     }
+
     private void OnDisable()
     {
-        dashAction.performed -= ctx => movement.Dash();
-        interactAction.performed -= ctx => interaction.Interact();
-        interactAction.canceled -= ctx => interaction.StopInteractingWithTarget();
-        grabAction.performed -= ctx => interaction.Grab();
-        jumpAction.performed -= ctx => movement.Jump();
-        Debug.Log("Player Input Disabled");
-        inputActions.FindActionMap("Player").Disable();
+        dashAction.performed -= OnDash;
+        interactAction.performed -= OnInteract;
+        interactAction.canceled -= OnInteractCanceled;
+        grabAction.performed -= OnGrab;
+        jumpAction.performed -= OnJump;
 
-
+        playerMap.Disable();
     }
+
+    private void OnDash(InputAction.CallbackContext ctx) => movement.Dash();
+    private void OnInteract(InputAction.CallbackContext ctx) => interaction.Interact();
+    private void OnInteractCanceled(InputAction.CallbackContext ctx) => interaction.StopInteractingWithTarget();
+    private void OnGrab(InputAction.CallbackContext ctx) => interaction.Grab();
+    private void OnJump(InputAction.CallbackContext ctx) => movement.Jump();
 }
