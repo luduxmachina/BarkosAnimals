@@ -57,7 +57,7 @@ public class SerpienteBehaviour : BehaviourRunner
 
 
         UnityTimePerception tiempoTrasCogido_perception = new UnityTimePerception();
-        tiempoTrasCogido_perception.TotalTime = 0.6f;
+        tiempoTrasCogido_perception.TotalTime = 0.2f;
 
         SimpleAction AtacarJugador_action = new SimpleAction();
 		AtacarJugador_action.action = m_SerpienteInScene.AttackGrabber;
