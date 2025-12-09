@@ -514,12 +514,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4964267229092757229, guid: 246bccfde982eb14ea892fc11448a2f0, type: 3}
+      propertyPath: textoContenido
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8440886757882110126, guid: 246bccfde982eb14ea892fc11448a2f0, type: 3}
       propertyPath: m_Name
       value: ItemBarrilCarne Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5464977480632557743, guid: 246bccfde982eb14ea892fc11448a2f0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 246bccfde982eb14ea892fc11448a2f0, type: 3}
@@ -799,8 +804,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemBarril
       objectReference: {fileID: 0}
+    - target: {fileID: 6443881228165092239, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: textoContenido
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6223514520571465165, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
@@ -1231,8 +1241,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemBarril (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6443881228165092239, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
+      propertyPath: textoContenido
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6223514520571465165, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d072ee29c2e016c4c9ec2c8bcffabcad, type: 3}
