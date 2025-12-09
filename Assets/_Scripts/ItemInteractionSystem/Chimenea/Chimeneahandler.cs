@@ -18,7 +18,7 @@ public class Chimeneahandler : MonoBehaviour
         }
         if (phaseTimer == null)
         {
-            Debug.LogError("No se ha asignado el PhaseTimer al ChimeneaHandler y no se ha encontrado ninguno en la escena.");
+            Debug.LogWarning("No se ha asignado el PhaseTimer al ChimeneaHandler y no se ha encontrado ninguno en la escena.");
             Destroy(this.gameObject);
         }
     }
