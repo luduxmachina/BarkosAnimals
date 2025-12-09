@@ -16,7 +16,7 @@ public class PuffAnimation : MonoBehaviour
 
         GameObject instancia = Instantiate(puffPrefab, transform.position, transform.rotation);
 
-        Animator animator = instancia.GetComponent<Animator>();
+        Animator animator = instancia.GetComponentInChildren<Animator>();
 
         if (animator != null)
         {
