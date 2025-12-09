@@ -39,6 +39,7 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
     private int originalLayer;
     HingeJoint joint;
     ImpedeExtraMoveSetEffect impedeEffect = new ImpedeExtraMoveSetEffect();
+
     private void Awake()
     {
 
@@ -48,6 +49,7 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
     }
     private void Start()
     {
+   
         originalMaterial = GetComponent<Collider>().material;
     }
     public virtual bool Grab(Transform grabbingTransform, IGrabber grabber)
@@ -56,7 +58,8 @@ public class SimpleGrabbableWithJoint : MonoBehaviour, IGrabbable
         if (!canBeGrabbed) return false;
         if (isBeingGrabbed)
         {
-            currentGrabber.StopGrabbing();
+            Drop();
+          //  currentGrabber.StopGrabbing();
         }
 
         joint = gameObject.AddComponent<HingeJoint>();  

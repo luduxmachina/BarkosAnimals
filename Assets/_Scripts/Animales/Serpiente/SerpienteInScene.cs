@@ -19,10 +19,17 @@ public class SerpienteInScene : AAnimal
     [SerializeField]
     private StikersManager stickersManager;
 
+    float baseRadioAtaqueCOmida= 2;
+
     protected override void Awake()
     {
         base.Awake();
         grabbable = GetComponentInParent<IGrabbable>();
+    }
+    protected override void Start()
+    {
+        base.Start();
+        baseRadioAtaqueCOmida = radioAtaqueComida;
     }
     public float GetTiempoTrasAtaque()
     {
@@ -59,21 +66,25 @@ public class SerpienteInScene : AAnimal
     }
     private bool CheckCart(List<ItemNames> posiblesPresas)
     {
+        
         //poner aqui el carro si tiene animal dentro
         Transform carroT = IslandPositions.instance.GetClosest(transform.position, ItemNames.Cart);
         if(carroT == null) { return false;  }
 
-        CartData cartData = carroT?.GetComponentInChildren<CartData>();
+        ShipData cartData = carroT?.GetComponentInChildren<ShipData>();
         if (cartData == null) { return false; }
         var temp= cartData.GetAllInventoryObjects();
         foreach (var item in temp)
         {
             if (posiblesPresas.Contains(item.Name))
             {
+                Debug.Log("El carro tiene una presa dentro");
+                radioAtaqueComida = baseRadioAtaqueCOmida * 3; //asegurarse de que esta bien
                 return true;
             }
            
         }
+        radioAtaqueComida = baseRadioAtaqueCOmida;
         return false;
 
     }
@@ -86,7 +97,7 @@ public class SerpienteInScene : AAnimal
     }
     public void ComerEnCarro()
     {
-        CartData cartData = lastObjectve.GetComponentInChildren<CartData>();
+        ShipData cartData = lastObjectve.GetComponentInChildren<ShipData>();
         if (cartData == null) { return; }
 
         var temp = cartData.GetAllInventoryObjects();
@@ -104,10 +115,10 @@ public class SerpienteInScene : AAnimal
         }
 
         //esto funciona porque justo la serpiente no tiene un grabber, lo tiene algun hijo
-        var cartInScene =cartData.GetComponentInChildren<CartInScene>();
+        var cartInScene =cartData.GetComponentInChildren<BoatInScene>();
         if(cartInScene== null)
         {
-            cartInScene = cartData.GetComponentInParent<CartInScene>(); //tu en algun puto lado
+            cartInScene = cartData.GetComponentInParent<BoatInScene>(); //tu en algun puto lado
 
         }
 
@@ -122,7 +133,7 @@ public class SerpienteInScene : AAnimal
     {
 
         if (lastObjectve == null) { return false; }
-        return lastObjectve.GetComponentInChildren<CartData>() != null;
+        return lastObjectve.GetComponentInChildren<ShipData>() != null;
     }
     public override Transform GetClosestObjetive()
     {
