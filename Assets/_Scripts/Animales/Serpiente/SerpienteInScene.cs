@@ -38,7 +38,7 @@ public class SerpienteInScene : AAnimal
     }
     public void PlaySurpriseAnim()
     {
-        stickersManager.SetImage(StikersGenerales.Incomodo);
+        stickersManager.SetImage(StikersGenerales.Enfadado);
         animator.SetTrigger("Surprise");
     } 
     public void Descansar()
