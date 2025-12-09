@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -38,20 +39,24 @@ public class WorldItemPlacer : MonoBehaviour
                 {
                     float x = Random.Range(-dimensions.x * 0.5f, dimensions.x * 0.5f);
                     float z = Random.Range(-dimensions.y * 0.5f, dimensions.y * 0.5f);
-                    float y = GetHighestY(new Vector3(x, 0f, z)) + heightOffset;
+                    float y = GetHighestY(new Vector3(x, 0f, z));
 
                     Vector3 pos = new Vector3(x, y, z);
                     GameObject obj = itemsDataBase.GetObjectPrefab(itemName);
 
                     if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 2f, NavMesh.AllAreas))
                     {
+                        Vector3 placingPos = new Vector3(hit.position.x, hit.position.y + heightOffset, hit.position.z);
+                        float randomY = Random.Range(0f, 360f);
+                        Quaternion randomRotation = Quaternion.Euler(0, randomY, 0);
+
                         if (parentObject != null)
                         {
-                            Instantiate(obj, hit.position, Quaternion.identity, parentObject);
+                            Instantiate(obj, placingPos, randomRotation, parentObject);
                         }
                         else
                         {
-                            Instantiate(obj, hit.position, Quaternion.identity);
+                            Instantiate(obj, placingPos, randomRotation);
                         }
 
                         placed = true;
