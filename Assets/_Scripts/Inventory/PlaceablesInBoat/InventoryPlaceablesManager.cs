@@ -8,10 +8,9 @@ public class InventoryPlaceablesManager : MonoBehaviour
 
     [SerializeField] private ItemNames itemType;
     [SerializeField] private GameObject buttonParent;
-    [SerializeField] private GameObject gridImputObject;
+    [SerializeField] private GridPlacementManager gridManager;
 
     private GameObject buttonObject;
-    private IGridInput gridInput;
     private bool placing = false;
 
     private void Awake()
@@ -28,6 +27,7 @@ public class InventoryPlaceablesManager : MonoBehaviour
             {
                 buttonObject = button.gameObject;
                 buttonObject.GetComponent<Button>().onClick.AddListener(StartPlacing);
+                gridManager.OnPlaceStructure.AddListener(PlaceItemOnGrid);
             }
             else
             {
@@ -39,17 +39,20 @@ public class InventoryPlaceablesManager : MonoBehaviour
         {
             buttonObject.SetActive(false);
         }
-
-        gridInput = gridImputObject.GetComponent<IGridInput>();
-        shipInventory.OnInventoryUpdated.AddListener(UpdateWithInventory);
-        gridInput.OnClick += () => PlaceItemOnGrid();
         
+        shipInventory.OnInventoryUpdated.AddListener(UpdateWithInventory);
     }
 
-    public void StartPlacing()=> placing = true;
-    public void StopPlacing() => placing = false;
+    public void StartPlacing()
+    {
+        placing = true;
+    } 
+    public void StopPlacing()
+    {
+        placing = false;
+    }
     
-    public void PlaceItemOnGrid()
+    private void PlaceItemOnGrid()
     {
         if(!shipInventory.ContainsItemsOf(itemType))
             return;
@@ -57,31 +60,11 @@ public class InventoryPlaceablesManager : MonoBehaviour
         if(!placing)
             return;
         
-        InventoryItemDataObjects stack = shipInventory.ExtractAStackOf(itemType, 1);
-        // if (stack.Count <= 0)
-        // {
-        //     Debug.LogError($"Stack of size [{stack.Count}], type [{itemType}] detected");
-        //     return;
-        // }
-        // stack.Remove(1);
-        // 
-        // if (stack.Count > 0)
-        // {
-        //     shipInventory.AddToInventory(stack);
-        // }
-        // else
-        // {
-        //     buttonObject.SetActive(false);
-        // }
+        // We remove the object form the db
+        shipInventory.ExtractAStackOf(itemType, 1);
     }
 
-    public void RemoveItemOnGrid()
-    {
-        shipInventory.AddToInventory(itemType, 1);
-        buttonObject.SetActive(true);
-    }
-
-    public void UpdateWithInventory(ItemNames updatedItem)
+    private void UpdateWithInventory(ItemNames updatedItem)
     {
         if (updatedItem == itemType || updatedItem == ItemNames.None)
         {
@@ -92,7 +75,7 @@ public class InventoryPlaceablesManager : MonoBehaviour
             else
             {
                 buttonObject.SetActive(false);
-                gridInput.StopPlacing();
+                gridManager.StopPlacement();
             }
         }
     }

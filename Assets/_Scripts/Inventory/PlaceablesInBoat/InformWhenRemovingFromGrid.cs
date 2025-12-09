@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class InformWhenRemovingFromGrid : MonoBehaviour
 {
+    public ShipInventorySO shipInventory;
     [SerializeField] private ItemNames itemName;
-    private ShipInventorySO shipInventory;
 
-    public void SetShipInventory (ShipInventorySO shipInventory)
+    public void SetShipInventory (ShipInventorySO inventory)
     {
-        this.shipInventory = shipInventory;
+        shipInventory = inventory;
     }
 
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
         
-        // shipInventory.AddToInventory(itemName, 1);
+        shipInventory?.AddToInventory(itemName, 1);
     }
 }
