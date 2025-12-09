@@ -50,6 +50,7 @@ public class PlayerInputHandler : MonoBehaviour
         interactAction.canceled -= ctx => interaction.StopInteractingWithTarget();
         grabAction.performed -= ctx => interaction.Grab();
         jumpAction.performed -= ctx => movement.Jump();
+        Debug.Log("Player Input Disabled");
         inputActions.FindActionMap("Player").Disable();
 
 
