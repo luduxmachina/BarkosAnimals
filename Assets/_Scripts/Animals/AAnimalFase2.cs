@@ -130,11 +130,6 @@ public class AAnimalFase2: AAnimal
         }
     }
 
-    private void OnDisable()
-    {
-        establo?.ExitFromStable(this);  
-    }
-
     #endregion
 
     #region Setter
