@@ -7,6 +7,7 @@ public class ContadorAnimales : MonoBehaviour
 {
 
     [SerializeField]UnityEvent OnNoAnimals;
+    bool animalesColocados = false;
 
     public void checkCuoteWithOnlySecondFase()
     {
@@ -25,24 +26,30 @@ public class ContadorAnimales : MonoBehaviour
             GameFlowManager.instance.quotaChecker.UpdateQuoteWithHappinesOfAnimal(true, animFelices);
 
         }
+    }
 
-
+    public void AnimalesColocados()
+    {
+        animalesColocados = true;
     }
 
     public void Update()
     {
-        List<Stable> stables = Stable.allStables;
-
-        int numAnim = 0;
-
-        foreach (Stable stable in stables)
+        if (animalesColocados)
         {
-            numAnim += stable.GetAnimalsInEstable();
-        }
+            List<Stable> stables = Stable.allStables;
 
-        if(numAnim<0)
-        {
+            int numAnim = 0;
 
+            foreach (Stable stable in stables)
+            {
+                numAnim += stable.GetAnimalsInEstable();
+            }
+
+            if (numAnim <= 0)
+            {
+                OnNoAnimals.Invoke();
+            }
         }
     }
 }
