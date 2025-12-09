@@ -118,7 +118,7 @@ public class PlayerInteraction : MonoBehaviour, IGrabber
     {
        if(proxyColliders != null)
         {
-            Destroy(proxyColliders);
+            DestroyImmediate(proxyColliders);
         }
         hasObjInHand = false;
         objInHand = null;
