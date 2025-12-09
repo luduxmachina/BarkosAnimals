@@ -13,12 +13,12 @@ public class ShowFadeWithTimer : MonoBehaviour
     private bool timeUp= false;
     private void OnEnable()
     {
-        phaseTimer.OnTimesUp.AddListener(TimeOut);
+        phaseTimer?.OnTimesUp.AddListener(TimeOut);
 
     }
     private void OnDisable()
     {
-        phaseTimer.OnTimesUp.RemoveListener(TimeOut);
+        phaseTimer?.OnTimesUp.RemoveListener(TimeOut);
     }
     private void TimeOut()
     {

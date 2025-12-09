@@ -831,6 +831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
   grabbedMaterial: {fileID: 13400000, guid: bb6325f1345acd84ab6a1e482d3b0608, type: 2}
   OnGrab:
     m_PersistentCalls:
@@ -861,8 +863,8 @@ MonoBehaviour:
   - {fileID: 1341617389848933902}
   - {fileID: 4935976625009911318}
   - {fileID: 5199480486525227577}
-  retroceso: 15
-  retrocesoInicial: 150
+  retroceso: 8.2
+  retrocesoInicial: 80
   rotacionRandom: 5
   firing: 0
 --- !u!114 &5234811617194349607
