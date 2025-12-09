@@ -8,11 +8,12 @@ public class FollowObjectRot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(target == null)
+        if (target == null)
         {
-            transform.rotation = target.rotation;
-
+            Destroy(this.gameObject);
         }
+        transform.rotation = target.rotation;
+
         // transform.position = target.position;
     }
 }
