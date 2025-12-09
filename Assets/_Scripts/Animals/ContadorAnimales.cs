@@ -42,7 +42,7 @@ public class ContadorAnimales : MonoBehaviour
 
         if(numAnim<0)
         {
-
+            OnNoAnimals.Invoke();
         }
     }
 }
