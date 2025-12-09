@@ -97,6 +97,7 @@ public class SerpienteInScene : AAnimal
     }
     public void ComerEnCarro()
     {
+        Debug.Log("Comer en carro, comer en carro");
         ShipData cartData = lastObjectve.GetComponentInChildren<ShipData>();
         if (cartData == null) { return; }
 
@@ -115,10 +116,10 @@ public class SerpienteInScene : AAnimal
         }
 
         //esto funciona porque justo la serpiente no tiene un grabber, lo tiene algun hijo
-        var cartInScene =cartData.GetComponentInChildren<BoatInScene>();
+        var cartInScene =cartData.GetComponentInChildren<InventoryInScene>();
         if(cartInScene== null)
         {
-            cartInScene = cartData.GetComponentInParent<BoatInScene>(); //tu en algun puto lado
+            cartInScene = cartData.GetComponentInParent<InventoryInScene>(); //tu en algun puto lado
 
         }
 
