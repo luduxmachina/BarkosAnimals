@@ -373,7 +373,7 @@ MonoBehaviour:
   predators: 0700000004000000
   objectives: 
   walkingSpeed: 1.1
-  run: 3.16
+  run: 2
   rotateSpeed: 360
   patrolRadius: 5
   radioDetectionObjective: 10
@@ -381,6 +381,7 @@ MonoBehaviour:
   radioAtaqueComida: 2
   tiempoEnComer: 3
   stikersManager: {fileID: 647798484373004088}
+  stopAnimWhenGrabbed: 0
 --- !u!114 &3977510667061451917
 MonoBehaviour:
   m_ObjectHideFlags: 0
