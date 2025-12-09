@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class PuffAnimation : MonoBehaviour
 {
+    public bool doAnimation = true;
     [SerializeField] private GameObject puffPrefab;
 
     private void OnDisable()
     {
         if (!gameObject.scene.isLoaded) return;
+        if (!doAnimation) return;
         
         if (puffPrefab == null)
         {
