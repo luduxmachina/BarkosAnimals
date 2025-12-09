@@ -10,9 +10,10 @@ public class FollowObjectRot : MonoBehaviour
     {
         if(target != null)
         {
-            transform.rotation = target.rotation;
-
+            Destroy(this.gameObject);
         }
+        transform.rotation = target.rotation;
+
         // transform.position = target.position;
     }
 }

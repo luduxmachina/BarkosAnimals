@@ -67,6 +67,8 @@ public class AAnimalFase2: AAnimal
     [SerializeField] Predicate<float> funcionFelicidad;
     [SerializeField] DirtCreator dirtCreator;
 
+    bool estaEnFase = false;
+
     #region Monobehavior
     protected override void Awake()
     {
@@ -83,6 +85,14 @@ public class AAnimalFase2: AAnimal
         }
         base.Awake();
         dirtCreator = FindAnyObjectByType<DirtCreator>();
+        BoatPhaseHandler boatPhaseHandler = FindAnyObjectByType<BoatPhaseHandler>();
+        boatPhaseHandler.OnStartBoatPhase.AddListener(EstaEnFase);
+    }
+
+    public void EstaEnFase()
+    {
+        estaEnFase = true;
+        Debug.LogWarning("Esta en la fase");
     }
 
     protected override void Start()
@@ -112,7 +122,7 @@ public class AAnimalFase2: AAnimal
             tiempoEnfermo = 0f;
         }
 
-        if(establo != null && !behaviourRunner.enabled)
+        if(establo != null && !behaviourRunner.enabled && estaEnFase)
         {
             Debug.Log("Establo en el animal");
             behaviourRunner.enabled = true;

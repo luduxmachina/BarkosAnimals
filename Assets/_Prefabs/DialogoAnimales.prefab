@@ -351,10 +351,10 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6022860188720524510}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7752552575874199332}
   - {fileID: 6166180885218537303}
@@ -448,7 +448,7 @@ MonoBehaviour:
   fondo: {fileID: 915443487742496024}
   generalesDB: {fileID: 11400000, guid: ceb9194171464644799029fbe0f542a2, type: 2}
   fadeStickers: 0
-  timeToFade: 2
+  timeToFade: 0
 --- !u!114 &341760236783100278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,8 +548,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 643676205
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -23,6 +23,24 @@ public class Stable : MonoBehaviour
         allStables.Remove(this);
     }
 
+    private void OnDestroy()
+    {
+        if (!gameObject.scene.isLoaded) return;
+
+        Queue<GameObject> allAnimalGO = new();
+        foreach (var animal in animalesReferecia)
+        {
+            GameObject animalGO = animal.transform.parent.gameObject;
+            if(animalGO != null)
+                allAnimalGO.Enqueue(animalGO);
+        }
+
+        while (allAnimalGO.Count > 0)
+        {
+            Destroy(allAnimalGO.Dequeue());
+        }
+    }
+
     /// <summary>
     /// Returns all the animals with the specified ItemName
     /// </summary>
@@ -135,7 +153,7 @@ public class Stable : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hay algo raro se ha salido un animal que no debería estar aquí.");
+                Debug.Log("Hay algo raro se ha salido un animal que no deberï¿½a estar aquï¿½.");
             }
             animalesReferecia.Remove(animal);
         }
@@ -151,7 +169,7 @@ public class Stable : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hay algo raro se ha salido un animal que no debería estar aquí.");
+            Debug.Log("Hay algo raro se ha salido un animal que no deberï¿½a estar aquï¿½.");
         }
 
     }

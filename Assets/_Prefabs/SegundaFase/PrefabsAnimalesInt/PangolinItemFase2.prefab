@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 2881116726443410501}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7181993, z: -0, w: 0.6958375}
-  m_LocalPosition: {x: -0.012, y: -0.15, z: -0.921}
+  m_LocalPosition: {x: -0.01, y: -0.15, z: -0.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -466,13 +466,13 @@ MonoBehaviour:
   hayComida: 0
   isHerbivore: 0
   estaEnfermo: 0
-  TiempoEnfermoHastaMorir: 30
+  TiempoEnfermoHastaMorir: 40
   tiempoEnfermo: 0
   isHappy: 0
   establo: {fileID: 0}
   stikersManager: {fileID: 475001849510169783}
   stickerLimpieza: {fileID: 8602960904664784601}
-  useEditorBehaviour: 1
+  useEditorBehaviour: 0
   behaviourRunner: {fileID: 8249677816440003835}
   navMeshAgent: {fileID: 3001176560405313657}
   dirtCreator: {fileID: 0}
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6643027423853108606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31611c27cbcd55946ba8409e8d0e8c0e, type: 3}
   m_Name: 
@@ -502,6 +502,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8867997848718819774}
     m_Modifications:
+    - target: {fileID: 710391939697284862, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 710391939697284862, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 643676205
+      objectReference: {fileID: 0}
     - target: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
       propertyPath: timeToFade
       value: 0
@@ -605,6 +613,14 @@ PrefabInstance:
     - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352940554585290290, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352940554585290290, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 643676205
       objectReference: {fileID: 0}
     - target: {fileID: 6022860188720524510, guid: 640a079c679f99640ac2072543d33055, type: 3}
       propertyPath: m_Name
@@ -728,6 +744,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8867997848718819774}
     m_Modifications:
     - target: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: timeToFade
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622047455787712044, guid: 640a079c679f99640ac2072543d33055, type: 3}
       propertyPath: fadeStickers
       value: 1
       objectReference: {fileID: 0}
@@ -809,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.7210002
+      value: 1.721
       objectReference: {fileID: 0}
     - target: {fileID: 3581978364150491139, guid: 640a079c679f99640ac2072543d33055, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -827,9 +847,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4777162321245762499, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6022860188720524510, guid: 640a079c679f99640ac2072543d33055, type: 3}
       propertyPath: m_Name
       value: CanvasLimpieza
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485655705721007727, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485655705721007727, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682700633761151994, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682700633761151994, guid: 640a079c679f99640ac2072543d33055, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
