@@ -1046,6 +1046,149 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466628466}
   m_CullTransparentMesh: 1
+--- !u!1 &1529764468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1529764471}
+  - component: {fileID: 1529764470}
+  - component: {fileID: 1529764469}
+  m_Layer: 0
+  m_Name: MusicaFondo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1529764469
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529764468}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -8755486067039987327, guid: c4a3bd065ac89f14dafc3bb2dc3451d1, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: f47268bc2ec7ec440ba8f26091043c91, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1529764470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529764468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1286950a3bd747c4682809489894406f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SonidoAReproducir: {fileID: 0}
+--- !u!4 &1529764471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529764468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 948.09375, y: 408.53516, z: -543.69836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1757749898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1299,6 +1442,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 123bff020848f2d4eabc38da25251a1c, type: 3}
+--- !u!1001 &2049608700
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5969.9224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -144.66537
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -363.3731
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521716594887493436, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930233053649512903, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+      propertyPath: m_Name
+      value: UIAudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+--- !u!114 &2049608701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3857477317531798857, guid: 883986afdcf2aaa41b58ee9140a13162, type: 3}
+  m_PrefabInstance: {fileID: 2049608700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c177aaa0744a7419d7024ab0964ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2105770685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,40 +1597,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: IslandSelectionUI
       objectReference: {fileID: 0}
-    - target: {fileID: 783028056922940829, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1441682816514333812, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.999939
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2440863599587652984, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -18.175964
+      value: -18.175781
       objectReference: {fileID: 0}
     - target: {fileID: 2440863599587652984, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -28.078918
+      value: -28.079285
       objectReference: {fileID: 0}
-    - target: {fileID: 5312059240659760943, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
-      propertyPath: m_text
-      value: Tutorial island for begginers. Take all the time you want to test the
-        different mechanics and controls.
+    - target: {fileID: 4975590788392594920, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4975590788392594920, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 5466145417189393789, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
       propertyPath: asyncLoader
       value: 
       objectReference: {fileID: 159537029}
-    - target: {fileID: 5725602144857598577, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
-      propertyPath: m_text
-      value: Difficult mode with randomized islands made for explorers. Play this
-        when you've grown tired of the adventure island.
-      objectReference: {fileID: 0}
-    - target: {fileID: 7533902627551062863, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
-      propertyPath: m_text
-      value: The classic mode. A unique island made with much love and care.
-      objectReference: {fileID: 0}
+    - target: {fileID: 5508190511377851415, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2049608701}
+    - target: {fileID: 7465205166713516451, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2049608701}
+    - target: {fileID: 7974107799646077001, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2049608701}
     - target: {fileID: 8896932178154241024, guid: 6ccd1c30767c4c344ad1e1f8fe1300b6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1520,3 +1733,5 @@ SceneRoots:
   - {fileID: 362884400}
   - {fileID: 159537030}
   - {fileID: 268653287}
+  - {fileID: 1529764471}
+  - {fileID: 2049608700}

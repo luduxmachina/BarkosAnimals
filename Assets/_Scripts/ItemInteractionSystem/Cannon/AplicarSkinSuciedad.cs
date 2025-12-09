@@ -12,21 +12,29 @@ public class AplicarSkinSuciedad : MonoBehaviour
     float suciedadFinal = 1f;
     [SerializeField]
     float suciedadInicio = 0.0f;
+    [SerializeField]
     float lastAppliedSuciedad = 0f;
     void Update()
     {
         float sucideadNormalizada = animalFase2.TimeWithoutShower();
-        if(sucideadNormalizada < empieceAplicarSuciedad)
+       if(sucideadNormalizada < empieceAplicarSuciedad)
         {
-            if(lastAppliedSuciedad != 0f)
+            sucideadNormalizada = 0f;
+            if(lastAppliedSuciedad == 0f)
             {
-                lastAppliedSuciedad = 0f;
-                rendererAnimal.material.SetFloat("Suciedad", 0);
+                return;
             }
-        }
-        sucideadNormalizada = Mathf.Clamp(sucideadNormalizada, suciedadInicio, suciedadFinal);
+            rendererAnimal.material.SetFloat("_Suciedad", sucideadNormalizada);
+            lastAppliedSuciedad = sucideadNormalizada;
 
-        rendererAnimal.material.SetFloat("_Suciedad", sucideadNormalizada);
-        lastAppliedSuciedad = sucideadNormalizada;
+        }
+        else
+        {
+
+            sucideadNormalizada = Mathf.Clamp(sucideadNormalizada, suciedadInicio, suciedadFinal);
+
+            rendererAnimal.material.SetFloat("_Suciedad", sucideadNormalizada);
+            lastAppliedSuciedad = sucideadNormalizada;
+        }
     }
 }
