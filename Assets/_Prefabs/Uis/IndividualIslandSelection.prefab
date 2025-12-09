@@ -305,9 +305,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2575005614320577382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1290, y: -513}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 330, y: 27}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5114254411955576654
@@ -1412,9 +1412,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e7f051395cec3469bed499b71551f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  islandNameText: {fileID: 2232041293935243967}
-  islandPreviewImage: {fileID: 7624413291193593173}
-  itemPreviewPrefab: {fileID: 4595338985945932988, guid: 1670a163718dc7e4faabec8d3c8eafd1, type: 3}
-  animalPreviewParent: {fileID: 8143650810046713174}
-  selectButton: {fileID: 7033496073445477553}
-  selectedText: {fileID: 7825016937364572786}
