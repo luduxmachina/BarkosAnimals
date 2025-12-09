@@ -65,9 +65,7 @@ public class Stable : MonoBehaviour
     public int GetAnimalsInEstable()
     {
         int numAnimales = 0;
-        foreach (ItemNames animName in animalesEstablo.Keys) {
-            numAnimales += animalesEstablo[animName];
-        }
+        numAnimales = animalesReferecia.Count;
 
         return numAnimales;
     }

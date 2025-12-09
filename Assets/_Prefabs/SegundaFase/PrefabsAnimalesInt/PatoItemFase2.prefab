@@ -119,6 +119,7 @@ MonoBehaviour:
   empieceAplicarSuciedad: 0.2
   suciedadFinal: 1
   suciedadInicio: 0
+  lastAppliedSuciedad: 0
 --- !u!1 &2353041292150400715
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,18 +431,18 @@ MonoBehaviour:
   CMax: 3
   DMax: 2
   depredadoresCerca: 0
-  suciedadMaxima: 20
+  suciedadMaxima: 40
   tiempoHastaSucio: 0.3
   suciedad: 0
   tiempoSinLimpiar: 0
   rangoSuciedad: 5
   suciedadQueQuita: 10
-  MaxSinComer: 20
+  MaxSinComer: 40
   tiempoSinComer: 0
   hayComida: 0
   isHerbivore: 0
   estaEnfermo: 0
-  TiempoEnfermoHastaMorir: 10
+  TiempoEnfermoHastaMorir: 20
   tiempoEnfermo: 0
   isHappy: 0
   establo: {fileID: 0}
