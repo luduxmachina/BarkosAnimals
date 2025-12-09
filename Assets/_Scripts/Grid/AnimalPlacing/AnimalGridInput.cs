@@ -20,6 +20,8 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+        
+        lastMousePos = new Vector3(999f, 999f, 999f);
     }
     
     private void Start()
@@ -36,7 +38,7 @@ public class AnimalGridInput : MonoBehaviour, IGridInput
             return;
         
         //////////////////// TESTEO ////////////////////
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
             OnClick?.Invoke();
 
         // if (Input.GetKeyDown(KeyCode.Escape))
