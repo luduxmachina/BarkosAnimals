@@ -31,6 +31,10 @@ public class MenuPause : MonoBehaviour
         exitUIACtion.performed += ctx => OnResume?.Invoke();
 
     }
+    public static void ResumeStatic()
+    {
+        OnResume?.Invoke();
+    }
 
     private void OnEnable()
     {
