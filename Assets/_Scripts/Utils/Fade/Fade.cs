@@ -16,6 +16,7 @@ public class Fade : MonoBehaviour
     [ReadOnly]
     public float timeElapsed;
     public bool destroyOnFinished;
+    public bool deactivateOnFinished;
     private Image fadeImage;
     void Awake()
     {
@@ -63,7 +64,11 @@ public class Fade : MonoBehaviour
             }
             else
             {
-                this.gameObject.SetActive(false);
+                if (deactivateOnFinished)
+                {
+                    this.gameObject.SetActive(false);
+
+                }
             }
         }
     }

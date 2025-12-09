@@ -22,7 +22,7 @@ public class ShowFadeWithTimer : MonoBehaviour
     }
     private void TimeOut()
     {
-        timeUntilFade = phaseTimer.TimesUpDuration - fade.timeToFade;
+        timeUntilFade = phaseTimer.TimesUpDuration - fade.timeToFade - 0.1f;
         timeUp = true;
     }
     private void Update()
