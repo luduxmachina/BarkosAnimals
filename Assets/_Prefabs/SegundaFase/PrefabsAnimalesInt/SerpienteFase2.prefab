@@ -211,6 +211,7 @@ MonoBehaviour:
   empieceAplicarSuciedad: 0.2
   suciedadFinal: 1
   suciedadInicio: 0
+  lastAppliedSuciedad: 0
 --- !u!1 &6544289954468732073
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,13 +492,13 @@ MonoBehaviour:
   CMax: 3
   DMax: 2
   depredadoresCerca: 0
-  suciedadMaxima: 60
+  suciedadMaxima: 80
   tiempoHastaSucio: 5
   suciedad: 0
   tiempoSinLimpiar: 0
   rangoSuciedad: 0
   suciedadQueQuita: 10
-  MaxSinComer: 15
+  MaxSinComer: 35
   tiempoSinComer: 0
   hayComida: 0
   isHerbivore: 0
