@@ -80,6 +80,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-2155295815452789619
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Paginas
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 9c151927042f1a849b8a1018aa4ec6f2
+  m_Children: []
+  m_Volume: 0ec0e8e1e1ba2384299520822db768b6
+  m_Pitch: 4cd8fc6902132be488f108ca7e7d712c
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -359992879762465389}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-1807005020544122511
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -89,7 +108,8 @@ AudioMixerGroupController:
   m_Name: UI
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 40c208397d298974e84088f69bf8943b
-  m_Children: []
+  m_Children:
+  - {fileID: -2155295815452789619}
   m_Volume: cd5a878586d790840b2b1172bdcf2c14
   m_Pitch: 7d5ac177a5a1a5a4e897639169c7a9f2
   m_Send: 00000000000000000000000000000000
@@ -99,6 +119,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-359992879762465389
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 544e99aeb3ac64e40bc049eefb0777bb
+  m_EffectName: Attenuation
+  m_MixLevel: 7c9c4ee7dabedd745a5a87fdc8b0a1cd
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -126,6 +160,7 @@ AudioMixerController:
     - cca23c559c34fee41a079eca1758a592
     - 68900f810396dca41b1af830d7b523d5
     - ccb6676822b1a9142b91b81675701754
+    - 9c151927042f1a849b8a1018aa4ec6f2
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -175,6 +210,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: b8f81208dc5d764438bda24586820c30
   m_FloatValues:
+    0ec0e8e1e1ba2384299520822db768b6: 20
     36256929d17d1b94980efd5324d83d78: -1.7612991
     b675b88c4857083478beb70e06dd8546: -4.560346
     9590253da6c6d9c498ee5234d9c94b69: 10.334252
