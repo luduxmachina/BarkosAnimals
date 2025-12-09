@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CuotaFinal : MonoBehaviour, QuotaUiInterface
 {
@@ -10,6 +11,9 @@ public class CuotaFinal : MonoBehaviour, QuotaUiInterface
 
     [SerializeField]TextMeshProUGUI textoQuotaPassed;
     [SerializeField] TextMeshProUGUI textoQuotaFailed;
+
+
+    [SerializeField] UnityEvent OnQuotaPassed = new();
 
     int _quota = 0;
     int Quota
@@ -54,13 +58,14 @@ public class CuotaFinal : MonoBehaviour, QuotaUiInterface
         QuotaPassed = quotaPassed.QuotaValue;
         if (!mostrarQuotaNecesaria)Quota = QuotaPassed;
 
-        if (QuotaPassed < Quota)
+        if (QuotaPassed <= 0)
         {
             textoQuotaFailed.text = $"No has alcanzado la cuota te has quedado a: {(Quota - QuotaPassed).ToString()}";
         }
         else
         {
             textoQuotaFailed.text = "¡Lo has conseguido!";
+            OnQuotaPassed.Invoke();
         }
     }
 }

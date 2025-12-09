@@ -397,7 +397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -629, y: 437}
+  m_AnchoredPosition: {x: -614, y: -219}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &175365653 stripped
@@ -649,6 +649,7 @@ RectTransform:
   - {fileID: 1902633158}
   - {fileID: 1618754578}
   - {fileID: 154073705}
+  - {fileID: 1093119941}
   - {fileID: 1827894860}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -673,6 +674,33 @@ MonoBehaviour:
   textoQuota: {fileID: 0}
   textoQuotaPassed: {fileID: 1618754579}
   textoQuotaFailed: {fileID: 154073703}
+  OnQuotaPassed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1093119940}
+        m_TargetAssemblyTypeName: MetaCoinAdder, Assembly-CSharp
+        m_MethodName: AddMetaCoin
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1827894859}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &374904077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7177795abb75704ba93831d8aec99ef, type: 3}
@@ -2252,7 +2280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316a3afbb44f56f489a9c8050e444968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addMetaCoinsOnStart: 1
+  addMetaCoinsOnStart: 0
   metaCoinsToAddOnStart: 1
 --- !u!4 &1093119941
 Transform:
@@ -2263,11 +2291,11 @@ Transform:
   m_GameObject: {fileID: 1093119939}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 453.02936, y: 224.70528, z: 73.46108}
-  m_LocalScale: {x: 0.7551132, y: 1.1357145, z: 0.7551132}
+  m_LocalPosition: {x: 2796.245, y: 1032.5598, z: 369.50925}
+  m_LocalScale: {x: 3.7982194, y: 3.7982194, z: 3.7982194}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1827894860}
+  m_Father: {fileID: 296831801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1187801243
 PrefabInstance:
@@ -3760,7 +3788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1827894860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3770,12 +3798,11 @@ RectTransform:
   m_GameObject: {fileID: 1827894859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.03, y: 3.3443434, z: 5.03}
+  m_LocalScale: {x: 5.56, y: 3.6967294, z: 5.56}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1484702701}
   - {fileID: 1293861445}
-  - {fileID: 1093119941}
   m_Father: {fileID: 296831801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3803,7 +3830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2080273929, guid: e1424ad8fa9bc884ca45f159087f21a8, type: 3}
+  m_Sprite: {fileID: 1095806911, guid: e1424ad8fa9bc884ca45f159087f21a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
