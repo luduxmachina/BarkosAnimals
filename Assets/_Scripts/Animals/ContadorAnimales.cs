@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class ContadorAnimales : MonoBehaviour
 {
 
-    [SerializeField]UnityEvent OnNoAnimals;
+    [SerializeField]UnityEvent OnNoAnimals = new();
     bool animalesColocados = false;
 
     public void checkCuoteWithOnlySecondFase()
