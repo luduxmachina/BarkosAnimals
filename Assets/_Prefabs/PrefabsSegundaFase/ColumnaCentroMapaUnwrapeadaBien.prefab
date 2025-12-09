@@ -9,16 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7442
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7442001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.19836
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5735.49
+      value: 9.439323
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -94.55711
+      value: -15.932544
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -180.8819
+      value: -18.939991
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -56,8 +68,60 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColumnaCentroMapaUnwrapeadaBien
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2962856756482511448}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2728583396337236491}
   m_SourcePrefab: {fileID: 100100000, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+--- !u!1 &7880605535525774429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e61a6c61efbf8e429befcbdfb846b7a, type: 3}
+  m_PrefabInstance: {fileID: 7033744292106508556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2962856756482511448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7880605535525774429}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5798836, y: 0.5800001, z: 2.5617068}
+  m_Center: {x: -0.2929886, y: 0.28984335, z: 1.2808534}
+--- !u!208 &2728583396337236491
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7880605535525774429}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.29000002, y: 0.29000002, z: 1.281}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.293, y: 0.29000002, z: 1.281}
+  m_TimeToStationary: 0.5
