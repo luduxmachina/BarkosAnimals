@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,6 +27,10 @@ public class CuotaFinal : MonoBehaviour, QuotaUiInterface
     }
 
     int _quotaPassed = 0;
+    Dictionary<ItemNames, int> _itemsCollected = new Dictionary<ItemNames, int>();
+    Dictionary<ItemNames, int> _pointsPerItems = new Dictionary<ItemNames, int>();
+    int plusHappiness = 0;
+
     int QuotaPassed
     {
         get { return _quotaPassed; }
