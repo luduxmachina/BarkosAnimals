@@ -2298,6 +2298,7 @@ GameObject:
   - component: {fileID: 1741536026}
   - component: {fileID: 1741536025}
   - component: {fileID: 1741536027}
+  - component: {fileID: 1741536028}
   m_Layer: 0
   m_Name: MUteCOntrollerextra por cojnes
   m_TagString: Untagged
@@ -2346,6 +2347,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: c4a3bd065ac89f14dafc3bb2dc3451d1, type: 2}
+--- !u!114 &1741536028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741536024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2bf4d805bacdb40bfd2c8d764c6d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1851656179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +2812,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

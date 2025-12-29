@@ -4216,6 +4216,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 671074243426453824, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127478405119801806, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 5046930817308770704, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5149169051916802253, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6615219840054943829, guid: df8e8ace2fed07b46b1c72d6c5883518, type: 3}
       propertyPath: m_Name
       value: CarroInScene
@@ -9088,42 +9104,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1348671552598699015, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348671552598699015, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348671552598699015, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348671552598699015, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 92.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348671552598699015, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 380.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348671552598699015, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4583319270445654110, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5434525739217082019, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: phaseDuration
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 5434525739217082019, guid: 9c57604d192237647b917c8d76934251, type: 3}
-      propertyPath: TimesUpDuration
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6364024094722650579, guid: 9c57604d192237647b917c8d76934251, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9207,6 +9187,10 @@ PrefabInstance:
     - target: {fileID: 7080906343076557771, guid: 9c57604d192237647b917c8d76934251, type: 3}
       propertyPath: m_Name
       value: TimeRemainingUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789377264091827598, guid: 9c57604d192237647b917c8d76934251, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40.00049
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9586,25 +9570,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4305342630029353939, guid: 2f7f3dde7ae722a4aafffe20691ad702, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -227.2002
-      objectReference: {fileID: 0}
     - target: {fileID: 6751388636123340836, guid: 2f7f3dde7ae722a4aafffe20691ad702, type: 3}
       propertyPath: m_Name
       value: UI_Canvas_StarterAssetsInputs_Joysticks
-      objectReference: {fileID: 0}
-    - target: {fileID: 6751388636123340836, guid: 2f7f3dde7ae722a4aafffe20691ad702, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8734538516869120350, guid: 2f7f3dde7ae722a4aafffe20691ad702, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -119.6001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8734538516869120350, guid: 2f7f3dde7ae722a4aafffe20691ad702, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 254.90002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
