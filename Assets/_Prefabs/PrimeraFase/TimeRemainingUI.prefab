@@ -58,13 +58,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c296bdd85f04ee04e9a63cb208fff90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseDuration: 60
+  OnForwardTime:
+    m_PersistentCalls:
+      m_Calls: []
+  phaseDuration: 180
   timeRemaining: 0
   timeElapsed: 0
   OnTimesUp:
     m_PersistentCalls:
-      m_Calls: []
-  TimesUpDuration: 5
+      m_Calls:
+      - m_Target: {fileID: 1350663446848591974}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  TimesUpDuration: 10
   TimesUpUI: {fileID: 1350663446848591974}
   StartOnStart: 1
   timeRunning: 0
@@ -158,12 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -264,7 +279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8381699142263522809, guid: 72c392f78f2cf944da4f555b09b1585f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -40
+      value: -39.99994
       objectReference: {fileID: 0}
     - target: {fileID: 8381699142263522809, guid: 72c392f78f2cf944da4f555b09b1585f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -342,6 +357,18 @@ PrefabInstance:
       value: 142
       objectReference: {fileID: 0}
     - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -371,11 +398,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 337
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 957
+      value: 525
       objectReference: {fileID: 0}
     - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -388,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572669921924672383, guid: 2a2d2af74687f31409d1bd7098453a04, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
