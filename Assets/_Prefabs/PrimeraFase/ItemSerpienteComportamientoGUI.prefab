@@ -333,6 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e40b8ff817f03145990ae7af3061b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableNavMeshAgentOnGrab: 1
+  disableBehavioursOnGrab: 1
   grabbedMaterial: {fileID: 0}
   OnGrab:
     m_PersistentCalls:
@@ -370,6 +372,8 @@ MonoBehaviour:
   thisGrabber: {fileID: 4619967496434055288}
   stuntTime: 2
   tiempoDescanso: 5
+  tiempoTrasAtacar: 0.75
+  stickersManager: {fileID: 0}
 --- !u!114 &9200495664981229500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,6 +1152,7 @@ MonoBehaviour:
         maxTimeRunning: 0
         animalContext: {fileID: 0}
         angulo: -30
+        targetDistance: 6
     - rid: 8790748605630906542
       type: {class: FleeActionNoRecto, ns: BehaviourAPI.UnityToolkit, asm: Assembly-CSharp}
       data:
@@ -1157,6 +1162,7 @@ MonoBehaviour:
         maxTimeRunning: 0
         animalContext: {fileID: 0}
         angulo: 30
+        targetDistance: 6
     - rid: 8790748605630906543
       type: {class: FleeAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
