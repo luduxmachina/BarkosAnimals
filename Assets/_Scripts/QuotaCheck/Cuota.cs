@@ -25,6 +25,12 @@ public struct RestrictionTupple
     public int value;
 }
 
+public struct InfoAnim
+{
+    public ItemNames animal;
+    public bool isHappy;
+}
+
 [Serializable]
 public class Quota: ISerializationCallbackReceiver
 {
@@ -53,6 +59,8 @@ public class Quota: ISerializationCallbackReceiver
 
     public int this[Restriction restriction] => restrictions[restriction];
 
+    public List<InfoAnim> animalesRegistrados = new List<InfoAnim>();
+
     public void OnAfterDeserialize()
     {
 
@@ -70,7 +78,7 @@ public class Quota: ISerializationCallbackReceiver
 
 
 
-Dictionary<Restriction, int> restrictions;
+    Dictionary<Restriction, int> restrictions;
     public Dictionary<Restriction, int> Restrictions {
         get { return restrictions; }
     }
@@ -124,6 +132,14 @@ Dictionary<Restriction, int> restrictions;
     public void RemovePoints(int points)
     {
         this.quotaValue -= points;
+    }
+
+    public void AddAnimalAndHappiness(ItemNames animal, bool isHappy)
+    {
+        InfoAnim infoAnim = new InfoAnim();
+        infoAnim.animal = animal;
+        infoAnim.isHappy = isHappy;
+        animalesRegistrados.Add(infoAnim);
     }
 
     public void AddRestictionPassed(Restriction restriction, int number)
