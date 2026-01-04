@@ -69,7 +69,7 @@ public class AAnimalFase2: AAnimal
     [SerializeField] DirtCreator dirtCreator;
 
     bool comederoAsignado = false;
-    Transform comederoActual;
+    int comederoActual;
 
     bool estaEnFase = false;
 
@@ -179,9 +179,8 @@ public class AAnimalFase2: AAnimal
         {
             if (comederoAsignado)
             {
-                return comederoActual;
+                comederoActual = establo.GetComedero(comederoActual);
             }
-            comederoActual = establo.GetComedero();
             comederoAsignado = true;
             return establo.GetComedero();
         }
@@ -259,6 +258,7 @@ public class AAnimalFase2: AAnimal
         return Status.Running;
     }
 
+    /**
     public Status UpdateComerComidaNoDesaparece()
     {
         if (establo == null)
@@ -320,6 +320,7 @@ public class AAnimalFase2: AAnimal
         }
         return Status.Running;
     }
+    /**/
 
     public override Status MoveTowardsObjective()
     {

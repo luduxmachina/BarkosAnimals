@@ -10,30 +10,19 @@ public class Stable : MonoBehaviour
     Dictionary<ItemNames, int> animalesEstablo = new Dictionary<ItemNames, int>();
     public List<AAnimalFase2> animalesReferecia = new List<AAnimalFase2>();
 
-    [SerializeField] RecipientController comedero;
+    //[SerializeField] RecipientController comedero;
+
+    [SerializeField]List<RecipientController> comederos = new List<RecipientController>();
     
     public static List<Stable> allStables = new List<Stable>();
 
     private void OnEnable()
     {
         allStables.Add(this);
-        comedero.ahoraHayComida.AddListener(HayComida);
-        comedero.ahoraNoHayComida.AddListener(NoHayComida);
-    }
-
-    public void HayComida()
-    {
-        Console.WriteLine("Llama a hay comida");
-        foreach (AAnimalFase2 animal in animalesReferecia)
+        foreach (RecipientController c in comederos)
         {
-            animal.ChangeEatingAction(comedero.CreateGraph(animal));
-        }
-    }
-    public void NoHayComida()
-    {
-        foreach (AAnimalFase2 animal in animalesReferecia)
-        {
-            animal.ChangeEatingAction(null);
+            c.ahoraHayComida.AddListener(HayComida);
+            c.ahoraNoHayComida.AddListener(NoHayComida);
         }
     }
 
@@ -50,7 +39,7 @@ public class Stable : MonoBehaviour
         foreach (var animal in animalesReferecia)
         {
             GameObject animalGO = animal.transform.parent.gameObject;
-            if(animalGO != null)
+            if (animalGO != null)
                 allAnimalGO.Enqueue(animalGO);
         }
 
@@ -60,6 +49,36 @@ public class Stable : MonoBehaviour
         }
     }
 
+    #region Comedero
+    public void HayComida()
+    {
+        Console.WriteLine("Llama a hay comida");
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            animal.ChangeEatingAction(comederos[0].CreateGraph(animal));
+        }
+    }
+    public void NoHayComida()
+    {
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            animal.ChangeEatingAction(null);
+        }
+    }
+
+    public Transform GetComedero(int i)
+    {
+        return comederos[i].GetTransfToEat();
+    }
+
+    public bool HayComida(ItemNames[] comidasPosibles)
+    {
+        return comedero.HayComida(comidasPosibles);
+    }
+
+    #endregion
+
+    #region Animales
     /// <summary>
     /// Returns all the animals with the specified ItemName
     /// </summary>
@@ -126,12 +145,6 @@ public class Stable : MonoBehaviour
         }
         return null;
     }
-    
-
-    public Transform GetComedero()
-    {
-        return comedero.gameObject.transform;
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -150,11 +163,6 @@ public class Stable : MonoBehaviour
             animal.SetEstablo(this);
             animalesReferecia.Add(animal);
         }
-    }
-
-    public bool HayComida(ItemNames[] comidasPosibles)
-    {
-        return comedero.HayComida(comidasPosibles);
     }
 
     void OnTriggerExit(Collider other)
@@ -190,4 +198,5 @@ public class Stable : MonoBehaviour
         }
 
     }
+    #endregion
 }

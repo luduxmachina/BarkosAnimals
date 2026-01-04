@@ -8,14 +8,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-[Serializable]
-public struct ComidaYComedero
-{
-    public ItemNames tipoComida;
-    public GameObject comedero;
-}
 
-public class RecipientController : MonoBehaviour
+public class MultipleRecipientController : MonoBehaviour
 {
     [SerializeField] int maxStacksFood = 3;
     [SerializeField, ReadOnly] int comidaStacks = 0;
@@ -57,7 +51,7 @@ public class RecipientController : MonoBehaviour
             else
             {
                 comidaStacks = 1;
-                ahoraHayComida.Invoke(this);
+                ahoraHayComida.Invoke();
                 Debug.Log("Llama a ahora hay comida");
                 foreach (ComidaYComedero comedero in comidaYComederoList)
                 {
