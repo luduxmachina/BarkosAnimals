@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShelySheep
+  m_Name: BirdTextura
   m_Shader: {fileID: -6465566751694194690, guid: 0de7bd1b5629b6f45aed02623c8356a2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,11 +38,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: e66cf83637f3ed14d86ad332f3a65e15, type: 3}
+        m_Texture: {fileID: 2800000, guid: e5cd7c44219f6e84584c5cbc68a59b8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoDirty:
-        m_Texture: {fileID: 2800000, guid: 9e619b098f332014fb64e20c7bfec47c, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7d78c50ace4eee46b59c465b74176a9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlbedoDirty_1:
@@ -50,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: 0526c5b34ebb46a4098f0d449f56ffdd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 98d7155085fea034487911d681222709, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMapDIrt:
@@ -58,11 +58,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMapDirt:
-        m_Texture: {fileID: 2800000, guid: 2cc993e5018faaa4c8d42a065a08c852, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2f8d2c158bdd0ea49bb9b4065cba2294, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 18c60ad72b4835f4c8d1f337cdd6c0ef, type: 3}
+        m_Texture: {fileID: 2800000, guid: b9e91fdbc97d97c46a19f047974e565e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalDirt:
@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalDirty:
-        m_Texture: {fileID: 2800000, guid: 61363dd923ffa5248ae5408078102cb7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6be8b62596695f64296207ce169d25a5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normal:
@@ -91,14 +91,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CantidadEmocion: 0
     - _Enfado: 0
     - _Factor: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Suciedad: 1
-    m_Colors:
-    - _Color: {r: 0.048757076, g: 0, b: 1, a: 0}
-    - _ColorEmocion: {r: 1, g: 0, b: 0, a: 0}
+    - _Suciedad: 0
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
