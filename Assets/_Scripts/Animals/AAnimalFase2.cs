@@ -1,4 +1,5 @@
 using BehaviourAPI.Core;
+using BehaviourAPI.Core.Actions;
 using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using NUnit.Framework;
@@ -67,13 +68,14 @@ public class AAnimalFase2: AAnimal
     [SerializeField] Predicate<float> funcionFelicidad;
     [SerializeField] DirtCreator dirtCreator;
 
+    bool comederoAsignado = false;
+    Transform comederoActual;
+
     bool estaEnFase = false;
 
     #region Monobehavior
     protected override void Awake()
     {
-
-
         List<ItemNames> list = objectives.ToList();
         if (list.Contains(ItemNames.Bread))
         {
@@ -109,7 +111,7 @@ public class AAnimalFase2: AAnimal
         if (suciedad <= suciedadMaxima && tiempoSinLimpiar >= tiempoHastaSucio)
         {            
             suciedad += dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f);
-            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, rangoSuciedad)} y tiene suciedad de {suciedad}");
+            //Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, rangoSuciedad)} y tiene suciedad de {suciedad}");
             tiempoSinLimpiar = 0f;
         }
         tiempoSinLimpiar += Time.deltaTime;
@@ -175,6 +177,12 @@ public class AAnimalFase2: AAnimal
     {
         if (TieneComidaEnEstablo())
         {
+            if (comederoAsignado)
+            {
+                return comederoActual;
+            }
+            comederoActual = establo.GetComedero();
+            comederoAsignado = true;
             return establo.GetComedero();
         }
         if(establo.GetAnimalsInEstable(objectives) > 0)
@@ -208,6 +216,68 @@ public class AAnimalFase2: AAnimal
 
         Transform newObjetive = GetClosestObjetive();
         if(!newObjetive == lastObjectve) return Status.Failure;
+
+        if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.75) //alguien ha movido la comida o al animal y ya no esta comiendo lol
+        {
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+
+            return Status.Failure;
+        }
+
+        tiempoComiendo += Time.deltaTime;
+        if (tiempoComiendo >= tiempoEnComer)
+        {
+            var temp = lastObjectve.GetComponentInChildren<RecipientController>();
+            if (temp) //se lo va a comer lit
+            {
+                temp.RemoveStack(objectives);
+                tiempoSinComer = 0f;
+            }
+            else
+            {
+                var temp2 = lastObjectve.GetComponentInChildren<ItemInScene>();
+                if (temp2) //se lo va a comer lit
+                {
+                    temp2.ReduceByOne();
+                    tiempoSinComer = 0f;
+                }
+            }
+
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+            return Status.Success;
+        }
+        return Status.Running;
+    }
+
+    public Status UpdateComerComidaNoDesaparece()
+    {
+        if (establo == null)
+        {
+            Debug.LogWarning("El pato no está en ningún establo");
+            return Status.Failure;
+        }
+
+        if (lastObjectve == null)
+        {
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+
+            return Status.Failure;
+        }
 
         if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.75) //alguien ha movido la comida o al animal y ya no esta comiendo lol
         {
@@ -432,6 +502,22 @@ public class AAnimalFase2: AAnimal
     {
         return (Mathf.Log10(x + 1)/Mathf.Log10(2))
             /(Mathf.Log10(DMax - 1)/Mathf.Log10(2));
+    }
+
+    public void ChangeEatingAction(BehaviourGraph behaviourGraph)
+    {
+        Debug.Log("Llega a el cambio de la acción de comer");
+        BehaviourAPI.Core.Actions.Action action = null;
+        AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
+        if (sistUtil)
+        {
+            if (behaviourGraph == null)
+            {
+                action = new SimpleAction(() => { Console.WriteLine("Accion actual es descansar."); });
+            }
+            action = new SubsystemAction(behaviourGraph);
+            sistUtil.SetEatAction(action);
+        }
     }
     #endregion
 

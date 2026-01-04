@@ -17,7 +17,26 @@ public class Stable : MonoBehaviour
     private void OnEnable()
     {
         allStables.Add(this);
+        comedero.ahoraHayComida.AddListener(HayComida);
+        comedero.ahoraNoHayComida.AddListener(NoHayComida);
     }
+
+    public void HayComida()
+    {
+        Console.WriteLine("Llama a hay comida");
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            animal.ChangeEatingAction(comedero.CreateGraph(animal));
+        }
+    }
+    public void NoHayComida()
+    {
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            animal.ChangeEatingAction(null);
+        }
+    }
+
     private void OnDisable()
     {
         allStables.Remove(this);

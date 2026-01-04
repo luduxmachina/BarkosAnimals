@@ -52,13 +52,13 @@ public class CuotaFinal : MonoBehaviour, QuotaUiInterface
         //Se puede hacer que se actualize el manager.
     }
 
-    public void ShowAnimals(Quota quotaPassed)
-    {
-        foreach(InfoAnim anim in quotaPassed.animalesRegistrados)
-        {
-            
-        }
-    }
+    //public void ShowAnimals(Quota quotaPassed)
+    //{
+    //    foreach(InfoAnim anim in quotaPassed.animalesRegistrados)
+    //    {
+    //        
+    //    }
+    //}
 
     private void Start()
     {
