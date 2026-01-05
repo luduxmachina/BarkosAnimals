@@ -133,15 +133,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.767
+      value: -8.31
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0000005
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.28
+      value: 6.86
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -176,6 +176,101 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
+--- !u!1 &204359731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204359733}
+  - component: {fileID: 204359732}
+  m_Layer: 0
+  m_Name: navmesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &204359732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204359731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: dd788272a587752468e4af9d6006dc9c, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &204359733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204359731}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6643357, y: 11.07335, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &227181089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227181090}
+  m_Layer: 0
+  m_Name: WP (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &227181090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227181089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.84538, y: 0, z: -13.919569}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1299389020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &329499035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,23 +362,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.7065463
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.7065463
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.028149273
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.028149273
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -291,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 4.563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -318,6 +413,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 427585085}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427585088}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427585087}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427585086}
   m_SourcePrefab: {fileID: 100100000, guid: 36896cf110b2f7844a42666ddc8d3eec, type: 3}
 --- !u!1 &427585079 stripped
 GameObject:
@@ -348,6 +452,22 @@ MonoBehaviour:
       graph:
         rid: 5649168775563444292
       nodes:
+      - name: PajaroLibre
+        id: 21d81df7-58ac-4846-8b03-ff609859330c
+        position: {x: 368, y: 296}
+        node:
+          rid: 5649168775563444310
+        references:
+        - fieldName: Action
+          value:
+            rid: 5649168775563444311
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - dd20201c-feb0-4e0a-90f8-ed088e674d3c
+        childIds:
+        - e26ec908-8152-452e-b559-958002ff41c3
+        - 69c8e959-092b-4ea8-b963-ec569df887c5
       - name: PajaroCogido
         id: 962c687d-76a8-42a6-8e7d-a78ae1c1b8e4
         position: {x: 1004.8, y: 251.19998}
@@ -356,7 +476,7 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 1030177649191813188
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
@@ -371,44 +491,13 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 1030177649191813189
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
         - 69c8e959-092b-4ea8-b963-ec569df887c5
-        childIds:
-        - 5ca739dc-0ea0-4611-9334-aafe05ba4416
-      - name: SalirDeNido
-        id: d6b49162-cb5e-4e0b-b4fd-fd0a3b3ccbcb
-        position: {x: 1028, y: -132.8}
-        node:
-          rid: 5649168775563444295
-        references:
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 5ca739dc-0ea0-4611-9334-aafe05ba4416
         childIds:
         - 2192fd08-ebfc-427e-a7e6-0ccf9ae6019a
-      - name: PajaroLibre
-        id: 21d81df7-58ac-4846-8b03-ff609859330c
-        position: {x: 344, y: 251.19998}
-        node:
-          rid: 5649168775563444310
-        references:
-        - fieldName: Action
-          value:
-            rid: 5649168775563444311
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - dd20201c-feb0-4e0a-90f8-ed088e674d3c
-        childIds:
-        - e26ec908-8152-452e-b559-958002ff41c3
-        - 69c8e959-092b-4ea8-b963-ec569df887c5
       - name: Atrapado
         id: e26ec908-8152-452e-b559-958002ff41c3
         position: {x: 672.8, y: 126.4}
@@ -457,7 +546,7 @@ MonoBehaviour:
         references:
         - fieldName: Perception
           value:
-            rid: -2
+            rid: 1030177653257142340
           fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         - fieldName: Action
@@ -469,15 +558,15 @@ MonoBehaviour:
         - 21d81df7-58ac-4846-8b03-ff609859330c
         childIds:
         - cbab071b-7b11-4f82-9b3e-30fc83b12bef
-      - name: NoVePeligroPUSH
-        id: 5ca739dc-0ea0-4611-9334-aafe05ba4416
-        position: {x: 730.4, y: -140.79999}
+      - name: SalirNidoPOP
+        id: 2192fd08-ebfc-427e-a7e6-0ccf9ae6019a
+        position: {x: 706.6667, y: -150}
         node:
-          rid: 5649168775563444315
+          rid: 5649168775563444316
         references:
         - fieldName: Perception
           value:
-            rid: -2
+            rid: 1030177653257142341
           fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         - fieldName: Action
@@ -487,60 +576,24 @@ MonoBehaviour:
             Culture=neutral, PublicKeyToken=null
         parentIds:
         - cbab071b-7b11-4f82-9b3e-30fc83b12bef
-        childIds:
-        - d6b49162-cb5e-4e0b-b4fd-fd0a3b3ccbcb
-      - name: NoEstaEnNidoPOP
-        id: 2192fd08-ebfc-427e-a7e6-0ccf9ae6019a
-        position: {x: 1326.4, y: -145.6}
-        node:
-          rid: 5649168775563444316
-        references:
-        - fieldName: Perception
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - d6b49162-cb5e-4e0b-b4fd-fd0a3b3ccbcb
         childIds: []
     - name: SubGraphPajaroLibre
       id: c5275902-2caa-42ae-9cd0-1b615e920c28
       graph:
         rid: 5649168775563444296
       nodes:
-      - name: AcercarseANido
-        id: 89c35194-c2eb-48b4-bb35-e0dd1793d22b
-        position: {x: 677.6, y: 72.799995}
-        node:
-          rid: 5649168775563444297
-        references:
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds: []
-        childIds:
-        - 3daeba06-4b12-475d-a9fd-04617ec4bd12
       - name: PatruyandoNido
         id: 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
-        position: {x: 676.8, y: 518.4}
+        position: {x: 693.3333, y: 534.6666}
         node:
           rid: 5649168775563444298
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 1030177649191813216
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
-        - 3daeba06-4b12-475d-a9fd-04617ec4bd12
-        - 5630e946-4715-4bd4-80f5-f2085c6fa914
         - ae160892-720a-4857-9ac9-5895191dc2e6
         - 16de80df-d712-4c91-8ca7-e775367a9d06
         childIds:
@@ -553,74 +606,38 @@ MonoBehaviour:
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 1030177649191813220
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
         - 43bf2e53-84ff-4794-91c8-30d7c60456a5
-        - f50664f6-217f-4d1f-adb7-6a4caad5356a
         childIds:
         - 16de80df-d712-4c91-8ca7-e775367a9d06
-      - name: DejarComida
-        id: b959f5fb-edcf-43da-bcce-0cef944e6ead
-        position: {x: 1020, y: 861.60004}
-        node:
-          rid: 5649168775563444301
-        references:
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds: []
-        childIds:
-        - f50664f6-217f-4d1f-adb7-6a4caad5356a
-        - 5630e946-4715-4bd4-80f5-f2085c6fa914
       - name: AcercarseAPan
         id: f315367b-d89d-4051-9b8e-b552ff0f42f0
-        position: {x: 1256.8, y: 329.6}
+        position: {x: 1159.3334, y: 214.66669}
         node:
           rid: 5649168775563444302
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 1030177649191813218
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds:
         - 91be9ec3-4d57-4ef1-86aa-8316047c5922
-        - ae160892-720a-4857-9ac9-5895191dc2e6
         childIds:
         - 43bf2e53-84ff-4794-91c8-30d7c60456a5
-      - name: EstaRagoNido
-        id: 3daeba06-4b12-475d-a9fd-04617ec4bd12
-        position: {x: 652.8, y: 256}
-        node:
-          rid: 5649168775563444303
-        references:
-        - fieldName: Perception
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 89c35194-c2eb-48b4-bb35-e0dd1793d22b
-        childIds:
-        - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
+        - ae160892-720a-4857-9ac9-5895191dc2e6
       - name: VePan
         id: 91be9ec3-4d57-4ef1-86aa-8316047c5922
-        position: {x: 955.2, y: 376}
+        position: {x: 841.3333, y: 258.6667}
         node:
           rid: 5649168775563444304
         references:
         - fieldName: Perception
           value:
-            rid: -2
+            rid: 1030177649191813226
           fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         - fieldName: Action
@@ -634,13 +651,13 @@ MonoBehaviour:
         - f315367b-d89d-4051-9b8e-b552ff0f42f0
       - name: PanAlcanzado
         id: 43bf2e53-84ff-4794-91c8-30d7c60456a5
-        position: {x: 1512.8, y: 372.8}
+        position: {x: 1470, y: 250.66669}
         node:
           rid: 5649168775563444305
         references:
         - fieldName: Perception
           value:
-            rid: -2
+            rid: 1030177649191813225
           fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         - fieldName: Action
@@ -652,29 +669,9 @@ MonoBehaviour:
         - f315367b-d89d-4051-9b8e-b552ff0f42f0
         childIds:
         - 0d87c1e3-29a6-4254-b3e5-0041df2628c1
-      - name: TienePan
-        id: f50664f6-217f-4d1f-adb7-6a4caad5356a
-        position: {x: 1478.4, y: 840.80005}
-        node:
-          rid: 5649168775563444306
-        references:
-        - fieldName: Perception
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - b959f5fb-edcf-43da-bcce-0cef944e6ead
-        childIds:
-        - 0d87c1e3-29a6-4254-b3e5-0041df2628c1
-      - name: NoTienePan
+      - name: FinDejarComida
         id: 16de80df-d712-4c91-8ca7-e775367a9d06
-        position: {x: 1242.4, y: 680}
+        position: {x: 1167.3334, y: 627.3333}
         node:
           rid: 5649168775563444307
         references:
@@ -692,29 +689,9 @@ MonoBehaviour:
         - 0d87c1e3-29a6-4254-b3e5-0041df2628c1
         childIds:
         - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
-      - name: NoVePeligro
-        id: 5630e946-4715-4bd4-80f5-f2085c6fa914
-        position: {x: 637.6, y: 825.60004}
-        node:
-          rid: 5649168775563444308
-        references:
-        - fieldName: Perception
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - b959f5fb-edcf-43da-bcce-0cef944e6ead
-        childIds:
-        - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
       - name: NoPanAlcanzado
         id: ae160892-720a-4857-9ac9-5895191dc2e6
-        position: {x: 1167.2, y: 549.60004}
+        position: {x: 1121.3334, y: 456.00003}
         node:
           rid: 5649168775563444309
         references:
@@ -728,16 +705,168 @@ MonoBehaviour:
             rid: -2
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds: []
+        parentIds:
+        - f315367b-d89d-4051-9b8e-b552ff0f42f0
         childIds:
         - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
-        - f315367b-d89d-4051-9b8e-b552ff0f42f0
-    pushPerceptions: []
+    pushPerceptions:
+    - name: Cogido
+      targetNodeIds:
+      - e26ec908-8152-452e-b559-958002ff41c3
+    - name: Soltado
+      targetNodeIds:
+      - e26ec908-8152-452e-b559-958002ff41c3
+      - dd20201c-feb0-4e0a-90f8-ed088e674d3c
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 1030177649191813188
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: TotemAnimal
+          methodName: Cogido
+    - rid: 1030177649191813189
+      type: {class: PatrolActionGivenCenter, ns: , asm: Assembly-CSharp}
+      data:
+        maxDistance: 0.08
+        centerTransform: {fileID: 1299389020}
+    - rid: 1030177649191813216
+      type: {class: PathingActionTransformParent, ns: , asm: Assembly-CSharp}
+      data:
+        positions: []
+        distanceThreshold: 0.2
+        wayPointsParent: {fileID: 1299389020}
+    - rid: 1030177649191813218
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: TotemAnimal
+          methodName: MoveTowardsObjectiveInit
+        update:
+          componentName: TotemAnimal
+          methodName: MoveTowardsObjective
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 1030177649191813220
+      type: {class: CompoundActionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundAction:
+          rid: 1030177649191813221
+        subActions:
+        - action:
+            rid: 1030177649191813223
+        - action:
+            rid: 1030177649191813224
+    - rid: 1030177649191813221
+      type: {class: SequenceAction, ns: BehaviourAPI.Core.Actions, asm: BehaviourAPI.Core}
+      data:
+        TargetStatus: 2
+    - rid: 1030177649191813223
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: TotemAnimal
+          methodName: CogerComida
+    - rid: 1030177649191813224
+      type: {class: CustomAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        start:
+          componentName: TotemAnimal
+          methodName: LlevarComidaInit
+        update:
+          componentName: TotemAnimal
+          methodName: LlevarComidaUpdate
+        stop:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 1030177649191813225
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: TotamAnimal
+          methodName: ObjectiveCloseToAttack
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 1030177649191813226
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: TotemAnimal
+          methodName: ObjectiveInSight
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 1030177653257142340
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: TotemAnimal
+          methodName: PredatorInSight
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 1030177653257142341
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: TotemAnimal
+          methodName: NotPredatorInSight
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
     - rid: 5649168775563444292
       type: {class: StackFSM, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
       data: 
@@ -747,14 +876,8 @@ MonoBehaviour:
     - rid: 5649168775563444294
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
-    - rid: 5649168775563444295
-      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data: 
     - rid: 5649168775563444296
       type: {class: StackFSM, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
-      data: 
-    - rid: 5649168775563444297
-      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
     - rid: 5649168775563444298
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
@@ -762,16 +885,9 @@ MonoBehaviour:
     - rid: 5649168775563444300
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
-    - rid: 5649168775563444301
-      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data: 
     - rid: 5649168775563444302
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
-    - rid: 5649168775563444303
-      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data:
-        StatusFlags: 0
     - rid: 5649168775563444304
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
@@ -779,23 +895,15 @@ MonoBehaviour:
     - rid: 5649168775563444305
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
-        StatusFlags: 0
-    - rid: 5649168775563444306
-      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data:
-        StatusFlags: 0
+        StatusFlags: -1
     - rid: 5649168775563444307
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
-        StatusFlags: 0
-    - rid: 5649168775563444308
-      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data:
-        StatusFlags: 0
+        StatusFlags: 6
     - rid: 5649168775563444309
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
-        StatusFlags: 0
+        StatusFlags: 4
     - rid: 5649168775563444310
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
@@ -816,15 +924,11 @@ MonoBehaviour:
     - rid: 5649168775563444314
       type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
       data:
-        StatusFlags: 0
-    - rid: 5649168775563444315
-      type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
-      data:
-        StatusFlags: 0
+        StatusFlags: -1
     - rid: 5649168775563444316
       type: {class: PopTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
       data:
-        StatusFlags: 0
+        StatusFlags: 6
 --- !u!114 &427585081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,6 +970,100 @@ CapsuleCollider:
   m_Height: 32.935997
   m_Direction: 1
   m_Center: {x: -0.10572672, y: 0.74135804, z: 9.467993}
+--- !u!114 &427585086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427585079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410b627e8100264ca6e11af4237275f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  predators: 04000000
+  objectives: 00000000
+  walkingSpeed: 3.43
+  run: 8.1
+  rotateSpeed: 107.98
+  patrolRadius: 5
+  radioDetectionObjective: 10
+  radioDetectionPredator: 15
+  radioAtaqueComida: 2
+  tiempoEnComer: 3
+  detectorVision: {fileID: 427585081}
+--- !u!195 &427585087
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427585079}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 18.935986
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 29.316082
+  m_BaseOffset: 14.658041
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &427585088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427585079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81016613ea3feb04b8c61c0b1124211a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4.09
+  targetThreshold: 1
+  minDistanceToTarget: 0.3
+  drawGizmos: 0
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!1 &591370814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 591370815}
+  m_Layer: 0
+  m_Name: WP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &591370815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591370814}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.464594, y: 0, z: 4.0151196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1299389020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664894750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +1252,208 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1299389016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1299389020}
+  - component: {fileID: 1299389019}
+  - component: {fileID: 1299389018}
+  - component: {fileID: 1299389017}
+  m_Layer: 0
+  m_Name: Nido Y wayPoiints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1299389017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299389016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671c4425d48cd4b46957aff357eddc15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHandles: 1
+  hideParentHandle: 0
+  sphereSize: 0.5
+--- !u!23 &1299389018
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299389016}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1299389019
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299389016}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1299389020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299389016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.5, y: 0.65, z: 10.54}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 591370815}
+  - {fileID: 2055046363}
+  - {fileID: 1356186550}
+  - {fileID: 1493100563}
+  - {fileID: 227181090}
+  - {fileID: 1920667435}
+  - {fileID: 1517968188}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1356186549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1356186550}
+  m_Layer: 0
+  m_Name: WP (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1356186550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356186549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.12512, y: 0, z: -16.830921}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1299389020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1493100562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1493100563}
+  m_Layer: 0
+  m_Name: WP (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1493100563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493100562}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.765625, y: 0, z: -16.468008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1299389020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1517968187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517968188}
+  m_Layer: 0
+  m_Name: WP (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517968188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517968187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.9136705, y: 0, z: -7.8171473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1299389020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1574480466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1640,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c037acb8cb2af4d8b2e05aba1ca28c, type: 3}
+--- !u!1 &1920667434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920667435}
+  m_Layer: 0
+  m_Name: WP (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920667435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920667434}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.0816507, y: 0, z: 5.2153025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1299389020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2055046362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2055046363}
+  m_Layer: 0
+  m_Name: WP (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2055046363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055046362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.929498, y: 0, z: -20.088818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1299389020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8528972598098849554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1353,3 +1815,5 @@ SceneRoots:
   - {fileID: 1624474015}
   - {fileID: 329499035}
   - {fileID: 202850960}
+  - {fileID: 204359733}
+  - {fileID: 1299389020}
