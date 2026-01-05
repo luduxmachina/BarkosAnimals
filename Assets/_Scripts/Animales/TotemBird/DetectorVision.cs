@@ -7,9 +7,7 @@ public class DetectorVision : MonoBehaviour
     [Range(0, 360)]
     public float anguloVision = 90f;   // amplitud de vison
 
-    [Header("Configuración de Detección")]
-    public LayerMask capaAmenazas;     // para detectar amenazas
-    public LayerMask capaPan;   // para detectar panes
+    private Collider coliderPajaro;
 
     [Header("Estado para la FSM")]
     public bool hayPeligro;    // percepción hay peligro
@@ -31,6 +29,7 @@ public class DetectorVision : MonoBehaviour
     //función que lleva la visión
     void Detectar()
     {
+        coliderPajaro = this.GetComponent<Collider>();
         // Por defecto no hay peligro hasta que demostremos lo contrario
         hayPeligro = false;
         hayPan = false;
@@ -39,34 +38,42 @@ public class DetectorVision : MonoBehaviour
 
         // 1. OBTENER POSIBLES OBJETIVOS (Por Distancia)
         // Genera una esfera invisible y nos devuelve todo lo que toque de la capa 'Amenazas'
-        Collider[] amenazasEnRango = Physics.OverlapSphere(transform.position, radioVision, capaAmenazas);
+        Collider[] objetosEnRango = Physics.OverlapSphere(transform.position, radioVision);
 
         // 2. FILTRAR POR ÁNGULO
-        foreach (var objetivo in amenazasEnRango)
+        foreach (var objetivo in objetosEnRango)
         {
-            Transform target = objetivo.transform;
-
-            // Calculamos la dirección hacia el objetivo
-            Vector3 direccionAlObjetivo = (target.position - transform.position).normalized;
-
-            // Verificamos si la dirección está dentro del ángulo de visión frontal
-            if (Vector3.Angle(transform.forward, direccionAlObjetivo) < anguloVision / 2)
+            if (objetivo!=coliderPajaro) 
             {
-                // ¡AMENAZA CONFIRMADA!
-                hayPeligro = true;
-                //amenazaDetectada = target;
+                Transform target = objetivo.transform;
 
-                // Si solo te importa detectar AL MENOS UNO, podemos salir del bucle ya.
-                break;
+                // Calculamos la dirección hacia el objetivo
+                Vector3 direccionAlObjetivo = (target.position - transform.position).normalized;
+
+                // Verificamos si la dirección está dentro del ángulo de visión frontal
+                if (Vector3.Angle(transform.forward, direccionAlObjetivo) < anguloVision / 2)
+                {
+                    // ¡AMENAZA CONFIRMADA!
+                    hayPeligro = true;
+                    //amenazaDetectada = target;
+
+                    // Si solo te importa detectar AL MENOS UNO, podemos salir del bucle ya.
+                    break;
+                }
             }
+            
         }
     }
 
     //Para visualizar la visón en el editor
     private void OnDrawGizmos()
     {
-        Gizmos.color = hayPeligro ? Color.red : Color.green; // Rojo si detecta, Verde si no
-
+        if (hayPeligro)
+            Gizmos.color = Color.red; // Rojo si detecta amenaza
+        else if (hayPan)
+            Gizmos.color = Color.cyan; // Cyan si detecta pan
+        else
+            Gizmos.color = Color.green; // Verde si no detecta nada
         // Dibujar el círculo de distancia
         Gizmos.DrawWireSphere(transform.position, radioVision);
 
