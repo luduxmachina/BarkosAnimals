@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using BehaviourAPI.Core;
 
 public class Stable : MonoBehaviour
 {
@@ -12,18 +13,13 @@ public class Stable : MonoBehaviour
 
     //[SerializeField] RecipientController comedero;
 
-    [SerializeField]List<RecipientController> comederos = new List<RecipientController>();
+    [SerializeField] IRecipientControler comedero;
     
     public static List<Stable> allStables = new List<Stable>();
 
     private void OnEnable()
     {
         allStables.Add(this);
-        foreach (RecipientController c in comederos)
-        {
-            c.ahoraHayComida.AddListener(HayComida);
-            c.ahoraNoHayComida.AddListener(NoHayComida);
-        }
     }
 
     private void OnDisable()
@@ -55,7 +51,7 @@ public class Stable : MonoBehaviour
         Console.WriteLine("Llama a hay comida");
         foreach (AAnimalFase2 animal in animalesReferecia)
         {
-            animal.ChangeEatingAction(comederos[0].CreateGraph(animal));
+            animal.ChangeEatingAction(comedero.CreateGraph(animal));
         }
     }
     public void NoHayComida()
@@ -66,14 +62,18 @@ public class Stable : MonoBehaviour
         }
     }
 
-    public Transform GetComedero(int i)
+    public Transform GetComedero(AAnimalFase2 animal)
     {
-        return comederos[i].GetTransfToEat();
+        return comedero.GetTransfToEat(animal);
     }
 
     public bool HayComida(ItemNames[] comidasPosibles)
     {
         return comedero.HayComida(comidasPosibles);
+    }
+
+    public bool ComederoLibre(AAnimalFase2 animalFase2) { 
+        return comedero.ComederoLibre(animalFase2);
     }
 
     #endregion

@@ -15,7 +15,7 @@ public struct ComidaYComedero
     public GameObject comedero;
 }
 
-public class RecipientController : MonoBehaviour
+public class RecipientController : MonoBehaviour, IRecipientControler
 {
     [SerializeField] int maxStacksFood = 3;
     [SerializeField, ReadOnly] int comidaStacks = 0;
@@ -31,8 +31,15 @@ public class RecipientController : MonoBehaviour
 
     [SerializeField] private Transform Moverse_un_poco_action_OtherTransform;
 
-    public UnityEvent ahoraHayComida;
-    public UnityEvent ahoraNoHayComida;
+    UnityEvent ahoraHayComida = new UnityEvent();
+    UnityEvent ahoraNoHayComida = new UnityEvent();
+
+
+    public void SubscribeStable(Stable stable)
+    {
+        ahoraHayComida.AddListener(stable.HayComida);
+        ahoraNoHayComida.AddListener(stable.NoHayComida);
+    }
 
     private void Start()
     {
@@ -57,7 +64,7 @@ public class RecipientController : MonoBehaviour
             else
             {
                 comidaStacks = 1;
-                ahoraHayComida.Invoke(this);
+                ahoraHayComida.Invoke();
                 Debug.Log("Llama a ahora hay comida");
                 foreach (ComidaYComedero comedero in comidaYComederoList)
                 {
@@ -76,7 +83,7 @@ public class RecipientController : MonoBehaviour
         return false;
     }
 
-    public Transform GetTransfToEat()
+    public Transform GetTransfToEat(AAnimalFase2 animal)
     {
         return this.transform;
     }
@@ -91,7 +98,7 @@ public class RecipientController : MonoBehaviour
     }
 
 
-    public bool RemoveStack(ItemNames[] tiposComida)
+    public bool RemoveStack(ItemNames[] tiposComida, AAnimalFase2 animal)
     {
         if (!tiposComida.ToList().Contains(tipoActual) || comidaStacks <= 0)
         {
@@ -148,5 +155,10 @@ public class RecipientController : MonoBehaviour
         Comer.SetRootNode(loopComer);
 
         return Comer;
+    }
+
+    public bool ComederoLibre(AAnimalFase2 animal)
+    {
+        return true;
     }
 }
