@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -143,6 +144,13 @@ public class AAnimalFase2: AAnimal
     #endregion
 
     #region Actions
+    #region Comer
+    public Status ComprobarComedero()
+    {
+        return establo.ComederoLibre(this) ? Status.Success : Status.Failure;
+    }
+
+
     public override void InitComer()
     {
         YaNoEstaContento();
@@ -168,30 +176,6 @@ public class AAnimalFase2: AAnimal
 
     }
 
-    public override bool ObjectiveClose()
-    {
-        return TieneComidaEnEstablo() || establo.GetAnimalsInEstable(objectives) > 0;
-    }
-
-    public override Transform GetClosestObjetive()
-    {
-        if (TieneComidaEnEstablo())
-        {
-            if (comederoAsignado)
-            {
-                comederoActual = establo.GetComedero(comederoActual);
-            }
-            comederoAsignado = true;
-            return establo.GetComedero();
-        }
-        if(establo.GetAnimalsInEstable(objectives) > 0)
-        {
-            AAnimalFase2 animal = establo.GetAnimalFromTypes(objectives);
-            return animal.transform;
-        }
-        return null;
-    }
-
 
     public override Status UpdateComer()
     {
@@ -205,8 +189,7 @@ public class AAnimalFase2: AAnimal
         {
             if (animator)
             {
-                animator.SetTrigger("Idle");
-        
+                animator.SetTrigger("Idle");        
             }
             tiempoComiendo = 0.0f;
         
@@ -231,10 +214,10 @@ public class AAnimalFase2: AAnimal
         tiempoComiendo += Time.deltaTime;
         if (tiempoComiendo >= tiempoEnComer)
         {
-            var temp = lastObjectve.GetComponentInChildren<RecipientController>();
-            if (temp) //se lo va a comer lit
+            var temp = lastObjectve.GetComponentInChildren<IRecipientControler>();
+            if (temp != null) //se lo va a comer lit
             {
-                temp.RemoveStack(objectives);
+                temp.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
             }
             else
@@ -259,7 +242,7 @@ public class AAnimalFase2: AAnimal
     }
 
     /**
-    public Status UpdateComerComidaNoDesaparece()
+    public Status UpdateComerComedero()
     {
         if (establo == null)
         {
@@ -321,6 +304,28 @@ public class AAnimalFase2: AAnimal
         return Status.Running;
     }
     /**/
+    #endregion
+
+    #region Objetivos
+
+    public override bool ObjectiveClose()
+    {
+        return TieneComidaEnEstablo() || establo.GetAnimalsInEstable(objectives) > 0;
+    }
+
+    public override Transform GetClosestObjetive()
+    {
+        if (TieneComidaEnEstablo())
+        {
+            return establo.GetComedero(this);
+        }
+        if (establo.GetAnimalsInEstable(objectives) > 0)
+        {
+            AAnimalFase2 animal = establo.GetAnimalFromTypes(objectives);
+            return animal.transform;
+        }
+        return null;
+    }
 
     public override Status MoveTowardsObjective()
     {
@@ -330,6 +335,7 @@ public class AAnimalFase2: AAnimal
         }
         return base.MoveTowardsObjective();
     }
+    #endregion
 
     public void Enfermar()
     {

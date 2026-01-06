@@ -1,0 +1,262 @@
+using BehaviourAPI.BehaviourTrees;
+using BehaviourAPI.Core;
+using BehaviourAPI.Core.Actions;
+using BehaviourAPI.UnityToolkit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+
+[SerializeField]
+public class Comedero
+{
+    public Transform pos;
+    [SerializeField] public GameObject comederoVacio;
+    [SerializeField] public List<ComidaYComedero> comidaYComederoList = new();
+    public bool ocupado = false;
+    public bool hasFood = false;
+    public AAnimalFase2 animalOcupando;
+}
+
+public class MultipleRecipientController : MonoBehaviour, IRecipientControler
+{
+    [SerializeField] int maxStacksFood = 3;
+    [SerializeField, ReadOnly] int comidaStacks = 0;
+    int comidaSinComedero = 0;
+
+    [SerializeField] List<ItemNames> tiposDeComidaAceptados = new List<ItemNames>();
+
+    [SerializeField] List<Comedero> comederos = new();
+
+    [SerializeField, ReadOnly] ItemNames tipoActual;
+
+    [SerializeField] TextMeshProUGUI textoContenido;
+
+    [SerializeField] private Transform Moverse_un_poco_action_OtherTransform;
+
+    UnityEvent ahoraHayComida = new UnityEvent();
+    UnityEvent ahoraNoHayComida = new UnityEvent();
+
+
+    public void SubscribeStable(Stable stable)
+    {
+        ahoraHayComida.AddListener(stable.HayComida);
+        ahoraNoHayComida.AddListener(stable.NoHayComida);
+    }
+
+    private void Start()
+    {
+        textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
+    }
+
+    public bool AddStack(ItemNames tipoComida)
+    {
+        if (tiposDeComidaAceptados.Contains(tipoComida))
+        {
+            if(tipoComida == tipoActual)
+            {
+                if (comidaStacks >= maxStacksFood)
+                {
+                    return false;
+                }
+                else
+                {
+                    comidaStacks++;
+
+                    bool comidaAñadida = false;
+                    foreach (Comedero c in comederos)
+                    {
+                        if (c.hasFood) continue;
+                        c.hasFood = true;
+                        comidaAñadida = true;
+                        foreach (ComidaYComedero comedero in c.comidaYComederoList)
+                        {
+                            if (comedero.tipoComida == tipoComida) comedero.comedero.SetActive(true);
+                            else comedero.comedero.SetActive(false);
+                        }
+
+                        c.comederoVacio.SetActive(false);
+                        break;
+                    }
+                    if (!comidaAñadida) comidaSinComedero++;
+                }
+            }
+            else
+            {
+                comidaStacks = 1;
+                ahoraHayComida.Invoke();
+                Debug.Log("Llama a ahora hay comida");
+
+                bool primero = true;
+
+                foreach(Comedero c in comederos)
+                {
+                    if(primero)
+                    {
+                        primero = false;
+                        c.hasFood = true;
+
+                        foreach (ComidaYComedero comedero in c.comidaYComederoList)
+                        {
+                            if (comedero.tipoComida == tipoComida) comedero.comedero.SetActive(true);
+                            else comedero.comedero.SetActive(false);
+                        }
+                        c.comederoVacio.SetActive(false);
+                    }
+                    else
+                    {
+                        foreach (ComidaYComedero comedero in c.comidaYComederoList)
+                        {
+                            comedero.comedero.SetActive(false);
+                        }
+                        c.comederoVacio.SetActive(true);
+                    }
+                }
+                tipoActual = tipoComida;
+
+            }
+
+            textoContenido.text = comidaStacks.ToString()+"/"+maxStacksFood.ToString();
+
+            return true;
+        }
+        return false;
+    }
+
+    public Transform GetTransfToEat(AAnimalFase2 animal)
+    {
+        foreach(Comedero comedero in comederos)
+        {
+            if(comedero.animalOcupando == animal)
+            {
+                return comedero.pos;
+            }
+        }
+        return this.transform;
+    }
+
+    public bool HayComida(ItemNames[] tiposComida)
+    {
+        if (!tiposComida.ToList().Contains(tipoActual) && comidaStacks>0)
+        {
+            return false;
+        }
+        return comidaStacks > 0;
+    }
+
+    public bool ComederoLibre(AAnimalFase2 animal)
+    {
+        foreach(Comedero c in comederos)
+        {
+            if(!c.ocupado && c.hasFood)
+            {
+                c.ocupado = true;
+                c.hasFood = false;
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public bool RemoveStack(ItemNames[] tiposComida, AAnimalFase2 animal)
+    {
+        if (!tiposComida.ToList().Contains(tipoActual) || comidaStacks <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            comidaStacks--;
+
+            if (comidaSinComedero >= 0)
+            {
+                foreach (Comedero c in comederos)
+                {
+                    if (c.animalOcupando == animal)
+                    {
+                        c.ocupado = false;
+                        c.hasFood = false;
+                        foreach (ComidaYComedero comedero in c.comidaYComederoList)
+                        {
+                            comedero.comedero.SetActive(false);
+                        }
+                        c.comederoVacio.SetActive(true);
+                    }
+                }
+                comidaSinComedero--;
+            }
+
+            if (comidaStacks <= comidaSinComedero)
+            {
+                Debug.LogWarning("No se está reduciendo correctamente la comida");
+            }
+
+            if(comidaStacks <= 0)
+            {
+                ahoraNoHayComida.Invoke();
+                tipoActual = ItemNames.None;
+            }
+            textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
+            return true;
+        }
+    }
+
+    public BehaviourGraph CreateGraph(AAnimalFase2 m_AAnimalFase2)
+    {
+        BehaviourTree Comer = new BehaviourTree();
+
+        SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
+        Indica_que_tiene_Hambre_action.action = m_AAnimalFase2.MostrarHambre;
+        LeafNode Indica_que_tiene_Hambre = Comer.CreateLeafNode("Indica que tiene Hambre", Indica_que_tiene_Hambre_action);
+
+        FunctionalAction GoToEat_action = new FunctionalAction();
+        GoToEat_action.onStarted = m_AAnimalFase2.MoveTowardsObjectiveInit;
+        GoToEat_action.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
+        LeafNode GoToEat = Comer.CreateLeafNode("GoToEat", GoToEat_action);
+
+        FunctionalAction ComederoTieneComida = new FunctionalAction();
+        ComederoTieneComida.onUpdated = m_AAnimalFase2.ComprobarComedero;
+        LeafNode Comedero_Tiene_Comida = Comer.CreateLeafNode("ComederoTieneComida", ComederoTieneComida);
+
+        FunctionalAction Eat_action = new FunctionalAction();
+        Eat_action.onStarted = m_AAnimalFase2.InitComer;
+        Eat_action.onUpdated = m_AAnimalFase2.UpdateComer;
+        LeafNode Eat = Comer.CreateLeafNode("Eat", Eat_action);
+        
+
+        FleeAction Moverse_un_poco_action = new FleeAction();
+        Moverse_un_poco_action.OtherTransform =  Moverse_un_poco_action_OtherTransform;
+        Moverse_un_poco_action.speed = 3f;
+        Moverse_un_poco_action.distance = 6f;
+        Moverse_un_poco_action.maxTimeRunning = 20f;
+        LeafNode Moverse_un_poco = Comer.CreateLeafNode("Moverse un poco", Moverse_un_poco_action);
+
+        SequencerNode COMEDERO = Comer.CreateComposite<SequencerNode>("COMEDERO1", false, Comedero_Tiene_Comida, GoToEat, Eat);
+
+        SequencerNode IRSEUNRATO = Comer.CreateComposite<SequencerNode>("IrseUnRato", false, Moverse_un_poco, GoToEat);
+
+        SuccederNode succederNode = Comer.CreateDecorator<SuccederNode>(IRSEUNRATO);
+
+        InverterNode inverterNode = Comer.CreateDecorator<InverterNode>(succederNode);
+
+        SelectorNode COMER = Comer.CreateComposite<SelectorNode>("COMER", false, COMEDERO, inverterNode); 
+
+        LoopNode Comer_En_Comedero = Comer.CreateDecorator<LoopNode>(COMER);
+        Comer_En_Comedero.TargetStatus = Status.Success;
+        Comer_En_Comedero.Iterations = -1;
+
+        SequencerNode EATING = Comer.CreateComposite<SequencerNode>("EATING", false, Indica_que_tiene_Hambre, GoToEat, Comer_En_Comedero, Moverse_un_poco);
+        EATING.IsRandomized = false;
+
+        //LoopUntilNode loopComer = Comer.CreateDecorator<LoopUntilNode>(EATING);
+        //loopComer.Iterations = -1;
+
+        //el root es importante para los arboles
+        Comer.SetRootNode(EATING);
+
+        return Comer;
+    }
+}
