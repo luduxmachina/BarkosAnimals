@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ReproductionSpot : MonoBehaviour
@@ -10,6 +11,7 @@ public class ReproductionSpot : MonoBehaviour
     private AnimalPlaceableSO animalPlaceableDB;
 
     private List<AnimalF2Instance> animalsInArea;
+    private HashSet<int> babies;
 
     private void Awake()
     {
@@ -23,6 +25,9 @@ public class ReproductionSpot : MonoBehaviour
             var animalType = animal.thisItemName;
             int hashCode = other.gameObject.GetHashCode();
 
+            if (babies.Contains(hashCode))
+                return;
+
             animalsInArea.Add(new AnimalF2Instance(hashCode, animalType));
         }
     }
@@ -33,6 +38,9 @@ public class ReproductionSpot : MonoBehaviour
         {
             var animalType = animal.thisItemName;
             int hashCode = other.gameObject.GetHashCode();
+
+            if (babies.Contains(hashCode))
+                return;
 
             foreach (var animalInArea in animalsInArea)
             {
@@ -70,7 +78,25 @@ public class ReproductionSpot : MonoBehaviour
 
     public void SpawnBabyOfType(ItemNames animalType)
     {
+        GameObject baby = null;
+        foreach (var item in animalPlaceableDB.GetPlaceableObjects())
+        {
+            ItemNames currentAnimaltype = item.Prefab.gameObject.GetComponentInChildren<AAnimalFase2>().thisItemName;
+            if(currentAnimaltype == animalType)
+            {
+                baby = item.Prefab;
+                break;
+            }
+        }
 
+        if(baby == null)
+        {
+            throw new FileNotFoundException();
+        }
+
+        baby.transform.localScale = Vector3.one * babyScale;
+        Instantiate(baby, transform.position, Quaternion.identity);
+        babies.Add(baby.GetHashCode());
     }
 }
 
