@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 6459340067194133829}
   - component: {fileID: 7644536895906532363}
   - component: {fileID: 5457470033346534438}
+  - component: {fileID: 6877575743929431225}
   m_Layer: 0
   m_Name: Oveja
   m_TagString: Item
@@ -213,9 +214,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006479325239093396}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 6.77
+  m_Drag: 0.12
+  m_AngularDrag: 1.09
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -334,7 +335,7 @@ MonoBehaviour:
   patrolRadius: 5
   radioDetectionObjective: 10
   radioDetectionPredator: 15
-  radioAtaqueComida: 2
+  radioAtaqueComida: 0.48
   tiempoEnComer: 3
   stikersManager: {fileID: 1792226238817951326}
   stopAnimWhenGrabbed: 1
@@ -352,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executeOnLoop: 0
   interruptOptions: 0
-  useDebugger: 0
+  useDebugger: 1
   debuggerComponent: {fileID: 5457470033346534438}
   Huir_action_animalContext: {fileID: 6459340067194133829}
   Huir_action_OtherTransform: {fileID: 0}
@@ -372,6 +373,26 @@ MonoBehaviour:
   _eventHandler:
     debugStatusChanges: 0
     identifier: 
+--- !u!114 &6877575743929431225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006479325239093396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f909227a8e982d4cbc1d74d45e97216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsActive: 1
+  itemInScene: {fileID: 1347969192852358322}
+  detectionRadius: 51.4
+  forceMultiplier: 0.21
+  ws: 1.56
+  wa: 1.55
+  wc: 0.33
+  lines: 1
 --- !u!1 &5875062404095738925
 GameObject:
   m_ObjectHideFlags: 0
