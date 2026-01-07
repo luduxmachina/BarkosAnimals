@@ -9,18 +9,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-[SerializeField]
+[Serializable]
 public class Comedero
 {
-    public Transform pos;
+    [SerializeField] public Transform pos;
     [SerializeField] public GameObject comederoVacio;
     [SerializeField] public List<ComidaYComedero> comidaYComederoList = new();
-    public bool ocupado = false;
-    public bool hasFood = false;
-    public AAnimalFase2 animalOcupando;
+    [SerializeField] public bool ocupado = false;
+    [SerializeField]public bool hasFood = false;
+    [SerializeField] public AAnimalFase2 animalOcupando;
 }
 
-public class MultipleRecipientController : MonoBehaviour, IRecipientControler
+public class MultipleRecipientController : IRecipientControler
 {
     [SerializeField] int maxStacksFood = 3;
     [SerializeField, ReadOnly] int comidaStacks = 0;
@@ -28,7 +28,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
 
     [SerializeField] List<ItemNames> tiposDeComidaAceptados = new List<ItemNames>();
 
-    [SerializeField] List<Comedero> comederos = new();
+    [SerializeField] List<Comedero> comederos = new List<Comedero>();
 
     [SerializeField, ReadOnly] ItemNames tipoActual;
 
@@ -40,7 +40,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
     UnityEvent ahoraNoHayComida = new UnityEvent();
 
 
-    public void SubscribeStable(Stable stable)
+    public override void SubscribeStable(Stable stable)
     {
         ahoraHayComida.AddListener(stable.HayComida);
         ahoraNoHayComida.AddListener(stable.NoHayComida);
@@ -51,7 +51,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
     }
 
-    public bool AddStack(ItemNames tipoComida)
+    public override bool AddStack(ItemNames tipoComida)
     {
         if (tiposDeComidaAceptados.Contains(tipoComida))
         {
@@ -125,7 +125,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         return false;
     }
 
-    public Transform GetTransfToEat(AAnimalFase2 animal)
+    public override Transform GetTransfToEat(AAnimalFase2 animal)
     {
         foreach(Comedero comedero in comederos)
         {
@@ -137,7 +137,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         return this.transform;
     }
 
-    public bool HayComida(ItemNames[] tiposComida)
+    public override bool HayComida(ItemNames[] tiposComida)
     {
         if (!tiposComida.ToList().Contains(tipoActual) && comidaStacks>0)
         {
@@ -146,7 +146,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         return comidaStacks > 0;
     }
 
-    public bool ComederoLibre(AAnimalFase2 animal)
+    public override bool ComederoLibre(AAnimalFase2 animal)
     {
         foreach(Comedero c in comederos)
         {
@@ -161,7 +161,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
     }
 
 
-    public bool RemoveStack(ItemNames[] tiposComida, AAnimalFase2 animal)
+    public override bool RemoveStack(ItemNames[] tiposComida, AAnimalFase2 animal)
     {
         if (!tiposComida.ToList().Contains(tipoActual) || comidaStacks <= 0)
         {
@@ -171,7 +171,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         {
             comidaStacks--;
 
-            if (comidaSinComedero >= 0)
+            if (comidaSinComedero <= 0)
             {
                 foreach (Comedero c in comederos)
                 {
@@ -186,6 +186,10 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
                         c.comederoVacio.SetActive(true);
                     }
                 }
+            }
+            else
+            {
+
                 comidaSinComedero--;
             }
 
@@ -204,7 +208,7 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         }
     }
 
-    public BehaviourGraph CreateGraph(AAnimalFase2 m_AAnimalFase2)
+    public override BehaviourTree CreateGraph(AAnimalFase2 m_AAnimalFase2)
     {
         BehaviourTree Comer = new BehaviourTree();
 
@@ -216,6 +220,8 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         GoToEat_action.onStarted = m_AAnimalFase2.MoveTowardsObjectiveInit;
         GoToEat_action.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
         LeafNode GoToEat = Comer.CreateLeafNode("GoToEat", GoToEat_action);
+        LeafNode GoToEat2 = Comer.CreateLeafNode("GoToEat2", GoToEat_action);
+        LeafNode GoToEat3 = Comer.CreateLeafNode("GoToEat3", GoToEat_action);
 
         FunctionalAction ComederoTieneComida = new FunctionalAction();
         ComederoTieneComida.onUpdated = m_AAnimalFase2.ComprobarComedero;
@@ -233,10 +239,11 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
         Moverse_un_poco_action.distance = 6f;
         Moverse_un_poco_action.maxTimeRunning = 20f;
         LeafNode Moverse_un_poco = Comer.CreateLeafNode("Moverse un poco", Moverse_un_poco_action);
+        LeafNode Moverse_un_poco2 = Comer.CreateLeafNode("Moverse un poco2", Moverse_un_poco_action);
 
         SequencerNode COMEDERO = Comer.CreateComposite<SequencerNode>("COMEDERO1", false, Comedero_Tiene_Comida, GoToEat, Eat);
 
-        SequencerNode IRSEUNRATO = Comer.CreateComposite<SequencerNode>("IrseUnRato", false, Moverse_un_poco, GoToEat);
+        SequencerNode IRSEUNRATO = Comer.CreateComposite<SequencerNode>("IrseUnRato", false, Moverse_un_poco, GoToEat2);
 
         SuccederNode succederNode = Comer.CreateDecorator<SuccederNode>(IRSEUNRATO);
 
@@ -244,19 +251,20 @@ public class MultipleRecipientController : MonoBehaviour, IRecipientControler
 
         SelectorNode COMER = Comer.CreateComposite<SelectorNode>("COMER", false, COMEDERO, inverterNode); 
 
-        LoopNode Comer_En_Comedero = Comer.CreateDecorator<LoopNode>(COMER);
+        LoopUntilNode Comer_En_Comedero = Comer.CreateDecorator<LoopUntilNode>(COMER);
         Comer_En_Comedero.TargetStatus = Status.Success;
-        Comer_En_Comedero.Iterations = -1;
 
-        SequencerNode EATING = Comer.CreateComposite<SequencerNode>("EATING", false, Indica_que_tiene_Hambre, GoToEat, Comer_En_Comedero, Moverse_un_poco);
+        SequencerNode EATING = Comer.CreateComposite<SequencerNode>("EATING", false, Indica_que_tiene_Hambre, GoToEat3, Comer_En_Comedero, Moverse_un_poco2);
         EATING.IsRandomized = false;
 
-        //LoopUntilNode loopComer = Comer.CreateDecorator<LoopUntilNode>(EATING);
-        //loopComer.Iterations = -1;
+        LoopNode loopComer = Comer.CreateDecorator<LoopNode>(EATING);
+        loopComer.Iterations = -1;
 
         //el root es importante para los arboles
-        Comer.SetRootNode(EATING);
+        Comer.SetRootNode(loopComer);
 
+        SubsystemAction comer = new SubsystemAction(Comer);
+        Debug.Log("Crea el grafo de comer.");
         return Comer;
     }
 }

@@ -10,6 +10,7 @@ using BehaviourAPI.BehaviourTrees;
 using BehaviourAPI.StateMachines;
 
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
+using UnityEditor.UI;
 
 public class AnimalesF2US : BehaviourRunner
 {
@@ -19,7 +20,7 @@ public class AnimalesF2US : BehaviourRunner
     [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
     [SerializeField] private AAnimalFase2 m_AAnimalFase2;
 
-	BehaviourAPI.Core.Actions.Action eatAction;
+	BehaviourTree comer = null;
 	
 	protected override void Init()
 	{
@@ -103,11 +104,20 @@ public class AnimalesF2US : BehaviourRunner
 		MinFusionFactor PuedeComer = Fase2US.CreateFusion<MinFusionFactor>("PuedeComer", hayComida, Hambre);
 		
 		//SimpleAction TieneHambreYPuedeComer_action = new SimpleAction();
-		if(eatAction == null)
-		{
-            eatAction = new SimpleAction(()=>{ Console.WriteLine("Acción de comer no definida."); });
-		}
-		UtilityAction TieneHambreYPuedeComer = Fase2US.CreateAction("TieneHambreYPuedeComer", PuedeComer, eatAction);
+		if(comer == null)
+        {
+			comer = new BehaviourTree();
+			SimpleAction noSisActivo = new SimpleAction();
+			noSisActivo.action = m_AAnimalFase2.NoHayComederoDef;
+			LeafNode nodoComer = comer.CreateLeafNode(noSisActivo);
+
+			LoopNode loopNode = comer.CreateDecorator<LoopNode>(nodoComer);
+
+			comer.SetRootNode(loopNode);
+        }
+
+        SubsystemAction eatAction = new SubsystemAction(comer);
+        UtilityAction TieneHambreYPuedeComer = Fase2US.CreateAction("TieneHambreYPuedeComer", PuedeComer, eatAction);
 		
 		WeightedFusionFactor HambreComidaFusion = Fase2US.CreateFusion<WeightedFusionFactor>(Hambre, PuedeComer);
         HambreComidaFusion.Weights = new float[] { 1.0f, -1.0f };
@@ -175,6 +185,7 @@ public class AnimalesF2US : BehaviourRunner
 
             debuggerComponent.RegisterGraph(Fase2US);
             debuggerComponent.RegisterGraph(EstaFeliz);
+            debuggerComponent.RegisterGraph(comer);
             debuggerComponent.RegisterGraph(TieneHambre);
 
         }
@@ -182,9 +193,9 @@ public class AnimalesF2US : BehaviourRunner
         return Fase2US;
 	}
 
-	public void SetEatAction(BehaviourAPI.Core.Actions.Action newAction)
+	public void SetEatAction(BehaviourTree newAction)
 	{ 
-		eatAction = newAction;
+		comer = newAction;
 		this.CreateGraph();
 		this.Init();
 		this.OnStarted();

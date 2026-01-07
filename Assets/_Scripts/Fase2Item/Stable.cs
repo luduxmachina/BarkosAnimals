@@ -13,13 +13,21 @@ public class Stable : MonoBehaviour
 
     //[SerializeField] RecipientController comedero;
 
-    [SerializeField] IRecipientControler comedero;
+    [SerializeField]IRecipientControler comedero;
     
     public static List<Stable> allStables = new List<Stable>();
 
     private void OnEnable()
     {
         allStables.Add(this);
+        if(comedero == null)
+        {
+            comedero = transform.parent.GetComponent<IRecipientControler>();
+        }
+        if(comedero != null)
+        {
+            comedero.SubscribeStable(this);
+        }
     }
 
     private void OnDisable()
@@ -60,6 +68,7 @@ public class Stable : MonoBehaviour
         {
             animal.ChangeEatingAction(null);
         }
+        //Debug.LogWarning("No debería entrar aquí");
     }
 
     public Transform GetComedero(AAnimalFase2 animal)

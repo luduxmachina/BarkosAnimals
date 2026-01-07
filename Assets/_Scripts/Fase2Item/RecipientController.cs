@@ -15,7 +15,7 @@ public struct ComidaYComedero
     public GameObject comedero;
 }
 
-public class RecipientController : MonoBehaviour, IRecipientControler
+public class RecipientController : IRecipientControler
 {
     [SerializeField] int maxStacksFood = 3;
     [SerializeField, ReadOnly] int comidaStacks = 0;
@@ -35,7 +35,7 @@ public class RecipientController : MonoBehaviour, IRecipientControler
     UnityEvent ahoraNoHayComida = new UnityEvent();
 
 
-    public void SubscribeStable(Stable stable)
+    public override void SubscribeStable(Stable stable)
     {
         ahoraHayComida.AddListener(stable.HayComida);
         ahoraNoHayComida.AddListener(stable.NoHayComida);
@@ -46,7 +46,7 @@ public class RecipientController : MonoBehaviour, IRecipientControler
         textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
     }
 
-    public bool AddStack(ItemNames tipoComida)
+    public override bool AddStack(ItemNames tipoComida)
     {
         if (tiposDeComidaAceptados.Contains(tipoComida))
         {
@@ -83,12 +83,12 @@ public class RecipientController : MonoBehaviour, IRecipientControler
         return false;
     }
 
-    public Transform GetTransfToEat(AAnimalFase2 animal)
+    public override Transform GetTransfToEat(AAnimalFase2 animal)
     {
         return this.transform;
     }
 
-    public bool HayComida(ItemNames[] tiposComida)
+    public override bool HayComida(ItemNames[] tiposComida)
     {
         if (!tiposComida.ToList().Contains(tipoActual) && comidaStacks>0)
         {
@@ -98,7 +98,7 @@ public class RecipientController : MonoBehaviour, IRecipientControler
     }
 
 
-    public bool RemoveStack(ItemNames[] tiposComida, AAnimalFase2 animal)
+    public override bool RemoveStack(ItemNames[] tiposComida, AAnimalFase2 animal)
     {
         if (!tiposComida.ToList().Contains(tipoActual) || comidaStacks <= 0)
         {
@@ -121,7 +121,7 @@ public class RecipientController : MonoBehaviour, IRecipientControler
             return true;
         }
     }
-    public BehaviourGraph CreateGraph(AAnimalFase2 m_AAnimalFase2)
+    public override BehaviourTree CreateGraph(AAnimalFase2 m_AAnimalFase2)
     {
         BehaviourTree Comer = new BehaviourTree();
         SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
@@ -154,10 +154,12 @@ public class RecipientController : MonoBehaviour, IRecipientControler
         //el root es importante para los arboles
         Comer.SetRootNode(loopComer);
 
+        //SubsystemAction comer = new SubsystemAction(Comer);
+
         return Comer;
     }
 
-    public bool ComederoLibre(AAnimalFase2 animal)
+    public override bool ComederoLibre(AAnimalFase2 animal)
     {
         return true;
     }

@@ -1,3 +1,4 @@
+using BehaviourAPI.BehaviourTrees;
 using BehaviourAPI.Core;
 using BehaviourAPI.Core.Actions;
 using BehaviourAPI.UnityToolkit;
@@ -147,6 +148,7 @@ public class AAnimalFase2: AAnimal
     #region Comer
     public Status ComprobarComedero()
     {
+        Debug.Log("Comprueba el comedero");
         return establo.ComederoLibre(this) ? Status.Success : Status.Failure;
     }
 
@@ -398,6 +400,11 @@ public class AAnimalFase2: AAnimal
         YaNoEstaContento();
     }
 
+    public void NoHayComederoDef()
+    {
+        Debug.Log("No hay comedero definido");
+    }
+
     public void Limpiar()
     {
         if(suciedad>0)this.suciedad -= suciedadQueQuita;
@@ -511,18 +518,12 @@ public class AAnimalFase2: AAnimal
             /(Mathf.Log10(DMax - 1)/Mathf.Log10(2));
     }
 
-    public void ChangeEatingAction(BehaviourGraph behaviourGraph)
+    public void ChangeEatingAction(BehaviourTree action)
     {
         Debug.Log("Llega a el cambio de la acción de comer");
-        BehaviourAPI.Core.Actions.Action action = null;
         AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
         if (sistUtil)
         {
-            if (behaviourGraph == null)
-            {
-                action = new SimpleAction(() => { Console.WriteLine("Accion actual es descansar."); });
-            }
-            action = new SubsystemAction(behaviourGraph);
             sistUtil.SetEatAction(action);
         }
     }
