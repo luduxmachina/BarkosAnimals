@@ -3,7 +3,15 @@ using UnityEngine.Events;
 
 public class EmbudoController : MonoBehaviour, IInteractable
 {
-    [SerializeField] RecipientController recipiente;
+    [SerializeField] IRecipientControler recipiente;
+
+    private void OnEnable()
+    {
+        if(recipiente == null)
+        {
+            recipiente = transform.parent.GetComponentInChildren<IRecipientControler>();
+        }
+    }
 
     public bool Interact(ItemNames interactorType, GameObject interactor)
     {

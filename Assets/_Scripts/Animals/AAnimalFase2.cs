@@ -1,3 +1,4 @@
+using BehaviourAPI.BehaviourTrees;
 using BehaviourAPI.Core;
 using BehaviourAPI.Core.Actions;
 using BehaviourAPI.UnityToolkit;
@@ -21,17 +22,17 @@ public class AAnimalFase2: AAnimal
 
     [Header("-----------------Fase 2-----------------")]
     [Header("Espacio en el establo")]
-    [Tooltip("Animales en el establo (Máximo)")]
+    [Tooltip("Animales en el establo (Mï¿½ximo)")]
     public float AMax = 0.0f;
-    [Tooltip("Compis de la misma especie en el establo (Máximo)")]
+    [Tooltip("Compis de la misma especie en el establo (Mï¿½ximo)")]
     public float CMax = 0.0f;
-    [Tooltip("Depredadores en el establo (Máximo)")]
+    [Tooltip("Depredadores en el establo (Mï¿½ximo)")]
     public float DMax = 0.0f;
     [SerializeField, ReadOnly] public float depredadoresCerca = 0f;
 
     [Header("Limpieza")]
     [SerializeField] float suciedadMaxima;
-    [Tooltip("Timpo que pasa hasta que comprueba que está sucio.")]
+    [Tooltip("Timpo que pasa hasta que comprueba que estï¿½ sucio.")]
     public float tiempoHastaSucio = 5f;
     [SerializeField, ReadOnly] float suciedad = 0f;
     [SerializeField, ReadOnly] float tiempoSinLimpiar = 0f;
@@ -147,6 +148,7 @@ public class AAnimalFase2: AAnimal
     #region Comer
     public Status ComprobarComedero()
     {
+        Debug.Log("Comprueba el comedero");
         return establo.ComederoLibre(this) ? Status.Success : Status.Failure;
     }
 
@@ -156,7 +158,7 @@ public class AAnimalFase2: AAnimal
         YaNoEstaContento();
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return;
         }
         lastObjectve = GetClosestObjetive();
@@ -181,7 +183,7 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return Status.Failure;
         }
 
@@ -246,7 +248,7 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return Status.Failure;
         }
 
@@ -398,6 +400,11 @@ public class AAnimalFase2: AAnimal
         YaNoEstaContento();
     }
 
+    public void NoHayComederoDef()
+    {
+        Debug.Log("No hay comedero definido");
+    }
+
     public void Limpiar()
     {
         if(suciedad>0)this.suciedad -= suciedadQueQuita;
@@ -413,7 +420,7 @@ public class AAnimalFase2: AAnimal
 
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return;
         }
 
@@ -430,7 +437,7 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
         return ((float)establo.GetAnimalsInEstable()-1)/AMax;
@@ -440,20 +447,20 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
 
         float numCompis = 0;
         numCompis += establo.GetAnimalsInEstable(itemName);
-        return (numCompis - 1)/CMax;//No le queremos contar a él mismo.
+        return (numCompis - 1)/CMax;//No le queremos contar a ï¿½l mismo.
     }
 
     public float PredatorsOnEstable()
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
 
@@ -499,7 +506,7 @@ public class AAnimalFase2: AAnimal
 
     public override Vector3 GetNewPosition()
     {
-        Debug.LogError("Esto no debería estar siendo usado...");
+        Debug.LogError("Esto no deberï¿½a estar siendo usado...");
         return Vector3.zero;
     }
     #endregion
@@ -511,18 +518,12 @@ public class AAnimalFase2: AAnimal
             /(Mathf.Log10(DMax - 1)/Mathf.Log10(2));
     }
 
-    public void ChangeEatingAction(BehaviourGraph behaviourGraph)
+    public void ChangeEatingAction(BehaviourTree action)
     {
-        Debug.Log("Llega a el cambio de la acción de comer");
-        BehaviourAPI.Core.Actions.Action action = null;
+        Debug.Log("Llega a el cambio de la acciï¿½n de comer");
         AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
         if (sistUtil)
         {
-            if (behaviourGraph == null)
-            {
-                action = new SimpleAction(() => { Console.WriteLine("Accion actual es descansar."); });
-            }
-            action = new SubsystemAction(behaviourGraph);
             sistUtil.SetEatAction(action);
         }
     }
