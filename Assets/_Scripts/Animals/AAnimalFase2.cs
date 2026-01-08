@@ -146,10 +146,10 @@ public class AAnimalFase2: AAnimal
 
     #region Actions
     #region Comer
-    public Status ComprobarComedero()
+    public bool ComprobarComedero()
     {
         Debug.Log("Comprueba el comedero");
-        return establo.ComederoLibre(this) ? Status.Success : Status.Failure;
+        return establo.ComederoLibre(this);
     }
 
 
@@ -162,6 +162,7 @@ public class AAnimalFase2: AAnimal
             return;
         }
         lastObjectve = GetClosestObjetive();
+        Debug.Log("Va a comer");
         if (lastObjectve != null)
         {
             if (animator)
@@ -203,6 +204,7 @@ public class AAnimalFase2: AAnimal
 
         if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.75) //alguien ha movido la comida o al animal y ya no esta comiendo lol
         {
+            Debug.Log("Deja de comer por la distancia");
             if (animator)
             {
                 animator.SetTrigger("Idle");
@@ -217,9 +219,15 @@ public class AAnimalFase2: AAnimal
         if (tiempoComiendo >= tiempoEnComer)
         {
             var temp = lastObjectve.GetComponentInChildren<IRecipientControler>();
+            var sectep = lastObjectve.transform.parent.GetComponent<IRecipientControler>();
             if (temp != null) //se lo va a comer lit
             {
                 temp.RemoveStack(objectives, this);
+                tiempoSinComer = 0f;
+            }
+            else if (sectep != null)
+            {
+                sectep.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
             }
             else
@@ -335,6 +343,7 @@ public class AAnimalFase2: AAnimal
         {
             return Status.Failure;
         }
+        Debug.Log("Se está moviendo al objetivo");
         return base.MoveTowardsObjective();
     }
     #endregion
@@ -345,11 +354,13 @@ public class AAnimalFase2: AAnimal
         stikersManager.SetImage(StikersGenerales.Enfermo);
         tiempoEnfermo = 0.0f;
         estaEnfermo = true;
+        Debug.Log("Está enfermo");
         
     }
     public void YaNoEstaEnfermo()
     {
         estaEnfermo = false;
+        Debug.Log("Ya no está enfermo");
     }
 
     public void Rascarse()
@@ -520,7 +531,7 @@ public class AAnimalFase2: AAnimal
 
     public void ChangeEatingAction(BehaviourTree action)
     {
-        Debug.Log("Llega a el cambio de la acci�n de comer");
+        //Debug.Log("Llega a el cambio de la acci�n de comer");
         AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
         if (sistUtil)
         {

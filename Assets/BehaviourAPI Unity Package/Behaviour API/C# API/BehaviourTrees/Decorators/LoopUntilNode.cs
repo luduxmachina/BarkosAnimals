@@ -34,8 +34,8 @@ namespace BehaviourAPI.BehaviourTrees
         /// Set the <see cref="TargetStatus"/> value to <paramref name="status"/>.
         /// </summary>
         /// <param name="iterations">The new target status value.</param>
-        /// <returns>The <see cref="LoopNode"/> itself.</returns>
-        public LoopNode SetTargetStatus(Status status)
+        /// <returns>The <see cref="LoopUntilNode"/> itself.</returns>
+        public LoopUntilNode SetTargetStatus(Status status)
         {
             TargetStatus = status;
             return this;
@@ -45,8 +45,8 @@ namespace BehaviourAPI.BehaviourTrees
         /// Set the <see cref="MaxIterations"/> value to <paramref name="maxIterations"/>.
         /// </summary>
         /// <param name="maxIterations">The new max iterations value.</param>
-        /// <returns>The <see cref="LoopNode"/> itself.</returns>
-        public LoopNode SetMaxIterations(int maxIterations)
+        /// <returns>The <see cref="LoopUntilNode"/> itself.</returns>
+        public LoopUntilNode SetMaxIterations(int maxIterations)
         {
             MaxIterations = maxIterations;
             return this;

@@ -1,6 +1,7 @@
 using BehaviourAPI.BehaviourTrees;
 using BehaviourAPI.Core;
 using BehaviourAPI.Core.Actions;
+using BehaviourAPI.Core.Perceptions;
 using BehaviourAPI.UnityToolkit;
 using System;
 using System.Collections.Generic;
@@ -129,11 +130,13 @@ public class MultipleRecipientController : IRecipientControler
     {
         foreach(Comedero comedero in comederos)
         {
-            if(comedero.animalOcupando == animal)
+            if(comedero.animalOcupando == animal && comedero.ocupado)
             {
+                Debug.Log("Animal va al comedero específico: " +comedero.pos.position);
                 return comedero.pos;
             }
         }
+        Debug.Log("Animal va a comedero en general "+transform.position);
         return this.transform;
     }
 
@@ -150,10 +153,11 @@ public class MultipleRecipientController : IRecipientControler
     {
         foreach(Comedero c in comederos)
         {
-            if(!c.ocupado && c.hasFood)
+            if(!c.ocupado && c.hasFood || c.animalOcupando == animal && c.ocupado)
             {
+                Debug.Log("Hay un comedero libre");
                 c.ocupado = true;
-                c.hasFood = false;
+                c.animalOcupando = animal;
                 return true;
             }
         }
@@ -170,12 +174,12 @@ public class MultipleRecipientController : IRecipientControler
         else
         {
             comidaStacks--;
-
-            if (comidaSinComedero <= 0)
+            Debug.Log("Esta es al comida sin colocar: " + comidaSinComedero);
+            foreach (Comedero c in comederos)
             {
-                foreach (Comedero c in comederos)
+                if (comidaSinComedero <= 0)
                 {
-                    if (c.animalOcupando == animal)
+                    if (c.animalOcupando == animal && c.ocupado && c.hasFood)
                     {
                         c.ocupado = false;
                         c.hasFood = false;
@@ -186,11 +190,11 @@ public class MultipleRecipientController : IRecipientControler
                         c.comederoVacio.SetActive(true);
                     }
                 }
-            }
-            else
-            {
-
-                comidaSinComedero--;
+                else
+                {
+                    c.ocupado = false;
+                    comidaSinComedero--;
+                }
             }
 
             if (comidaStacks <= comidaSinComedero)
@@ -223,10 +227,6 @@ public class MultipleRecipientController : IRecipientControler
         LeafNode GoToEat2 = Comer.CreateLeafNode("GoToEat2", GoToEat_action);
         LeafNode GoToEat3 = Comer.CreateLeafNode("GoToEat3", GoToEat_action);
 
-        FunctionalAction ComederoTieneComida = new FunctionalAction();
-        ComederoTieneComida.onUpdated = m_AAnimalFase2.ComprobarComedero;
-        LeafNode Comedero_Tiene_Comida = Comer.CreateLeafNode("ComederoTieneComida", ComederoTieneComida);
-
         FunctionalAction Eat_action = new FunctionalAction();
         Eat_action.onStarted = m_AAnimalFase2.InitComer;
         Eat_action.onUpdated = m_AAnimalFase2.UpdateComer;
@@ -241,7 +241,10 @@ public class MultipleRecipientController : IRecipientControler
         LeafNode Moverse_un_poco = Comer.CreateLeafNode("Moverse un poco", Moverse_un_poco_action);
         LeafNode Moverse_un_poco2 = Comer.CreateLeafNode("Moverse un poco2", Moverse_un_poco_action);
 
-        SequencerNode COMEDERO = Comer.CreateComposite<SequencerNode>("COMEDERO1", false, Comedero_Tiene_Comida, GoToEat, Eat);
+        SequencerNode COMEDERO = Comer.CreateComposite<SequencerNode>("COMEDERO1", false, GoToEat, Eat);
+
+        ConditionNode Comedero_Tiene_Comida = Comer.CreateDecorator<ConditionNode>(COMEDERO);
+        Comedero_Tiene_Comida.Perception = new ConditionPerception(m_AAnimalFase2.ComprobarComedero);
 
         SequencerNode IRSEUNRATO = Comer.CreateComposite<SequencerNode>("IrseUnRato", false, Moverse_un_poco, GoToEat2);
 
@@ -249,7 +252,7 @@ public class MultipleRecipientController : IRecipientControler
 
         InverterNode inverterNode = Comer.CreateDecorator<InverterNode>(succederNode);
 
-        SelectorNode COMER = Comer.CreateComposite<SelectorNode>("COMER", false, COMEDERO, inverterNode); 
+        SelectorNode COMER = Comer.CreateComposite<SelectorNode>("COMER", false, Comedero_Tiene_Comida, inverterNode); 
 
         LoopUntilNode Comer_En_Comedero = Comer.CreateDecorator<LoopUntilNode>(COMER);
         Comer_En_Comedero.TargetStatus = Status.Success;
