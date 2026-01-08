@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 240979350409187349}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.771}
+  m_LocalPosition: {x: 0, y: 0, z: 1.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -225,9 +225,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3449414159525399649}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 12.67
+  m_Drag: 1.38
+  m_AngularDrag: 1.41
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -265,7 +265,7 @@ MonoBehaviour:
   patrolRadius: 5
   radioDetectionObjective: 10
   radioDetectionPredator: 15
-  radioAtaqueComida: 2
+  radioAtaqueComida: 1.69
   tiempoEnComer: 3
   nido: {fileID: 0}
   grabber: {fileID: 4755883619432215065}
@@ -334,8 +334,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executeOnLoop: 0
   interruptOptions: 0
-  useDebugger: 0
-  debuggerComponent: {fileID: 0}
+  useDebugger: 1
+  debuggerComponent: {fileID: 6048510465726165892}
   m_TotemAnimal: {fileID: 8738755387605042504}
 --- !u!114 &7072006360296413674
 MonoBehaviour:
