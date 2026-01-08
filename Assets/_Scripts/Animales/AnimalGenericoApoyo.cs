@@ -6,6 +6,13 @@ public class AnimalGenericoApoyo : AAnimal
     private StikersManager stikersManager;
     [SerializeField]
     private bool stopAnimWhenGrabbed = false;
+    NavegacionBOIDsExtra navegacionBOIDs;
+    protected override void Awake()
+    {
+        base.Awake();
+        navegacionBOIDs = GetComponent<NavegacionBOIDsExtra>();
+    }
+
     public override void PlayRunAnim()
     {
         base.PlayRunAnim();
@@ -14,17 +21,30 @@ public class AnimalGenericoApoyo : AAnimal
     protected override void Start()
     {
         base.Start();
-        if (stopAnimWhenGrabbed)
+        var temp = GetComponent<IGrabbable>();
+        if (temp != null)
         {
-            var temp = GetComponent<IGrabbable>();
-            if (temp != null)
+
+            temp.OnGrab.AddListener(() =>
             {
-                temp.OnGrab.AddListener(() =>
-                {
-                    PlayIdleAnim();
-                });
-            }
+                PlayIdleAnim();
+            });
         }
+        DesactivarBOIDS();
+
+    }
+    public void ActivarBOIDS()
+    {
+        Debug.Log("Activar BOIDS");
+        if (navegacionBOIDs != null)
+            navegacionBOIDs.IsActive = true;
+    }
+    public void DesactivarBOIDS()
+    {
+        Debug.Log("Desactivar BOIDS");
+
+        if (navegacionBOIDs != null)
+            navegacionBOIDs.IsActive = false;
     }
     
 }

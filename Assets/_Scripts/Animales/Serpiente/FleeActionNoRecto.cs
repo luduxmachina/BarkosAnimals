@@ -40,7 +40,7 @@ namespace BehaviourAPI.UnityToolkit
 
                 Vector3 axis = Vector3.up;             
 
-                Vector3 rotated = Quaternion.AngleAxis(angulo, axis) * dir;
+                Vector3 rotated = Quaternion.AngleAxis(angulo, axis) * dir* 3;
 
 
                 var targetPos = context.Transform.position + rotated*targetDistance;

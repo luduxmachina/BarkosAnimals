@@ -15,18 +15,18 @@ public class ComportamientoAnimalFase1 : BehaviourRunner
 	[SerializeField] private bool useDebugger = false;
     [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
 
-    [SerializeField] private AAnimal Huir_action_animalContext;
+    [SerializeField] private AnimalGenericoApoyo Huir_action_animalContext;
 	[SerializeField] private Transform Huir_action_OtherTransform;
-	[SerializeField] private AAnimal m_AAnimal;
+	[SerializeField] private AnimalGenericoApoyo m_AAnimal;
 
     private float runSpeed;
     private float runAwayDistance;
     protected override void Init()
 	{
-		m_AAnimal = GetComponent<AAnimal>();
+		m_AAnimal = GetComponent<AnimalGenericoApoyo>();
 
         runSpeed = m_AAnimal.GetRunSpeed();
-        runAwayDistance = m_AAnimal.GetRadioAwareness() * 1.25f;
+        runAwayDistance = m_AAnimal.GetRadioAwareness() * 1.5f;
         base.Init();
 	}
 	
@@ -44,7 +44,7 @@ public class ComportamientoAnimalFase1 : BehaviourRunner
 		Huir_action.OtherTransform = Huir_action_OtherTransform;
         Huir_action.speed = runSpeed;
         Huir_action.distance = runAwayDistance;
-        Huir_action.maxTimeRunning = 20f;
+        Huir_action.maxTimeRunning = 3f;
 		State Huir = HuirNoHuir.CreateState("Huir", Huir_action);
 
         ConditionPerception DepredadorTodaviaCerca_perception = new ConditionPerception();
@@ -56,7 +56,11 @@ public class ComportamientoAnimalFase1 : BehaviourRunner
         ConditionPerception DepredadorCerca_perception = new ConditionPerception();
 		DepredadorCerca_perception.onCheck = m_AAnimal.PredatorClose;
 		SimpleAction DepredadorCerca_action = new SimpleAction();
-		DepredadorCerca_action.action = m_AAnimal.PlayRunAnim;
+		DepredadorCerca_action.action = () =>
+		{
+			m_AAnimal.PlayRunAnim();
+			m_AAnimal.DesactivarBOIDS();
+		};
 		StateTransition DepredadorCerca = HuirNoHuir.CreateTransition("DepredadorCerca", Tranquilo, Huir, DepredadorCerca_perception, DepredadorCerca_action);
 		
 
@@ -72,12 +76,21 @@ public class ComportamientoAnimalFase1 : BehaviourRunner
 		DelayAction TiempoDeEspera_action = new DelayAction();
 		TiempoDeEspera_action.delayTime = m_AAnimal.GetTiempoEnComer();
 		LeafNode TiempoDeEspera = newbehaviourgraph.CreateLeafNode("TiempoDeEspera", TiempoDeEspera_action);
-		
-		SimpleAction Paron_action = new SimpleAction();
+
+		SimpleAction DesactivarBOIDS = new SimpleAction();
+        DesactivarBOIDS.action = m_AAnimal.DesactivarBOIDS;
+        LeafNode DesactivarBOIDSNode = newbehaviourgraph.CreateLeafNode("DesactivarBOIDS", DesactivarBOIDS);
+     
+
+        SimpleAction ActivarBOIDS = new SimpleAction();
+        ActivarBOIDS.action = m_AAnimal.ActivarBOIDS;
+        LeafNode ActivarBOIDSNode = newbehaviourgraph.CreateLeafNode("ActivarBOIDS", ActivarBOIDS);
+
+        SimpleAction Paron_action = new SimpleAction();
 		Paron_action.action = m_AAnimal.PlayIdleAnim;
 		LeafNode Paron = newbehaviourgraph.CreateLeafNode("Paron", Paron_action);
 		
-		SequencerNode unnamed_1 = newbehaviourgraph.CreateComposite<SequencerNode>(false, Patrullar, TiempoDeEspera, Paron);
+		SequencerNode unnamed_1 = newbehaviourgraph.CreateComposite<SequencerNode>(false, Paron, ActivarBOIDSNode, TiempoDeEspera, DesactivarBOIDSNode, Patrullar);
 		unnamed_1.IsRandomized = false;
 		
 		LoopNode unnamed = newbehaviourgraph.CreateDecorator<LoopNode>(unnamed_1);
