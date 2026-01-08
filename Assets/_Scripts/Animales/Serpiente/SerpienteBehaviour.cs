@@ -48,9 +48,9 @@ public class SerpienteBehaviour : BehaviourRunner
 		SubsystemAction Huyendo_action = new SubsystemAction(SnakeHuyendoBT);
         TranquiloCazando_action.ExecuteOnLoop = true;
 
-        ParallelAction parallelHuyendo = new ParallelAction(false, false, Huyendo_action, new SimpleAction(m_SerpienteInScene.PlayRunAnim));
+        //ParallelAction parallelHuyendo = new ParallelAction(false, false, Huyendo_action, new SimpleAction(m_SerpienteInScene.PlayRunAnim));
         //State Huyendo = SnakeFSM.CreateState("Huyendo", Huyendo_action);
-        State Huyendo = SnakeFSM.CreateState("Huyendo",parallelHuyendo);
+        State Huyendo = SnakeFSM.CreateState("Huyendo", Huyendo_action);
 
 		State recienCogido = SnakeFSM.CreateState("RecienCogido");
         StateTransition SerCogido = SnakeFSM.CreateTransition(Huyendo, recienCogido, statusFlags: StatusFlags.None);

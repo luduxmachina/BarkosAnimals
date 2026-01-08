@@ -29,7 +29,7 @@ namespace BehaviourAPI.BehaviourTrees
         #endregion
 
         #region ---------------------------------------- Build methods ---------------------------------------
-        
+
         /// <summary>
         /// Set the <see cref="TargetStatus"/> value to <paramref name="status"/>.
         /// </summary>

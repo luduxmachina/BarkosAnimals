@@ -67,7 +67,8 @@ public enum ItemNames
     Ship,
     Feeder,
     Coal,
-    Carrot
+    Carrot,
+    TotemBird
 }
 
 public enum ItemType

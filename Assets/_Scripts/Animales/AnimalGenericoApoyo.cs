@@ -16,7 +16,7 @@ public class AnimalGenericoApoyo : AAnimal
     public override void PlayRunAnim()
     {
         base.PlayRunAnim();
-        stikersManager.SetImage(StikersGenerales.Enfadado);
+        stikersManager.SetImage(StikersGenerales.Incomodo);
     }
     protected override void Start()
     {

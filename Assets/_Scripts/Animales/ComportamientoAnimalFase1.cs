@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using BehaviourAPI.Core;
 using BehaviourAPI.Core.Actions;
@@ -89,8 +88,16 @@ public class ComportamientoAnimalFase1 : BehaviourRunner
         SimpleAction Paron_action = new SimpleAction();
 		Paron_action.action = m_AAnimal.PlayIdleAnim;
 		LeafNode Paron = newbehaviourgraph.CreateLeafNode("Paron", Paron_action);
-		
-		SequencerNode unnamed_1 = newbehaviourgraph.CreateComposite<SequencerNode>(false, Paron, ActivarBOIDSNode, TiempoDeEspera, DesactivarBOIDSNode, Patrullar);
+
+        DelayAction TiempoEsperaParado = new DelayAction();
+		TiempoEsperaParado.delayTime = Random.Range(1.0f, 3.0f);
+        LeafNode TiempoDeEsperaParadoNode = newbehaviourgraph.CreateLeafNode("TiempoDeEsperaParado", TiempoEsperaParado);
+
+        SimpleAction animMoverse = new SimpleAction();
+        animMoverse.action = m_AAnimal.PlayWalkingAnim;
+        LeafNode Moverse = newbehaviourgraph.CreateLeafNode("Moverse", animMoverse);
+
+        SequencerNode unnamed_1 = newbehaviourgraph.CreateComposite<SequencerNode>(false, Paron, TiempoDeEsperaParadoNode, ActivarBOIDSNode, Moverse, TiempoDeEspera, DesactivarBOIDSNode, Patrullar);
 		unnamed_1.IsRandomized = false;
 		
 		LoopNode unnamed = newbehaviourgraph.CreateDecorator<LoopNode>(unnamed_1);
