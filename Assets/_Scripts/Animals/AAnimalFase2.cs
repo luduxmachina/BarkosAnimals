@@ -229,14 +229,28 @@ public class AAnimalFase2: AAnimal
             {
                 temp.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
-                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                if (isHerbivore)
+                {
+                    System.Random rnd = new System.Random();
+                    TipoParticula comidaHervivoro= rnd.Next(0,2) == 0
+                        ? TipoParticula.Pan
+                        : TipoParticula.Zanahoria;
+                    manager.Activar(comidaHervivoro);
+                }
                 else manager.Activar(TipoParticula.Chuleton);
             }
             else if (sectep != null)
             {
                 sectep.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
-                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                if (isHerbivore)
+                {
+                    System.Random rnd = new System.Random();
+                    TipoParticula comidaHervivoro = rnd.Next(0, 2) == 0
+                        ? TipoParticula.Pan
+                        : TipoParticula.Zanahoria;
+                    manager.Activar(comidaHervivoro);
+                }
                 else manager.Activar(TipoParticula.Chuleton);
             }
             else
@@ -246,7 +260,14 @@ public class AAnimalFase2: AAnimal
                 {
                     temp2.ReduceByOne();
                     tiempoSinComer = 0f;
-                    if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                    if (isHerbivore)
+                    {
+                        System.Random rnd = new System.Random();
+                        TipoParticula comidaHervivoro = rnd.Next(0, 2) == 0
+                            ? TipoParticula.Pan
+                            : TipoParticula.Zanahoria;
+                        manager.Activar(comidaHervivoro);
+                    }
                     else manager.Activar(TipoParticula.Chuleton);
                 }
             }
@@ -538,6 +559,18 @@ public class AAnimalFase2: AAnimal
         Debug.LogError("Esto no deber�a estar siendo usado...");
         return Vector3.zero;
     }
+
+    public Vector3 GetNidoPosition()
+    {
+        return establo.GetNidoPosition();
+    }
+
+    public PushPerception GetPerceptioStopReproducing()
+    {
+        AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
+        return sistUtil.terminaDeReproducirse;
+    }
+
     #endregion
 
     #region Fatores del sist de utilidad
