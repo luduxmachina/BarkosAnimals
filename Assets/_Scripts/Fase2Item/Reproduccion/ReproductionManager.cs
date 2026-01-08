@@ -22,13 +22,7 @@ public class ReproductionManager : MonoBehaviour
 
     private bool TryToReproduceAnimalOfType(ItemNames animalType)
     {
-        if (TryToSpawnBabyOfType(animalType))
-        {
-            SpawnBabyOfType(animalType);
-            return true;
-        }
-        
-        return false;
+        return TryToSpawnBabyOfType(animalType);
     }
     
     private bool TryToSpawnBabyOfType(ItemNames animalType)
