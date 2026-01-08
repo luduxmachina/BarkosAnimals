@@ -62,11 +62,21 @@ public class NavegacionBOIDsExtra : MonoBehaviour
         separacion /= (numVecinos);
         alineacionMedia /= (numVecinos);
         cohesionMedia /= (numVecinos);
+
         Vector3 alineacion = alineacionMedia - transform.forward;
         Vector3 cohesion = cohesionMedia - transform.position;
         Vector3 fuerza = separacion * ws + alineacion * wa + cohesion * wc;
+
+
         
         rb.AddForce(fuerza * forceMultiplier);
+
+        //girar que mire hacia donde anda
+        if (rb.linearVelocity.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(rb.linearVelocity.normalized, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
+        }
     }
 
 }
