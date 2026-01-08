@@ -229,14 +229,28 @@ public class AAnimalFase2: AAnimal
             {
                 temp.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
-                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                if (isHerbivore)
+                {
+                    System.Random rnd = new System.Random();
+                    TipoParticula comidaHervivoro= rnd.Next(0,2) == 0
+                        ? TipoParticula.Pan
+                        : TipoParticula.Zanahoria;
+                    manager.Activar(comidaHervivoro);
+                }
                 else manager.Activar(TipoParticula.Chuleton);
             }
             else if (sectep != null)
             {
                 sectep.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
-                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                if (isHerbivore)
+                {
+                    System.Random rnd = new System.Random();
+                    TipoParticula comidaHervivoro = rnd.Next(0, 2) == 0
+                        ? TipoParticula.Pan
+                        : TipoParticula.Zanahoria;
+                    manager.Activar(comidaHervivoro);
+                }
                 else manager.Activar(TipoParticula.Chuleton);
             }
             else
@@ -246,7 +260,14 @@ public class AAnimalFase2: AAnimal
                 {
                     temp2.ReduceByOne();
                     tiempoSinComer = 0f;
-                    if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                    if (isHerbivore)
+                    {
+                        System.Random rnd = new System.Random();
+                        TipoParticula comidaHervivoro = rnd.Next(0, 2) == 0
+                            ? TipoParticula.Pan
+                            : TipoParticula.Zanahoria;
+                        manager.Activar(comidaHervivoro);
+                    }
                     else manager.Activar(TipoParticula.Chuleton);
                 }
             }
