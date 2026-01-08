@@ -11,6 +11,7 @@ using BehaviourAPI.StateMachines;
 
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using UnityEditor.UI;
+using NUnit.Framework.Internal;
 
 public class AnimalesF2US : BehaviourRunner
 {
@@ -33,6 +34,7 @@ public class AnimalesF2US : BehaviourRunner
 		UtilitySystem Fase2US = new UtilitySystem(1f);
 		//BehaviourTree Comer = new BehaviourTree();
 		FSM EstaFeliz = new FSM();
+		FSM Reproducirse = new FSM();
 		BehaviourTree TieneHambre = new BehaviourTree();
 		
 		VariableFactor TC = Fase2US.CreateVariable("TC", m_AAnimalFase2.TimeWithoutEating, 0f, 1f);
@@ -143,8 +145,11 @@ public class AnimalesF2US : BehaviourRunner
         Felicidad.Slope = -0.7f;
         Felicidad.YIntercept = 0.7f;
 
-        SubsystemAction MandarCorazones_action = new SubsystemAction(EstaFeliz);
+        SubsystemAction MandarCorazones_action = new SubsystemAction(Reproducirse);
         UtilityAction MandarCorazones = Fase2US.CreateAction("MandarCorazones", Felicidad, MandarCorazones_action);
+
+        SubsystemAction SoloSerFeliz_action = new SubsystemAction(EstaFeliz);
+        State SoloSerFeliz = Reproducirse.CreateState("SoloSerFeliz", SoloSerFeliz_action);
 
         SimpleAction EstaFeliz_1_action = new SimpleAction();
 		EstaFeliz_1_action.action = m_AAnimalFase2.MandarCorazones;
@@ -162,8 +167,15 @@ public class AnimalesF2US : BehaviourRunner
 		_2_perception.TotalTime = 5f;
 		StateTransition _2 = EstaFeliz.CreateTransition("2", Patrulla, EstaFeliz_1, _2_perception);
 
-		WalkAction walkAction = new WalkAction();
+        WalkAction walkAction = new WalkAction();
 		walkAction.Target = m_AAnimalFase2.GetNidoPosition();
+		State walkToNido = Reproducirse.CreateState();
+
+        //UnityTimePerception perception = new ConditionPerception();
+        //StateTransition llegaNido = Reproducirse.CreateTransition("llegaAlNido", walkToNido, Patrulla, _1_perception);
+
+
+        PushPerception terminaDeReproducirse = new PushPerception();
 
         //el root no es tan imnportante en FSM pero asi empieza en el sitio correcto
         EstaFeliz.SetEntryState(EstaFeliz_1);
