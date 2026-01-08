@@ -24,8 +24,10 @@ public class AAnimalFase2: AAnimal
     [Header("Espacio en el establo")]
     [Tooltip("Animales en el establo (M�ximo)")]
     public float AMax = 0.0f;
+    [SerializeField, ReadOnly] float AnimEstablo= 0.0f;
     [Tooltip("Compis de la misma especie en el establo (M�ximo)")]
     public float CMax = 0.0f;
+    [SerializeField, ReadOnly] float CompisEstablo = 0.0f;
     [Tooltip("Depredadores en el establo (M�ximo)")]
     public float DMax = 0.0f;
     [SerializeField, ReadOnly] public float depredadoresCerca = 0f;
@@ -109,6 +111,8 @@ public class AAnimalFase2: AAnimal
     protected override void Update()
     {
         base.Update();
+
+        if (!estaEnFase) return;
 
         if (suciedad <= suciedadMaxima && tiempoSinLimpiar >= tiempoHastaSucio)
         {            
@@ -218,17 +222,22 @@ public class AAnimalFase2: AAnimal
         tiempoComiendo += Time.deltaTime;
         if (tiempoComiendo >= tiempoEnComer)
         {
+            ParticulasManager manager = gameObject.GetComponent<ParticulasManager>();
             var temp = lastObjectve.GetComponentInChildren<IRecipientControler>();
             var sectep = lastObjectve.transform.parent.GetComponent<IRecipientControler>();
             if (temp != null) //se lo va a comer lit
             {
                 temp.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
+                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                else manager.Activar(TipoParticula.Chuleton);
             }
             else if (sectep != null)
             {
                 sectep.RemoveStack(objectives, this);
                 tiempoSinComer = 0f;
+                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                else manager.Activar(TipoParticula.Chuleton);
             }
             else
             {
@@ -237,6 +246,8 @@ public class AAnimalFase2: AAnimal
                 {
                     temp2.ReduceByOne();
                     tiempoSinComer = 0f;
+                    if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                    else manager.Activar(TipoParticula.Chuleton);
                 }
             }
 
@@ -365,6 +376,7 @@ public class AAnimalFase2: AAnimal
 
     public void Rascarse()
     {
+        YaNoEstaEnfermo();
         YaNoEstaContento();
         stikersManager.SetImage(StikersGenerales.NecesitaLimpiar);
         suciedad -= (suciedadMaxima / 6);
@@ -372,6 +384,7 @@ public class AAnimalFase2: AAnimal
 
     public void MostrarHambre()
     {
+        YaNoEstaEnfermo();
         YaNoEstaContento();
         if (isHerbivore)
         {
@@ -388,6 +401,7 @@ public class AAnimalFase2: AAnimal
 
     public void MandarCorazones()
     {
+        YaNoEstaEnfermo();
         stikersManager.SetImage(StikersGenerales.Corazones);
         if(!isHappy)GameFlowManager.instance.quotaChecker.UpdateQuoteWithHappinesOfAnimal(true);
         isHappy = true;
@@ -401,6 +415,7 @@ public class AAnimalFase2: AAnimal
 
     public void NoMostrarNada()
     {
+        YaNoEstaEnfermo();
         stikersManager.HideSprites();
         YaNoEstaContento();
     }
@@ -409,6 +424,7 @@ public class AAnimalFase2: AAnimal
     {
         stikersManager.SetImage(StikersGenerales.Incomodo);
         YaNoEstaContento();
+        YaNoEstaEnfermo();
     }
 
     public void NoHayComederoDef()
@@ -451,6 +467,7 @@ public class AAnimalFase2: AAnimal
             Debug.LogWarning("El pato no est� en ning�n establo");
             return 0f;
         }
+        AnimEstablo = ((float)establo.GetAnimalsInEstable() - 1) / AMax;
         return ((float)establo.GetAnimalsInEstable()-1)/AMax;
     }
 
@@ -464,6 +481,7 @@ public class AAnimalFase2: AAnimal
 
         float numCompis = 0;
         numCompis += establo.GetAnimalsInEstable(itemName);
+        CompisEstablo = (numCompis - 1) / CMax;
         return (numCompis - 1)/CMax;//No le queremos contar a �l mismo.
     }
 

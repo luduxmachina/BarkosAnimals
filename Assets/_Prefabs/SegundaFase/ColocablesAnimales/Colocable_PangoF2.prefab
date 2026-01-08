@@ -259,10 +259,49 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8867997848718819774, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5793291268548898158}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6643027423853108606, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4159126050901071266}
   m_SourcePrefab: {fileID: 100100000, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
 --- !u!4 &1884187558677655171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8867997848718819774, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+  m_PrefabInstance: {fileID: 7004381190662745917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3696234188990710942 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5944512898361682851, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+  m_PrefabInstance: {fileID: 7004381190662745917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4136555545268760699 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6364554733193781062, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+  m_PrefabInstance: {fileID: 7004381190662745917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4396720138818171459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6643027423853108606, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
+  m_PrefabInstance: {fileID: 7004381190662745917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4159126050901071266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396720138818171459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19abe23381f43c4ba5849a523252d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corazones: {fileID: 9159578772641915611}
+  chuleton: {fileID: 3696234188990710942}
+  zanahoria: {fileID: 4136555545268760699}
+  pan: {fileID: 3696234188990710942}
+--- !u!198 &9159578772641915611 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2173501152193596902, guid: b5b584d8255cac74087c742d5fe57763, type: 3}
   m_PrefabInstance: {fileID: 7004381190662745917}
   m_PrefabAsset: {fileID: 0}
