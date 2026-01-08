@@ -1,7 +1,6 @@
 using BehaviourAPI.BehaviourTrees;
 using BehaviourAPI.Core;
 using BehaviourAPI.Core.Actions;
-using BehaviourAPI.SmartObjects;
 using BehaviourAPI.UnityToolkit;
 using System;
 using System.Collections.Generic;
@@ -36,11 +35,11 @@ public class RecipientController : IRecipientControler
     UnityEvent ahoraNoHayComida = new UnityEvent();
 
 
-    //public override void SubscribeStable(Stable stable)
-    //{
-    //    ahoraHayComida.AddListener(stable.HayComida);
-    //    ahoraNoHayComida.AddListener(stable.NoHayComida);
-    //}
+    public override void SubscribeStable(Stable stable)
+    {
+        ahoraHayComida.AddListener(stable.HayComida);
+        ahoraNoHayComida.AddListener(stable.NoHayComida);
+    }
 
     private void Start()
     {
@@ -122,12 +121,8 @@ public class RecipientController : IRecipientControler
             return true;
         }
     }
-    public override SmartInteraction RequestInteraction(SmartAgent agent, RequestData data)
+    public override BehaviourTree CreateGraph(AAnimalFase2 m_AAnimalFase2)
     {
-        AAnimalFase2 m_AAnimalFase2 = agent.GetComponent<AAnimalFase2>();
-
-        Dictionary<string, float> capabilityMap = new();
-
         BehaviourTree Comer = new BehaviourTree();
         SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
         Indica_que_tiene_Hambre_action.action = m_AAnimalFase2.MostrarHambre;
@@ -159,17 +154,9 @@ public class RecipientController : IRecipientControler
         //el root es importante para los arboles
         Comer.SetRootNode(loopComer);
 
-        SubsystemAction comer = new SubsystemAction(Comer);
+        //SubsystemAction comer = new SubsystemAction(Comer);
 
-        return new SmartInteraction(comer, agent, capabilityMap);
-    }
-    public override bool ValidateAgent(SmartAgent agent)
-    {
-        return true;
-    }
-    public override float GetCapabilityValue(string needName)
-    {
-        return 0f;
+        return Comer;
     }
 
     public override bool ComederoLibre(AAnimalFase2 animal)

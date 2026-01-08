@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public abstract class IRecipientControler: SmartObject
 {
-    //public abstract void SubscribeStable(Stable stable);
+    public abstract void SubscribeStable(Stable stable);
     //public abstract BehaviourTree CreateGraph(AAnimalFase2 animalFase2);
     public abstract Transform GetTransfToEat(AAnimalFase2 animal);
     public abstract bool ComederoLibre(AAnimalFase2 animal);

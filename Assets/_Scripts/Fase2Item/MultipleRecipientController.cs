@@ -43,11 +43,11 @@ public class MultipleRecipientController : IRecipientControler
     UnityEvent ahoraNoHayComida = new UnityEvent();
 
 
-    //public override void SubscribeStable(Stable stable)
-    //{
-    //    ahoraHayComida.AddListener(stable.HayComida);
-    //    ahoraNoHayComida.AddListener(stable.NoHayComida);
-    //}
+    public override void SubscribeStable(Stable stable)
+    {
+        ahoraHayComida.AddListener(stable.HayComida);
+        ahoraNoHayComida.AddListener(stable.NoHayComida);
+    }
 
     private void Start()
     {

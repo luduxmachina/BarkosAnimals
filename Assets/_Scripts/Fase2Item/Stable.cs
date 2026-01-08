@@ -24,10 +24,10 @@ public class Stable : MonoBehaviour
         {
             comedero = transform.parent.GetComponent<IRecipientControler>();
         }
-        //if(comedero != null)
-        //{
-        //    comedero.SubscribeStable(this);
-        //}
+        if(comedero != null)
+        {
+            comedero.SubscribeStable(this);
+        }
     }
 
     private void OnDisable()
@@ -54,22 +54,22 @@ public class Stable : MonoBehaviour
     }
 
     #region Comedero
-    //public void HayComida()
-    //{
-    //    Console.WriteLine("Llama a hay comida");
-    //    foreach (AAnimalFase2 animal in animalesReferecia)
-    //    {
-    //        animal.ChangeEatingAction(comedero.CreateGraph(animal));
-    //    }
-    //}
-    //public void NoHayComida()
-    //{
-    //    foreach (AAnimalFase2 animal in animalesReferecia)
-    //    {
-    //        animal.ChangeEatingAction(null);
-    //    }
-    //    //Debug.LogWarning("No debería entrar aquí");
-    //}
+    public void HayComida()
+    {
+        Console.WriteLine("Llama a hay comida");
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            animal.ChangeEatingAction(comedero.CreateGraph(animal));
+        }
+    }
+    public void NoHayComida()
+    {
+        foreach (AAnimalFase2 animal in animalesReferecia)
+        {
+            animal.ChangeEatingAction(null);
+        }
+        //Debug.LogWarning("No debería entrar aquí");
+    }
 
     public Transform GetComedero(AAnimalFase2 animal)
     {
