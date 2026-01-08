@@ -8,6 +8,8 @@ public class ReproductionManager : MonoBehaviour
     private AnimalPlaceableSO animalPlaceableDB;
     [SerializeField, Range(0f, 1f)] 
     private float babyScale = 0.5f;
+    [SerializeField, Range(0f, 1f)] 
+    private float spawnHeight = 0.2f;
     [SerializeField, Range(1f, 5f)] 
     private int numOfAnimalsNeededToReproduce = 2;
     [SerializeField] public Transform babiesTransform;
@@ -68,7 +70,8 @@ public class ReproductionManager : MonoBehaviour
             throw new Exception($"No animal found on database with type [{animalType}]");
         }
         
-        GameObject babyInstance = Instantiate(baby, transform.position, Quaternion.identity, babiesTransform);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z);
+        GameObject babyInstance = Instantiate(baby, pos, Quaternion.identity, babiesTransform);
         babyInstance.transform.localScale = babyInstance.transform.localScale * babyScale;
 
     }
