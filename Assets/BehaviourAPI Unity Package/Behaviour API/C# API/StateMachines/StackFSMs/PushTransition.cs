@@ -19,7 +19,7 @@ namespace BehaviourAPI.StateMachines.StackFSMs
 
         #region -------------------------------------- Private variables -------------------------------------
 
-        State _targetState;
+        protected State _targetState;
 
         #endregion
 
@@ -57,6 +57,8 @@ namespace BehaviourAPI.StateMachines.StackFSMs
             if (canBePerformed)
             {
                 if (_targetState == null) throw new MissingChildException(this, "The target state can't be null.");
+                //pushear donde estaba, no lo nuevo
+                
                 _stackFSM.Push(_targetState, this);
             }
             return canBePerformed;
