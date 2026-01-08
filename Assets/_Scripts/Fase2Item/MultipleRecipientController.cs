@@ -2,13 +2,11 @@ using BehaviourAPI.BehaviourTrees;
 using BehaviourAPI.Core;
 using BehaviourAPI.Core.Actions;
 using BehaviourAPI.Core.Perceptions;
-using BehaviourAPI.SmartObjects;
 using BehaviourAPI.UnityToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -214,12 +212,8 @@ public class MultipleRecipientController : IRecipientControler
         }
     }
 
-    public override SmartInteraction RequestInteraction(SmartAgent agent, RequestData data)
+    public override BehaviourTree CreateGraph(AAnimalFase2 m_AAnimalFase2)
     {
-        AAnimalFase2 m_AAnimalFase2 = agent.GetComponent<AAnimalFase2>();
-
-        Dictionary<string, float> capabilityMap = new();
-
         BehaviourTree Comer = new BehaviourTree();
 
         SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
@@ -274,16 +268,6 @@ public class MultipleRecipientController : IRecipientControler
 
         SubsystemAction comer = new SubsystemAction(Comer);
         Debug.Log("Crea el grafo de comer.");
-
-        return new SmartInteraction(comer,agent, capabilityMap);
+        return Comer;
     }
-    public override bool ValidateAgent(SmartAgent agent)
-    {
-        return true;
-    }
-    public override float GetCapabilityValue(string needName)
-    {
-        return 0f;
-    }
-
 }
