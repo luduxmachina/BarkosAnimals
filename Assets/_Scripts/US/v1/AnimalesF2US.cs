@@ -169,6 +169,10 @@ public class AnimalesF2US : BehaviourRunner
 		_2_perception.TotalTime = 5f;
 		StateTransition _2 = EstaFeliz.CreateTransition("2", Patrulla, EstaFeliz_1, _2_perception);
 
+        SimpleAction EstaFeliz_Repro_action = new SimpleAction();
+        EstaFeliz_Repro_action.action = m_AAnimalFase2.MandarCorazones;
+        State EstaFeliz_Repro = Reproducirse.CreateState("EstaFeliz", EstaFeliz_1_action);
+
         WalkAction walkAction = new WalkAction();
         if(m_AAnimalFase2.GetNidoPosition() != null)
 			walkAction.Target = m_AAnimalFase2.GetNidoPosition();
@@ -177,13 +181,17 @@ public class AnimalesF2US : BehaviourRunner
         //walkAction.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
         State walkToNido = Reproducirse.CreateState(walkAction);
 
+        UnityTimePerception esMuyFeliz_Percepcion = new UnityTimePerception();
+        esMuyFeliz_Percepcion.TotalTime = 0.3f;
+        StateTransition esMuyFeliz = Reproducirse.CreateTransition("1", EstaFeliz_Repro, walkToNido, esMuyFeliz_Percepcion);
+
         StateTransition paraDeReproducirse = Reproducirse.CreateTransition("paraDeReproducirse", walkToNido, SoloSerFeliz, statusFlags: StatusFlags.None);
 
         terminaDeReproducirse = new PushPerception(paraDeReproducirse);
 
         EstaFeliz.SetEntryState(EstaFeliz_1 );
 
-        Reproducirse.SetEntryState(walkToNido);
+        Reproducirse.SetEntryState(EstaFeliz_Repro);
 
         SimpleAction MostrarHambre_1_action = new SimpleAction();
 		MostrarHambre_1_action.action = m_AAnimalFase2.MostrarHambre;
