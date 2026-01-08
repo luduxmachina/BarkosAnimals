@@ -570,6 +570,8 @@ public class AAnimalFase2: AAnimal
 
     public PushPerception GetPerceptioStopReproducing()
     {
+        if(behaviourRunner == null) return new PushPerception();
+
         return behaviourRunner.terminaDeReproducirse;
     }
 
