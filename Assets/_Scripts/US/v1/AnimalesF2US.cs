@@ -170,7 +170,8 @@ public class AnimalesF2US : BehaviourRunner
 		StateTransition _2 = EstaFeliz.CreateTransition("2", Patrulla, EstaFeliz_1, _2_perception);
 
         WalkAction walkAction = new WalkAction();
-		walkAction.Target = m_AAnimalFase2.GetNidoPosition();
+        if(m_AAnimalFase2.GetNidoPosition() != null)
+			walkAction.Target = m_AAnimalFase2.GetNidoPosition();
 		State walkToNido = Reproducirse.CreateState();
 
         StateTransition paraDeReproducirse = Reproducirse.CreateTransition("paraDeReproducirse", walkToNido, SoloSerFeliz, statusFlags: StatusFlags.None);

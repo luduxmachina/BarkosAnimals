@@ -92,7 +92,6 @@ public class Stable : MonoBehaviour
     public Vector3 GetNidoPosition()
     {
         return transform.parent.GetComponentInChildren<ReproductionSpot>().GetWorldPosition();
-
     }
 
     #endregion

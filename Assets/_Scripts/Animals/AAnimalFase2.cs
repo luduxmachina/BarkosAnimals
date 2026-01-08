@@ -66,7 +66,7 @@ public class AAnimalFase2: AAnimal
     [SerializeField] StikersManager stickerLimpieza;
     //[SerializeField] AllObjectTypesSO animalsDataBase;
     public bool useEditorBehaviour = true;
-    [SerializeField] BehaviourRunner behaviourRunner;
+    private AnimalesF2US behaviourRunner;
 
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] Predicate<float> funcionFelicidad;
@@ -132,8 +132,9 @@ public class AAnimalFase2: AAnimal
 
         if(establo != null && !behaviourRunner.enabled && estaEnFase)
         {
+            behaviourRunner = gameObject.AddComponent<AnimalesF2US>();
             Debug.Log("Establo en el animal");
-            behaviourRunner.enabled = true;
+            //behaviourRunner.enabled = true;
             //navMeshAgent.enabled = true;
         }
     }
@@ -567,8 +568,7 @@ public class AAnimalFase2: AAnimal
 
     public PushPerception GetPerceptioStopReproducing()
     {
-        AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
-        return sistUtil.terminaDeReproducirse;
+        return behaviourRunner.terminaDeReproducirse;
     }
 
     #endregion
