@@ -57,7 +57,7 @@ public class PatoBehaviour : BehaviourRunner
 
 
         PatrolAction Nada_action = new PatrolAction();
-		Nada_action.maxDistance = 4.04f;
+		Nada_action.maxDistance = m_PatoFase1.GetPatrolRadius();
 		LeafNode Nada = PatoBT.CreateLeafNode("Nada", Nada_action);
 		
 		SimpleAction CansarUnPoco_action = new SimpleAction();
