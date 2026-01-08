@@ -130,7 +130,7 @@ public class AAnimalFase2: AAnimal
             tiempoEnfermo = 0f;
         }
 
-        if(establo != null && !behaviourRunner.enabled && estaEnFase)
+        if(establo != null && !TryGetComponent<AnimalesF2US>(out var comp) && estaEnFase)
         {
             behaviourRunner = gameObject.AddComponent<AnimalesF2US>();
             Debug.Log("Establo en el animal");
