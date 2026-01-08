@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteractionReciever
@@ -14,6 +15,13 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
     {
         inventoryUI.SetActive(false); //por si acaso
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("9"))
+            AddXOfEveryItemToInventory(2);
+    }
+
     public bool Interact(ItemNames interactorType, GameObject interactor)
     {
 
@@ -23,8 +31,6 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
             return false;
         }
         int leftOver = AddItemToCartInventory(itemInScene);
-
-
 
         return leftOver == 0;
     }
@@ -46,6 +52,21 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
         inventoryUI.SetActive(true);
 
     }
+
+    private void AddXOfEveryItemToInventory(int amount)
+    {
+        foreach (var obj in allObjectTypes.itemsData)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                var itemName = obj.Name;
+                inventoryData.TryStackItem(itemName, 1);
+            }
+        }
+        
+        Debug.Log($"Added {amount} of items to Inventory");
+    }
+    
     public int AddItemToCartInventory(ItemInScene interactor)
     {
         int amount = interactor.amountInStack;
@@ -55,11 +76,7 @@ public class InventoryInScene : MonoBehaviour, IInteractable, IPlayerInteraction
 
 
         interactor.GetInCart(leftover);
-
-
-
-
-
+        
         Debug.Log("Item added to cart: " + interactor.ToString() + " obj: " + interactor.name);
 
         return leftover;
