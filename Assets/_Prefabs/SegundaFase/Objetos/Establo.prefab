@@ -183,6 +183,38 @@ MonoBehaviour:
   animalPlaceableDB: {fileID: 11400000, guid: 305ad7cd19e5bed4dbdc85cdaeb7778b, type: 2}
   babyScale: 0.5
   numOfAnimalsNeededToReproduce: 2
+  babiesTransform: {fileID: 2550404985783563695}
+--- !u!1 &1562364787595096796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2550404985783563695}
+  m_Layer: 0
+  m_Name: Babies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2550404985783563695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562364787595096796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9114113484648707797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4443573240592342122
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +281,7 @@ Transform:
   - {fileID: 4839032777147258387}
   - {fileID: 3297499422201866274}
   - {fileID: 2796166302747322418}
+  - {fileID: 2550404985783563695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6667172910968842051

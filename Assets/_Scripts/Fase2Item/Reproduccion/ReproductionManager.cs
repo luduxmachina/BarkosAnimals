@@ -10,6 +10,7 @@ public class ReproductionManager : MonoBehaviour
     private float babyScale = 0.5f;
     [SerializeField, Range(1f, 5f)] 
     private int numOfAnimalsNeededToReproduce = 2;
+    [SerializeField] public Transform babiesTransform;
     
     private ReproductionSpot reproductionSpot;
     
@@ -50,7 +51,7 @@ public class ReproductionManager : MonoBehaviour
             GameObject animal = reproductionSpot.ExtractAnimalOfType(animalType).animalObject;
             
             // Informar al animal de que ya puede dejar de intentar reproducirse
-            var pushPerception = gameObject.GetComponentInChildren<AAnimalFase2>().GetPerceptioStopReproducing();
+            var pushPerception = animal.GetComponent<AAnimalFase2>().GetPerceptioStopReproducing();
             pushPerception.Fire();
         }
     }
@@ -72,9 +73,9 @@ public class ReproductionManager : MonoBehaviour
         {
             throw new Exception($"No animal found on database with type [{animalType}]");
         }
+        
+        GameObject babyInstance = Instantiate(baby, transform.position, Quaternion.identity, babiesTransform);
+        babyInstance.transform.localScale = babyInstance.transform.localScale * babyScale;
 
-        baby.transform.localScale = baby.transform.localScale * babyScale;
-        Instantiate(baby, transform.position, Quaternion.identity);
-        reproductionSpot.AddBabyToBlacklist(baby);
     }
 }

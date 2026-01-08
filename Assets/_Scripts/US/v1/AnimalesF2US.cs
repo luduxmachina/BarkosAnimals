@@ -172,14 +172,18 @@ public class AnimalesF2US : BehaviourRunner
         WalkAction walkAction = new WalkAction();
         if(m_AAnimalFase2.GetNidoPosition() != null)
 			walkAction.Target = m_AAnimalFase2.GetNidoPosition();
-		State walkToNido = Reproducirse.CreateState();
+        //FunctionalAction walkAction = new FunctionalAction();
+        //walkAction.onStarted = m_AAnimalFase2.MoveTowardsObjectiveInit;
+        //walkAction.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
+        State walkToNido = Reproducirse.CreateState(walkAction);
 
         StateTransition paraDeReproducirse = Reproducirse.CreateTransition("paraDeReproducirse", walkToNido, SoloSerFeliz, statusFlags: StatusFlags.None);
 
-        terminaDeReproducirse = new PushPerception(paraDeReproducirse);	
+        terminaDeReproducirse = new PushPerception(paraDeReproducirse);
 
-        //el root no es tan imnportante en FSM pero asi empieza en el sitio correcto
-        EstaFeliz.SetEntryState(EstaFeliz_1);
+        EstaFeliz.SetEntryState(EstaFeliz_1 );
+
+        Reproducirse.SetEntryState(walkToNido);
 
         SimpleAction MostrarHambre_1_action = new SimpleAction();
 		MostrarHambre_1_action.action = m_AAnimalFase2.MostrarHambre;

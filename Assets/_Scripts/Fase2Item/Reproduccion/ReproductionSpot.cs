@@ -9,8 +9,7 @@ public class ReproductionSpot : MonoBehaviour
 {
     public UnityEvent<ItemNames> OnAnimalEnterReproductionSpot = new UnityEvent<ItemNames>();
 
-    private List<AnimalF2Instance> animalsInArea;
-    private HashSet<GameObject> babies;
+    private List<AnimalF2Instance> animalsInArea = new();
 
     private void Awake()
     {
@@ -24,7 +23,7 @@ public class ReproductionSpot : MonoBehaviour
             var animalType = animal.thisItemName;
             GameObject animalObj = other.gameObject;
 
-            if (babies.Contains(animalObj))
+            if (CheckIfIsBaby(animalObj))
             {
                 // Informar al bebe de que se aleje
                 var pushPerception = gameObject.GetComponentInChildren<AAnimalFase2>().GetPerceptioStopReproducing();
@@ -37,6 +36,15 @@ public class ReproductionSpot : MonoBehaviour
         }
     }
 
+    private bool CheckIfIsBaby(GameObject animalObj)
+    {
+        if(animalObj.transform.parent == GetComponent<ReproductionManager>().babiesTransform)
+        {
+            return true;
+        }
+        return false;
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.TryGetComponent<AAnimalFase2>(out var animal))
@@ -44,7 +52,7 @@ public class ReproductionSpot : MonoBehaviour
             var animalType = animal.thisItemName;
             GameObject animalObj = other.gameObject;
 
-            if (babies.Contains(animalObj))
+            if (CheckIfIsBaby(animalObj))
                 return;
 
             foreach (var animalInArea in animalsInArea)
@@ -94,11 +102,6 @@ public class ReproductionSpot : MonoBehaviour
         }
         
         throw new Exception($"No animal found on reproduction spot with type [{animalType}]");
-    }
-
-    public void AddBabyToBlacklist(GameObject baby)
-    {
-        babies.Add(baby);
     }
 }
 
