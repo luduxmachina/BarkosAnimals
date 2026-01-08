@@ -1,4 +1,6 @@
+using BehaviourAPI.BehaviourTrees;
 using BehaviourAPI.Core;
+using BehaviourAPI.Core.Actions;
 using BehaviourAPI.UnityToolkit;
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using NUnit.Framework;
@@ -6,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,17 +22,19 @@ public class AAnimalFase2: AAnimal
 
     [Header("-----------------Fase 2-----------------")]
     [Header("Espacio en el establo")]
-    [Tooltip("Animales en el establo (Máximo)")]
+    [Tooltip("Animales en el establo (Mï¿½ximo)")]
     public float AMax = 0.0f;
-    [Tooltip("Compis de la misma especie en el establo (Máximo)")]
+    [SerializeField, ReadOnly] float AnimEstablo= 0.0f;
+    [Tooltip("Compis de la misma especie en el establo (Mï¿½ximo)")]
     public float CMax = 0.0f;
-    [Tooltip("Depredadores en el establo (Máximo)")]
+    [SerializeField, ReadOnly] float CompisEstablo = 0.0f;
+    [Tooltip("Depredadores en el establo (Mï¿½ximo)")]
     public float DMax = 0.0f;
     [SerializeField, ReadOnly] public float depredadoresCerca = 0f;
 
     [Header("Limpieza")]
     [SerializeField] float suciedadMaxima;
-    [Tooltip("Timpo que pasa hasta que comprueba que está sucio.")]
+    [Tooltip("Timpo que pasa hasta que comprueba que estï¿½ sucio.")]
     public float tiempoHastaSucio = 5f;
     [SerializeField, ReadOnly] float suciedad = 0f;
     [SerializeField, ReadOnly] float tiempoSinLimpiar = 0f;
@@ -67,13 +72,14 @@ public class AAnimalFase2: AAnimal
     [SerializeField] Predicate<float> funcionFelicidad;
     [SerializeField] DirtCreator dirtCreator;
 
+    bool comederoAsignado = false;
+    int comederoActual;
+
     bool estaEnFase = false;
 
     #region Monobehavior
     protected override void Awake()
     {
-
-
         List<ItemNames> list = objectives.ToList();
         if (list.Contains(ItemNames.Bread))
         {
@@ -106,10 +112,12 @@ public class AAnimalFase2: AAnimal
     {
         base.Update();
 
+        if (!estaEnFase) return;
+
         if (suciedad <= suciedadMaxima && tiempoSinLimpiar >= tiempoHastaSucio)
         {            
             suciedad += dirtCreator.GetHowMuchDirtIsNear(this.transform.position, 3f);
-            Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, rangoSuciedad)} y tiene suciedad de {suciedad}");
+            //Debug.Log($"Suciedad cerca de {gameObject.name}: {dirtCreator.GetHowMuchDirtIsNear(this.transform.position, rangoSuciedad)} y tiene suciedad de {suciedad}");
             tiempoSinLimpiar = 0f;
         }
         tiempoSinLimpiar += Time.deltaTime;
@@ -141,15 +149,24 @@ public class AAnimalFase2: AAnimal
     #endregion
 
     #region Actions
+    #region Comer
+    public bool ComprobarComedero()
+    {
+        Debug.Log("Comprueba el comedero");
+        return establo.ComederoLibre(this);
+    }
+
+
     public override void InitComer()
     {
         YaNoEstaContento();
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return;
         }
         lastObjectve = GetClosestObjetive();
+        Debug.Log("Va a comer");
         if (lastObjectve != null)
         {
             if (animator)
@@ -166,31 +183,12 @@ public class AAnimalFase2: AAnimal
 
     }
 
-    public override bool ObjectiveClose()
-    {
-        return TieneComidaEnEstablo() || establo.GetAnimalsInEstable(objectives) > 0;
-    }
-
-    public override Transform GetClosestObjetive()
-    {
-        if (TieneComidaEnEstablo())
-        {
-            return establo.GetComedero();
-        }
-        if(establo.GetAnimalsInEstable(objectives) > 0)
-        {
-            AAnimalFase2 animal = establo.GetAnimalFromTypes(objectives);
-            return animal.transform;
-        }
-        return null;
-    }
-
 
     public override Status UpdateComer()
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return Status.Failure;
         }
 
@@ -198,8 +196,7 @@ public class AAnimalFase2: AAnimal
         {
             if (animator)
             {
-                animator.SetTrigger("Idle");
-        
+                animator.SetTrigger("Idle");        
             }
             tiempoComiendo = 0.0f;
         
@@ -208,6 +205,83 @@ public class AAnimalFase2: AAnimal
 
         Transform newObjetive = GetClosestObjetive();
         if(!newObjetive == lastObjectve) return Status.Failure;
+
+        if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.75) //alguien ha movido la comida o al animal y ya no esta comiendo lol
+        {
+            Debug.Log("Deja de comer por la distancia");
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+
+            return Status.Failure;
+        }
+
+        tiempoComiendo += Time.deltaTime;
+        if (tiempoComiendo >= tiempoEnComer)
+        {
+            ParticulasManager manager = gameObject.GetComponent<ParticulasManager>();
+            var temp = lastObjectve.GetComponentInChildren<IRecipientControler>();
+            var sectep = lastObjectve.transform.parent.GetComponent<IRecipientControler>();
+            if (temp != null) //se lo va a comer lit
+            {
+                temp.RemoveStack(objectives, this);
+                tiempoSinComer = 0f;
+                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                else manager.Activar(TipoParticula.Chuleton);
+            }
+            else if (sectep != null)
+            {
+                sectep.RemoveStack(objectives, this);
+                tiempoSinComer = 0f;
+                if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                else manager.Activar(TipoParticula.Chuleton);
+            }
+            else
+            {
+                var temp2 = lastObjectve.GetComponentInChildren<ItemInScene>();
+                if (temp2) //se lo va a comer lit
+                {
+                    temp2.ReduceByOne();
+                    tiempoSinComer = 0f;
+                    if (isHerbivore) manager.Activar(TipoParticula.Pan);
+                    else manager.Activar(TipoParticula.Chuleton);
+                }
+            }
+
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+            return Status.Success;
+        }
+        return Status.Running;
+    }
+
+    /**
+    public Status UpdateComerComedero()
+    {
+        if (establo == null)
+        {
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
+            return Status.Failure;
+        }
+
+        if (lastObjectve == null)
+        {
+            if (animator)
+            {
+                animator.SetTrigger("Idle");
+
+            }
+            tiempoComiendo = 0.0f;
+
+            return Status.Failure;
+        }
 
         if (Vector3.Distance(transform.position, lastObjectve.position) > radioAtaqueComida * 1.75) //alguien ha movido la comida o al animal y ya no esta comiendo lol
         {
@@ -250,6 +324,29 @@ public class AAnimalFase2: AAnimal
         }
         return Status.Running;
     }
+    /**/
+    #endregion
+
+    #region Objetivos
+
+    public override bool ObjectiveClose()
+    {
+        return TieneComidaEnEstablo() || establo.GetAnimalsInEstable(objectives) > 0;
+    }
+
+    public override Transform GetClosestObjetive()
+    {
+        if (TieneComidaEnEstablo())
+        {
+            return establo.GetComedero(this);
+        }
+        if (establo.GetAnimalsInEstable(objectives) > 0)
+        {
+            AAnimalFase2 animal = establo.GetAnimalFromTypes(objectives);
+            return animal.transform;
+        }
+        return null;
+    }
 
     public override Status MoveTowardsObjective()
     {
@@ -257,8 +354,10 @@ public class AAnimalFase2: AAnimal
         {
             return Status.Failure;
         }
+        Debug.Log("Se estÃ¡ moviendo al objetivo");
         return base.MoveTowardsObjective();
     }
+    #endregion
 
     public void Enfermar()
     {
@@ -266,15 +365,18 @@ public class AAnimalFase2: AAnimal
         stikersManager.SetImage(StikersGenerales.Enfermo);
         tiempoEnfermo = 0.0f;
         estaEnfermo = true;
+        Debug.Log("EstÃ¡ enfermo");
         
     }
     public void YaNoEstaEnfermo()
     {
         estaEnfermo = false;
+        Debug.Log("Ya no estÃ¡ enfermo");
     }
 
     public void Rascarse()
     {
+        YaNoEstaEnfermo();
         YaNoEstaContento();
         stikersManager.SetImage(StikersGenerales.NecesitaLimpiar);
         suciedad -= (suciedadMaxima / 6);
@@ -282,6 +384,7 @@ public class AAnimalFase2: AAnimal
 
     public void MostrarHambre()
     {
+        YaNoEstaEnfermo();
         YaNoEstaContento();
         if (isHerbivore)
         {
@@ -298,6 +401,7 @@ public class AAnimalFase2: AAnimal
 
     public void MandarCorazones()
     {
+        YaNoEstaEnfermo();
         stikersManager.SetImage(StikersGenerales.Corazones);
         if(!isHappy)GameFlowManager.instance.quotaChecker.UpdateQuoteWithHappinesOfAnimal(true);
         isHappy = true;
@@ -311,6 +415,7 @@ public class AAnimalFase2: AAnimal
 
     public void NoMostrarNada()
     {
+        YaNoEstaEnfermo();
         stikersManager.HideSprites();
         YaNoEstaContento();
     }
@@ -319,6 +424,12 @@ public class AAnimalFase2: AAnimal
     {
         stikersManager.SetImage(StikersGenerales.Incomodo);
         YaNoEstaContento();
+        YaNoEstaEnfermo();
+    }
+
+    public void NoHayComederoDef()
+    {
+        Debug.Log("No hay comedero definido");
     }
 
     public void Limpiar()
@@ -336,7 +447,7 @@ public class AAnimalFase2: AAnimal
 
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return;
         }
 
@@ -353,9 +464,10 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
+        AnimEstablo = ((float)establo.GetAnimalsInEstable() - 1) / AMax;
         return ((float)establo.GetAnimalsInEstable()-1)/AMax;
     }
 
@@ -363,20 +475,21 @@ public class AAnimalFase2: AAnimal
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
 
         float numCompis = 0;
         numCompis += establo.GetAnimalsInEstable(itemName);
-        return (numCompis - 1)/CMax;//No le queremos contar a él mismo.
+        CompisEstablo = (numCompis - 1) / CMax;
+        return (numCompis - 1)/CMax;//No le queremos contar a ï¿½l mismo.
     }
 
     public float PredatorsOnEstable()
     {
         if (establo == null)
         {
-            Debug.LogWarning("El pato no está en ningún establo");
+            Debug.LogWarning("El pato no estï¿½ en ningï¿½n establo");
             return 0f;
         }
 
@@ -422,7 +535,7 @@ public class AAnimalFase2: AAnimal
 
     public override Vector3 GetNewPosition()
     {
-        Debug.LogError("Esto no debería estar siendo usado...");
+        Debug.LogError("Esto no deberï¿½a estar siendo usado...");
         return Vector3.zero;
     }
     #endregion
@@ -432,6 +545,16 @@ public class AAnimalFase2: AAnimal
     {
         return (Mathf.Log10(x + 1)/Mathf.Log10(2))
             /(Mathf.Log10(DMax - 1)/Mathf.Log10(2));
+    }
+
+    public void ChangeEatingAction(BehaviourTree action)
+    {
+        //Debug.Log("Llega a el cambio de la acciï¿½n de comer");
+        AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
+        if (sistUtil)
+        {
+            sistUtil.SetEatAction(action);
+        }
     }
     #endregion
 

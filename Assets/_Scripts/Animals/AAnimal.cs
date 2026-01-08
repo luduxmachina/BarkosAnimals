@@ -253,6 +253,7 @@ public class AAnimal : MonoBehaviour
         {
             PlayIdleAnim();
             movimiento.CancelMove();
+            Debug.Log("LLega al objetivo");
 
             return Status.Success;
         }
@@ -300,6 +301,7 @@ public class AAnimal : MonoBehaviour
         }
         else
         {
+            Debug.Log("Descarta por mucha distancia");
             return false;
         }
 

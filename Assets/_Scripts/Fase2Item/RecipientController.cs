@@ -1,8 +1,13 @@
+using BehaviourAPI.BehaviourTrees;
+using BehaviourAPI.Core;
+using BehaviourAPI.Core.Actions;
+using BehaviourAPI.UnityToolkit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 [Serializable]
 public struct ComidaYComedero
 {
@@ -10,7 +15,7 @@ public struct ComidaYComedero
     public GameObject comedero;
 }
 
-public class RecipientController : MonoBehaviour
+public class RecipientController : IRecipientControler
 {
     [SerializeField] int maxStacksFood = 3;
     [SerializeField, ReadOnly] int comidaStacks = 0;
@@ -24,12 +29,24 @@ public class RecipientController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textoContenido;
 
+    [SerializeField] private Transform Moverse_un_poco_action_OtherTransform;
+
+    UnityEvent ahoraHayComida = new UnityEvent();
+    UnityEvent ahoraNoHayComida = new UnityEvent();
+
+
+    public override void SubscribeStable(Stable stable)
+    {
+        ahoraHayComida.AddListener(stable.HayComida);
+        ahoraNoHayComida.AddListener(stable.NoHayComida);
+    }
+
     private void Start()
     {
         textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
     }
 
-    public bool AddStack(ItemNames tipoComida)
+    public override bool AddStack(ItemNames tipoComida)
     {
         if (tiposDeComidaAceptados.Contains(tipoComida))
         {
@@ -47,6 +64,8 @@ public class RecipientController : MonoBehaviour
             else
             {
                 comidaStacks = 1;
+                ahoraHayComida.Invoke();
+                Debug.Log("Llama a ahora hay comida");
                 foreach (ComidaYComedero comedero in comidaYComederoList)
                 {
                     if (comedero.tipoComida == tipoComida) comedero.comedero.SetActive(true);
@@ -64,7 +83,12 @@ public class RecipientController : MonoBehaviour
         return false;
     }
 
-    public bool HayComida(ItemNames[] tiposComida)
+    public override Transform GetTransfToEat(AAnimalFase2 animal)
+    {
+        return this.transform;
+    }
+
+    public override bool HayComida(ItemNames[] tiposComida)
     {
         if (!tiposComida.ToList().Contains(tipoActual) && comidaStacks>0)
         {
@@ -74,7 +98,7 @@ public class RecipientController : MonoBehaviour
     }
 
 
-    public bool RemoveStack(ItemNames[] tiposComida)
+    public override bool RemoveStack(ItemNames[] tiposComida, AAnimalFase2 animal)
     {
         if (!tiposComida.ToList().Contains(tipoActual) || comidaStacks <= 0)
         {
@@ -85,6 +109,7 @@ public class RecipientController : MonoBehaviour
             comidaStacks--;
             if(comidaStacks <= 0)
             {
+                ahoraNoHayComida.Invoke();
                 foreach (ComidaYComedero comedero in comidaYComederoList)
                 {
                     comedero.comedero.SetActive(false);
@@ -95,5 +120,47 @@ public class RecipientController : MonoBehaviour
             textoContenido.text = comidaStacks.ToString() + "/" + maxStacksFood.ToString();
             return true;
         }
+    }
+    public override BehaviourTree CreateGraph(AAnimalFase2 m_AAnimalFase2)
+    {
+        BehaviourTree Comer = new BehaviourTree();
+        SimpleAction Indica_que_tiene_Hambre_action = new SimpleAction();
+        Indica_que_tiene_Hambre_action.action = m_AAnimalFase2.MostrarHambre;
+        LeafNode Indica_que_tiene_Hambre = Comer.CreateLeafNode("Indica que tiene Hambre", Indica_que_tiene_Hambre_action);
+
+        FunctionalAction GoToEat_action = new FunctionalAction();
+        GoToEat_action.onStarted = m_AAnimalFase2.MoveTowardsObjectiveInit;
+        GoToEat_action.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
+        LeafNode GoToEat = Comer.CreateLeafNode("GoToEat", GoToEat_action);
+
+        FunctionalAction Eat_action = new FunctionalAction();
+        Eat_action.onStarted = m_AAnimalFase2.InitComer;
+        Eat_action.onUpdated = m_AAnimalFase2.UpdateComer;
+        LeafNode Eat = Comer.CreateLeafNode("Eat", Eat_action);
+
+        FleeAction Moverse_un_poco_action = new FleeAction();
+        Moverse_un_poco_action.OtherTransform =  Moverse_un_poco_action_OtherTransform;
+        Moverse_un_poco_action.speed = 3f;
+        Moverse_un_poco_action.distance = 6f;
+        Moverse_un_poco_action.maxTimeRunning = 20f;
+        LeafNode Moverse_un_poco = Comer.CreateLeafNode("Moverse un poco", Moverse_un_poco_action);
+
+        SequencerNode EATING = Comer.CreateComposite<SequencerNode>("EATING", false, Indica_que_tiene_Hambre, GoToEat, Eat, Moverse_un_poco);
+        EATING.IsRandomized = false;
+
+        LoopNode loopComer = Comer.CreateDecorator<LoopNode>(EATING);
+        loopComer.Iterations = -1;
+
+        //el root es importante para los arboles
+        Comer.SetRootNode(loopComer);
+
+        //SubsystemAction comer = new SubsystemAction(Comer);
+
+        return Comer;
+    }
+
+    public override bool ComederoLibre(AAnimalFase2 animal)
+    {
+        return true;
     }
 }
