@@ -576,7 +576,7 @@ MonoBehaviour:
         - 43bf2e53-84ff-4794-91c8-30d7c60456a5
         childIds:
         - 16de80df-d712-4c91-8ca7-e775367a9d06
-        - f9dbb5ed-c18d-4250-a659-c437f85597e5
+        - 8ec8af95-4667-47ab-8d5b-ae87237c51cc
       - name: AcercarseAPan
         id: f315367b-d89d-4051-9b8e-b552ff0f42f0
         position: {x: 1516, y: -476.66666}
@@ -708,7 +708,7 @@ MonoBehaviour:
         parentIds:
         - 4d5827ab-1034-4cda-a2f0-3c503a85538a
         - 34a91908-24d2-40b4-bd85-81459d3c113e
-        - f9dbb5ed-c18d-4250-a659-c437f85597e5
+        - 8ec8af95-4667-47ab-8d5b-ae87237c51cc
         childIds:
         - 1c8360d0-9df6-4ccd-93e9-db1581145756
       - name: VePeligroPush
@@ -729,26 +729,6 @@ MonoBehaviour:
             Culture=neutral, PublicKeyToken=null
         parentIds:
         - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
-        childIds:
-        - 953a3abb-52bb-4288-9bfb-57b736898e83
-      - name: VePeligroPush
-        id: f9dbb5ed-c18d-4250-a659-c437f85597e5
-        position: {x: 972, y: -158.66666}
-        node:
-          rid: 1030177719858495562
-        references:
-        - fieldName: Perception
-          value:
-            rid: 1030177719858495567
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 0d87c1e3-29a6-4254-b3e5-0041df2628c1
         childIds:
         - 953a3abb-52bb-4288-9bfb-57b736898e83
       - name: 
@@ -805,6 +785,26 @@ MonoBehaviour:
         parentIds:
         - c49e52ad-78f7-4176-9b6b-28b0e88d3ace
         childIds: []
+      - name: VePeligro Push
+        id: 8ec8af95-4667-47ab-8d5b-ae87237c51cc
+        position: {x: 988, y: -226}
+        node:
+          rid: 1030177719858495719
+        references:
+        - fieldName: Perception
+          value:
+            rid: 1030177719858495720
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 0d87c1e3-29a6-4254-b3e5-0041df2628c1
+        childIds:
+        - 953a3abb-52bb-4288-9bfb-57b736898e83
     pushPerceptions:
     - name: Cogido
       targetNodeIds:
@@ -938,10 +938,6 @@ MonoBehaviour:
       type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
       data:
         StatusFlags: -1
-    - rid: 1030177719858495562
-      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data:
-        StatusFlags: -1
     - rid: 1030177719858495563
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
@@ -957,24 +953,6 @@ MonoBehaviour:
       type: {class: DelayAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
       data:
         delayTime: 3
-    - rid: 1030177719858495567
-      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
-      data:
-        init:
-          componentName: 
-          methodName: 
-        check:
-          componentName: TotemAnimal
-          methodName: PredatorInSight
-        reset:
-          componentName: 
-          methodName: 
-        pause:
-          componentName: 
-          methodName: 
-        unpause:
-          componentName: 
-          methodName: 
     - rid: 1030177719858495568
       type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
@@ -994,6 +972,28 @@ MonoBehaviour:
           componentName: 
           methodName: 
     - rid: 1030177719858495569
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: TotemAnimal
+          methodName: PredatorInSight
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 1030177719858495719
+      type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 1030177719858495720
       type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
         init:

@@ -72,6 +72,7 @@ public class AAnimal : MonoBehaviour
         {
            // nav.stoppingDistance = radioAtaqueComida;
             nav.angularSpeed = rotateSpeed;
+            nav.stoppingDistance = radioAtaqueComida*0.8f;
         }
         if (animator == null)
         {
@@ -86,7 +87,10 @@ public class AAnimal : MonoBehaviour
     {
         return this.run;
     }
-
+    public float GetAttackRange()
+    {
+        return this.radioAtaqueComida;
+    }
     protected virtual void Update(){}
 
     #endregion
