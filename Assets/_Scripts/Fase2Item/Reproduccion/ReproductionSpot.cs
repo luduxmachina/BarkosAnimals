@@ -2,16 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
+
 [RequireComponent(typeof(Collider))]
 public class ReproductionSpot : MonoBehaviour
 {
-    [SerializeField, Range(0f, 1f)] 
-    private float babyScale = 0.5f;
-    [SerializeField]
-    private AnimalPlaceableSO animalPlaceableDB;
+    public UnityEvent<ItemNames> OnAnimalEnterReproductionSpot = new UnityEvent<ItemNames>();
 
     private List<AnimalF2Instance> animalsInArea;
-    private HashSet<int> babies;
+    private HashSet<GameObject> babies;
 
     private void Awake()
     {
@@ -23,12 +22,13 @@ public class ReproductionSpot : MonoBehaviour
         if (other.gameObject.TryGetComponent<AAnimalFase2>(out var animal))
         {
             var animalType = animal.thisItemName;
-            int hashCode = other.gameObject.GetHashCode();
+            GameObject animalObj = other.gameObject;
 
-            if (babies.Contains(hashCode))
+            if (babies.Contains(animalObj))
                 return;
 
-            animalsInArea.Add(new AnimalF2Instance(hashCode, animalType));
+            animalsInArea.Add(new AnimalF2Instance(animalObj, animalType));
+            OnAnimalEnterReproductionSpot.Invoke(animalType);
         }
     }
 
@@ -37,14 +37,14 @@ public class ReproductionSpot : MonoBehaviour
         if (other.gameObject.TryGetComponent<AAnimalFase2>(out var animal))
         {
             var animalType = animal.thisItemName;
-            int hashCode = other.gameObject.GetHashCode();
+            GameObject animalObj = other.gameObject;
 
-            if (babies.Contains(hashCode))
+            if (babies.Contains(animalObj))
                 return;
 
             foreach (var animalInArea in animalsInArea)
             {
-                if (animalInArea.hashCode == hashCode)
+                if (animalInArea.animalObject == animalObj)
                 {
                     animalsInArea.Remove(animalInArea);
                     break;
@@ -76,37 +76,34 @@ public class ReproductionSpot : MonoBehaviour
         return num;
     }
 
-    public void SpawnBabyOfType(ItemNames animalType)
+    public AnimalF2Instance ExtractAnimalOfType(ItemNames animalType)
     {
-        GameObject baby = null;
-        foreach (var item in animalPlaceableDB.GetPlaceableObjects())
+        for (int i = 0; i < animalsInArea.Count; i++)
         {
-            ItemNames currentAnimaltype = item.Prefab.gameObject.GetComponentInChildren<AAnimalFase2>().thisItemName;
-            if(currentAnimaltype == animalType)
+            if (animalsInArea[i].animalType == animalType)
             {
-                baby = item.Prefab;
-                break;
+                AnimalF2Instance animal = animalsInArea[i];
+                animalsInArea.RemoveAt(i);
+                return animal;
             }
         }
+        
+        throw new Exception($"No animal found on reproduction spot with type [{animalType}]");
+    }
 
-        if(baby == null)
-        {
-            throw new FileNotFoundException();
-        }
-
-        baby.transform.localScale = Vector3.one * babyScale;
-        Instantiate(baby, transform.position, Quaternion.identity);
-        babies.Add(baby.GetHashCode());
+    public void AddBabyToBlacklist(GameObject baby)
+    {
+        babies.Add(baby);
     }
 }
 
-class AnimalF2Instance
+public class AnimalF2Instance
 {
-    public int hashCode { get; private set; }
+    public GameObject animalObject { get; private set; }
     public ItemNames animalType { get; private set; }
-    public AnimalF2Instance(int hashCode, ItemNames animalType)
+    public AnimalF2Instance(GameObject animalObject, ItemNames animalType)
     {
-        this.hashCode = hashCode;
+        this.animalObject = animalObject;
         this.animalType = animalType;
     }
 }
