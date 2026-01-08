@@ -28,7 +28,7 @@ namespace BehaviourAPI.UnityToolkit
 
         void Start()
         {
-            m_NavMeshAgent.speed = speed;
+            //m_NavMeshAgent.speed = speed;
         }
 
         public void SetTarget(Vector3 targetPos)

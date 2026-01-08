@@ -45,7 +45,7 @@ public class SerpienteInScene : AAnimal
     }
     public void PlaySurpriseAnim()
     {
-        stickersManager.SetImage(StikersGenerales.Enfadado);
+        stickersManager.SetImage(StikersGenerales.Incomodo);
         animator.SetTrigger("Surprise");
     } 
     public void Descansar()
@@ -62,7 +62,7 @@ public class SerpienteInScene : AAnimal
             PlayAttackAnim();
         }
         grabbable.Drop(); //se libera  si misma
-        stickersManager.SetImage(StikersGenerales.Incomodo);
+        stickersManager.SetImage(StikersGenerales.Enfadado);
     }
     private bool CheckCart(List<ItemNames> posiblesPresas)
     {
