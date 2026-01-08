@@ -110,14 +110,38 @@ public class AnimalesF2US : BehaviourRunner
 		//SimpleAction TieneHambreYPuedeComer_action = new SimpleAction();
 		if(comer == null)
         {
-			comer = new BehaviourTree();
-			SimpleAction noSisActivo = new SimpleAction();
-			noSisActivo.action = m_AAnimalFase2.NoHayComederoDef;
-			LeafNode nodoComer = comer.CreateLeafNode(noSisActivo);
+            this.comer = new BehaviourTree();
 
-			LoopNode loopNode = comer.CreateDecorator<LoopNode>(nodoComer);
+            SimpleAction Indica_que_tiene_Hambre_Comer_action = new SimpleAction();
+            Indica_que_tiene_Hambre_Comer_action.action = m_AAnimalFase2.MostrarHambre;
+            LeafNode Indica_que_tiene_Hambre_Comer = comer.CreateLeafNode("Indica que tiene Hambre0", Indica_que_tiene_Hambre_Comer_action);
 
-			comer.SetRootNode(loopNode);
+            FunctionalAction GoToEat0_action = new FunctionalAction();
+            GoToEat0_action.onStarted = m_AAnimalFase2.MoveTowardsObjectiveInit;
+            GoToEat0_action.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
+            LeafNode GoToEat0 = comer.CreateLeafNode("GoToEat0", GoToEat0_action);
+
+            FunctionalAction Eat0_action = new FunctionalAction();
+            Eat0_action.onStarted = m_AAnimalFase2.InitComer;
+            Eat0_action.onUpdated = m_AAnimalFase2.UpdateComer;
+            LeafNode Eat0 = comer.CreateLeafNode("Eat0", Eat0_action);
+
+            SequencerNode EATING0 = comer.CreateComposite<SequencerNode>("EATING0", false, Indica_que_tiene_Hambre_Comer, GoToEat0, Eat0);
+            EATING0.IsRandomized = false;
+
+            LoopNode loopComer0 = comer.CreateDecorator<LoopNode>(EATING0);
+            loopComer0.Iterations = -1;
+
+            //el root es importante para los arboles
+            comer.SetRootNode(loopComer0);
+            //this.comer = new BehaviourTree();
+			//SimpleAction noSisActivo = new SimpleAction();
+			//noSisActivo.action = m_AAnimalFase2.NoHayComederoDef;
+            //LeafNode nodoComer = this.comer.CreateLeafNode(noSisActivo);
+			//
+            //LoopNode loopNode = this.comer.CreateDecorator<LoopNode>(nodoComer);
+			//
+			//this.comer.SetRootNode(loopNode);
         }
 
         SubsystemAction eatAction = new SubsystemAction(comer);
@@ -169,6 +193,10 @@ public class AnimalesF2US : BehaviourRunner
 		_2_perception.TotalTime = 5f;
 		StateTransition _2 = EstaFeliz.CreateTransition("2", Patrulla, EstaFeliz_1, _2_perception);
 
+        SimpleAction EstaFeliz_Repro_action = new SimpleAction();
+        EstaFeliz_Repro_action.action = m_AAnimalFase2.MandarCorazones;
+        State EstaFeliz_Repro = Reproducirse.CreateState("EstaFeliz", EstaFeliz_1_action);
+
         WalkAction walkAction = new WalkAction();
         if(m_AAnimalFase2.GetNidoPosition() != null)
 			walkAction.Target = m_AAnimalFase2.GetNidoPosition();
@@ -177,13 +205,17 @@ public class AnimalesF2US : BehaviourRunner
         //walkAction.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
         State walkToNido = Reproducirse.CreateState(walkAction);
 
+        UnityTimePerception esMuyFeliz_Percepcion = new UnityTimePerception();
+        esMuyFeliz_Percepcion.TotalTime = 0.3f;
+        StateTransition esMuyFeliz = Reproducirse.CreateTransition("1", EstaFeliz_Repro, walkToNido, esMuyFeliz_Percepcion);
+
         StateTransition paraDeReproducirse = Reproducirse.CreateTransition("paraDeReproducirse", walkToNido, SoloSerFeliz, statusFlags: StatusFlags.None);
 
         terminaDeReproducirse = new PushPerception(paraDeReproducirse);
 
         EstaFeliz.SetEntryState(EstaFeliz_1 );
 
-        Reproducirse.SetEntryState(walkToNido);
+        Reproducirse.SetEntryState(EstaFeliz_Repro);
 
         SimpleAction MostrarHambre_1_action = new SimpleAction();
 		MostrarHambre_1_action.action = m_AAnimalFase2.MostrarHambre;
