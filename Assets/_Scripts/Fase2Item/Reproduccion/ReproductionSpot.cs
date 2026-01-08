@@ -27,8 +27,8 @@ public class ReproductionSpot : MonoBehaviour
             if (babies.Contains(animalObj))
             {
                 // Informar al bebe de que se aleje
-                // var pushPerception = animal.GetPerceptionStopReproducing();
-                // pushPerception.Fire();
+                var pushPerception = gameObject.GetComponentInChildren<AAnimalFase2>().GetPerceptioStopReproducing();
+                pushPerception.Fire();
                 return;
             }
             
