@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.31
+      value: 4.95
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.86
+      value: -5.66
       objectReference: {fileID: 0}
     - target: {fileID: 8454186698301673351, guid: 7aae3b36ee986b049a20fe7eb1d76bef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -484,7 +484,6 @@ MonoBehaviour:
         - dd20201c-feb0-4e0a-90f8-ed088e674d3c
         childIds:
         - e26ec908-8152-452e-b559-958002ff41c3
-        - 69c8e959-092b-4ea8-b963-ec569df887c5
       - name: PajaroCogido
         id: 962c687d-76a8-42a6-8e7d-a78ae1c1b8e4
         position: {x: 1004.8, y: 251.19998}
@@ -500,24 +499,9 @@ MonoBehaviour:
         - e26ec908-8152-452e-b559-958002ff41c3
         childIds:
         - dd20201c-feb0-4e0a-90f8-ed088e674d3c
-      - name: EsconderseEnNido
-        id: cbab071b-7b11-4f82-9b3e-30fc83b12bef
-        position: {x: 315.33334, y: -175.33333}
-        node:
-          rid: 5649168775563444294
-        references:
-        - fieldName: Action
-          value:
-            rid: 1030177649191813189
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 69c8e959-092b-4ea8-b963-ec569df887c5
-        childIds:
-        - 380467fa-bcea-42c5-a172-8ef045d15349
       - name: Atrapado
         id: e26ec908-8152-452e-b559-958002ff41c3
-        position: {x: 672.8, y: 126.4}
+        position: {x: 696.6667, y: 223.33334}
         node:
           rid: 5649168775563444312
         references:
@@ -555,80 +539,6 @@ MonoBehaviour:
         - 962c687d-76a8-42a6-8e7d-a78ae1c1b8e4
         childIds:
         - 21d81df7-58ac-4846-8b03-ff609859330c
-      - name: VePeligroPUSH
-        id: 69c8e959-092b-4ea8-b963-ec569df887c5
-        position: {x: 352, y: 64.799995}
-        node:
-          rid: 5649168775563444314
-        references:
-        - fieldName: Perception
-          value:
-            rid: 1030177653257142340
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 21d81df7-58ac-4846-8b03-ff609859330c
-        childIds:
-        - cbab071b-7b11-4f82-9b3e-30fc83b12bef
-      - name: SalirNidoPOP
-        id: 2192fd08-ebfc-427e-a7e6-0ccf9ae6019a
-        position: {x: 1284.6666, y: -150.66666}
-        node:
-          rid: 5649168775563444316
-        references:
-        - fieldName: Perception
-          value:
-            rid: 1030177653257142341
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 7b0c7e5d-b022-4377-a2a7-5d7cbc3debbf
-        childIds: []
-      - name: esperarEscondido
-        id: 7b0c7e5d-b022-4377-a2a7-5d7cbc3debbf
-        position: {x: 900.6667, y: -132.66666}
-        node:
-          rid: 1030177698205401333
-        references:
-        - fieldName: Action
-          value:
-            rid: 1030177698205401336
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - 380467fa-bcea-42c5-a172-8ef045d15349
-        childIds:
-        - 2192fd08-ebfc-427e-a7e6-0ccf9ae6019a
-      - name: 
-        id: 380467fa-bcea-42c5-a172-8ef045d15349
-        position: {x: 632, y: -224}
-        node:
-          rid: 1030177698205401335
-        references:
-        - fieldName: Perception
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        - fieldName: Action
-          value:
-            rid: -2
-          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - cbab071b-7b11-4f82-9b3e-30fc83b12bef
-        childIds:
-        - 7b0c7e5d-b022-4377-a2a7-5d7cbc3debbf
     - name: SubGraphPajaroLibre
       id: c5275902-2caa-42ae-9cd0-1b615e920c28
       graph:
@@ -636,7 +546,7 @@ MonoBehaviour:
       nodes:
       - name: PatruyandoNido
         id: 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
-        position: {x: 693.3333, y: 534.6666}
+        position: {x: 666.6667, y: -468.66666}
         node:
           rid: 5649168775563444298
         references:
@@ -650,9 +560,10 @@ MonoBehaviour:
         - 16de80df-d712-4c91-8ca7-e775367a9d06
         childIds:
         - 91be9ec3-4d57-4ef1-86aa-8316047c5922
+        - 34a91908-24d2-40b4-bd85-81459d3c113e
       - name: RecogerPan
         id: 0d87c1e3-29a6-4254-b3e5-0041df2628c1
-        position: {x: 1816, y: 464.80002}
+        position: {x: 972, y: -782.6667}
         node:
           rid: 5649168775563444300
         references:
@@ -665,9 +576,10 @@ MonoBehaviour:
         - 43bf2e53-84ff-4794-91c8-30d7c60456a5
         childIds:
         - 16de80df-d712-4c91-8ca7-e775367a9d06
+        - f9dbb5ed-c18d-4250-a659-c437f85597e5
       - name: AcercarseAPan
         id: f315367b-d89d-4051-9b8e-b552ff0f42f0
-        position: {x: 1159.3334, y: 214.66669}
+        position: {x: 1516, y: -476.66666}
         node:
           rid: 5649168775563444302
         references:
@@ -681,9 +593,10 @@ MonoBehaviour:
         childIds:
         - 43bf2e53-84ff-4794-91c8-30d7c60456a5
         - ae160892-720a-4857-9ac9-5895191dc2e6
+        - 4d5827ab-1034-4cda-a2f0-3c503a85538a
       - name: VePan
         id: 91be9ec3-4d57-4ef1-86aa-8316047c5922
-        position: {x: 841.3333, y: 258.6667}
+        position: {x: 1228, y: -580}
         node:
           rid: 5649168775563444304
         references:
@@ -703,7 +616,7 @@ MonoBehaviour:
         - f315367b-d89d-4051-9b8e-b552ff0f42f0
       - name: PanAlcanzado
         id: 43bf2e53-84ff-4794-91c8-30d7c60456a5
-        position: {x: 1470, y: 250.66669}
+        position: {x: 1500, y: -774.6667}
         node:
           rid: 5649168775563444305
         references:
@@ -723,7 +636,7 @@ MonoBehaviour:
         - 0d87c1e3-29a6-4254-b3e5-0041df2628c1
       - name: FinDejarComida
         id: 16de80df-d712-4c91-8ca7-e775367a9d06
-        position: {x: 1167.3334, y: 627.3333}
+        position: {x: 664, y: -766.6667}
         node:
           rid: 5649168775563444307
         references:
@@ -743,7 +656,7 @@ MonoBehaviour:
         - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
       - name: NoPanAlcanzado
         id: ae160892-720a-4857-9ac9-5895191dc2e6
-        position: {x: 1121.3334, y: 456.00003}
+        position: {x: 1236, y: -382.66666}
         node:
           rid: 5649168775563444309
         references:
@@ -761,6 +674,137 @@ MonoBehaviour:
         - f315367b-d89d-4051-9b8e-b552ff0f42f0
         childIds:
         - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
+      - name: Ve peligro push
+        id: 4d5827ab-1034-4cda-a2f0-3c503a85538a
+        position: {x: 1319.3334, y: -152.66666}
+        node:
+          rid: 1030177719858495556
+        references:
+        - fieldName: Perception
+          value:
+            rid: 1030177719858495569
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - f315367b-d89d-4051-9b8e-b552ff0f42f0
+        childIds:
+        - 953a3abb-52bb-4288-9bfb-57b736898e83
+      - name: EsconderseEnNido
+        id: 953a3abb-52bb-4288-9bfb-57b736898e83
+        position: {x: 972, y: 124.666664}
+        node:
+          rid: 1030177719858495557
+        references:
+        - fieldName: Action
+          value:
+            rid: 1030177719858495559
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 4d5827ab-1034-4cda-a2f0-3c503a85538a
+        - 34a91908-24d2-40b4-bd85-81459d3c113e
+        - f9dbb5ed-c18d-4250-a659-c437f85597e5
+        childIds:
+        - 1c8360d0-9df6-4ccd-93e9-db1581145756
+      - name: VePeligroPush
+        id: 34a91908-24d2-40b4-bd85-81459d3c113e
+        position: {x: 664, y: -152.66666}
+        node:
+          rid: 1030177719858495561
+        references:
+        - fieldName: Perception
+          value:
+            rid: 1030177719858495568
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 5bf7ed86-16ee-46b5-b84d-98ff9b350d40
+        childIds:
+        - 953a3abb-52bb-4288-9bfb-57b736898e83
+      - name: VePeligroPush
+        id: f9dbb5ed-c18d-4250-a659-c437f85597e5
+        position: {x: 972, y: -158.66666}
+        node:
+          rid: 1030177719858495562
+        references:
+        - fieldName: Perception
+          value:
+            rid: 1030177719858495567
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 0d87c1e3-29a6-4254-b3e5-0041df2628c1
+        childIds:
+        - 953a3abb-52bb-4288-9bfb-57b736898e83
+      - name: 
+        id: 1c8360d0-9df6-4ccd-93e9-db1581145756
+        position: {x: 972, y: 320.6667}
+        node:
+          rid: 1030177719858495563
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 953a3abb-52bb-4288-9bfb-57b736898e83
+        childIds:
+        - c49e52ad-78f7-4176-9b6b-28b0e88d3ace
+      - name: EsperarEscondido
+        id: c49e52ad-78f7-4176-9b6b-28b0e88d3ace
+        position: {x: 980, y: 563.3333}
+        node:
+          rid: 1030177719858495564
+        references:
+        - fieldName: Action
+          value:
+            rid: 1030177719858495566
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 1c8360d0-9df6-4ccd-93e9-db1581145756
+        childIds:
+        - ccea9d3f-f372-4917-977b-89933efa912a
+      - name: VolverAloQueSeEstuviera
+        id: ccea9d3f-f372-4917-977b-89933efa912a
+        position: {x: 1368, y: 418}
+        node:
+          rid: 1030177719858495565
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - c49e52ad-78f7-4176-9b6b-28b0e88d3ace
+        childIds: []
     pushPerceptions:
     - name: Cogido
       targetNodeIds:
@@ -780,11 +824,6 @@ MonoBehaviour:
         method:
           componentName: TotemAnimal
           methodName: Cogido
-    - rid: 1030177649191813189
-      type: {class: PatrolActionGivenCenter, ns: , asm: Assembly-CSharp}
-      data:
-        maxDistance: 0.08
-        centerTransform: {fileID: 1299389020}
     - rid: 1030177649191813216
       type: {class: PathingActionTransformParent, ns: , asm: Assembly-CSharp}
       data:
@@ -883,7 +922,42 @@ MonoBehaviour:
         unpause:
           componentName: 
           methodName: 
-    - rid: 1030177653257142340
+    - rid: 1030177719858495556
+      type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 1030177719858495557
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 1030177719858495559
+      type: {class: PatrolActionGivenCenter, ns: , asm: Assembly-CSharp}
+      data:
+        maxDistance: 0.3
+        centerTransform: {fileID: 1299389020}
+    - rid: 1030177719858495561
+      type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 1030177719858495562
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 1030177719858495563
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: 6
+    - rid: 1030177719858495564
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 1030177719858495565
+      type: {class: PopTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: 6
+    - rid: 1030177719858495566
+      type: {class: DelayAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        delayTime: 3
+    - rid: 1030177719858495567
       type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
         init:
@@ -901,7 +975,7 @@ MonoBehaviour:
         unpause:
           componentName: 
           methodName: 
-    - rid: 1030177653257142341
+    - rid: 1030177719858495568
       type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
         init:
@@ -909,7 +983,7 @@ MonoBehaviour:
           methodName: 
         check:
           componentName: TotemAnimal
-          methodName: NotPredatorInSight
+          methodName: PredatorInSight
         reset:
           componentName: 
           methodName: 
@@ -919,24 +993,28 @@ MonoBehaviour:
         unpause:
           componentName: 
           methodName: 
-    - rid: 1030177698205401333
-      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data: 
-    - rid: 1030177698205401335
-      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+    - rid: 1030177719858495569
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
       data:
-        StatusFlags: 6
-    - rid: 1030177698205401336
-      type: {class: DelayAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
-      data:
-        delayTime: 5
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: TotemAnimal
+          methodName: PredatorInSight
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
     - rid: 5649168775563444292
       type: {class: StackFSM, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
       data: 
     - rid: 5649168775563444293
-      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
-      data: 
-    - rid: 5649168775563444294
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
     - rid: 5649168775563444296
@@ -984,14 +1062,6 @@ MonoBehaviour:
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
         StatusFlags: 0
-    - rid: 5649168775563444314
-      type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
-      data:
-        StatusFlags: -1
-    - rid: 5649168775563444316
-      type: {class: PopTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
-      data:
-        StatusFlags: 6
 --- !u!114 &427585081
 MonoBehaviour:
   m_ObjectHideFlags: 0
