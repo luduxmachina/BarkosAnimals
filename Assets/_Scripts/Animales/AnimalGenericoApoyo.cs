@@ -35,13 +35,13 @@ public class AnimalGenericoApoyo : AAnimal
     }
     public void ActivarBOIDS()
     {
-        Debug.Log("Activar BOIDS");
+      //  Debug.Log("Activar BOIDS");
         if (navegacionBOIDs != null)
             navegacionBOIDs.IsActive = true;
     }
     public void DesactivarBOIDS()
     {
-        Debug.Log("Desactivar BOIDS");
+       // Debug.Log("Desactivar BOIDS");
 
         if (navegacionBOIDs != null)
             navegacionBOIDs.IsActive = false;
