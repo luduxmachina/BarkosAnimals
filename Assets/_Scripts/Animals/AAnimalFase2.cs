@@ -108,6 +108,7 @@ public class AAnimalFase2: AAnimal
         //else SistemaUtilidadCode.enabled = false;
     }
 
+    private bool behaviourInstanced = false;
     protected override void Update()
     {
         base.Update();
@@ -130,8 +131,9 @@ public class AAnimalFase2: AAnimal
             tiempoEnfermo = 0f;
         }
 
-        if(establo != null && !TryGetComponent<AnimalesF2US>(out var comp) && estaEnFase)
+        if(!behaviourInstanced && establo != null && !TryGetComponent<AnimalesF2US>(out var comp) && estaEnFase)
         {
+            behaviourInstanced = true;
             behaviourRunner = gameObject.AddComponent<AnimalesF2US>();
             Debug.Log("Establo en el animal");
             //behaviourRunner.enabled = true;
