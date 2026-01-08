@@ -49,6 +49,8 @@ public class ReproductionManager : MonoBehaviour
         {
             GameObject animal = reproductionSpot.ExtractAnimalOfType(animalType).animalObject;
             // Informar al animal de que ya puede dejar de intentar reproducirse
+            // var pushPerception = animal.GetPerceptionStopReproducing();
+            // pushPerception.Fire();
         }
     }
     

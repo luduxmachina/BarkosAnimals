@@ -25,8 +25,13 @@ public class ReproductionSpot : MonoBehaviour
             GameObject animalObj = other.gameObject;
 
             if (babies.Contains(animalObj))
+            {
+                // Informar al bebe de que se aleje
+                // var pushPerception = animal.GetPerceptionStopReproducing();
+                // pushPerception.Fire();
                 return;
-
+            }
+            
             animalsInArea.Add(new AnimalF2Instance(animalObj, animalType));
             OnAnimalEnterReproductionSpot.Invoke(animalType);
         }
