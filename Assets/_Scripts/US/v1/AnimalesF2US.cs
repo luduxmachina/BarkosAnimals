@@ -20,8 +20,10 @@ public class AnimalesF2US : BehaviourRunner
     [SerializeField] private bool useDebugger = false;
     [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
     [SerializeField] private AAnimalFase2 m_AAnimalFase2;
+	public PushPerception terminaDeReproducirse;
 
-	BehaviourTree comer = null;
+
+    BehaviourTree comer = null;
 	
 	protected override void Init()
 	{
@@ -171,11 +173,9 @@ public class AnimalesF2US : BehaviourRunner
 		walkAction.Target = m_AAnimalFase2.GetNidoPosition();
 		State walkToNido = Reproducirse.CreateState();
 
-        //UnityTimePerception perception = new ConditionPerception();
-        //StateTransition llegaNido = Reproducirse.CreateTransition("llegaAlNido", walkToNido, Patrulla, _1_perception);
+        StateTransition paraDeReproducirse = Reproducirse.CreateTransition("paraDeReproducirse", walkToNido, SoloSerFeliz, statusFlags: StatusFlags.None);
 
-
-        PushPerception terminaDeReproducirse = new PushPerception();
+        terminaDeReproducirse = new PushPerception(paraDeReproducirse);	
 
         //el root no es tan imnportante en FSM pero asi empieza en el sitio correcto
         EstaFeliz.SetEntryState(EstaFeliz_1);

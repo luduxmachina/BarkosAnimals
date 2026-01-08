@@ -565,6 +565,12 @@ public class AAnimalFase2: AAnimal
         return establo.GetNidoPosition();
     }
 
+    public PushPerception GetPerceptioStopReproducing()
+    {
+        AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
+        return sistUtil.terminaDeReproducirse;
+    }
+
     #endregion
 
     #region Fatores del sist de utilidad
