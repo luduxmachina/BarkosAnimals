@@ -162,6 +162,9 @@ public class AnimalesF2US : BehaviourRunner
 		_2_perception.TotalTime = 5f;
 		StateTransition _2 = EstaFeliz.CreateTransition("2", Patrulla, EstaFeliz_1, _2_perception);
 
+		WalkAction walkAction = new WalkAction();
+		walkAction.Target = m_AAnimalFase2.GetNidoPosition();
+
         //el root no es tan imnportante en FSM pero asi empieza en el sitio correcto
         EstaFeliz.SetEntryState(EstaFeliz_1);
 

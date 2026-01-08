@@ -538,6 +538,12 @@ public class AAnimalFase2: AAnimal
         Debug.LogError("Esto no deber�a estar siendo usado...");
         return Vector3.zero;
     }
+
+    public Vector3 GetNidoPosition()
+    {
+        return establo.GetNidoPosition();
+    }
+
     #endregion
 
     #region Fatores del sist de utilidad
