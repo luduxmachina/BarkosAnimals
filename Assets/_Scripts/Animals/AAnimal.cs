@@ -53,6 +53,7 @@ public class AAnimal : MonoBehaviour
     protected Transform lastObjectve;
     protected Vector3 lastTargetPos;
 
+
     #region Monobehaviour
     protected virtual void Awake()
     {
@@ -206,13 +207,26 @@ public class AAnimal : MonoBehaviour
 
             return Status.Failure;
         }
-
+        ParticulasManager manager = gameObject.GetComponent<ParticulasManager>();
         tiempoComiendo += Time.deltaTime;
         if(tiempoComiendo >= tiempoEnComer)
         {
             var temp = lastObjectve.GetComponentInChildren<ItemInScene>();
+
             if (temp) //se lo va a comer lit
             {
+                if (temp.itemName == ItemNames.Bread)
+                {
+                    manager.Activar(TipoParticula.Pan);
+                }
+                else if (temp.itemName == ItemNames.Carrot)
+                {
+                    manager.Activar(TipoParticula.Zanahoria);
+                }
+                else if (temp.itemName == ItemNames.Meat || temp.itemName == ItemNames.Pangolin || temp.itemName == ItemNames.Duck)
+                {
+                    manager.Activar(TipoParticula.Chuleton);
+                }
                 temp.ReduceByOne();
             }
             PlayIdleAnim();

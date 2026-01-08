@@ -4,7 +4,7 @@ using UnityEngine;
 public class TotemAnimal : AAnimal
 {
     [SerializeField]
-    Transform nido;
+    public Transform nido;
     [SerializeField]
     SimpleGrabber grabber;
     [SerializeField]

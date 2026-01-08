@@ -66,7 +66,7 @@ public class AAnimalFase2: AAnimal
     [SerializeField] StikersManager stickerLimpieza;
     //[SerializeField] AllObjectTypesSO animalsDataBase;
     public bool useEditorBehaviour = true;
-    [SerializeField] BehaviourRunner behaviourRunner;
+    private AnimalesF2US behaviourRunner;
 
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] Predicate<float> funcionFelicidad;
@@ -108,6 +108,7 @@ public class AAnimalFase2: AAnimal
         //else SistemaUtilidadCode.enabled = false;
     }
 
+    private bool behaviourInstanced = false;
     protected override void Update()
     {
         base.Update();
@@ -130,10 +131,12 @@ public class AAnimalFase2: AAnimal
             tiempoEnfermo = 0f;
         }
 
-        if(establo != null && !behaviourRunner.enabled && estaEnFase)
+        if(!behaviourInstanced && establo != null && !TryGetComponent<AnimalesF2US>(out var comp) && estaEnFase)
         {
+            behaviourInstanced = true;
+            behaviourRunner = gameObject.AddComponent<AnimalesF2US>();
             Debug.Log("Establo en el animal");
-            behaviourRunner.enabled = true;
+            //behaviourRunner.enabled = true;
             //navMeshAgent.enabled = true;
         }
     }
@@ -567,8 +570,7 @@ public class AAnimalFase2: AAnimal
 
     public PushPerception GetPerceptioStopReproducing()
     {
-        AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
-        return sistUtil.terminaDeReproducirse;
+        return behaviourRunner.terminaDeReproducirse;
     }
 
     #endregion
