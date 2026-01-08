@@ -258,10 +258,10 @@ GameObject:
   - component: {fileID: 1549247482912388678}
   - component: {fileID: 3001176560405313657}
   - component: {fileID: 7958219938240571257}
-  - component: {fileID: 7068417138557874833}
   - component: {fileID: 3306075770266489809}
   - component: {fileID: 4126978915704849710}
   - component: {fileID: 6640306967631507432}
+  - component: {fileID: 8101010319052185185}
   m_Layer: 0
   m_Name: PatoItemFase2
   m_TagString: Suciedad
@@ -457,26 +457,8 @@ MonoBehaviour:
   stikersManager: {fileID: 475001849510169783}
   stickerLimpieza: {fileID: 8602960904664784601}
   useEditorBehaviour: 0
-  behaviourRunner: {fileID: 7068417138557874833}
   navMeshAgent: {fileID: 3001176560405313657}
   dirtCreator: {fileID: 0}
---- !u!114 &7068417138557874833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643027423853108606}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31611c27cbcd55946ba8409e8d0e8c0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  executeOnLoop: 1
-  interruptOptions: 0
-  useDebugger: 0
-  debuggerComponent: {fileID: 0}
-  m_AAnimalFase2: {fileID: 7958219938240571257}
 --- !u!114 &3306075770266489809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,7 +932,7 @@ MonoBehaviour:
         - 93a4aa7e-3b31-48cf-9e7d-575799308668
       - name: Patrulla
         id: 84976a18-db78-4255-87ea-7bc771552d74
-        position: {x: 1135, y: 229}
+        position: {x: 1150, y: 245}
         node:
           rid: 6361364534266953802
         references:
@@ -1485,6 +1467,19 @@ MonoBehaviour:
   chuleton: {fileID: 8375594099655312937}
   zanahoria: {fileID: 1295640550095845883}
   pan: {fileID: 8375594099655312937}
+--- !u!114 &8101010319052185185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643027423853108606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d8b668019770d44b1137d063b62740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settings: {fileID: 0}
 --- !u!1001 &685404487363139193
 PrefabInstance:
   m_ObjectHideFlags: 0

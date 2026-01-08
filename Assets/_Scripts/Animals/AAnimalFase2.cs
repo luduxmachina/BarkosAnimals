@@ -573,6 +573,11 @@ public class AAnimalFase2: AAnimal
         return behaviourRunner.terminaDeReproducirse;
     }
 
+    public SmartObject PedirComedero()
+    {
+        return establo.GetSmartObjectComedero();
+    }
+
     #endregion
 
     #region Fatores del sist de utilidad

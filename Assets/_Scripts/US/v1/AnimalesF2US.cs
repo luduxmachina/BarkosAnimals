@@ -12,6 +12,7 @@ using BehaviourAPI.StateMachines;
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using UnityEditor.UI;
 using NUnit.Framework.Internal;
+using BehaviourAPI.SmartObjects;
 
 public class AnimalesF2US : BehaviourRunner
 {
@@ -21,6 +22,7 @@ public class AnimalesF2US : BehaviourRunner
     [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
     [SerializeField] private AAnimalFase2 m_AAnimalFase2;
 	public PushPerception terminaDeReproducirse;
+    public SmartAgent agent;
 
 
     BehaviourTree comer = null;
@@ -120,8 +122,11 @@ public class AnimalesF2US : BehaviourRunner
 			comer.SetRootNode(loopNode);
         }
 
-        SubsystemAction eatAction = new SubsystemAction(comer);
-        UtilityAction TieneHambreYPuedeComer = Fase2US.CreateAction("TieneHambreYPuedeComer", PuedeComer, eatAction);
+        //SubsystemAction eatAction = new SubsystemAction(comer);
+
+        TargetRequestAction action = new TargetRequestAction(agent, m_AAnimalFase2.PedirComedero(), new RequestData());
+
+        UtilityAction TieneHambreYPuedeComer = Fase2US.CreateAction("TieneHambreYPuedeComer", PuedeComer, action);
 		
 		WeightedFusionFactor HambreComidaFusion = Fase2US.CreateFusion<WeightedFusionFactor>(Hambre, PuedeComer);
         HambreComidaFusion.Weights = new float[] { 1.0f, -1.0f };

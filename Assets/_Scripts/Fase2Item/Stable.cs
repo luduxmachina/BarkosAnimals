@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using BehaviourAPI.Core;
+using BehaviourAPI.UnityToolkit;
 
 public class Stable : MonoBehaviour
 {
@@ -74,6 +75,11 @@ public class Stable : MonoBehaviour
     public Transform GetComedero(AAnimalFase2 animal)
     {
         return comedero.GetTransfToEat(animal);
+    }
+
+    public SmartObject GetSmartObjectComedero()
+    {
+        return comedero;
     }
 
     public bool HayComida(ItemNames[] comidasPosibles)
