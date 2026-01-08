@@ -45,7 +45,7 @@ public class AAnimalFase2: AAnimal
 
     [Header("Comida")]
     [SerializeField] float MaxSinComer;
-    [SerializeField, ReadOnly] float tiempoSinComer = 0f;
+    [SerializeField, ReadOnly] float tiempoSinComer = 10f;
 
     [SerializeField, ReadOnly] public bool hayComida = false;
     [SerializeField, ReadOnly] bool isHerbivore = false;
