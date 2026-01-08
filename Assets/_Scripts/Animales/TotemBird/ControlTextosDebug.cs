@@ -15,7 +15,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     public void CambiarTexto() 
     {
-        if (visionPajaro.hayPeligro) { 
+       /* if (visionPajaro.hayPeligro) { 
             textoPeligro.text = "Hay Peligro";
             textoPeligro.color = Color.red;
         }
@@ -45,7 +45,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             textoPeligro.text = "No hay objetos en mi rango";
             textoPeligro.color = Color.red;
-        }
+        }*/
 
     }
 }

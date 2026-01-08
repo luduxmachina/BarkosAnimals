@@ -4,16 +4,24 @@ using UnityEngine;
 public class TotemAnimal : AAnimal
 {
     [SerializeField]
-    DetectorVision detectorVision;
+    Transform nido;
+    [SerializeField]
+    SimpleGrabber grabber;
+    [SerializeField]
+    DetectorVision detectorVisionObjetivos;
+
+    [SerializeField]
+    DetectorVision detectorVisionPredators;
     Transform lastSeenObjective;
-    public override bool ObjectiveClose()
+    GameObject grabbedObj;
+    protected override void Start()
     {
-        return base.ObjectiveClose();
+        base.Start();
+        detectorVisionPredators.objetivosDetectar.AddRange(this.predators);
+        detectorVisionObjetivos.objetivosDetectar.AddRange(this.objectives);
+
     }
-    public override bool PredatorClose()
-    {
-        return base.PredatorClose();
-    }
+
     public override Transform GetClosestObjetive()
     {
         if (lastSeenObjective == null)
@@ -22,16 +30,16 @@ public class TotemAnimal : AAnimal
         }
         else
         {
-            return detectorVision.transformPan;
+            return detectorVisionObjetivos.transformObjetivo;
         }
     }
     public bool ObjectiveInSight()
     {
-        bool objetivoVisto= detectorVision.hayPan;
+        bool objetivoVisto= detectorVisionObjetivos.hayObjetivosARango;
 
         if (objetivoVisto)
         {
-            lastSeenObjective = detectorVision.transformPan;
+            lastSeenObjective = detectorVisionObjetivos.transformObjetivo;
 
         }
         else
@@ -42,7 +50,7 @@ public class TotemAnimal : AAnimal
     }
     public bool PredatorInSight()
     {
-        return detectorVision.hayPeligro;
+        return detectorVisionPredators.hayObjetivosARango;
     }
     public bool NotPredatorInSight()
     {
@@ -56,16 +64,53 @@ public class TotemAnimal : AAnimal
     }
     public void CogerComida()
     {
-
+        //el grabber 
+        grabber.TryGrab(detectorVisionObjetivos.transformObjetivo);
+        grabbedObj = detectorVisionObjetivos.transformObjetivo.gameObject;
+        //poner algun corazon o algo
+        //  stickersManager.SetImage(StikersGenerales.NecesitaComerCarne);
     }
 
     public void LlevarComidaInit()
     {
+        PlayWalkingAnim();
+        movimiento.SetTarget(nido.position);
+        //hacer un move towards al nido y al final dejar el pan en el nido
+
+        //si no ha cogido  se jode
 
     }
     public Status LlevarComidaUpdate()
     {
-        return Status.Success;
+        if (!grabber.hasObjInHand)
+        { //le han quitado el pan o algo
+            return Status.Failure;
+        }
+        if (movimiento.HasArrived())
+        {
+            //interactuar con el pan
+            
+            PlayIdleAnim();
+            movimiento.CancelMove();
+            var temp = grabbedObj.GetComponent<IPlayerInteractionReciever>();
+            if (temp != null)
+            {
+                temp.OnPlayerInteraction(gameObject);
+                if (grabber.hasObjInHand)
+                {
+                    grabber.DropObj(); //esto quiere decrique ha pasado de mi culo y no ha dejado el pan gucci
+                }
+            }
+            else
+            {
+                grabber.DropObj(); //no se que habra cogido pero bueno
+            }
+
+            return Status.Success;
+        }
+
+
+        return Status.Running;
     }
 
 }

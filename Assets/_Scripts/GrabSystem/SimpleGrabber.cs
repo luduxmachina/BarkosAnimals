@@ -3,7 +3,7 @@ using UnityEngine;
 public class SimpleGrabber : MonoBehaviour, IGrabber
 {
 
-    private bool hasObjInHand = false;
+    public bool hasObjInHand = false;
     private IGrabbable objInHand;
     public void TryGrab(Transform objective)
     {

@@ -1,20 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DetectorVision : MonoBehaviour
 {
+
     [Header("Configuración del Cono")]
     public float radioVision = 10f;    // ditan vision
     [Range(0, 360)]
     public float anguloVision = 90f;   // amplitud de vison
 
-    private Collider coliderPajaro;
+
 
     [Header("Estado para la FSM")]
-    public bool hayPeligro;    // percepción hay peligro
-    public bool hayPan;    // percepción hay panes
     public bool hayObjetivosARango;
-    public Transform transformPan; // Para coger el pan
+    public Transform transformObjetivo; // Para coger el pan
+    public Color colorVision = Color.green;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [HideInInspector]
+    public List<ItemNames> objetivosDetectar = new List<ItemNames>();
+    private void Awake()
+    {
+
+    }
     void Start()
     {
         
@@ -29,10 +37,8 @@ public class DetectorVision : MonoBehaviour
     //función que lleva la visión
     void Detectar()
     {
-        coliderPajaro = this.GetComponent<Collider>();
-        // Por defecto no hay peligro hasta que demostremos lo contrario
-        hayPeligro = false;
-        hayPan = false;
+
+
         hayObjetivosARango = false;
         //amenazaDetectada = null;
 
@@ -43,8 +49,7 @@ public class DetectorVision : MonoBehaviour
         // 2. FILTRAR POR ÁNGULO
         foreach (var objetivo in objetosEnRango)
         {
-            if (objetivo!=coliderPajaro) 
-            {
+
                 Transform target = objetivo.transform;
 
                 // Calculamos la dirección hacia el objetivo
@@ -53,27 +58,35 @@ public class DetectorVision : MonoBehaviour
                 // Verificamos si la dirección está dentro del ángulo de visión frontal
                 if (Vector3.Angle(transform.forward, direccionAlObjetivo) < anguloVision / 2)
                 {
-                    // ¡AMENAZA CONFIRMADA!
-                    hayPeligro = true;
-                    //amenazaDetectada = target;
-
-                    // Si solo te importa detectar AL MENOS UNO, podemos salir del bucle ya.
-                    break;
+                    
+                    var temp= objetivo.GetComponentInChildren<ItemInScene>();
+                if (temp != null && objetivosDetectar.Contains(temp.itemName))
+                {
+                    // Si hemos llegado hasta aquí, el objetivo está dentro del ángulo de visión
+                    hayObjetivosARango = true;
+                    transformObjetivo = target;
+                    break; // Salimos del bucle ya que hemos encontrado un objetivo válido
                 }
+
+
+
             }
+      
             
         }
     }
-
+   
     //Para visualizar la visón en el editor
     private void OnDrawGizmos()
     {
-        if (hayPeligro)
-            Gizmos.color = Color.red; // Rojo si detecta amenaza
-        else if (hayPan)
-            Gizmos.color = Color.cyan; // Cyan si detecta pan
+        if (hayObjetivosARango)
+        {
+            Gizmos.color = colorVision;
+        }
         else
-            Gizmos.color = Color.green; // Verde si no detecta nada
+        {
+            Gizmos.color= Color.gray;
+        }
         // Dibujar el círculo de distancia
         Gizmos.DrawWireSphere(transform.position, radioVision);
 
