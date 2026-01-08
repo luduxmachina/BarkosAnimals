@@ -90,6 +90,7 @@ public class AAnimalFase2: AAnimal
             isHerbivore = false;
         }
         base.Awake();
+        if (gameObject.transform.parent.name == "Babies") estaEnFase = true;
         dirtCreator = FindAnyObjectByType<DirtCreator>();
         BoatPhaseHandler boatPhaseHandler = FindAnyObjectByType<BoatPhaseHandler>();
         boatPhaseHandler.OnStartBoatPhase.AddListener(EstaEnFase);
@@ -586,6 +587,7 @@ public class AAnimalFase2: AAnimal
 
     public void ChangeEatingAction(BehaviourTree action)
     {
+        if(behaviourRunner == null) return;
         //Debug.Log("Llega a el cambio de la acci�n de comer");
         AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
         if (sistUtil)

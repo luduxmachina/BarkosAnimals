@@ -23,11 +23,11 @@ public class ReproductionSpot : MonoBehaviour
             var animalType = animal.thisItemName;
             GameObject animalObj = other.gameObject;
 
-            if (CheckIfIsBaby(animalObj))
+            if (CheckIfIsBaby(animalObj) && animal.IsHappy)
             {
                 // Informar al bebe de que se aleje
                 var pushPerception = gameObject.GetComponentInChildren<AAnimalFase2>().GetPerceptioStopReproducing();
-                pushPerception.Fire();
+                pushPerception?.Fire();
                 return;
             }
             
