@@ -329,7 +329,7 @@ TextureImporter:
         width: 395
         height: 390
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -351,7 +351,7 @@ TextureImporter:
         width: 386
         height: 388
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -373,7 +373,7 @@ TextureImporter:
         width: 385
         height: 383
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -382,6 +382,28 @@ TextureImporter:
       bones: []
       spriteID: 7ccff9f19579ded4baadb0b59eece259
       internalID: 385586900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory_items_bird
+      rect:
+        serializedVersion: 2
+        x: 2442
+        y: 405
+        width: 386
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4680ec2ffa955f49920a898693470f0
+      internalID: -1028692502
       vertices: []
       indices: 
       edges: []
@@ -406,6 +428,7 @@ TextureImporter:
       inventory_items_barrilCarne: 1082233233
       inventory_items_barrilPan: 1497891834
       inventory_items_barrilZanahoria: 849546403
+      inventory_items_bird: -1028692502
       inventory_items_carbon: -1629874826
       inventory_items_cuadra: 704658868
       inventory_items_oveja: 149526310
