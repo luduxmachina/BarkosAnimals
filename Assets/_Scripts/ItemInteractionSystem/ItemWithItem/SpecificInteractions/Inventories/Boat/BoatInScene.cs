@@ -4,7 +4,7 @@ public class BoatInScene : InventoryInScene
 {
 
     [SerializeField]
-    ShipData shipData;
+    CartData shipData;
     private void Awake()
     {
        this.inventoryData = shipData;

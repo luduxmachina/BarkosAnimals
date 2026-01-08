@@ -54,7 +54,7 @@ public class NavegacionBOIDsExtra : MonoBehaviour
             numVecinos++;
 
         }
-        if (numVecinos == 0)
+        if (numVecinos == 0) 
         {
             return;
         }
