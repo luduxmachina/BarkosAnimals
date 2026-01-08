@@ -110,14 +110,38 @@ public class AnimalesF2US : BehaviourRunner
 		//SimpleAction TieneHambreYPuedeComer_action = new SimpleAction();
 		if(comer == null)
         {
-			comer = new BehaviourTree();
-			SimpleAction noSisActivo = new SimpleAction();
-			noSisActivo.action = m_AAnimalFase2.NoHayComederoDef;
-			LeafNode nodoComer = comer.CreateLeafNode(noSisActivo);
+            this.comer = new BehaviourTree();
 
-			LoopNode loopNode = comer.CreateDecorator<LoopNode>(nodoComer);
+            SimpleAction Indica_que_tiene_Hambre_Comer_action = new SimpleAction();
+            Indica_que_tiene_Hambre_Comer_action.action = m_AAnimalFase2.MostrarHambre;
+            LeafNode Indica_que_tiene_Hambre_Comer = comer.CreateLeafNode("Indica que tiene Hambre0", Indica_que_tiene_Hambre_Comer_action);
 
-			comer.SetRootNode(loopNode);
+            FunctionalAction GoToEat0_action = new FunctionalAction();
+            GoToEat0_action.onStarted = m_AAnimalFase2.MoveTowardsObjectiveInit;
+            GoToEat0_action.onUpdated = m_AAnimalFase2.MoveTowardsObjective;
+            LeafNode GoToEat0 = comer.CreateLeafNode("GoToEat0", GoToEat0_action);
+
+            FunctionalAction Eat0_action = new FunctionalAction();
+            Eat0_action.onStarted = m_AAnimalFase2.InitComer;
+            Eat0_action.onUpdated = m_AAnimalFase2.UpdateComer;
+            LeafNode Eat0 = comer.CreateLeafNode("Eat0", Eat0_action);
+
+            SequencerNode EATING0 = comer.CreateComposite<SequencerNode>("EATING0", false, Indica_que_tiene_Hambre_Comer, GoToEat0, Eat0);
+            EATING0.IsRandomized = false;
+
+            LoopNode loopComer0 = comer.CreateDecorator<LoopNode>(EATING0);
+            loopComer0.Iterations = -1;
+
+            //el root es importante para los arboles
+            comer.SetRootNode(loopComer0);
+            //this.comer = new BehaviourTree();
+			//SimpleAction noSisActivo = new SimpleAction();
+			//noSisActivo.action = m_AAnimalFase2.NoHayComederoDef;
+            //LeafNode nodoComer = this.comer.CreateLeafNode(noSisActivo);
+			//
+            //LoopNode loopNode = this.comer.CreateDecorator<LoopNode>(nodoComer);
+			//
+			//this.comer.SetRootNode(loopNode);
         }
 
         SubsystemAction eatAction = new SubsystemAction(comer);
