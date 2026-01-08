@@ -55,37 +55,127 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8653631918795925122}
     m_Modifications:
-    - target: {fileID: 979077750202326550, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
-      propertyPath: playOnAwake
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: 'managedReferences[4103623879092338756]'
+      value: BehaviourAPI.StateMachines BehaviourAPI.StateMachines.StateTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: 'managedReferences[4103623879092338758]'
+      value: BehaviourAPI.StateMachines BehaviourAPI.StateMachines.StateTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: 'managedReferences[4103623879092338759]'
+      value: BehaviourAPI.UnityToolkit.GUIDesigner.Framework BehaviourAPI.UnityToolkit.GUIDesigner.Framework.CustomPerception
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].id
+      value: 2b4c2395-add7-4503-a3f7-509902aa4414
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].node
+      value: 4103623879092338758
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338756].StatusFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1102712508681542718, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1295640550095845883, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
-      propertyPath: playOnAwake
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338758].StatusFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4462038677095815980, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
-      propertyPath: playOnAwake
-      value: 0
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].init.methodName
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6353247339070907646, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
-      propertyPath: playOnAwake
-      value: 0
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].check.methodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].pause.methodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].reset.methodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[1].position.x
+      value: 1150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[1].position.y
+      value: 245
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].position.x
+      value: 809
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].position.y
+      value: -164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].init.componentName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].unpause.methodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].check.componentName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].pause.componentName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].reset.componentName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: managedReferences[4103623879092338759].unpause.componentName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].references.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].references.Array.data[0].value
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].references.Array.data[1].value
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].references.Array.data[0].fieldName
+      value: Perception
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].references.Array.data[0].fieldType
+      value: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].references.Array.data[1].fieldName
+      value: Action
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126978915704849710, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
+      propertyPath: data.graphs.Array.data[2].nodes.Array.data[4].references.Array.data[1].fieldType
+      value: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
     - target: {fileID: 6643027423853108606, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
       propertyPath: m_Name
       value: PatoItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 7677093019594138604, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375594099655312937, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
-      propertyPath: playOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8867997848718819774, guid: dac4d329a62d28147b15834ee01ab52a, type: 3}
       propertyPath: m_LocalPosition.x

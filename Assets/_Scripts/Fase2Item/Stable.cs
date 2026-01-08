@@ -87,6 +87,16 @@ public class Stable : MonoBehaviour
 
     #endregion
 
+    #region Nido
+
+    public Vector3 GetNidoPosition()
+    {
+        return transform.parent.GetComponentInChildren<ReproductionSpot>().GetWorldPosition();
+
+    }
+
+    #endregion
+
     #region Animales
     /// <summary>
     /// Returns all the animals with the specified ItemName

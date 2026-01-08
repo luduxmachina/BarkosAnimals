@@ -48,9 +48,10 @@ public class ReproductionManager : MonoBehaviour
         for (int i = 0; i < numOfAnimalsNeededToReproduce; i++)
         {
             GameObject animal = reproductionSpot.ExtractAnimalOfType(animalType).animalObject;
+            
             // Informar al animal de que ya puede dejar de intentar reproducirse
-            // var pushPerception = animal.GetPerceptionStopReproducing();
-            // pushPerception.Fire();
+            var pushPerception = gameObject.GetComponentInChildren<AAnimalFase2>().GetPerceptioStopReproducing();
+            pushPerception.Fire();
         }
     }
     

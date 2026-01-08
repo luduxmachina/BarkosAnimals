@@ -11,6 +11,7 @@ using BehaviourAPI.StateMachines;
 
 using BehaviourAPI.UnityToolkit.GUIDesigner.Runtime;
 using UnityEditor.UI;
+using NUnit.Framework.Internal;
 
 public class AnimalesF2US : BehaviourRunner
 {
@@ -19,8 +20,10 @@ public class AnimalesF2US : BehaviourRunner
     [SerializeField] private bool useDebugger = false;
     [SerializeField, HideIf("useDebugger", false)] private BSRuntimeDebugger debuggerComponent;
     [SerializeField] private AAnimalFase2 m_AAnimalFase2;
+	public PushPerception terminaDeReproducirse;
 
-	BehaviourTree comer = null;
+
+    BehaviourTree comer = null;
 	
 	protected override void Init()
 	{
@@ -33,6 +36,7 @@ public class AnimalesF2US : BehaviourRunner
 		UtilitySystem Fase2US = new UtilitySystem(1f);
 		//BehaviourTree Comer = new BehaviourTree();
 		FSM EstaFeliz = new FSM();
+		FSM Reproducirse = new FSM();
 		BehaviourTree TieneHambre = new BehaviourTree();
 		
 		VariableFactor TC = Fase2US.CreateVariable("TC", m_AAnimalFase2.TimeWithoutEating, 0f, 1f);
@@ -143,8 +147,11 @@ public class AnimalesF2US : BehaviourRunner
         Felicidad.Slope = -0.7f;
         Felicidad.YIntercept = 0.7f;
 
-        SubsystemAction MandarCorazones_action = new SubsystemAction(EstaFeliz);
+        SubsystemAction MandarCorazones_action = new SubsystemAction(Reproducirse);
         UtilityAction MandarCorazones = Fase2US.CreateAction("MandarCorazones", Felicidad, MandarCorazones_action);
+
+        SubsystemAction SoloSerFeliz_action = new SubsystemAction(EstaFeliz);
+        State SoloSerFeliz = Reproducirse.CreateState("SoloSerFeliz", SoloSerFeliz_action);
 
         SimpleAction EstaFeliz_1_action = new SimpleAction();
 		EstaFeliz_1_action.action = m_AAnimalFase2.MandarCorazones;
@@ -161,6 +168,14 @@ public class AnimalesF2US : BehaviourRunner
 		UnityTimePerception _2_perception = new UnityTimePerception();
 		_2_perception.TotalTime = 5f;
 		StateTransition _2 = EstaFeliz.CreateTransition("2", Patrulla, EstaFeliz_1, _2_perception);
+
+        WalkAction walkAction = new WalkAction();
+		walkAction.Target = m_AAnimalFase2.GetNidoPosition();
+		State walkToNido = Reproducirse.CreateState();
+
+        StateTransition paraDeReproducirse = Reproducirse.CreateTransition("paraDeReproducirse", walkToNido, SoloSerFeliz, statusFlags: StatusFlags.None);
+
+        terminaDeReproducirse = new PushPerception(paraDeReproducirse);	
 
         //el root no es tan imnportante en FSM pero asi empieza en el sitio correcto
         EstaFeliz.SetEntryState(EstaFeliz_1);

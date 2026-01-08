@@ -559,6 +559,18 @@ public class AAnimalFase2: AAnimal
         Debug.LogError("Esto no deber�a estar siendo usado...");
         return Vector3.zero;
     }
+
+    public Vector3 GetNidoPosition()
+    {
+        return establo.GetNidoPosition();
+    }
+
+    public PushPerception GetPerceptioStopReproducing()
+    {
+        AnimalesF2US sistUtil = behaviourRunner.GetComponent<AnimalesF2US>();
+        return sistUtil.terminaDeReproducirse;
+    }
+
     #endregion
 
     #region Fatores del sist de utilidad
